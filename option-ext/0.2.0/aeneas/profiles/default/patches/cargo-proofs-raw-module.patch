@@ -1,0 +1,94 @@
+diff --git a/cli/src/scan.rs b/cli/src/scan.rs
+index b047302..7119a5f 100644
+--- a/cli/src/scan.rs
++++ b/cli/src/scan.rs
+@@ -796,21 +796,23 @@ impl Scanner<'_> {
+         for item in items {
+             match item {
+                 Item::Mod(m) => {
++                    let name = m.ident.to_string();
++                    let name = name.trim_start_matches("r#");
+                     let Some(ms) = attrs(&m.attrs, self.project)? else {
+                         continue;
+                     };
+                     if matches!(m.vis, syn::Visibility::Public(_)) {
+                         self.public_items
+-                            .insert(item_path(module, &m.ident.to_string()));
++                            .insert(item_path(module, name));
+                     }
+                     let mut child = module.to_vec();
+-                    child.push(m.ident.to_string());
++                    child.push(name.to_owned());
+                     let pub_child = public && matches!(m.vis, syn::Visibility::Public(_));
+                     if let Some((_, items)) = &m.content {
+                         self.items(
+                             items,
+                             file,
+-                            &module_dir.join(m.ident.to_string()),
++                            &module_dir.join(name),
+                             &child,
+                             pub_child,
+                         )?;
+@@ -828,8 +830,8 @@ impl Scanner<'_> {
+                         let path = if let Some(path) = explicit {
+                             module_dir.join(path)
+                         } else {
+-                            let a = module_dir.join(format!("{}.rs", m.ident));
+-                            let b = module_dir.join(m.ident.to_string()).join("mod.rs");
++                            let a = module_dir.join(format!("{name}.rs"));
++                            let b = module_dir.join(name).join("mod.rs");
+                             ensure!(!(a.exists() && b.exists()), "Ambiguous module {}", m.ident);
+                             if a.exists() {
+                                 a
+@@ -1106,6 +1108,19 @@ impl Scanner<'_> {
+                 .collect();
+             ensure!(aliases.len() <= 1, "Ambiguous import {first}");
+             if let Some(i) = aliases.first() {
++                // A direct crate-root import such as Rust 2015 `use Trait;`
++                // names the existing root item, not this module's own alias.
++                let manifest = fs::read_to_string(&self.project.manifest).unwrap_or_default();
++                let package: toml::Value = toml::from_str(&manifest).unwrap_or_else(|_| toml::Value::Table(Default::default()));
++                let edition = package.get("package").and_then(|p| p.get("edition"));
++                let rust_2015 = edition.is_none()
++                    || edition.and_then(toml::Value::as_str) == Some("2015");
++                if rust_2015 && !i.module.is_empty() && i.target == [first.clone()]
++                    && (self.traits.contains(first) || self.types.contains(first)
++                        || self.public_items.contains(first))
++                {
++                    return Ok(rest.join("::"));
++                }
+                 let target = self.resolve(&i.target, &i.module, depth + 1)?;
+                 return Ok(std::iter::once(target)
+                     .chain(rest[1..].iter().cloned())
+@@ -1272,6 +1287,31 @@ mod tests {
+         };
+         (d, p)
+     }
++    #[test]
++    fn raw_identifier_modules_use_unescaped_paths() {
++        let (dir, p) = project("pub mod r#type; pub mod r#match { pub fn r#loop() {} }");
++        fs::write(dir.path().join("type.rs"), "pub fn r#fn() {}").unwrap();
++        let contracts = public_contracts(&p, false, CreusotTarget::All).unwrap();
++        let paths: BTreeSet<_> = contracts.iter().flat_map(|c| c.api_paths.iter().cloned()).collect();
++        assert!(paths.contains("type::fn"), "{paths:?}");
++        assert!(paths.contains("match::loop"), "{paths:?}");
++        assert_eq!(contracts.len(), 2);
++    }
++
++    #[test]
++    fn direct_root_trait_import_is_not_a_cyclic_alias() {
++        let (dir, p) = project("mod r#impl; pub trait Ext<T> { fn method(self); }");
++        fs::write(dir.path().join("impl.rs"),
++            "use Ext; impl<T> Ext<T> for Option<T> { fn method(self) {} }").unwrap();
++        let contracts = public_contracts(&p, false, CreusotTarget::All).unwrap();
++        assert_eq!(contracts.len(), 1);
++        assert_eq!(contracts[0].api_paths,
++            ["<core::option::Option<T> as demo::Ext<T>>::method"]);
++        fs::write(&p.manifest, "[package]\nname='demo'\nversion='1.0.0'\nedition='2018'\n").unwrap();
++        assert!(public_contracts(&p, false, CreusotTarget::All).unwrap_err()
++            .to_string().contains("Cyclic"));
++    }
++
+     #[test]
+     fn structural_paths_match_importer_fixtures() {
+         let cases: serde_json::Value =

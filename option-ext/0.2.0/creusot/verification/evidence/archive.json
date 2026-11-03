@@ -1,0 +1,9 @@
+{
+  "archive": "run-20261103T134348Z-afzaahye.tar.gz",
+  "availability": "local-only",
+  "member_root": "payload/",
+  "public_url": null,
+  "schema_version": 1,
+  "scope": "Original successful external-workspace Creusot run, excluding Cargo build intermediates; checked source snapshots, Coma, proof JSON, XML, logs and input fingerprints retained.",
+  "sha256": "88a884ab53c52d5025aed0d161ee711e2a75252887ad816a2d82e213629bb03a"
+}

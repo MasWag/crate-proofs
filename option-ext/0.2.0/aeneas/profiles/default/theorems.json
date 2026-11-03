@@ -1,0 +1,100 @@
+{
+  "checked": [
+    {
+      "name": "OptionExtContracts.contains_relation_correct",
+      "module": "Contracts",
+      "scope": "public-model",
+      "precondition": "For each selected Some payload, U::eq(candidate, payload) succeeds and returns a Boolean reflecting the specified relation."
+    },
+    {
+      "name": "OptionExtContracts.map_or2_correct",
+      "module": "Contracts",
+      "scope": "public-model",
+      "precondition": "For each selected Some payload, the FnOnce mapping succeeds and returns its specified mathematical mapping."
+    },
+    {
+      "name": "OptionExtAdaptedContracts.map_or_else2_correct",
+      "module": "AdaptedContracts",
+      "scope": "public-model",
+      "precondition": "On None, default() succeeds with the specified default value; on Some(payload), f(payload) succeeds with the specified mathematical mapping. Only the selected callback is constrained. The checked body is the disclosed direct-match adaptation; source correspondence is reviewed, not formally proved."
+    },
+    {
+      "name": "OptionExtContracts.contains_none",
+      "module": "Contracts",
+      "scope": "helper"
+    },
+    {
+      "name": "OptionExtContracts.contains_some",
+      "module": "Contracts",
+      "scope": "helper"
+    },
+    {
+      "name": "OptionExtContracts.contains_correct",
+      "module": "Contracts",
+      "scope": "helper"
+    },
+    {
+      "name": "OptionExtContracts.map_or2_none",
+      "module": "Contracts",
+      "scope": "helper"
+    },
+    {
+      "name": "OptionExtContracts.map_or2_some",
+      "module": "Contracts",
+      "scope": "helper"
+    },
+    {
+      "name": "OptionExtContracts.map_or2_some_postcondition",
+      "module": "Contracts",
+      "scope": "helper"
+    },
+    {
+      "name": "OptionExtAdaptedContracts.map_or_else2_none",
+      "module": "AdaptedContracts",
+      "scope": "helper"
+    },
+    {
+      "name": "OptionExtAdaptedContracts.map_or_else2_some",
+      "module": "AdaptedContracts",
+      "scope": "helper"
+    },
+    {
+      "name": "OptionExtAdaptedContracts.map_or_else2_postcondition",
+      "module": "AdaptedContracts",
+      "scope": "helper"
+    }
+  ],
+  "recorder_mappings": [
+    {
+      "api": "<core::option::Option<T> as option_ext::OptionExt<T>>::contains",
+      "theorem": "OptionExtContracts.contains_relation_correct"
+    },
+    {
+      "api": "<core::option::Option<T> as option_ext::OptionExt<T>>::map_or2",
+      "theorem": "OptionExtContracts.map_or2_correct"
+    },
+    {
+      "api": "<core::option::Option<T> as option_ext::OptionExt<T>>::map_or_else2",
+      "theorem": "OptionExtAdaptedContracts.map_or_else2_correct"
+    }
+  ],
+  "extracted_but_unproved": [],
+  "coverage": [
+    {
+      "api": "<core::option::Option<T> as option_ext::OptionExt<T>>::contains",
+      "status": "unchanged-release-body",
+      "theorem": "OptionExtContracts.contains_relation_correct"
+    },
+    {
+      "api": "<core::option::Option<T> as option_ext::OptionExt<T>>::map_or2",
+      "status": "unchanged-release-body",
+      "theorem": "OptionExtContracts.map_or2_correct"
+    },
+    {
+      "api": "<core::option::Option<T> as option_ext::OptionExt<T>>::map_or_else2",
+      "status": "original-release-extraction-blocked; disclosed direct-match adaptation proved",
+      "theorem": "OptionExtAdaptedContracts.map_or_else2_correct",
+      "blocker_config": "extraction-original-all.json"
+    }
+  ]
+}

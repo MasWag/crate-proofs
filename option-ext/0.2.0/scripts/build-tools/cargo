@@ -1,0 +1,19 @@
+#!/usr/bin/env python3.11
+"""Avoid ancestor user Cargo config during managed compiler builds only."""
+import os, pathlib, subprocess, sys, tempfile
+args = sys.argv[1:]
+origin = pathlib.Path.cwd()
+channel = os.environ.get('RUSTUP_TOOLCHAIN')
+if args and args[0].startswith('+'):
+    channel = args.pop(0)[1:]
+if not channel:
+    channel = subprocess.check_output(['rustup', 'show', 'active-toolchain'], text=True).split()[0]
+# Preserve relative build inputs while moving Cargo's config-discovery cwd.
+for flag in ('--manifest-path', '--path', '--root', '--target-dir'):
+    if flag in args:
+        i = args.index(flag) + 1
+        args[i] = str((origin / args[i]).resolve())
+if args and args[0] in ('test', 'build', 'check', 'metadata') and '--manifest-path' not in args:
+    args += ['--manifest-path', str(origin / 'Cargo.toml')]
+with tempfile.TemporaryDirectory(prefix='option-ext-cargo-', dir='/private/tmp') as cwd:
+    sys.exit(subprocess.call(['rustup', 'run', channel, 'cargo', *args], cwd=cwd))

@@ -1,0 +1,112 @@
+{
+  "acceptance_basis": "Original archived inputs; packaging does not rerun verification.",
+  "archive_sha256": "6daac0304241a2e617a8fefc9cb3146df84e9781c7dfbea112faf27d164b8764",
+  "audit": {
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "checked": [
+      {
+        "module": "Contracts",
+        "name": "OptionExtContracts.contains_relation_correct",
+        "precondition": "For each selected Some payload, U::eq(candidate, payload) succeeds and returns a Boolean reflecting the specified relation.",
+        "scope": "public-model"
+      },
+      {
+        "module": "Contracts",
+        "name": "OptionExtContracts.map_or2_correct",
+        "precondition": "For each selected Some payload, the FnOnce mapping succeeds and returns its specified mathematical mapping.",
+        "scope": "public-model"
+      },
+      {
+        "module": "AdaptedContracts",
+        "name": "OptionExtAdaptedContracts.map_or_else2_correct",
+        "precondition": "On None, default() succeeds with the specified default value; on Some(payload), f(payload) succeeds with the specified mathematical mapping. Only the selected callback is constrained. The checked body is the disclosed direct-match adaptation; source correspondence is reviewed, not formally proved.",
+        "scope": "public-model"
+      },
+      {
+        "module": "Contracts",
+        "name": "OptionExtContracts.contains_none",
+        "scope": "helper"
+      },
+      {
+        "module": "Contracts",
+        "name": "OptionExtContracts.contains_some",
+        "scope": "helper"
+      },
+      {
+        "module": "Contracts",
+        "name": "OptionExtContracts.contains_correct",
+        "scope": "helper"
+      },
+      {
+        "module": "Contracts",
+        "name": "OptionExtContracts.map_or2_none",
+        "scope": "helper"
+      },
+      {
+        "module": "Contracts",
+        "name": "OptionExtContracts.map_or2_some",
+        "scope": "helper"
+      },
+      {
+        "module": "Contracts",
+        "name": "OptionExtContracts.map_or2_some_postcondition",
+        "scope": "helper"
+      },
+      {
+        "module": "AdaptedContracts",
+        "name": "OptionExtAdaptedContracts.map_or_else2_none",
+        "scope": "helper"
+      },
+      {
+        "module": "AdaptedContracts",
+        "name": "OptionExtAdaptedContracts.map_or_else2_some",
+        "scope": "helper"
+      },
+      {
+        "module": "AdaptedContracts",
+        "name": "OptionExtAdaptedContracts.map_or_else2_postcondition",
+        "scope": "helper"
+      }
+    ],
+    "mapping_metadata_checked": true,
+    "scope": "named Lean theorem and transitive axiom audit only",
+    "status": "passed"
+  },
+  "host": "aarch64-apple-darwin",
+  "input_fingerprints": {
+    "after": {
+      "member": "payload/inputs-after.json",
+      "sha256": "333b9c576a8c7369d7d7578f2e7733fb13e7c8b8758a7548313cddad001edceb"
+    },
+    "before": {
+      "member": "payload/inputs-before.json",
+      "sha256": "333b9c576a8c7369d7d7578f2e7733fb13e7c8b8758a7548313cddad001edceb"
+    },
+    "equal": true
+  },
+  "kind": "archived-managed-run-summary",
+  "original_audit": {
+    "member": "payload/audit/result.json",
+    "sha256": "0ce5a8d529555d266bd16534b870207246c856d209d6ef670e2ec3de0e05fb55"
+  },
+  "original_result": {
+    "member": "payload/result.json",
+    "sha256": "9e892efd0625835d34ebe9b6f8b36aeeeea87de6f35c58d03af2e66a0bebc818"
+  },
+  "profile": "default",
+  "reported_status": "passed",
+  "sarif": "Not a cargo-proofs recording result.",
+  "schema_version": 1,
+  "scope": "Configured extraction comparisons and named theorem audit; native observations are separate",
+  "stages": {
+    "before_after_fingerprints": "equal",
+    "extraction_and_profile_checks": "See original pipeline receipt and profile configuration.",
+    "lean_build_and_axiom_audit": "passed",
+    "native_tests": "Separate observations in original run; not formal proof."
+  },
+  "target": "aarch64-apple-darwin"
+}

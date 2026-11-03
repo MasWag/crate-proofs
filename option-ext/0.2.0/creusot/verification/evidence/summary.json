@@ -1,0 +1,48 @@
+{
+  "archive_sha256": "88a884ab53c52d5025aed0d161ee711e2a75252887ad816a2d82e213629bb03a",
+  "before_after_equal": true,
+  "host": "aarch64-apple-darwin",
+  "input_json_sha256": "62219022209345ac13e3e45dbae9a03d3edfff45b018326345c9115f03a8cf0c",
+  "native": {
+    "branch_tests": 3,
+    "doctests": 3
+  },
+  "recording": "Actual pinned scanner discovered exactly map_or_else2 with its selected-branch premise. Standard recording uses a stable external clean worktree and normalized lock; no upload success claimed here.",
+  "result_sha256": "7919d14479d4a9f0cdd23040772d20ce169211c2ce9b572054b7e3c39b83ff27",
+  "roots": [
+    {
+      "generated": "workspace/verif/option_ext_rlib/impl/impl_OptionExt_for_Option_T/map_or_else2.coma",
+      "name": "vc_map_or_else2_Option_T",
+      "prover": "z3",
+      "role": "product-body",
+      "time": 0.003
+    },
+    {
+      "generated": "workspace/verif/option_ext_rlib/impl/impl_OptionExt_for_Option_T/map_or_else2.coma",
+      "name": "vc_map_or_else_T",
+      "prover": "z3",
+      "role": "standard-library-contract-abstraction",
+      "time": 0.002
+    },
+    {
+      "generated": "workspace/verif/option_ext_rlib/impl/impl_OptionExt_for_Option_T/map_or_else2__refines.coma",
+      "name": "refines",
+      "prover": "z3",
+      "role": "trait-refinement",
+      "time": 0.003
+    },
+    {
+      "generated": "workspace/verif/option_ext_rlib/impl/impl_OptionExt_for_Option_T/option_model.coma",
+      "name": "vc_option_model_Option_T",
+      "prover": "z3",
+      "role": "checked-identity-observation",
+      "time": 0.002
+    }
+  ],
+  "run": "run-20261103T134348Z-afzaahye",
+  "schema_version": 1,
+  "scope": "Original delegated map_or_else2 partial correctness, trait refinement and checked observation; native tests and standard model stub separately classified.",
+  "source_lock_sha256": "41b40388264e5fdf28201a3eb6f0201b1260298c893df1bb1164c501d0a5334f",
+  "status": "passed",
+  "toolchain_lock_sha256": "93a17d78db431ebb6fd5bfce0fc9aeb98c574e86ba6f4f489e7750360d26dad6"
+}

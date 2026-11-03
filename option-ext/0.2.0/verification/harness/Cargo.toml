@@ -1,0 +1,9 @@
+[package]
+name = "option-ext-adapted"
+version = "0.2.0"
+edition = "2015"
+publish = false
+[lib]
+doctest = false
+path = "../../.work/adapted/lib.rs"
+[workspace]

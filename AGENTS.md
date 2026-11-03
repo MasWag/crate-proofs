@@ -2,6 +2,7 @@
 
 - This repository hosts multiple Rust crate versions. Keep crate-specific source, Cargo files, verification scripts, specifications, evidence, instructions, and skills under `<crate>/<version>/`.
 - Give each version an independent Cargo workspace and lockfile. Do not add a root Cargo workspace or place crate-specific scope rules here.
+- Treat the execution directory and inherited Cargo configuration as verification inputs. A separate workspace or `CARGO_HOME` does not exclude ancestor `.cargo/config.toml`; isolate conflicting settings without changing the user's global configuration.
 - Use `.agents/skills/creusot-verification/SKILL.md` for Creusot and `.agents/skills/aeneas-lean-verification/SKILL.md` for Aeneas + Lean. Follow the target version's own `AGENTS.md`, environment and skill for its proof scope and commands; do not mix the two toolchain activations.
 - When body proofs succeed but model boundaries, iterator laws/refinements, or consumers do not compose, use `.agents/skills/creusot-proof-composition/SKILL.md` to diagnose the missing relation and choose a checked bridge.
 - Preserve the stated contracts and report native tests separately from formal proof. Do not claim excluded APIs or unselected code are verified.

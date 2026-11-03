@@ -22,6 +22,14 @@ If headers, methods, or other items are implemented or re-exported by a dependen
 
 Ask primary about unclear specifications, contracts, or evidence. Consult Astra when blocked on Creusot proof behavior or specification design; use Luna's workflow for ordinary investigation and implementation.
 
+## Fresh runs and environment isolation
+
+- Confirm compilation and proving consume the same fresh artifacts. In the inspected Creusot 0.13 launcher, `--output-dir` redirected compilation while the combined command's proving stage still used the default `verif` directory. A `Proved` message alone therefore did not establish freshness. Check the actual Coma, positive proof roots and valid session results in the selected directory. A fresh workspace using the standard combined command and default proof path avoids this mismatch.
+- Cargo discovers configuration from the invocation directory and its ancestors, even with an explicit manifest and isolated `CARGO_HOME`. An unrelated ancestor patch can add `[[patch.unused]]` to a lockfile; an external checkout can remove it without changing the dependency graph. If this occurs, use a neutral invocation directory for metadata/fetch/native commands and an external fresh workspace for verification. Inspect the lockfile diff and preserve the real dependency pins. Apply the same isolation to recording; do not hide tracked-file changes or edit global configuration to pass an audit.
+- When verifying a copied workspace, compare its actual source, manifest, lock and prover configuration with the maintained inputs before and after proof. Fingerprinting the original workspace alone misses mutations of the compiled copy. Retain the copied inputs with their generated evidence.
+- Revalidate restored upstream files against the locked release inventory before and after source-correspondence checks. Comparing annotations with a mutable cache alone is insufficient. For annotation-only adaptations, strip only enumerated additions and compare the remaining release bytes.
+- Evidence checkers must remain active: reject Python optimization if acceptance uses `assert`, and reject or explicitly pin compiler, wrapper, flags and target overrides. Pin the active standard-model packages and generated prelude as well as the compiler executable; a source checkout at the expected revision does not establish which models were loaded.
+
 ## Keep scope, status, and evidence consistent
 
 - Read both scope documents and the post-run results page before describing the latest status. For form_urlencoded and percent-encoding, `verification/results.md` owns run status; httpdate currently uses `verification/coverage.md`. A provisional paragraph in an input document must not override a later completed manifest.
@@ -49,9 +57,9 @@ Ask primary about unclear specifications, contracts, or evidence. Consult Astra 
   Do not call agreement on the same source version or finite tests formal upstream equivalence.
 - Report behavior outside the model, such as external callback panics, IO side effects, and allocation.
   Report body proofs, trait refinements, and unselected inherited/default methods separately.
-- Recording results in proofs.rs is a separate step. The inspected cargo-proofs 0.3.4 Creusot importer records
-  only `panic_contract`; functional correctness and `no_ub` are not claims made by that importer.
-  For API records, check source spans and catalogue mapping, and do not hide an open refinement behind a successful body proof.
+- Recording results in proofs.rs is a separate step. Inspect the pinned importer's implementation and actual SARIF/service payload; do not carry the older cargo-proofs 0.3.4 `panic_contract` classification forward to newer versions.
+  Check command compatibility and concrete API discovery before freezing publication inputs. The inspected 0.4.1 recorder rejected nested `--` Cargo arguments even though Creusot accepted them. Use a supported command and confirm the tracked lockfile remains unchanged in the detached run.
+  For API records, check source spans and catalogue mapping. A recorder may import body-file goals without separately mapping helper or trait-refinement files; audit those obligations independently and do not hide an open refinement behind a successful body proof.
   `publish --dry-run` may still be a server operation. Do not run it for a request only to prepare an unpublished report.
 
 Use a short feasibility milestone to assess time/token costs, unsupported syntax, dependency models, and contract difficulty.
@@ -59,6 +67,8 @@ Record whether to proceed to the next important subset, narrow scope, or stop. E
 
 ## Reusable notes at specification boundaries
 
+- For lazy callback APIs, require the invocation precondition only for the selected branch and relate the returned value to that callback's postcondition. Inspect any modeled resolution of the unused consumed closure separately from invoking it. Ordinary `requires`/`ensures` contracts do not establish termination; check the pinned verifier's termination mechanism before claiming total success.
+- A generated VC for an external standard-library contract stub does not prove the Rust standard-library implementation. Classify product-body, trait-refinement, checked observation and external-model obligations separately. A proof-only trait observation can preserve the runtime signature, but its concrete implementation and the trait refinement must both be checked.
 - If an input grammar differs from a public-value invariant, separate a permissive raw record from the validated public type. Do not silently assume validity for the public type; put a checked contract on the conversion bridge and every constructor path.
 - If the implementation can panic in part of the `SystemTime` domain, do not make a bounded body proof imply an unconditional trait refinement. The public `From<SystemTime>` trait method itself may panic before the Epoch / above the upper bound. Do not hide this behind a false bounded type invariant or application `trusted` declaration. Count unresolved refinements explicitly as open.
 - Trait method refinements are part of coverage. Inspect generated impls, laws, helper goals, and calls without contracts. Even with zero goals, a missing Clone contract does not prove clone semantics. Give it a meaningful postcondition such as exact-copy and inspect the target VC.

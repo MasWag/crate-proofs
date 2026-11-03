@@ -1,0 +1,57 @@
+{
+  "creusot": {
+    "patches": [],
+    "revision": "318615be3b8bbc60d1f6d52469ba5c0bdebed4f1",
+    "url": "https://github.com/creusot-rs/creusot.git",
+    "version": "0.13.0"
+  },
+  "extraction_rust": "nightly-2026-06-22",
+  "native_rust": "1.94.1",
+  "observed_tools": {
+    "active_model_packages": {
+      "creusot-std": {
+        "source": "git+https://github.com/creusot-rs/creusot?rev=318615be3b8bbc60d1f6d52469ba5c0bdebed4f1#318615be3b8bbc60d1f6d52469ba5c0bdebed4f1",
+        "tree_sha256": "6dc746e9d6d96cbd2c0065edded84b53366276f4907b9a4b5d4c58fcbe559794",
+        "version": "0.13.0"
+      },
+      "creusot-std-proc": {
+        "source": "git+https://github.com/creusot-rs/creusot?rev=318615be3b8bbc60d1f6d52469ba5c0bdebed4f1#318615be3b8bbc60d1f6d52469ba5c0bdebed4f1",
+        "tree_sha256": "fffedf9f4b24e0571e45b64567feee2c56d09dd9b16e281e9096e4a537cc2669",
+        "version": "0.13.0"
+      },
+      "pearlite-syn": {
+        "source": "git+https://github.com/creusot-rs/creusot?rev=318615be3b8bbc60d1f6d52469ba5c0bdebed4f1#318615be3b8bbc60d1f6d52469ba5c0bdebed4f1",
+        "tree_sha256": "413772c7b8aca6ac5eb438c7dee4d279c2d02a13eb8b655a1009764c8393b42f",
+        "version": "0.13.0"
+      }
+    },
+    "binaries_sha256": {
+      "cargo-creusot": "4adc1924413a72bc462b7844ffab4cd86e4c162d2766ed6afbd83e3bdcaec520",
+      "creusot-rustc": "658a93d3997dcb0cf6cbeb3b2b98b6402f9ffecd4259c32d527f9840cda95517",
+      "why3": "09d0a35d705a97f5999f38ca4862743ddf749f06def23c1c0ca1901e3646f786",
+      "why3find": "635263718bcca576531b1c6053220e06048e7c2e265f470cbc1960327315ae4a",
+      "z3": "c6b5d095ee1fc9ce1a6dc8c933e3e2f39e1d1a7fb96e55b5b7a0486e437f20ac"
+    },
+    "native_rustc_sha256": "b69cbcffa5e990057035d53ccc8163e8392ce784f6abb114c19ceb61528ba9f6",
+    "native_rustc_version": "rustc 1.94.1 (e408947bf 2026-03-25)",
+    "prelude_sha256": "e3cd5290ffa6624395027e6ba2a0af571a107545b383f786da6e3899d7ea5e78",
+    "prover_config_sha256": "66d36445752003011e216df269d5b8b3eaadadc16d948fb454c3c3fc814d0cc2",
+    "rustc_sha256": "e045753d0a788451bdb6a64892de0eaef695547b938d9bcef21ce3aa09043135",
+    "rustc_version": "rustc 1.98.0-nightly (91fe22da8 2026-06-21)",
+    "why3_runtime_sha256": "d39f038a001a7b23d9f3acdfd4349ec4320e77c7d695fb7b2ce3e0bd3aa659d6",
+    "why3_version": "Why3 platform, version 1.8.2+git",
+    "why3find_runtime_sha256": "255f9b2cb25dbf4e83d29428ff5a5b32a32390766928b6d2e302c91720fc2706",
+    "why3find_version": "why3find v1.3.0+dev",
+    "z3_version": "Z3 version 5.3.2 - 64 bit - build hashcode b411c90217766c924e6ea3d0b51f452a89fd8fc2"
+  },
+  "schema_version": 1,
+  "target": "aarch64-apple-darwin",
+  "why3_source": {
+    "revision": "05bf4ddf55cb3042f34c3bc0ed3aff56a226978a",
+    "url": "https://gitlab.inria.fr/why3/why3.git"
+  },
+  "why3find_source": {
+    "revision": "0f054b93c86ac7ba20bca7df5d1563a9a4434a30",
+    "url": "https://github.com/creusot-rs/why3find.git"
+  }
+}

@@ -1,0 +1,41 @@
+[report]
+title = "option-ext 0.2.0 option branch behavior"
+explanation = '''
+These contracts describe the three `OptionExt` operations for arbitrary option values and generic callback types. For `contains`, `None` returns false; `Some(value)` returns the result of comparing the candidate to `value`, in that order. If the selected comparison succeeds and reflects a chosen relation, the returned Boolean reflects that relation. No equality laws are assumed.
+
+For `map_or2`, `None` returns the supplied default and `Some(value)` returns the mapping result, provided the selected mapping succeeds. The default is a value constructed by the caller before the method is entered. For the adapted `map_or_else2` body described below, `None` returns the default callback's result and `Some(value)` returns the mapping callback's result, provided the selected callback succeeds. The unused callback needs no success assumption. The branch equations also preserve a selected comparison or callback failure in the translation.
+'''
+trusted_assumptions = '''
+The results depend on the Rust-to-Lean translation, Lean, and the relevant Aeneas models. In particular, the shared-reference `PartialEq` model forwards the candidate and contained value to the underlying comparison in that order; correspondence of that model to Rust is trusted. The contracts do not establish that an arbitrary user comparison or callback succeeds or satisfies a chosen relation. The `map_or2` proof includes the extracted standard `Option::map_or` body.
+'''
+limitations = '''
+The `contains` and `map_or2` bodies are from the unchanged 0.2.0 release. For `map_or_else2`, verification uses a source adaptation: its call to `Option::map_or_else(default, f)` is replaced with a direct match that calls `f(value)` for `Some(value)` and `default()` for `None`. This was needed because the original delegated zero-argument callback could not be translated by the pinned Aeneas toolchain. An exact source check identifies this as the only implementation change, and source review supports the correspondence of the two branch selections; equivalence to the release body is not formally proved.
+
+The result equations are not a trace or side-effect call-count proof. They do not establish arbitrary callback effects, interior-mutability behavior, aliasing properties, or behavior of panicking destructors outside the translation model. Success depends on the selected operation, so this is not unconditional panic freedom.
+'''
+environment = '''
+The selected profile uses the pinned registry release, Aeneas and Charon revisions without patches, and Lean 4.35.0 on `aarch64-apple-darwin`. Local proofs-rs CLI patches prepare pinned inputs and correct API discovery for Rust raw-identifier modules such as `r#impl` and Rust 2015 crate-root imports; they do not change the Lean models or contracts. Their scope and validation are recorded with the tool lock. The profile specification, source and tool locks, adaptation check, and results record provide the contracts and reproducibility evidence. Native tests of the release and adapted code are separate from the formal contracts.
+'''
+
+[tool]
+name = "aeneas"
+version = "be86ab0f1989d04944292b345b24c435be3ad10a"
+lean_dir = ".work/selected-proofs"
+
+[[tool.proofs]]
+api = "<core::option::Option<T> as option_ext::OptionExt<T>>::contains"
+module = "Contracts"
+theorem = "OptionExtContracts.contains_relation_correct"
+precondition = "For each selected Some payload, U::eq(candidate, payload) succeeds and returns a Boolean reflecting the specified relation."
+
+[[tool.proofs]]
+api = "<core::option::Option<T> as option_ext::OptionExt<T>>::map_or2"
+module = "Contracts"
+theorem = "OptionExtContracts.map_or2_correct"
+precondition = "For each selected Some payload, the FnOnce mapping succeeds and returns its specified mathematical mapping."
+
+[[tool.proofs]]
+api = "<core::option::Option<T> as option_ext::OptionExt<T>>::map_or_else2"
+module = "AdaptedContracts"
+theorem = "OptionExtAdaptedContracts.map_or_else2_correct"
+precondition = "On None, default() succeeds with the specified default value; on Some(payload), f(payload) succeeds with the specified mathematical mapping. Only the selected callback is constrained. The checked body is the disclosed direct-match adaptation; source correspondence is reviewed, not formally proved."
