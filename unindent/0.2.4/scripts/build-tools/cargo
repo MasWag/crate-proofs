@@ -1,0 +1,31 @@
+#!/usr/bin/env python3
+"""Build pinned tools without inheriting unrelated ancestor Cargo configuration.
+
+Cargo searches cwd ancestors even when CARGO_HOME is explicit. Keep the original
+manifest and target directory, but invoke Cargo from a temporary directory.
+This wrapper is for tool setup only; it does not replace proof checking.
+"""
+import os
+from pathlib import Path
+import subprocess
+import sys
+import tempfile
+
+args = sys.argv[1:]
+cwd = Path.cwd()
+if args and args[0].startswith('+'):
+    channel = args.pop(0)[1:]
+else:
+    channel = subprocess.check_output(
+        ['rustup', 'show', 'active-toolchain'], text=True
+    ).split()[0]
+if not args or args[0] not in ('test', 'install'):
+    raise SystemExit('isolated tool-build Cargo only supports test and install')
+if args[0] == 'test' and '--manifest-path' not in args:
+    args.extend(['--manifest-path', str(cwd / 'Cargo.toml')])
+if args[0] == 'install' and '--path' in args:
+    i = args.index('--path') + 1
+    args[i] = str((cwd / args[i]).resolve())
+with tempfile.TemporaryDirectory(prefix='unindent-cargo-config-', dir='/tmp') as temp:
+    result = subprocess.run(['rustup', 'run', channel, 'cargo', *args], cwd=temp)
+raise SystemExit(result.returncode)

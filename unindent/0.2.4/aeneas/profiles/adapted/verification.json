@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "supported_targets": [
+    "x86_64-unknown-linux-gnu"
+  ],
+  "native": [
+    [
+      "python3",
+      "aeneas/profiles/adapted/scripts/prepare-source.py"
+    ],
+    [
+      "python3",
+      "aeneas/profiles/adapted/scripts/native-equivalence.py"
+    ]
+  ],
+  "extractions": [
+    {
+      "config": "extraction.json",
+      "cwd": ".work/adapted",
+      "models": {
+        "Unindent.lean": "proofs/CoreAdapted.lean"
+      }
+    }
+  ],
+  "inventory": "theorems.json",
+  "report": "proofs.toml",
+  "lean_dir": "proofs",
+  "additional_checks": [
+    [
+      "python3",
+      "aeneas/profiles/adapted/scripts/prepare-source.py"
+    ]
+  ],
+  "post_checks": [
+    [
+      "python3",
+      "aeneas/profiles/adapted/scripts/prepare-source.py",
+      "--check"
+    ]
+  ]
+}

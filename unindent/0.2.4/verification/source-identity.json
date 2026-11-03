@@ -1,0 +1,14 @@
+{
+  "archive_sha256": "7264e107f553ccae879d21fbea1d6724ac785e8c3bfc762137959b5802826ef3",
+  "latest_non_yanked_release": "0.2.4",
+  "registry_index_sha256": "2402dc73a6bc63d6a7440538c51ba42e4ef916414e1cd71832fd6f49163cc2f8",
+  "registry_index_url": "https://index.crates.io/un/in/unindent",
+  "resolved_on": "2026-11-03",
+  "source_correspondence": "Complete archive inventory is checked by source.lock.json; the default profile compiles unchanged restored release files.",
+  "vcs_info_from_archive": {
+    "git": {
+      "sha1": "f5934e4a743c455e4cfd283d827bf4c36ff6017f"
+    },
+    "path_in_vcs": "unindent"
+  }
+}

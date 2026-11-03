@@ -1,0 +1,13 @@
+name = "unindent-proofs"
+defaultTargets = ["Proofs"]
+[[lean_lib]]
+name = "Unindent"
+srcDir = "Generated/@TARGET@"
+[[lean_lib]]
+name = "Wrapper"
+srcDir = "Generated/@TARGET@"
+[[lean_lib]]
+name = "Proofs"
+[[require]]
+name = "aeneas"
+path = "@AENEAS_BACKEND@"

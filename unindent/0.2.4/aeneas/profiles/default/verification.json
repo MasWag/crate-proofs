@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "supported_targets": [
+    "x86_64-unknown-linux-gnu"
+  ],
+  "native": [
+    [
+      "cargo",
+      "test",
+      "--locked"
+    ],
+    [
+      "python3",
+      "scripts/reproduce-crlf.py"
+    ]
+  ],
+  "extractions": [
+    {
+      "config": "extraction-wrapper.json",
+      "cwd": ".",
+      "models": {
+        "Unindent.lean": "proofs/Generated/@TARGET@/Wrapper.lean"
+      }
+    },
+    {
+      "config": "extraction-helper.json",
+      "cwd": ".",
+      "models": {
+        "Unindent.lean": "proofs/Generated/@TARGET@/Unindent.lean"
+      }
+    }
+  ],
+  "inventory": "theorems.json",
+  "report": "proofs.toml",
+  "lean_dir": "proofs"
+}

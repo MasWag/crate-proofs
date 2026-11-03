@@ -1,0 +1,15 @@
+{
+  "entries": [
+    "crate::unindent::count_spaces"
+  ],
+  "llbc": "unindent.llbc",
+  "cargo_args": [
+    "--lib",
+    "--locked"
+  ],
+  "models": {
+    "Unindent.lean": [
+      "unindent.count_spaces"
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "checked": [
+    {
+      "name": "unindent.Proofs.line_end_total_exact",
+      "module": "Scanners",
+      "kind": "support"
+    },
+    {
+      "name": "unindent.Proofs.leading_end_spec",
+      "module": "Scanners",
+      "kind": "support"
+    }
+  ],
+  "recorder_mappings": [],
+  "extracted_but_unproved": [
+    "adapted unindent_bytes",
+    "adapted common_margin",
+    "adapted append_range"
+  ],
+  "coverage_ledger": [
+    {
+      "status": "release-correspondence-unproved",
+      "reason": "Explicit Rust patch, not a formal equivalence theorem."
+    }
+  ]
+}

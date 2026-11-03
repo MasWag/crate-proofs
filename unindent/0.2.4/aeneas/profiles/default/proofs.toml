@@ -1,0 +1,47 @@
+[tool]
+name = "aeneas"
+version = "be86ab0f1989d04944292b345b24c435be3ad10a"
+lean_dir = ".work/selected-proofs"
+proof_modules = ["Proofs.CountSpaces"]
+
+[[tool.proofs]]
+api = "<&T as unindent::Unindent>::unindent"
+module = "Proofs.Delegation"
+theorem = "unindent.Proofs.shared_unindent_spec"
+precondition = "The underlying T::unindent returns successfully and its output satisfies the chosen postcondition."
+
+[report]
+title = "Shared-reference delegation in unindent 0.2.4"
+explanation = '''
+The `Unindent` implementation for `&T` delegates to the underlying `T` implementation. The checked Lean theorem establishes equality of their modeled results. If the underlying call succeeds and its output satisfies a chosen property, the shared-reference call succeeds with an output satisfying that same property. This applies to arbitrary implementations of `Unindent`; it does not establish what those implementations return or that they succeed.
+
+A separate local Lean theorem audit covers the release's private `count_spaces` helper: for every modeled byte slice it succeeds, returning the index of the first byte that is neither a space nor a tab, or `None` if every byte is a space or tab. This helper result alone does not establish a public unindentation result.
+'''
+trusted_assumptions = '''
+The claim relies on the Aeneas translation and its Rust models, and on Lean's kernel. The underlying implementation's successful result and the chosen output property are premises, not established by this delegation theorem.
+'''
+limitations = '''
+The core `unindent` and `unindent_bytes` algorithms, including UTF-8 preservation and behavior on arbitrary bytes, have not been proved. Nor does this result establish the behavior of the concrete `str`, `String`, or byte-slice implementations. Allocation and behavior outside the modeled execution are not established. Managed recording and publication remain pending.
+'''
+environment = '''
+The source is the pinned crates.io `unindent` 0.2.4 release, with unchanged Aeneas at revision `be86ab0f1989d04944292b345b24c435be3ad10a`. The Lean build and named-theorem audit used the `x86_64-unknown-linux-gnu` extraction profile. The version workspace contains the source and tool locks, specification, and reproduction scripts.
+
+Charon is also unchanged. The recording CLI has a pinned patch (`aeneas/profiles/default/patches/cargo-proofs-preparation.patch`) for managed source preparation and discovery through public local glob reexports; the toolchain lock (`aeneas/profiles/default/toolchain.lock.json`) records its identity and regression checks. The Lake build and theorem audit are unchanged.
+'''
+
+[[report.findings]]
+title = "Should an empty CRLF line affect the indentation margin?"
+body = '''
+In `unindent` 0.2.4, an interior empty CRLF line prevents indentation from being removed from other lines. Is that intended when determining the common indentation?
+
+```rust
+fn main() {
+    let lf = "\n    a\n\n    b";
+    let crlf = "\r\n    a\r\n\r\n    b";
+    assert_eq!(unindent::unindent(lf), "a\n\nb");
+    assert_eq!(unindent::unindent(crlf), "    a\r\n\r\n    b");
+}
+```
+
+The LF input is unindented, while the corresponding CRLF input retains the four spaces before both content lines. If an empty CRLF line should be ignored when computing the margin, the latter result would instead be `"a\r\n\r\nb"`. Clarifying the intended treatment of empty CRLF lines would help callers understand this difference.
+'''

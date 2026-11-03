@@ -1,0 +1,59 @@
+{
+  "acceptance_basis": "Original archived inputs; packaging does not rerun verification.",
+  "archive_sha256": "85b9ba2692b7a705c3eeb428e2abf2d5b1809d41e74ea83251e09d4aa59636e5",
+  "audit": {
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "checked": [
+      {
+        "kind": "support",
+        "module": "Scanners",
+        "name": "unindent.Proofs.line_end_total_exact"
+      },
+      {
+        "kind": "support",
+        "module": "Scanners",
+        "name": "unindent.Proofs.leading_end_spec"
+      }
+    ],
+    "mapping_metadata_checked": true,
+    "scope": "named Lean theorem and transitive axiom audit only",
+    "status": "passed"
+  },
+  "host": "x86_64-unknown-linux-gnu",
+  "input_fingerprints": {
+    "after": {
+      "member": "payload/inputs-after.json",
+      "sha256": "043589f7ffb7f751d42fa91f7454063eeccef98f8307e37f82df8a64728b2a78"
+    },
+    "before": {
+      "member": "payload/inputs-before.json",
+      "sha256": "043589f7ffb7f751d42fa91f7454063eeccef98f8307e37f82df8a64728b2a78"
+    },
+    "equal": true
+  },
+  "kind": "archived-managed-run-summary",
+  "original_audit": {
+    "member": "payload/audit/result.json",
+    "sha256": "9d312a0ea81086efaa731969b60d5e9bae3cdd13fe3cce1c91753bd37ca6508d"
+  },
+  "original_result": {
+    "member": "payload/result.json",
+    "sha256": "8750f127fbd3f24d13c0edebc3916995f8ea8527dec5c342718bd5150cefd11f"
+  },
+  "profile": "adapted",
+  "reported_status": "passed",
+  "sarif": "Not a cargo-proofs recording result.",
+  "schema_version": 1,
+  "scope": "Configured extraction comparisons and named theorem audit; native observations are separate",
+  "stages": {
+    "before_after_fingerprints": "equal",
+    "extraction_and_profile_checks": "See original pipeline receipt and profile configuration.",
+    "lean_build_and_axiom_audit": "passed",
+    "native_tests": "Separate observations in original run; not formal proof."
+  },
+  "target": "x86_64-unknown-linux-gnu"
+}

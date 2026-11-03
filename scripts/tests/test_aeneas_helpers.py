@@ -117,6 +117,16 @@ class ExtractionValidation(unittest.TestCase):
             with self.assertRaises(FileExistsError):
                 extract.extract(root, config, output)
 
+    def test_exact_local_impl_exclusions(self):
+        self.run_extract('def update := 0\n', options={'charon_exclude': [
+            '{impl crate::Unindent for str}::unindent',
+            '{impl crate::Unindent for Slice<u8>}::unindent',
+            '{impl crate::Unindent for alloc::string::String}::unindent']})
+        for receiver in ('_', '&_', 'Slice<_>', 'str}::unindent --opaque crate'):
+            with self.subTest(receiver=receiver), self.assertRaises(ValueError):
+                self.run_extract('def update := 0\n', options={'charon_exclude': [
+                    '{impl crate::Unindent for ' + receiver + '}::unindent']})
+
     def test_expected_output_and_no_overwrite(self):
         self.run_extract('def update : Nat := 0\n')
 

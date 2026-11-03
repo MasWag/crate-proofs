@@ -1,0 +1,65 @@
+{
+  "acceptance_basis": "Original archived inputs; packaging does not rerun verification.",
+  "archive_sha256": "2a28e56a8a9267a744c4be5a7f67bc7154826cc73f71c5f3765b075744855235",
+  "audit": {
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "checked": [
+      {
+        "kind": "support",
+        "module": "Proofs.Delegation",
+        "name": "unindent.Proofs.shared_unindent_eq"
+      },
+      {
+        "kind": "public-contract",
+        "module": "Proofs.Delegation",
+        "name": "unindent.Proofs.shared_unindent_spec",
+        "precondition": "The underlying T::unindent returns successfully and its output satisfies the chosen postcondition."
+      },
+      {
+        "kind": "support",
+        "module": "Proofs.CountSpaces",
+        "name": "UnindentProof.countSpaces_total_exact"
+      }
+    ],
+    "mapping_metadata_checked": true,
+    "scope": "named Lean theorem and transitive axiom audit only",
+    "status": "passed"
+  },
+  "host": "x86_64-unknown-linux-gnu",
+  "input_fingerprints": {
+    "after": {
+      "member": "payload/inputs-after.json",
+      "sha256": "517273050cec5937887fd1723f0a9ff37ce687e308e22d4dfbda892a4f7e1a92"
+    },
+    "before": {
+      "member": "payload/inputs-before.json",
+      "sha256": "517273050cec5937887fd1723f0a9ff37ce687e308e22d4dfbda892a4f7e1a92"
+    },
+    "equal": true
+  },
+  "kind": "archived-managed-run-summary",
+  "original_audit": {
+    "member": "payload/audit/result.json",
+    "sha256": "08e4a408af48ad984bcc0cd7b61c490e36a587fb32e1ad3ebe68cfc3cb4e16fd"
+  },
+  "original_result": {
+    "member": "payload/result.json",
+    "sha256": "e155571643e3a3f46eae3fca330f5ee661eb4d45454eb79e099066c30e10e5ac"
+  },
+  "profile": "default",
+  "reported_status": "passed",
+  "sarif": "Not a cargo-proofs recording result.",
+  "schema_version": 1,
+  "scope": "Configured extraction comparisons and named theorem audit; native observations are separate",
+  "stages": {
+    "before_after_fingerprints": "equal",
+    "extraction_and_profile_checks": "See original pipeline receipt and profile configuration.",
+    "lean_build_and_axiom_audit": "passed",
+    "native_tests": "Separate observations in original run; not formal proof."
+  },
+  "target": "x86_64-unknown-linux-gnu"
+}
