@@ -1,0 +1,4 @@
+'bs58.encode_builder_new_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'bs58.encode_builder_with_alphabet_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'bs58.decode_builder_new_spec' depends on axioms: [propext, Classical.choice, Quot.sound]
+'bs58.decode_builder_with_alphabet_spec' depends on axioms: [propext, Classical.choice, Quot.sound]

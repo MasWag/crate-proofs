@@ -440,6 +440,7 @@ def verify(root, name, offline=False, prepared=None):
     if tools.host() not in config.get('supported_targets', [config.get('target')]):
         raise ValueError(f'Profile has no reviewed target configuration for {tools.host()}')
     store, lock, lean = prepare(root, name, offline, prepared=prepared)
+    backend = store / 'aeneas/backends/lean'
     env = tools.environment(store, lock)
     env.update({'AENEAS_SOURCE': str(store / 'aeneas'), 'AENEAS_LEAN_BACKEND': str(store / 'aeneas/backends/lean'),
                 'AENEAS_PROOF_DIR': str(lean), 'CARGO_TARGET_DIR': str(root / '.work/build/native' / tools.host()),

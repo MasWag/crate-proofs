@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "publication": "POST /api/v1/reports/{report_id}/findings",
+  "findings": [
+    {
+      "idempotency_key": "bs58_051_f1_version_empty",
+      "api_paths": [
+        "decode::DecodeBuilder::with_check",
+        "decode::DecodeBuilder::as_cb58"
+      ],
+      "title": "Checksum-only data can pass a requested version check",
+      "body": "## Description\n\nA requested version can be accepted when the decoded payload is empty. This affects `DecodeBuilder::with_check` and `DecodeBuilder::as_cb58`.\n\n## Steps to Reproduce\n\nWith bs58 0.5.1 and the `check` and `cb58` features enabled, run these assertions. Their success reproduces the discrepancy:\n\n```rust\nassert_eq!(bs58::decode(\"3QJmnh\").with_check(Some(93)).into_vec(), Ok(vec![]));\nassert_eq!(bs58::decode(\"45PJLL\").as_cb58(Some(120)).into_vec(), Ok(vec![]));\n```\n\n## Expected Behavior\n\nThe API promises to use the supplied version in verification. A requested version requires a nonempty payload whose first byte is that version, so these checksum-only inputs should be rejected.\n\n## Actual Behavior\n\nEach input contains only the four checksum bytes of an empty unversioned payload. When the payload is empty, the decoder compares the first checksum byte to the requested version and returns an empty payload if they match. Consequently, success with a requested version does not guarantee that the returned data contains that version; callers relying on that property can accept malformed versioned input.\n\n## Environment\n\nbs58 0.5.1 with `check` and `cb58`.\n\n## Additional Context\n\nSee [upstream issue #132](https://github.com/Nullus157/bs58-rs/issues/132)."
+    },
+    {
+      "idempotency_key": "bs58_051_f2_buffer_suffix",
+      "api_paths": [
+        "decode::DecodeBuilder::onto"
+      ],
+      "title": "Checked decoding changes buffer bytes after the returned length",
+      "body": "## Description\n\nChecked `DecodeBuilder::onto` modifies bytes after the returned payload length.\n\n## Steps to Reproduce\n\nWith bs58 0.5.1 and the `check` feature enabled, run this example. Its success reproduces the discrepancy:\n\n```rust\nlet encoded = bs58::encode([42]).with_check().into_string();\nlet mut output = [0xa5; 16];\nlet len = bs58::decode(encoded).with_check(None).onto(&mut output).unwrap();\nassert_eq!(len, 1);\nassert_eq!(&output[..5], &[42, 255, 18, 44, 14]);\nassert_eq!(&output[5..], &[0xa5; 11]);\n```\n\n## Expected Behavior\n\n`DecodeBuilder::onto` documents the return value as the length written and promises not to touch bytes after the decoded output.\n\n## Actual Behavior\n\nChecked decoding writes the four checksum bytes after the payload and then returns only the payload length. The same behavior occurs with `cb58`; a buffer large enough for just the returned payload is rejected as too small. The demonstrated writes are within the supplied buffer.\n\n## Environment\n\nbs58 0.5.1 with `check`; the analogous path uses `cb58`.\n\n## Additional Context\n\nSee [upstream issue #133](https://github.com/Nullus157/bs58-rs/issues/133)."
+    },
+    {
+      "idempotency_key": "bs58_051_f3_checksum_fields",
+      "api_paths": [
+        "decode::Error::InvalidChecksum"
+      ],
+      "title": "InvalidChecksum fields disagree with their documentation",
+      "body": "## Description\n\n`InvalidChecksum` returns field values in the reverse order from their documentation.\n\n## Steps to Reproduce\n\nWith bs58 0.5.1 and the `check` feature enabled, run this example. Its success reproduces the discrepancy:\n\n```rust\nlet input = bs58::encode([42, 0, 0, 0, 0]).into_string();\nassert_eq!(\n    bs58::decode(input).with_check(None).into_vec(),\n    Err(bs58::decode::Error::InvalidChecksum {\n        checksum: [255, 18, 44, 14],\n        expected_checksum: [0, 0, 0, 0],\n    })\n);\n```\n\n## Expected Behavior\n\nThe field documentation describes `checksum` as supplied and `expected_checksum` as calculated.\n\n## Actual Behavior\n\nThe supplied checksum is `[0, 0, 0, 0]`; the calculated checksum is `[255, 18, 44, 14]`. The returned values are reversed. The same mismatch occurs with `cb58`. Invalid checksums are still rejected, and the `Display` implementation follows the returned field order; code interpreting the structured fields according to their documentation receives reversed diagnostics.\n\n## Environment\n\nbs58 0.5.1 with `check`; the analogous path uses `cb58`."
+    }
+  ]
+}

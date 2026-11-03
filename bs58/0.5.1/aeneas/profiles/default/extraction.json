@@ -1,0 +1,23 @@
+{
+  "entries": [
+    "crate::encode::EncodeBuilder::new",
+    "crate::encode::EncodeBuilder::with_alphabet",
+    "crate::decode::DecodeBuilder::new",
+    "crate::decode::DecodeBuilder::with_alphabet",
+    "crate::encode::max_encoded_len"
+  ],
+  "llbc": "bs58.llbc",
+  "cargo_args": [
+    "--lib",
+    "--locked"
+  ],
+  "models": {
+    "Bs58.lean": [
+      "encode.EncodeBuilder.new",
+      "encode.EncodeBuilder.with_alphabet",
+      "decode.DecodeBuilder.new",
+      "decode.DecodeBuilder.with_alphabet",
+      "encode.max_encoded_len"
+    ]
+  }
+}

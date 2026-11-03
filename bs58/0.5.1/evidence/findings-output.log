@@ -1,0 +1,8 @@
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.28s
+     Running `bs58/evidence/reproduce-findings/target/debug/bs58-051-findings`
+Base58Check: checksum-only "3QJmnh" accepted expected version 93: Ok([])
+Base58Check: onto returns 1, but overwrites next 4 bytes: [42, 255, 18, 44, 14]
+Base58Check: InvalidChecksum has checksum=[255, 18, 44, 14] (computed), expected_checksum=[0, 0, 0, 0] (given)
+CB58: checksum-only "45PJLL" accepted expected version 120: Ok([])
+CB58: onto returns 1, but overwrites next 4 bytes: [42, 95, 73, 79, 193]
+CB58: InvalidChecksum has checksum=[95, 73, 79, 193] (computed), expected_checksum=[0, 0, 0, 0] (given)

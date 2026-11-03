@@ -1,0 +1,49 @@
+{
+  "checked": [
+    {
+      "name": "bs58.encode_builder_new_spec",
+      "module": "Proofs.Builder",
+      "scope": "public-model",
+      "precondition": "Any input satisfying the Rust AsRef<[u8]> trait bound and any supplied alphabet."
+    },
+    {
+      "name": "bs58.encode_builder_with_alphabet_spec",
+      "module": "Proofs.Builder",
+      "scope": "public-model",
+      "precondition": "Any existing encoder builder and any supplied alphabet."
+    },
+    {
+      "name": "bs58.decode_builder_new_spec",
+      "module": "Proofs.Builder",
+      "scope": "public-model",
+      "precondition": "Any input satisfying the Rust AsRef<[u8]> trait bound and any supplied alphabet."
+    },
+    {
+      "name": "bs58.decode_builder_with_alphabet_spec",
+      "module": "Proofs.Builder",
+      "scope": "public-model",
+      "precondition": "Any existing decoder builder and any supplied alphabet."
+    }
+  ],
+  "recorder_mappings": [
+    {
+      "api": "encode::EncodeBuilder::new",
+      "theorem": "bs58.encode_builder_new_spec"
+    },
+    {
+      "api": "encode::EncodeBuilder::with_alphabet",
+      "theorem": "bs58.encode_builder_with_alphabet_spec"
+    },
+    {
+      "api": "decode::DecodeBuilder::new",
+      "theorem": "bs58.decode_builder_new_spec"
+    },
+    {
+      "api": "decode::DecodeBuilder::with_alphabet",
+      "theorem": "bs58.decode_builder_with_alphabet_spec"
+    }
+  ],
+  "extracted_but_unproved": [
+    "bs58.encode.max_encoded_len (selected original body; no public coverage mapping)"
+  ]
+}

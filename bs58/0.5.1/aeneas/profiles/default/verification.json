@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "supported_targets": [
+    "x86_64-unknown-linux-gnu"
+  ],
+  "native": [
+    [
+      "cargo",
+      "test",
+      "--locked"
+    ],
+    [
+      "cargo",
+      "check",
+      "--locked",
+      "--no-default-features",
+      "--lib"
+    ],
+    [
+      "cargo",
+      "test",
+      "--locked",
+      "--all-features"
+    ],
+    [
+      "cargo",
+      "run",
+      "--locked",
+      "--manifest-path",
+      "evidence/reproduce-findings/Cargo.toml"
+    ]
+  ],
+  "extractions": [
+    {
+      "config": "extraction.json",
+      "cwd": ".",
+      "models": {
+        "Bs58.lean": "proofs/Generated/@TARGET@/Bs58.lean"
+      }
+    }
+  ],
+  "inventory": "theorems.json",
+  "report": "proofs.toml",
+  "lean_dir": "proofs"
+}

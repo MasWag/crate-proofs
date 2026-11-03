@@ -1,0 +1,4 @@
+# SHA-256 of the three selected extraction files, identical across two consecutive runs.
+ba93a7200eefc052625d8311f87e4fc8fd721ae50959b54d7822042a534972c7  proofs/Generated/bs58.llbc
+b2c57d753525c45492dca7837ba6c6b2c8826670fd23aac6383df814661d193f  proofs/Generated/Bs58.lean
+641391e94521bb4ee4953743aab71b59cad9617901aa373029e37489247208c8  proofs/Generated/translation.json

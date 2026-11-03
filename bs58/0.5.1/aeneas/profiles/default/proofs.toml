@@ -1,0 +1,39 @@
+[report]
+title = "bs58 0.5.1 builder initialization and alphabet selection"
+explanation = '''bs58 provides Base58 encoding and decoding through builder APIs. With the default features (`std` and `alloc`, without `check` or `cb58`), `encode::EncodeBuilder::new` and `decode::DecodeBuilder::new` store the supplied input and alphabet with checksum mode disabled. Their respective `with_alphabet` methods replace the stored alphabet while preserving the input and disabled checksum state. These statements cover arbitrary inputs satisfying the API's `AsRef<[u8]>` bound and arbitrary supplied alphabets; the builder stores the alphabet rather than validating it.
+
+These guarantees concern builder state only. They do not establish what happens when the builder later encodes or decodes data.'''
+trusted_assumptions = '''The guarantees depend on the correspondence of the Rust source to its Charon and Aeneas translation, the Aeneas models used by that translation, and Lean's kernel and logical foundations.'''
+limitations = '''The verified source is the unchanged bs58 0.5.1 release source. The four public proof claims cover only the builder methods described above. They do not establish Base58 output correctness, round trips, alphabet construction, buffer behavior, checksum behavior, or the behavior of other APIs. In particular, the checksum findings in `findings.json` are separate reproduced behaviors, not consequences of these proofs.'''
+environment = '''The selected model uses unmodified Aeneas `be86ab0f1989d04944292b345b24c435be3ad10a`, Charon `08d7c9d50144bd84848212c24701253585e90d1f`, and Lean 4.35.0 on Linux x86_64. The default feature configuration is used for extraction. The native Rust tests and checksum reproductions are separate from the formal proof; the checksum reproductions enable `check` and `cb58`.'''
+
+[tool]
+name = "aeneas"
+version = "be86ab0f1989d04944292b345b24c435be3ad10a"
+lean_dir = ".work/selected-proofs"
+proof_modules = ["Proofs"]
+translation_manifest = "Generated/x86_64-unknown-linux-gnu/translation.json"
+
+[[tool.proofs]]
+api = "encode::EncodeBuilder::new"
+module = "Proofs.Builder"
+theorem = "bs58.encode_builder_new_spec"
+precondition = "Any input satisfying the Rust AsRef<[u8]> trait bound and any supplied alphabet."
+
+[[tool.proofs]]
+api = "encode::EncodeBuilder::with_alphabet"
+module = "Proofs.Builder"
+theorem = "bs58.encode_builder_with_alphabet_spec"
+precondition = "Any existing encoder builder and any supplied alphabet."
+
+[[tool.proofs]]
+api = "decode::DecodeBuilder::new"
+module = "Proofs.Builder"
+theorem = "bs58.decode_builder_new_spec"
+precondition = "Any input satisfying the Rust AsRef<[u8]> trait bound and any supplied alphabet."
+
+[[tool.proofs]]
+api = "decode::DecodeBuilder::with_alphabet"
+module = "Proofs.Builder"
+theorem = "bs58.decode_builder_with_alphabet_spec"
+precondition = "Any existing decoder builder and any supplied alphabet."
