@@ -1,7 +1,7 @@
 # Preserved original-body verification
 
 The final fresh integrated run
-`.work/runs/run-20261103T133428Z-0xbgsjpv` passed on 2026-11-03 for
+`.work/runs/run-20261103T134348Z-afzaahye` passed on 2026-11-03 for
 `aarch64-apple-darwin`, with unmodified Creusot0.13.0 and its Git-pinned standard
 models at commit `318615be3b8bbc60d1f6d52469ba5c0bdebed4f1`.
 This acceptance belongs to the original fingerprinted inputs; later input edits
@@ -39,9 +39,9 @@ using Rust1.94.1. They exercise all release methods in native builds but do not
 extend this report's formal scope beyond `map_or_else2`.
 
 Before/after input JSON SHA256, identical:
-`61b930559866508d12718195b5eb77ef1d2cb0b10c2f16237a0d0d0bd3b02aa5`.
+`62219022209345ac13e3e45dbae9a03d3edfff45b018326345c9115f03a8cf0c`.
 The result JSON SHA256 is
-`69dd4c16f79cfe2709e195a917c984e9b71f087ee3af6ac252acb906abf96beb`.
+`7919d14479d4a9f0cdd23040772d20ce169211c2ce9b572054b7e3c39b83ff27`.
 `evidence/summary.json` and `evidence/archive.json` preserve the compact result
 and complete local-only execution archive (Cargo build intermediates excluded).
 The archive was re-read and every member compared with its original run file.
@@ -60,3 +60,14 @@ Actual pinned proofs-rs scanner discovery selected exactly
 selected-branch premise. Recording and service publication remain separate from
 this local functional/refinement evidence; no importer classification is inferred
 from older CLI versions. The existing Aeneas report is preserved.
+
+The final acceptance also uses a normalized Cargo lock with no unused local0.15
+patch marker. Cargo metadata/fetch/native checks use an external working
+directory and proof uses a fresh external workspace, so an unrelated ancestor
+user Cargo configuration cannot inject that marker. Actual source snapshots and
+all proof sessions are copied back into the immutable run. A prior recording
+attempt proved the body but was rejected for tracked Cargo.lock changes after
+Cargo removed the ambient unused marker outside the user's home directory;
+this was a recording-environment issue, not a source or verification defect.
+The recorder-only wrapper syntax excludes the nested Cargo argument delimiter
+rejected by the pinned CLI; the formal proof command and contracts are unchanged.

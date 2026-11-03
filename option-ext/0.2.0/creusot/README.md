@@ -70,3 +70,16 @@ standard recorder command, supplying the validated0.13 installation through
 Cargo cache. Recording/import classification and service publication are separate
 from the four-root functional evidence. Source publication and report upload
 require explicit user authorization and are handled by the primary agent.
+
+Recording should start from a stable external clean Git worktree when an ancestor
+Cargo configuration injects unrelated patches. The normalized lock contains no
+unused local patch markers. Setup metadata/fetch and native checks run from an
+external directory with explicit manifests; proof runs use a fresh external
+workspace and copy the checked source and complete proof artifacts into the run.
+The recorder wrapper first checks that its working directory's Cargo configuration
+can use the lock without changing it. For this host, the primary records and
+publishes from `/private/tmp/option-ext-creusot-report-<commit>`, with
+`CREUSOT_OPTION_CACHE` pointing at the prepared original `.work` installation and
+`CREUSOT_PROOFS_RS_STORE` pointing at the already pinned recorder. Keep that
+worktree path stable through publication because the CLI indexes state by the
+absolute manifest path. The transient Git HTTPS rewrite is inherited separately.

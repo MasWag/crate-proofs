@@ -41,6 +41,6 @@ ln -sfn "$CREUSOT_OPAM_PREFIX/bin/why3find" "$CREUSOT_DATA_HOME/bin/why3find"
 ln -sfn "$CREUSOT_PROVER_DIR/z3" "$CREUSOT_DATA_HOME/bin/z3"
 cp "$ROOT/verification/why3.conf" "$CREUSOT_DATA_HOME/creusot_why3.conf"
 cp "$ROOT/why3find.json" "$CREUSOT_DATA_HOME/why3find.json"
-(cd "$ROOT"; cargo fetch --locked)
+(cd /private/tmp; cargo fetch --locked --manifest-path "$ROOT/Cargo.toml")
 python3.11 "$ROOT/scripts/check-source.py"
 python3.11 "$ROOT/scripts/check-tools.py"

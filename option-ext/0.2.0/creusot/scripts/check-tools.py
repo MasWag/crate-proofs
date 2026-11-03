@@ -34,7 +34,7 @@ def snapshot():
           'why3find_runtime_sha256':tree(prefix/'lib/why3find'),
           'prelude_sha256':tree(data/'share/why3find/packages/creusot'),
           'prover_config_sha256':sha(data/'creusot_why3.conf')}
-    metadata=json.loads(command(['cargo','metadata','--locked','--offline','--format-version','1'],ROOT))
+    metadata=json.loads(command(['cargo','metadata','--locked','--offline','--format-version','1','--manifest-path',str(ROOT/'Cargo.toml')],'/private/tmp'))
     models={}
     for p in metadata['packages']:
         if p['name'] not in ('creusot-std','creusot-std-proc','pearlite-syn'):continue

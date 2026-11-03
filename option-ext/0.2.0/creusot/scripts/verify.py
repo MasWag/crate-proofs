@@ -41,10 +41,10 @@ execute(['python3.11','scripts/check-tools.py'],'tools-before.log')
 before=fingerprint();(RUN/'inputs-before.json').write_text(json.dumps(before,indent=2,sort_keys=True)+'\n')
 # Native observations use their own stable compiler and target directory.
 native=dict(os.environ,RUSTUP_TOOLCHAIN='1.94.1',CARGO_TARGET_DIR=str(ROOT/'.work/native-target'))
-execute(['cargo','test','--locked','--offline'],'native.log',native)
+execute(['cargo','test','--manifest-path',str(ROOT/'Cargo.toml'),'--locked','--offline'],'native.log',native,Path('/private/tmp'))
 # A new Cargo output directory and new proof directory avoid generated/session reuse.
 proof=dict(os.environ,CARGO_TARGET_DIR=str(RUN/'target'))
-workspace=RUN/'workspace';workspace.mkdir()
+workspace=Path(tempfile.mkdtemp(prefix='option-ext-creusot-proof-',dir='/private/tmp'))
 for name in ('Cargo.toml','Cargo.lock','why3find.json'):
     shutil.copyfile(ROOT/name,workspace/name)
 shutil.copytree(ROOT/'src',workspace/'src')
@@ -65,13 +65,14 @@ for p in files:
         assert tree and tree.get('prover')=='z3', 'Missing/uncertified positive root'
         goal=goals[name];assert goal.attrib.get('proved')=='true'
         results=list(goal.iter('result'));assert results and all(x.attrib['status']=='valid' for x in results)
-        roots.append({'name':name,'role':EXPECTED[p.stem][name],'generated':str(p.relative_to(RUN)),'prover':tree['prover'],'time':tree['time']})
+        roots.append({'name':name,'role':EXPECTED[p.stem][name],'generated':str(Path('workspace')/p.relative_to(workspace)),'prover':tree['prover'],'time':tree['time']})
 assert len(roots)==4
 for name in ('Cargo.toml','Cargo.lock','why3find.json'):
     assert tools.sha(workspace/name)==tools.sha(ROOT/name), 'Copied input changed during proof'
 assert {p.relative_to(workspace/'src') for p in (workspace/'src').rglob('*') if p.is_file()} == {p.relative_to(ROOT/'src') for p in (ROOT/'src').rglob('*') if p.is_file()}
 for p in (workspace/'src').rglob('*'):
     if p.is_file():assert tools.sha(p)==tools.sha(ROOT/p.relative_to(workspace)), 'Copied source changed during proof'
+shutil.copytree(workspace,RUN/'workspace')
 execute(['python3.11','scripts/check-source.py'],'source-after.log')
 execute(['python3.11','scripts/check-tools.py'],'tools-after.log')
 after=fingerprint();(RUN/'inputs-after.json').write_text(json.dumps(after,indent=2,sort_keys=True)+'\n');assert before==after,'Inputs changed during proof'
