@@ -17,6 +17,8 @@ The compiled padding contracts describe every output byte on the stated domains.
 
 ## Other boundaries
 
+The statuses below describe the general Aeneas scope. The separate [Kani workspace](kani/RESULTS.md) additionally checks concrete U16 instances on bounded inputs; those results do not close the general Aeneas gaps.
+
 | Entry | Intended scope | Status |
 |---|---|---|
 | Private `Pkcs7::unpad` | Both strict and non-strict modes and their raw callers | Named helper proofs passed the managed audit. |

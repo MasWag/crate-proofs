@@ -1,0 +1,7 @@
+[workspace]
+[package]
+name = "block-padding"
+version = "0.4.2"
+edition = "2024"
+[dependencies]
+hybrid-array = "=0.4.15"

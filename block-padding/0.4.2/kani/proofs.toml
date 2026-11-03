@@ -1,0 +1,20 @@
+[report]
+title = "Bounded PaddedData unwrap behavior in block-padding 0.4.2"
+explanation = """
+The selected contract checks PaddedData::unwrap for a Pad value with 16-byte blocks and at most two preceding blocks. For arbitrary bytes in those blocks and the tail, the returned block slice has the original pointer, length and bytes, and the returned tail retains every byte. The contract applies only to the Pad variant and this concrete bounded instance.
+
+The workspace also contains 24 ordinary bounded Kani harnesses covering typed padding and unpadding, detached padding, and block-list unpadding for all six supplied padding schemes. These use 16-byte blocks, detached input lengths from 0 through 32 bytes, and block lists of at most two blocks, with arbitrary bytes and the stated valid padding positions. They check exact bytes, lengths, variants and error behavior, and the relevant returned slice pointers. These supplementary checks are not mapped proofs.rs contract claims.
+"""
+trusted_assumptions = """
+The results depend on Kani and CBMC translation and models, the Rust compiler and standard-library models, and the solver. The checked instance uses the actual locked hybrid-array dependency without a replacement array shim. The original release implementation bodies are retained; Kani-only contract attributes and a verification-only module add the harnesses and specifications.
+"""
+limitations = """
+These are bounded checks for U16, not claims for other block sizes, longer inputs, arbitrary downstream Padding implementations, or the whole dependency. The unwrap contract excludes NoPad and Error. The typed pad checks use valid positions and do not establish invalid-position behavior. The count-byte raw decoders' empty and oversized inputs are outside these typed checks. The checks do not establish all Rust undefined-behavior obligations or cryptographic security. Native tests are separate from Kani verification.
+"""
+environment = """
+The independent workspace uses block-padding 0.4.2 with hybrid-array 0.4.15 and typenum 1.20.1, Kani 0.68.0 and CBMC 6.11.0. On macOS arm64, a local run passed all 25 harnesses. The workspace results record the target, commands, bounds and evidence; the published contract claim is tied to its recorded run.
+"""
+
+[tool]
+name = "kani"
+version = "0.68.0"

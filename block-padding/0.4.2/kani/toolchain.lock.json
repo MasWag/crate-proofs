@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "verifier": "Kani",
+  "version": "0.68.0",
+  "cbmc": "6.11.0",
+  "host": "aarch64-apple-darwin",
+  "unwind": 35,
+  "safety_checks": "default enabled; unwinding assertions enabled",
+  "stubs": [],
+  "expected_harnesses": 25,
+  "publication_contracts": 1,
+  "supplementary_harnesses": 24,
+  "binaries": {
+    "kani-driver": "14192396d9e4b5c0d7f9197130692a44bbcb3d2509283ee2bb8e0befad9e12d2",
+    "kani-compiler": "88c115b843454b7b16b53955b31c6bc81c0168e7bfc6fbf97d9b688e53c67154",
+    "cbmc": "db1a99dc5187df6f67be351555aa7951d10f37700eccc7ea726d441594675e77",
+    "goto-instrument": "c8695f345b942275cdbc292e559f474f954141a6d335fe2c3471c700f41af09b",
+    "kissat": "21ac32c68f7e8b4037e57b2f5a525a2a111b2316f1ae42b58d780e5be4a9fa0c"
+  },
+  "compiler": "rustc 1.100.0-nightly (8925ea358 2026-08-20)"
+}
