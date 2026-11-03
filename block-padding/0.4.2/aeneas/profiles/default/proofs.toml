@@ -1,0 +1,121 @@
+[report]
+title = "Selected raw padding behavior in block-padding 0.4.2"
+explanation = """
+The selected raw padding contracts describe every byte of the resulting block. For ZeroPadding and NoPadding, the message position may equal the block length; ZeroPadding fills the remaining bytes with zero, while NoPadding leaves the block unchanged. For Pkcs7, Iso10126, and AnsiX923, the position must be less than the block length and the length at most 255. Pkcs7 fills the suffix with its length; Iso10126 uses the same deterministic padding; AnsiX923 uses zeros followed by the suffix length. Iso7816 requires the position to be less than the block length and writes 0x80 followed by zeros. In each case the original prefix is preserved and the selected extracted call succeeds on the stated domain.
+
+For every input slice, NoPadding returns the entire input and ZeroPadding removes the maximal trailing run of zeros. Iso7816 accepts exactly a final 0x80 byte followed only by zeros and returns the prefix before it; otherwise it returns an error. For Pkcs7, Iso10126, and AnsiX923, decoding is established for block lengths from 1 through 255. The last byte must give a count between 1 and the block length. Pkcs7 also requires all counted bytes to equal that count; AnsiX923 requires the preceding counted bytes to be zero; Iso10126 accepts arbitrary preceding padding bytes. A valid block returns the prefix before the padding, and an invalid block returns an error.
+"""
+trusted_assumptions = """
+The claims rely on the pinned Charon and Aeneas translation, their Rust slice and integer models, and the Lean kernel. Source correspondence is based on review rather than a formal equivalence proof. The two decoder iterator checks were rewritten as explicit loops in the verification harness: each scans the same suffix and rejects upon the first byte that differs from the required value. This source reasoning has been independently reviewed, but equivalence of the adapted bodies to the published release has not been formally proved.
+"""
+limitations = """
+These are selected raw-method contracts, not verification of the entire crate. They do not establish behavior outside the stated domains or prove the panic boundaries. Typed array methods, detached padding, block-list unpadding, and the hybrid-array representation bridge remain unproved. Generic extraction attempts encountered translation or model boundaries; these attempts do not establish that verification is impossible. Native tests are separate from the formal claims. In particular, empty input causes three raw decoders to panic despite the trait documentation's malformed-padding error statement, as described in the finding.
+"""
+environment = """
+The managed default profile passed on aarch64-apple-darwin using extraction Rust nightly-2026-09-17, native Rust 1.91.1, Lean 4.35.0, Aeneas be86ab0f and Charon 08d7c9d; the full revisions are in the workspace tool lock. Aeneas and Charon are unpatched. The run checked the twelve named public-model theorems and their registered helpers, regenerated the selected model, and checked the derived source. The coverage ledger records the run and remaining work. Charon fell back to rustc's default sysroot after Miri sysroot setup failed.
+"""
+
+[[report.findings]]
+title = "Empty input panics in three raw unpadding implementations"
+body = '''
+## Description
+
+In block-padding 0.4.2, `Pkcs7::raw_unpad`, `Iso10126::raw_unpad`, and `AnsiX923::raw_unpad` panic on an empty slice. `Padding::raw_unpad` says malformed padding returns an error, and an empty slice has no final count byte.
+
+## Steps to Reproduce
+
+```rust
+use block_padding::{Padding, Pkcs7};
+
+assert!(Pkcs7::raw_unpad(&[]).is_err());
+```
+
+## Expected Behavior
+
+The call returns `Err` for the malformed block.
+
+## Actual Behavior
+
+The call panics instead of returning a result.
+
+## Environment
+
+block-padding 0.4.2; reproduced in debug and release builds.
+'''
+
+[tool]
+name = "aeneas"
+version = "be86ab0f1989d04944292b345b24c435be3ad10a"
+lean_dir = ".work/selected-proofs"
+
+[[tool.proofs]]
+api = "<block_padding::ZeroPadding as block_padding::Padding>::raw_pad"
+module = "Proofs"
+theorem = "BlockPadding.Proof.zero_pad_total"
+precondition = "pos \u2264 block.len()"
+
+[[tool.proofs]]
+api = "<block_padding::Pkcs7 as block_padding::Padding>::raw_pad"
+module = "Proofs"
+theorem = "BlockPadding.Proof.pkcs_pad_total"
+precondition = "pos < block.len() \u2264 255"
+
+[[tool.proofs]]
+api = "<block_padding::Iso10126 as block_padding::Padding>::raw_pad"
+module = "Proofs"
+theorem = "BlockPadding.Proof.iso10126_pad_total"
+precondition = "pos < block.len() \u2264 255"
+
+[[tool.proofs]]
+api = "<block_padding::AnsiX923 as block_padding::Padding>::raw_pad"
+module = "Proofs"
+theorem = "BlockPadding.Proof.ansi_pad_total"
+precondition = "pos < block.len() \u2264 255"
+
+[[tool.proofs]]
+api = "<block_padding::Iso7816 as block_padding::Padding>::raw_pad"
+module = "Proofs"
+theorem = "BlockPadding.Proof.iso7816_pad_total"
+precondition = "pos < block.len()"
+
+[[tool.proofs]]
+api = "<block_padding::NoPadding as block_padding::Padding>::raw_pad"
+module = "Proofs"
+theorem = "BlockPadding.Proof.no_pad"
+precondition = "pos \u2264 block.len()"
+
+[[tool.proofs]]
+api = "<block_padding::NoPadding as block_padding::Padding>::raw_unpad"
+module = "Proofs"
+theorem = "BlockPadding.Proof.no_unpad"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<block_padding::ZeroPadding as block_padding::Padding>::raw_unpad"
+module = "UnpadProofs"
+theorem = "BlockPadding.UnpadProof.zero_unpad_total"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<block_padding::Iso7816 as block_padding::Padding>::raw_unpad"
+module = "UnpadProofs"
+theorem = "BlockPadding.UnpadProof.iso_unpad_total"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<block_padding::Pkcs7 as block_padding::Padding>::raw_unpad"
+module = "CountUnpadProofs"
+theorem = "BlockPadding.CountUnpadProof.pkcs_unpad_total"
+precondition = "0 < block.len() ≤ 255"
+
+[[tool.proofs]]
+api = "<block_padding::Iso10126 as block_padding::Padding>::raw_unpad"
+module = "CountUnpadProofs"
+theorem = "BlockPadding.CountUnpadProof.iso10126_unpad_total"
+precondition = "0 < block.len() ≤ 255"
+
+[[tool.proofs]]
+api = "<block_padding::AnsiX923 as block_padding::Padding>::raw_unpad"
+module = "AnsiUnpadProofs"
+theorem = "BlockPadding.AnsiUnpadProof.ansi_unpad_total"
+precondition = "0 < block.len() ≤ 255"

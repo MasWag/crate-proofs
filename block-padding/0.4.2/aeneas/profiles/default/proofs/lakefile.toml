@@ -1,0 +1,22 @@
+name = "block_padding_proofs"
+version = "0.1.0"
+defaultTargets = ["Proofs", "UnpadProofs", "CountUnpadProofs", "AnsiUnpadProofs"]
+[[require]]
+name = "aeneas"
+path = "@AENEAS_BACKEND@"
+[[lean_lib]]
+name = "BlockPaddingVerificationApi"
+srcDir = "Generated/@TARGET@"
+[[lean_lib]]
+name = "BlockPadding"
+[[lean_lib]]
+name = "Proofs"
+
+[[lean_lib]]
+name = "UnpadProofs"
+
+[[lean_lib]]
+name = "CountUnpadProofs"
+
+[[lean_lib]]
+name = "AnsiUnpadProofs"

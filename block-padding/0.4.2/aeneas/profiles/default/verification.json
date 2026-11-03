@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "supported_targets": [
+    "aarch64-apple-darwin"
+  ],
+  "native": [
+    [
+      "cargo",
+      "test",
+      "--locked"
+    ],
+    [
+      "cargo",
+      "test",
+      "--locked",
+      "--release"
+    ]
+  ],
+  "extractions": [
+    {
+      "config": "extraction.json",
+      "cwd": "verification/harness",
+      "models": {
+        "BlockPaddingVerificationApi.lean": "proofs/Generated/@TARGET@/BlockPaddingVerificationApi.lean"
+      }
+    }
+  ],
+  "inventory": "theorems.json",
+  "report": "proofs.toml",
+  "lean_dir": "proofs",
+  "additional_checks": [
+    [
+      "python3.11",
+      "scripts/prepare-adaptation.py",
+      "--check"
+    ]
+  ]
+}

@@ -1,0 +1,5 @@
+# block-padding 0.4.2 Aeneas verification
+
+Keep Aeneas and Charon unchanged at the pinned commits. Use this managed profile only, scripts/setup.sh and scripts/verify.sh (including --offline). Activate scripts/env.sh; do not activate Creusot. Specification design is assigned to Astra; Rust adaptation/proof implementation to Sol; primary independently reviews contracts, commands, coverage, and evidence. No publication is authorized.
+
+The immutable registry source is restored under .work/source. verification/harness contains a reproducibly derived copy with only the two iterator any checks expanded to bounds-preserving index loops; scripts/prepare-adaptation.py verifies the source hash and unique replacement sites. Its --check mode compares exact derived bytes during verification. Keep source adaptation and translation trust distinct from formal equivalence. All six core raw padding and unpadding algorithms remain explicit in the ledger; typed/default/detached/block-list/unwrap methods are separate obligations.

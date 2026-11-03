@@ -1,0 +1,22 @@
+{
+  "entries": [
+    "crate::Padding::pad",
+    "crate::Padding::unpad",
+    "crate::Padding::pad_detached",
+    "crate::Padding::unpad_blocks"
+  ],
+  "impl_entries": [
+    "{impl crate::Padding for _}::pad_detached",
+    "{impl crate::Padding for _}::unpad_blocks"
+  ],
+  "llbc": "block_padding_verification_api.llbc",
+  "cargo_args": [
+    "--lib",
+    "--locked"
+  ],
+  "models": {
+    "BlockPaddingVerificationApi.lean": [
+      "ZeroPadding.Insts.Block_padding_verification_apiPadding.raw_pad"
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "checked_date": "2026-11-03",
+  "registry_index_url": "https://index.crates.io/bl/oc/block-padding",
+  "index_sha256": "b33faa74956e06122136ba1561805c9ada453f68319ef8c3285f3229a6f17988",
+  "selected_record": {
+    "name": "block-padding",
+    "vers": "0.4.2",
+    "deps": [
+      {
+        "name": "hybrid-array",
+        "req": "^0.4.3",
+        "features": [],
+        "optional": false,
+        "default_features": true,
+        "target": null,
+        "kind": "normal"
+      }
+    ],
+    "cksum": "710f1dd022ef4e93f8a438b4ba958de7f64308434fa6a87104481645cc30068b",
+    "features": {},
+    "yanked": false,
+    "rust_version": "1.85",
+    "pubtime": "2025-11-26T15:01:21Z"
+  },
+  "archive_url": "https://static.crates.io/crates/block-padding/block-padding-0.4.2.crate",
+  "archive_sha256": "710f1dd022ef4e93f8a438b4ba958de7f64308434fa6a87104481645cc30068b",
+  "selection": "Latest unyanked stable release in the retrieved official sparse index; registry API returned403, sparse index succeeded."
+}

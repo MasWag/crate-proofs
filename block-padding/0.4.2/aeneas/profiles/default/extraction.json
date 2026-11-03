@@ -1,0 +1,29 @@
+{
+  "entries": [],
+  "impl_entries": [
+    "{impl crate::Padding for _}::raw_pad",
+    "{impl crate::Padding for _}::raw_unpad"
+  ],
+  "llbc": "block_padding_verification_api.llbc",
+  "cargo_args": [
+    "--lib",
+    "--locked"
+  ],
+  "models": {
+    "BlockPaddingVerificationApi.lean": [
+      "ZeroPadding.Insts.Block_padding_verification_apiPadding.raw_pad",
+      "ZeroPadding.Insts.Block_padding_verification_apiPadding.raw_unpad",
+      "Pkcs7.Insts.Block_padding_verification_apiPadding.raw_pad",
+      "Pkcs7.Insts.Block_padding_verification_apiPadding.raw_unpad",
+      "Iso10126.Insts.Block_padding_verification_apiPadding.raw_pad",
+      "Iso10126.Insts.Block_padding_verification_apiPadding.raw_unpad",
+      "AnsiX923.Insts.Block_padding_verification_apiPadding.raw_pad",
+      "AnsiX923.Insts.Block_padding_verification_apiPadding.raw_unpad",
+      "Iso7816.Insts.Block_padding_verification_apiPadding.raw_pad",
+      "Iso7816.Insts.Block_padding_verification_apiPadding.raw_unpad",
+      "NoPadding.Insts.Block_padding_verification_apiPadding.raw_pad",
+      "NoPadding.Insts.Block_padding_verification_apiPadding.raw_unpad",
+      "Pkcs7.unpad"
+    ]
+  }
+}

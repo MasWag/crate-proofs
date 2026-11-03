@@ -1,0 +1,11 @@
+{
+  "command": [
+    "/Users/calros/crate-proofs/.work/tools/c41dbf9bee09a337a505cb68dabe46debd6b35f978c58d990578593085e99519/aeneas/bin/aeneas",
+    "-backend",
+    "lean",
+    "-dest",
+    "/Users/calros/crate-proofs/block-padding/0.4.2/.work/probe-concrete-mono",
+    "/Users/calros/crate-proofs/block-padding/0.4.2/.work/probe-concrete-mono/block_padding_verification_api.llbc"
+  ],
+  "exit": 1
+}

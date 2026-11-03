@@ -1,0 +1,29 @@
+[
+  {
+    "command": [
+      "charon",
+      "cargo",
+      "--preset=aeneas",
+      "--monomorphize",
+      "--start-from",
+      "crate::probe_pad_16",
+      "--dest-file",
+      "/Users/calros/crate-proofs/block-padding/0.4.2/.work/probe-concrete-pad-mono/block_padding_verification_api.llbc",
+      "--",
+      "--lib",
+      "--locked"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "aeneas",
+      "-backend",
+      "lean",
+      "-dest",
+      "/Users/calros/crate-proofs/block-padding/0.4.2/.work/probe-concrete-pad-mono",
+      "/Users/calros/crate-proofs/block-padding/0.4.2/.work/probe-concrete-pad-mono/block_padding_verification_api.llbc"
+    ],
+    "exit": 0
+  }
+]

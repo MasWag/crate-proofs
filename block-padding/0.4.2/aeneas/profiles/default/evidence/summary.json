@@ -1,0 +1,251 @@
+{
+  "acceptance_basis": "Original archived inputs; packaging does not rerun verification.",
+  "archive_sha256": "9fd5cbdfe1889bc77b52b7d377b554d286da5788734b94b94771791b31767ccc",
+  "audit": {
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "checked": [
+      {
+        "module": "Proofs",
+        "name": "BlockPadding.Proof.zero_pad_total",
+        "precondition": "pos \u2264 block.len()",
+        "scope": "public-model"
+      },
+      {
+        "module": "Proofs",
+        "name": "BlockPadding.Proof.pkcs_pad_total",
+        "precondition": "pos < block.len() \u2264 255",
+        "scope": "public-model"
+      },
+      {
+        "module": "Proofs",
+        "name": "BlockPadding.Proof.iso10126_pad_total",
+        "precondition": "pos < block.len() \u2264 255",
+        "scope": "public-model"
+      },
+      {
+        "module": "Proofs",
+        "name": "BlockPadding.Proof.ansi_pad_total",
+        "precondition": "pos < block.len() \u2264 255",
+        "scope": "public-model"
+      },
+      {
+        "module": "Proofs",
+        "name": "BlockPadding.Proof.iso7816_pad_total",
+        "precondition": "pos < block.len()",
+        "scope": "public-model"
+      },
+      {
+        "module": "Proofs",
+        "name": "BlockPadding.Proof.no_pad",
+        "precondition": "pos \u2264 block.len()",
+        "scope": "public-model"
+      },
+      {
+        "module": "Proofs",
+        "name": "BlockPadding.Proof.no_unpad",
+        "precondition": "true",
+        "scope": "public-model"
+      },
+      {
+        "module": "Proofs",
+        "name": "BlockPadding.Proof.spec_result_ok",
+        "scope": "helper"
+      },
+      {
+        "module": "Proofs",
+        "name": "BlockPadding.Proof.zero_pad",
+        "scope": "helper"
+      },
+      {
+        "module": "Proofs",
+        "name": "BlockPadding.Proof.pkcs_pad",
+        "scope": "helper"
+      },
+      {
+        "module": "Proofs",
+        "name": "BlockPadding.Proof.iso10126_pad",
+        "scope": "helper"
+      },
+      {
+        "module": "Proofs",
+        "name": "BlockPadding.Proof.ansi_pad",
+        "scope": "helper"
+      },
+      {
+        "module": "Proofs",
+        "name": "BlockPadding.Proof.iso7816_pad",
+        "scope": "helper"
+      },
+      {
+        "module": "UnpadProofs",
+        "name": "BlockPadding.UnpadProof.zero_unpad_total",
+        "precondition": "true",
+        "scope": "public-model"
+      },
+      {
+        "module": "UnpadProofs",
+        "name": "BlockPadding.UnpadProof.iso_unpad_total",
+        "precondition": "true",
+        "scope": "public-model"
+      },
+      {
+        "module": "UnpadProofs",
+        "name": "BlockPadding.UnpadProof.rev_next",
+        "scope": "helper"
+      },
+      {
+        "module": "UnpadProofs",
+        "name": "BlockPadding.UnpadProof.rev_next_empty",
+        "scope": "helper"
+      },
+      {
+        "module": "UnpadProofs",
+        "name": "BlockPadding.UnpadProof.zero_loop",
+        "scope": "helper"
+      },
+      {
+        "module": "UnpadProofs",
+        "name": "BlockPadding.UnpadProof.zero_cut_spec",
+        "scope": "helper"
+      },
+      {
+        "module": "UnpadProofs",
+        "name": "BlockPadding.UnpadProof.zero_unpad",
+        "scope": "helper"
+      },
+      {
+        "module": "UnpadProofs",
+        "name": "BlockPadding.UnpadProof.iso_cut_spec",
+        "scope": "helper"
+      },
+      {
+        "module": "UnpadProofs",
+        "name": "BlockPadding.UnpadProof.iso_match",
+        "scope": "helper"
+      },
+      {
+        "module": "UnpadProofs",
+        "name": "BlockPadding.UnpadProof.iso_loop",
+        "scope": "helper"
+      },
+      {
+        "module": "UnpadProofs",
+        "name": "BlockPadding.UnpadProof.iso_unpad",
+        "scope": "helper"
+      },
+      {
+        "module": "UnpadProofs",
+        "name": "BlockPadding.UnpadProof.spec_result_ok",
+        "scope": "helper"
+      },
+      {
+        "module": "CountUnpadProofs",
+        "name": "BlockPadding.CountUnpadProof.pkcs_unpad_total",
+        "precondition": "0 < block.len() \u2264 255",
+        "scope": "public-model"
+      },
+      {
+        "module": "CountUnpadProofs",
+        "name": "BlockPadding.CountUnpadProof.iso10126_unpad_total",
+        "precondition": "0 < block.len() \u2264 255",
+        "scope": "public-model"
+      },
+      {
+        "module": "CountUnpadProofs",
+        "name": "BlockPadding.CountUnpadProof.pkcs_loop",
+        "scope": "helper"
+      },
+      {
+        "module": "CountUnpadProofs",
+        "name": "BlockPadding.CountUnpadProof.pkcs_unpad_cut",
+        "scope": "helper"
+      },
+      {
+        "module": "CountUnpadProofs",
+        "name": "BlockPadding.CountUnpadProof.cut_accepted",
+        "scope": "helper"
+      },
+      {
+        "module": "CountUnpadProofs",
+        "name": "BlockPadding.CountUnpadProof.accepted_cut",
+        "scope": "helper"
+      },
+      {
+        "module": "CountUnpadProofs",
+        "name": "BlockPadding.CountUnpadProof.pkcs_unpad_spec",
+        "scope": "helper"
+      },
+      {
+        "module": "AnsiUnpadProofs",
+        "name": "BlockPadding.AnsiUnpadProof.ansi_unpad_total",
+        "precondition": "0 < block.len() \u2264 255",
+        "scope": "public-model"
+      },
+      {
+        "module": "AnsiUnpadProofs",
+        "name": "BlockPadding.AnsiUnpadProof.ansi_loop",
+        "scope": "helper"
+      },
+      {
+        "module": "AnsiUnpadProofs",
+        "name": "BlockPadding.AnsiUnpadProof.ansi_unpad_cut",
+        "scope": "helper"
+      },
+      {
+        "module": "AnsiUnpadProofs",
+        "name": "BlockPadding.AnsiUnpadProof.cut_accepted",
+        "scope": "helper"
+      },
+      {
+        "module": "AnsiUnpadProofs",
+        "name": "BlockPadding.AnsiUnpadProof.accepted_cut",
+        "scope": "helper"
+      },
+      {
+        "module": "AnsiUnpadProofs",
+        "name": "BlockPadding.AnsiUnpadProof.ansi_unpad_spec",
+        "scope": "helper"
+      }
+    ],
+    "mapping_metadata_checked": true,
+    "scope": "named Lean theorem and transitive axiom audit only",
+    "status": "passed"
+  },
+  "host": "aarch64-apple-darwin",
+  "input_fingerprints": {
+    "after": {
+      "member": "payload/inputs-after.json",
+      "sha256": "d5ef97276616ff97006f56a1baf5cb5883eb0424b1b0f328c1cd39c378ec5c5a"
+    },
+    "before": {
+      "member": "payload/inputs-before.json",
+      "sha256": "d5ef97276616ff97006f56a1baf5cb5883eb0424b1b0f328c1cd39c378ec5c5a"
+    },
+    "equal": true
+  },
+  "kind": "archived-managed-run-summary",
+  "original_audit": {
+    "member": "payload/audit/result.json",
+    "sha256": "1dfc9c2188fe47793114ae27c08270f4fb774cec2413e83497c0331968c2243e"
+  },
+  "original_result": {
+    "member": "payload/result.json",
+    "sha256": "89143f59d4f43d1157384a722d9976a7ade5ab3e566a7699202b54a4f8d4eaf0"
+  },
+  "profile": "default",
+  "reported_status": "passed",
+  "sarif": "Not a cargo-proofs recording result.",
+  "schema_version": 1,
+  "scope": "Configured extraction comparisons and named theorem audit; native observations are separate",
+  "stages": {
+    "before_after_fingerprints": "equal",
+    "extraction_and_profile_checks": "See original pipeline receipt and profile configuration.",
+    "lean_build_and_axiom_audit": "passed",
+    "native_tests": "Separate observations in original run; not formal proof."
+  },
+  "target": "aarch64-apple-darwin"
+}

@@ -1,0 +1,265 @@
+{
+  "checked": [
+    {
+      "name": "BlockPadding.Proof.zero_pad_total",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "pos \u2264 block.len()"
+    },
+    {
+      "name": "BlockPadding.Proof.pkcs_pad_total",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "pos < block.len() \u2264 255"
+    },
+    {
+      "name": "BlockPadding.Proof.iso10126_pad_total",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "pos < block.len() \u2264 255"
+    },
+    {
+      "name": "BlockPadding.Proof.ansi_pad_total",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "pos < block.len() \u2264 255"
+    },
+    {
+      "name": "BlockPadding.Proof.iso7816_pad_total",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "pos < block.len()"
+    },
+    {
+      "name": "BlockPadding.Proof.no_pad",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "pos \u2264 block.len()"
+    },
+    {
+      "name": "BlockPadding.Proof.no_unpad",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "true"
+    },
+    {
+      "name": "BlockPadding.Proof.spec_result_ok",
+      "module": "Proofs",
+      "scope": "helper"
+    },
+    {
+      "name": "BlockPadding.Proof.zero_pad",
+      "module": "Proofs",
+      "scope": "helper"
+    },
+    {
+      "name": "BlockPadding.Proof.pkcs_pad",
+      "module": "Proofs",
+      "scope": "helper"
+    },
+    {
+      "name": "BlockPadding.Proof.iso10126_pad",
+      "module": "Proofs",
+      "scope": "helper"
+    },
+    {
+      "name": "BlockPadding.Proof.ansi_pad",
+      "module": "Proofs",
+      "scope": "helper"
+    },
+    {
+      "name": "BlockPadding.Proof.iso7816_pad",
+      "module": "Proofs",
+      "scope": "helper"
+    },
+    {
+      "name": "BlockPadding.UnpadProof.zero_unpad_total",
+      "module": "UnpadProofs",
+      "scope": "public-model",
+      "precondition": "true"
+    },
+    {
+      "name": "BlockPadding.UnpadProof.iso_unpad_total",
+      "module": "UnpadProofs",
+      "scope": "public-model",
+      "precondition": "true"
+    },
+    {
+      "name": "BlockPadding.UnpadProof.rev_next",
+      "module": "UnpadProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "BlockPadding.UnpadProof.rev_next_empty",
+      "module": "UnpadProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "BlockPadding.UnpadProof.zero_loop",
+      "module": "UnpadProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "BlockPadding.UnpadProof.zero_cut_spec",
+      "module": "UnpadProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "BlockPadding.UnpadProof.zero_unpad",
+      "module": "UnpadProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "BlockPadding.UnpadProof.iso_cut_spec",
+      "module": "UnpadProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "BlockPadding.UnpadProof.iso_match",
+      "module": "UnpadProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "BlockPadding.UnpadProof.iso_loop",
+      "module": "UnpadProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "BlockPadding.UnpadProof.iso_unpad",
+      "module": "UnpadProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "BlockPadding.UnpadProof.spec_result_ok",
+      "module": "UnpadProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "BlockPadding.CountUnpadProof.pkcs_unpad_total",
+      "module": "CountUnpadProofs",
+      "scope": "public-model",
+      "precondition": "0 < block.len() \u2264 255"
+    },
+    {
+      "name": "BlockPadding.CountUnpadProof.iso10126_unpad_total",
+      "module": "CountUnpadProofs",
+      "scope": "public-model",
+      "precondition": "0 < block.len() \u2264 255"
+    },
+    {
+      "name": "BlockPadding.CountUnpadProof.pkcs_loop",
+      "module": "CountUnpadProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "BlockPadding.CountUnpadProof.pkcs_unpad_cut",
+      "module": "CountUnpadProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "BlockPadding.CountUnpadProof.cut_accepted",
+      "module": "CountUnpadProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "BlockPadding.CountUnpadProof.accepted_cut",
+      "module": "CountUnpadProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "BlockPadding.CountUnpadProof.pkcs_unpad_spec",
+      "module": "CountUnpadProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "BlockPadding.AnsiUnpadProof.ansi_unpad_total",
+      "module": "AnsiUnpadProofs",
+      "scope": "public-model",
+      "precondition": "0 < block.len() \u2264 255"
+    },
+    {
+      "name": "BlockPadding.AnsiUnpadProof.ansi_loop",
+      "module": "AnsiUnpadProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "BlockPadding.AnsiUnpadProof.ansi_unpad_cut",
+      "module": "AnsiUnpadProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "BlockPadding.AnsiUnpadProof.cut_accepted",
+      "module": "AnsiUnpadProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "BlockPadding.AnsiUnpadProof.accepted_cut",
+      "module": "AnsiUnpadProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "BlockPadding.AnsiUnpadProof.ansi_unpad_spec",
+      "module": "AnsiUnpadProofs",
+      "scope": "helper"
+    }
+  ],
+  "recorder_mappings": [
+    {
+      "api": "<block_padding::ZeroPadding as block_padding::Padding>::raw_pad",
+      "theorem": "BlockPadding.Proof.zero_pad_total"
+    },
+    {
+      "api": "<block_padding::Pkcs7 as block_padding::Padding>::raw_pad",
+      "theorem": "BlockPadding.Proof.pkcs_pad_total"
+    },
+    {
+      "api": "<block_padding::Iso10126 as block_padding::Padding>::raw_pad",
+      "theorem": "BlockPadding.Proof.iso10126_pad_total"
+    },
+    {
+      "api": "<block_padding::AnsiX923 as block_padding::Padding>::raw_pad",
+      "theorem": "BlockPadding.Proof.ansi_pad_total"
+    },
+    {
+      "api": "<block_padding::Iso7816 as block_padding::Padding>::raw_pad",
+      "theorem": "BlockPadding.Proof.iso7816_pad_total"
+    },
+    {
+      "api": "<block_padding::NoPadding as block_padding::Padding>::raw_pad",
+      "theorem": "BlockPadding.Proof.no_pad"
+    },
+    {
+      "api": "<block_padding::NoPadding as block_padding::Padding>::raw_unpad",
+      "theorem": "BlockPadding.Proof.no_unpad"
+    },
+    {
+      "api": "<block_padding::ZeroPadding as block_padding::Padding>::raw_unpad",
+      "theorem": "BlockPadding.UnpadProof.zero_unpad_total"
+    },
+    {
+      "api": "<block_padding::Iso7816 as block_padding::Padding>::raw_unpad",
+      "theorem": "BlockPadding.UnpadProof.iso_unpad_total"
+    },
+    {
+      "api": "<block_padding::Pkcs7 as block_padding::Padding>::raw_unpad",
+      "theorem": "BlockPadding.CountUnpadProof.pkcs_unpad_total"
+    },
+    {
+      "api": "<block_padding::Iso10126 as block_padding::Padding>::raw_unpad",
+      "theorem": "BlockPadding.CountUnpadProof.iso10126_unpad_total"
+    },
+    {
+      "api": "<block_padding::AnsiX923 as block_padding::Padding>::raw_unpad",
+      "theorem": "BlockPadding.AnsiUnpadProof.ansi_unpad_total"
+    }
+  ],
+  "extracted_but_unproved": [],
+  "outside_extracted_model": [
+    "Padding::{pad,unpad,pad_detached,unpad_blocks}",
+    "ZeroPadding::{pad_detached,unpad_blocks}",
+    "NoPadding::{pad_detached,unpad_blocks}",
+    "PaddedData::unwrap",
+    "Error::fmt",
+    "marker derives and array re-export"
+  ]
+}
