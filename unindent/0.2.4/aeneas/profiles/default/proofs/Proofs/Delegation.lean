@@ -1,4 +1,5 @@
 import Wrapper
+import Proofs.CountSpaces
 open Aeneas Aeneas.Std Result
 namespace unindent.Proofs
 /-- Shared-reference delegation preserves the underlying implementation's result exactly. -/

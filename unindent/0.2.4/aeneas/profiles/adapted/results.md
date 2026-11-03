@@ -1,6 +1,6 @@
 # Adapted scanner results
 
-Managed run `adapted-xs1kvasj` passed on `x86_64-unknown-linux-gnu`: exact generated
+Managed run `adapted-dc8_qkt1` passed on `x86_64-unknown-linux-gnu`: exact generated
 model comparison, standard Lake build, the two named scanner theorem audits,
 deterministic release-derived source checks, and identical before/after input
 fingerprints. These are results for that run's original inputs.

@@ -19,7 +19,7 @@ axioms or `sorryAx` dependencies.
 
 ## Evidence and identity
 
-Managed run `default-5xfpzmm3` passed regeneration and byte comparison of both
+Managed run `default-sltuusyu` passed regeneration and byte comparison of both
 maintained models, standard Lake build, the three named-theorem audits, and equal
 before/after input fingerprints. Its native checks passed zero unit tests, two documentation tests, and the
 minimal Cargo CRLF reproduction. Acceptance is tied to that run's original input
@@ -95,8 +95,9 @@ and three integration tests (five additional tests intentionally ignored).
 
 Recording preflight reached `Commit and push source changes before cargo proofs
 run`, after discovery and preparation. The recording wrapper shares checked tool,
-archive and Lean dependency caches with its detached checkout. `proof_modules`
-requests a standard build of `Proofs.CountSpaces`; the public recorded theorem
-mapping remains delegation only, and the private classifier's named-theorem audit
-is separate local evidence. Publication remains pending until source-publication
+archive and Lean dependency caches with its detached checkout. The mapped
+`Proofs.Delegation` module imports `Proofs.CountSpaces` so the standard recording
+build also checks the helper. The public recorded theorem mapping remains
+delegation only, and the private classifier's named-theorem audit is separate
+local evidence. Publication remains pending until source-publication
 prerequisites and the actual recording/service workflow succeed.

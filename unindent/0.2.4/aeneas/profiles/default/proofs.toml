@@ -2,7 +2,6 @@
 name = "aeneas"
 version = "be86ab0f1989d04944292b345b24c435be3ad10a"
 lean_dir = ".work/selected-proofs"
-proof_modules = ["Proofs.CountSpaces"]
 
 [[tool.proofs]]
 api = "<&T as unindent::Unindent>::unindent"
@@ -21,7 +20,7 @@ trusted_assumptions = '''
 The claim relies on the Aeneas translation and its Rust models, and on Lean's kernel. The underlying implementation's successful result and the chosen output property are premises, not established by this delegation theorem.
 '''
 limitations = '''
-The core `unindent` and `unindent_bytes` algorithms, including UTF-8 preservation and behavior on arbitrary bytes, have not been proved. Nor does this result establish the behavior of the concrete `str`, `String`, or byte-slice implementations. Allocation and behavior outside the modeled execution are not established. Managed recording and publication remain pending.
+The core `unindent` and `unindent_bytes` algorithms, including UTF-8 preservation and behavior on arbitrary bytes, have not been proved. Nor does this result establish the behavior of the concrete `str`, `String`, or byte-slice implementations. Allocation and behavior outside the modeled execution are not established.
 '''
 environment = '''
 The source is the pinned crates.io `unindent` 0.2.4 release, with unchanged Aeneas at revision `be86ab0f1989d04944292b345b24c435be3ad10a`. The Lean build and named-theorem audit used the `x86_64-unknown-linux-gnu` extraction profile. The version workspace contains the source and tool locks, specification, and reproduction scripts.
