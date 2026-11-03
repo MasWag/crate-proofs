@@ -1,0 +1,10 @@
+{
+  "checked_at_utc": "2026-11-03",
+  "latest_resolution_url": "https://index.crates.io/op/ti/option-ext",
+  "latest_stable_version": "0.2.0",
+  "published_at_utc": "2023-01-11T19:28:05Z",
+  "archive_sha256": "04744f49eae99ab78e0d5c0b603ab218f515ea8cfe5a456d7629ad883a3b6e7d",
+  "archive_origin": "existing Cargo registry archive checked against freshly fetched registry sparse index checksum",
+  "limitations": "crates.io HTTP API returned 403; latest resolution and release checksum use the official sparse index. Release contains no VCS metadata. Source inventory is pinned in source.lock.json.",
+  "registry_index_sha256": "d073f762f0f8cbf69d790eb57a9d0899f2c8a93d30af9a0b7ec965e5784ed313"
+}

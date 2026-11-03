@@ -1,0 +1,16 @@
+{
+  "entries": [],
+  "impl_entries": [
+    "{impl crate::OptionExt for _}::map_or_else2"
+  ],
+  "llbc": "option_ext_adapted.llbc",
+  "cargo_args": [
+    "--lib",
+    "--locked"
+  ],
+  "models": {
+    "OptionExtAdapted.lean": [
+      "core.option.Option.Insts.Option_ext_adaptedOptionExt.map_or_else2"
+    ]
+  }
+}

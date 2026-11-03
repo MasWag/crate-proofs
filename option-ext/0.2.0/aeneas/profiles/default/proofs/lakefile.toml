@@ -1,0 +1,21 @@
+name = "option_ext_proofs"
+version = "0.1.0"
+defaultTargets = ["Contracts", "AdaptedContracts"]
+
+[[require]]
+name = "aeneas"
+path = "@AENEAS_BACKEND@"
+
+[[lean_lib]]
+name = "OptionExt"
+srcDir = "Generated/@TARGET@"
+
+[[lean_lib]]
+name = "Contracts"
+
+[[lean_lib]]
+name = "OptionExtAdapted"
+srcDir = "Generated/@TARGET@"
+
+[[lean_lib]]
+name = "AdaptedContracts"

@@ -1,0 +1,26 @@
+{
+  "entries": [],
+  "impl_entries": [
+    "{impl crate::OptionExt for _}::contains",
+    "{impl crate::OptionExt for _}::map_or2",
+    "{impl crate::OptionExt for _}::map_or_else2"
+  ],
+  "llbc": "option_ext.llbc",
+  "cargo_args": [
+    "--lib",
+    "--locked"
+  ],
+  "models": {
+    "OptionExt.lean": [
+      "core.option.Option.map_or",
+      "core.option.Option.Insts.Option_extOptionExt.contains",
+      "core.option.Option.Insts.Option_extOptionExt.map_or2",
+      "core.option.Option.map_or_else",
+      "core.option.Option.Insts.Option_extOptionExt.map_or_else2"
+    ]
+  },
+  "charon_include": [
+    "core::option::_::map_or",
+    "core::option::_::map_or_else"
+  ]
+}
