@@ -1,0 +1,58 @@
+{
+  "report_id": 19,
+  "url": "https://proofs.rs/report/19",
+  "visibility": "public",
+  "revision_no": 1,
+  "created_at": "2026-11-03T23:44:20.284Z",
+  "crate": "bs58",
+  "version": "0.5.1",
+  "tool_version_id": "creusot-0.13.0",
+  "claims": [
+    {
+      "display_path": "bs58::decode_into",
+      "precondition": "(spec::valid_alphabet(alpha.encode@, alpha.decode@))",
+      "evidence_url": "https://github.com/MasWag/crate-proofs/blob/4e1eeb7de7f6c470dd3ec6e8dcf6066152de7784/bs58/0.5.1/creusot/verification/publication/crate/src/lib.rs#L337-L680"
+    },
+    {
+      "display_path": "bs58::decode_into_const",
+      "precondition": "(spec::valid_alphabet(alpha.encode@, alpha.decode@))",
+      "evidence_url": "https://github.com/MasWag/crate-proofs/blob/4e1eeb7de7f6c470dd3ec6e8dcf6066152de7784/bs58/0.5.1/creusot/verification/publication/crate/src/lib.rs#L684-L1008"
+    },
+    {
+      "display_path": "bs58::encode_into",
+      "precondition": "(spec::valid_alphabet(alpha.encode@, alpha.decode@))",
+      "evidence_url": "https://github.com/MasWag/crate-proofs/blob/4e1eeb7de7f6c470dd3ec6e8dcf6066152de7784/bs58/0.5.1/creusot/verification/publication/crate/src/lib.rs#L78-L335"
+    },
+    {
+      "display_path": "bs58::Alphabet::new",
+      "precondition": "true",
+      "evidence_url": "https://github.com/MasWag/crate-proofs/blob/4e1eeb7de7f6c470dd3ec6e8dcf6066152de7784/bs58/0.5.1/creusot/verification/publication/crate/src/lib.rs#L29-L63"
+    }
+  ],
+  "findings": [
+    {
+      "id": "09e1ac8e-fefa-4abf-8eab-02bf62ae2774",
+      "title": "Checksum-only data can pass a requested version check"
+    },
+    {
+      "id": "4a74b509-0164-440d-8648-e8515306d225",
+      "title": "Checked decoding changes buffer bytes after the returned length"
+    },
+    {
+      "id": "b49b4ec7-79fd-4189-951f-1b35fb552581",
+      "title": "InvalidChecksum fields disagree with their documentation"
+    }
+  ],
+  "run_ids": [
+    "8bd106e7-13c5-41b0-b8fa-901f2bb09834"
+  ],
+  "source_commit": "4e1eeb7de7f6c470dd3ec6e8dcf6066152de7784",
+  "recording_summary_commit": "b99e545a0ae7886785ee8f64b0897eb10d014d45",
+  "sarif_sha256": "7e75e3650d1730be01ef6228be8002ef4683058207b612711ef7e847e9f6007f",
+  "publication_payload_sha256": "bf9476c35eaedcc8e8b00b922cc24a4c6ab6cc64fcacba13fe2c9613f5ca4ffd",
+  "prior_report_13": {
+    "revision_no": 1,
+    "unchanged": true
+  },
+  "confirmation": "Fetched report and findings anonymously; checked all editorial fields, claim API IDs, finding titles/bodies and run IDs against submitted payload."
+}

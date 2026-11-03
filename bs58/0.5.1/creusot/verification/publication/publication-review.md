@@ -54,3 +54,19 @@ should explicitly identify the original proof crate. Subject to that wording and
 the primary verifying successful standard recording with all four intended API
 entries and linked fresh evidence before publication, the revised prose is
 approved. This conditional editorial approval does not substitute for that run.
+
+## Final publication check
+
+Inspected the final service payload and `recorded-run-summary.json`. The payload
+now explicitly attributes native tests to the original proof crate and links the
+fresh recording receipt at immutable revision
+`b99e545a0ae7886785ee8f64b0897eb10d014d45`. The receipt reports successful standard
+recording `8bd106e7-13c5-41b0-b8fa-901f2bb09834`, exit 0, four intended contracts,
+and all 20 recorded roots passing, for source revision
+`4e1eeb7de7f6c470dd3ec6e8dcf6066152de7784`. The final payload uses that run and
+source, with the three codec alphabet preconditions and unrestricted constructor.
+The historical functional evidence remains separately attributed.
+
+The pending editorial conditions are satisfied: final publication prose approved.
+This last check verifies attribution and receipt consistency; it is not a new
+independent proof audit, service validation, or assertion of publication success.
