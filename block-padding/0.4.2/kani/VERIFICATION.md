@@ -31,3 +31,13 @@ Padding implementations, panic arms, formatting/derives, or the complete externa
 array dependency. The existing Aeneas raw-algorithm results remain separate.
 
 The run emitted unsupported `caller_location` and foreign-function diagnostics. Kani is configured to fail if those operations are reached; they did not cause failures in the passed harnesses.
+
+The version-local [recorder patch](verification/proofs-cli-generic-inherent.patch) and [tool pin](verification/proofs-cli-tool.json) fix discovery of an inherent contract on a nominal generic owner; they do not change Kani, the compiler, or the proof.
+
+On a fresh checkout, restore the pinned release source from the repository root without setting up Aeneas tools:
+
+```sh
+python3.11 scripts/aeneas-manage.py setup block-padding/0.4.2 --sources-only
+```
+
+Then `python3 scripts/prepare.py --check` can check the Kani source derivation from this workspace.

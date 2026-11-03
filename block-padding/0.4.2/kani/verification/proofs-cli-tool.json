@@ -1,0 +1,22 @@
+{
+  "repository": "https://github.com/proofs-rs/proofs-rs",
+  "commit": "2446bcad7d492be2d2036629e5dc94d186a23213",
+  "patch": "proofs-cli-generic-inherent.patch",
+  "patch_sha256": "a7daa11b245e8a205b9db9a858caca54763b11f5b37eaebbd647f90576b5e202",
+  "scope": "Kani publication scanner: nominal generic inherent owner discovery; no verifier or proof source changes",
+  "build": "cargo +stable build --manifest-path .work/proofs-rs/cli/Cargo.toml --locked",
+  "test": "cargo +stable test --manifest-path .work/proofs-rs/cli/Cargo.toml --locked",
+  "workspace_note": "Append independent [workspace] to CLI manifest so this ignored nested checkout does not join the verified crate workspace.",
+  "binary_sha256": "f526c65f60d6ccc77d56a8458ab0324305f36cf890bbad92d56fb5ee8eaa0355",
+  "validation": {
+    "scanner_tests": "25 passed, 0 failed",
+    "full_unit_tests": "60 passed, 0 failed, 3 ignored",
+    "integration_tests": "3 passed, 0 failed",
+    "logs": [
+      ".work/scanner-tests.log",
+      ".work/cli-tests.log"
+    ]
+  },
+  "build_rustc": "rustc 1.94.0 (4a4ef493e 2026-03-02)",
+  "build_target": "aarch64-apple-darwin"
+}

@@ -1,0 +1,74 @@
+diff --git a/cli/Cargo.toml b/cli/Cargo.toml
+index ee7c5a6..1cf7210 100644
+--- a/cli/Cargo.toml
++++ b/cli/Cargo.toml
+@@ -34,3 +34,5 @@ uuid = { version = "1", features = ["v4"] }
+ 
+ [dev-dependencies]
+ tiny_http = "0.12"
++
++[workspace]
+diff --git a/cli/src/scan.rs b/cli/src/scan.rs
+index 9c4b269..392a622 100644
+--- a/cli/src/scan.rs
++++ b/cli/src/scan.rs
+@@ -908,7 +908,22 @@ impl Scanner<'_> {
+                         let syn::Type::Path(owner) = &*i.self_ty else {
+                             continue;
+                         };
+-                        if owner.qself.is_some() || segments(&owner.path).is_err() {
++                        // Inherent APIs use their nominal owner, without its
++                        // lifetime/type/const arguments. Keep callable paths
++                        // strict: only the final owner segment may have angle
++                        // arguments, never an associated-type qualification.
++                        let last = owner.path.segments.len().saturating_sub(1);
++                        if owner.qself.is_some()
++                            || owner.path.leading_colon.is_some()
++                            || owner.path.segments.iter().enumerate().any(|(n, part)| {
++                                !matches!(part.arguments, syn::PathArguments::None)
++                                    && !(n == last
++                                        && matches!(
++                                            part.arguments,
++                                            syn::PathArguments::AngleBracketed(_)
++                                        ))
++                            })
++                        {
+                             continue;
+                         }
+                         CallableContext::Inherent {
+@@ -1390,6 +1405,35 @@ mod tests {
+         assert_eq!(c[0].precondition, "true");
+     }
+     #[test]
++    fn generic_inherent_nominal_owner() {
++        let (_d, p) = project("pub struct PaddedData<'a, N>(&'a N); impl<'a, N> PaddedData<'a, N> { #[kani::requires(true)] #[kani::ensures(|_| true)] pub fn unwrap(self) {} } mod contracts { #[kani::proof_for_contract(crate::PaddedData::unwrap)] fn unwrap_pad() {} }");
++        let c = discover(&p).unwrap();
++        assert_eq!(c.len(), 1);
++        assert_eq!(c[0].api_paths, ["PaddedData::unwrap"]);
++        assert_eq!(c[0].harness, "contracts::unwrap_pad");
++        assert_eq!(c[0].precondition, "(true)");
++    }
++    #[test]
++    fn nested_generic_inherent_owner_and_ambiguity() {
++        let (_d, p) = project("pub struct S<T>(T); impl S<Vec<Option<u8>>> { pub fn f(self) {} } #[kani::proof_for_contract(crate::S::f)] fn check() {}");
++        assert_eq!(discover(&p).unwrap()[0].api_paths, ["S::f"]);
++        let (_d, p) = project("pub struct S<T>(T); impl S<u8> { pub fn f(self) {} } impl S<u16> { pub fn f(self) {} } #[kani::proof_for_contract(crate::S::f)] fn check() {}");
++        assert!(discover(&p).unwrap_err().to_string().contains("Ambiguous"));
++    }
++    #[test]
++    fn generic_associated_owner_and_callable_arguments_stay_unsupported() {
++        let (_d, p) = project("pub struct S<T>(T); impl S<u8>::Associated { pub fn f(self) {} } #[kani::proof_for_contract(crate::S::Associated::f)] fn check() {}");
++        assert!(discover(&p)
++            .unwrap_err()
++            .to_string()
++            .contains("Cannot resolve"));
++        let (_d, p) = project("pub struct S<T>(T); impl<T> S<T> { pub fn f(self) {} } #[kani::proof_for_contract(crate::S::<u8>::f)] fn check() {}");
++        assert!(discover(&p)
++            .unwrap_err()
++            .to_string()
++            .contains("Generic callable paths"));
++    }
++    #[test]
+     fn trait_impl_qualified_target_and_public_reexports() {
+         let (_d, p) = project("mod hidden { pub struct S; pub trait T { fn m(&self); } impl T for S { #[kani::requires(true)] fn m(&self) {} } #[kani::proof_for_contract(<S as T>::m)] fn check() {} } pub use hidden::{S as Alias, T as PublicTrait};");
+         let c = discover(&p).unwrap();

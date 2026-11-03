@@ -12,7 +12,7 @@ limitations = """
 These are bounded checks for U16, not claims for other block sizes, longer inputs, arbitrary downstream Padding implementations, or the whole dependency. The unwrap contract excludes NoPad and Error. The typed pad checks use valid positions and do not establish invalid-position behavior. The count-byte raw decoders' empty and oversized inputs are outside these typed checks. The checks do not establish all Rust undefined-behavior obligations or cryptographic security. Native tests are separate from Kani verification.
 """
 environment = """
-The independent workspace uses block-padding 0.4.2 with hybrid-array 0.4.15 and typenum 1.20.1, Kani 0.68.0 and CBMC 6.11.0. On macOS arm64, a local run passed all 25 harnesses. The workspace results record the target, commands, bounds and evidence; the published contract claim is tied to its recorded run.
+The independent workspace uses block-padding 0.4.2 with hybrid-array 0.4.15 and typenum 1.20.1, Kani 0.68.0 and CBMC 6.11.0. On macOS arm64, a local run passed all 25 harnesses. The workspace results record the target, commands, bounds and evidence; the published contract claim is tied to its recorded run. A version-local recorder discovery fix recognizes the nominal generic owner of the inherent contract; it does not change Kani, the compiler, or the proof.
 """
 
 [tool]
