@@ -105,6 +105,7 @@ from independent review. Never claim a model or reviewer was used when it was no
   local source/docs (`cli/src/config.rs`, `cli/README.md`, `book/src/findings.md` in
   the proofs-rs checkout located via target setup/tool locks). Do not silently
   upgrade a pinned CLI to gain draft or mapping features.
+- For an authorized submission, inspect the actual recorded API, precondition, source commit and successful run before upload, then check the public report matches them. Keep raw functional/refinement evidence distinct from the importer's recorded claims. When the CLI keys local state by absolute manifest path, keep an external recording worktree at the same path through publication; changing paths can select different run/report state.
 - When supported and useful, run `cargo proofs preview --draft` with the selected
   manifest/config and inspect the rendered report and findings. Draft preview is
   unverified and supplies no evidence. For Aeneas, check ordered API/theorem/module/
