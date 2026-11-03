@@ -1,0 +1,9 @@
+{
+  "archive": "run-20261103T133428Z-0xbgsjpv.tar.gz",
+  "availability": "local-only",
+  "member_root": "payload/",
+  "public_url": null,
+  "schema_version": 1,
+  "scope": "Original successful fresh Creusot run, excluding Cargo build intermediates; all source snapshots, generated Coma, proof JSON, Why3 XML, logs and input fingerprints retained.",
+  "sha256": "0bee1438245976e68422a29f83dfdc33a7d9b7c97ba644cfdfe549530376ebc1"
+}

@@ -1,0 +1,48 @@
+{
+  "archive_sha256": "0bee1438245976e68422a29f83dfdc33a7d9b7c97ba644cfdfe549530376ebc1",
+  "before_after_equal": true,
+  "host": "aarch64-apple-darwin",
+  "input_json_sha256": "61b930559866508d12718195b5eb77ef1d2cb0b10c2f16237a0d0d0bd3b02aa5",
+  "native": {
+    "branch_tests": 3,
+    "doctests": 3
+  },
+  "recording": "Actual pinned scanner discovered exactly map_or_else2 with the selected-branch callback premise; no recording/upload success claimed here.",
+  "result_sha256": "69dd4c16f79cfe2709e195a917c984e9b71f087ee3af6ac252acb906abf96beb",
+  "roots": [
+    {
+      "generated": "workspace/verif/option_ext_rlib/impl/impl_OptionExt_for_Option_T/map_or_else2.coma",
+      "name": "vc_map_or_else2_Option_T",
+      "prover": "z3",
+      "role": "product-body",
+      "time": 0.003
+    },
+    {
+      "generated": "workspace/verif/option_ext_rlib/impl/impl_OptionExt_for_Option_T/map_or_else2.coma",
+      "name": "vc_map_or_else_T",
+      "prover": "z3",
+      "role": "standard-library-contract-abstraction",
+      "time": 0.002
+    },
+    {
+      "generated": "workspace/verif/option_ext_rlib/impl/impl_OptionExt_for_Option_T/map_or_else2__refines.coma",
+      "name": "refines",
+      "prover": "z3",
+      "role": "trait-refinement",
+      "time": 0.003
+    },
+    {
+      "generated": "workspace/verif/option_ext_rlib/impl/impl_OptionExt_for_Option_T/option_model.coma",
+      "name": "vc_option_model_Option_T",
+      "prover": "z3",
+      "role": "checked-identity-observation",
+      "time": 0.002
+    }
+  ],
+  "run": "run-20261103T133428Z-0xbgsjpv",
+  "schema_version": 1,
+  "scope": "Original delegated map_or_else2 partial correctness, trait refinement and checked observation; native tests and standard model stub separately classified.",
+  "source_lock_sha256": "41b40388264e5fdf28201a3eb6f0201b1260298c893df1bb1164c501d0a5334f",
+  "status": "passed",
+  "toolchain_lock_sha256": "93a17d78db431ebb6fd5bfce0fc9aeb98c574e86ba6f4f489e7750360d26dad6"
+}

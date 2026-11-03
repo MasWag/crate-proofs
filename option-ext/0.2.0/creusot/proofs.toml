@@ -1,0 +1,23 @@
+[report]
+title = "option-ext 0.2.0 map_or_else2 return behavior"
+explanation = '''
+For `OptionExt::map_or_else2` on `Option<T>`, the contract requires the selected callback's precondition: the default callback for `None`, or the mapping callback applied to the contained value for `Some`. When the method returns, its result satisfies that callback's `FnOnce` postcondition. The contract also records resolution of the unused consumed closure in Creusot's model. It imposes no invocation precondition on that closure.
+
+Thus, if the selected callback's postcondition specifies a particular result, the method's returned value has that result. The trait contract and its refinement for `Option<T>` use a checked logical observation of the receiver.
+'''
+trusted_assumptions = '''
+The unchanged method delegates to `Option::map_or_else`. Its proof relies on Creusot's standard specifications for that operation and `FnOnce`, as well as the verifier and its logical models. The standard option specification describes the same selected branch and closure postcondition; this run does not verify the Rust standard-library implementation. Callback correctness is supplied by its own contract, not established for arbitrary user closures here.
+'''
+limitations = '''
+This is a partial-correctness result: the postcondition holds when the call returns, and the proof does not establish termination or unconditional safety from panics in callbacks. It does not establish arbitrary external effects, exact runtime call counts, general aliasing properties, allocation behavior, or arbitrary destructor panics.
+
+The verified source retains the release's executable `self.map_or_else(default, f)` body and runtime signature. It adds verification annotations and an erased logical trait observation; the observation is the identity for `Option<T>`. The other two methods are excluded from this Creusot configuration but remain present in native builds. This report does not cover those methods or third-party implementations of the trait.
+'''
+environment = '''
+The selected workspace uses option-ext 0.2.0, unpatched Creusot 0.13.0 and Rust nightly-2026-06-22 on `aarch64-apple-darwin`. The workspace's `scripts/verify.sh` runs the verification procedure; its source correspondence check, independent specification, tool lock and results record the supporting evidence. Native tests are separate from the formal proof.
+'''
+
+[tool]
+name = "creusot"
+version = "0.13.0"
+target = "annotated"
