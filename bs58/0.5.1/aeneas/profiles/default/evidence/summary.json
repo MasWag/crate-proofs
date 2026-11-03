@@ -3,16 +3,20 @@
   "date": "2026-11-03",
   "profile": "default",
   "target": "x86_64-unknown-linux-gnu",
-  "local_receipt": ".work/runs/default-a5yz61vo/result.json",
-  "receipt_sha256": "038b737a59aec30c94675c9e6bfbd7342703eb8f862ecb8721682913b48d4a72",
-  "input_fingerprint_sha256": "84a1307fb90c29c0f39f47e51dc3efbc1256fabcc4ab30d2bc50a8b889ac41b4",
+  "local_receipt": ".work/runs/default-igcjr9sh/result.json",
+  "receipt_sha256": "6c69064d19ab742a77be00b0f77c549af664de7ba9301763b701da21390fecdd",
+  "input_fingerprint_sha256": "d108546d280ef9bb04374c372783d622da0ae67acfd86770697d0a6caab174a8",
   "input_fingerprints_equal": true,
   "regeneration_matched": true,
   "lake_build_passed": true,
   "theorem_audit_passed": true,
   "audited_public_theorems": 4,
   "mapped_public_apis": 4,
-  "allowed_axioms": ["propext", "Classical.choice", "Quot.sound"],
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
   "native": {
     "default_feature_tests": 12,
     "default_feature_doctests": 33,
@@ -20,5 +24,8 @@
     "checksum_reproducer": "passed with check and cb58"
   },
   "scope": "Four builder state contracts over unchanged bs58 0.5.1 release bodies; no codec or checksum proof",
-  "publication": "Local verification only; no published report or findings"
+  "publication": "Local verification only; no published report or findings",
+  "initial_local_receipt": ".work/runs/default-a5yz61vo/result.json",
+  "initial_receipt_sha256": "038b737a59aec30c94675c9e6bfbd7342703eb8f862ecb8721682913b48d4a72",
+  "initial_input_fingerprint_sha256": "84a1307fb90c29c0f39f47e51dc3efbc1256fabcc4ab30d2bc50a8b889ac41b4"
 }
