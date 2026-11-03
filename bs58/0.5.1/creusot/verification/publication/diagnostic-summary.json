@@ -1,0 +1,36 @@
+{
+  "kind": "local macro-expanded fixture diagnostic, not a standard cargo-proofs recording",
+  "exit": 0,
+  "command": [
+    "cargo",
+    "creusot",
+    "--no-cache",
+    "--span-mode",
+    "absolute",
+    "--why3find-arg=-j",
+    "--why3find-arg=2"
+  ],
+  "fresh_cargo_target_directory": true,
+  "proof_cache": false,
+  "prior_why3find_session_hints_present": true,
+  "generated_targets": 56,
+  "root_goals": 72,
+  "positive_solver_leaves": 573,
+  "all_trees_compatible_with_unmodified_0_4_1_importer": true,
+  "source_sha256": {
+    "lib.rs": "bd4e9a4f3eb111aa8bb9aea180aa46c57c0fcfe5d84a6434c693b24f5e848b28",
+    "spec.rs": "5eec32a7f21f562ca48b5c4e603f52aec8bce203137792510c3a08fe97a1a01e",
+    "lemmas.rs": "79399c084f55878cede11be6c0874b2fc0257582aa463500c5fc67a2fc42a76d",
+    "encoder_lemmas.rs": "d429af5393e7d61990a7312451bdfac537b959f842d8af69166fcd04787ab907"
+  },
+  "byte_identical_to_accepted_source": {
+    "lib.rs": false,
+    "spec.rs": true,
+    "lemmas.rs": true,
+    "encoder_lemmas.rs": true
+  },
+  "source_transformation": "source-transformation.json",
+  "registry_dependencies_match_pinned_rust_sources": "registry-source-comparison.json",
+  "log_sha256": "48975d1e573f0a0a13beb02e6f9be40c9bb6293496f86dc87e853f16f8406e3c",
+  "recorded_publication_claims": "pending fully fresh detached-worktree standard recorder run after source push"
+}

@@ -1,0 +1,24 @@
+{
+  "archive_sha256": "bf88ba1141d185c399bee5288d850d63b8369520c1eafc32a0430b5b6c287bf4",
+  "source_lock_sha256": "a6e092f8b78cd7881146ca46c5ee4f97f05475666ef23754c601e08b1afd0531",
+  "reference": "../.work/reference",
+  "checked_files": 24,
+  "runtime_src": {
+    "src/alphabet.rs": {
+      "executable": false,
+      "sha256": "b1eca60d07f941989816e33287883ec48400fd548f05a9092cecb88a80f92271"
+    },
+    "src/decode.rs": {
+      "executable": false,
+      "sha256": "8e78cec96915e1ca83d665128292d0b3339a47ce78c05bcb927f03fb70c42cac"
+    },
+    "src/encode.rs": {
+      "executable": false,
+      "sha256": "81d8efa0d086e62e901b577aebe46e2ec66f7bd270f6738469c6d4af21c83283"
+    },
+    "src/lib.rs": {
+      "executable": false,
+      "sha256": "eee508c54fc64a0ffb58d6db610559671e3a3d23f6a98a9a003f399701ab4217"
+    }
+  }
+}

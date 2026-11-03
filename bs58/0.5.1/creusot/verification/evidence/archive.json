@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "availability": "local-only",
+  "public_download_url": null,
+  "archive": ".work/evidence-archives/bs58-0.5.1-creusot-8KtCLWaA.tar.gz",
+  "archive_sha256": "794efbc0f34e35e9b7eb44264224633760194581680b823b8e4a52863961d0af",
+  "archive_bytes": 183514,
+  "manifest_member": "manifest.json",
+  "manifest_sha256": "8449aefd337e795c5e58f6b2516dbb8af2809144af3c443e54a6cf5e620971d6",
+  "members": 248,
+  "formal_run": "creusot-run-8KtCLWaA",
+  "native_run": "native-final-ha3o_dyw",
+  "created_utc": "2026-11-03T17:55:02.037214+00:00",
+  "note": "Packaging preserves accepted evidence; it does not rerun a proof. A checksum alone does not make this local archive publicly retrievable."
+}

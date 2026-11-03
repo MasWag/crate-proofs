@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "utc": "2026-11-03T17:26:16.823114+00:00",
+  "command": [
+    "/home/lab8/mwaga/.cargo/bin/cargo",
+    "+1.94.1",
+    "run",
+    "--locked",
+    "--offline",
+    "--manifest-path",
+    "/home/lab8/mwaga/proof.rs/publication/bs58/0.5.1/creusot/verification/native/Cargo.toml"
+  ],
+  "exit": 0,
+  "inputs_match": true,
+  "input_snapshot_sha256": "4f538ee94f195d24adeec21c39fdf54e06c339982ce997a7b1f2ab32c7dd1502",
+  "log_sha256": "bc9054b9de42d313a3fca79c5869de0146d63ae8aee6b8ce423d2a33109abe29",
+  "bs58_registry_checksum": "bf88ba1141d185c399bee5288d850d63b8369520c1eafc32a0430b5b6c287bf4",
+  "release_files_checked_before_and_after": 24,
+  "registry_files_in_both_input_snapshots": true,
+  "paired_codec_cases": 145388,
+  "fixed_array_comparisons": 120000,
+  "constructor_outcome_cases": 348,
+  "compile_time_tests": [
+    "Alphabet::new",
+    "empty N=0",
+    "112 with N=4 right padding",
+    "same upstream const API result"
+  ],
+  "findings_reproduced": [
+    "F1/check",
+    "F1/cb58",
+    "F2/check",
+    "F2/cb58",
+    "F3/check",
+    "F3/cb58"
+  ],
+  "formal_evidence": false,
+  "run_directory": "/home/lab8/mwaga/proof.rs/publication/bs58/0.5.1/creusot/.work/native-final-ha3o_dyw"
+}

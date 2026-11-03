@@ -1,0 +1,64 @@
+{
+  "status": "passed",
+  "crate": "bs58",
+  "version": "0.5.1",
+  "proof_crate": "bs58_creusot",
+  "scope": "Four documented proof-fork core bodies; not whole-crate or formal release equivalence",
+  "source_archive_sha256": "bf88ba1141d185c399bee5288d850d63b8369520c1eafc32a0430b5b6c287bf4",
+  "toolchain_record": "../toolchain.json",
+  "toolchain_record_sha256": "9a70800f6189b4c3ed6906e9d5125d61bb64ea8366f5aac211d16209f36333f5",
+  "formal": {
+    "run": "creusot-run-8KtCLWaA",
+    "local_run_directory": "/home/lab8/mwaga/proof.rs/publication/bs58/0.5.1/creusot/.work/creusot-run-8KtCLWaA",
+    "fresh_target_directory": true,
+    "proof_cache": false,
+    "compile_exit": 0,
+    "prove_exit": 0,
+    "target_exits_all_zero": true,
+    "generated_targets": 56,
+    "root_goals": 72,
+    "solver_leaves": 542,
+    "computed_roots_replayed": 16,
+    "all_trees_closed": true,
+    "input_fingerprints_match": true,
+    "input_fingerprint_sha256": "f5fe8f7bc3f0fa5bf2a695d8c2224c59ba7c0930c198adb24fa4836133eaafa6",
+    "goal_inventory_sha256": "24533045c88ff4bd44a5ffebe466a6acd5cc648ffdd163c51de303231c51a022",
+    "computed_replay_sha256": "dedb839ba3c16bca0615561e907422262a87649b1365c647aac2da17e2965a8a",
+    "target_exits_sha256": "9bcecfb237d171675f28fee343352c0d28495a6759173494fc94ef649cbd8827"
+  },
+  "native": {
+    "summary_file": "native-summary.json",
+    "summary_sha256": "9e40a38a56a620c6bee23854cf3cf39bb1f618e2f794611a67da482a0caf1c68",
+    "baseline_release_tests": {
+      "passed": 54,
+      "documentation_tests": 38,
+      "features": [
+        "check",
+        "cb58"
+      ],
+      "log_sha256": "84733aad3cba5925362e4020d224be97287315a155a05bd8bf89229674ebb676",
+      "kind": "separate initial baseline observation"
+    }
+  },
+  "findings": [
+    "F1",
+    "F2",
+    "F3"
+  ],
+  "models": {
+    "specification": "gpt-6-astra",
+    "proof_implementation": [
+      "gpt-6-sol",
+      "gpt-6.1-sol"
+    ],
+    "independent_review": "gpt-6-astra"
+  },
+  "archive_descriptor": "archive.json",
+  "raw_evidence_availability": "local-only; fresh source clones rerun verification rather than downloading an archive from its checksum",
+  "archive_sha256": "794efbc0f34e35e9b7eb44264224633760194581680b823b8e4a52863961d0af",
+  "independent_review": {
+    "file": "../review-notes.md",
+    "sha256": "341c8fa198dd9fad43ef9d489af20cbe4fbd56982b554ac8ecce5f3a7c0f433e",
+    "accepted": true
+  }
+}

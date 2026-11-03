@@ -1,0 +1,10 @@
+{
+  "original_lib_sha256": "e436996025a47e60c5760d94266617229188dd2e182ef0a8022ea0e82ae809c0",
+  "publication_lib_sha256": "bd4e9a4f3eb111aa8bb9aea180aa46c57c0fcfe5d84a6434c693b24f5e848b28",
+  "transformation": [
+    "Replace macro_rules wrapper and cfg-selected invocations with the direct Creusot non-const function declaration.",
+    "Replace pub $($constness)? fn decode_into_const with pub fn decode_into_const.",
+    "Keep the full function body and all proof annotations unchanged. Other three Rust source files are byte-identical."
+  ],
+  "native_api_difference": "Only the publication fixture omits native const on decode_into_const; the accepted proof crate preserves it. No formal equivalence claim is made for the registry crate."
+}

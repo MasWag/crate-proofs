@@ -1,0 +1,80 @@
+{
+  "creusot": {
+    "commit": "318615be3b8bbc60d1f6d52469ba5c0bdebed4f1",
+    "tree": "55fef2f2dcdc7407dc711d28fb396c2b41f4b777",
+    "tracked_source_clean": true,
+    "standard_library": "matching unmodified source checkout"
+  },
+  "executables": {
+    "cargo-creusot": {
+      "path": "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/data/creusot/bin/cargo-creusot",
+      "sha256": "d2ccc46a5ee4eeb05728eb8210022e0c40757f5e88098adcc8bc1de3bfe7bd48",
+      "version": "cargo-creusot 0.13.0"
+    },
+    "rustc": {
+      "path": "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/rustup/toolchains/nightly-2026-06-22-x86_64-unknown-linux-gnu/bin/rustc",
+      "sha256": "2be7d800c465b19551289c142e37868deb3240a30de862188e68fa5a4b1ce87d",
+      "version": "rustc 1.98.0-nightly (91fe22da8 2026-06-21)"
+    },
+    "why3": {
+      "path": "/home/lab8/mwaga/.local/share/creusot/_opam/bin/why3",
+      "sha256": "b1a3daa797f105793205a7dd16ebb615b6da542020ed024a8fb621c21f88cf80",
+      "version": "Why3 platform, version 1.8.2+git"
+    },
+    "why3find": {
+      "path": "/home/lab8/mwaga/.local/share/creusot/_opam/bin/why3find",
+      "sha256": "e649e74f2958de519330a73afca75fa7a68e4714250cdb0967c71eee90e37151",
+      "version": "why3find v1.3.0+dev"
+    },
+    "z3": {
+      "path": "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/data/creusot/bin/z3",
+      "sha256": "80ee070b8ffc2fa964b0b879250b2110c47f84c1256a1f9ab76fc7cf95e46292",
+      "version": "Z3 version 4.15.3 - 64 bit"
+    },
+    "cvc5": {
+      "path": "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/data/creusot/bin/cvc5",
+      "sha256": "88e0445c1e30739e356aacb34bf664956efaf31c96f4a428e12b78b22a65da6e",
+      "version": "This is cvc5 version 1.3.1 [git ea1b484 on branch HEAD]"
+    },
+    "cvc4": {
+      "path": "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/data/creusot/bin/cvc4",
+      "sha256": "d38a79cf984592785eda41ec888d94ca107ac1f13058740238041e28c8472e51",
+      "version": "This is CVC4 version 1.8 [git HEAD 52479010]"
+    },
+    "alt-ergo": {
+      "path": "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/data/creusot/bin/alt-ergo",
+      "sha256": "bdc4e487f2bdfd421011c82f545df3f50530aee6d6e406b1e847d433650ca3c1",
+      "version": "v2.6.2"
+    },
+    "creusot-rustc": {
+      "path": "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/data/creusot/toolchains/nightly-2026-06-22/bin/creusot-rustc",
+      "sha256": "62971ac0eb76aa99b3b1f70670b2cf039f290c00255e9a42684dbebf98e6fdc9"
+    },
+    "rustup_proxy": {
+      "path": "/home/lab8/mwaga/.cargo/bin/rustup",
+      "sha256": "5be191e8c70a5007074254cb74d78dbfdd25cd5a61c27de7b8e5410122ec24f4",
+      "version": "Rustup proxy; actual pinned rustc recorded separately"
+    }
+  },
+  "why3_configuration": {
+    "path": "/home/lab8/mwaga/proof.rs/publication/bs58/0.5.1/creusot/.work/tools/data/creusot/creusot_why3.conf",
+    "sha256": "e3344b2cc7139c401a10b02c6905a5518061a190f4f7233d5dad2ced09e49bd9"
+  },
+  "prelude": {
+    "packages/creusot/creusot/float.coma": "c05148aafd64fd532c654a118a725e6f5118366f92826e4c20796edfad3fffcc",
+    "packages/creusot/creusot/int.coma": "a6f2addb613a8f563400e4fd68b8ceef4e02920388b487521724561b28c08b02",
+    "packages/creusot/creusot/prelude.coma": "7d72861f6c685d21ea0a530a50856b88853596d9c80cedcea22e3084a327bdf4",
+    "packages/creusot/creusot/slice.coma": "987b19170f1038c05ae5b801355ca616e8e4a8e452562acd0ed6ae0d94ff1e17"
+  },
+  "why3_origin": "Read-only binaries from existing user local opam switch; user switch unmodified by this task.",
+  "scope": "Tool identity and smoke operation only; no bs58 proof acceptance implied.",
+  "rustc_driver": {
+    "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/rustup/toolchains/nightly-2026-06-22-x86_64-unknown-linux-gnu/lib/librustc_driver-e61e75993036bf19.so": "79fc9ebe2c4da0225bc0ae9e9ff9a415baed9e69b038363e9bdb6605d204b4fa"
+  },
+  "prelude_regenerated_matches": true,
+  "prelude_generator": {
+    "path": "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/target/debug/prelude-generator",
+    "sha256": "5943eabd79f12a80844bf16ba2ae42f93b3af2a6dcec5f0bb0ee6806a44e963f",
+    "source_commit": "318615be3b8bbc60d1f6d52469ba5c0bdebed4f1"
+  }
+}
