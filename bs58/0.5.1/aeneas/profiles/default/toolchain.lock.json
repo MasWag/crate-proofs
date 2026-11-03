@@ -21,13 +21,13 @@
       "patches": [
         {
           "file": "patches/cargo-proofs-preparation.patch",
-          "purpose": "Prepare pinned managed source and tool inputs in isolated CLI checkout; CLI performs standard Lake build and audit.",
-          "regressions": "Pinned CLI preparation and audit tests plus selected bs58 profile run.",
-          "sha256": "c6f12abf3e1e3b6f2ec910179612f3a71d51351826f7b3c7bdb97e9df700e5eb"
+          "purpose": "Prepare pinned managed source and tool inputs in isolated CLI checkout; catalog public generic inherent methods; CLI performs standard Lake build and audit.",
+          "regressions": "Pinned CLI preparation and audit tests, generic inherent API discovery and intermediate generic path rejection, plus selected bs58 profile run.",
+          "sha256": "244544be4dae5249b56bc4bc48daac8418c1a4bf08fd76db0b3db6d483911efb"
         }
       ],
       "revision": "2446bcad7d492be2d2036629e5dc94d186a23213",
-      "tree": "e0a369bf354e14861a21819f366f2db0531d8d48",
+      "tree": "708819fbf795cb52ed192dd80ca7a6487fbd5da9",
       "url": "https://github.com/proofs-rs/proofs-rs.git"
     }
   },

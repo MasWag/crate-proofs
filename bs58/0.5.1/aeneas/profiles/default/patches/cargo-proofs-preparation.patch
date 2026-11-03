@@ -1594,10 +1594,27 @@ index 2be7cbd..78ef0af 100644
              package: None,
              features: vec![],
 diff --git a/cli/src/scan.rs b/cli/src/scan.rs
-index 9c4b269..b047302 100644
+index 9c4b269..897a0a9 100644
 --- a/cli/src/scan.rs
 +++ b/cli/src/scan.rs
-@@ -1261,6 +1261,7 @@ mod tests {
+@@ -908,7 +908,15 @@ impl Scanner<'_> {
+                         let syn::Type::Path(owner) = &*i.self_ty else {
+                             continue;
+                         };
+-                        if owner.qself.is_some() || segments(&owner.path).is_err() {
++                        // Generic arguments on the nominal owner are normal for
++                        // inherent impls (`impl<T> Builder<T>`). Only intermediate
++                        // generic paths need compiler-backed resolution.
++                        if owner.qself.is_some()
++                            || owner.path.leading_colon.is_some()
++                            || owner.path.segments.iter().rev().skip(1).any(|segment| {
++                                !matches!(segment.arguments, syn::PathArguments::None)
++                            })
++                        {
+                             continue;
+                         }
+                         CallableContext::Inherent {
+@@ -1261,6 +1269,7 @@ mod tests {
          let root = d.path().join("lib.rs");
          fs::write(&root, source).unwrap();
          let p = Project {
@@ -1605,3 +1622,38 @@ index 9c4b269..b047302 100644
              name: "demo".into(),
              lib_name: "demo".into(),
              version: "1.0.0".into(),
+@@ -1350,6 +1359,34 @@ mod tests {
+         assert_eq!(c[0].api_paths, ["<demo::S as demo::T>::m"]);
+     }
+     #[test]
++    fn generic_inherent_methods_are_public_callables() {
++        let (_d, p) = project(
++            "pub mod encode { pub struct EncodeBuilder<'a, I: AsRef<[u8]>>(&'a (), I); impl<'a, I: AsRef<[u8]>> EncodeBuilder<'a, I> { pub fn new(input: I, marker: &'a ()) -> Self { Self(marker, input) } pub fn with_alphabet(self, marker: &'a ()) -> Self { Self(marker, self.1) } } } pub mod decode { pub struct DecodeBuilder<'a, I: AsRef<[u8]>>(&'a (), I); impl<'a, I: AsRef<[u8]>> DecodeBuilder<'a, I> { pub fn new(input: I, marker: &'a ()) -> Self { Self(marker, input) } pub fn with_alphabet(self, marker: &'a ()) -> Self { Self(marker, self.1) } } }",
++        );
++        let paths = public_contracts(&p, false, CreusotTarget::All)
++            .unwrap()
++            .into_iter()
++            .flat_map(|contract| contract.api_paths)
++            .collect::<BTreeSet<_>>();
++        assert_eq!(
++            paths,
++            BTreeSet::from([
++                "encode::EncodeBuilder::new".to_owned(),
++                "encode::EncodeBuilder::with_alphabet".to_owned(),
++                "decode::DecodeBuilder::new".to_owned(),
++                "decode::DecodeBuilder::with_alphabet".to_owned(),
++            ])
++        );
++    }
++    #[test]
++    fn generic_intermediate_owner_remains_unsupported() {
++        let source =
++            "pub struct Root<T>(T); pub struct Nested; impl<T> Root<T>::Nested { pub fn method() {} }";
++        assert!(syn::parse_file(source).is_ok());
++        let (_d, p) = project(source);
++        assert!(public_contracts(&p, false, CreusotTarget::All).is_err());
++    }
++    #[test]
+     fn extracts_cfg_attrs_conditions_aliases_and_lines() {
+         let (_d, p) = project("\n#[cfg_attr(kani, kani::requires(x > 0))]\n#[kani::requires(x < 10)]\npub fn f(x: u8) {}\n#[cfg(kani)]\nmod verification {\nuse super::f as target;\n#[kani::proof_for_contract(target)]\nfn check() {}\n}\n");
+         let c = discover(&p).unwrap();
