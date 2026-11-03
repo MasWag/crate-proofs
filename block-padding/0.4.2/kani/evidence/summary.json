@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "verifier": "Kani 0.68.0 / CBMC 6.11.0",
+  "source_commit": "e6f38cca41b323b1fcfba86d4fffc8fdd99c96b4",
+  "report_url": "https://proofs.rs/report/17",
+  "bounds": {
+    "block_size": 16,
+    "detached_max_bytes": 32,
+    "max_blocks": 2,
+    "unwind": 35
+  },
+  "full_fresh_run": {
+    "run_id": "275c9673-8064-4fda-ad53-89ddcb940aab",
+    "harnesses_passed": 25,
+    "harnesses_failed": 0,
+    "property_statuses": {
+      "SUCCESS": 5842,
+      "UNREACHABLE": 267,
+      "FAILURE": 0,
+      "UNDETERMINED": 0
+    },
+    "proof_result": "successful",
+    "recording_result": "failed after proof: SARIF including logs exceeds 8 MiB",
+    "log_member": "payload/record-fixed.log"
+  },
+  "published_run": {
+    "run_id": "b126c0a4-1e33-48aa-bcc4-4217dd403659",
+    "sarif_sha256": "acef7f8f0ad17af5fea9e2eb70c8c8d35cfd80ce90775757d0edd5d8ef4957fe",
+    "mapped_contracts": 1,
+    "api": "block_padding::PaddedData::unwrap",
+    "checks": 409,
+    "statuses": {
+      "pass": 401,
+      "notApplicable": 8,
+      "fail": 0,
+      "open": 0
+    },
+    "recording_result": "successful",
+    "server_validation": 200,
+    "publication": 201,
+    "readback": 200
+  },
+  "native": {
+    "doctests_passed": 6,
+    "interpretation": "Separate native observations; not formal proof."
+  },
+  "supplementary_harnesses": 24,
+  "archive": {
+    "archive": "6a001121634718bb77f4aa36eb5870ddbb4929ed5429bc2bf7408cdb2b7d13fa.tar.gz",
+    "availability": "local-only",
+    "compressed_bytes": 203999,
+    "files": 6,
+    "kind": "local-evidence-archive",
+    "manifest_sha256": "ac248f16a9bf13213133f4992e4aa9ecd063acffaa050c5cbacb0aceee5f56cb",
+    "member_root": "payload/",
+    "public_url": null,
+    "schema_version": 1,
+    "scope": "Original execution records; not a new verification or SARIF result.",
+    "sha256": "6a001121634718bb77f4aa36eb5870ddbb4929ed5429bc2bf7408cdb2b7d13fa",
+    "uncompressed_bytes": 4905865
+  },
+  "archive_store": ".work/evidence-archives",
+  "artifact_sha256": {
+    "record-unwrap.log": "36c98bb71df70ee11f784136ed742974c80944b51d32a6b72608436e2771696a",
+    "scanner-tests.log": "30cac4fc63b9e80c1042e67db49289b5fd7cf6c190a333bb51577a2c88c5116b",
+    "cli-tests.log": "66ef8bf37e33144456707700437c5bb884432415dad54a06008cabb5dfe8c391",
+    "native-tests.log": "6b47c7c6c7d8df9f9335b437850c018c8a4afc97e34a59ec17e3700cfb12d35b",
+    "record-fixed.log": "61b6d4de1e568f451f41d1bb7caede58f52625b2052142c4adc4c3ed1cbea93e",
+    "run.sarif.json": "acef7f8f0ad17af5fea9e2eb70c8c8d35cfd80ce90775757d0edd5d8ef4957fe"
+  },
+  "compiler_metadata": {
+    "ambient": "rustc 1.91.1",
+    "kani_bundled": "rustc 1.100.0-nightly (8925ea358 2026-08-20)"
+  },
+  "review": "Independent Astra source, specification, full raw output, scanner patch, and final SARIF review passed."
+}
