@@ -11,6 +11,49 @@ from aeneas_management import runner
 
 
 class RunnerTests(unittest.TestCase):
+    def test_verify_compares_extraction_with_target_specific_maintained_model(self):
+        for matches in (True, False):
+            with self.subTest(matches=matches), tempfile.TemporaryDirectory() as temporary:
+                root = Path(temporary)
+                profile = root / 'aeneas/profiles/default'
+                maintained = profile / 'proofs/Generated/test-host/Model.lean'
+                maintained.parent.mkdir(parents=True)
+                maintained.write_text('def actual := 1\n')
+                (profile / 'extraction.json').write_text(json.dumps({'models': {'Model.lean': ['actual']}}))
+                (profile / 'inventory.json').write_text('{}')
+                (profile / 'proofs.toml').write_text('')
+                lean = root / 'build'
+                lean.mkdir()
+                (lean / 'lakefile.toml').write_text('name = "sample"\n')
+                (root / 'source.lock.json').write_text('{}')
+                config = {'supported_targets': ['test-host'], 'native': [],
+                          'inventory': 'inventory.json', 'report': 'proofs.toml',
+                          'extractions': [{'config': 'extraction.json',
+                              'models': {'Model.lean': 'proofs/Generated/@TARGET@/Model.lean'}}]}
+                calls = []
+                def run(argv, *args):
+                    calls.append([str(arg) for arg in argv])
+                    if len(argv) > 1 and str(argv[1]).endswith('aeneas-extract.py'):
+                        output = Path(argv[argv.index('--output') + 1])
+                        output.mkdir()
+                        (output / 'Model.lean').write_text('def actual := 1\n' if matches else 'def actual := 2\n')
+                with patch.object(runner, 'configuration', return_value=(profile, config, {})), \
+                     patch.object(runner.tools, 'host', return_value='test-host'), \
+                     patch.object(runner, 'prepare', return_value=(root / 'tools', {'extraction_rust': 'test'}, lean)), \
+                     patch.object(runner.tools, 'environment', return_value={}), \
+                     patch.object(runner, 'fingerprint', return_value={'stable': True}), \
+                     patch.object(runner.tools, 'run', side_effect=run), \
+                     patch.object(runner.source, 'check'):
+                    if matches:
+                        run_dir = runner.verify(root, 'default')
+                    else:
+                        with self.assertRaisesRegex(ValueError, 'Regenerated model differs'):
+                            runner.verify(root, 'default')
+                        run_dir = next((root / '.work/runs').iterdir())
+                status = json.loads((run_dir / 'result.json').read_text())['status']
+                self.assertEqual(status, 'passed' if matches else 'failed')
+                self.assertEqual(any(any(arg.endswith('aeneas-audit.py') for arg in call) for call in calls), matches)
+
     def test_runtime_guard_rejects_unlocked_compiler_inputs(self):
         import os
         with patch.dict(os.environ, {}, clear=True), patch.object(runner.tools, 'host', return_value='native'):

@@ -1,0 +1,46 @@
+{
+  "aliases": [],
+  "files": {
+    ".cargo_vcs_info.json": {
+      "executable": false,
+      "sha256": "d6796518ecb4a22c4fa88353e4fa621353f944a0a79a61152c419bdc0b8a1ab1"
+    },
+    "Cargo.lock": {
+      "executable": false,
+      "sha256": "5e8bc520f9f81d5820f9e46d46f1abf22a6d402ba29a74292eb422aa3f5f7194"
+    },
+    "Cargo.toml": {
+      "executable": false,
+      "sha256": "ecd9eaa1fb85eb5c739bce95bf50387e018e3b3f0d109e97416111acbb190028"
+    },
+    "Cargo.toml.orig": {
+      "executable": false,
+      "sha256": "59aa824bbf80cc75cd8c3056f67c1ca43b9452130831d53d907c967790128531"
+    },
+    "LICENSE-Apache": {
+      "executable": false,
+      "sha256": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594"
+    },
+    "LICENSE-MIT": {
+      "executable": false,
+      "sha256": "e2e245f2b566d0bfafb0f6a04c16b82d710c4e6e7d799e39bb4ef6e541b85b98"
+    },
+    "README.md": {
+      "executable": false,
+      "sha256": "b06b19b8a6dec1dfa913e035ba9f99e04fd6a1a170a86fa03d9d3b9fb03c7de0"
+    },
+    "src/lib.rs": {
+      "executable": false,
+      "sha256": "3d341469c5f036f5b7aca71752a24cfd3d834ecfab1c570b26eb6a2676a8e388"
+    }
+  },
+  "kind": "registry",
+  "manifest_exceptions": {
+    "test": "Adds the verification-only tests/boundaries.rs integration target covering all 180 concrete conversion instances and exhaustive signed/unsigned 16-to-8 input domains. The release library, dependencies, features, and build surface are unchanged."
+  },
+  "name": "num-conv",
+  "schema_version": 1,
+  "sha256": "521739c6d2bac4aa25192232afe6841231376b2b26d4d9fae5ecf8ca5772e441",
+  "url": "https://static.crates.io/crates/num-conv/num-conv-0.2.2.crate",
+  "version": "0.2.2"
+}

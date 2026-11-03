@@ -1,0 +1,61 @@
+[report]
+title = "num-conv 0.2.2 integer conversion correctness"
+explanation = '''
+For every input of each source-declared concrete integer pair, the five public
+conversion methods execute successfully and satisfy these contracts. Widen and deprecated extend preserve the integer value. Truncate keeps
+the destination-width low bits, interpreted as signed for signed destinations.
+Saturating truncate clamps to the destination range; checked truncate returns
+Some of the unchanged value exactly when it fits, and None otherwise. Each
+contract requires successful execution for every value of its source type.
+'''
+trusted_assumptions = '''
+The argument depends on the Aeneas/Charon translation and its integer, cast and
+execution models corresponding to Rust, and on Lean and its kernel. The harness
+loads the unchanged release source as a module and invokes its public methods;
+correspondence with the ordinarily linked release is not separately proved.
+'''
+limitations = '''
+The extraction target is aarch64-apple-darwin; this result does not establish
+behavior on another
+pointer width or target. Native tests are separate from the formal contracts.
+'''
+environment = '''
+The source and tool revisions, verification configuration and local evidence
+are recorded in the num-conv/0.2.2 workspace. See its results.md for current
+status and native test details.
+'''
+
+[tool]
+name = "aeneas"
+version = "be86ab0f1989d04944292b345b24c435be3ad10a"
+lean_dir = ".work/selected-proofs"
+
+[[tool.proofs]]
+api = "<T as num_conv::Widen>::widen"
+module = "Contracts"
+theorem = "NumConvProof.widen_all_spec"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<T as num_conv::Extend>::extend"
+module = "Contracts"
+theorem = "NumConvProof.extend_all_spec"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<T as num_conv::Truncate>::truncate"
+module = "Contracts"
+theorem = "NumConvProof.truncate_all_spec"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<T as num_conv::Truncate>::saturating_truncate"
+module = "Contracts"
+theorem = "NumConvProof.saturating_truncate_all_spec"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<T as num_conv::Truncate>::checked_truncate"
+module = "Contracts"
+theorem = "NumConvProof.checked_truncate_all_spec"
+precondition = "true"

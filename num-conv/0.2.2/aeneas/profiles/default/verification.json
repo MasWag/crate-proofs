@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "supported_targets": [
+    "aarch64-apple-darwin"
+  ],
+  "native": [
+    [
+      "cargo",
+      "test",
+      "--locked"
+    ]
+  ],
+  "extractions": [
+    {
+      "config": "extraction.json",
+      "cwd": "verification/harness",
+      "models": {
+        "NumConvVerificationApi.lean": "proofs/Generated/@TARGET@/NumConvVerificationApi.lean"
+      }
+    }
+  ],
+  "inventory": "theorems.json",
+  "report": "proofs.toml",
+  "lean_dir": "proofs",
+  "additional_checks": [
+    [
+      "python3",
+      "scripts/check-harness.py"
+    ]
+  ]
+}

@@ -1,0 +1,6 @@
+*
+!.gitignore
+!archive.json
+!summary.json
+!fixtures.json
+!README.md

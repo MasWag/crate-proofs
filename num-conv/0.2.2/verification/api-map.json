@@ -1,0 +1,1262 @@
+[
+  {
+    "wrapper": "widen_u8_u8",
+    "source_type": "u8",
+    "destination_type": "u8",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_u8_u8",
+    "source_type": "u8",
+    "destination_type": "u8",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_u8_u8",
+    "source_type": "u8",
+    "destination_type": "u8",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_u8_u8",
+    "source_type": "u8",
+    "destination_type": "u8",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_u8_u8",
+    "source_type": "u8",
+    "destination_type": "u8",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_u8_u16",
+    "source_type": "u8",
+    "destination_type": "u16",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_u8_u16",
+    "source_type": "u8",
+    "destination_type": "u16",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_u16_u8",
+    "source_type": "u16",
+    "destination_type": "u8",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_u16_u8",
+    "source_type": "u16",
+    "destination_type": "u8",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_u16_u8",
+    "source_type": "u16",
+    "destination_type": "u8",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_u8_u32",
+    "source_type": "u8",
+    "destination_type": "u32",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_u8_u32",
+    "source_type": "u8",
+    "destination_type": "u32",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_u32_u8",
+    "source_type": "u32",
+    "destination_type": "u8",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_u32_u8",
+    "source_type": "u32",
+    "destination_type": "u8",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_u32_u8",
+    "source_type": "u32",
+    "destination_type": "u8",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_u8_u64",
+    "source_type": "u8",
+    "destination_type": "u64",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_u8_u64",
+    "source_type": "u8",
+    "destination_type": "u64",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_u64_u8",
+    "source_type": "u64",
+    "destination_type": "u8",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_u64_u8",
+    "source_type": "u64",
+    "destination_type": "u8",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_u64_u8",
+    "source_type": "u64",
+    "destination_type": "u8",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_u8_u128",
+    "source_type": "u8",
+    "destination_type": "u128",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_u8_u128",
+    "source_type": "u8",
+    "destination_type": "u128",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_u128_u8",
+    "source_type": "u128",
+    "destination_type": "u8",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_u128_u8",
+    "source_type": "u128",
+    "destination_type": "u8",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_u128_u8",
+    "source_type": "u128",
+    "destination_type": "u8",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_u8_usize",
+    "source_type": "u8",
+    "destination_type": "usize",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_u8_usize",
+    "source_type": "u8",
+    "destination_type": "usize",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_usize_u8",
+    "source_type": "usize",
+    "destination_type": "u8",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_usize_u8",
+    "source_type": "usize",
+    "destination_type": "u8",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_usize_u8",
+    "source_type": "usize",
+    "destination_type": "u8",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_u16_u16",
+    "source_type": "u16",
+    "destination_type": "u16",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_u16_u16",
+    "source_type": "u16",
+    "destination_type": "u16",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_u16_u16",
+    "source_type": "u16",
+    "destination_type": "u16",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_u16_u16",
+    "source_type": "u16",
+    "destination_type": "u16",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_u16_u16",
+    "source_type": "u16",
+    "destination_type": "u16",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_u16_u32",
+    "source_type": "u16",
+    "destination_type": "u32",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_u16_u32",
+    "source_type": "u16",
+    "destination_type": "u32",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_u32_u16",
+    "source_type": "u32",
+    "destination_type": "u16",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_u32_u16",
+    "source_type": "u32",
+    "destination_type": "u16",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_u32_u16",
+    "source_type": "u32",
+    "destination_type": "u16",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_u16_u64",
+    "source_type": "u16",
+    "destination_type": "u64",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_u16_u64",
+    "source_type": "u16",
+    "destination_type": "u64",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_u64_u16",
+    "source_type": "u64",
+    "destination_type": "u16",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_u64_u16",
+    "source_type": "u64",
+    "destination_type": "u16",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_u64_u16",
+    "source_type": "u64",
+    "destination_type": "u16",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_u16_u128",
+    "source_type": "u16",
+    "destination_type": "u128",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_u16_u128",
+    "source_type": "u16",
+    "destination_type": "u128",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_u128_u16",
+    "source_type": "u128",
+    "destination_type": "u16",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_u128_u16",
+    "source_type": "u128",
+    "destination_type": "u16",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_u128_u16",
+    "source_type": "u128",
+    "destination_type": "u16",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_u16_usize",
+    "source_type": "u16",
+    "destination_type": "usize",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_u16_usize",
+    "source_type": "u16",
+    "destination_type": "usize",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_usize_u16",
+    "source_type": "usize",
+    "destination_type": "u16",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_usize_u16",
+    "source_type": "usize",
+    "destination_type": "u16",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_usize_u16",
+    "source_type": "usize",
+    "destination_type": "u16",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_u32_u32",
+    "source_type": "u32",
+    "destination_type": "u32",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_u32_u32",
+    "source_type": "u32",
+    "destination_type": "u32",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_u32_u32",
+    "source_type": "u32",
+    "destination_type": "u32",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_u32_u32",
+    "source_type": "u32",
+    "destination_type": "u32",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_u32_u32",
+    "source_type": "u32",
+    "destination_type": "u32",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_u32_u64",
+    "source_type": "u32",
+    "destination_type": "u64",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_u32_u64",
+    "source_type": "u32",
+    "destination_type": "u64",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_u64_u32",
+    "source_type": "u64",
+    "destination_type": "u32",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_u64_u32",
+    "source_type": "u64",
+    "destination_type": "u32",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_u64_u32",
+    "source_type": "u64",
+    "destination_type": "u32",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_u32_u128",
+    "source_type": "u32",
+    "destination_type": "u128",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_u32_u128",
+    "source_type": "u32",
+    "destination_type": "u128",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_u128_u32",
+    "source_type": "u128",
+    "destination_type": "u32",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_u128_u32",
+    "source_type": "u128",
+    "destination_type": "u32",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_u128_u32",
+    "source_type": "u128",
+    "destination_type": "u32",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_u64_u64",
+    "source_type": "u64",
+    "destination_type": "u64",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_u64_u64",
+    "source_type": "u64",
+    "destination_type": "u64",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_u64_u64",
+    "source_type": "u64",
+    "destination_type": "u64",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_u64_u64",
+    "source_type": "u64",
+    "destination_type": "u64",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_u64_u64",
+    "source_type": "u64",
+    "destination_type": "u64",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_u64_u128",
+    "source_type": "u64",
+    "destination_type": "u128",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_u64_u128",
+    "source_type": "u64",
+    "destination_type": "u128",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_u128_u64",
+    "source_type": "u128",
+    "destination_type": "u64",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_u128_u64",
+    "source_type": "u128",
+    "destination_type": "u64",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_u128_u64",
+    "source_type": "u128",
+    "destination_type": "u64",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_u128_u128",
+    "source_type": "u128",
+    "destination_type": "u128",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_u128_u128",
+    "source_type": "u128",
+    "destination_type": "u128",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_u128_u128",
+    "source_type": "u128",
+    "destination_type": "u128",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_u128_u128",
+    "source_type": "u128",
+    "destination_type": "u128",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_u128_u128",
+    "source_type": "u128",
+    "destination_type": "u128",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_usize_usize",
+    "source_type": "usize",
+    "destination_type": "usize",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_usize_usize",
+    "source_type": "usize",
+    "destination_type": "usize",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_usize_usize",
+    "source_type": "usize",
+    "destination_type": "usize",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_usize_usize",
+    "source_type": "usize",
+    "destination_type": "usize",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_usize_usize",
+    "source_type": "usize",
+    "destination_type": "usize",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_i8_i8",
+    "source_type": "i8",
+    "destination_type": "i8",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_i8_i8",
+    "source_type": "i8",
+    "destination_type": "i8",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_i8_i8",
+    "source_type": "i8",
+    "destination_type": "i8",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_i8_i8",
+    "source_type": "i8",
+    "destination_type": "i8",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_i8_i8",
+    "source_type": "i8",
+    "destination_type": "i8",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_i8_i16",
+    "source_type": "i8",
+    "destination_type": "i16",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_i8_i16",
+    "source_type": "i8",
+    "destination_type": "i16",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_i16_i8",
+    "source_type": "i16",
+    "destination_type": "i8",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_i16_i8",
+    "source_type": "i16",
+    "destination_type": "i8",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_i16_i8",
+    "source_type": "i16",
+    "destination_type": "i8",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_i8_i32",
+    "source_type": "i8",
+    "destination_type": "i32",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_i8_i32",
+    "source_type": "i8",
+    "destination_type": "i32",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_i32_i8",
+    "source_type": "i32",
+    "destination_type": "i8",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_i32_i8",
+    "source_type": "i32",
+    "destination_type": "i8",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_i32_i8",
+    "source_type": "i32",
+    "destination_type": "i8",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_i8_i64",
+    "source_type": "i8",
+    "destination_type": "i64",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_i8_i64",
+    "source_type": "i8",
+    "destination_type": "i64",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_i64_i8",
+    "source_type": "i64",
+    "destination_type": "i8",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_i64_i8",
+    "source_type": "i64",
+    "destination_type": "i8",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_i64_i8",
+    "source_type": "i64",
+    "destination_type": "i8",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_i8_i128",
+    "source_type": "i8",
+    "destination_type": "i128",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_i8_i128",
+    "source_type": "i8",
+    "destination_type": "i128",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_i128_i8",
+    "source_type": "i128",
+    "destination_type": "i8",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_i128_i8",
+    "source_type": "i128",
+    "destination_type": "i8",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_i128_i8",
+    "source_type": "i128",
+    "destination_type": "i8",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_i8_isize",
+    "source_type": "i8",
+    "destination_type": "isize",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_i8_isize",
+    "source_type": "i8",
+    "destination_type": "isize",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_isize_i8",
+    "source_type": "isize",
+    "destination_type": "i8",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_isize_i8",
+    "source_type": "isize",
+    "destination_type": "i8",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_isize_i8",
+    "source_type": "isize",
+    "destination_type": "i8",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_i16_i16",
+    "source_type": "i16",
+    "destination_type": "i16",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_i16_i16",
+    "source_type": "i16",
+    "destination_type": "i16",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_i16_i16",
+    "source_type": "i16",
+    "destination_type": "i16",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_i16_i16",
+    "source_type": "i16",
+    "destination_type": "i16",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_i16_i16",
+    "source_type": "i16",
+    "destination_type": "i16",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_i16_i32",
+    "source_type": "i16",
+    "destination_type": "i32",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_i16_i32",
+    "source_type": "i16",
+    "destination_type": "i32",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_i32_i16",
+    "source_type": "i32",
+    "destination_type": "i16",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_i32_i16",
+    "source_type": "i32",
+    "destination_type": "i16",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_i32_i16",
+    "source_type": "i32",
+    "destination_type": "i16",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_i16_i64",
+    "source_type": "i16",
+    "destination_type": "i64",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_i16_i64",
+    "source_type": "i16",
+    "destination_type": "i64",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_i64_i16",
+    "source_type": "i64",
+    "destination_type": "i16",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_i64_i16",
+    "source_type": "i64",
+    "destination_type": "i16",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_i64_i16",
+    "source_type": "i64",
+    "destination_type": "i16",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_i16_i128",
+    "source_type": "i16",
+    "destination_type": "i128",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_i16_i128",
+    "source_type": "i16",
+    "destination_type": "i128",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_i128_i16",
+    "source_type": "i128",
+    "destination_type": "i16",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_i128_i16",
+    "source_type": "i128",
+    "destination_type": "i16",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_i128_i16",
+    "source_type": "i128",
+    "destination_type": "i16",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_i16_isize",
+    "source_type": "i16",
+    "destination_type": "isize",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_i16_isize",
+    "source_type": "i16",
+    "destination_type": "isize",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_isize_i16",
+    "source_type": "isize",
+    "destination_type": "i16",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_isize_i16",
+    "source_type": "isize",
+    "destination_type": "i16",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_isize_i16",
+    "source_type": "isize",
+    "destination_type": "i16",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_i32_i32",
+    "source_type": "i32",
+    "destination_type": "i32",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_i32_i32",
+    "source_type": "i32",
+    "destination_type": "i32",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_i32_i32",
+    "source_type": "i32",
+    "destination_type": "i32",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_i32_i32",
+    "source_type": "i32",
+    "destination_type": "i32",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_i32_i32",
+    "source_type": "i32",
+    "destination_type": "i32",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_i32_i64",
+    "source_type": "i32",
+    "destination_type": "i64",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_i32_i64",
+    "source_type": "i32",
+    "destination_type": "i64",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_i64_i32",
+    "source_type": "i64",
+    "destination_type": "i32",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_i64_i32",
+    "source_type": "i64",
+    "destination_type": "i32",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_i64_i32",
+    "source_type": "i64",
+    "destination_type": "i32",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_i32_i128",
+    "source_type": "i32",
+    "destination_type": "i128",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_i32_i128",
+    "source_type": "i32",
+    "destination_type": "i128",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_i128_i32",
+    "source_type": "i128",
+    "destination_type": "i32",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_i128_i32",
+    "source_type": "i128",
+    "destination_type": "i32",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_i128_i32",
+    "source_type": "i128",
+    "destination_type": "i32",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_i64_i64",
+    "source_type": "i64",
+    "destination_type": "i64",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_i64_i64",
+    "source_type": "i64",
+    "destination_type": "i64",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_i64_i64",
+    "source_type": "i64",
+    "destination_type": "i64",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_i64_i64",
+    "source_type": "i64",
+    "destination_type": "i64",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_i64_i64",
+    "source_type": "i64",
+    "destination_type": "i64",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_i64_i128",
+    "source_type": "i64",
+    "destination_type": "i128",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_i64_i128",
+    "source_type": "i64",
+    "destination_type": "i128",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_i128_i64",
+    "source_type": "i128",
+    "destination_type": "i64",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_i128_i64",
+    "source_type": "i128",
+    "destination_type": "i64",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_i128_i64",
+    "source_type": "i128",
+    "destination_type": "i64",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_i128_i128",
+    "source_type": "i128",
+    "destination_type": "i128",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_i128_i128",
+    "source_type": "i128",
+    "destination_type": "i128",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_i128_i128",
+    "source_type": "i128",
+    "destination_type": "i128",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_i128_i128",
+    "source_type": "i128",
+    "destination_type": "i128",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_i128_i128",
+    "source_type": "i128",
+    "destination_type": "i128",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  },
+  {
+    "wrapper": "widen_isize_isize",
+    "source_type": "isize",
+    "destination_type": "isize",
+    "trait": "Widen",
+    "method": "widen"
+  },
+  {
+    "wrapper": "extend_isize_isize",
+    "source_type": "isize",
+    "destination_type": "isize",
+    "trait": "Extend",
+    "method": "extend"
+  },
+  {
+    "wrapper": "truncate_isize_isize",
+    "source_type": "isize",
+    "destination_type": "isize",
+    "trait": "Truncate",
+    "method": "truncate"
+  },
+  {
+    "wrapper": "saturating_truncate_isize_isize",
+    "source_type": "isize",
+    "destination_type": "isize",
+    "trait": "Truncate",
+    "method": "saturating_truncate"
+  },
+  {
+    "wrapper": "checked_truncate_isize_isize",
+    "source_type": "isize",
+    "destination_type": "isize",
+    "trait": "Truncate",
+    "method": "checked_truncate"
+  }
+]

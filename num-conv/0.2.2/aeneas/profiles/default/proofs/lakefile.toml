@@ -1,0 +1,26 @@
+name = "num_conv_proofs"
+version = "0.1.0"
+defaultTargets = ["Contracts"]
+
+[[require]]
+name = "aeneas"
+path = "@AENEAS_BACKEND@"
+
+[[lean_lib]]
+name = "NumConvVerificationApi"
+srcDir = "Generated/@TARGET@"
+
+[[lean_lib]]
+name = "Specs"
+
+[[lean_lib]]
+name = "Proofs"
+
+[[lean_lib]]
+name = "ScalarLemmas"
+
+[[lean_lib]]
+name = "Operations"
+
+[[lean_lib]]
+name = "Contracts"

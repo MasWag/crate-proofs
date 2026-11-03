@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "resolved_at_utc": "2026-11-03T09:28:58.116565+00:00",
+  "registry_index_url": "https://index.crates.io/nu/m-/num-conv",
+  "registry_index_sha256": "fbf9e6b3975428a96ea37452e7101241e285f62703975886b9d78b6f40f84595",
+  "latest_unyanked_version": "0.2.2",
+  "published_at": "2026-05-18T18:35:52Z",
+  "archive_sha256": "521739c6d2bac4aa25192232afe6841231376b2b26d4d9fae5ecf8ca5772e441",
+  "release_vcs": {
+    "git": {
+      "sha1": "b022fe87ac3ad5b0d7606ea7465549eaa92efe97"
+    },
+    "path_in_vcs": ""
+  },
+  "release_library_sha256": "3d341469c5f036f5b7aca71752a24cfd3d834ecfab1c570b26eb6a2676a8e388",
+  "source_adaptation": null
+}

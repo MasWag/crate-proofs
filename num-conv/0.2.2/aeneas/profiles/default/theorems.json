@@ -1,0 +1,1177 @@
+{
+  "checked": [
+    {
+      "name": "NumConvProof.widen_u8_u8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_u8_u8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_u8_u8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_u8_u8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_u8_u8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_u8_u16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_u8_u16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_u16_u8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_u16_u8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_u16_u8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_u8_u32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_u8_u32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_u32_u8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_u32_u8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_u32_u8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_u8_u64_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_u8_u64_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_u64_u8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_u64_u8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_u64_u8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_u8_u128_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_u8_u128_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_u128_u8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_u128_u8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_u128_u8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_u8_usize_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_u8_usize_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_usize_u8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_usize_u8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_usize_u8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_u16_u16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_u16_u16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_u16_u16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_u16_u16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_u16_u16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_u16_u32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_u16_u32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_u32_u16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_u32_u16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_u32_u16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_u16_u64_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_u16_u64_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_u64_u16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_u64_u16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_u64_u16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_u16_u128_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_u16_u128_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_u128_u16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_u128_u16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_u128_u16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_u16_usize_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_u16_usize_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_usize_u16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_usize_u16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_usize_u16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_u32_u32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_u32_u32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_u32_u32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_u32_u32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_u32_u32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_u32_u64_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_u32_u64_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_u64_u32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_u64_u32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_u64_u32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_u32_u128_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_u32_u128_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_u128_u32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_u128_u32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_u128_u32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_u64_u64_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_u64_u64_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_u64_u64_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_u64_u64_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_u64_u64_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_u64_u128_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_u64_u128_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_u128_u64_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_u128_u64_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_u128_u64_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_u128_u128_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_u128_u128_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_u128_u128_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_u128_u128_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_u128_u128_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_usize_usize_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_usize_usize_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_usize_usize_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_usize_usize_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_usize_usize_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_i8_i8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_i8_i8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_i8_i8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_i8_i8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_i8_i8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_i8_i16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_i8_i16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_i16_i8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_i16_i8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_i16_i8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_i8_i32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_i8_i32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_i32_i8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_i32_i8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_i32_i8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_i8_i64_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_i8_i64_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_i64_i8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_i64_i8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_i64_i8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_i8_i128_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_i8_i128_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_i128_i8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_i128_i8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_i128_i8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_i8_isize_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_i8_isize_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_isize_i8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_isize_i8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_isize_i8_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_i16_i16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_i16_i16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_i16_i16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_i16_i16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_i16_i16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_i16_i32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_i16_i32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_i32_i16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_i32_i16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_i32_i16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_i16_i64_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_i16_i64_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_i64_i16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_i64_i16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_i64_i16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_i16_i128_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_i16_i128_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_i128_i16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_i128_i16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_i128_i16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_i16_isize_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_i16_isize_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_isize_i16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_isize_i16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_isize_i16_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_i32_i32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_i32_i32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_i32_i32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_i32_i32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_i32_i32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_i32_i64_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_i32_i64_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_i64_i32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_i64_i32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_i64_i32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_i32_i128_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_i32_i128_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_i128_i32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_i128_i32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_i128_i32_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_i64_i64_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_i64_i64_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_i64_i64_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_i64_i64_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_i64_i64_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_i64_i128_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_i64_i128_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_i128_i64_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_i128_i64_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_i128_i64_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_i128_i128_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_i128_i128_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_i128_i128_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_i128_i128_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_i128_i128_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_isize_isize_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_isize_isize_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_isize_isize_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_isize_isize_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_isize_isize_spec",
+      "module": "Proofs",
+      "scope": "public-concrete-instance",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.widen_all_spec",
+      "module": "Contracts",
+      "scope": "public-model",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.extend_all_spec",
+      "module": "Contracts",
+      "scope": "public-model",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.truncate_all_spec",
+      "module": "Contracts",
+      "scope": "public-model",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.saturating_truncate_all_spec",
+      "module": "Contracts",
+      "scope": "public-model",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.checked_truncate_all_spec",
+      "module": "Contracts",
+      "scope": "public-model",
+      "precondition": "true"
+    },
+    {
+      "name": "NumConvProof.unsigned_cast_contract",
+      "module": "ScalarLemmas",
+      "scope": "helper"
+    },
+    {
+      "name": "NumConvProof.signed_cast_contract",
+      "module": "ScalarLemmas",
+      "scope": "helper"
+    },
+    {
+      "name": "NumConvProof.unsignedCastSelf",
+      "module": "Operations",
+      "scope": "helper"
+    },
+    {
+      "name": "NumConvProof.signedCastSelf",
+      "module": "Operations",
+      "scope": "helper"
+    },
+    {
+      "name": "NumConvProof.unsignedSat_spec",
+      "module": "Operations",
+      "scope": "helper"
+    },
+    {
+      "name": "NumConvProof.unsignedChecked_spec",
+      "module": "Operations",
+      "scope": "helper"
+    },
+    {
+      "name": "NumConvProof.signedSat_spec",
+      "module": "Operations",
+      "scope": "helper"
+    },
+    {
+      "name": "NumConvProof.signedChecked_spec",
+      "module": "Operations",
+      "scope": "helper"
+    }
+  ],
+  "recorder_mappings": [
+    {
+      "api": "<T as num_conv::Widen>::widen",
+      "theorem": "NumConvProof.widen_all_spec"
+    },
+    {
+      "api": "<T as num_conv::Extend>::extend",
+      "theorem": "NumConvProof.extend_all_spec"
+    },
+    {
+      "api": "<T as num_conv::Truncate>::truncate",
+      "theorem": "NumConvProof.truncate_all_spec"
+    },
+    {
+      "api": "<T as num_conv::Truncate>::saturating_truncate",
+      "theorem": "NumConvProof.saturating_truncate_all_spec"
+    },
+    {
+      "api": "<T as num_conv::Truncate>::checked_truncate",
+      "theorem": "NumConvProof.checked_truncate_all_spec"
+    }
+  ],
+  "extracted_but_unproved": []
+}

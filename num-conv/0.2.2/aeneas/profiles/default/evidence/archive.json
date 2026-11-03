@@ -1,0 +1,17 @@
+{
+  "archive": "e5478b8f0703eacf258681268abc232d50abfffb1294d7b795b2cb999955c741.tar.gz",
+  "availability": "local-only",
+  "compressed_bytes": 677580,
+  "files": 165,
+  "kind": "local-evidence-archive",
+  "local_store": "num-conv/0.2.2/.work/evidence-archives",
+  "manifest_sha256": "628e8b463f2a152b44d38bb3c8d910bc23aac2a15fc6507ac00b0e3e18d853f7",
+  "member_root": "payload/",
+  "original_evidence_root": "num-conv/0.2.2/.work/evidence-bundle-2026-11-03",
+  "path_base": "repository-root",
+  "public_url": null,
+  "schema_version": 1,
+  "scope": "Original execution records; not a new verification or SARIF result.",
+  "sha256": "e5478b8f0703eacf258681268abc232d50abfffb1294d7b795b2cb999955c741",
+  "uncompressed_bytes": 9979248
+}

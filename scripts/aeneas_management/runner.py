@@ -478,7 +478,7 @@ def verify(root, name, offline=False, prepared=None):
             if set(expected) != set(extraction['models']):
                 raise ValueError('Extraction comparison inventory is incomplete')
             for generated, maintained in extraction['models'].items():
-                maintained = maintained.replace('@TARGET@', tools.host()).replace('.proofs-toolchain/aeneas/backends/lean', str(backend))
+                maintained = maintained.replace('@TARGET@', tools.host())
                 if (output / generated).read_bytes() != source.contained(profile, maintained).read_bytes():
                     raise ValueError(f'Regenerated model differs: {generated}')
         with (run_dir / 'lean-clean.log').open('wb') as log:
