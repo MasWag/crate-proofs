@@ -3,9 +3,9 @@
   "date": "2026-11-03",
   "profile": "default",
   "target": "x86_64-unknown-linux-gnu",
-  "local_receipt": ".work/runs/default-igcjr9sh/result.json",
-  "receipt_sha256": "6c69064d19ab742a77be00b0f77c549af664de7ba9301763b701da21390fecdd",
-  "input_fingerprint_sha256": "d108546d280ef9bb04374c372783d622da0ae67acfd86770697d0a6caab174a8",
+  "local_receipt": ".work/runs/default-w7bk_vlt/result.json",
+  "receipt_sha256": "9fe1c620e23f10e401dac0adaa13fc5292eaa2cddc619b99200c53d4c939fe44",
+  "input_fingerprint_sha256": "160e6b754054ffe47b5e482b5bf73c1ccb27e948c8ce8e3e3ca8f83e9489584b",
   "input_fingerprints_equal": true,
   "regeneration_matched": true,
   "lake_build_passed": true,
@@ -27,5 +27,8 @@
   "publication": "Local verification only; no published report or findings",
   "initial_local_receipt": ".work/runs/default-a5yz61vo/result.json",
   "initial_receipt_sha256": "038b737a59aec30c94675c9e6bfbd7342703eb8f862ecb8721682913b48d4a72",
-  "initial_input_fingerprint_sha256": "84a1307fb90c29c0f39f47e51dc3efbc1256fabcc4ab30d2bc50a8b889ac41b4"
+  "initial_input_fingerprint_sha256": "84a1307fb90c29c0f39f47e51dc3efbc1256fabcc4ab30d2bc50a8b889ac41b4",
+  "previous_local_receipt": ".work/runs/default-igcjr9sh/result.json",
+  "previous_receipt_sha256": "6c69064d19ab742a77be00b0f77c549af664de7ba9301763b701da21390fecdd",
+  "previous_input_fingerprint_sha256": "d108546d280ef9bb04374c372783d622da0ae67acfd86770697d0a6caab174a8"
 }
