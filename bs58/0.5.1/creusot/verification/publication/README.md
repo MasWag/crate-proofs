@@ -38,3 +38,8 @@ The original accepted sources, contracts, run and evidence archive are preserved
 Only a successful fresh standard recorder result can supply publication claims.
 The standard Creusot importer claims panic-contract verification; the narrative
 functional guarantees refer to the separately identified complete proof evidence.
+
+The successful fresh standard recorder run and its exact four API bindings are
+listed in the [recorded run summary](recorded-run-summary.json). The summary
+distinguishes the 20 API root goals retained in SARIF from the complete temporary
+generated inventory and discloses which raw artifacts remain local-only.

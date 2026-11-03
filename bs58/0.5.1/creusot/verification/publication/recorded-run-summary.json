@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "kind": "Fresh standard cargo-proofs recording of the disclosed publication fixture",
+  "run_id": "8bd106e7-13c5-41b0-b8fa-901f2bb09834",
+  "source": {
+    "repositoryUri": "https://github.com/MasWag/crate-proofs",
+    "revisionId": "4e1eeb7de7f6c470dd3ec6e8dcf6066152de7784"
+  },
+  "subject": {
+    "crate": "bs58",
+    "version": "0.5.1",
+    "identity": "verification fork, not unchanged registry distribution"
+  },
+  "recorder": {
+    "name": "cargo-proofs",
+    "version": "0.4.1",
+    "modified": false,
+    "binary_sha256": "eba29f2df80a3e75b3795ff7b5e65783dafc326162b7e302810b657981b1393d"
+  },
+  "tool": {
+    "name": "creusot",
+    "version": "0.13.0"
+  },
+  "command": [
+    "cargo",
+    "creusot",
+    "--no-cache",
+    "--span-mode",
+    "absolute",
+    "--why3find-arg=-j",
+    "--why3find-arg=2"
+  ],
+  "started_utc": "2026-11-03T23:35:52.406665921+00:00",
+  "finished_utc": "2026-11-03T23:39:45.507676804+00:00",
+  "execution_successful": true,
+  "verifier_exit_code": 0,
+  "fresh_detached_git_worktree": true,
+  "proof_cache": false,
+  "proof_search": "Direct Z3/CVC5 with split_vc; no computational preprocessing",
+  "proof_inputs": "source-transformation.json and registry-source-comparison.json",
+  "standard_importer_scope": "panic_contract; functional correctness is supported separately by the original complete proof evidence",
+  "recorded_contracts": 4,
+  "recorded_root_goals": 20,
+  "positive_solver_leaves": 481,
+  "generated_targets_passed_from_captured_stdout": 56,
+  "transient_generated_inventory_observed": {
+    "generated_sessions": 56,
+    "root_goals": 72,
+    "basis": "Read-only inspection after the fresh prover reported success, before automatic worktree cleanup. The standard SARIF retains the 20 mapped API roots; the complete temporary session tree was removed by the recorder."
+  },
+  "bindings": [
+    {
+      "api_paths": [
+        "bs58::decode_into"
+      ],
+      "file": "bs58/0.5.1/creusot/verification/publication/crate/src/lib.rs",
+      "first_line": 337,
+      "harness": "bs58::decode_into",
+      "last_line": 680,
+      "precondition": "(spec::valid_alphabet(alpha.encode@, alpha.decode@))",
+      "recorded_root_goals": 7,
+      "all_recorded_roots_pass": true,
+      "positive_solver_leaves": 156,
+      "root_names": [
+        "Coma/vc_decode_append_step",
+        "Coma/vc_decode_horner_step",
+        "Coma/vc_decode_into",
+        "Coma/vc_decode_tail_step",
+        "Coma/vc_full_prefix_le",
+        "Coma/vc_len_u8",
+        "Coma/vc_new_unit"
+      ]
+    },
+    {
+      "api_paths": [
+        "bs58::decode_into_const"
+      ],
+      "file": "bs58/0.5.1/creusot/verification/publication/crate/src/lib.rs",
+      "first_line": 684,
+      "harness": "bs58::decode_into_const",
+      "last_line": 1008,
+      "precondition": "(spec::valid_alphabet(alpha.encode@, alpha.decode@))",
+      "recorded_root_goals": 6,
+      "all_recorded_roots_pass": true,
+      "positive_solver_leaves": 155,
+      "root_names": [
+        "Coma/vc_decode_append_step",
+        "Coma/vc_decode_horner_step",
+        "Coma/vc_decode_into_const",
+        "Coma/vc_le_extend_step",
+        "Coma/vc_len_u8",
+        "Coma/vc_new_unit"
+      ]
+    },
+    {
+      "api_paths": [
+        "bs58::encode_into"
+      ],
+      "file": "bs58/0.5.1/creusot/verification/publication/crate/src/lib.rs",
+      "first_line": 78,
+      "harness": "bs58::encode_into",
+      "last_line": 335,
+      "precondition": "(spec::valid_alphabet(alpha.encode@, alpha.decode@))",
+      "recorded_root_goals": 5,
+      "all_recorded_roots_pass": true,
+      "positive_solver_leaves": 132,
+      "root_names": [
+        "Coma/vc_append_step",
+        "Coma/vc_encode_into",
+        "Coma/vc_horner_step",
+        "Coma/vc_len_u8",
+        "Coma/vc_new_unit"
+      ]
+    },
+    {
+      "api_paths": [
+        "bs58::Alphabet::new"
+      ],
+      "file": "bs58/0.5.1/creusot/verification/publication/crate/src/lib.rs",
+      "first_line": 29,
+      "harness": "bs58::Alphabet::new",
+      "last_line": 63,
+      "precondition": "true",
+      "recorded_root_goals": 2,
+      "all_recorded_roots_pass": true,
+      "positive_solver_leaves": 38,
+      "root_names": [
+        "Coma/vc_len_u8",
+        "Coma/vc_new"
+      ]
+    }
+  ],
+  "sarif": {
+    "sha256": "7e75e3650d1730be01ef6228be8002ef4683058207b612711ef7e847e9f6007f",
+    "bytes": 75581,
+    "local_path": "/home/lab8/mwaga/proof.rs/publication/bs58/0.5.1/creusot/.work/tools/data/cargo-proofs/9a1da476691c6fa897250b0eecba60c0fd67d848680cc530f9015fa9d919613c/runs/8bd106e7-13c5-41b0-b8fa-901f2bb09834/run.sarif.json",
+    "availability": "local-only unless separately uploaded by publication; this summary does not itself host the SARIF"
+  },
+  "recorder_log": {
+    "local_path": "/home/lab8/mwaga/proof.rs/publication/bs58/0.5.1/creusot/.work/publication-standard-recorder.log",
+    "availability": "local-only"
+  },
+  "original_accepted_proof_inputs": "Preserved; this fixture and its new recording do not replace the original accepted run."
+}
