@@ -99,5 +99,18 @@ archive and Lean dependency caches with its detached checkout. The mapped
 `Proofs.Delegation` module imports `Proofs.CountSpaces` so the standard recording
 build also checks the helper. The public recorded theorem mapping remains
 delegation only, and the private classifier's named-theorem audit is separate
-local evidence. Publication remains pending until source-publication
-prerequisites and the actual recording/service workflow succeed.
+local evidence. The standard CLI successfully recorded run
+`8a8b9769-e23d-447f-8204-e76e709fc466` against published source commit
+`cabbee9506c6abcc2b9a42e7694ddc2ebdf7f07d`.
+
+[Report #20](https://proofs.rs/report/20), revision 1, is public. Read-back through
+its public API confirms one conditional delegation claim and one CRLF finding;
+all report prose fields and the finding body exactly match the local TOML. The
+private classifier remains a separately locally audited support theorem. The
+full core algorithms and formal adaptation equivalence remain unproved.
+
+Publication used the original successful CLI SARIF; failed recording attempts
+were retained as diagnostics and were not uploaded as successful evidence.
+Local publication receipts and API responses remain in ignored `.work/`. The
+complete managed-run archives remain local-only even though the report and its
+standard recorded evidence are public.
