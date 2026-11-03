@@ -67,6 +67,26 @@ problem. Existing issue similarity is not confirmed duplication. Check current
 upstream only when investigating/reporting upstream status, and keep that probe
 separate from the pinned verification result.
 
+## Consider faithful source adaptation
+
+Check the user's actual constraint before ruling out an approach. An unchanged
+Aeneas toolchain can still verify a Rust refactoring if application changes are
+permitted. For an unsupported construct, evaluate whether supported control flow
+or an equivalent expression can preserve the independent specification, including
+errors, bounds, output representation and observable mutation where relevant.
+Keep the original reproducer and record why each attempted adaptation is faithful.
+
+Managed release source remains immutable: keep any permitted transformation as an
+explicit patch or separate derived input, with original and adapted hashes and a
+reproducible application step. Review the target's source policy before integrating
+it; do not silently rewrite the locked archive or claim unchanged release bytes.
+Distinguish a reviewed correspondence argument from a formally checked equivalence
+proof. A theorem about adapted code does not automatically verify the release body.
+
+If the core remains blocked, state the unsupported boundary and the unattempted or
+remaining options. Keep independently useful wrapper proofs scoped to their own
+contracts; they do not resolve the core algorithm's proof obligations.
+
 ## Re-enter the maintained proof
 
 A successful probe is not an accepted result. Review any source/model/tool changes,

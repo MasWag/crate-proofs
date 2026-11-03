@@ -153,6 +153,36 @@ Use direct log redirection if Bash process substitution is blocked by the execut
 sandbox. Keep commands visible in scripts and propagate errors (`set -euo pipefail`
 for Bash). Never overwrite an accepted run to conceal changed inputs or a failed retry.
 
+## Resource planning
+
+Before long toolchain or Lean dependency builds, check free space in both the build
+directory and temporary storage. Select a sufficiently large `TMPDIR` when needed.
+Use the managed runner's supported dependency-cache inputs, with its revision and
+clean-source checks; do not replace proof outputs with unchecked cached artifacts.
+Preserve failed-run evidence when retrying with different storage or cache settings.
+
+## Recording and publication preflight
+
+When a proofs.rs report is requested, exercise the pinned adapter's actual callable
+discovery against the intended Rust source early. Compare discovered APIs with the
+theorem mappings, including methods on generic inherent impls. Matching local
+inventories or reaching a commit/push prerequisite does not establish that the
+adapter recognizes those APIs. Preserve any scanner fix and meaningful regression
+tests as tool changes, separately from the formal proof result.
+
+Separate local proof, CLI recording, service validation and publication outcomes.
+A rustdoc/schema incompatibility is a publication blocker, not a failed theorem.
+If the service supports a recorded-API fallback, preserve the original proof
+artifact and disclose that API provenance and any unimported signatures or safety
+metadata. Validate through the supported service path; do not fabricate a rustdoc
+catalogue or rewrite proof results to bypass an import failure.
+
+Reuse the caller's existing CLI authentication and configuration location before
+starting a new login flow. Request short-lived device codes only when the workflow
+is ready to use them, and never log credentials. Publication still requires the
+user's authorization. Keep exact versions, diagnostics, patches and case-specific
+workarounds in the target's evidence rather than turning them into shared policy.
+
 ## proofs.rs recording (historical compatibility context)
 
 Local Lean verification and recording are separate. The adler2-tested cargo-proofs

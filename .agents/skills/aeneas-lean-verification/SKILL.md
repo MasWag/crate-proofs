@@ -34,7 +34,11 @@ whose failures or interruptions must remain analyzable, use the optional
    and commit; the previous target's pins are a restoration baseline, not latest.
    Record compatibility patches exactly and check them. Never silently upgrade tools
    or dependency locks while reproducing evidence.
-3. Extract local `crate::...` entries into a fresh directory using the shared
+3. Probe extraction of the requested core operations early, before extensive proof
+   work on wrappers. An unsupported construct is an extraction blocker, not evidence
+   that the algorithm cannot be verified. Evaluate supported selection options and,
+   when permitted, faithful Rust refactoring using [boundary diagnosis](references/boundary-diagnosis.md).
+   Extract local `crate::...` entries into a fresh directory using the shared
    `scripts/aeneas-extract.py`. Configure expected generated files and required
    definitions in the version-local `verification/aeneas.json`. Inspect dependency
    bodies and source spans. Never hand-edit generated Lean, accept partial output
@@ -59,7 +63,9 @@ whose failures or interruptions must remain analyzable, use the optional
    tests separately, and compare input fingerprints before/after. Include the shared
    scripts themselves in the fingerprint. Preserve historical runs. Report scope,
    source/model trust and excluded APIs in results; neither extraction nor a build
-   alone proves a contract.
+   alone proves a contract. If recording or publication is requested, exercise actual
+   API discovery early and keep publication failures separate from proof failures;
+   see [setup and runner](references/setup-and-runner.md).
 
 ## Managed targets
 

@@ -162,7 +162,11 @@ CLI's source-publication prerequisites. Neither a preparation script nor an
 uncommitted-source rejection is a successful proof recording. Upload/publication
 requires separate explicit authorization.
 
-CLI wiring is a separate acceptance check from layout lint. Set each report’s `[tool].lean_dir` to `.work/selected-proofs` (or the exact prepared build path), not the former `proofs` source directory. Every nested preparation profile table requires its own `schema_version = 1`. Exercise every report partition through the pinned CLI; on an uncommitted checkout it must reach the existing commit/push prerequisite rather than fail parsing, path resolution, tool checks or API/theorem validation. Each API mapping in a report needs a unique theorem name; use exact specialized theorems when a generic proof covers multiple concrete API instances. Never drop mappings to satisfy that constraint.
+CLI wiring is a separate acceptance check from layout lint. Set each report’s `[tool].lean_dir` to `.work/selected-proofs` (or the exact prepared build path), not the former `proofs` source directory. Every nested preparation profile table requires its own `schema_version = 1`. Exercise every report partition through the pinned CLI; on an uncommitted checkout it must reach the existing commit/push prerequisite rather than fail parsing, path resolution, tool checks or API/theorem validation.
+
+Reaching that prerequisite alone does not validate callable discovery: separately compare the adapter’s discovered APIs with the intended mappings, including generic inherent methods (see [recording preflight](../../../.agents/skills/aeneas-lean-verification/references/setup-and-runner.md#recording-and-publication-preflight)).
+
+Each API mapping in a report needs a unique theorem name; use exact specialized theorems when a generic proof covers multiple concrete API instances. Never drop mappings to satisfy that constraint.
 
 Use the official 40-character base commit for `[tool].version`; describe applied patches in the tool lock. CLI proof entries currently accept only `api`, `module`, `theorem` and `precondition`. Keep additional classification metadata in the complete catalog and specifications, explicitly list any omitted descriptive fields in the partition manifest, and compare the exact supported-field projection with the ordered union of report partitions. Preconditions and API coverage must never be dropped by that projection.
 

@@ -5,6 +5,8 @@
 - Use `.agents/skills/creusot-verification/SKILL.md` for Creusot and `.agents/skills/aeneas-lean-verification/SKILL.md` for Aeneas + Lean. Follow the target version's own `AGENTS.md`, environment and skill for its proof scope and commands; do not mix the two toolchain activations.
 - When body proofs succeed but model boundaries, iterator laws/refinements, or consumers do not compose, use `.agents/skills/creusot-proof-composition/SKILL.md` to diagnose the missing relation and choose a checked bridge.
 - Preserve the stated contracts and report native tests separately from formal proof. Do not claim excluded APIs or unselected code are verified.
+- Apply user constraints to their stated scope: freezing a verifier does not by itself forbid refactoring the Rust being verified. Preserve release correspondence and disclose any source adaptation.
+- Keep the requested core algorithms explicit in the coverage ledger. Investigate their extraction early; builder or state-accessor proofs do not establish algorithm correctness. Record blockers and remaining proof work separately.
 - Use `.agents/skills/proofs-report-writing/SKILL.md` when writing or reviewing `proofs.toml`, reader-facing report findings, or crate-local investigation records.
 - Keep specification design, proof implementation and independent review responsibilities explicit. The primary reviews contracts, commands, evidence and coverage claims.
 - Do not log in, push, publish, deploy, or publish evidence without explicit authorization.
