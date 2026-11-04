@@ -1,0 +1,6 @@
+{
+  "profile": [],
+  "proofs": {
+    "Coma": { "vc_tail_complete": { "prover": "alt-ergo", "time": 8.9 } }
+  }
+}

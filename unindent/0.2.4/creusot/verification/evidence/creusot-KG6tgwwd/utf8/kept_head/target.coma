@@ -1,0 +1,48 @@
+(* #"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 145 0 145 49 *)
+
+let%span sutf8 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 141 11 141 58
+let%span sutf8'0 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 142 11 142 47
+let%span sutf8'1 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 143 10 143 51
+let%span sutf8'2 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 144 10 144 52
+let%span sutf8'3 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 122 10 122 21
+let%span sutf8'4 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 125 8 129 9
+let%span sord = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/ord.rs" 22 8 22 20
+let%span sseq = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/seq.rs" 160 8 160 39
+
+use creusot.int.UInt8
+use seq.Seq
+use int.Int
+
+predicate gt_log_Int [@inline:trivial] (self: int) (other: int) = [%#sord] other < self
+
+meta "rewrite_def" predicate gt_log_Int
+
+function tail_u8 (self: Seq.seq UInt8.t) : Seq.seq UInt8.t = [%#sseq] Seq.([..]) self 1 (Seq.length self)
+
+predicate ascii_erasure [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 123 0 123 61] (input: Seq.seq UInt8.t) (output: Seq.seq UInt8.t)
+
+axiom ascii_erasure_def:
+  forall input: Seq.seq UInt8.t, output: Seq.seq UInt8.t [ascii_erasure input output]. ascii_erasure input output
+    = ([%#sutf8'4] if Seq.length input = 0 then
+      Seq.length output = 0
+    else
+      UInt8.t'int (Seq.get input 0) < 128 /\ ascii_erasure (tail_u8 input) output
+      \/ gt_log_Int (Seq.length output) 0
+      /\ Seq.get input 0 = Seq.get output 0 /\ ascii_erasure (tail_u8 input) (tail_u8 output)
+    )
+
+meta "compute_max_steps" 1000000
+
+meta "select_lsinst" "all"
+
+constant input : Seq.seq UInt8.t
+
+constant output : Seq.seq UInt8.t
+
+function kept_head [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 145 0 145 49] (input: Seq.seq UInt8.t) (output: Seq.seq UInt8.t) : ()
+
+goal vc_kept_head: ([%#sutf8] gt_log_Int (Seq.length input) 0 /\ ascii_erasure input output)
+  -> ([%#sutf8'0] not ascii_erasure (tail_u8 input) output)
+  -> ([@stop_split] [@expl:kept_head ensures] ([@stop_split] [@expl:kept_head ensures #0] [%#sutf8'1] gt_log_Int (Seq.length output) 0
+    /\ Seq.get output 0 = Seq.get input 0)
+  /\ ([@stop_split] [@expl:kept_head ensures #1] [%#sutf8'2] ascii_erasure (tail_u8 input) (tail_u8 output)))

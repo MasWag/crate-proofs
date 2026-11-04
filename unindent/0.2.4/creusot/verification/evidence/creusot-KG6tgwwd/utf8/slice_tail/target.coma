@@ -1,0 +1,54 @@
+(* #"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 67 0 67 37 *)
+
+let%span sutf8 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 64 11 64 32
+let%span sutf8'0 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 65 10 65 68
+let%span sutf8'1 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 66 10 66 80
+let%span sutf8'2 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 37 11 37 29
+let%span sutf8'3 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 38 11 38 64
+let%span sutf8'4 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 39 10 39 16
+let%span sutf8'5 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 40 50 40 52
+let%span sseq = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/seq.rs" 160 8 160 39
+
+use creusot.int.UInt8
+use seq.Seq
+use int.Int
+
+function tail_u8 (self: Seq.seq UInt8.t) : Seq.seq UInt8.t = [%#sseq] Seq.([..]) self 1 (Seq.length self)
+
+function bytes_extensional_u8 [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 40 0 40 49] (a: Seq.seq UInt8.t) (b: Seq.seq UInt8.t) : ()
+ = [%#sutf8'5] ()
+
+axiom bytes_extensional_u8_spec: forall a: Seq.seq UInt8.t, b: Seq.seq UInt8.t. ([%#sutf8'2] Seq.length a
+      = Seq.length b)
+    -> ([%#sutf8'3] forall i: int. 0 <= i /\ i < Seq.length a -> Seq.get a i = Seq.get b i) -> ([%#sutf8'4] a = b)
+
+meta "compute_max_steps" 1000000
+
+meta "select_lsinst" "all"
+
+constant s : Seq.seq UInt8.t
+
+constant n : int
+
+function slice_tail [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 67 0 67 37] (s: Seq.seq UInt8.t) (n: int) : ()
+
+goal vc_slice_tail: ([%#sutf8] 0 < n /\ n <= Seq.length s)
+  -> (let a = tail_u8 (Seq.([..]) s 0 n) in let b = Seq.([..]) (tail_u8 s) 0 (n - 1) in (forall i: int. 0 <= i
+        /\ i < Seq.length a -> Seq.get a i = Seq.get b i)
+  && ([@stop_split] [@expl:bytes_extensional requires] ([@stop_split] [@expl:bytes_extensional requires #0] [%#sutf8'2] Seq.length a
+      = Seq.length b)
+    /\ ([@stop_split] [@expl:bytes_extensional requires #1] [%#sutf8'3] forall i: int. 0 <= i /\ i < Seq.length a
+      -> Seq.get a i = Seq.get b i))
+  /\ (([@stop_split] [@expl:bytes_extensional ensures] [%#sutf8'4] a = b)
+  -> (let _ = bytes_extensional_u8 a b in let a'0 = Seq.([..]) (tail_u8 s) (n
+  - 1) (Seq.length (tail_u8 s)) in let b'0 = Seq.([..]) s n (Seq.length s) in (forall i: int. 0 <= i
+        /\ i < Seq.length a'0 -> Seq.get a'0 i = Seq.get b'0 i)
+  && ([@stop_split] [@expl:bytes_extensional requires] ([@stop_split] [@expl:bytes_extensional requires #0] [%#sutf8'2] Seq.length a'0
+      = Seq.length b'0)
+    /\ ([@stop_split] [@expl:bytes_extensional requires #1] [%#sutf8'3] forall i: int. 0 <= i /\ i < Seq.length a'0
+      -> Seq.get a'0 i = Seq.get b'0 i))
+  /\ (([@stop_split] [@expl:bytes_extensional ensures] [%#sutf8'4] a'0 = b'0)
+  -> (let _ = bytes_extensional_u8 a'0 b'0 in [@stop_split] [@expl:slice_tail ensures] ([@stop_split] [@expl:slice_tail ensures #0] [%#sutf8'0] tail_u8 (Seq.([..]) s 0 n)
+    = Seq.([..]) (tail_u8 s) 0 (n - 1))
+  /\ ([@stop_split] [@expl:slice_tail ensures #1] [%#sutf8'1] Seq.([..]) (tail_u8 s) (n - 1) (Seq.length (tail_u8 s))
+  = Seq.([..]) s n (Seq.length s)))))))

@@ -1,0 +1,9 @@
+[package]
+name = "unindent"
+version = "0.2.4"
+edition = "2021"
+[workspace]
+[dependencies]
+creusot-std = "=0.13.0"
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(creusot)'] }

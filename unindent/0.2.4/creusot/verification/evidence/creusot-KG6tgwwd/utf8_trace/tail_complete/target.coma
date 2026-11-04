@@ -1,0 +1,110 @@
+(* #"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 11 0 11 70 *)
+
+let%span sord = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/ord.rs" 22 8 22 20
+let%span sord'0 = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/ord.rs" 34 8 34 21
+let%span sseq = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/seq.rs" 160 8 160 39
+let%span slogic = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic.rs" 39 11 39 28
+let%span slogic'0 = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic.rs" 40 10 40 19
+let%span smapping = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/mapping.rs" 66 8 66 19
+let%span sutf8_trace = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 6 11 6 55
+let%span sutf8_trace'0 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 7 11 8 69
+let%span sutf8_trace'1 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 9 10 10 83
+
+use creusot.int.UInt8
+use seq.Seq
+use map.Map
+use int.Int
+
+predicate gt_log_Int [@inline:trivial] (self: int) (other: int) = [%#sord] other < self
+
+meta "rewrite_def" predicate gt_log_Int
+
+predicate ge_log_Int [@inline:trivial] (self: int) (other: int) = [%#sord'0] other <= self
+
+meta "rewrite_def" predicate ge_log_Int
+
+function tail_Int (self: Seq.seq int) : Seq.seq int = [%#sseq] Seq.([..]) self 1 (Seq.length self)
+
+predicate index_Mapping_Int_bool [@inline:trivial] (self: Map.map int bool) (a: int) = [%#smapping] Map.get self a
+
+meta "rewrite_def" predicate index_Mapping_Int_bool
+
+function such_that_Int (p: Map.map int bool) : int
+
+axiom such_that_Int_spec:
+  forall p: Map.map int bool [such_that_Int p]. ([%#slogic] exists x: int. index_Mapping_Int_bool p x)
+    -> ([%#slogic'0] index_Mapping_Int_bool p (such_that_Int p))
+
+meta "compute_max_steps" 1000000
+
+meta "select_lsinst" "all"
+
+constant source : Seq.seq UInt8.t
+
+constant start : int
+
+constant positions : Seq.seq int
+
+function tail_complete [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 11 0 11 70] (source: Seq.seq UInt8.t) (start: int) (positions: Seq.seq int) : ()
+
+goal vc_tail_complete: ([%#sutf8_trace] gt_log_Int (Seq.length positions) 0 /\ Seq.get positions 0 = start)
+  -> ([%#sutf8_trace'0] forall i: int. start < i
+        /\ i < Seq.length source /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128
+      -> (exists k: int. 1 <= k /\ k < Seq.length positions /\ Seq.get positions k = i))
+  -> (if exists i: int. start < i
+    /\ i < Seq.length source
+    /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128
+    /\ not (exists k: int. 0 <= k /\ k < Seq.length (tail_Int positions) /\ Seq.get (tail_Int positions) k = i) then
+    ([@stop_split] [@expl:such_that requires] [%#slogic] exists x: int. index_Mapping_Int_bool (fun (i: int) -> start
+          < i
+        /\ i < Seq.length source
+        /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128
+        /\ not (exists k: int. 0 <= k /\ k < Seq.length (tail_Int positions) /\ Seq.get (tail_Int positions) k = i)) x)
+    /\ (([@stop_split] [@expl:such_that ensures] [%#slogic'0] index_Mapping_Int_bool (fun (i: int) -> start < i
+      /\ i < Seq.length source
+      /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128
+      /\ not (exists k: int. 0 <= k
+        /\ k < Seq.length (tail_Int positions)
+        /\ Seq.get (tail_Int positions) k = i)) (such_that_Int (fun (i: int) -> start < i
+      /\ i < Seq.length source
+      /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128
+      /\ not (exists k: int. 0 <= k /\ k < Seq.length (tail_Int positions) /\ Seq.get (tail_Int positions) k = i))))
+    -> (let i = such_that_Int (fun (i: int) -> start < i
+    /\ i < Seq.length source
+    /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128
+    /\ not (exists k: int. 0 <= k
+      /\ k < Seq.length (tail_Int positions)
+      /\ Seq.get (tail_Int positions) k
+      = i)) in ([@stop_split] [@expl:such_that requires] [%#slogic] exists x: int. index_Mapping_Int_bool (fun (k: int) -> 1
+          <= k
+        /\ k < Seq.length positions /\ Seq.get positions k = i) x)
+    /\ (([@stop_split] [@expl:such_that ensures] [%#slogic'0] index_Mapping_Int_bool (fun (k: int) -> 1 <= k
+      /\ k < Seq.length positions /\ Seq.get positions k = i) (such_that_Int (fun (k: int) -> 1 <= k
+      /\ k < Seq.length positions /\ Seq.get positions k = i)))
+    -> (let k = such_that_Int (fun (k: int) -> 1 <= k /\ k < Seq.length positions /\ Seq.get positions k = i) in if 0
+    <= k - 1 then
+      if k - 1 < Seq.length (tail_Int positions) then
+        Seq.get (tail_Int positions) (k - 1) = i
+        && ([@stop_split] [@expl:tail_complete ensures] [%#sutf8_trace'1] forall i'0: int. start < i'0
+            /\ i'0 < Seq.length source /\ ge_log_Int (UInt8.t'int (Seq.get source i'0)) 128
+          -> (exists k'0: int. 0 <= k'0
+            /\ k'0 < Seq.length (tail_Int positions) /\ Seq.get (tail_Int positions) k'0 = i'0))
+      else
+        false
+        && ([@stop_split] [@expl:tail_complete ensures] [%#sutf8_trace'1] forall i'0: int. start < i'0
+            /\ i'0 < Seq.length source /\ ge_log_Int (UInt8.t'int (Seq.get source i'0)) 128
+          -> (exists k'0: int. 0 <= k'0
+            /\ k'0 < Seq.length (tail_Int positions) /\ Seq.get (tail_Int positions) k'0 = i'0))
+    
+    else
+      false
+      && ([@stop_split] [@expl:tail_complete ensures] [%#sutf8_trace'1] forall i'0: int. start < i'0
+          /\ i'0 < Seq.length source /\ ge_log_Int (UInt8.t'int (Seq.get source i'0)) 128
+        -> (exists k'0: int. 0 <= k'0
+          /\ k'0 < Seq.length (tail_Int positions) /\ Seq.get (tail_Int positions) k'0 = i'0))
+    ))))
+  else
+    [@stop_split] [@expl:tail_complete ensures] [%#sutf8_trace'1] forall i: int. start < i
+        /\ i < Seq.length source /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128
+      -> (exists k: int. 0 <= k /\ k < Seq.length (tail_Int positions) /\ Seq.get (tail_Int positions) k = i)
+  )

@@ -1,0 +1,6 @@
+{
+  "profile": [],
+  "proofs": {
+    "Coma": { "vc_ascii_scalar_tail": { "prover": "z3", "time": 0.038 } }
+  }
+}

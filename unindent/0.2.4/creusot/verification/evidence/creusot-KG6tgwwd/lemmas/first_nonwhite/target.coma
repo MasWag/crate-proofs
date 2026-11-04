@@ -1,0 +1,84 @@
+(* #"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lemmas.rs" 27 0 27 60 *)
+
+let%span sord = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/ord.rs" 34 8 34 21
+let%span sord'0 = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/ord.rs" 22 8 22 20
+let%span swell_founded = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/well_founded.rs" 43 8 43 33
+let%span slemmas = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lemmas.rs" 26 10 26 16
+let%span slemmas'0 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lemmas.rs" 19 11 19 57
+let%span slemmas'1 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lemmas.rs" 20 11 20 25
+let%span slemmas'2 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lemmas.rs" 21 11 21 57
+let%span slemmas'3 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lemmas.rs" 22 11 22 60
+let%span slemmas'4 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lemmas.rs" 23 11 23 25
+let%span slemmas'5 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lemmas.rs" 24 10 24 37
+let%span slemmas'6 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lemmas.rs" 25 10 25 38
+let%span sspec = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 5 30 5 51
+let%span sspec'0 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 98 16 100 56
+
+use creusot.int.UInt8
+use seq.Seq
+use int.Int
+
+predicate white [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 5 0 5 27] (b: UInt8.t) =
+  [%#sspec] b = (32: UInt8.t) \/ b = (9: UInt8.t)
+
+predicate later_candidate [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 97 0 97 58] (s: Seq.seq UInt8.t) (a: int) (k: int) =
+  [%#sspec'0] 0 < a
+  /\ a <= k
+  /\ k < Seq.length s
+  /\ Seq.get s (a - 1) = (10: UInt8.t)
+  /\ Seq.get s k <> (10: UInt8.t) /\ not white (Seq.get s k) /\ (forall j: int. a <= j /\ j < k -> white (Seq.get s j))
+
+predicate ge_log_Int [@inline:trivial] (self: int) (other: int) = [%#sord] other <= self
+
+meta "rewrite_def" predicate ge_log_Int
+
+predicate gt_log_Int [@inline:trivial] (self: int) (other: int) = [%#sord'0] other < self
+
+meta "rewrite_def" predicate gt_log_Int
+
+predicate well_founded_relation_Int [@inline:trivial] (self: int) (other: int) =
+  [%#swell_founded] ge_log_Int self 0 /\ gt_log_Int self other
+
+meta "rewrite_def" predicate well_founded_relation_Int
+
+meta "compute_max_steps" 1000000
+
+meta "select_lsinst" "all"
+
+constant s : Seq.seq UInt8.t
+
+constant a : int
+
+constant at' : int
+
+constant end' : int
+
+function first_nonwhite [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lemmas.rs" 27 0 27 60] (s: Seq.seq UInt8.t) (a: int) (at': int) (end': int) : int
+
+goal vc_first_nonwhite: ([%#slemmas'0] 0 < a /\ a <= at' /\ at' <= end' /\ end' < Seq.length s)
+  -> ([%#slemmas'1] Seq.get s (a - 1) = (10: UInt8.t))
+  -> ([%#slemmas'2] forall j: int. a <= j /\ j < at' -> white (Seq.get s j))
+  -> ([%#slemmas'3] forall j: int. a <= j /\ j <= end' -> Seq.get s j <> (10: UInt8.t))
+  -> ([%#slemmas'4] not white (Seq.get s end'))
+  -> (if white (Seq.get s at') then
+    (([@stop_split] [@expl:first_nonwhite requires] ([@stop_split] [@expl:first_nonwhite requires #0] [%#slemmas'0] 0
+            < a
+          /\ a <= at' + 1 /\ at' + 1 <= end' /\ end' < Seq.length s)
+        /\ ([@stop_split] [@expl:first_nonwhite requires #1] [%#slemmas'1] Seq.get s (a - 1) = (10: UInt8.t))
+        /\ ([@stop_split] [@expl:first_nonwhite requires #2] [%#slemmas'2] forall j: int. a <= j /\ j < at' + 1
+            -> white (Seq.get s j))
+        /\ ([@stop_split] [@expl:first_nonwhite requires #3] [%#slemmas'3] forall j: int. a <= j /\ j <= end'
+            -> Seq.get s j <> (10: UInt8.t))
+        /\ ([@stop_split] [@expl:first_nonwhite requires #4] [%#slemmas'4] not white (Seq.get s end')))
+      /\ ([@expl:variant decreases] well_founded_relation_Int ([%#slemmas] end' - at') ([%#slemmas] end' - (at' + 1))))
+    /\ (([@stop_split] [@expl:first_nonwhite ensures] ([@stop_split] [@expl:first_nonwhite ensures #0] [%#slemmas'5] later_candidate s a (first_nonwhite s a (at'
+        + 1) end'))
+      /\ ([@stop_split] [@expl:first_nonwhite ensures #1] [%#slemmas'6] a <= first_nonwhite s a (at' + 1) end'
+      /\ first_nonwhite s a (at' + 1) end' <= end'))
+    -> (let result = first_nonwhite s a (at'
+    + 1) end' in [@stop_split] [@expl:first_nonwhite ensures] ([@stop_split] [@expl:first_nonwhite ensures #0] [%#slemmas'5] later_candidate s a result)
+    /\ ([@stop_split] [@expl:first_nonwhite ensures #1] [%#slemmas'6] a <= result /\ result <= end')))
+  else
+    let result = at' in [@stop_split] [@expl:first_nonwhite ensures] ([@stop_split] [@expl:first_nonwhite ensures #0] [%#slemmas'5] later_candidate s a result)
+    /\ ([@stop_split] [@expl:first_nonwhite ensures #1] [%#slemmas'6] a <= result /\ result <= end')
+  )

@@ -1,0 +1,40 @@
+(* #"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 92 0 92 43 *)
+
+let%span sutf8 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 90 11 90 33
+let%span sutf8'0 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 91 10 91 68
+let%span sutf8'1 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 37 11 37 29
+let%span sutf8'2 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 38 11 38 64
+let%span sutf8'3 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 39 10 39 16
+let%span sutf8'4 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 40 50 40 52
+
+use creusot.int.UInt8
+use seq.Seq
+use int.Int
+
+function bytes_extensional_u8 [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 40 0 40 49] (a: Seq.seq UInt8.t) (b: Seq.seq UInt8.t) : ()
+ = [%#sutf8'4] ()
+
+axiom bytes_extensional_u8_spec: forall a: Seq.seq UInt8.t, b: Seq.seq UInt8.t. ([%#sutf8'1] Seq.length a
+      = Seq.length b)
+    -> ([%#sutf8'2] forall i: int. 0 <= i /\ i < Seq.length a -> Seq.get a i = Seq.get b i) -> ([%#sutf8'3] a = b)
+
+meta "compute_max_steps" 1000000
+
+meta "select_lsinst" "all"
+
+constant s : Seq.seq UInt8.t
+
+constant n : int
+
+function bytes_split_join [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 92 0 92 43] (s: Seq.seq UInt8.t) (n: int) : ()
+
+goal vc_bytes_split_join: ([%#sutf8] 0 <= n /\ n <= Seq.length s)
+  -> (let joined = Seq.(++) (Seq.([..]) s 0 n) (Seq.([..]) s n (Seq.length s)) in (forall i: int. 0 <= i
+        /\ i < Seq.length s -> Seq.get joined i = Seq.get s i)
+  && ([@stop_split] [@expl:bytes_extensional requires] ([@stop_split] [@expl:bytes_extensional requires #0] [%#sutf8'1] Seq.length joined
+      = Seq.length s)
+    /\ ([@stop_split] [@expl:bytes_extensional requires #1] [%#sutf8'2] forall i: int. 0 <= i /\ i < Seq.length joined
+      -> Seq.get joined i = Seq.get s i))
+  /\ (([@stop_split] [@expl:bytes_extensional ensures] [%#sutf8'3] joined = s)
+  -> (let _ = bytes_extensional_u8 joined s in [@stop_split] [@expl:bytes_split_join ensures] [%#sutf8'0] Seq.(++) (Seq.([..]) s 0 n) (Seq.([..]) s n (Seq.length s))
+  = s)))

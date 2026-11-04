@@ -1,0 +1,9 @@
+{
+  "profile": [],
+  "proofs": {
+    "Coma": {
+      "vc_unindent": { "prover": "z3", "time": 0.006 },
+      "vc_unindent_str": { "prover": "z3", "time": 0.008 }
+    }
+  }
+}

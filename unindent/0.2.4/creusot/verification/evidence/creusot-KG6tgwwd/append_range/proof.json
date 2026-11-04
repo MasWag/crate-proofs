@@ -1,0 +1,9 @@
+{
+  "profile": [],
+  "proofs": {
+    "Coma": {
+      "vc_append_range": { "prover": "z3", "time": 0.911 },
+      "vc_push_u8": { "prover": "z3", "time": 0.003 }
+    }
+  }
+}

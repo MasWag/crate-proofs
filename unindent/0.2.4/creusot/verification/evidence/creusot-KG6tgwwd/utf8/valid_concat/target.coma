@@ -1,0 +1,125 @@
+(* #"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 114 0 114 43 *)
+
+let%span sutf8 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 112 11 112 31
+let%span sutf8'0 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 113 10 113 28
+let%span sutf8'1 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 99 10 99 69
+let%span sutf8'2 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 7 16 7 66
+let%span sutf8'3 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 100 10 100 17
+let%span sutf8'4 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 102 4 108 5
+let%span sutf8'5 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 55 11 55 22
+let%span sutf8'6 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 56 10 56 50
+let%span sutf8'7 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 58 4 59 55
+let%span sutf8'8 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 37 11 37 29
+let%span sutf8'9 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 38 11 38 64
+let%span sutf8'10 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 39 10 39 16
+let%span sutf8'11 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 40 50 40 52
+let%span sord = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/ord.rs" 22 8 22 20
+let%span sseq = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/seq.rs" 311 14 311 24
+let%span sseq'0 = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/seq.rs" 313 8 317 9
+let%span sseq'1 = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/seq.rs" 160 8 160 39
+let%span sseq'2 = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/seq.rs" 443 14 443 86
+let%span schar = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/std/char.rs" 47 14 47 52
+let%span sstring = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/std/string.rs" 190 20 190 56
+let%span slogic = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic.rs" 39 11 39 28
+let%span slogic'0 = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic.rs" 40 10 40 19
+let%span smapping = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/mapping.rs" 66 8 66 19
+
+use creusot.int.UInt8
+use seq.Seq
+use creusot.prelude.Char
+use map.Map
+use int.Int
+
+function tail_char (self: Seq.seq Char.t) : Seq.seq Char.t = [%#sseq'1] Seq.([..]) self 1 (Seq.length self)
+
+function flat_map_char (self: Seq.seq Char.t) (other: Map.map Char.t (Seq.seq UInt8.t)) : Seq.seq UInt8.t
+
+axiom flat_map_char_def:
+  forall self: Seq.seq Char.t, other: Map.map Char.t (Seq.seq UInt8.t) [flat_map_char self other]. flat_map_char self other
+    = ([%#sseq'0] if Seq.length self = 0 then
+      Seq.empty: Seq.seq UInt8.t
+    else
+      Seq.(++) (Map.get other (Seq.get self 0)) (flat_map_char (tail_char self) other)
+    )
+
+function to_utf8_char (self: Char.t) : Seq.seq UInt8.t
+
+axiom to_utf8_char_spec: forall self: Char.t [to_utf8_char self]. [%#schar] 1 <= Seq.length (to_utf8_char self)
+    /\ Seq.length (to_utf8_char self) <= 4
+
+function to_bytes (self: Seq.seq Char.t) : Seq.seq UInt8.t =
+  [%#sstring] flat_map_char self (fun (c: Char.t) -> to_utf8_char c)
+
+predicate valid [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 6 0 6 36] (bytes: Seq.seq UInt8.t) =
+  [%#sutf8'2] exists chars: Seq.seq Char.t. to_bytes chars = bytes
+
+predicate index_Mapping_Seq_char_bool [@inline:trivial] (self: Map.map (Seq.seq Char.t) bool) (a: Seq.seq Char.t) =
+  [%#smapping] Map.get self a
+
+meta "rewrite_def" predicate index_Mapping_Seq_char_bool
+
+function such_that_Seq_char (p: Map.map (Seq.seq Char.t) bool) : Seq.seq Char.t
+
+axiom such_that_Seq_char_spec:
+  forall p: Map.map (Seq.seq Char.t) bool [such_that_Seq_char p]. ([%#slogic] exists x: Seq.seq Char.t. index_Mapping_Seq_char_bool p x)
+    -> ([%#slogic'0] index_Mapping_Seq_char_bool p (such_that_Seq_char p))
+
+predicate gt_log_Int [@inline:trivial] (self: int) (other: int) = [%#sord] other < self
+
+meta "rewrite_def" predicate gt_log_Int
+
+function concat_assoc_u8 (self: Seq.seq UInt8.t) (other1: Seq.seq UInt8.t) (other2: Seq.seq UInt8.t) : ()
+
+axiom concat_assoc_u8_spec:
+  forall self: Seq.seq UInt8.t, other1: Seq.seq UInt8.t, other2: Seq.seq UInt8.t. [%#sseq'2] Seq.(++) (Seq.(++) self other1) other2
+    = Seq.(++) self (Seq.(++) other1 other2)
+
+function bytes_extensional_char [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 40 0 40 49] (a: Seq.seq Char.t) (b: Seq.seq Char.t) : ()
+ = [%#sutf8'11] ()
+
+axiom bytes_extensional_char_spec: forall a: Seq.seq Char.t, b: Seq.seq Char.t. ([%#sutf8'8] Seq.length a
+      = Seq.length b)
+    -> ([%#sutf8'9] forall i: int. 0 <= i /\ i < Seq.length a -> Seq.get a i = Seq.get b i) -> ([%#sutf8'10] a = b)
+
+function tail_concat_char [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 57 0 57 43] (a: Seq.seq Char.t) (b: Seq.seq Char.t) : ()
+ = [%#sutf8'7] let _ = bytes_extensional_char (tail_char (Seq.(++) a b)) (Seq.(++) (tail_char a) b) in ()
+
+axiom tail_concat_char_spec: forall a: Seq.seq Char.t, b: Seq.seq Char.t. ([%#sutf8'5] gt_log_Int (Seq.length a) 0)
+    -> ([%#sutf8'6] tail_char (Seq.(++) a b) = Seq.(++) (tail_char a) b)
+
+function encoding_concat [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 101 0 101 50] (a: Seq.seq Char.t) (b: Seq.seq Char.t) : ()
+
+axiom encoding_concat_def: forall a: Seq.seq Char.t, b: Seq.seq Char.t [encoding_concat a b]. encoding_concat a b
+    = ([%#sutf8'4] if gt_log_Int (Seq.length a) 0 then
+      let _ = encoding_concat (tail_char a) b in let _ = concat_assoc_u8 (to_utf8_char (Seq.get a 0)) (to_bytes (tail_char a)) (to_bytes b) in let _ = tail_concat_char a b in ()
+    else
+      ()
+    )
+
+axiom encoding_concat_spec: forall a: Seq.seq Char.t, b: Seq.seq Char.t. [%#sutf8'1] to_bytes (Seq.(++) a b)
+    = Seq.(++) (to_bytes a) (to_bytes b)
+
+meta "compute_max_steps" 1000000
+
+meta "select_lsinst" "all"
+
+constant a : Seq.seq UInt8.t
+
+constant b : Seq.seq UInt8.t
+
+function valid_concat [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 114 0 114 43] (a: Seq.seq UInt8.t) (b: Seq.seq UInt8.t) : ()
+
+goal vc_valid_concat: ([%#sutf8] valid a /\ valid b)
+  -> ([@stop_split] [@expl:such_that requires] [%#slogic] exists x: Seq.seq Char.t. index_Mapping_Seq_char_bool (fun (ca: Seq.seq Char.t) -> to_bytes ca
+      = a) x)
+  /\ (([@stop_split] [@expl:such_that ensures] [%#slogic'0] index_Mapping_Seq_char_bool (fun (ca: Seq.seq Char.t) -> to_bytes ca
+    = a) (such_that_Seq_char (fun (ca: Seq.seq Char.t) -> to_bytes ca = a)))
+  -> (let ca = such_that_Seq_char (fun (ca: Seq.seq Char.t) -> to_bytes ca
+  = a) in ([@stop_split] [@expl:such_that requires] [%#slogic] exists x: Seq.seq Char.t. index_Mapping_Seq_char_bool (fun (cb: Seq.seq Char.t) -> to_bytes cb
+      = b) x)
+  /\ (([@stop_split] [@expl:such_that ensures] [%#slogic'0] index_Mapping_Seq_char_bool (fun (cb: Seq.seq Char.t) -> to_bytes cb
+    = b) (such_that_Seq_char (fun (cb: Seq.seq Char.t) -> to_bytes cb = b)))
+  -> (let cb = such_that_Seq_char (fun (cb: Seq.seq Char.t) -> to_bytes cb
+  = b) in ([@stop_split] [@expl:encoding_concat ensures] [%#sutf8'1] to_bytes (Seq.(++) ca cb)
+    = Seq.(++) (to_bytes ca) (to_bytes cb))
+  -> (let _ = encoding_concat ca cb in [@stop_split] [@expl:valid_concat ensures] [%#sutf8'0] valid (Seq.(++) a b))))))

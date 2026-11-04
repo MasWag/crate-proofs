@@ -1,0 +1,107 @@
+(* #"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 28 0 28 65 *)
+
+let%span sord = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/ord.rs" 34 8 34 21
+let%span sord'0 = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/ord.rs" 22 8 22 20
+let%span swell_founded = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/well_founded.rs" 43 8 43 33
+let%span slib = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 32 14 32 21
+let%span slib'0 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 31 16 31 86
+let%span slib'1 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 30 16 30 42
+let%span slib'2 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 33 22 33 26
+let%span slib'3 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 33 30 33 32
+let%span slib'4 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 33 36 33 40
+let%span slib'5 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 33 44 33 45
+let%span slib'6 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 33 54 33 55
+let%span slib'7 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 33 49 33 55
+let%span slib'8 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 23 11 23 45
+let%span slib'9 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 24 10 24 46
+let%span slib'10 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 25 10 25 85
+let%span slib'11 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 26 10 26 70
+
+use creusot.int.UInt64
+use seq.Seq
+use creusot.slice.Slice64
+use creusot.int.UInt8
+use creusot.prelude.Any
+use int.Int
+
+predicate ge_log_Int [@inline:trivial] (self: int) (other: int) = [%#sord] other <= self
+
+meta "rewrite_def" predicate ge_log_Int
+
+predicate gt_log_Int [@inline:trivial] (self: int) (other: int) = [%#sord'0] other < self
+
+meta "rewrite_def" predicate gt_log_Int
+
+predicate well_founded_relation_Int [@inline:trivial] (self: int) (other: int) =
+  [%#swell_founded] ge_log_Int self 0 /\ gt_log_Int self other
+
+meta "rewrite_def" predicate well_founded_relation_Int
+
+meta "compute_max_steps" 1000000
+
+meta "select_lsinst" "all"
+
+let leading_end_index [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 28 0 28 65]
+  (s: Slice64.slice UInt8.t) (start: UInt64.t) (end': UInt64.t) (return (x: UInt64.t)) =
+{[@stop_split] [@expl:leading_end_index requires] [%#slib'8] UInt64.t'int start <= UInt64.t'int end'
+  /\ UInt64.t'int end' <= Seq.length (Slice64.view s)}
+  (! bb0
+  [ bb0 = s0 [ s0 = [ &i <- start ] s1 | s1 = bb1 ]
+  | bb1 = bb1invariant
+    [ bb1 = {[@expl:loop variant] well_founded_relation_Int variant_old_bb1 ([%#slib] UInt64.t'int end'
+      - UInt64.t'int i)}
+      bb1invariant
+    | bb1invariant = {[@expl:loop invariant #0] [%#slib'1] UInt64.t'int start <= UInt64.t'int i
+      /\ UInt64.t'int i <= UInt64.t'int end'}
+      {[@expl:loop invariant #1] [%#slib'0] forall j: int. UInt64.t'int start <= j /\ j < UInt64.t'int i
+        -> Seq.get (Slice64.view s) j = (32: UInt8.t) \/ Seq.get (Slice64.view s) j = (9: UInt8.t)}
+      (! [ &variant_old_bb1 <- [%#slib] UInt64.t'int end' - UInt64.t'int i ] s0)
+      [ s0 = [ &_32 <- UInt64.lt i end' ] s1 | s1 = any [ br0 -> {_32 = false} (! bb12) | br1 -> {_32} (! bb3) ] ]
+      [ bb3 = s0
+        [ s0 = [ &_37 <- i ] s1
+        | s1 = [ &_38 <- Slice64.length s ] s2
+        | s2 = [ &_39 <- UInt64.lt _37 _38 ] s3
+        | s3 = {[@expl:index in bounds] [%#slib'2] _39} s4
+        | s4 = Slice64.get [%#slib'2] <UInt8.t> {s} {_37} (fun (r: UInt8.t) -> [ &_36 <- r ] s5)
+        | s5 = [ &_35 <- _36 = ([%#slib'3] (32: UInt8.t)) ] s6
+        | s6 = any [ br0 -> {_35 = false} (! bb6) | br1 -> {_35} (! bb9) ] ]
+      | bb6 = s0
+        [ s0 = [ &_42 <- i ] s1
+        | s1 = [ &_43 <- Slice64.length s ] s2
+        | s2 = [ &_44 <- UInt64.lt _42 _43 ] s3
+        | s3 = {[@expl:index in bounds] [%#slib'4] _44} s4
+        | s4 = Slice64.get [%#slib'4] <UInt8.t> {s} {_42} (fun (r: UInt8.t) -> [ &_41 <- r ] s5)
+        | s5 = [ &_40 <- _41 = ([%#slib'5] (9: UInt8.t)) ] s6
+        | s6 = any [ br0 -> {_40 = false} (! bb12) | br1 -> {_40} (! bb9) ] ]
+      | bb9 = s0
+        [ s0 = UInt64.add [%#slib'7] {i} {[%#slib'6] (1: UInt64.t)} (fun (_x: UInt64.t) -> [ &i <- _x ] s1)
+        | s1 = bb1 ] ] ]
+  | bb12 = s0 [ s0 = [ &_ret <- i ] s1 | s1 = return {_ret} ] ]
+  [ & _ret: UInt64.t = Any.any_l ()
+  | & s: Slice64.slice UInt8.t = s
+  | & start: UInt64.t = start
+  | & end': UInt64.t = end'
+  | & i: UInt64.t = Any.any_l ()
+  | & _32: bool = Any.any_l ()
+  | & _35: bool = Any.any_l ()
+  | & _36: UInt8.t = Any.any_l ()
+  | & _37: UInt64.t = Any.any_l ()
+  | & _38: UInt64.t = Any.any_l ()
+  | & _39: bool = Any.any_l ()
+  | & _40: bool = Any.any_l ()
+  | & _41: UInt8.t = Any.any_l ()
+  | & _42: UInt64.t = Any.any_l ()
+  | & _43: UInt64.t = Any.any_l ()
+  | & _44: bool = Any.any_l ()
+  | & variant_old_bb1: int = Any.any_l () ])
+  [ return (result: UInt64.t) ->
+  {[@stop_split] [@expl:leading_end_index ensures] ([@stop_split] [@expl:leading_end_index ensures #0] [%#slib'9] UInt64.t'int start
+        <= UInt64.t'int result
+      /\ UInt64.t'int result <= UInt64.t'int end')
+    /\ ([@stop_split] [@expl:leading_end_index ensures #1] [%#slib'10] forall i: int. UInt64.t'int start <= i
+          /\ i < UInt64.t'int result
+        -> Seq.get (Slice64.view s) i = (32: UInt8.t) \/ Seq.get (Slice64.view s) i = (9: UInt8.t))
+    /\ ([@stop_split] [@expl:leading_end_index ensures #2] [%#slib'11] UInt64.t'int result < UInt64.t'int end'
+    -> Seq.get (Slice64.view s) (UInt64.t'int result) <> (32: UInt8.t)
+    /\ Seq.get (Slice64.view s) (UInt64.t'int result) <> (9: UInt8.t))}
+    (! return {result}) ]

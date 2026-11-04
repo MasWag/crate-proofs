@@ -1,0 +1,6 @@
+{
+  "profile": [],
+  "proofs": {
+    "Coma": { "vc_nonascii_kept": { "prover": "z3", "time": 0.022 } }
+  }
+}

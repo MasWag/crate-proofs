@@ -1,0 +1,11 @@
+{
+  "profile": [],
+  "proofs": {
+    "Coma": {
+      "vc_common_margin": { "prover": "z3", "time": 0.099 },
+      "vc_leading_end_index": { "prover": "z3", "time": 0.007 },
+      "vc_len_u8": { "prover": "z3", "time": 0.005 },
+      "vc_line_end_index": { "prover": "z3", "time": 0.005 }
+    }
+  }
+}
