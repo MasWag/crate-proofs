@@ -84,7 +84,13 @@
     "computed_root_goals": 123,
     "solver_leaves": 612
   },
-  "publication": "Recorded separately after the report revision is confirmed; this file records successful execution and native goal auditing.",
+  "publication": {
+    "url": "https://proofs.rs/report/19",
+    "report_id": 19,
+    "revision_no": 2,
+    "receipt": "publication-receipt.json",
+    "anonymous_readback": "confirmed"
+  },
   "api_binding_coverage": "21 named fork functions, a subset of full proof coverage. The standard importer does not separately bind the generic builder methods and generated equality/refinement functions; these are included in the complete canonical and native goal inventories.",
   "recorder_binary_sha256": "eba29f2df80a3e75b3795ff7b5e65783dafc326162b7e302810b657981b1393d"
 }

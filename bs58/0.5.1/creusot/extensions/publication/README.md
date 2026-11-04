@@ -42,3 +42,8 @@ independent [goal audit](native-goal-audit.json): 135 targets and 242 roots with
 positive solver trees. Generic builder methods and generated equality/refinement
 functions appear in the complete proof inventories even when the standard
 importer supplies no separate API binding. Publication is recorded separately.
+
+The confirmed publication is [report 19, revision 2](https://proofs.rs/report/19).
+Its [receipt](publication-receipt.json) records anonymous content verification and
+preserved findings. Use `cargo proofs publish --report 19` when revising this
+existing report through the CLI.

@@ -135,3 +135,9 @@ contains 21 fork API entries and 65 passing root results. The
 retain those distinct scopes. The [reporting notes](reporting-notes.md) explain
 why generic builder methods and generated methods/refinements do not all appear
 as separate API entries; they remain covered by the full proof inventories.
+
+[Report 19, revision 2](https://proofs.rs/report/19) publishes the expanded scope.
+Anonymous readback matched the submitted content; four earlier claim IDs and all
+three findings were preserved. The
+[publication receipt](../../extensions/publication/publication-receipt.json)
+records the source, execution record and exact publication payload digest.

@@ -106,3 +106,18 @@ This review followed the repository Creusot verification/composition skills and
 both repository and upstream-local report-writing skills. Final publication
 mapping and artifact upload remain the primary agent's responsibility; this
 acceptance concerns the inspected contracts, proof evidence and editorial scope.
+
+## Final publication payload
+
+I independently approved all 21 submitted API bindings, harnesses, preconditions
+and source spans against the unchanged uploaded SARIF and service bindings,
+including its recorded source revision and hash. The public API records cover
+panic-contract verification for named fork entries; the broader functional,
+generic-builder and refinement coverage remains supported by the complete
+separate proof inventories. The appended environment qualification states this
+subset and the absence of an independently imported Rustdoc catalogue accurately.
+The [publication receipt](../../extensions/publication/publication-receipt.json)
+records public report 19 revision 2 and the primary agent's anonymous readback:
+all submitted fields and bindings matched, four prior claim IDs were retained,
+17 were added, all three findings were preserved, and Aeneas report 13 revision
+1 was unchanged. Publication adds no proof scope beyond the reviewed evidence.

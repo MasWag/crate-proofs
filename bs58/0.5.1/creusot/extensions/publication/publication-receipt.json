@@ -1,0 +1,32 @@
+{
+  "url": "https://proofs.rs/report/19",
+  "report_id": 19,
+  "revision_no": 2,
+  "visibility": "public",
+  "updated_at": "2026-11-04T17:58:56.168Z",
+  "claim_count": 21,
+  "retained_previous_claim_ids": [
+    "fd77e59e-a573-47e5-9629-c277727cfe10",
+    "4d531563-36ab-450d-a56f-a06b0a1bbfb2",
+    "65dd9810-0021-48fb-9ac7-c67041a8dfe5",
+    "630ecc01-df94-457c-815f-cd68c13da1f2"
+  ],
+  "added_claim_count": 17,
+  "finding_count": 3,
+  "findings_unchanged": true,
+  "run_ids": [
+    "ec72449d-897f-42a7-8b97-d04dead9eab0"
+  ],
+  "recording_source_commit": "6fb3cb5ed542d95438e778eacf3a5af45d1b0db9",
+  "verification_source_commit": "66a831cffae94736ab5344af279329338a9e17ea",
+  "recording_receipt_commit": "6b6b19d4b5dff668d9f35f4c6afacee87461bc55",
+  "sarif_sha256": "c239140999f767b637c5447120db388ebdacf3b7116dad181c4c5b8a9317f005",
+  "submitted_payload_sha256": "de80f0b53f7ff231ec08fae084573f62ec3f5d98a130990db59bec7ac02d7791",
+  "confirmation": "Anonymous report/findings readback matched all submitted editorial fields, source evidence URLs, preconditions, API IDs and run IDs; prior claim IDs and all finding titles/bodies preserved.",
+  "previous_aeneas_report": {
+    "id": 13,
+    "revision_no": 1,
+    "unchanged": true
+  },
+  "api_binding_scope": "21 named fork entries; full 135-target proof inventory also covers builder methods and generated/refinement targets omitted by the standard source-only importer."
+}
