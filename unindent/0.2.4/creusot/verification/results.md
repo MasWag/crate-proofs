@@ -110,5 +110,23 @@ explicit. The first detached recording failed before proving because the wrapper
 Why3find option names and values. The corrected wrapper was checked with a fresh
 compile and command preview. This accepted run refreshes every input fingerprint
 after that correction; the prior `creusot-KG6tgwwd` bundle remains historical.
-Standard detached-source recording and publication are pending; the previous
-Aeneas report is unchanged by this local acceptance.
+Standard detached-source recording succeeded as run
+`86126bb7-920f-46d9-9ec3-8a743a7b4fca` at pushed commit
+`ce78df957d982a6049e602a5083bee5b3636b5ea`. Its fresh compile and standard
+proof passed all 36 files. The successful recorded invocation exited 0 and maps
+`unindent::unindent` and `unindent::unindent_bytes`, both with precondition `true`.
+The concrete extension implementations remain part of the independently audited
+local proof; this recorder did not create service claims for them.
+
+[Report #22](https://proofs.rs/report/22), revision 1, is public with two
+`panic_contract` claims and no new findings. Public API read-back confirms both
+paths, the recorded run, visibility and non-withdrawn status. All five report
+prose fields match the reviewed TOML after boundary-whitespace normalization
+(the service removes a final newline). The
+[publication receipt](evidence/publication.json) records these identities and the
+recording CLI binary hash. No login was performed; existing authorization was
+reused. Failed recording diagnostics were not published.
+
+The prior Aeneas report #20 is unchanged. The Creusot functional/termination
+contracts, service panic claims, finite native comparisons and remaining
+source-equivalence obligations retain their separate scopes.
