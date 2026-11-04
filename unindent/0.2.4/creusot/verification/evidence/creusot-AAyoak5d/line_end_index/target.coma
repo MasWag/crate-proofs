@@ -1,0 +1,98 @@
+(* #"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 14 0 14 50 *)
+
+let%span sord = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/ord.rs" 34 8 34 21
+let%span sord'0 = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/ord.rs" 22 8 22 20
+let%span swell_founded = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/well_founded.rs" 43 8 43 33
+let%span slib = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 18 14 18 25
+let%span slib'0 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 19 14 19 21
+let%span slib'1 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 17 16 17 70
+let%span slib'2 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 16 16 16 46
+let%span slib'3 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 19 25 19 29
+let%span slib'4 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 19 33 19 35
+let%span slib'5 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 19 43 19 44
+let%span slib'6 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 19 38 19 44
+let%span slib'7 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 9 11 9 29
+let%span slib'8 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 10 10 10 50
+let%span slib'9 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 11 10 11 69
+let%span slib'10 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 12 10 12 52
+let%span sslice = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/std/slice.rs" 331 18 331 22
+
+use seq.Seq
+use creusot.slice.Slice64
+use creusot.int.UInt64
+use creusot.int.UInt8
+use creusot.prelude.Any
+use int.Int
+
+predicate ge_log_Int [@inline:trivial] (self: int) (other: int) = [%#sord] other <= self
+
+meta "rewrite_def" predicate ge_log_Int
+
+predicate gt_log_Int [@inline:trivial] (self: int) (other: int) = [%#sord'0] other < self
+
+meta "rewrite_def" predicate gt_log_Int
+
+predicate well_founded_relation_Int [@inline:trivial] (self: int) (other: int) =
+  [%#swell_founded] ge_log_Int self 0 /\ gt_log_Int self other
+
+meta "rewrite_def" predicate well_founded_relation_Int
+
+let len_u8 (self_: Slice64.slice UInt8.t) (return (x: UInt64.t)) = any
+  [ return (result: UInt64.t) -> {[@stop_split] [@expl:len ensures] [%#sslice] Seq.length (Slice64.view self_)
+    = UInt64.t'int result}
+    (! return {result}) ]
+
+meta "compute_max_steps" 1000000
+
+meta "select_lsinst" "all"
+
+let line_end_index [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lib.rs" 14 0 14 50]
+  (s: Slice64.slice UInt8.t) (start: UInt64.t) (return (x: UInt64.t)) =
+{[@stop_split] [@expl:line_end_index requires] [%#slib'7] UInt64.t'int start <= Seq.length (Slice64.view s)}
+  (! bb0
+  [ bb0 = s0 [ s0 = [ &i <- start ] s1 | s1 = bb1 ]
+  | bb1 = bb1invariant
+    [ bb1 = {[@expl:loop variant] well_founded_relation_Int variant_old_bb1 ([%#slib] Seq.length (Slice64.view s)
+      - UInt64.t'int i)}
+      bb1invariant
+    | bb1invariant = {[@expl:loop invariant #0] [%#slib'2] UInt64.t'int start <= UInt64.t'int i
+      /\ UInt64.t'int i <= Seq.length (Slice64.view s)}
+      {[@expl:loop invariant #1] [%#slib'1] forall j: int. UInt64.t'int start <= j /\ j < UInt64.t'int i
+        -> Seq.get (Slice64.view s) j <> (10: UInt8.t)}
+      (! [ &variant_old_bb1 <- [%#slib] Seq.length (Slice64.view s) - UInt64.t'int i ] s0)
+      [ s0 = len_u8 [%#slib'0] {s} (fun (_x: UInt64.t) -> [ &_31 <- _x ] s1)
+      | s1 = [ &_29 <- UInt64.lt i _31 ] s2
+      | s2 = any [ br0 -> {_29 = false} (! bb9) | br1 -> {_29} (! bb4) ] ]
+      [ bb4 = s0
+        [ s0 = [ &_35 <- i ] s1
+        | s1 = [ &_36 <- Slice64.length s ] s2
+        | s2 = [ &_37 <- UInt64.lt _35 _36 ] s3
+        | s3 = {[@expl:index in bounds] [%#slib'3] _37} s4
+        | s4 = Slice64.get [%#slib'3] <UInt8.t> {s} {_35} (fun (r: UInt8.t) -> [ &_34 <- r ] s5)
+        | s5 = [ &_33 <- _34 <> ([%#slib'4] (10: UInt8.t)) ] s6
+        | s6 = any [ br0 -> {_33 = false} (! bb9) | br1 -> {_33} (! bb6) ] ]
+      | bb6 = s0
+        [ s0 = UInt64.add [%#slib'6] {i} {[%#slib'5] (1: UInt64.t)} (fun (_x: UInt64.t) -> [ &i <- _x ] s1)
+        | s1 = bb1 ] ] ]
+  | bb9 = s0 [ s0 = [ &_ret <- i ] s1 | s1 = return {_ret} ] ]
+  [ & _ret: UInt64.t = Any.any_l ()
+  | & s: Slice64.slice UInt8.t = s
+  | & start: UInt64.t = start
+  | & i: UInt64.t = Any.any_l ()
+  | & _29: bool = Any.any_l ()
+  | & _31: UInt64.t = Any.any_l ()
+  | & _33: bool = Any.any_l ()
+  | & _34: UInt8.t = Any.any_l ()
+  | & _35: UInt64.t = Any.any_l ()
+  | & _36: UInt64.t = Any.any_l ()
+  | & _37: bool = Any.any_l ()
+  | & variant_old_bb1: int = Any.any_l () ])
+  [ return (result: UInt64.t) ->
+  {[@stop_split] [@expl:line_end_index ensures] ([@stop_split] [@expl:line_end_index ensures #0] [%#slib'8] UInt64.t'int start
+        <= UInt64.t'int result
+      /\ UInt64.t'int result <= Seq.length (Slice64.view s))
+    /\ ([@stop_split] [@expl:line_end_index ensures #1] [%#slib'9] forall i: int. UInt64.t'int start <= i
+          /\ i < UInt64.t'int result -> Seq.get (Slice64.view s) i <> (10: UInt8.t))
+    /\ ([@stop_split] [@expl:line_end_index ensures #2] [%#slib'10] UInt64.t'int result < Seq.length (Slice64.view s)
+    -> Seq.get (Slice64.view s) (UInt64.t'int result) = (10: UInt8.t))}
+    (! return {result}) ]

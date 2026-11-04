@@ -1,0 +1,49 @@
+(* #"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 57 0 57 43 *)
+
+let%span sutf8 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 55 11 55 22
+let%span sutf8'0 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 56 10 56 50
+let%span sutf8'1 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 37 11 37 29
+let%span sutf8'2 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 38 11 38 64
+let%span sutf8'3 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 39 10 39 16
+let%span sutf8'4 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 40 50 40 52
+let%span sord = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/ord.rs" 22 8 22 20
+let%span sseq = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/seq.rs" 160 8 160 39
+
+use seq.Seq
+use int.Int
+
+type t_T
+
+predicate gt_log_Int [@inline:trivial] (self: int) (other: int) = [%#sord] other < self
+
+meta "rewrite_def" predicate gt_log_Int
+
+function tail_T (self: Seq.seq t_T) : Seq.seq t_T = [%#sseq] Seq.([..]) self 1 (Seq.length self)
+
+function bytes_extensional_T [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 40 0 40 49] (a: Seq.seq t_T) (b: Seq.seq t_T) : ()
+ = [%#sutf8'4] ()
+
+axiom bytes_extensional_T_spec: forall a: Seq.seq t_T, b: Seq.seq t_T. ([%#sutf8'1] Seq.length a = Seq.length b)
+    -> ([%#sutf8'2] forall i: int. 0 <= i /\ i < Seq.length a -> Seq.get a i = Seq.get b i) -> ([%#sutf8'3] a = b)
+
+meta "compute_max_steps" 1000000
+
+meta "select_lsinst" "all"
+
+constant a : Seq.seq t_T
+
+constant b : Seq.seq t_T
+
+function tail_concat_T [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 57 0 57 43] (a: Seq.seq t_T) (b: Seq.seq t_T) : ()
+
+goal vc_tail_concat_T: ([%#sutf8] gt_log_Int (Seq.length a) 0)
+  -> (forall i: int. 0 <= i /\ i < Seq.length (tail_T (Seq.(++) a b))
+      -> Seq.get (tail_T (Seq.(++) a b)) i = Seq.get (Seq.(++) (tail_T a) b) i)
+  && ([@stop_split] [@expl:bytes_extensional requires] ([@stop_split] [@expl:bytes_extensional requires #0] [%#sutf8'1] Seq.length (tail_T (Seq.(++) a b))
+      = Seq.length (Seq.(++) (tail_T a) b))
+    /\ ([@stop_split] [@expl:bytes_extensional requires #1] [%#sutf8'2] forall i: int. 0 <= i
+        /\ i < Seq.length (tail_T (Seq.(++) a b))
+      -> Seq.get (tail_T (Seq.(++) a b)) i = Seq.get (Seq.(++) (tail_T a) b) i))
+  /\ (([@stop_split] [@expl:bytes_extensional ensures] [%#sutf8'3] tail_T (Seq.(++) a b) = Seq.(++) (tail_T a) b)
+  -> (let _ = bytes_extensional_T (tail_T (Seq.(++) a b)) (Seq.(++) (tail_T a) b) in [@stop_split] [@expl:tail_concat ensures] [%#sutf8'0] tail_T (Seq.(++) a b)
+  = Seq.(++) (tail_T a) b))

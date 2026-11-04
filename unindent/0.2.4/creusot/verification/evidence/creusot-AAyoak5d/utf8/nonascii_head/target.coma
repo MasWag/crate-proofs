@@ -1,0 +1,53 @@
+(* #"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 138 0 138 53 *)
+
+let%span sutf8 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 134 11 134 58
+let%span sutf8'0 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 135 11 135 27
+let%span sutf8'1 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 136 10 136 51
+let%span sutf8'2 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 137 10 137 52
+let%span sutf8'3 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 122 10 122 21
+let%span sutf8'4 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 125 8 129 9
+let%span sord = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/ord.rs" 22 8 22 20
+let%span sord'0 = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/ord.rs" 34 8 34 21
+let%span sseq = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/seq.rs" 160 8 160 39
+
+use creusot.int.UInt8
+use seq.Seq
+use int.Int
+
+predicate gt_log_Int [@inline:trivial] (self: int) (other: int) = [%#sord] other < self
+
+meta "rewrite_def" predicate gt_log_Int
+
+function tail_u8 (self: Seq.seq UInt8.t) : Seq.seq UInt8.t = [%#sseq] Seq.([..]) self 1 (Seq.length self)
+
+predicate ascii_erasure [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 123 0 123 61] (input: Seq.seq UInt8.t) (output: Seq.seq UInt8.t)
+
+axiom ascii_erasure_def:
+  forall input: Seq.seq UInt8.t, output: Seq.seq UInt8.t [ascii_erasure input output]. ascii_erasure input output
+    = ([%#sutf8'4] if Seq.length input = 0 then
+      Seq.length output = 0
+    else
+      UInt8.t'int (Seq.get input 0) < 128 /\ ascii_erasure (tail_u8 input) output
+      \/ gt_log_Int (Seq.length output) 0
+      /\ Seq.get input 0 = Seq.get output 0 /\ ascii_erasure (tail_u8 input) (tail_u8 output)
+    )
+
+predicate ge_log_Int [@inline:trivial] (self: int) (other: int) = [%#sord'0] other <= self
+
+meta "rewrite_def" predicate ge_log_Int
+
+meta "compute_max_steps" 1000000
+
+meta "select_lsinst" "all"
+
+constant input : Seq.seq UInt8.t
+
+constant output : Seq.seq UInt8.t
+
+function nonascii_head [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 138 0 138 53] (input: Seq.seq UInt8.t) (output: Seq.seq UInt8.t) : ()
+
+goal vc_nonascii_head: ([%#sutf8] gt_log_Int (Seq.length input) 0 /\ ascii_erasure input output)
+  -> ([%#sutf8'0] ge_log_Int (UInt8.t'int (Seq.get input 0)) 128)
+  -> ([@stop_split] [@expl:nonascii_head ensures] ([@stop_split] [@expl:nonascii_head ensures #0] [%#sutf8'1] gt_log_Int (Seq.length output) 0
+    /\ Seq.get output 0 = Seq.get input 0)
+  /\ ([@stop_split] [@expl:nonascii_head ensures #1] [%#sutf8'2] ascii_erasure (tail_u8 input) (tail_u8 output)))

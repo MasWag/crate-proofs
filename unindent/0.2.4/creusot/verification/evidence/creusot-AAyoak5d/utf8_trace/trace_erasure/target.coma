@@ -1,0 +1,205 @@
+(* #"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 33 0 33 87 *)
+
+let%span sutf8 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 122 10 122 21
+let%span sutf8'0 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 125 8 129 9
+let%span sord = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/ord.rs" 34 8 34 21
+let%span sord'0 = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/ord.rs" 22 8 22 20
+let%span sseq = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/seq.rs" 160 8 160 39
+let%span swell_founded = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/well_founded.rs" 43 8 43 33
+let%span slogic = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic.rs" 39 11 39 28
+let%span slogic'0 = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic.rs" 40 10 40 19
+let%span smapping = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/mapping.rs" 66 8 66 19
+let%span sutf8_trace = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 32 10 32 30
+let%span sutf8_trace'0 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 24 11 24 46
+let%span sutf8_trace'1 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 25 11 25 42
+let%span sutf8_trace'2 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 26 11 27 93
+let%span sutf8_trace'3 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 28 11 28 104
+let%span sutf8_trace'4 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 29 11 30 69
+let%span sutf8_trace'5 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 31 10 31 72
+let%span sutf8_trace'6 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 6 11 6 55
+let%span sutf8_trace'7 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 7 11 8 69
+let%span sutf8_trace'8 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 9 10 10 83
+let%span sutf8_trace'9 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 13 8 19 9
+
+use creusot.int.UInt8
+use seq.Seq
+use map.Map
+use int.Int
+
+predicate ge_log_Int [@inline:trivial] (self: int) (other: int) = [%#sord] other <= self
+
+meta "rewrite_def" predicate ge_log_Int
+
+function tail_u8 (self: Seq.seq UInt8.t) : Seq.seq UInt8.t = [%#sseq] Seq.([..]) self 1 (Seq.length self)
+
+predicate gt_log_Int [@inline:trivial] (self: int) (other: int) = [%#sord'0] other < self
+
+meta "rewrite_def" predicate gt_log_Int
+
+predicate ascii_erasure [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 123 0 123 61] (input: Seq.seq UInt8.t) (output: Seq.seq UInt8.t)
+
+axiom ascii_erasure_def:
+  forall input: Seq.seq UInt8.t, output: Seq.seq UInt8.t [ascii_erasure input output]. ascii_erasure input output
+    = ([%#sutf8'0] if Seq.length input = 0 then
+      Seq.length output = 0
+    else
+      UInt8.t'int (Seq.get input 0) < 128 /\ ascii_erasure (tail_u8 input) output
+      \/ gt_log_Int (Seq.length output) 0
+      /\ Seq.get input 0 = Seq.get output 0 /\ ascii_erasure (tail_u8 input) (tail_u8 output)
+    )
+
+function tail_Int (self: Seq.seq int) : Seq.seq int = [%#sseq] Seq.([..]) self 1 (Seq.length self)
+
+predicate index_Mapping_Int_bool [@inline:trivial] (self: Map.map int bool) (a: int) = [%#smapping] Map.get self a
+
+meta "rewrite_def" predicate index_Mapping_Int_bool
+
+function such_that_Int (p: Map.map int bool) : int
+
+axiom such_that_Int_spec:
+  forall p: Map.map int bool [such_that_Int p]. ([%#slogic] exists x: int. index_Mapping_Int_bool p x)
+    -> ([%#slogic'0] index_Mapping_Int_bool p (such_that_Int p))
+
+function tail_complete [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 11 0 11 70] (source: Seq.seq UInt8.t) (start: int) (positions: Seq.seq int) : ()
+ = [%#sutf8_trace'9] if exists i: int. start < i
+    /\ i < Seq.length source
+    /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128
+    /\ not (exists k: int. 0 <= k /\ k < Seq.length (tail_Int positions) /\ Seq.get (tail_Int positions) k = i) then
+    let i = such_that_Int (fun (i: int) -> start < i
+    /\ i < Seq.length source
+    /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128
+    /\ not (exists k: int. 0 <= k
+      /\ k < Seq.length (tail_Int positions)
+      /\ Seq.get (tail_Int positions) k = i)) in let k = such_that_Int (fun (k: int) -> 1 <= k
+    /\ k < Seq.length positions /\ Seq.get positions k = i) in ()
+  else
+    ()
+
+
+axiom tail_complete_spec:
+  forall source: Seq.seq UInt8.t, start: int, positions: Seq.seq int. ([%#sutf8_trace'6] gt_log_Int (Seq.length positions) 0
+      /\ Seq.get positions 0 = start)
+    -> ([%#sutf8_trace'7] forall i: int. start < i
+          /\ i < Seq.length source /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128
+        -> (exists k: int. 1 <= k /\ k < Seq.length positions /\ Seq.get positions k = i))
+    -> ([%#sutf8_trace'8] forall i: int. start < i
+        /\ i < Seq.length source /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128
+      -> (exists k: int. 0 <= k /\ k < Seq.length (tail_Int positions) /\ Seq.get (tail_Int positions) k = i))
+
+predicate well_founded_relation_Int [@inline:trivial] (self: int) (other: int) =
+  [%#swell_founded] ge_log_Int self 0 /\ gt_log_Int self other
+
+meta "rewrite_def" predicate well_founded_relation_Int
+
+meta "compute_max_steps" 1000000
+
+meta "select_lsinst" "all"
+
+constant source : Seq.seq UInt8.t
+
+constant start : int
+
+constant positions : Seq.seq int
+
+constant output : Seq.seq UInt8.t
+
+function trace_erasure [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 33 0 33 87] (source: Seq.seq UInt8.t) (start: int) (positions: Seq.seq int) (output: Seq.seq UInt8.t) : ()
+
+goal vc_trace_erasure: ([%#sutf8_trace'0] 0 <= start /\ start <= Seq.length source)
+  -> ([%#sutf8_trace'1] Seq.length positions = Seq.length output)
+  -> ([%#sutf8_trace'2] forall k: int. 0 <= k /\ k < Seq.length positions
+      -> start <= Seq.get positions k
+      /\ Seq.get positions k < Seq.length source /\ Seq.get output k = Seq.get source (Seq.get positions k))
+  -> ([%#sutf8_trace'3] forall k: int, l: int. 0 <= k /\ k < l /\ l < Seq.length positions
+      -> Seq.get positions k < Seq.get positions l)
+  -> ([%#sutf8_trace'4] forall i: int. start <= i
+        /\ i < Seq.length source /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128
+      -> (exists k: int. 0 <= k /\ k < Seq.length positions /\ Seq.get positions k = i))
+  -> (if start < Seq.length source then
+    tail_u8 (Seq.([..]) source start (Seq.length source)) = Seq.([..]) source (start + 1) (Seq.length source)
+    && (if gt_log_Int (Seq.length positions) 0 then
+      if Seq.get positions 0 = start then
+        (forall k: int. 1 <= k /\ k < Seq.length positions -> gt_log_Int (Seq.get positions k) start)
+        && (forall i: int. start + 1 <= i /\ i < Seq.length source /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128
+            -> (exists k: int. 1 <= k /\ k < Seq.length positions /\ Seq.get positions k = i))
+        && ([@stop_split] [@expl:tail_complete requires] ([@stop_split] [@expl:tail_complete requires #0] [%#sutf8_trace'6] gt_log_Int (Seq.length positions) 0
+            /\ Seq.get positions 0 = start)
+          /\ ([@stop_split] [@expl:tail_complete requires #1] [%#sutf8_trace'7] forall i: int. start < i
+              /\ i < Seq.length source /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128
+            -> (exists k: int. 1 <= k /\ k < Seq.length positions /\ Seq.get positions k = i)))
+        /\ (([@stop_split] [@expl:tail_complete ensures] [%#sutf8_trace'8] forall i: int. start < i
+              /\ i < Seq.length source /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128
+            -> (exists k: int. 0 <= k /\ k < Seq.length (tail_Int positions) /\ Seq.get (tail_Int positions) k = i))
+        -> (let _ = tail_complete source start positions in (([@stop_split] [@expl:trace_erasure requires] ([@stop_split] [@expl:trace_erasure requires #0] [%#sutf8_trace'0] 0
+                <= start + 1
+              /\ start + 1 <= Seq.length source)
+            /\ ([@stop_split] [@expl:trace_erasure requires #1] [%#sutf8_trace'1] Seq.length (tail_Int positions)
+              = Seq.length (tail_u8 output))
+            /\ ([@stop_split] [@expl:trace_erasure requires #2] [%#sutf8_trace'2] forall k: int. 0 <= k
+                  /\ k < Seq.length (tail_Int positions)
+                -> start + 1 <= Seq.get (tail_Int positions) k
+                /\ Seq.get (tail_Int positions) k < Seq.length source
+                /\ Seq.get (tail_u8 output) k = Seq.get source (Seq.get (tail_Int positions) k))
+            /\ ([@stop_split] [@expl:trace_erasure requires #3] [%#sutf8_trace'3] forall k: int, l: int. 0 <= k
+                  /\ k < l /\ l < Seq.length (tail_Int positions)
+                -> Seq.get (tail_Int positions) k < Seq.get (tail_Int positions) l)
+            /\ ([@stop_split] [@expl:trace_erasure requires #4] [%#sutf8_trace'4] forall i: int. start + 1 <= i
+                /\ i < Seq.length source /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128
+              -> (exists k: int. 0 <= k /\ k < Seq.length (tail_Int positions) /\ Seq.get (tail_Int positions) k = i)))
+          /\ ([@expl:variant decreases] well_founded_relation_Int ([%#sutf8_trace] Seq.length source
+          - start) ([%#sutf8_trace] Seq.length source - (start + 1))))
+        /\ (([@stop_split] [@expl:trace_erasure ensures] [%#sutf8_trace'5] ascii_erasure (Seq.([..]) source (start
+          + 1) (Seq.length source)) (tail_u8 output))
+        -> (let _ = trace_erasure source (start
+        + 1) (tail_Int positions) (tail_u8 output) in [@stop_split] [@expl:trace_erasure ensures] [%#sutf8_trace'5] ascii_erasure (Seq.([..]) source start (Seq.length source)) output))))
+      else
+        (forall k: int. 0 <= k /\ k < Seq.length positions -> Seq.get positions k <> start)
+        && UInt8.t'int (Seq.get source start) < 128
+        && (([@stop_split] [@expl:trace_erasure requires] ([@stop_split] [@expl:trace_erasure requires #0] [%#sutf8_trace'0] 0
+                <= start + 1
+              /\ start + 1 <= Seq.length source)
+            /\ ([@stop_split] [@expl:trace_erasure requires #1] [%#sutf8_trace'1] Seq.length positions
+              = Seq.length output)
+            /\ ([@stop_split] [@expl:trace_erasure requires #2] [%#sutf8_trace'2] forall k: int. 0 <= k
+                  /\ k < Seq.length positions
+                -> start + 1 <= Seq.get positions k
+                /\ Seq.get positions k < Seq.length source /\ Seq.get output k = Seq.get source (Seq.get positions k))
+            /\ ([@stop_split] [@expl:trace_erasure requires #3] [%#sutf8_trace'3] forall k: int, l: int. 0 <= k
+                  /\ k < l /\ l < Seq.length positions -> Seq.get positions k < Seq.get positions l)
+            /\ ([@stop_split] [@expl:trace_erasure requires #4] [%#sutf8_trace'4] forall i: int. start + 1 <= i
+                /\ i < Seq.length source /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128
+              -> (exists k: int. 0 <= k /\ k < Seq.length positions /\ Seq.get positions k = i)))
+          /\ ([@expl:variant decreases] well_founded_relation_Int ([%#sutf8_trace] Seq.length source
+          - start) ([%#sutf8_trace] Seq.length source - (start + 1))))
+        /\ (([@stop_split] [@expl:trace_erasure ensures] [%#sutf8_trace'5] ascii_erasure (Seq.([..]) source (start
+          + 1) (Seq.length source)) output)
+        -> (let _ = trace_erasure source (start
+        + 1) positions output in [@stop_split] [@expl:trace_erasure ensures] [%#sutf8_trace'5] ascii_erasure (Seq.([..]) source start (Seq.length source)) output))
+    
+    else
+      (forall k: int. 0 <= k /\ k < Seq.length positions -> Seq.get positions k <> start)
+      && UInt8.t'int (Seq.get source start) < 128
+      && (([@stop_split] [@expl:trace_erasure requires] ([@stop_split] [@expl:trace_erasure requires #0] [%#sutf8_trace'0] 0
+              <= start + 1
+            /\ start + 1 <= Seq.length source)
+          /\ ([@stop_split] [@expl:trace_erasure requires #1] [%#sutf8_trace'1] Seq.length positions
+            = Seq.length output)
+          /\ ([@stop_split] [@expl:trace_erasure requires #2] [%#sutf8_trace'2] forall k: int. 0 <= k
+                /\ k < Seq.length positions
+              -> start + 1 <= Seq.get positions k
+              /\ Seq.get positions k < Seq.length source /\ Seq.get output k = Seq.get source (Seq.get positions k))
+          /\ ([@stop_split] [@expl:trace_erasure requires #3] [%#sutf8_trace'3] forall k: int, l: int. 0 <= k
+                /\ k < l /\ l < Seq.length positions -> Seq.get positions k < Seq.get positions l)
+          /\ ([@stop_split] [@expl:trace_erasure requires #4] [%#sutf8_trace'4] forall i: int. start + 1 <= i
+              /\ i < Seq.length source /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128
+            -> (exists k: int. 0 <= k /\ k < Seq.length positions /\ Seq.get positions k = i)))
+        /\ ([@expl:variant decreases] well_founded_relation_Int ([%#sutf8_trace] Seq.length source
+        - start) ([%#sutf8_trace] Seq.length source - (start + 1))))
+      /\ (([@stop_split] [@expl:trace_erasure ensures] [%#sutf8_trace'5] ascii_erasure (Seq.([..]) source (start
+        + 1) (Seq.length source)) output)
+      -> (let _ = trace_erasure source (start
+      + 1) positions output in [@stop_split] [@expl:trace_erasure ensures] [%#sutf8_trace'5] ascii_erasure (Seq.([..]) source start (Seq.length source)) output))
+    )
+  else
+    [@stop_split] [@expl:trace_erasure ensures] [%#sutf8_trace'5] ascii_erasure (Seq.([..]) source start (Seq.length source)) output
+  )

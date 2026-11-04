@@ -1,0 +1,82 @@
+(* #"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lemmas.rs" 16 0 16 82 *)
+
+let%span sord = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/ord.rs" 34 8 34 21
+let%span sord'0 = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/ord.rs" 22 8 22 20
+let%span slemmas = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lemmas.rs" 12 11 12 53
+let%span slemmas'0 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lemmas.rs" 13 11 13 26
+let%span slemmas'1 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lemmas.rs" 14 11 14 36
+let%span slemmas'2 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lemmas.rs" 15 10 15 54
+let%span sspec = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 139 16 146 78
+let%span sspec'0 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 122 16 129 10
+let%span sspec'1 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 20 16 20 60
+let%span sspec'2 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 30 16 30 79
+let%span sspec'3 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 113 16 115 57
+
+use creusot.int.UInt8
+use seq.Seq
+use int.Int
+
+predicate ge_log_Int [@inline:trivial] (self: int) (other: int) = [%#sord] other <= self
+
+meta "rewrite_def" predicate ge_log_Int
+
+predicate initial_crlf [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 19 0 19 39] (s: Seq.seq UInt8.t) =
+  [%#sspec'1] ge_log_Int (Seq.length s) 2 /\ Seq.get s 0 = (13: UInt8.t) /\ Seq.get s 1 = (10: UInt8.t)
+
+predicate gt_log_Int [@inline:trivial] (self: int) (other: int) = [%#sord'0] other < self
+
+meta "rewrite_def" predicate gt_log_Int
+
+predicate ignore_first [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 29 0 29 55] (s: Seq.seq UInt8.t) (preserve: bool) =
+  [%#sspec'2] not preserve /\ (gt_log_Int (Seq.length s) 0 /\ Seq.get s 0 = (10: UInt8.t) \/ initial_crlf s)
+
+predicate source_line_start [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 112 0 112 60] (s: Seq.seq UInt8.t) (a: int) (i: int) =
+  [%#sspec'3] 0 <= a
+  /\ a <= i
+  /\ i < Seq.length s
+  /\ (a = 0 \/ Seq.get s (a - 1) = (10: UInt8.t)) /\ (forall j: int. a <= j /\ j < i -> Seq.get s j <> (10: UInt8.t))
+
+predicate source_keep [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 121 0 121 70] (s: Seq.seq UInt8.t) (m: int) (preserve: bool) (i: int) =
+  [%#sspec'0] 0 <= i
+  /\ i < Seq.length s
+  /\ not (i = 0 /\ initial_crlf s)
+  /\ (if Seq.get s i = (10: UInt8.t) then
+    not (ignore_first s preserve /\ (i = 0 \/ i = 1 /\ initial_crlf s))
+  else
+    exists a: int. source_line_start s a i /\ (a = 0 \/ m <= i - a)
+  )
+
+predicate selection_trace [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 135 0 138 9] (s: Seq.seq UInt8.t) (m: int) (preserve: bool) (bound: int) (positions: Seq.seq int) (out: Seq.seq UInt8.t) =
+  [%#sspec] 0 <= bound
+  /\ bound <= Seq.length s
+  /\ Seq.length out = Seq.length positions
+  /\ (forall j: int. 0 <= j /\ j < Seq.length positions
+      -> 0 <= Seq.get positions j
+      /\ Seq.get positions j < bound
+      /\ source_keep s m preserve (Seq.get positions j) /\ Seq.get out j = Seq.get s (Seq.get positions j))
+  /\ (forall j: int, k: int. 0 <= j /\ j < k /\ k < Seq.length positions -> Seq.get positions j < Seq.get positions k)
+  /\ (forall i: int. 0 <= i /\ i < bound /\ source_keep s m preserve i
+    -> (exists j: int. 0 <= j /\ j < Seq.length positions /\ Seq.get positions j = i))
+
+meta "compute_max_steps" 1000000
+
+meta "select_lsinst" "all"
+
+constant s : Seq.seq UInt8.t
+
+constant m : int
+
+constant p : bool
+
+constant bound : int
+
+constant positions : Seq.seq int
+
+constant out : Seq.seq UInt8.t
+
+function trace_skip [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lemmas.rs" 16 0 16 82] (s: Seq.seq UInt8.t) (m: int) (p: bool) (bound: int) (positions: Seq.seq int) (out: Seq.seq UInt8.t) : ()
+
+goal vc_trace_skip: ([%#slemmas] selection_trace s m p bound positions out)
+  -> ([%#slemmas'0] bound < Seq.length s)
+  -> ([%#slemmas'1] not source_keep s m p bound)
+  -> ([@stop_split] [@expl:trace_skip ensures] [%#slemmas'2] selection_trace s m p (bound + 1) positions out)

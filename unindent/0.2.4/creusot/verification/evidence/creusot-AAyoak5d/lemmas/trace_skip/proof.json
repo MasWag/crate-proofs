@@ -1,0 +1,6 @@
+{
+  "profile": [],
+  "proofs": {
+    "Coma": { "vc_trace_skip": { "prover": "z3", "time": 0.023 } }
+  }
+}

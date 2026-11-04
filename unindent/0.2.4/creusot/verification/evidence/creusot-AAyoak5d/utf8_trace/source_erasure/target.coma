@@ -1,0 +1,281 @@
+(* #"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 68 0 68 71 *)
+
+let%span sutf8 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 122 10 122 21
+let%span sutf8'0 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 125 8 129 9
+let%span sord = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/ord.rs" 34 8 34 21
+let%span sord'0 = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/ord.rs" 22 8 22 20
+let%span sseq = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/seq.rs" 160 8 160 39
+let%span slogic = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic.rs" 39 11 39 28
+let%span slogic'0 = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic.rs" 40 10 40 19
+let%span smapping = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/mapping.rs" 66 8 66 19
+let%span sutf8_trace = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 66 11 66 67
+let%span sutf8_trace'0 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 67 10 67 39
+let%span sutf8_trace'1 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 51 11 51 53
+let%span sutf8_trace'2 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 52 10 53 57
+let%span sutf8_trace'3 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 24 11 24 46
+let%span sutf8_trace'4 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 25 11 25 42
+let%span sutf8_trace'5 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 26 11 27 93
+let%span sutf8_trace'6 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 28 11 28 104
+let%span sutf8_trace'7 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 29 11 30 69
+let%span sutf8_trace'8 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 31 10 31 72
+let%span sutf8_trace'9 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 56 8 61 9
+let%span sutf8_trace'10 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 32 10 32 30
+let%span sutf8_trace'11 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 34 4 47 5
+let%span sutf8_trace'12 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 6 11 6 55
+let%span sutf8_trace'13 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 7 11 8 69
+let%span sutf8_trace'14 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 9 10 10 83
+let%span sutf8_trace'15 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 13 8 19 9
+let%span slemmas = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lemmas.rs" 41 11 41 29
+let%span slemmas'0 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lemmas.rs" 42 11 42 32
+let%span slemmas'1 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lemmas.rs" 43 11 43 23
+let%span slemmas'2 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lemmas.rs" 44 10 44 30
+let%span sspec = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 157 16 157 99
+let%span sspec'0 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 105 16 108 76
+let%span sspec'1 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 151 16 151 98
+let%span sspec'2 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 139 16 146 78
+let%span sspec'3 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 122 16 129 10
+let%span sspec'4 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 98 16 100 56
+let%span sspec'5 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 20 16 20 60
+let%span sspec'6 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 30 16 30 79
+let%span sspec'7 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 113 16 115 57
+let%span sspec'8 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 5 30 5 51
+
+use creusot.int.UInt8
+use seq.Seq
+use map.Map
+use int.Int
+
+predicate white [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 5 0 5 27] (b: UInt8.t) =
+  [%#sspec'8] b = (32: UInt8.t) \/ b = (9: UInt8.t)
+
+predicate later_candidate [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 97 0 97 58] (s: Seq.seq UInt8.t) (a: int) (k: int) =
+  [%#sspec'4] 0 < a
+  /\ a <= k
+  /\ k < Seq.length s
+  /\ Seq.get s (a - 1) = (10: UInt8.t)
+  /\ Seq.get s k <> (10: UInt8.t) /\ not white (Seq.get s k) /\ (forall j: int. a <= j /\ j < k -> white (Seq.get s j))
+
+predicate source_margin [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 104 0 104 48] (s: Seq.seq UInt8.t) (m: int) =
+  [%#sspec'0] 0 <= m
+  /\ (m = 0 /\ (forall a: int, k: int. not later_candidate s a k)
+  \/ (exists a: int, k: int. later_candidate s a k /\ m = k - a)
+  /\ (forall a: int, k: int. later_candidate s a k -> m <= k - a))
+
+predicate ge_log_Int [@inline:trivial] (self: int) (other: int) = [%#sord] other <= self
+
+meta "rewrite_def" predicate ge_log_Int
+
+predicate initial_crlf [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 19 0 19 39] (s: Seq.seq UInt8.t) =
+  [%#sspec'5] ge_log_Int (Seq.length s) 2 /\ Seq.get s 0 = (13: UInt8.t) /\ Seq.get s 1 = (10: UInt8.t)
+
+predicate gt_log_Int [@inline:trivial] (self: int) (other: int) = [%#sord'0] other < self
+
+meta "rewrite_def" predicate gt_log_Int
+
+predicate ignore_first [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 29 0 29 55] (s: Seq.seq UInt8.t) (preserve: bool) =
+  [%#sspec'6] not preserve /\ (gt_log_Int (Seq.length s) 0 /\ Seq.get s 0 = (10: UInt8.t) \/ initial_crlf s)
+
+predicate source_line_start [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 112 0 112 60] (s: Seq.seq UInt8.t) (a: int) (i: int) =
+  [%#sspec'7] 0 <= a
+  /\ a <= i
+  /\ i < Seq.length s
+  /\ (a = 0 \/ Seq.get s (a - 1) = (10: UInt8.t)) /\ (forall j: int. a <= j /\ j < i -> Seq.get s j <> (10: UInt8.t))
+
+predicate source_keep [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 121 0 121 70] (s: Seq.seq UInt8.t) (m: int) (preserve: bool) (i: int) =
+  [%#sspec'3] 0 <= i
+  /\ i < Seq.length s
+  /\ not (i = 0 /\ initial_crlf s)
+  /\ (if Seq.get s i = (10: UInt8.t) then
+    not (ignore_first s preserve /\ (i = 0 \/ i = 1 /\ initial_crlf s))
+  else
+    exists a: int. source_line_start s a i /\ (a = 0 \/ m <= i - a)
+  )
+
+predicate selection_trace [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 135 0 138 9] (s: Seq.seq UInt8.t) (m: int) (preserve: bool) (bound: int) (positions: Seq.seq int) (out: Seq.seq UInt8.t) =
+  [%#sspec'2] 0 <= bound
+  /\ bound <= Seq.length s
+  /\ Seq.length out = Seq.length positions
+  /\ (forall j: int. 0 <= j /\ j < Seq.length positions
+      -> 0 <= Seq.get positions j
+      /\ Seq.get positions j < bound
+      /\ source_keep s m preserve (Seq.get positions j) /\ Seq.get out j = Seq.get s (Seq.get positions j))
+  /\ (forall j: int, k: int. 0 <= j /\ j < k /\ k < Seq.length positions -> Seq.get positions j < Seq.get positions k)
+  /\ (forall i: int. 0 <= i /\ i < bound /\ source_keep s m preserve i
+    -> (exists j: int. 0 <= j /\ j < Seq.length positions /\ Seq.get positions j = i))
+
+predicate selected_prefix [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 150 0 150 92] (s: Seq.seq UInt8.t) (m: int) (preserve: bool) (bound: int) (out: Seq.seq UInt8.t) =
+  [%#sspec'1] exists positions: Seq.seq int. selection_trace s m preserve bound positions out
+
+predicate source_unindented [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/spec.rs" 156 0 156 74] (s: Seq.seq UInt8.t) (preserve: bool) (out: Seq.seq UInt8.t) =
+  [%#sspec] exists m: int. source_margin s m /\ selected_prefix s m preserve (Seq.length s) out
+
+function tail_u8 (self: Seq.seq UInt8.t) : Seq.seq UInt8.t = [%#sseq] Seq.([..]) self 1 (Seq.length self)
+
+predicate ascii_erasure [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 123 0 123 61] (input: Seq.seq UInt8.t) (output: Seq.seq UInt8.t)
+
+axiom ascii_erasure_def:
+  forall input: Seq.seq UInt8.t, output: Seq.seq UInt8.t [ascii_erasure input output]. ascii_erasure input output
+    = ([%#sutf8'0] if Seq.length input = 0 then
+      Seq.length output = 0
+    else
+      UInt8.t'int (Seq.get input 0) < 128 /\ ascii_erasure (tail_u8 input) output
+      \/ gt_log_Int (Seq.length output) 0
+      /\ Seq.get input 0 = Seq.get output 0 /\ ascii_erasure (tail_u8 input) (tail_u8 output)
+    )
+
+predicate index_Mapping_Int_bool [@inline:trivial] (self: Map.map int bool) (a: int) = [%#smapping] Map.get self a
+
+meta "rewrite_def" predicate index_Mapping_Int_bool
+
+function such_that_Int (p: Map.map int bool) : int
+
+axiom such_that_Int_spec:
+  forall p: Map.map int bool [such_that_Int p]. ([%#slogic] exists x: int. index_Mapping_Int_bool p x)
+    -> ([%#slogic'0] index_Mapping_Int_bool p (such_that_Int p))
+
+predicate index_Mapping_Seq_Int_bool [@inline:trivial] (self: Map.map (Seq.seq int) bool) (a: Seq.seq int) =
+  [%#smapping] Map.get self a
+
+meta "rewrite_def" predicate index_Mapping_Seq_Int_bool
+
+function such_that_Seq_Int (p: Map.map (Seq.seq int) bool) : Seq.seq int
+
+axiom such_that_Seq_Int_spec:
+  forall p: Map.map (Seq.seq int) bool [such_that_Seq_Int p]. ([%#slogic] exists x: Seq.seq int. index_Mapping_Seq_Int_bool p x)
+    -> ([%#slogic'0] index_Mapping_Seq_Int_bool p (such_that_Seq_Int p))
+
+function nonascii_kept [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/lemmas.rs" 45 0 45 50] (s: Seq.seq UInt8.t) (m: int) (p: bool) (i: int) : ()
+
+axiom nonascii_kept_spec: forall s: Seq.seq UInt8.t, m: int, p: bool, i: int. ([%#slemmas] source_margin s m)
+    -> ([%#slemmas'0] 0 <= i /\ i < Seq.length s)
+    -> ([%#slemmas'1] ge_log_Int (UInt8.t'int (Seq.get s i)) 128) -> ([%#slemmas'2] source_keep s m p i)
+
+function all_nonascii_kept [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 54 0 54 70] (source: Seq.seq UInt8.t) (margin: int) (preserve: bool) : ()
+ = [%#sutf8_trace'9] if exists i: int. 0 <= i
+    /\ i < Seq.length source
+    /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128 /\ not source_keep source margin preserve i then
+    let i = such_that_Int (fun (i: int) -> 0 <= i
+    /\ i < Seq.length source
+    /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128
+    /\ not source_keep source margin preserve i) in let _ = nonascii_kept source margin preserve i in ()
+  else
+    ()
+
+
+axiom all_nonascii_kept_spec:
+  forall source: Seq.seq UInt8.t, margin: int, preserve: bool. ([%#sutf8_trace'1] source_margin source margin)
+    -> ([%#sutf8_trace'2] forall i: int. 0 <= i
+        /\ i < Seq.length source /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128
+      -> source_keep source margin preserve i)
+
+function tail_Int (self: Seq.seq int) : Seq.seq int = [%#sseq] Seq.([..]) self 1 (Seq.length self)
+
+function tail_complete [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 11 0 11 70] (source: Seq.seq UInt8.t) (start: int) (positions: Seq.seq int) : ()
+ = [%#sutf8_trace'15] if exists i: int. start < i
+    /\ i < Seq.length source
+    /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128
+    /\ not (exists k: int. 0 <= k /\ k < Seq.length (tail_Int positions) /\ Seq.get (tail_Int positions) k = i) then
+    let i = such_that_Int (fun (i: int) -> start < i
+    /\ i < Seq.length source
+    /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128
+    /\ not (exists k: int. 0 <= k
+      /\ k < Seq.length (tail_Int positions)
+      /\ Seq.get (tail_Int positions) k = i)) in let k = such_that_Int (fun (k: int) -> 1 <= k
+    /\ k < Seq.length positions /\ Seq.get positions k = i) in ()
+  else
+    ()
+
+
+axiom tail_complete_spec:
+  forall source: Seq.seq UInt8.t, start: int, positions: Seq.seq int. ([%#sutf8_trace'12] gt_log_Int (Seq.length positions) 0
+      /\ Seq.get positions 0 = start)
+    -> ([%#sutf8_trace'13] forall i: int. start < i
+          /\ i < Seq.length source /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128
+        -> (exists k: int. 1 <= k /\ k < Seq.length positions /\ Seq.get positions k = i))
+    -> ([%#sutf8_trace'14] forall i: int. start < i
+        /\ i < Seq.length source /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128
+      -> (exists k: int. 0 <= k /\ k < Seq.length (tail_Int positions) /\ Seq.get (tail_Int positions) k = i))
+
+function trace_erasure [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 33 0 33 87] (source: Seq.seq UInt8.t) (start: int) (positions: Seq.seq int) (output: Seq.seq UInt8.t) : ()
+
+axiom trace_erasure_def:
+  forall source: Seq.seq UInt8.t, start: int, positions: Seq.seq int, output: Seq.seq UInt8.t [trace_erasure source start positions output]. ([%#sutf8_trace'3] 0
+        <= start
+      /\ start <= Seq.length source)
+    -> ([%#sutf8_trace'4] Seq.length positions = Seq.length output)
+    -> ([%#sutf8_trace'5] forall k: int. 0 <= k /\ k < Seq.length positions
+        -> start <= Seq.get positions k
+        /\ Seq.get positions k < Seq.length source /\ Seq.get output k = Seq.get source (Seq.get positions k))
+    -> ([%#sutf8_trace'6] forall k: int, l: int. 0 <= k /\ k < l /\ l < Seq.length positions
+        -> Seq.get positions k < Seq.get positions l)
+    -> ([%#sutf8_trace'7] forall i: int. start <= i
+          /\ i < Seq.length source /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128
+        -> (exists k: int. 0 <= k /\ k < Seq.length positions /\ Seq.get positions k = i))
+    -> trace_erasure source start positions output
+    = ([%#sutf8_trace'11] if start < Seq.length source then
+      if gt_log_Int (Seq.length positions) 0 /\ Seq.get positions 0 = start then
+        let _ = tail_complete source start positions in let _ = trace_erasure source (start
+        + 1) (tail_Int positions) (tail_u8 output) in ()
+      else
+        let _ = trace_erasure source (start + 1) positions output in ()
+    
+    else
+      ()
+    )
+
+axiom trace_erasure_spec:
+  forall source: Seq.seq UInt8.t, start: int, positions: Seq.seq int, output: Seq.seq UInt8.t. ([%#sutf8_trace'3] 0
+        <= start
+      /\ start <= Seq.length source)
+    -> ([%#sutf8_trace'4] Seq.length positions = Seq.length output)
+    -> ([%#sutf8_trace'5] forall k: int. 0 <= k /\ k < Seq.length positions
+        -> start <= Seq.get positions k
+        /\ Seq.get positions k < Seq.length source /\ Seq.get output k = Seq.get source (Seq.get positions k))
+    -> ([%#sutf8_trace'6] forall k: int, l: int. 0 <= k /\ k < l /\ l < Seq.length positions
+        -> Seq.get positions k < Seq.get positions l)
+    -> ([%#sutf8_trace'7] forall i: int. start <= i
+          /\ i < Seq.length source /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128
+        -> (exists k: int. 0 <= k /\ k < Seq.length positions /\ Seq.get positions k = i))
+    -> ([%#sutf8_trace'8] ascii_erasure (Seq.([..]) source start (Seq.length source)) output)
+
+meta "compute_max_steps" 1000000
+
+meta "select_lsinst" "all"
+
+constant source : Seq.seq UInt8.t
+
+constant preserve : bool
+
+constant output : Seq.seq UInt8.t
+
+function source_erasure [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8_trace.rs" 68 0 68 71] (source: Seq.seq UInt8.t) (preserve: bool) (output: Seq.seq UInt8.t) : ()
+
+goal vc_source_erasure: ([%#sutf8_trace] source_unindented source preserve output)
+  -> ([@stop_split] [@expl:such_that requires] [%#slogic] exists x: int. index_Mapping_Int_bool (fun (m: int) -> source_margin source m
+      /\ selected_prefix source m preserve (Seq.length source) output) x)
+  /\ (([@stop_split] [@expl:such_that ensures] [%#slogic'0] index_Mapping_Int_bool (fun (m: int) -> source_margin source m
+    /\ selected_prefix source m preserve (Seq.length source) output) (such_that_Int (fun (m: int) -> source_margin source m
+    /\ selected_prefix source m preserve (Seq.length source) output)))
+  -> (let margin = such_that_Int (fun (m: int) -> source_margin source m
+  /\ selected_prefix source m preserve (Seq.length source) output) in ([@stop_split] [@expl:such_that requires] [%#slogic] exists x: Seq.seq int. index_Mapping_Seq_Int_bool (fun (p: Seq.seq int) -> selection_trace source margin preserve (Seq.length source) p output) x)
+  /\ (([@stop_split] [@expl:such_that ensures] [%#slogic'0] index_Mapping_Seq_Int_bool (fun (p: Seq.seq int) -> selection_trace source margin preserve (Seq.length source) p output) (such_that_Seq_Int (fun (p: Seq.seq int) -> selection_trace source margin preserve (Seq.length source) p output)))
+  -> (let positions = such_that_Seq_Int (fun (p: Seq.seq int) -> selection_trace source margin preserve (Seq.length source) p output) in ([@stop_split] [@expl:all_nonascii_kept requires] [%#sutf8_trace'1] source_margin source margin)
+  /\ (([@stop_split] [@expl:all_nonascii_kept ensures] [%#sutf8_trace'2] forall i: int. 0 <= i
+        /\ i < Seq.length source /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128
+      -> source_keep source margin preserve i)
+  -> (let _ = all_nonascii_kept source margin preserve in ([@stop_split] [@expl:trace_erasure requires] ([@stop_split] [@expl:trace_erasure requires #0] [%#sutf8_trace'3] 0
+        <= 0
+      /\ 0 <= Seq.length source)
+    /\ ([@stop_split] [@expl:trace_erasure requires #1] [%#sutf8_trace'4] Seq.length positions = Seq.length output)
+    /\ ([@stop_split] [@expl:trace_erasure requires #2] [%#sutf8_trace'5] forall k: int. 0 <= k
+          /\ k < Seq.length positions
+        -> 0 <= Seq.get positions k
+        /\ Seq.get positions k < Seq.length source /\ Seq.get output k = Seq.get source (Seq.get positions k))
+    /\ ([@stop_split] [@expl:trace_erasure requires #3] [%#sutf8_trace'6] forall k: int, l: int. 0 <= k
+          /\ k < l /\ l < Seq.length positions -> Seq.get positions k < Seq.get positions l)
+    /\ ([@stop_split] [@expl:trace_erasure requires #4] [%#sutf8_trace'7] forall i: int. 0 <= i
+        /\ i < Seq.length source /\ ge_log_Int (UInt8.t'int (Seq.get source i)) 128
+      -> (exists k: int. 0 <= k /\ k < Seq.length positions /\ Seq.get positions k = i)))
+  /\ (([@stop_split] [@expl:trace_erasure ensures] [%#sutf8_trace'8] ascii_erasure (Seq.([..]) source 0 (Seq.length source)) output)
+  -> (let _ = trace_erasure source 0 positions output in Seq.([..]) source 0 (Seq.length source) = source
+  && ([@stop_split] [@expl:source_erasure ensures] [%#sutf8_trace'0] ascii_erasure source output)))))))))

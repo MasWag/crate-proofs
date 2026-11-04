@@ -1,0 +1,113 @@
+(* #"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 101 0 101 50 *)
+
+let%span sutf8 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 100 10 100 17
+let%span sutf8'0 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 99 10 99 69
+let%span sutf8'1 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 55 11 55 22
+let%span sutf8'2 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 56 10 56 50
+let%span sutf8'3 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 58 4 59 55
+let%span sutf8'4 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 37 11 37 29
+let%span sutf8'5 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 38 11 38 64
+let%span sutf8'6 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 39 10 39 16
+let%span sutf8'7 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 40 50 40 52
+let%span sord = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/ord.rs" 22 8 22 20
+let%span sord'0 = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/ord.rs" 34 8 34 21
+let%span sseq = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/seq.rs" 443 14 443 86
+let%span sseq'0 = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/seq.rs" 160 8 160 39
+let%span sseq'1 = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/seq.rs" 311 14 311 24
+let%span sseq'2 = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/seq.rs" 313 8 317 9
+let%span schar = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/std/char.rs" 47 14 47 52
+let%span sstring = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/std/string.rs" 190 20 190 56
+let%span swell_founded = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/well_founded.rs" 43 8 43 33
+
+use creusot.prelude.Char
+use seq.Seq
+use creusot.int.UInt8
+use map.Map
+use int.Int
+
+function tail_char (self: Seq.seq Char.t) : Seq.seq Char.t = [%#sseq'0] Seq.([..]) self 1 (Seq.length self)
+
+function flat_map_char (self: Seq.seq Char.t) (other: Map.map Char.t (Seq.seq UInt8.t)) : Seq.seq UInt8.t
+
+axiom flat_map_char_def:
+  forall self: Seq.seq Char.t, other: Map.map Char.t (Seq.seq UInt8.t) [flat_map_char self other]. flat_map_char self other
+    = ([%#sseq'2] if Seq.length self = 0 then
+      Seq.empty: Seq.seq UInt8.t
+    else
+      Seq.(++) (Map.get other (Seq.get self 0)) (flat_map_char (tail_char self) other)
+    )
+
+function to_utf8_char (self: Char.t) : Seq.seq UInt8.t
+
+axiom to_utf8_char_spec: forall self: Char.t [to_utf8_char self]. [%#schar] 1 <= Seq.length (to_utf8_char self)
+    /\ Seq.length (to_utf8_char self) <= 4
+
+function to_bytes (self: Seq.seq Char.t) : Seq.seq UInt8.t =
+  [%#sstring] flat_map_char self (fun (c: Char.t) -> to_utf8_char c)
+
+predicate gt_log_Int [@inline:trivial] (self: int) (other: int) = [%#sord] other < self
+
+meta "rewrite_def" predicate gt_log_Int
+
+predicate ge_log_Int [@inline:trivial] (self: int) (other: int) = [%#sord'0] other <= self
+
+meta "rewrite_def" predicate ge_log_Int
+
+predicate well_founded_relation_Int [@inline:trivial] (self: int) (other: int) =
+  [%#swell_founded] ge_log_Int self 0 /\ gt_log_Int self other
+
+meta "rewrite_def" predicate well_founded_relation_Int
+
+function concat_assoc_u8 (self: Seq.seq UInt8.t) (other1: Seq.seq UInt8.t) (other2: Seq.seq UInt8.t) : ()
+
+axiom concat_assoc_u8_spec:
+  forall self: Seq.seq UInt8.t, other1: Seq.seq UInt8.t, other2: Seq.seq UInt8.t. [%#sseq] Seq.(++) (Seq.(++) self other1) other2
+    = Seq.(++) self (Seq.(++) other1 other2)
+
+function bytes_extensional_char [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 40 0 40 49] (a: Seq.seq Char.t) (b: Seq.seq Char.t) : ()
+ = [%#sutf8'7] ()
+
+axiom bytes_extensional_char_spec: forall a: Seq.seq Char.t, b: Seq.seq Char.t. ([%#sutf8'4] Seq.length a
+      = Seq.length b)
+    -> ([%#sutf8'5] forall i: int. 0 <= i /\ i < Seq.length a -> Seq.get a i = Seq.get b i) -> ([%#sutf8'6] a = b)
+
+function tail_concat_char [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 57 0 57 43] (a: Seq.seq Char.t) (b: Seq.seq Char.t) : ()
+ = [%#sutf8'3] let _ = bytes_extensional_char (tail_char (Seq.(++) a b)) (Seq.(++) (tail_char a) b) in ()
+
+axiom tail_concat_char_spec: forall a: Seq.seq Char.t, b: Seq.seq Char.t. ([%#sutf8'1] gt_log_Int (Seq.length a) 0)
+    -> ([%#sutf8'2] tail_char (Seq.(++) a b) = Seq.(++) (tail_char a) b)
+
+meta "compute_max_steps" 1000000
+
+meta "select_lsinst" "all"
+
+constant a : Seq.seq Char.t
+
+constant b : Seq.seq Char.t
+
+function encoding_concat [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 101 0 101 50] (a: Seq.seq Char.t) (b: Seq.seq Char.t) : ()
+
+goal vc_encoding_concat: if gt_log_Int (Seq.length a) 0 then
+    ([@expl:variant decreases] well_founded_relation_Int ([%#sutf8] Seq.length a) ([%#sutf8] Seq.length (tail_char a)))
+    /\ (([@stop_split] [@expl:encoding_concat ensures] [%#sutf8'0] to_bytes (Seq.(++) (tail_char a) b)
+      = Seq.(++) (to_bytes (tail_char a)) (to_bytes b))
+    -> (let _ = encoding_concat (tail_char a) b in ([@stop_split] [@expl:to_utf8 ensures] [%#schar] 1
+        <= Seq.length (to_utf8_char (Seq.get a 0))
+      /\ Seq.length (to_utf8_char (Seq.get a 0)) <= 4)
+    -> ([@stop_split] [@expl:concat_assoc ensures] [%#sseq] Seq.(++) (Seq.(++) (to_utf8_char (Seq.get a 0)) (to_bytes (tail_char a))) (to_bytes b)
+      = Seq.(++) (to_utf8_char (Seq.get a 0)) (Seq.(++) (to_bytes (tail_char a)) (to_bytes b)))
+    -> (let _ = concat_assoc_u8 (to_utf8_char (Seq.get a 0)) (to_bytes (tail_char a)) (to_bytes b) in ([@stop_split] [@expl:tail_concat requires] [%#sutf8'1] gt_log_Int (Seq.length a) 0)
+    /\ (([@stop_split] [@expl:tail_concat ensures] [%#sutf8'2] tail_char (Seq.(++) a b) = Seq.(++) (tail_char a) b)
+    -> (let _ = tail_concat_char a b in ([@stop_split] [@expl:to_utf8 ensures] [%#schar] 1
+        <= Seq.length (to_utf8_char (Seq.get a 0))
+      /\ Seq.length (to_utf8_char (Seq.get a 0)) <= 4)
+    -> to_bytes a = Seq.(++) (to_utf8_char (Seq.get a 0)) (to_bytes (tail_char a))
+    && (([@stop_split] [@expl:to_utf8 ensures] [%#schar] 1 <= Seq.length (to_utf8_char (Seq.get a 0))
+      /\ Seq.length (to_utf8_char (Seq.get a 0)) <= 4)
+    -> to_bytes (Seq.(++) a b) = Seq.(++) (to_utf8_char (Seq.get a 0)) (to_bytes (tail_char (Seq.(++) a b)))
+    && ([@stop_split] [@expl:encoding_concat ensures] [%#sutf8'0] to_bytes (Seq.(++) a b)
+    = Seq.(++) (to_bytes a) (to_bytes b))))))))
+  else
+    [@stop_split] [@expl:encoding_concat ensures] [%#sutf8'0] to_bytes (Seq.(++) a b)
+    = Seq.(++) (to_bytes a) (to_bytes b)
+  

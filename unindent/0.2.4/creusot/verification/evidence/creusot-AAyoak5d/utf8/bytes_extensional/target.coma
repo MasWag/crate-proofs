@@ -1,0 +1,24 @@
+(* #"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 40 0 40 49 *)
+
+let%span sutf8 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 37 11 37 29
+let%span sutf8'0 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 38 11 38 64
+let%span sutf8'1 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 39 10 39 16
+
+use seq.Seq
+use int.Int
+
+type t_T
+
+meta "compute_max_steps" 1000000
+
+meta "select_lsinst" "all"
+
+constant a : Seq.seq t_T
+
+constant b : Seq.seq t_T
+
+function bytes_extensional_T [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 40 0 40 49] (a: Seq.seq t_T) (b: Seq.seq t_T) : ()
+
+goal vc_bytes_extensional_T: ([%#sutf8] Seq.length a = Seq.length b)
+  -> ([%#sutf8'0] forall i: int. 0 <= i /\ i < Seq.length a -> Seq.get a i = Seq.get b i)
+  -> ([@stop_split] [@expl:bytes_extensional ensures] [%#sutf8'1] a = b)

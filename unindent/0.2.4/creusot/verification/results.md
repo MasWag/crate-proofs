@@ -2,14 +2,14 @@
 
 ## Accepted local proof
 
-Fresh run `creusot-KG6tgwwd` on 2026-11-05 passed native checks, fresh Coma
+Fresh run `creusot-AAyoak5d` on 2026-11-05 passed native checks, fresh Coma
 compilation, standard Why3find verification and the shared independent audit.
 The [manifest](evidence/latest/manifest.json) records **36 selected targets and
 61 closed root goals**, with zero expected-open and zero excluded generated
 targets. These are proof-file/root counts, not public API claim counts.
 
 Manifest SHA-256:
-`3231fc7230d64581d3f83a3d27f4579e4e1aa1f1823213d47606440a24eab025`.
+`919d39e0cd406a407b42796753b0074effd4d5067281ebd5430365dd31c97291`.
 The [audit](evidence/latest/audit.json) reconstructed the exact root inventories
 with Why3 and checked the complete generated Coma inventory. Every selected
 session has positive goals and every saved proof tree closes. Standard proving
@@ -106,5 +106,9 @@ Local functional and termination proofs are distinct from service claims. The
 pinned cargo-proofs 0.4.1 Creusot importer records only `panic_contract`, not
 additional `functional_correctness` or `no_ub` service claims. The reader-facing
 [report configuration](../proofs.toml) makes the adaptation and trust boundaries
-explicit. Standard detached-source recording and publication are pending; the
-previous Aeneas report is unchanged by this local acceptance.
+explicit. The first detached recording failed before proving because the wrapper combined
+Why3find option names and values. The corrected wrapper was checked with a fresh
+compile and command preview. This accepted run refreshes every input fingerprint
+after that correction; the prior `creusot-KG6tgwwd` bundle remains historical.
+Standard detached-source recording and publication are pending; the previous
+Aeneas report is unchanged by this local acceptance.

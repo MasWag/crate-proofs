@@ -10,5 +10,8 @@ UNINDENT_PROOFS_CLI="${CARGO_PROOFS_BIN:-$UNINDENT_CREUSOT_ROOT/../.work/selecte
 exec "$UNINDENT_PROOFS_CLI" proofs run --manifest-path "$UNINDENT_CREUSOT_ROOT/Cargo.toml" -- \
   cargo creusot --no-cache \
   --why3find-arg=--no-autodetect-provers \
-  --why3find-arg=-Pz3,cvc5,alt-ergo --why3find-arg=-j2 \
-  --why3find-arg=--fast=1 --why3find-arg=--time=10 --why3find-arg=-d6
+  --why3find-arg=-P --why3find-arg=z3,cvc5,alt-ergo \
+  --why3find-arg=-j --why3find-arg=2 \
+  --why3find-arg=--fast --why3find-arg=1 \
+  --why3find-arg=--time --why3find-arg=10 \
+  --why3find-arg=-d --why3find-arg=6
