@@ -1,0 +1,90 @@
+{
+  "status": "passed",
+  "run_id": "ec72449d-897f-42a7-8b97-d04dead9eab0",
+  "crate": "bs58",
+  "version": "0.5.1",
+  "scope": "Disclosed verification fork; standard Creusot importer panic_contract records. Functional and refinement claims belong to the separate accepted full extension audit.",
+  "source": {
+    "repositoryUri": "https://github.com/MasWag/crate-proofs",
+    "revisionId": "6fb3cb5ed542d95438e778eacf3a5af45d1b0db9"
+  },
+  "recorder_version": "0.4.1",
+  "verifier": {
+    "name": "creusot",
+    "version": "0.13.0"
+  },
+  "command": [
+    "/home/lab8/mwaga/.cargo/bin/cargo-proofs",
+    "proofs",
+    "run",
+    "--",
+    "cargo",
+    "creusot",
+    "--no-cache",
+    "--span-mode",
+    "absolute",
+    "--why3find-arg=-j",
+    "--why3find-arg=2"
+  ],
+  "recording_exit": 0,
+  "verifier_exit": 0,
+  "start_time_utc": "2026-11-04T17:29:49.197007952+00:00",
+  "end_time_utc": "2026-11-04T17:35:09.887477880+00:00",
+  "sarif": {
+    "local_path": ".work/tools/data/cargo-proofs/0f859f5ac8b4ada6baf3322e3cc56dc11549d88578d34a8020e484d77311fae3/runs/ec72449d-897f-42a7-8b97-d04dead9eab0/run.sarif.json",
+    "sha256": "c239140999f767b637c5447120db388ebdacf3b7116dad181c4c5b8a9317f005",
+    "bytes": 124721,
+    "contracts": 21,
+    "passing_root_results": 65,
+    "solver_leaves": 526,
+    "native_subtree_matches": 65
+  },
+  "recorded_fork_api_paths": [
+    "bs58::decode_into",
+    "bs58::decode_into_const",
+    "bs58::defaults::decode",
+    "bs58::defaults::encode",
+    "bs58::Alphabet::bitcoin",
+    "bs58::encode_into",
+    "bs58::Alphabet::new",
+    "<bs58::AlphabetError as Clone>::clone",
+    "<bs58::DecodeError as Clone>::clone",
+    "<bs58::EncodeError as Clone>::clone",
+    "bs58::vec_utils::grow_zero",
+    "bs58::vec_utils::truncate",
+    "bs58::wrappers::encode_decode_roundtrip",
+    "bs58::Alphabet::new_unwrap",
+    "<bs58::Alphabet as Clone>::clone",
+    "<[u8; N] as bs58::wrappers::DecodeTarget>::decode_with",
+    "<&mut T as bs58::wrappers::DecodeTarget>::decode_with",
+    "<[u8] as bs58::wrappers::DecodeTarget>::decode_with",
+    "<&mut T as bs58::wrappers::EncodeTarget>::encode_with",
+    "<[u8] as bs58::wrappers::EncodeTarget>::encode_with",
+    "bs58::wrappers::max_encoded_len"
+  ],
+  "native_capture": {
+    "local_path": ".work/extensions/standard-recording-native-proof-files",
+    "coma_files": 135,
+    "proof_json_files": 135,
+    "root_goals": 242,
+    "positive_solver_leaves": 750,
+    "empty_or_open_nodes": 0,
+    "declaration_root_reconstruction": "passed: all original root sets independently reconstructed and matched to native proof sessions",
+    "independent_audit": "native-goal-audit.json",
+    "independent_audit_sha256": "b91074b51edf6e0347ce1baed819ad212e4b189622ce837e5acdafc7dc85ddd3"
+  },
+  "log": ".work/extensions/standard-recording.log",
+  "source_transformation": "source-transformation.json",
+  "recording_source_hashes_match_transformation": true,
+  "accepted_canonical_audit": {
+    "run": ".work/extensions/formal-vkijxx6d",
+    "summary_sha256": "2d2af51c1d3934ef9eb47358d267156a0580c6f82ce9c1bc82aaf194dadd0084",
+    "generated_targets": 135,
+    "root_goals": 242,
+    "computed_root_goals": 123,
+    "solver_leaves": 612
+  },
+  "publication": "Recorded separately after the report revision is confirmed; this file records successful execution and native goal auditing.",
+  "api_binding_coverage": "21 named fork functions, a subset of full proof coverage. The standard importer does not separately bind the generic builder methods and generated equality/refinement functions; these are included in the complete canonical and native goal inventories.",
+  "recorder_binary_sha256": "eba29f2df80a3e75b3795ff7b5e65783dafc326162b7e302810b657981b1393d"
+}

@@ -1,0 +1,9 @@
+{
+  "archive": "/home/lab8/mwaga/proof.rs/publication/bs58/0.5.1/creusot/.work/evidence-archives/bs58-0.5.1-creusot-recording-ec72449d.tar.gz",
+  "sha256": "2a081b662ca71691e9df2f64d38f51ee74f3053e25fa3cc9063175255bcb67c9",
+  "bytes": 209178,
+  "members": 290,
+  "manifest_sha256": "dd458eaa6ff2a00678c13a62daee24abb9b0367c993053a157277fe5e887ce6c",
+  "availability": "Local-only; SARIF is separately uploaded to proofs.rs. This checksum is not a public archive download.",
+  "validation": "All members reopened and byte-compared; no credentials, build caches or binaries included."
+}

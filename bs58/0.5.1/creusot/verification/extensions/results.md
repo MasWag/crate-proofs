@@ -124,3 +124,14 @@ in the [archive descriptor](evidence/archive.json). The archive is local-only;
 the checksum is not a public download URL. Public source and compact evidence
 support a fresh reproduction. Publication recording and receipts are separate
 from this formal acceptance.
+
+The subsequent standard recording
+`ec72449d-897f-42a7-8b97-d04dead9eab0` also succeeded with the unmodified installed
+cargo-proofs 0.4.1. Its complete captured formal prover run has 135 targets, 242
+reconstructed roots and 750 positive solver leaves. Its source-bound SARIF
+contains 21 fork API entries and 65 passing root results. The
+[recording summary](../../extensions/publication/recorded-run-summary.json) and
+[independent native goal audit](../../extensions/publication/native-goal-audit.json)
+retain those distinct scopes. The [reporting notes](reporting-notes.md) explain
+why generic builder methods and generated methods/refinements do not all appear
+as separate API entries; they remain covered by the full proof inventories.

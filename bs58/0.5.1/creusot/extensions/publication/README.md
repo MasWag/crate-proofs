@@ -33,5 +33,12 @@ Use the installed unmodified cargo-proofs 0.4.1 and a writable TMPDIR under the
 ignored Creusot `.work/` directory. The standard recorder checks a fresh detached
 Git snapshot and embeds real logs/proof trees in SARIF. Its Creusot adapter records
 panic-contract API entries; the full functional and refinement evidence is the
-separate accepted extension audit. A successful recording and publication receipt
-will be linked here after they exist.
+separate accepted extension audit. The successful fresh recording is described in
+[`recorded-run-summary.json`](recorded-run-summary.json): 21 fork API contracts
+and 65 passing imported root results. The global recorder and verifier both
+exited successfully. The standard importer scope is separate from the full
+functional and refinement audit. The complete captured formal run also passes the
+independent [goal audit](native-goal-audit.json): 135 targets and 242 roots with
+positive solver trees. Generic builder methods and generated equality/refinement
+functions appear in the complete proof inventories even when the standard
+importer supplies no separate API binding. Publication is recorded separately.

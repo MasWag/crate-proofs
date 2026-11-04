@@ -1,0 +1,1748 @@
+{
+  "status": "passed",
+  "run_id": "ec72449d-897f-42a7-8b97-d04dead9eab0",
+  "source": {
+    "repositoryUri": "https://github.com/MasWag/crate-proofs",
+    "revisionId": "6fb3cb5ed542d95438e778eacf3a5af45d1b0db9"
+  },
+  "method": "Read-only original-root reconstruction from every retained native Coma file, exact proof-session root equality and positive solver-tree checks. No new prover invocations or synthetic per-target exit codes.",
+  "checker_sha256": "fb2331417430772366acab207c31b30a0a12ea2614b1e24d6b9ee315c84c7eaf",
+  "generated_targets": 135,
+  "root_goals": 242,
+  "solver_leaves": 750,
+  "all_trees_closed": true,
+  "all_sarif_subtrees_match_native_capture": true,
+  "recorded_api_contracts": 21,
+  "recorded_results": 65,
+  "sarif_sha256": "c239140999f767b637c5447120db388ebdacf3b7116dad181c4c5b8a9317f005",
+  "per_target_process_exits": "Not separately recorded; standard cargo creusot invocation exit 0.",
+  "targets": [
+    {
+      "target": "bs58_rlib/checked_state/impl_DecodeBuilder_I/as_cb58.coma",
+      "coma_sha256": "c19341d3da84ed702850bc99b9acc1fc25c9e1c4f75ab712caa167f4d3cf6f75",
+      "proof_json_sha256": "dd17a734edc8794df5aa79237906f35c1ff97c728a5df372717787ff6282090b",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_as_cb58_I"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/checked_state/impl_DecodeBuilder_I/new.coma",
+      "coma_sha256": "5161a5c8829cdb0e209dcc223ac281bb0dad3ca1c8d3e8d05f84c7c17130ca41",
+      "proof_json_sha256": "fc4bc3e557908baf7ab34ae9353dc4b403f6c0c8dc8df6590b81a9190267df6e",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_new_I"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/checked_state/impl_DecodeBuilder_I/with_alphabet.coma",
+      "coma_sha256": "8f64de642c29a8af3ab8004a6d6e3beaf232b109a3af93e6aa612f9f004029d3",
+      "proof_json_sha256": "f93a1b7a258a1981bf5d89f90182d5ae268453d23cf13fa38703f8d75f53b277",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_with_alphabet_I"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/checked_state/impl_DecodeBuilder_I/with_check.coma",
+      "coma_sha256": "681cd32ab424e36bcb93790fe72a7bef2bebb4d6ec517f61a36de9ebd9a79e84",
+      "proof_json_sha256": "d975b94c936a115e213d74c07ea270a86407aa167cf91dab7b671f7899cde21e",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_with_check_I"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/checked_state/impl_EncodeBuilder_I/as_cb58.coma",
+      "coma_sha256": "2725eb68e0b5a48b3fc19eec9dcf29d8b22e0ca7d40b7205b7f1465c3b51f108",
+      "proof_json_sha256": "291468be3fd71289110e252478dac5f4782dc5a3931e4218dbf57f6238e69282",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_as_cb58_I"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/checked_state/impl_EncodeBuilder_I/new.coma",
+      "coma_sha256": "ae8e58f4ac6d9e0d68757b55218adff074c2b37ae2525e725aee9e4db5858e0f",
+      "proof_json_sha256": "994ff91da4063464768139b19c2f52edd74ed4f0d3d617b3c4a03fdd242dec21",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_new_I"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/checked_state/impl_EncodeBuilder_I/with_alphabet.coma",
+      "coma_sha256": "ac605a1a12e9cc877ef4f582daa09ed011b6ada2b9ac38749f6f7de56b8df4ab",
+      "proof_json_sha256": "763328a12213eb1ac375b722f5af3c12fe04b0bbb4a2cea565ccc92d13bcf76b",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_with_alphabet_I"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/checked_state/impl_EncodeBuilder_I/with_check.coma",
+      "coma_sha256": "7c58c56a83cba4cc664b566805e69121d7e33dbdde100d0011d797dffa2403f7",
+      "proof_json_sha256": "d5861b2d680c534cdab13010f20d4534d387e9e8690993468b28d0edb756e4ac",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_with_check_I"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/checked_state/impl_EncodeBuilder_I/with_check_version.coma",
+      "coma_sha256": "19aaa8eca29372d1076d0da36ac69bb461ccdf9bfc1363ef2339712730c27f4e",
+      "proof_json_sha256": "41e562d7ace625c3d84b7851812f11fe8f3276b68f71542f60122f0e9995bd20",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_with_check_version_I"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/decode_into.coma",
+      "coma_sha256": "c8bd83e51e980da565f98ae5666e64e94a53d35798fb80a5762096175050f51d",
+      "proof_json_sha256": "3ac3e84f3408cc7bbcd26a80ae8b15e69c8c95ac73efa534f0f23a83cab55c3f",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_decode_append_step",
+        "Coma.vc_decode_horner_step",
+        "Coma.vc_decode_into",
+        "Coma.vc_decode_tail_step",
+        "Coma.vc_full_prefix_le",
+        "Coma.vc_len_u8",
+        "Coma.vc_new_unit"
+      ],
+      "roots": 7,
+      "solver_leaves": 156,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/decode_into_const.coma",
+      "coma_sha256": "ee702787683d6652e6a7e2e6131360d4bb16bf2104e9d357646050400e20b166",
+      "proof_json_sha256": "66e75010f704a3c3ea1e2497a94c8878e7b3ccda8aaa2f758ce41b463378f986",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_decode_append_step",
+        "Coma.vc_decode_horner_step",
+        "Coma.vc_decode_into_const",
+        "Coma.vc_le_extend_step",
+        "Coma.vc_len_u8",
+        "Coma.vc_new_unit"
+      ],
+      "roots": 6,
+      "solver_leaves": 155,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/defaults/decode.coma",
+      "coma_sha256": "3347ad3a4b4fae4173076f6d7aa3c4fb78b9e2f3f7706220ea55c9e6472c8d27",
+      "proof_json_sha256": "3380c2c80ae8d308296fc6ff44572a46c975e02857bce199ee6bd39cfc456910",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_decode_I",
+        "Coma.vc_from_input_I",
+        "Coma.vc_new_unwrap",
+        "Coma.vc_set_BITCOIN",
+        "Coma.vc_set_DEFAULT"
+      ],
+      "roots": 5,
+      "solver_leaves": 5,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/defaults/encode.coma",
+      "coma_sha256": "0161044334a086e89c5a8454d12b8152717c0e434519c1f1c3703eb82d7ac681",
+      "proof_json_sha256": "9fcf7c565ea21cfb4eb54de648bf215515a3e61bb95ef1f439b8f6849fb8035d",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_encode_I",
+        "Coma.vc_from_input_I",
+        "Coma.vc_new_unwrap",
+        "Coma.vc_set_BITCOIN",
+        "Coma.vc_set_DEFAULT"
+      ],
+      "roots": 5,
+      "solver_leaves": 5,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/defaults/impl_Alphabet/BITCOIN.coma",
+      "coma_sha256": "0ce6cafedb05f838f61cfa5cf81adfd796c596471ad8366a43730430a7ed4abf",
+      "proof_json_sha256": "11d4187467703917fc376453840470c31c44aca9e7677ba3572b1798363c5257",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_const_BITCOIN_def",
+        "Coma.vc_new_unwrap"
+      ],
+      "roots": 2,
+      "solver_leaves": 2,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/defaults/impl_Alphabet/DEFAULT.coma",
+      "coma_sha256": "11367049fd98e28fbf83b15d9fb2af0f968ef4e36c50b4ff7fca6bfe685e3e97",
+      "proof_json_sha256": "63bda52f7e58cde8986b55a482cc06cdcdb5fc8830830c87464c5198f3b356c4",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_const_DEFAULT_def",
+        "Coma.vc_new_unwrap",
+        "Coma.vc_set_BITCOIN"
+      ],
+      "roots": 3,
+      "solver_leaves": 3,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/defaults/impl_Alphabet/FLICKR.coma",
+      "coma_sha256": "b599a68d5e3de1cc7ba604eb84128088609cc571dd81352302bccd9e29ffed3b",
+      "proof_json_sha256": "cbccf6ea6d1a869b83a196504b446422765b1b35f6914d88c7c5d894701fa23a",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_const_FLICKR_def",
+        "Coma.vc_new_unwrap"
+      ],
+      "roots": 2,
+      "solver_leaves": 2,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/defaults/impl_Alphabet/MONERO.coma",
+      "coma_sha256": "261321bd928af26e8ff26467e9fa80b554276817482fcd19220e3930faad24bd",
+      "proof_json_sha256": "776a986f0ea24b0fd5403c5c7b07b28235c452a0d3e1bee881a4fbb0a7115b34",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_const_MONERO_def",
+        "Coma.vc_new_unwrap"
+      ],
+      "roots": 2,
+      "solver_leaves": 2,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/defaults/impl_Alphabet/RIPPLE.coma",
+      "coma_sha256": "6fd294f50db19c864edd03ed14c5a8bc145c7c9d2203b0cee4d93790a9af1ae5",
+      "proof_json_sha256": "40bab08837813a9cde67eb336231a10351f82f9096a2b6885b578c20d810713f",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_const_RIPPLE_def",
+        "Coma.vc_new_unwrap"
+      ],
+      "roots": 2,
+      "solver_leaves": 2,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/defaults/impl_Alphabet/bitcoin.coma",
+      "coma_sha256": "48e3ca9d892e966ed8f827ef319b2a6953eafe3bec98a28beb400150324cb58c",
+      "proof_json_sha256": "4d140bf5fe0ee6493ad00f61dd075aa40dfaad9ec7b272b8f273bef3fead1dd3",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_bitcoin",
+        "Coma.vc_new_unwrap"
+      ],
+      "roots": 2,
+      "solver_leaves": 2,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/defaults/impl_DecodeBuilder_I/from_input.coma",
+      "coma_sha256": "fc5bd1517336f6794a0a3f11a9ee5093c9880f53aef935d02634aef549321d37",
+      "proof_json_sha256": "bce02be2b1a1d1df6af79e7837994b20f7d178f552cdd4afb3957087fe3eb1ae",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_from_input_I",
+        "Coma.vc_new_I",
+        "Coma.vc_new_unwrap",
+        "Coma.vc_set_BITCOIN",
+        "Coma.vc_set_DEFAULT"
+      ],
+      "roots": 5,
+      "solver_leaves": 5,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/defaults/impl_EncodeBuilder_I/from_input.coma",
+      "coma_sha256": "129bb611a90417f9a267967ce30712ce66509e8c532410f599fa027e012bba15",
+      "proof_json_sha256": "5d26e1bbe94032a18bd7468ab2aac68e15324b70c61c3cc0f00568ee36396fcb",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_from_input_I",
+        "Coma.vc_new_I",
+        "Coma.vc_new_unwrap",
+        "Coma.vc_set_BITCOIN",
+        "Coma.vc_set_DEFAULT"
+      ],
+      "roots": 5,
+      "solver_leaves": 5,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/encode_into.coma",
+      "coma_sha256": "9f8fae8729a042414b89039751b7c73538dae7f7262af82d6e98a8ae788cfde2",
+      "proof_json_sha256": "3cb0f4bba7e4c7d397fba15b5a35607302ee0411d76f9dba6e30139c99a002a4",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_append_step",
+        "Coma.vc_encode_into",
+        "Coma.vc_horner_step",
+        "Coma.vc_len_u8",
+        "Coma.vc_new_unit"
+      ],
+      "roots": 5,
+      "solver_leaves": 132,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/encoder_lemmas/append_preserves.coma",
+      "coma_sha256": "fb617019f9f80613e3179ffa88192d6c0dd9c3b944629ba9847b701df6e7fb12",
+      "proof_json_sha256": "14a330d256cf1fd1b66b9f95c505a52f5311acd9e23d31f34701ac1b4397c8be",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_append_preserves"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/encoder_lemmas/append_step.coma",
+      "coma_sha256": "a5799491132d27591e4377fe10904913e76327bae3311f63591efc877a1b953b",
+      "proof_json_sha256": "abbf2a9a214bd616114972f19fcd310af5a3c8fe72bd030563eced8152a788f3",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_append_step"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/encoder_lemmas/division_weight.coma",
+      "coma_sha256": "34799755eeb7ff4fa2910695308224e0e3c40176d02d3a4f32440bf508fc3262",
+      "proof_json_sha256": "e51235314db86cfb900c39fd6e0eb91f602c7ed84fe564a79485ceef5b5c2a2b",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_division_weight"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/encoder_lemmas/encode_growth_failure.coma",
+      "coma_sha256": "cc8002938311f5dfc3c1082db07de6b49d2e4b293d2f64dd93ed341e482b8e39",
+      "proof_json_sha256": "40fc460c9ccc21a20124c26a2e8967878b2b8726dba960f1f15a90bebcacd696",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_encode_growth_failure"
+      ],
+      "roots": 1,
+      "solver_leaves": 12,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/encoder_lemmas/encode_success_fits.coma",
+      "coma_sha256": "ce556ccf583b6416310332790dd95d1dee49e8b142d85a9b2c0d883879f13089",
+      "proof_json_sha256": "f5b20496d3e2d3ca1667b43a6f359302df83ee8e24a9815a6369a96e32f5ccdd",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_encode_success_fits"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/encoder_lemmas/encode_zero_failure.coma",
+      "coma_sha256": "d00d198a33179f9494f7d622653cce70de4e73ad29af2783e778157fe3bc3f6a",
+      "proof_json_sha256": "16d1baab6c8067a25faa6d941f2021d1dec1148d341d9e50a501815fce81834c",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_encode_zero_failure"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/encoder_lemmas/horner_preserves.coma",
+      "coma_sha256": "c91c75985b918d2ea5413fdb83fb83b5dbca2070448c8358f656b9394751e303",
+      "proof_json_sha256": "af5d69fe08258fc6b30a28e55fcbfc7bf565852c4cfca2ba3beda5a9016c6902",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_horner_preserves"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/encoder_lemmas/horner_step.coma",
+      "coma_sha256": "36588f28ffdb0dc38c41f254f6629a306e1f04218bc00f98d8a4e747a7c38098",
+      "proof_json_sha256": "49d25a3ae821e6afecaea5f837570b61b6698839c380d5e36f3f74ca7fcec003",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_horner_step"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/encoder_lemmas/horner_weight.coma",
+      "coma_sha256": "b11d091a1085aea9a23d6b98381515ac73ea2c0b7f041bc0c6914fae30e7dc06",
+      "proof_json_sha256": "c1eae74413bcb1113d914488ec3018ada270f7b5bbd243ae9014c6bfa6749237",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_horner_weight"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/encoder_lemmas/le_canonical_lower.coma",
+      "coma_sha256": "5809555ddb5e3909c1198eef2a159738118cd12a955d534bf92dcd55599889c1",
+      "proof_json_sha256": "92ef6082674d38bac7198b3a6c3c94e158bb2097caf7deec94210b632f1781a7",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_le_canonical_lower"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/encoder_lemmas/le_extend.coma",
+      "coma_sha256": "685fa295e78bb12c26ebf5d84d3305d90c79c140183b69087db183749bc22623",
+      "proof_json_sha256": "82dbc8152f45d9b520e90faead7321eed252a98be6262e379230b1686a0ea0d6",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_le_extend"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/encoder_lemmas/le_nonnegative.coma",
+      "coma_sha256": "28e4c580cf5a9d764657d82ed1a84cf4e25466ae3083d3f47aac3b4e2563a00f",
+      "proof_json_sha256": "0d56d9ea4c527312b848e7d5fb2ba7e4b035ca09e08a8c3fe381b7f18805b941",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_le_nonnegative"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/encoder_lemmas/le_zero.coma",
+      "coma_sha256": "c03a6d140ee64b1b2f9e84d8105f9125be5386e2ddfa59394cd4c91c3d03367d",
+      "proof_json_sha256": "b7fce0679bb217a69677a588d5b7e7e7fa2b5b9479497d2c736d5d30afed7d4e",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_le_zero"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/encoder_lemmas/le_zero_suffix.coma",
+      "coma_sha256": "e4ce823e0a1f560deb2b0cdd935ef2cb29d3fd0b1cc5d75f0ec96f49350f7a7d",
+      "proof_json_sha256": "a3867993c3722ff48f2b48870ec59c16be87841da02dd30006cbcef393e404c5",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_le_zero_suffix"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/encoder_lemmas/leading_bounds.coma",
+      "coma_sha256": "5196d9298376478d0b86a5c8a29caf5f1dfc1cce1cf66bd7a32547854dbd241a",
+      "proof_json_sha256": "03ca389382a33edfeb5df82ffadeee875945a277dea23252f573241de33a8307",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_leading_bounds"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/encoder_lemmas/leading_lower.coma",
+      "coma_sha256": "13dfc1efa9f3020f27625fca991f35e688dd8e5e6d57c3943472483552c9bc4b",
+      "proof_json_sha256": "0ade15e3a04d60448fcb896bfc501d7c9546c6b2ed51f45c824171fce6e43e17",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_leading_lower"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/impl_Alphabet/new.coma",
+      "coma_sha256": "5b28cb9aae507c0a717510cc736f4ca33766f67630557be77c2e942858538e0a",
+      "proof_json_sha256": "4bf71884b7e7704a722eb80a54ffc32929d5f36aad80a00ed1dcb015d3ab2d98",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_len_u8",
+        "Coma.vc_new"
+      ],
+      "roots": 2,
+      "solver_leaves": 38,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/impl_Clone_for_AlphabetError/clone.coma",
+      "coma_sha256": "5ffa457ebb8d8025012cb5a1b6bafa4af0e3e1c163799e511110d0e1456a6858",
+      "proof_json_sha256": "fa91cd10159020d89c6b48c2db320fcaa909c4d48ae406e4c822ea0de74a92a4",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_clone_AlphabetError"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/impl_Clone_for_DecodeError/clone.coma",
+      "coma_sha256": "02161683bfa0caa5722442a66d8c4b82c7db57409b434fa6e5c34b62eeed7195",
+      "proof_json_sha256": "5f257241ebdac8b64b70d736648829542048f85909f64025b1d168f831f95894",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_clone_DecodeError"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/impl_Clone_for_EncodeError/clone.coma",
+      "coma_sha256": "38db5f050da7185cdd072ebff4584e2579b18d8d579134ccb82b77d47df3c429",
+      "proof_json_sha256": "386e83c5944007e5a323cd52b7db1a88f897dee697cb491ac2c804a2af9add96",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_clone_EncodeError"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/impl_PartialEq_for_AlphabetError/eq.coma",
+      "coma_sha256": "6d6b6bdde42e4fb49c32bdf176a4252c09bc1305f7cd5afafa8097a0fb9d8803",
+      "proof_json_sha256": "b9c10cd77008237f6fdfa9d4257803827828b24783b83e1450912151057ec2ed",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_elim_DuplicateCharacter",
+        "Coma.vc_elim_NonAsciiCharacter",
+        "Coma.vc_eq_AlphabetError"
+      ],
+      "roots": 3,
+      "solver_leaves": 3,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/impl_PartialEq_for_AlphabetError/eq__refines.coma",
+      "coma_sha256": "e7a9c1354a0c1310a691a2be3340b3311859692e858c1d317e83c4a7e4874c2f",
+      "proof_json_sha256": "ff2718f0b8c8c5a2df658f5e8f54602d179b3212b991823ca98b4e0e7bf043b4",
+      "kind": "trait_refinement",
+      "root_names": [
+        "Coma.refines"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/impl_PartialEq_for_DecodeError/eq.coma",
+      "coma_sha256": "d64f0846290e0ecf72ddb19f3bb784e96bbc2a2a8bb4969d637b49021c9376d0",
+      "proof_json_sha256": "a34c17db3a37b825938a1002384bd84e2c8fd370c213394522875e6cec36586b",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_elim_InvalidCharacter",
+        "Coma.vc_elim_NonAsciiCharacter",
+        "Coma.vc_eq_DecodeError"
+      ],
+      "roots": 3,
+      "solver_leaves": 3,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/impl_PartialEq_for_DecodeError/eq__refines.coma",
+      "coma_sha256": "602501008f2f984bc7b99a5b63e5b382f8f587863d512ec0ee14436e459c36c5",
+      "proof_json_sha256": "6327664fd55acc06d629dd0508d67931bea4949a59816f8f6910ebc253a131ea",
+      "kind": "trait_refinement",
+      "root_names": [
+        "Coma.refines"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/impl_PartialEq_for_EncodeError/eq.coma",
+      "coma_sha256": "228523deaed183b901aa5d19a904d67c1ae150fb24ca01932de402ca2bdd5259",
+      "proof_json_sha256": "6667473e8e6c7bd1036a3610f435da93796c00f92ee9471da3505d1d46f2696e",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_eq_EncodeError"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/impl_PartialEq_for_EncodeError/eq__refines.coma",
+      "coma_sha256": "bd83d9c9f79baa769f0187f8c5fcc4a389b8c2dc7283c8fc6bf3b42ad370938d",
+      "proof_json_sha256": "0cdb09992a2ba323b48664f448143e1bed5d0d2d3b8482163b475c8886d56c01",
+      "kind": "trait_refinement",
+      "root_names": [
+        "Coma.refines"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/lemmas/alphabet_reverse_value.coma",
+      "coma_sha256": "b4a66f97888a0c365728dd9db3ffe5ed56b2ed8607a4da5be6237da2950ac499",
+      "proof_json_sha256": "63322ba9ed0654f39ebd9f3f2207c004c2269041f1a8baf3733a15c8bcbc4eb0",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_alphabet_reverse_value"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/lemmas/be58_nonnegative.coma",
+      "coma_sha256": "17306fe28ee85b04c92d3e4c74ae7bbf16bb0349a09c1b63cd6140bb4f5bab69",
+      "proof_json_sha256": "1d10ca4c02bc8d3e4133d1d7bc7a96e7364171b8cdae8e092069742f681fec0f",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_be58_nonnegative"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/lemmas/be58_prefix_monotone.coma",
+      "coma_sha256": "550c98fd2f3acd36f76ba1339377ec902e6e19d85e40e2946e8cee1c5998c616",
+      "proof_json_sha256": "0a9dd126c6edf1f7ab3101b013b696b359fe094a907a68c8010c6c9eb4a134d1",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_be58_prefix_monotone"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/lemmas/be_bound.coma",
+      "coma_sha256": "99ac68d0ccaeed48065b378520ee4c31387d52ae69a85273524faa2cca6aaf5d",
+      "proof_json_sha256": "b24b42e8f7e15867d1fb3b541381f129345d0f5e89fd2f827ead1c25a1ed6ed2",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_be_bound"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/lemmas/be_prefix_monotone.coma",
+      "coma_sha256": "819eae4219bdd23deca86a135c173500ec03fa945103acd0525db9cee99669a4",
+      "proof_json_sha256": "2e276eb9dfa14062b5682973be58011ba12514099c379c438caa284c429f5529",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_be_prefix_monotone"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/lemmas/decode_append_preserves.coma",
+      "coma_sha256": "4321931f70aa7877f5fbde3fabebfbb277ff210bdbb8ff74659072fe7dce8a79",
+      "proof_json_sha256": "3c13d76902295cc9b5e1b141e7fc4b88cd3e74508529050aac5e824c60374466",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_decode_append_preserves"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/lemmas/decode_append_step.coma",
+      "coma_sha256": "6e9c384c8a48ab8f4e6cc9ecfab9013bae61bd6d369c729f8ba233cdedb84609",
+      "proof_json_sha256": "64de221983acfd7c88e145efab6655e45d83c4ec2295ff4f87309c15c2af2585",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_decode_append_step"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/lemmas/decode_canonical_growth.coma",
+      "coma_sha256": "8db6b69c7046a372e1daf3b007456952398a5771e2551af088893eaf956a0350",
+      "proof_json_sha256": "d8f334dbc8f6db5bfa80aed1edbed8f4a7511487f54c3219f3ad74262c58e16d",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_decode_canonical_growth"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/lemmas/decode_carry_step.coma",
+      "coma_sha256": "4e3c9eb41dd7d7acebbaeab168f24db3f3c6f7f3a5ea75bd8be69ca60d4d6e4c",
+      "proof_json_sha256": "aa7b3fa451c30afeaf108e86fc8548327fe2440eaea9a9a1ae7a8790a1a5c6f6",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_decode_carry_step"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/lemmas/decode_division_weight.coma",
+      "coma_sha256": "c19ef5d517069b5d6f47c5a948de49f8bcfaf8a70f07bed41d0851f1db523dfb",
+      "proof_json_sha256": "fc377eca05eaec43bb311228dc3de9d5510edfef1255dfb5edc4be159b033443",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_decode_division_weight"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/lemmas/decode_growth_failure.coma",
+      "coma_sha256": "00c69ff1041cdd836ad4d6c4f95e3cdf9f30f5dd253e328c62d01204c33f44c8",
+      "proof_json_sha256": "a11817a1395a5c47c7740dae78f1ac9b9e8446d3aabdc4b6a332156759370a3d",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_decode_growth_failure"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/lemmas/decode_horner_step.coma",
+      "coma_sha256": "b3ec2226db6a0d22d3f01ec3c67f56ea9a22f124a3a0832bee3e56e285cc0517",
+      "proof_json_sha256": "3aa663f2e066d57fc9555df45e151371eca65861d499fbe2b4263a1a2c130455",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_decode_horner_step"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/lemmas/decode_horner_weight.coma",
+      "coma_sha256": "35a7d92118fe9b7d8db23d779097ade346fd4bd37c550a11b557deb20722c167",
+      "proof_json_sha256": "b9e3096f922896c05514ccdfe1851176bed5f2b56f6492b7c77322aa12f3027d",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_decode_horner_weight"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/lemmas/decode_success_fits.coma",
+      "coma_sha256": "8a2378ed5b872cb0e177b99bcfd654e4d87a1a4432c2f8a35180feb0c836eac8",
+      "proof_json_sha256": "e57be6b001f7308489685d89d21237434918049c042ba66f983ff0e9d29f470c",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_decode_success_fits"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/lemmas/decode_tail_step.coma",
+      "coma_sha256": "93908a9fb538cc1699af9fbdac69cac055d7c312f78901a0e45e754ddb6406da",
+      "proof_json_sha256": "1ea7bda34d0d540089cf57d218c082dc7594977a80496aa0801f93a1f87f490f",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_decode_tail_step"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/lemmas/decode_zero_failure.coma",
+      "coma_sha256": "56ea831b35631a4a3a09dee0443a0a1191679256c135ffbfcbeda80b6d5e8104",
+      "proof_json_sha256": "1802ec3856ae51643a1fda0b70597a0752703a1483731a5a17c636cda39b6fc1",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_decode_zero_failure"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/lemmas/full_prefix_le.coma",
+      "coma_sha256": "c58d287d6bda63d9bdafe7cf92ec8c20e2c2825c085beaaa3f9133536a0a372f",
+      "proof_json_sha256": "3de0d6f9fe25bff2add6ffad6cc54eefd3222171460198721a985e92b55bd6b5",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_full_prefix_le"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/lemmas/le_bound.coma",
+      "coma_sha256": "d0ef85305324f9d054c33ca2bb5b3c53de6b403a230178a457f3156c5a4eb0b8",
+      "proof_json_sha256": "09fd498f293292da12e7e15139941f3606cb660624279fa0051e89dae449bdf1",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_le_bound"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/lemmas/le_extend_step.coma",
+      "coma_sha256": "5bc482f61e616d4b6077ff4ec588b73ac4bac670122f4cd2dedae53edc33a490",
+      "proof_json_sha256": "089610bc184e6fc73546d959a2da50d6089fb1398d5220c2fdcedad8924bc984",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_le_extend_step"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/lemmas/le_prefix_head.coma",
+      "coma_sha256": "70041fc37f958de78e93999b724f72e1db1c80fb85c93d50f628b41906add6ca",
+      "proof_json_sha256": "102d6983b9379ce31cafc8f5f40183b287b9bdd64ca699881fee17bd7b84effe",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_le_prefix_head"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/lemmas/le_reverse_be.coma",
+      "coma_sha256": "7dd779e4c53804e08ad577d67ae31bffe082ac93b7dd2fdb1c56fe6f1cccb626",
+      "proof_json_sha256": "22ffb5dc85de59dfc9502fe12a5f5f0426b2e144ca28588b48445e127c6a3dfe",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_le_reverse_be"
+      ],
+      "roots": 1,
+      "solver_leaves": 9,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/lemmas/le_reverse_be58.coma",
+      "coma_sha256": "cbb05b282b701826781462b15993b685b2775f6ff29c90dbd50c9510f7c6a71a",
+      "proof_json_sha256": "e4a274cc27c228163e634c1bf81c113e358984034f1a5a5e8290a706f978778c",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_le_reverse_be58"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/lemmas/le_split_algebra.coma",
+      "coma_sha256": "16421183aa9b4ad1850eb85165c2b152e35821b070420730109f5bc51a951495",
+      "proof_json_sha256": "58baca9cea9600192911b90dcd1cb213cd2c9c380aa538f0f1b5549fe9693f86",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_le_split_algebra"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/lemmas/leading_exact.coma",
+      "coma_sha256": "7eb91e6b31f46dcff710749977b2bb22135d5e88ae277f36bdcde4e16c2b70f1",
+      "proof_json_sha256": "e5642b00fe0da34d52b49dee1bcf4abc6fea89058eb9baa2e6b015265e7f714e",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_leading_exact"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/lemmas/leading_reverse.coma",
+      "coma_sha256": "561df2f4b4b785d02d545ad0041b75ee8e2d958a7657be52c01ead36ec09a05a",
+      "proof_json_sha256": "0aee01db12e1eca940a2915d88585bdb0156e05bd145650416801949932d0879",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_leading_reverse"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/lemmas/pow_growth.coma",
+      "coma_sha256": "5958c02e1400a74327aa6dfc0f67bf18c84142815e9ed1a54d7887d566458ef6",
+      "proof_json_sha256": "c24ed57ce6da56c0690e5af7a16181a38cfdd752566fe99be0d571c5502f45c0",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_pow_growth"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/lemmas/pow_monotone.coma",
+      "coma_sha256": "0d21e2b98e0e221a8c0826c1ea1b31efd22c8a37ab889fdeb9b0e7c49a69f34d",
+      "proof_json_sha256": "2f2048a5a1813afeadbd50b601250239eb48c7bb779ad05405f5d60ac5b48876",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_pow_monotone"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/roundtrip/byte_bridge.coma",
+      "coma_sha256": "018dcbf9f8df67660dc59a17892a97ce68408d979cd184f1fd8e316ae6991b0c",
+      "proof_json_sha256": "4896ca744073ce2539f1c9927ee9f264eeb151e5dbfe28fdf6272a4f5f1cb793",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_byte_bridge"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/roundtrip/decode_capacity.coma",
+      "coma_sha256": "8f6a61c8ebec4f0e120ec456bfa99f3e654e357503a557b955679c891b33c8c0",
+      "proof_json_sha256": "17dac8815f526d50c97928138193abe60585e89a5daea5c8e151054945fb59cc",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_decode_capacity"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/roundtrip/decode_encode.coma",
+      "coma_sha256": "bc87cc7393f646347732bc7dd550c6000a84d97c2b30aeb3ed95c0da36cf4c0e",
+      "proof_json_sha256": "42f7ad55a420b88ee1145a986486b4463c6859a556a770445cab57d21ef49a98",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_decode_encode"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/roundtrip/decode_error_excluded.coma",
+      "coma_sha256": "11e95f39a28ddd8cd99157135688e1b710d8860b1ff7df46cc15a68fd1d13e27",
+      "proof_json_sha256": "235f9724e14445860fd8a173066816d90d2d5db0d138c5a4a8c65c753753d82c",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_decode_error_excluded"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/roundtrip/decode_no_buffer_error.coma",
+      "coma_sha256": "78a5649161489d1c8933ebf00156ecf94106fc59c1d24ecae11531de88cf54c1",
+      "proof_json_sha256": "7c175727147dc7bbed5ae062beae735625fb6386cbc7dc14c1bf693fbda8cf8b",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_decode_no_buffer_error"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/roundtrip/decode_prefix_fits.coma",
+      "coma_sha256": "8c439febf26fba1255066e59c7f4886e4bec931336c09195c7db93153f0cc7c9",
+      "proof_json_sha256": "5c9a6b5ebe0dee8b2f731c43b48e2615840328e619a6d0c331c81fedabd899be",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_decode_prefix_fits"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/roundtrip/encode_capacity.coma",
+      "coma_sha256": "6a8c294548d036bbeb92bd4de82ca6ca6e4be8083408a3bce81f887c1fa5ecb5",
+      "proof_json_sha256": "41d18ef1619c24b53be6bd807c307b9f66adc74c3a767ed8d9212c8e4baaa53d",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_encode_capacity"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/roundtrip/encode_decode.coma",
+      "coma_sha256": "e84708e5d8a9ee20a0ad8c1241041edee4b0f5b641b75e95d3f76b70759b55ac",
+      "proof_json_sha256": "8ce8290a874a5814c6bc6af2bee8a6c57dc7dad2906905a67ab27d49130321db",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_encode_decode"
+      ],
+      "roots": 1,
+      "solver_leaves": 8,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/roundtrip/encode_power.coma",
+      "coma_sha256": "18fd208b06facd96a23e8cf5e09cb3d4c7caab379611464c6c0230b4e984a9b9",
+      "proof_json_sha256": "bef9ede192f3acc89228b7e48b9e1692110b67f04af0a7f2bcf8ffe8c7cb1a33",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_encode_power"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/roundtrip/horner_bound.coma",
+      "coma_sha256": "0b73a1767573bdda85fa31d2a3cd3cba1fd15ab87473fcedf82af4e4d4d38bb8",
+      "proof_json_sha256": "6922c272b43c9eb4c9028e7a05e795f497cb43233fdd60e20316df4905f2c684",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_horner_bound"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/roundtrip/magnitude_bound.coma",
+      "coma_sha256": "fdac85b93ce03cf622cd77a97b04055620fec28198779dcba1b38f10474fb4a3",
+      "proof_json_sha256": "d5a654b2723c5ab7589ded7794d46de0faf5c10d3dd2ba17abe90c56214b6c06",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_magnitude_bound"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/roundtrip/positional_step.coma",
+      "coma_sha256": "72371dd8767ebe3b16a8f27a5d1edd1b2990103718d10e47f64337e57c798773",
+      "proof_json_sha256": "36afcf243670cc56c45b5c028bc4d6345f3c3c5537e0698a9ae7f4adb75b9fe3",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_positional_step"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/roundtrip/product_monotone.coma",
+      "coma_sha256": "71de2e0e4ea5809b68333b9d185fad806419df077273d35b8146e618742bccbe",
+      "proof_json_sha256": "96bb8966e3e30de3cdf940af19f2c2406f5624c991dc9f50ea7c5dd81741accc",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_product_monotone"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/roundtrip/radix_monotone.coma",
+      "coma_sha256": "3660389f274a080fff72652ae227cbd645100666a9107275e02e1ae63ba7bb31",
+      "proof_json_sha256": "037617668eeda67d250d07b23ac3d84e3d9d68623336930d27f3f63fc40588b5",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_radix_monotone"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/roundtrip/symbol_bridge.coma",
+      "coma_sha256": "55e8b159aa81a9fb0e1400f8d7e7aebf65efea0a0677175ea045e2b1cc50accb",
+      "proof_json_sha256": "91bbfad9967522383520cfd344db3595066e7d504b655d01e61c4c5daed931eb",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_symbol_bridge"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/roundtrip/unique.coma",
+      "coma_sha256": "9e3654f0ca89406c4942b6f4e4a39a15cdfa50f92793e0e6e6c233de3647549d",
+      "proof_json_sha256": "0a744cdbbdfd5917b7e668f81552516bc67fdead9dd77b9c8993f28eb0cd1b47",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_unique"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/roundtrip/valid_prefix_capacity.coma",
+      "coma_sha256": "395ec2fcf4ccbfc84db76190524dfa91d1e44a63311ab9a23bda818a3ee2e59b",
+      "proof_json_sha256": "c044d9f1b8c7a24e3459cfae7879f49f9095718fe7ee950bbafcad225e744c32",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_valid_prefix_capacity"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/roundtrip/value.coma",
+      "coma_sha256": "5ded15e8cbafa0a5d9dcc0646461d5159340cb3f4ec90c82c783200df56e47ea",
+      "proof_json_sha256": "673a902134eb8ce221a3b2f6d39dc0cfa534bf371d5ddfa111feddc578ec6046",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_value"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/roundtrip/zero_value.coma",
+      "coma_sha256": "2defb137fba30b173f2dfe781554e62f9caa2c101757057b5d63013faa1d3efe",
+      "proof_json_sha256": "71f5123d73bc25f377b9124d172845ae764cd1bf50f0cddbb84737a5bb2ca17d",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_zero_value"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/roundtrip/zeros.coma",
+      "coma_sha256": "4221d9451f2f8de9b3172a7475151a43db451b7e17ff062c7ebdca9cbaf4b6e3",
+      "proof_json_sha256": "46202ead72c5dec1ccba73c5b20e75aa6c343c496af54010709d078c1f3e0894",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_zeros"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/roundtrip/zeros_last.coma",
+      "coma_sha256": "355c5a5093141401faa9ce27bf884c29a7aba1e8319dd05f004afeb3559b1127",
+      "proof_json_sha256": "69d19a9b5ee4eef1cc345c11bce3a26b066ebb65c356b86e6b8086a874f34fbe",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_zeros_last"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/spec/be.coma",
+      "coma_sha256": "75460377faaa519187efb7b40eb094b0d381c80b54772c1ec3c1f0f6885e1442",
+      "proof_json_sha256": "a41cf608607e062c9c13953da91ff05799ca6076f1dba97c019c589cfc9c4fa6",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_be"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/spec/be58.coma",
+      "coma_sha256": "8830a9df97162c0dc067233a01cfabb408f402609300e393159968465c7f9ea1",
+      "proof_json_sha256": "14c1ca996109d0c9ea05060bd76670e6acb7aaff814c19a69148a59f05f03738",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_be58"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/spec/be58_step.coma",
+      "coma_sha256": "e3ebf48c461a7289bdc10117524ee5d99c1d088886a48a890b7e44edb86a3b2b",
+      "proof_json_sha256": "97d6763cf4af9d37a33a2db6dfdca2b9c8d98752e25e4699cc57ce3247f1f263",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_be58_step"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/spec/be_step.coma",
+      "coma_sha256": "7022dc85794af80ba5da108b1a27e93eefb6c5dd2a08b2524b7a90bdf7381809",
+      "proof_json_sha256": "87980dccc13e138d4583c0874171dbacba3bd2df82f9ee48ee9f86692422ba87",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_be_step"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/spec/le.coma",
+      "coma_sha256": "b2d411253561e341cbf2879e2fc6a41ff03ddc771323a7c06161766c3fa34f77",
+      "proof_json_sha256": "333054144953ce26ab4fa6a677ae156d2b6345ed62f3857e3327eae5c50220a3",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_le"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/spec/le_split.coma",
+      "coma_sha256": "4dd179ece0bdc5fd7d807846fb3cbd9ff4079fd5cf6464bfea2a3a09b89003d7",
+      "proof_json_sha256": "a076ef9c2252b0c4289036cb3a86eec0e7bb673670d470cbcabc74dd2f06924c",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_le_split"
+      ],
+      "roots": 1,
+      "solver_leaves": 22,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/spec/leading.coma",
+      "coma_sha256": "9cd2f40b2b547957b076956e48a0bd8376341cba223765cb0b3552add7bf13e0",
+      "proof_json_sha256": "538e06c75d07f41a7bb48703f1b24756a796ea1e1067e1116be27ebaf62dae7b",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_leading"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/spec/pow.coma",
+      "coma_sha256": "9ab6e32bf4cb5a69dbb6a1c1e75b95617b3a0b3b61fe4b830792d4266ab18293",
+      "proof_json_sha256": "ff2cdd5a5c31d6dccc83348a301f0b986643611ac85665cd203428423f55922b",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_pow"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/spec/pow_positive.coma",
+      "coma_sha256": "f5b11a9ad18e7bd1af61d219fbcced081e3fb7a5cbd1d14c06400e87fb32da3a",
+      "proof_json_sha256": "f75cfc2a9e2c258f0269eb3b481135d44220a228afb0e43150cabc32d3a8e14c",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_pow_positive"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/vec_utils/grow_zero.coma",
+      "coma_sha256": "c05ba4f97258e20bee54347c29791207b0206143f16819384b28807938312402",
+      "proof_json_sha256": "ca757c7cd06f6fb3b95398f5ce0a9e07e34e5a7cf718ad7644999349ff42c63e",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_grow_zero",
+        "Coma.vc_len_u8",
+        "Coma.vc_push_u8"
+      ],
+      "roots": 3,
+      "solver_leaves": 3,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/vec_utils/truncate.coma",
+      "coma_sha256": "52826b2b6cdf43649e8074ec2626baf13cc4a469f1f1c63ff2dced81d3f1f097",
+      "proof_json_sha256": "240ef71cb0c623611cca75c21ac21618535a44996584111a189a0123044a3e81",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_len_u8",
+        "Coma.vc_pop_u8",
+        "Coma.vc_truncate"
+      ],
+      "roots": 3,
+      "solver_leaves": 3,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/wrappers/encode_decode_roundtrip.coma",
+      "coma_sha256": "478e5c3c1105f1aa48c2ea57100fde4c628f85dd460deffe69f0d56f0893989f",
+      "proof_json_sha256": "66f7165c179f03fd70a2f8395556ede640b75f873a3c0ba59172f65d3f2d3e05",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_elim_Err",
+        "Coma.vc_elim_Ok",
+        "Coma.vc_encode_decode_roundtrip",
+        "Coma.vc_from_str",
+        "Coma.vc_index_Vec_u8_Global",
+        "Coma.vc_into_vec",
+        "Coma.vc_into_vec'0",
+        "Coma.vc_new_ref_slice_u8",
+        "Coma.vc_new_ref_slice_u8'0"
+      ],
+      "roots": 9,
+      "solver_leaves": 9,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/wrappers/impl_Alphabet/new_unwrap.coma",
+      "coma_sha256": "2337a5b37f0daa131fe6d43231d8b38e5678fb2e61b07bbd5f04c1684a08786f",
+      "proof_json_sha256": "3e820ec198098e55ee7574497ff90421d0dcc57e93bc61d87ab065681be43796",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_elim_Ok",
+        "Coma.vc_new",
+        "Coma.vc_new_unwrap"
+      ],
+      "roots": 3,
+      "solver_leaves": 3,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/wrappers/impl_Clone_for_Alphabet/clone.coma",
+      "coma_sha256": "71af5678e080af02304f7459b5ebac99bec0c55becc167144d2171b44fe3f3c6",
+      "proof_json_sha256": "ac5a5aad81739435a101968be1d14484284911c898b5e0bfc42c8d676912e1cc",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_clone_Alphabet"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/wrappers/impl_Clone_for_Alphabet/clone__refines.coma",
+      "coma_sha256": "c8168a30e08a0b4eb765f064023e2cb6b40d8733471a15e9260ca046069409b3",
+      "proof_json_sha256": "0cdb09992a2ba323b48664f448143e1bed5d0d2d3b8482163b475c8886d56c01",
+      "kind": "trait_refinement",
+      "root_names": [
+        "Coma.refines"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/wrappers/impl_DecodeBuilder_I/new.coma",
+      "coma_sha256": "988decf4f776fdce51c14874f108c2e39544216465bda4ef61ee1b141f75f529",
+      "proof_json_sha256": "fc4bc3e557908baf7ab34ae9353dc4b403f6c0c8dc8df6590b81a9190267df6e",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_new_I"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/wrappers/impl_DecodeBuilder_I/with_alphabet.coma",
+      "coma_sha256": "8eb255290bc1e367a6382a98f053914ea1f39265ffd9ecbdecdf11d466348a5e",
+      "proof_json_sha256": "cba41018c3972af30d4e1f9dde8c9630ab4a673c3f7a6d6b1bbbadeb1692edc0",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_with_alphabet_I"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8/into_array_const.coma",
+      "coma_sha256": "32cfd5a635e18040b419107b0945e6c1931ab2befe56528cfcc4e1dcc670a76d",
+      "proof_json_sha256": "97aebcd58778fad992d4898851d890d1e4d91805ce022df1ba4c46685d78fdb1",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_decode_into_const",
+        "Coma.vc_from_str",
+        "Coma.vc_into_array_const"
+      ],
+      "roots": 3,
+      "solver_leaves": 3,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8/onto.coma",
+      "coma_sha256": "535a9e4469c72f1e93cb6981b36fa44229177dbf0ff353391f6ea7e124701822",
+      "proof_json_sha256": "a33ca0ff010c10e2bc0981e7ab8b4e6843079c9724a8632a6c7d5459f7ab4562",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_as_ref_slice_u8",
+        "Coma.vc_closure0",
+        "Coma.vc_decode_into",
+        "Coma.vc_decode_with_refmut_slice_u8",
+        "Coma.vc_len_u8",
+        "Coma.vc_onto"
+      ],
+      "roots": 6,
+      "solver_leaves": 6,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8/onto_array.coma",
+      "coma_sha256": "eb6264953096e40d4c9559e9e021db1388b87ea86b11d1e9223427e51658e480",
+      "proof_json_sha256": "99413391a5dae695e96c0b3b0cc26e76fe3b61ad44ae3858ea10518ac8efc251",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_as_ref_slice_u8",
+        "Coma.vc_closure0",
+        "Coma.vc_decode_into",
+        "Coma.vc_decode_with_refmut_array_u8_n",
+        "Coma.vc_len_u8",
+        "Coma.vc_onto_array"
+      ],
+      "roots": 6,
+      "solver_leaves": 6,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8_0/onto_vec.coma",
+      "coma_sha256": "87a31b00a8fcce02df285f7665a8364858d349578a777416e31c44edd04641c0",
+      "proof_json_sha256": "fa86fb5febd198af02b0210cc19ef0778a13c769174a043ec797da9cff4a3b28",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_decode_into",
+        "Coma.vc_elim_Err",
+        "Coma.vc_elim_Ok",
+        "Coma.vc_grow_zero",
+        "Coma.vc_index_mut_Vec_u8_Global",
+        "Coma.vc_len_u8",
+        "Coma.vc_len_u8'0",
+        "Coma.vc_onto_vec",
+        "Coma.vc_truncate"
+      ],
+      "roots": 9,
+      "solver_leaves": 9,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8_1/into_array_const_unwrap.coma",
+      "coma_sha256": "b1d3bf810d719ec6f286776f90d6dbce682473f69937ee24e92816003b5c548b",
+      "proof_json_sha256": "e27cadc14a218b4a5caddeadfe7ef0cd177214edb0ee85d7cb1cfbd83ea4b653",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_elim_Err",
+        "Coma.vc_elim_Ok",
+        "Coma.vc_from_str",
+        "Coma.vc_into_array_const",
+        "Coma.vc_into_array_const_unwrap"
+      ],
+      "roots": 5,
+      "solver_leaves": 5,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8_2/into_vec.coma",
+      "coma_sha256": "fc87e0c3a159b9f58ec7bd57a39da1b93da267b1dd5c0daa9c946bcf108a7efe",
+      "proof_json_sha256": "49e900d57c63e70304c6ab9a030e4d88fc254aa8cc269483611e211690d7fe62",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_elim_Err",
+        "Coma.vc_into_vec",
+        "Coma.vc_new_u8",
+        "Coma.vc_onto_vec"
+      ],
+      "roots": 4,
+      "solver_leaves": 4,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/wrappers/impl_DecodeTarget_for_array_u8_n/decode_with.coma",
+      "coma_sha256": "cb23ade806b475afd0be71af857789fccafc27c0e3561469bbbb428f4bf31517",
+      "proof_json_sha256": "0251ae6a65700b490337d33ce7acbde27fe47eeaeb53b4a0a06e621e80044ed2",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_call_once_impl_32_for_60__39_a_62__32_FnOnce_40__38__39_a_32_mut_32__91_u8_93__41__32__45__62__32_Result_60_usize_44__32_DecodeError_62_",
+        "Coma.vc_decode_with_array_u8_n"
+      ],
+      "roots": 2,
+      "solver_leaves": 2,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/wrappers/impl_DecodeTarget_for_array_u8_n/decode_with__refines.coma",
+      "coma_sha256": "2a42d99dbcc12ffcf33709c3c7fa2ac9f2228fb2e44091ce171ef384c0d70329",
+      "proof_json_sha256": "d1fbdf60dcc1ead42156a12b632be81b60495e1143ede0a1b669bfad5d7af8e7",
+      "kind": "trait_refinement",
+      "root_names": [
+        "Coma.refines"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/wrappers/impl_DecodeTarget_for_refmut_T/decode_with.coma",
+      "coma_sha256": "7590e5267c1ea1e7a12b39f4a787b3ddf220f1e6b27b4f7fc960f2cb6fc8ecf6",
+      "proof_json_sha256": "ed5924e46a94b04bd0b1f4e6bccfde0751efbeeb152dd468fc552f04f8a41005",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_decode_with_T",
+        "Coma.vc_decode_with_refmut_T"
+      ],
+      "roots": 2,
+      "solver_leaves": 2,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/wrappers/impl_DecodeTarget_for_refmut_T/decode_with__refines.coma",
+      "coma_sha256": "33f15f7655ced2ec12a59df4712dd1cc9fbc65f5024cf89c3f9fc837ecd73e04",
+      "proof_json_sha256": "d1fbdf60dcc1ead42156a12b632be81b60495e1143ede0a1b669bfad5d7af8e7",
+      "kind": "trait_refinement",
+      "root_names": [
+        "Coma.refines"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/wrappers/impl_DecodeTarget_for_slice_u8/decode_with.coma",
+      "coma_sha256": "21d496e3470a3f983ea817468a4f47d36af5063e5994d81977a17ec0272cf520",
+      "proof_json_sha256": "9261ed4e344b48e1441f71cc9cec25dd98ec26adc595a475382241c27fed6d77",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_call_once_impl_32_for_60__39_a_62__32_FnOnce_40__38__39_a_32_mut_32__91_u8_93__41__32__45__62__32_Result_60_usize_44__32_DecodeError_62_",
+        "Coma.vc_decode_with_slice_u8"
+      ],
+      "roots": 2,
+      "solver_leaves": 2,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/wrappers/impl_DecodeTarget_for_slice_u8/decode_with__refines.coma",
+      "coma_sha256": "f2ba9a9fbeed3e57d281b91d7bc82ad32e44ac950708a3d7dcc27e6dfed76a42",
+      "proof_json_sha256": "f5d12b9a285c29193235429664d79e984960461c4f635a1060d0e7e3b896fbfd",
+      "kind": "trait_refinement",
+      "root_names": [
+        "Coma.refines"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/wrappers/impl_EncodeBuilder_I/new.coma",
+      "coma_sha256": "e496ec3d3ffa8c8a8901f816742e535027450abc8fc7a97a24bb0acf6617769e",
+      "proof_json_sha256": "1eff97bd0ee28b2bd872aaa9ac6b5b52f47e7ea817723ab2e39e011f1fd8b199",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_new_I"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/wrappers/impl_EncodeBuilder_I/with_alphabet.coma",
+      "coma_sha256": "d2cd24d1d7fc64c70dab0606349d457e9a4ca7ff229b17b8a361b4f8c9f63b37",
+      "proof_json_sha256": "cba41018c3972af30d4e1f9dde8c9630ab4a673c3f7a6d6b1bbbadeb1692edc0",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_with_alphabet_I"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/wrappers/impl_EncodeBuilder_ref_slice_u8/onto.coma",
+      "coma_sha256": "859242fd7d754c700f6ca6cdf4260a9b749b4f56f43a0722148c3b9b3a714c67",
+      "proof_json_sha256": "c9b499a241de0e785c139583a575145d0eef2180f438ac1c37c519c348b46e23",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_as_ref_slice_u8",
+        "Coma.vc_closure0",
+        "Coma.vc_encode_into",
+        "Coma.vc_encode_with_refmut_slice_u8",
+        "Coma.vc_len_u8",
+        "Coma.vc_max_encoded_len",
+        "Coma.vc_onto"
+      ],
+      "roots": 7,
+      "solver_leaves": 7,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/wrappers/impl_EncodeBuilder_ref_slice_u8_0/onto_vec.coma",
+      "coma_sha256": "5a9ff61692fbc77e926372c6a9c43d047e5267318b2ff1261fdc70124679495a",
+      "proof_json_sha256": "61aa08b7875f7141eb97451e839c8b6bd6aa5eb5da249e430eeb2fe785b8bd0b",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_elim_Err",
+        "Coma.vc_elim_Ok",
+        "Coma.vc_encode_into",
+        "Coma.vc_grow_zero",
+        "Coma.vc_index_mut_Vec_u8_Global",
+        "Coma.vc_len_u8",
+        "Coma.vc_len_u8'0",
+        "Coma.vc_max_encoded_len",
+        "Coma.vc_onto_vec",
+        "Coma.vc_truncate"
+      ],
+      "roots": 10,
+      "solver_leaves": 10,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/wrappers/impl_EncodeBuilder_ref_slice_u8_1/into_vec.coma",
+      "coma_sha256": "9daae48a86f2612bf3e841a5c77f20d1f5a14ba3053b24a78bfebf1ad1cccdad",
+      "proof_json_sha256": "acc9e5138ca71c9a639b73d3a71257dd2eddc97b07aa5d0669a658702b9aa48f",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_from_str",
+        "Coma.vc_into_vec",
+        "Coma.vc_new_u8",
+        "Coma.vc_onto_vec"
+      ],
+      "roots": 4,
+      "solver_leaves": 4,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/wrappers/impl_EncodeTarget_for_refmut_T/encode_with.coma",
+      "coma_sha256": "67e558257f82172069aecbfc0db77c1d4d323734da4b7b6958e0e56bcf0f5556",
+      "proof_json_sha256": "63b249f96b91bc3b10e1bc439deefd11c9cca503c8ddd2b390eae4758db3b110",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_encode_with_T",
+        "Coma.vc_encode_with_refmut_T"
+      ],
+      "roots": 2,
+      "solver_leaves": 2,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/wrappers/impl_EncodeTarget_for_refmut_T/encode_with__refines.coma",
+      "coma_sha256": "60c42d76f3a6a451c45c6dbecf49580fbcaa50097461eb44efb57827f305b902",
+      "proof_json_sha256": "b8cc16b438590498f88fb58e5c5f12476ddc307fcd5c0e3dfcb1a8de9c06e583",
+      "kind": "trait_refinement",
+      "root_names": [
+        "Coma.refines"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/wrappers/impl_EncodeTarget_for_slice_u8/encode_with.coma",
+      "coma_sha256": "05de973d60cef2d52b6ccda43328c2a829d628664b526343fe636b8cd7463520",
+      "proof_json_sha256": "0e4efeb8348d47e340bdabe027136361ed50d583c9be5911c63225e0b586bb9c",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_call_once_impl_32_for_60__39_a_62__32_FnOnce_40__38__39_a_32_mut_32__91_u8_93__41__32__45__62__32_Result_60_usize_44__32_EncodeError_62_",
+        "Coma.vc_encode_with_slice_u8"
+      ],
+      "roots": 2,
+      "solver_leaves": 2,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/wrappers/impl_EncodeTarget_for_slice_u8/encode_with__refines.coma",
+      "coma_sha256": "4b05e18a58d0b7e5d5daecc3bab13ec17654c4c1b5fb798f3cc80d4264f3df2a",
+      "proof_json_sha256": "cbaa05c395ac4b2c9abd67e5018042010f66b3796298402c9198432eb2263737",
+      "kind": "trait_refinement",
+      "root_names": [
+        "Coma.refines"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    },
+    {
+      "target": "bs58_rlib/wrappers/max_encoded_len.coma",
+      "coma_sha256": "7248d343dfc465af8ab68d965164cb83875777767c5dc2826376d628192e8e3f",
+      "proof_json_sha256": "ca94a6411d7b41db64ccdf09fd959a2952dc4ea58ca36d5a9812b3fbf3198fe6",
+      "kind": "body_or_initializer",
+      "root_names": [
+        "Coma.vc_max_encoded_len"
+      ],
+      "roots": 1,
+      "solver_leaves": 1,
+      "closed": true
+    }
+  ]
+}
