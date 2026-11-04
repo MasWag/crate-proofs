@@ -1,0 +1,13 @@
+[package]
+name = "bs58_creusot_extensions"
+version = "0.5.1"
+edition = "2021"
+publish = false
+
+[workspace]
+
+[dependencies]
+creusot-std = { version = "=0.13.0", path = "../../.work/tools/sources/creusot/creusot-std" }
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(creusot)'] }

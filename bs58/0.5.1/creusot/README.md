@@ -23,3 +23,9 @@ Checksum implementations, cryptographic guarantees, allocation, generic target
 callbacks, and UTF-8 string target handling are outside this core investigation.
 
 No release source fixes or upstream issue filings are performed here.
+
+The subsequent [extension results](verification/extensions/results.md) add checked
+builder/target adapters, vector contents and length behavior, built-in alphabets,
+default entry points, error copying/equality, checksum state setters and round
+trips. The [independent extension workspace](extensions/README.md) preserves this
+original core proof and documents individual remaining model boundaries.

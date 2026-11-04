@@ -1,0 +1,19 @@
+{
+  "formal_run": "/home/lab8/mwaga/proof.rs/publication/bs58/0.5.1/creusot/.work/extensions/formal-vkijxx6d",
+  "native_run": "/home/lab8/mwaga/proof.rs/publication/bs58/0.5.1/creusot/.work/extensions/native-7eq5hgpv",
+  "common_runtime_source_files": 9,
+  "all_common_runtime_hashes_equal": true,
+  "current_formal_inputs_match_recorded_hashes": true,
+  "source_files": {
+    "extensions/crate/src/checked_state.rs": "373e90087ca465a1c3cfbedd6e866bf5587a4add4b8f8e433b05750cf9c24ade",
+    "extensions/crate/src/defaults.rs": "fec82871e1da64acb007b798aacf04a9f8344237a07c73e508277f13a759c32f",
+    "extensions/crate/src/encoder_lemmas.rs": "d429af5393e7d61990a7312451bdfac537b959f842d8af69166fcd04787ab907",
+    "extensions/crate/src/lemmas.rs": "79399c084f55878cede11be6c0874b2fc0257582aa463500c5fc67a2fc42a76d",
+    "extensions/crate/src/lib.rs": "e14b8b7ed9e7c3428724baa2bdba84c08d2d2682af65fc7d9ea2abf619191667",
+    "extensions/crate/src/roundtrip.rs": "16033b9248fbe0a8c2a14f8e8eb286931c4b63053a7a7a835ddf39f3f34b0905",
+    "extensions/crate/src/spec.rs": "5eec32a7f21f562ca48b5c4e603f52aec8bce203137792510c3a08fe97a1a01e",
+    "extensions/crate/src/vec_utils.rs": "9f8a4154b5088440d8f3c3e14ee3f8d98878b2bfcacae971d8bbca1c43451de2",
+    "extensions/crate/src/wrappers.rs": "eb45e08c9e925a9f2c2a450b74475defb02a4b278c16893301f29a8ee6525ff8"
+  },
+  "native_observation_scope": "All compared bytes and logical lengths; not Vec capacities, pointer identities, allocation-call sequences or formal source equivalence."
+}

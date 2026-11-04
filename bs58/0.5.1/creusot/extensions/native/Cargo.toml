@@ -1,0 +1,11 @@
+[package]
+name = "bs58-creusot-extensions-native"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[workspace]
+
+[dependencies]
+bs58_upstream = { package = "bs58", version = "=0.5.1", features = ["check", "cb58"] }
+bs58_creusot_extensions = { path = "../crate" }

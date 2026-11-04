@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "utc": "2026-11-04T16:27:26.283044+00:00",
+  "command": [
+    "/home/lab8/mwaga/.cargo/bin/cargo",
+    "+1.94.1",
+    "run",
+    "--locked",
+    "--offline",
+    "--manifest-path",
+    "/home/lab8/mwaga/proof.rs/publication/bs58/0.5.1/creusot/extensions/native/Cargo.toml"
+  ],
+  "exit": 0,
+  "inputs_match": true,
+  "formal_evidence": false,
+  "run_directory": "/home/lab8/mwaga/proof.rs/publication/bs58/0.5.1/creusot/.work/extensions/native-7eq5hgpv",
+  "input_snapshot_sha256": "751525f5f2c063f2bd9617b5626e446d9120430172df0ce085f1551bac437e7b",
+  "log_sha256": "1397bdaa3107e070f25f72c6bcc8de438840a770f9e617ac3be439d42bb15a94",
+  "registry_archive_sha256": "bf88ba1141d185c399bee5288d850d63b8369520c1eafc32a0430b5b6c287bf4",
+  "release_files_checked_before_and_after": 24,
+  "slice_wrapper_cases": 82944,
+  "array_wrapper_cases": 80819,
+  "max_length_cases": 9,
+  "vector_wrapper_cases": 43200,
+  "builtin_codec_cases": 2560,
+  "default_frontend_cases": 512,
+  "composed_roundtrip_cases": 3600,
+  "semantic_boundary_witnesses": 3
+}

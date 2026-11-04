@@ -1,0 +1,2830 @@
+{
+  "compile_exit": 0,
+  "prove_exit": 0,
+  "inputs_match": true,
+  "generated_targets": 135,
+  "target_exits_match": true,
+  "root_goals": 242,
+  "computed_root_goals": 123,
+  "computed_replay_sha256": "a076b2c0855f2bf01baa43d88077e1ff733027835311c92d0d0309950f40113a",
+  "all_trees_closed": true,
+  "targets": [
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/checked_state/impl_DecodeBuilder_I/as_cb58.coma",
+      "coma_sha256": "ce3ee0c36a88e1f6f4ecf9a1fc5d8ac713e9954b5444355c04280c285a51526d",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/checked_state/impl_DecodeBuilder_I/as_cb58/proof.json",
+      "proof_json_sha256": "cbfed07510cf6189316c76c7a53cd54dc76afca587b9d1a97b1169b8273f509f",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_as_cb58_I"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_as_cb58_I"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_as_cb58_I",
+      "proved_leaves": 0,
+      "computed_roots": [
+        "Coma.vc_as_cb58_I"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/checked_state/impl_DecodeBuilder_I/new.coma",
+      "coma_sha256": "be44b1704f99ca8e44669e03f08ae47db7bfabfd75173a88142642e52bae32f6",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/checked_state/impl_DecodeBuilder_I/new/proof.json",
+      "proof_json_sha256": "962ecab642dab8706d946117945c7e668b2cbdce1034fda0745677b67023e363",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_new_I"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_new_I"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_new_I",
+      "proved_leaves": 0,
+      "computed_roots": [
+        "Coma.vc_new_I"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/checked_state/impl_DecodeBuilder_I/with_alphabet.coma",
+      "coma_sha256": "8953666955ca51b69833d86d0068d1a9680748c6310935b32f99a6944c05f2d0",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/checked_state/impl_DecodeBuilder_I/with_alphabet/proof.json",
+      "proof_json_sha256": "a6c0ebf0a7a57180c7d4507292ac7778bc708c68eb52a3eab03d71bb59cc09cf",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_with_alphabet_I"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_with_alphabet_I"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_with_alphabet_I",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/checked_state/impl_DecodeBuilder_I/with_check.coma",
+      "coma_sha256": "150df7fca1f722e3327908ebf9bb2d22091cf7819a5ed454e30d0300eec0fbb6",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/checked_state/impl_DecodeBuilder_I/with_check/proof.json",
+      "proof_json_sha256": "bb32e76fcb30f5ccaffbc1636e50d10c93e6377548dab7004ed387a1cae2bdfc",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_with_check_I"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_with_check_I"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_with_check_I",
+      "proved_leaves": 0,
+      "computed_roots": [
+        "Coma.vc_with_check_I"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/checked_state/impl_EncodeBuilder_I/as_cb58.coma",
+      "coma_sha256": "639430c8c57ca0120ab5baa5b75d37a99118611a94ac0e274f5e5614f519dfc0",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/checked_state/impl_EncodeBuilder_I/as_cb58/proof.json",
+      "proof_json_sha256": "cbfed07510cf6189316c76c7a53cd54dc76afca587b9d1a97b1169b8273f509f",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_as_cb58_I"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_as_cb58_I"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_as_cb58_I",
+      "proved_leaves": 0,
+      "computed_roots": [
+        "Coma.vc_as_cb58_I"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/checked_state/impl_EncodeBuilder_I/new.coma",
+      "coma_sha256": "653d943e4121502fbef644a6139905d0908112fbfe0d4b6d3126111a87491f20",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/checked_state/impl_EncodeBuilder_I/new/proof.json",
+      "proof_json_sha256": "962ecab642dab8706d946117945c7e668b2cbdce1034fda0745677b67023e363",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_new_I"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_new_I"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_new_I",
+      "proved_leaves": 0,
+      "computed_roots": [
+        "Coma.vc_new_I"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/checked_state/impl_EncodeBuilder_I/with_alphabet.coma",
+      "coma_sha256": "e3e1a9a8f682e2abe2d31245d70d4aa3397165e43ba1cc0df016f07a8132451c",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/checked_state/impl_EncodeBuilder_I/with_alphabet/proof.json",
+      "proof_json_sha256": "a6c0ebf0a7a57180c7d4507292ac7778bc708c68eb52a3eab03d71bb59cc09cf",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_with_alphabet_I"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_with_alphabet_I"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_with_alphabet_I",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/checked_state/impl_EncodeBuilder_I/with_check.coma",
+      "coma_sha256": "7607dc87971213b8cda3c74c0b8bd38773a684524e17a727c6c78ee9110d1a84",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/checked_state/impl_EncodeBuilder_I/with_check/proof.json",
+      "proof_json_sha256": "bb32e76fcb30f5ccaffbc1636e50d10c93e6377548dab7004ed387a1cae2bdfc",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_with_check_I"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_with_check_I"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_with_check_I",
+      "proved_leaves": 0,
+      "computed_roots": [
+        "Coma.vc_with_check_I"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/checked_state/impl_EncodeBuilder_I/with_check_version.coma",
+      "coma_sha256": "807543312456ae6cc15b33c2312bd57ec2eac524dd4677a66aec6aac140a5534",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/checked_state/impl_EncodeBuilder_I/with_check_version/proof.json",
+      "proof_json_sha256": "218cf36b1e32178468e96e65759f29424328a4920c43d9e21f668c0e42ea4a7c",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_with_check_version_I"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_with_check_version_I"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_with_check_version_I",
+      "proved_leaves": 0,
+      "computed_roots": [
+        "Coma.vc_with_check_version_I"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/decode_into.coma",
+      "coma_sha256": "8f0863744fffb3c2426a9175ed630b8db73dad5dc7ab4a39d93133d607ad1e9b",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/decode_into/proof.json",
+      "proof_json_sha256": "c7121b09f4acf492842ca8915306a4d9902166a17e39e5fa0d9454af3d4cbbf5",
+      "root_goals": 7,
+      "root_names": [
+        "Coma.vc_decode_append_step",
+        "Coma.vc_decode_horner_step",
+        "Coma.vc_decode_into",
+        "Coma.vc_decode_tail_step",
+        "Coma.vc_full_prefix_le",
+        "Coma.vc_len_u8",
+        "Coma.vc_new_unit"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_decode_append_step",
+        "Coma.vc_decode_horner_step",
+        "Coma.vc_decode_into",
+        "Coma.vc_decode_tail_step",
+        "Coma.vc_full_prefix_le",
+        "Coma.vc_len_u8",
+        "Coma.vc_new_unit"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_decode_into",
+      "proved_leaves": 145,
+      "computed_roots": [
+        "Coma.vc_decode_append_step",
+        "Coma.vc_decode_horner_step",
+        "Coma.vc_decode_tail_step",
+        "Coma.vc_full_prefix_le",
+        "Coma.vc_len_u8",
+        "Coma.vc_new_unit"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/decode_into_const.coma",
+      "coma_sha256": "4688db6ce759578ae1c960b6efc7c4086577b3015c465ac78f26af924049a3b6",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/decode_into_const/proof.json",
+      "proof_json_sha256": "ed07374f86177daaafaca3dfa1ea6f27cd9c808019e5c97ea8be72ecc1db0969",
+      "root_goals": 6,
+      "root_names": [
+        "Coma.vc_decode_append_step",
+        "Coma.vc_decode_horner_step",
+        "Coma.vc_decode_into_const",
+        "Coma.vc_le_extend_step",
+        "Coma.vc_len_u8",
+        "Coma.vc_new_unit"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_decode_append_step",
+        "Coma.vc_decode_horner_step",
+        "Coma.vc_decode_into_const",
+        "Coma.vc_le_extend_step",
+        "Coma.vc_len_u8",
+        "Coma.vc_new_unit"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_decode_into_const",
+      "proved_leaves": 145,
+      "computed_roots": [
+        "Coma.vc_decode_append_step",
+        "Coma.vc_decode_horner_step",
+        "Coma.vc_le_extend_step",
+        "Coma.vc_len_u8",
+        "Coma.vc_new_unit"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/decode.coma",
+      "coma_sha256": "3759fd20cc982bdae6f7e499fc6244a29ac771a6d1e4b6eb3c69ef7a143e60e5",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/defaults/decode/proof.json",
+      "proof_json_sha256": "ba331abf913d2f934ea3bc7e7c01db3e7684dc751ed43210abc9478ad202d482",
+      "root_goals": 5,
+      "root_names": [
+        "Coma.vc_decode_I",
+        "Coma.vc_from_input_I",
+        "Coma.vc_new_unwrap",
+        "Coma.vc_set_BITCOIN",
+        "Coma.vc_set_DEFAULT"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_decode_I",
+        "Coma.vc_from_input_I",
+        "Coma.vc_new_unwrap",
+        "Coma.vc_set_BITCOIN",
+        "Coma.vc_set_DEFAULT"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_decode_I",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_from_input_I",
+        "Coma.vc_new_unwrap",
+        "Coma.vc_set_BITCOIN",
+        "Coma.vc_set_DEFAULT"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/encode.coma",
+      "coma_sha256": "ac7406fab96537e37169d0ea77655821b8b99e00f533790324c04f8e9440b351",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/defaults/encode/proof.json",
+      "proof_json_sha256": "7f125fb51b49554b94af9087f2288c87769c97b030f0b20013758b269d098c92",
+      "root_goals": 5,
+      "root_names": [
+        "Coma.vc_encode_I",
+        "Coma.vc_from_input_I",
+        "Coma.vc_new_unwrap",
+        "Coma.vc_set_BITCOIN",
+        "Coma.vc_set_DEFAULT"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_encode_I",
+        "Coma.vc_from_input_I",
+        "Coma.vc_new_unwrap",
+        "Coma.vc_set_BITCOIN",
+        "Coma.vc_set_DEFAULT"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_encode_I",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_from_input_I",
+        "Coma.vc_new_unwrap",
+        "Coma.vc_set_BITCOIN",
+        "Coma.vc_set_DEFAULT"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_Alphabet/BITCOIN.coma",
+      "coma_sha256": "40d781a4cbe73add3f516d17953a5e9c5daa67b809e5c96dd02d7e506d64e8e9",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_Alphabet/BITCOIN/proof.json",
+      "proof_json_sha256": "928ee93e24c0b0bb13baa20bce1b6ef4a4a927bf7d4c746f633c20c568c265ff",
+      "root_goals": 2,
+      "root_names": [
+        "Coma.vc_const_BITCOIN_def",
+        "Coma.vc_new_unwrap"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_const_BITCOIN_def",
+        "Coma.vc_new_unwrap"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_const_BITCOIN_def",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_new_unwrap"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_Alphabet/DEFAULT.coma",
+      "coma_sha256": "8cddd3f80c004e0c2aa292b66b94bbc766338024be8e689c78113b645c04b851",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_Alphabet/DEFAULT/proof.json",
+      "proof_json_sha256": "e2b58ce6e0c96a8141a3245db02314feb8a508cf5001d4b4a208681d7626c2f2",
+      "root_goals": 3,
+      "root_names": [
+        "Coma.vc_const_DEFAULT_def",
+        "Coma.vc_new_unwrap",
+        "Coma.vc_set_BITCOIN"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_const_DEFAULT_def",
+        "Coma.vc_new_unwrap",
+        "Coma.vc_set_BITCOIN"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_const_DEFAULT_def",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_new_unwrap",
+        "Coma.vc_set_BITCOIN"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_Alphabet/FLICKR.coma",
+      "coma_sha256": "e55687200deee68657dcabd648b106e7934b29d9b306f43cc62be0fc8ede7259",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_Alphabet/FLICKR/proof.json",
+      "proof_json_sha256": "5bbb919fb72d14173132f2487c90111a15fc160c6705f6b24e506ca000bd1e0e",
+      "root_goals": 2,
+      "root_names": [
+        "Coma.vc_const_FLICKR_def",
+        "Coma.vc_new_unwrap"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_const_FLICKR_def",
+        "Coma.vc_new_unwrap"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_const_FLICKR_def",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_new_unwrap"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_Alphabet/MONERO.coma",
+      "coma_sha256": "1f9f9fe283621c415e07e2d9a58edb8753c2810153a6e40bb3267ef002b529ba",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_Alphabet/MONERO/proof.json",
+      "proof_json_sha256": "c7583be5f5b768f289ff13820d01ab484673b4993190e9143a002daf13702866",
+      "root_goals": 2,
+      "root_names": [
+        "Coma.vc_const_MONERO_def",
+        "Coma.vc_new_unwrap"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_const_MONERO_def",
+        "Coma.vc_new_unwrap"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_const_MONERO_def",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_new_unwrap"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_Alphabet/RIPPLE.coma",
+      "coma_sha256": "2928524fd1fb01e0c384629c412b2bb88d2deb6b465eea497810d642d3253dad",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_Alphabet/RIPPLE/proof.json",
+      "proof_json_sha256": "20b714e73c515c85597043a98eff1b3f610ab0adba4798115d060473d39a3964",
+      "root_goals": 2,
+      "root_names": [
+        "Coma.vc_const_RIPPLE_def",
+        "Coma.vc_new_unwrap"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_const_RIPPLE_def",
+        "Coma.vc_new_unwrap"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_const_RIPPLE_def",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_new_unwrap"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_Alphabet/bitcoin.coma",
+      "coma_sha256": "260d744d873171efa7b5e789cd8df00e6e1c28047d16b2707897680217d7935c",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_Alphabet/bitcoin/proof.json",
+      "proof_json_sha256": "1858cd94232c4da3c4abca116c72dca5a79fcd76a132046c8e0ae2775a731679",
+      "root_goals": 2,
+      "root_names": [
+        "Coma.vc_bitcoin",
+        "Coma.vc_new_unwrap"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_bitcoin",
+        "Coma.vc_new_unwrap"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_bitcoin",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_new_unwrap"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_DecodeBuilder_I/from_input.coma",
+      "coma_sha256": "c8e38605cb35b1cff6bd3d4af2d68a6609dfb9171a99624dd3e3c0bbeacb3ed1",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_DecodeBuilder_I/from_input/proof.json",
+      "proof_json_sha256": "59b4d7e45bb5ae5026904b9398524fed8ffc7a81f9aad10bc5327d2a58d6da4d",
+      "root_goals": 5,
+      "root_names": [
+        "Coma.vc_from_input_I",
+        "Coma.vc_new_I",
+        "Coma.vc_new_unwrap",
+        "Coma.vc_set_BITCOIN",
+        "Coma.vc_set_DEFAULT"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_from_input_I",
+        "Coma.vc_new_I",
+        "Coma.vc_new_unwrap",
+        "Coma.vc_set_BITCOIN",
+        "Coma.vc_set_DEFAULT"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_from_input_I",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_new_I",
+        "Coma.vc_new_unwrap",
+        "Coma.vc_set_BITCOIN",
+        "Coma.vc_set_DEFAULT"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_EncodeBuilder_I/from_input.coma",
+      "coma_sha256": "0810dfad9d771f08c83973d173db79c5a7f7458ef77cd066076ee8d21c691131",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_EncodeBuilder_I/from_input/proof.json",
+      "proof_json_sha256": "1f52406eb8747efb5afd61caa8b8b387148a0ea33e3d59a74f854d48c27dc010",
+      "root_goals": 5,
+      "root_names": [
+        "Coma.vc_from_input_I",
+        "Coma.vc_new_I",
+        "Coma.vc_new_unwrap",
+        "Coma.vc_set_BITCOIN",
+        "Coma.vc_set_DEFAULT"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_from_input_I",
+        "Coma.vc_new_I",
+        "Coma.vc_new_unwrap",
+        "Coma.vc_set_BITCOIN",
+        "Coma.vc_set_DEFAULT"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_from_input_I",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_new_I",
+        "Coma.vc_new_unwrap",
+        "Coma.vc_set_BITCOIN",
+        "Coma.vc_set_DEFAULT"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/encode_into.coma",
+      "coma_sha256": "6295d44fd27ce5f4c4b37d4b41f0c46b38f8894d14ffce12581cc3f14577af71",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/encode_into/proof.json",
+      "proof_json_sha256": "49e0e7a7ee3ec0b23fbc9481343f12d7df24dcd2734b139ebd48f9602f15132d",
+      "root_goals": 5,
+      "root_names": [
+        "Coma.vc_append_step",
+        "Coma.vc_encode_into",
+        "Coma.vc_horner_step",
+        "Coma.vc_len_u8",
+        "Coma.vc_new_unit"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_append_step",
+        "Coma.vc_encode_into",
+        "Coma.vc_horner_step",
+        "Coma.vc_len_u8",
+        "Coma.vc_new_unit"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_encode_into",
+      "proved_leaves": 123,
+      "computed_roots": [
+        "Coma.vc_append_step",
+        "Coma.vc_horner_step",
+        "Coma.vc_len_u8",
+        "Coma.vc_new_unit"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/append_preserves.coma",
+      "coma_sha256": "e802d0d395377834bf1888fd4e6714b7b761ce5c901e171970f0ef858b953c03",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/append_preserves/proof.json",
+      "proof_json_sha256": "86da72e6f4a338abe6fab38f1958c45505d1dd231d3a89cad485aa73bf1e2937",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_append_preserves"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_append_preserves"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_append_preserves",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/append_step.coma",
+      "coma_sha256": "a136f1d9a910f2e87ea2239cd4e4d66b2dfbcef524af059028ccf43ce3edff57",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/append_step/proof.json",
+      "proof_json_sha256": "9e4a94e486a06e90bf4ad75b48927156800fcff8d67b544500a0cb86108e333d",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_append_step"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_append_step"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_append_step",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/division_weight.coma",
+      "coma_sha256": "d56a4c977bbb933562a1f8279f38a95d44241903920c9416f461bcbda9e941e5",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/division_weight/proof.json",
+      "proof_json_sha256": "0db3a8124361f7cb347b9aee5c4ec7c73ad2e119d9a6831c16a25c0016d94b77",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_division_weight"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_division_weight"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_division_weight",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/encode_growth_failure.coma",
+      "coma_sha256": "7b6bb088bac69d6a771a51cd6c7a35a4003516e40edf2305e068a75e7584f679",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/encode_growth_failure/proof.json",
+      "proof_json_sha256": "bef0fb62d7fea853794c22f001f75fbb156aff8a9eb54120db382fe2eee4744a",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_encode_growth_failure"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_encode_growth_failure"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_encode_growth_failure",
+      "proved_leaves": 12,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/encode_success_fits.coma",
+      "coma_sha256": "63982f1325e1f19bd3c21117a3bc46bfe289e3e34b84d762e55c44859adb488f",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/encode_success_fits/proof.json",
+      "proof_json_sha256": "46607a52b1d7155b4093d30da34bb1de71b170dee2c1ff59ce8ff94e264c4572",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_encode_success_fits"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_encode_success_fits"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_encode_success_fits",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/encode_zero_failure.coma",
+      "coma_sha256": "419e35b002e1a33fd534c8f745918853d3f69a51e3958bae37b1c423420f31d8",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/encode_zero_failure/proof.json",
+      "proof_json_sha256": "4fec89660efbde02eafb8d962a7ae367d8e1c95444322961246856992668154f",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_encode_zero_failure"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_encode_zero_failure"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_encode_zero_failure",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/horner_preserves.coma",
+      "coma_sha256": "19d69a9f15396859f85e67ea193a093b965f4d594c46f92f6a040fe81191fc58",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/horner_preserves/proof.json",
+      "proof_json_sha256": "7366102d4fd5b76c810c60b5cf94f7fabcb5b1355e75e84ef7366e6d5f13a2c6",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_horner_preserves"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_horner_preserves"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_horner_preserves",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/horner_step.coma",
+      "coma_sha256": "ea1cd48e41c405380e7ae5250cc83784ed7995bc25c14a9ba3b1b1b9f9c5d00a",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/horner_step/proof.json",
+      "proof_json_sha256": "2c40ce766d9371265a5d11627368c84820fb974ca8a7a55a42ff321fd8101e07",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_horner_step"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_horner_step"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_horner_step",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/horner_weight.coma",
+      "coma_sha256": "d93454f09a91e79708c0efee09dc68943694caaa0a98a9962970a7d83721b1f5",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/horner_weight/proof.json",
+      "proof_json_sha256": "fb6e1bc908890bd8289e9c87896385194266f393317a871400e5296c6eb439f2",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_horner_weight"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_horner_weight"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_horner_weight",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/le_canonical_lower.coma",
+      "coma_sha256": "9f83d3ed883eb542298b441e321212564de7f9300548dd35f394aea8fb6b9ade",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/le_canonical_lower/proof.json",
+      "proof_json_sha256": "eea1be4aa488d5551621fcb39636077a1d0976fe8da015181a4f1427a8b3a44d",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_le_canonical_lower"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_le_canonical_lower"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_le_canonical_lower",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/le_extend.coma",
+      "coma_sha256": "411a11dd0a99471b5c4b2052068abdd334ae2b06e2745616fd2eaca19712071f",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/le_extend/proof.json",
+      "proof_json_sha256": "811f535269feda0f6754e7fa8fcce671205390a1e0205ca3a4a54f454d861787",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_le_extend"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_le_extend"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_le_extend",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/le_nonnegative.coma",
+      "coma_sha256": "b40ce59be0892ea6f7cef9ef979e8755ca13bb87ed841cfc493f34ed460da45b",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/le_nonnegative/proof.json",
+      "proof_json_sha256": "a9af14c26ce5917301a88d81156d0388a231d593a2a8be7919303f4c2f7a2e52",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_le_nonnegative"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_le_nonnegative"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_le_nonnegative",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/le_zero.coma",
+      "coma_sha256": "96f958deccfa05851cacf5fcaa87cafb8125d11249f8a25f34bf000ba03b77a3",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/le_zero/proof.json",
+      "proof_json_sha256": "235062bb582e413443ece45bb35a1e9e76dfab68cf198c647ea040491384f9b3",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_le_zero"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_le_zero"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_le_zero",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/le_zero_suffix.coma",
+      "coma_sha256": "e8daec678e89cdad1721df03c28d7148367eb664531e32dfd03f073e121bc10a",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/le_zero_suffix/proof.json",
+      "proof_json_sha256": "d7f17d0911fc1193be2dbc4a0418d1279636856bb61162cd37a782915ac6641b",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_le_zero_suffix"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_le_zero_suffix"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_le_zero_suffix",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/leading_bounds.coma",
+      "coma_sha256": "b2820d533c8ab78ed45bbe281219b14849cf6179678b70ddde7ddcfea9b6f9f5",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/leading_bounds/proof.json",
+      "proof_json_sha256": "6eba8ecea6fd89f056c202e81667b3517ae260999c20bce8d6d2a8f90ac6667b",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_leading_bounds"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_leading_bounds"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_leading_bounds",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/leading_lower.coma",
+      "coma_sha256": "5d587864cf1dcae86d195ffb5d7425df21cf9f544a6a2735e5e28d4b1dac1dce",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/encoder_lemmas/leading_lower/proof.json",
+      "proof_json_sha256": "921e310e47ff66ae22202282173872d8bb084661272dde6a75f1f965fa49b3c7",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_leading_lower"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_leading_lower"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_leading_lower",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/impl_Alphabet/new.coma",
+      "coma_sha256": "8968131a4abb3dc4ad1d5113f45500c65dd0c794d25e09928ef81c58f5f38614",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/impl_Alphabet/new/proof.json",
+      "proof_json_sha256": "4b318526fe3e2ef614ced014df57a61935ba6c160b5f5d79ae2451a092ec33b6",
+      "root_goals": 2,
+      "root_names": [
+        "Coma.vc_len_u8",
+        "Coma.vc_new"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_len_u8",
+        "Coma.vc_new"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_new",
+      "proved_leaves": 37,
+      "computed_roots": [
+        "Coma.vc_len_u8"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/impl_Clone_for_AlphabetError/clone.coma",
+      "coma_sha256": "4c280b6f804cb69a6610b31ab239f89ae1836f44fc8addf7bb7c72b68686d2d7",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/impl_Clone_for_AlphabetError/clone/proof.json",
+      "proof_json_sha256": "eda808151dd0c49cd660ed5a9920c6bd4a43b537a0564d70900244c00574d0cb",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_clone_AlphabetError"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_clone_AlphabetError"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_clone_AlphabetError",
+      "proved_leaves": 0,
+      "computed_roots": [
+        "Coma.vc_clone_AlphabetError"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/impl_Clone_for_DecodeError/clone.coma",
+      "coma_sha256": "7cc963513b9534f83d628ffadaa960e490a1d493aab588c160c7004ab6035046",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/impl_Clone_for_DecodeError/clone/proof.json",
+      "proof_json_sha256": "baaedbfa19a15581b6bced30d7441fe1c8c0db4f3364a46de4d677faa7ac9986",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_clone_DecodeError"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_clone_DecodeError"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_clone_DecodeError",
+      "proved_leaves": 0,
+      "computed_roots": [
+        "Coma.vc_clone_DecodeError"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/impl_Clone_for_EncodeError/clone.coma",
+      "coma_sha256": "39086707eb771e9df7540ae49dad2e677ddaaaabe020accd7840f14a61155c69",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/impl_Clone_for_EncodeError/clone/proof.json",
+      "proof_json_sha256": "6540c2a23ce03c740dc54aa6dacf4157a840d064ae7277efe00e36fdd657ed6f",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_clone_EncodeError"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_clone_EncodeError"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_clone_EncodeError",
+      "proved_leaves": 0,
+      "computed_roots": [
+        "Coma.vc_clone_EncodeError"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/impl_PartialEq_for_AlphabetError/eq.coma",
+      "coma_sha256": "381e7d80932b6cf36f65c17e655284fce43ae10c5aa3fe7a014caa6bebba6af7",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/impl_PartialEq_for_AlphabetError/eq/proof.json",
+      "proof_json_sha256": "3941c9ebd641bf9f843e42894e670cc2e4ae627d1af1ac3ff99f9ac20ff528e2",
+      "root_goals": 3,
+      "root_names": [
+        "Coma.vc_elim_DuplicateCharacter",
+        "Coma.vc_elim_NonAsciiCharacter",
+        "Coma.vc_eq_AlphabetError"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_elim_DuplicateCharacter",
+        "Coma.vc_elim_NonAsciiCharacter",
+        "Coma.vc_eq_AlphabetError"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_eq_AlphabetError",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_elim_DuplicateCharacter",
+        "Coma.vc_elim_NonAsciiCharacter"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/impl_PartialEq_for_AlphabetError/eq__refines.coma",
+      "coma_sha256": "46d4384c78b0b4ad54429900b6cf1553af349c9711adb8e7e313e9e7fea5ef5f",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/impl_PartialEq_for_AlphabetError/eq__refines/proof.json",
+      "proof_json_sha256": "13053ffb58189d2960fa708220b30174f6898b4ae03ccc413f309b762b0c4b8b",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.refines"
+      ],
+      "reconstructed_root_names": [
+        "Coma.refines"
+      ],
+      "target_kind": "trait_refinement",
+      "target_vc": "refines",
+      "proved_leaves": 0,
+      "computed_roots": [
+        "Coma.refines"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/impl_PartialEq_for_DecodeError/eq.coma",
+      "coma_sha256": "f79f6f2a501a680cd667af17f640b6f033944027a0bdfb39ec7f3de5158df742",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/impl_PartialEq_for_DecodeError/eq/proof.json",
+      "proof_json_sha256": "4f0de552e4f42ffa22a6dea9846e7b191b8261f6153c1db157e0a0d1cdcdd324",
+      "root_goals": 3,
+      "root_names": [
+        "Coma.vc_elim_InvalidCharacter",
+        "Coma.vc_elim_NonAsciiCharacter",
+        "Coma.vc_eq_DecodeError"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_elim_InvalidCharacter",
+        "Coma.vc_elim_NonAsciiCharacter",
+        "Coma.vc_eq_DecodeError"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_eq_DecodeError",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_elim_InvalidCharacter",
+        "Coma.vc_elim_NonAsciiCharacter"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/impl_PartialEq_for_DecodeError/eq__refines.coma",
+      "coma_sha256": "5643ec838af8703c52cdb203f2f8b01727d99ab3fcb75a7c519d9fac479cdeb2",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/impl_PartialEq_for_DecodeError/eq__refines/proof.json",
+      "proof_json_sha256": "13053ffb58189d2960fa708220b30174f6898b4ae03ccc413f309b762b0c4b8b",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.refines"
+      ],
+      "reconstructed_root_names": [
+        "Coma.refines"
+      ],
+      "target_kind": "trait_refinement",
+      "target_vc": "refines",
+      "proved_leaves": 0,
+      "computed_roots": [
+        "Coma.refines"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/impl_PartialEq_for_EncodeError/eq.coma",
+      "coma_sha256": "156bf0ca093b19c2b360036b9bbe0c3771c58d3d24cbc5cb75fa5295afa0011b",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/impl_PartialEq_for_EncodeError/eq/proof.json",
+      "proof_json_sha256": "c401283f28b3923ed54abd000213fc372373675e035e12d8b64be5f19bc45efd",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_eq_EncodeError"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_eq_EncodeError"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_eq_EncodeError",
+      "proved_leaves": 0,
+      "computed_roots": [
+        "Coma.vc_eq_EncodeError"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/impl_PartialEq_for_EncodeError/eq__refines.coma",
+      "coma_sha256": "929707a36f3241f3f63bfbd824cf34b2f1b74706477a03444725510111305600",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/impl_PartialEq_for_EncodeError/eq__refines/proof.json",
+      "proof_json_sha256": "13053ffb58189d2960fa708220b30174f6898b4ae03ccc413f309b762b0c4b8b",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.refines"
+      ],
+      "reconstructed_root_names": [
+        "Coma.refines"
+      ],
+      "target_kind": "trait_refinement",
+      "target_vc": "refines",
+      "proved_leaves": 0,
+      "computed_roots": [
+        "Coma.refines"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/lemmas/alphabet_reverse_value.coma",
+      "coma_sha256": "af0a00571c85ea71900dff90d96ab535bf04e02c9632e2fda03a200f45e0ad57",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/lemmas/alphabet_reverse_value/proof.json",
+      "proof_json_sha256": "f3a973206b7395cc4dbd490de31be460fc51e0c8c0fcee3bfab5e8e9e0e94924",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_alphabet_reverse_value"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_alphabet_reverse_value"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_alphabet_reverse_value",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/lemmas/be58_nonnegative.coma",
+      "coma_sha256": "943f9d75476271f3f4369bd34438097d148b116ee9776e4bc511c5ffe0d0f4c3",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/lemmas/be58_nonnegative/proof.json",
+      "proof_json_sha256": "3d835e1dbfd2f642b238e10b0f0436d322f55d7f64bac85d0eef63209b8b196c",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_be58_nonnegative"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_be58_nonnegative"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_be58_nonnegative",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/lemmas/be58_prefix_monotone.coma",
+      "coma_sha256": "30909b9b66ecbb2a5f7b2cb5eaaf575637fbdacede33c3a8627ace8119616421",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/lemmas/be58_prefix_monotone/proof.json",
+      "proof_json_sha256": "0e1a55b2cbbe835a5cc542a6baa36c332e586ae3e4ffe459432b118048f08f72",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_be58_prefix_monotone"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_be58_prefix_monotone"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_be58_prefix_monotone",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/lemmas/be_bound.coma",
+      "coma_sha256": "8c54975968b40cdee90d6e227f0429e0a9a7a1b19c618d17e4e677ce77d4b09e",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/lemmas/be_bound/proof.json",
+      "proof_json_sha256": "e3a38e9bba554b10b3896f3e026bf8489e5a5bebe60348f4614baae495e5ccc0",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_be_bound"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_be_bound"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_be_bound",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/lemmas/be_prefix_monotone.coma",
+      "coma_sha256": "682732487fc8b1c553e469291a5b54bce78e2ce32c0ce988e5bf12986adb975f",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/lemmas/be_prefix_monotone/proof.json",
+      "proof_json_sha256": "376f259b766fcd78c82fbe4cffe390cdd194d633e2925afcd47f36d08bef72c5",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_be_prefix_monotone"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_be_prefix_monotone"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_be_prefix_monotone",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/lemmas/decode_append_preserves.coma",
+      "coma_sha256": "e1523f1bc778d42181778af771952ff968470b50b5dc93b2fac24efe9b100fd7",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/lemmas/decode_append_preserves/proof.json",
+      "proof_json_sha256": "cafb4f78f22651abf501a2b1f38b117c64a6dcba398bb6ca0952bc882782bdb5",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_decode_append_preserves"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_decode_append_preserves"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_decode_append_preserves",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/lemmas/decode_append_step.coma",
+      "coma_sha256": "74f59906ddb929c563bc0578d9fe29861e64208342a379e54a9bc618a6771414",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/lemmas/decode_append_step/proof.json",
+      "proof_json_sha256": "50e86bc6bd0c1ccb73ff3b3da93a6e8354c10feb2afd34f1d529802f3d00e69e",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_decode_append_step"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_decode_append_step"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_decode_append_step",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/lemmas/decode_canonical_growth.coma",
+      "coma_sha256": "b7a6bca81fcc79e4bd7265a0039a73dcbd9e7b1376b868c632dd6f2d58d739f0",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/lemmas/decode_canonical_growth/proof.json",
+      "proof_json_sha256": "bf43b6752a5d1f692a9b276d3b09c0e7372f37113adfdb64291f3b4ede3b48f3",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_decode_canonical_growth"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_decode_canonical_growth"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_decode_canonical_growth",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/lemmas/decode_carry_step.coma",
+      "coma_sha256": "3541c3f2a00655aa3f68e675fa7a299f54e8da4c1b0a8dc1a303714aec9d51cd",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/lemmas/decode_carry_step/proof.json",
+      "proof_json_sha256": "5da3632caea4f8cc862d2623bed76eb6252cf33e7600beda52bf5d5127a93e7e",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_decode_carry_step"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_decode_carry_step"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_decode_carry_step",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/lemmas/decode_division_weight.coma",
+      "coma_sha256": "628be84910df562fda57bdfbf1a27f6e8084cd58745278f8c9cd8f66677f1b05",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/lemmas/decode_division_weight/proof.json",
+      "proof_json_sha256": "e147373f92b5ec29f9a2c88086163be3e8e3f4df5136506f7d9fcee6cd45f751",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_decode_division_weight"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_decode_division_weight"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_decode_division_weight",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/lemmas/decode_growth_failure.coma",
+      "coma_sha256": "e32a32cb6460513600831297ad00c844ad3b78b33f15c69e575ca562ae19983b",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/lemmas/decode_growth_failure/proof.json",
+      "proof_json_sha256": "8cf1b5f0572a1954cb025715880dc207d0c0d1a21a1d46448b96bd53a1ebdbfa",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_decode_growth_failure"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_decode_growth_failure"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_decode_growth_failure",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/lemmas/decode_horner_step.coma",
+      "coma_sha256": "2d34865cbc903e8a382d584be5ef4e4b65a4ee6de7eba7b45eecc027aa456a9e",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/lemmas/decode_horner_step/proof.json",
+      "proof_json_sha256": "f1e74b3a941d7020c4443001a5ed994bf938ab9524ad6917ea4af1cf503f84f5",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_decode_horner_step"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_decode_horner_step"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_decode_horner_step",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/lemmas/decode_horner_weight.coma",
+      "coma_sha256": "007df5353f04b55e7d4ccf98bbe3af88d14022824d7eaac27a7b0a79b54b0289",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/lemmas/decode_horner_weight/proof.json",
+      "proof_json_sha256": "3db8affaea09b7c3153dd9176b4575de5ee4d0bbf43faf6c1a1ba5c73bb1b3b3",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_decode_horner_weight"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_decode_horner_weight"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_decode_horner_weight",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/lemmas/decode_success_fits.coma",
+      "coma_sha256": "c91a1b437c0336df486b9f5be873fb82a401948c2471d043630e8b36a7d0fc72",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/lemmas/decode_success_fits/proof.json",
+      "proof_json_sha256": "a04c058e96d770891bc345018205f215b48b144bc24dc1007c932627029abee0",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_decode_success_fits"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_decode_success_fits"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_decode_success_fits",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/lemmas/decode_tail_step.coma",
+      "coma_sha256": "5635f1c6fef3a27185ecef716f1f4bcfee9afca3adef8a16ef5b59027219f7ca",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/lemmas/decode_tail_step/proof.json",
+      "proof_json_sha256": "be080a5cddcad3aa76b9bebe5fe40bd7068dfcf18e66f575fdb6ace005c85699",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_decode_tail_step"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_decode_tail_step"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_decode_tail_step",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/lemmas/decode_zero_failure.coma",
+      "coma_sha256": "defc7342536b9cc0c738f842645cfb6f6ffb1237bdd522a7b443664daa0ad268",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/lemmas/decode_zero_failure/proof.json",
+      "proof_json_sha256": "17ae3705a473a1ca539a51928d4d022d608544b2df4bda4dd8d3e59bef67d1dc",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_decode_zero_failure"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_decode_zero_failure"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_decode_zero_failure",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/lemmas/full_prefix_le.coma",
+      "coma_sha256": "782254c7a401a80270a17a8838b3a768bab73ff401884aba7d7dabc64c8e4cc1",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/lemmas/full_prefix_le/proof.json",
+      "proof_json_sha256": "9eb3374b16e2566f2ac7a05dfc8819b8ea62878728762fb1b6e73cf1c38152d4",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_full_prefix_le"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_full_prefix_le"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_full_prefix_le",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/lemmas/le_bound.coma",
+      "coma_sha256": "28bd1817582456a651359456aace89f2129443a9abbe7301dedf5fc573c79946",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/lemmas/le_bound/proof.json",
+      "proof_json_sha256": "546d7787fb55c9c6c5ac63cf7e6ca329e7e68a05f67b4133367f243331626e5d",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_le_bound"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_le_bound"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_le_bound",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/lemmas/le_extend_step.coma",
+      "coma_sha256": "b60376ba0db93e2af52064521c5932b9909b3de4c2432c08cdef10bf6a408049",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/lemmas/le_extend_step/proof.json",
+      "proof_json_sha256": "3bc9eeb4d3b6ebc6e46386f52d5cfb1dd11445a3f8678d169d8751071ae26363",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_le_extend_step"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_le_extend_step"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_le_extend_step",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/lemmas/le_prefix_head.coma",
+      "coma_sha256": "7f48ca283819eb2da61237df9a078a8cc2d74a9cd0cb9e144973e4dca3a3210f",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/lemmas/le_prefix_head/proof.json",
+      "proof_json_sha256": "88ba3a05f1fb202924656b09c27457086d0811c96e3cdd116c164703da8509d9",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_le_prefix_head"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_le_prefix_head"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_le_prefix_head",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/lemmas/le_reverse_be.coma",
+      "coma_sha256": "a7548386e0ed30b0bd9c7eba82b684f5dd2ca0be3a8755c8a3a7765b70dbc7d4",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/lemmas/le_reverse_be/proof.json",
+      "proof_json_sha256": "940706bd3a298ed83851014f1763de1caff3bce97372f19499d3474623384dcb",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_le_reverse_be"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_le_reverse_be"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_le_reverse_be",
+      "proved_leaves": 9,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/lemmas/le_reverse_be58.coma",
+      "coma_sha256": "b32a741941aa2c87655c4cfebf89098fe59ae8de102369b166768262bcd19f26",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/lemmas/le_reverse_be58/proof.json",
+      "proof_json_sha256": "1c386d2d656da2ae2db694010d7c831f077e76b02977516191a8a0da318f6e8c",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_le_reverse_be58"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_le_reverse_be58"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_le_reverse_be58",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/lemmas/le_split_algebra.coma",
+      "coma_sha256": "7182f73d1c100299a51b53f43c48502abbad0e145feb1c0d93fe9c8b63b51f2b",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/lemmas/le_split_algebra/proof.json",
+      "proof_json_sha256": "d83326300f08716531f94b4d610808ddecc979e6a7ce414acff444b8b07fdcab",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_le_split_algebra"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_le_split_algebra"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_le_split_algebra",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/lemmas/leading_exact.coma",
+      "coma_sha256": "a35fa9815e105d71647fe01ef511f92d3ebaa7cace194f9d95a4912c73185833",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/lemmas/leading_exact/proof.json",
+      "proof_json_sha256": "0f6ff0c58f1c6d476e7fc8391895fbe4a2b4afa535dfdbc19d098c94bd79abc3",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_leading_exact"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_leading_exact"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_leading_exact",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/lemmas/leading_reverse.coma",
+      "coma_sha256": "8c28d790909e54127e260a681831eee0fc124910a2e61b007d95a80ae17f9022",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/lemmas/leading_reverse/proof.json",
+      "proof_json_sha256": "15715d1782a5212ce939ca905ae3f2a1b6a950503a59ac4414f3e050948c25c3",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_leading_reverse"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_leading_reverse"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_leading_reverse",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/lemmas/pow_growth.coma",
+      "coma_sha256": "e0753be3a76e86ecfdd88a712c2041b953fe7e17fc670ec2377122ee3ce8acf9",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/lemmas/pow_growth/proof.json",
+      "proof_json_sha256": "25de4b6bca6f337b816cdb041b8b16954b97c96957a3d5a18745cd4399f4d97e",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_pow_growth"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_pow_growth"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_pow_growth",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/lemmas/pow_monotone.coma",
+      "coma_sha256": "42b34ffe1b311d2f1f79cdef5e8c9982cf2dba00688199f8cd21073ff1937f7d",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/lemmas/pow_monotone/proof.json",
+      "proof_json_sha256": "7356a836e0fc9e35c1426778958b14d538fd6baecafad6da38deed0a7210e212",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_pow_monotone"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_pow_monotone"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_pow_monotone",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/byte_bridge.coma",
+      "coma_sha256": "fc78b57aba4f60df28a5422978d284d04916a6fe757136f4425e2f895dd48f23",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/byte_bridge/proof.json",
+      "proof_json_sha256": "6a2444ffc564015fbadf5befae1ae687d4579f9703631129e2bc3f1e535f7d79",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_byte_bridge"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_byte_bridge"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_byte_bridge",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/decode_capacity.coma",
+      "coma_sha256": "0c5eed8a63d76286e1718fb3d97a8e399d8f654d4052613baaf2fd7bdbc08c39",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/decode_capacity/proof.json",
+      "proof_json_sha256": "9b3647c99a2917631c310b2d0d61797bcbcec0c8a135de3ccf381f3321a55957",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_decode_capacity"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_decode_capacity"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_decode_capacity",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/decode_encode.coma",
+      "coma_sha256": "5d19cc06493491ab39f14390e85447a43835a661e534708e5d5fa2101c277203",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/decode_encode/proof.json",
+      "proof_json_sha256": "20879d1cb89a1f9372231c2e185816c2ecaafa43207e98f7f51634a4acc6c1e0",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_decode_encode"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_decode_encode"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_decode_encode",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/decode_error_excluded.coma",
+      "coma_sha256": "3f663f8f5abecb8218de5e939bacf28fb85ff3db05982b3468dc4e1633e05f54",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/decode_error_excluded/proof.json",
+      "proof_json_sha256": "1f779503d93992ac1e90df6e96573c0cef0956b560d475cd4450286ddf046ee4",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_decode_error_excluded"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_decode_error_excluded"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_decode_error_excluded",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/decode_no_buffer_error.coma",
+      "coma_sha256": "26c204f6a2300f6d5c000f6557d13a0931d02d2da310f877612d45d7f4bc637b",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/decode_no_buffer_error/proof.json",
+      "proof_json_sha256": "b6a52cf54992805ddc1903f690e5d808be3ebd7aa6bc321c78fe369ca4e4204a",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_decode_no_buffer_error"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_decode_no_buffer_error"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_decode_no_buffer_error",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/decode_prefix_fits.coma",
+      "coma_sha256": "3c4108c7d97a96df16b9c73eb0095aadc840041dcd34db3afb0e3020d8169790",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/decode_prefix_fits/proof.json",
+      "proof_json_sha256": "4eff59d00c24849baa1607bab86e837f0bb9d5db09ad557c8f4023520df81a1a",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_decode_prefix_fits"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_decode_prefix_fits"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_decode_prefix_fits",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/encode_capacity.coma",
+      "coma_sha256": "a9e431058b3968e60bfc2e30bf93364da826dc03d755c54c1d473b21bdfc39f9",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/encode_capacity/proof.json",
+      "proof_json_sha256": "63ab9be1b9af6bc2131ac1a03b90060f53e810da33ef6052ff55be769f743558",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_encode_capacity"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_encode_capacity"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_encode_capacity",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/encode_decode.coma",
+      "coma_sha256": "4b2a83e2afda25b9e66cd491e80b647c4d27c91babf2456f0caaf464a9a90505",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/encode_decode/proof.json",
+      "proof_json_sha256": "f1bb6b12b8f2b0381d6de5e7622ee72f7b94caff4056fbf443d96279a7b26fd2",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_encode_decode"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_encode_decode"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_encode_decode",
+      "proved_leaves": 8,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/encode_power.coma",
+      "coma_sha256": "789a0b570de3743a575e517bece8376c316b68b99454d5cd39c1be995780004e",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/encode_power/proof.json",
+      "proof_json_sha256": "a5a8853a5b95a741abc2df4f90f3ce4bc5cf77a3c8b7d7796108801a639ab2b1",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_encode_power"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_encode_power"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_encode_power",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/horner_bound.coma",
+      "coma_sha256": "1a06816b32b70df4f1d6359f60784b0b914544c85cea73d0cb0831d8b890cea3",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/horner_bound/proof.json",
+      "proof_json_sha256": "6fcb991a69cf79046ef82a7dc21307747c9c4fee0f1d68309642e456e678831b",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_horner_bound"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_horner_bound"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_horner_bound",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/magnitude_bound.coma",
+      "coma_sha256": "10d54d2dc742150300c8e4e086fee9994f210048e9036126403dd2d43be90e7e",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/magnitude_bound/proof.json",
+      "proof_json_sha256": "bec59c455785a27adfd0d93db3d08c24e132186e64994055866305742dccaefa",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_magnitude_bound"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_magnitude_bound"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_magnitude_bound",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/positional_step.coma",
+      "coma_sha256": "3321cf3e997d3ff9a5c1abbb5169282c29fa7f35a89644730f9c8f7fe82809ef",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/positional_step/proof.json",
+      "proof_json_sha256": "f496adba90bff03186c6cb738feea4a4a340ed834b783d333398086615713d0a",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_positional_step"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_positional_step"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_positional_step",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/product_monotone.coma",
+      "coma_sha256": "ea3095dc8628c7e345bf290b7c80741f8937a7cd2ec3caf3ea772832bc833f15",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/product_monotone/proof.json",
+      "proof_json_sha256": "768b55619190e1186cae2745caa31f44768703592b4f0fffc4e4c94e69a94cb5",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_product_monotone"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_product_monotone"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_product_monotone",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/radix_monotone.coma",
+      "coma_sha256": "45a7b323bee9ec4a6cb69923b9d979423633e07cc0f83e0d52fc12a2030cf595",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/radix_monotone/proof.json",
+      "proof_json_sha256": "362b67239b6b3f2ecb2cb26b7f5051949cca129beab611381f589cccc67ea83b",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_radix_monotone"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_radix_monotone"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_radix_monotone",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/symbol_bridge.coma",
+      "coma_sha256": "4ff1f3e438860574c3d46e7d55b83ca4543ec244155a581efbee8b52f2646676",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/symbol_bridge/proof.json",
+      "proof_json_sha256": "b0af1abc853445f0e47fa4f0dbf353949ace914451badac03082c9e1d3942b43",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_symbol_bridge"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_symbol_bridge"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_symbol_bridge",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/unique.coma",
+      "coma_sha256": "a826724db2e125c4ff3bcc8252250b6659ed4ff3d73c37b7329a6a0fefff1537",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/unique/proof.json",
+      "proof_json_sha256": "b8f33cbfa6645da66e45b936d49e6a6a33e816e15bc1ff97c4eb077248c83107",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_unique"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_unique"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_unique",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/valid_prefix_capacity.coma",
+      "coma_sha256": "6397e71fabaaadd05006cbfb85a77de6cde23dfde6e3625adad5d449dee1a5cd",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/valid_prefix_capacity/proof.json",
+      "proof_json_sha256": "e151920aa64df946b5f520fde5f8f09533cd69069f3c5ce898275402400691e1",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_valid_prefix_capacity"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_valid_prefix_capacity"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_valid_prefix_capacity",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/value.coma",
+      "coma_sha256": "1dba5309ee4d4c53b261638b33d658ff2b4d84586ea8b0f6ac662d11b108a284",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/value/proof.json",
+      "proof_json_sha256": "61ff5d7066f4de8b3689b03c8dd02c884bc24b0b3832ee2fcf5a716923d6754a",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_value"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_value"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_value",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/zero_value.coma",
+      "coma_sha256": "e08def343c98c3ffc513edce1ebf190e72c51f76724cc13d5b45db5d496ee95c",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/zero_value/proof.json",
+      "proof_json_sha256": "584117be10a87e82f00f6c73f5526a34b64901868863f3516c46323946c00b73",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_zero_value"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_zero_value"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_zero_value",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/zeros.coma",
+      "coma_sha256": "baaee36a3cad7321679e5a2f3a4fa1baefc5fed2f122f7da726092054e8c76b5",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/zeros/proof.json",
+      "proof_json_sha256": "7634198b04167ef5a6dd754abef2f3578adb1aa8ecf58885ce4b847d380c041c",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_zeros"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_zeros"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_zeros",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/zeros_last.coma",
+      "coma_sha256": "378bc6839d2a81696b7ac8967b1a393a4a6a98215c9878b4e348a7c023b166ac",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/roundtrip/zeros_last/proof.json",
+      "proof_json_sha256": "b19345bfda09f141837ac4b29ada7f145da629b0f3f67edebc09a9c0ac3c71a7",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_zeros_last"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_zeros_last"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_zeros_last",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/spec/be.coma",
+      "coma_sha256": "a98cf8d0e8b0cc9004b3de7c8eac061d211c3ad2681dfc27b498ec5518db544a",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/spec/be/proof.json",
+      "proof_json_sha256": "6e3d6c3e1ed8d016a8b70538eabf242745d3a8cd2124f056b0af0a1199f13a5a",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_be"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_be"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_be",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/spec/be58.coma",
+      "coma_sha256": "d46ffe0582cb3c5bf57811cd4c7c5671506c90dd0398561adf7d89109158d007",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/spec/be58/proof.json",
+      "proof_json_sha256": "1ccdc1be83a779b98c5522b62073eb07270d17e0679625385eaf3432f7ee2ed1",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_be58"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_be58"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_be58",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/spec/be58_step.coma",
+      "coma_sha256": "1ea9fffee11d05e5a28d80a245bb1c334bb8e8ea2c0966c8330444788eeede32",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/spec/be58_step/proof.json",
+      "proof_json_sha256": "6158af10ca6def1a0ba5b4806e5a6b518a62a0973b6407307aab215d78b8a6f0",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_be58_step"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_be58_step"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_be58_step",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/spec/be_step.coma",
+      "coma_sha256": "92a3aeb4e9bb4fdd52f619232eb80dd84c62b7d027982852b9dbba3b5b85759e",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/spec/be_step/proof.json",
+      "proof_json_sha256": "514ba17c8d7451e2f6eaedbe85b10e6210a968c8136ff8cbb91970078ba26772",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_be_step"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_be_step"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_be_step",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/spec/le.coma",
+      "coma_sha256": "e92a89d58aaa46a9563e6dbd581a06233fd02cc7ca4f70676fd08b02b8f25503",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/spec/le/proof.json",
+      "proof_json_sha256": "61eca83d7232d5eb66994d653a0d33f36b54cebdc756d514eea74d90a22d2f5c",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_le"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_le"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_le",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/spec/le_split.coma",
+      "coma_sha256": "2f5af8cfb469c8fb95a0a719a7e478e4c7c7f19a0450674f1634d4e5f5db7aba",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/spec/le_split/proof.json",
+      "proof_json_sha256": "c0501b15f9704612663d108f73e4d9452083d7e07c079803c29cdcea8ee47fc8",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_le_split"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_le_split"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_le_split",
+      "proved_leaves": 22,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/spec/leading.coma",
+      "coma_sha256": "4543094c3f8d698763a5e792f37a7e6b5913c5264fcc1f894d2201171a7ddf5e",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/spec/leading/proof.json",
+      "proof_json_sha256": "5199ad827c13d05e4d4e554c15f071f0c2f8a5a93fe62805e7a080da5d7952bf",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_leading"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_leading"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_leading",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/spec/pow.coma",
+      "coma_sha256": "17c087219b6625a9fdfd4da59e980c25347713d29ac2603d7c026188953c4e4f",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/spec/pow/proof.json",
+      "proof_json_sha256": "dc48a4f5eafb77972225004c5ba19e61ba0ad3b97897b693b9594706dcffca2a",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_pow"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_pow"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_pow",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/spec/pow_positive.coma",
+      "coma_sha256": "5bbeb79074e258a7fb94c1df6c61be873775341e28cc0892c241669cf2256b9f",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/spec/pow_positive/proof.json",
+      "proof_json_sha256": "4776b8c9ed53fc39fea73bcb782b3d4350d26fb628de6b4ea5411c03d9395ca5",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_pow_positive"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_pow_positive"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_pow_positive",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/vec_utils/grow_zero.coma",
+      "coma_sha256": "921b1769df11a39e079b8e930a2bfc8826028aed260965d72052505206083e81",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/vec_utils/grow_zero/proof.json",
+      "proof_json_sha256": "e16a93a6b4e4e37c65122e394aca8300660f36dff1aeeb813fcddfa725ca79bc",
+      "root_goals": 3,
+      "root_names": [
+        "Coma.vc_grow_zero",
+        "Coma.vc_len_u8",
+        "Coma.vc_push_u8"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_grow_zero",
+        "Coma.vc_len_u8",
+        "Coma.vc_push_u8"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_grow_zero",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_len_u8",
+        "Coma.vc_push_u8"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/vec_utils/truncate.coma",
+      "coma_sha256": "9fe64c7f9d62d788fe4cbdfe62a61c6881afa05ff5ebc258a465fdc0e260e2b2",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/vec_utils/truncate/proof.json",
+      "proof_json_sha256": "fce0c435076b2bbd2a1f0413adbd3e62c70c038d1f8350cde74b5fcae6b1bdb6",
+      "root_goals": 3,
+      "root_names": [
+        "Coma.vc_len_u8",
+        "Coma.vc_pop_u8",
+        "Coma.vc_truncate"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_len_u8",
+        "Coma.vc_pop_u8",
+        "Coma.vc_truncate"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_truncate",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_len_u8",
+        "Coma.vc_pop_u8"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/encode_decode_roundtrip.coma",
+      "coma_sha256": "1ad90946f99b6daba36bf3d8c265f12fbd9c2c3b46518e8f564ecfa6126e2e55",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/wrappers/encode_decode_roundtrip/proof.json",
+      "proof_json_sha256": "9a43a16f18fbc31cf92d3f3a5e35e7653aece90e5025b7343bb03d07a03cc5e4",
+      "root_goals": 9,
+      "root_names": [
+        "Coma.vc_elim_Err",
+        "Coma.vc_elim_Ok",
+        "Coma.vc_encode_decode_roundtrip",
+        "Coma.vc_from_str",
+        "Coma.vc_index_Vec_u8_Global",
+        "Coma.vc_into_vec",
+        "Coma.vc_into_vec'0",
+        "Coma.vc_new_ref_slice_u8",
+        "Coma.vc_new_ref_slice_u8'0"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_elim_Err",
+        "Coma.vc_elim_Ok",
+        "Coma.vc_encode_decode_roundtrip",
+        "Coma.vc_from_str",
+        "Coma.vc_index_Vec_u8_Global",
+        "Coma.vc_into_vec",
+        "Coma.vc_into_vec'0",
+        "Coma.vc_new_ref_slice_u8",
+        "Coma.vc_new_ref_slice_u8'0"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_encode_decode_roundtrip",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_elim_Err",
+        "Coma.vc_elim_Ok",
+        "Coma.vc_from_str",
+        "Coma.vc_index_Vec_u8_Global",
+        "Coma.vc_into_vec",
+        "Coma.vc_into_vec'0",
+        "Coma.vc_new_ref_slice_u8",
+        "Coma.vc_new_ref_slice_u8'0"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_Alphabet/new_unwrap.coma",
+      "coma_sha256": "88ebf2dbfa6aa3629f5122f014ec6e6d56c60c3c8d1048e86bf64f2fe32ee2a4",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_Alphabet/new_unwrap/proof.json",
+      "proof_json_sha256": "21001e482cbf273e4610ed56ca0d31f0022e50f035e25a26720901b8d109e9e2",
+      "root_goals": 3,
+      "root_names": [
+        "Coma.vc_elim_Ok",
+        "Coma.vc_new",
+        "Coma.vc_new_unwrap"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_elim_Ok",
+        "Coma.vc_new",
+        "Coma.vc_new_unwrap"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_new_unwrap",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_elim_Ok",
+        "Coma.vc_new"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_Clone_for_Alphabet/clone.coma",
+      "coma_sha256": "ba62cbb758dbdcab1f75d0e234f6efa704e3af1fac7c6700935bee21d2184b60",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_Clone_for_Alphabet/clone/proof.json",
+      "proof_json_sha256": "8d14bf4074f9da7658e0ff43fe2af80b755c83c815e33787e237655e4538a153",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_clone_Alphabet"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_clone_Alphabet"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_clone_Alphabet",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_Clone_for_Alphabet/clone__refines.coma",
+      "coma_sha256": "3990a7430c8396981ce2d2e8edc1c3e567336c5e756b1afaa70c4af079884118",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_Clone_for_Alphabet/clone__refines/proof.json",
+      "proof_json_sha256": "cf7d97e821f27428c5827abd211e92f040337a74f45ec8f791fd245478de4878",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.refines"
+      ],
+      "reconstructed_root_names": [
+        "Coma.refines"
+      ],
+      "target_kind": "trait_refinement",
+      "target_vc": "refines",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_I/new.coma",
+      "coma_sha256": "35ba7a4d37b3a7bb82a853e43221da69f84d5ecbe77825152505ed986e29b492",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_I/new/proof.json",
+      "proof_json_sha256": "962ecab642dab8706d946117945c7e668b2cbdce1034fda0745677b67023e363",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_new_I"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_new_I"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_new_I",
+      "proved_leaves": 0,
+      "computed_roots": [
+        "Coma.vc_new_I"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_I/with_alphabet.coma",
+      "coma_sha256": "81ffd5112fd7254429acf17fa9b373a27c98a1ef7144312dbdfd95ae25ea865d",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_I/with_alphabet/proof.json",
+      "proof_json_sha256": "40a071b6c4d8ebb364741e2cf4579a19dc2a4ae1e9e1e57273d0eb55a4ea1d00",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_with_alphabet_I"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_with_alphabet_I"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_with_alphabet_I",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8/into_array_const.coma",
+      "coma_sha256": "1a3920af0e355782dd37c5367fcdf0f1df3f00ed032700f15d4fa19951d7f836",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8/into_array_const/proof.json",
+      "proof_json_sha256": "7027403d1c6383cf02a04b1b8d4ad4769653076e6c251184383cff97bb8c7c19",
+      "root_goals": 3,
+      "root_names": [
+        "Coma.vc_decode_into_const",
+        "Coma.vc_from_str",
+        "Coma.vc_into_array_const"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_decode_into_const",
+        "Coma.vc_from_str",
+        "Coma.vc_into_array_const"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_into_array_const",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_decode_into_const",
+        "Coma.vc_from_str"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8/onto.coma",
+      "coma_sha256": "d9f1cf725c4a7e29fc75ecaa1649109cfc04185c3d32be9734d933a184fea067",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8/onto/proof.json",
+      "proof_json_sha256": "159c0550bd05e3af2336e75aa3fb64e32cf315d47df517829ed74d1924e63b45",
+      "root_goals": 6,
+      "root_names": [
+        "Coma.vc_as_ref_slice_u8",
+        "Coma.vc_closure0",
+        "Coma.vc_decode_into",
+        "Coma.vc_decode_with_refmut_slice_u8",
+        "Coma.vc_len_u8",
+        "Coma.vc_onto"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_as_ref_slice_u8",
+        "Coma.vc_closure0",
+        "Coma.vc_decode_into",
+        "Coma.vc_decode_with_refmut_slice_u8",
+        "Coma.vc_len_u8",
+        "Coma.vc_onto"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_onto",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_as_ref_slice_u8",
+        "Coma.vc_closure0",
+        "Coma.vc_decode_into",
+        "Coma.vc_decode_with_refmut_slice_u8",
+        "Coma.vc_len_u8"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8/onto_array.coma",
+      "coma_sha256": "41e93bac9534f4b6ae9e66700de45a317eaf76ba50ce096a6fa4cedecc55783a",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8/onto_array/proof.json",
+      "proof_json_sha256": "fada791cc6ba770532b0d450f32f07d4850277078f6f2e55d53117149e4f388a",
+      "root_goals": 6,
+      "root_names": [
+        "Coma.vc_as_ref_slice_u8",
+        "Coma.vc_closure0",
+        "Coma.vc_decode_into",
+        "Coma.vc_decode_with_refmut_array_u8_n",
+        "Coma.vc_len_u8",
+        "Coma.vc_onto_array"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_as_ref_slice_u8",
+        "Coma.vc_closure0",
+        "Coma.vc_decode_into",
+        "Coma.vc_decode_with_refmut_array_u8_n",
+        "Coma.vc_len_u8",
+        "Coma.vc_onto_array"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_onto_array",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_as_ref_slice_u8",
+        "Coma.vc_closure0",
+        "Coma.vc_decode_into",
+        "Coma.vc_decode_with_refmut_array_u8_n",
+        "Coma.vc_len_u8"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8_0/onto_vec.coma",
+      "coma_sha256": "b93554caac40b25a16841e1ed1f826f2728da12c6fd993eb250373dff6af1900",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8_0/onto_vec/proof.json",
+      "proof_json_sha256": "cef7ac57c22967d7f040407eae7ec646b1e7ac7fad19cc779d0c6f8fcbae1865",
+      "root_goals": 9,
+      "root_names": [
+        "Coma.vc_decode_into",
+        "Coma.vc_elim_Err",
+        "Coma.vc_elim_Ok",
+        "Coma.vc_grow_zero",
+        "Coma.vc_index_mut_Vec_u8_Global",
+        "Coma.vc_len_u8",
+        "Coma.vc_len_u8'0",
+        "Coma.vc_onto_vec",
+        "Coma.vc_truncate"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_decode_into",
+        "Coma.vc_elim_Err",
+        "Coma.vc_elim_Ok",
+        "Coma.vc_grow_zero",
+        "Coma.vc_index_mut_Vec_u8_Global",
+        "Coma.vc_len_u8",
+        "Coma.vc_len_u8'0",
+        "Coma.vc_onto_vec",
+        "Coma.vc_truncate"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_onto_vec",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_decode_into",
+        "Coma.vc_elim_Err",
+        "Coma.vc_elim_Ok",
+        "Coma.vc_grow_zero",
+        "Coma.vc_index_mut_Vec_u8_Global",
+        "Coma.vc_len_u8",
+        "Coma.vc_len_u8'0",
+        "Coma.vc_truncate"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8_1/into_array_const_unwrap.coma",
+      "coma_sha256": "c668dff0c1c3d1440e2976281894807bf27a6019f0f1599af2e2f1afe38222d3",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8_1/into_array_const_unwrap/proof.json",
+      "proof_json_sha256": "8c93e919da36a098a7a088a5b8c88a7a163bfd631806ddf38eb4902d3fb9ed76",
+      "root_goals": 5,
+      "root_names": [
+        "Coma.vc_elim_Err",
+        "Coma.vc_elim_Ok",
+        "Coma.vc_from_str",
+        "Coma.vc_into_array_const",
+        "Coma.vc_into_array_const_unwrap"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_elim_Err",
+        "Coma.vc_elim_Ok",
+        "Coma.vc_from_str",
+        "Coma.vc_into_array_const",
+        "Coma.vc_into_array_const_unwrap"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_into_array_const_unwrap",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_elim_Err",
+        "Coma.vc_elim_Ok",
+        "Coma.vc_from_str",
+        "Coma.vc_into_array_const"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8_2/into_vec.coma",
+      "coma_sha256": "29d68ca824c535466aff56edc7c1f221e1e228e946e500f6b5af7ccd9e07783d",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8_2/into_vec/proof.json",
+      "proof_json_sha256": "59a388913946f630a5eb39cf27e1d6f48a49d44dc91c306e71bee194377cb6f8",
+      "root_goals": 4,
+      "root_names": [
+        "Coma.vc_elim_Err",
+        "Coma.vc_into_vec",
+        "Coma.vc_new_u8",
+        "Coma.vc_onto_vec"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_elim_Err",
+        "Coma.vc_into_vec",
+        "Coma.vc_new_u8",
+        "Coma.vc_onto_vec"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_into_vec",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_elim_Err",
+        "Coma.vc_new_u8",
+        "Coma.vc_onto_vec"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeTarget_for_array_u8_n/decode_with.coma",
+      "coma_sha256": "a9e521963535ec77f78703e005a79bdb17dc929f86f06379e64f677d7235a66f",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeTarget_for_array_u8_n/decode_with/proof.json",
+      "proof_json_sha256": "89be45a94e8db335f9166bb0fc4751f3e305972aa05c9973a4b436d2b9287f34",
+      "root_goals": 2,
+      "root_names": [
+        "Coma.vc_call_once_impl_32_for_60__39_a_62__32_FnOnce_40__38__39_a_32_mut_32__91_u8_93__41__32__45__62__32_Result_60_usize_44__32_DecodeError_62_",
+        "Coma.vc_decode_with_array_u8_n"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_call_once_impl_32_for_60__39_a_62__32_FnOnce_40__38__39_a_32_mut_32__91_u8_93__41__32__45__62__32_Result_60_usize_44__32_DecodeError_62_",
+        "Coma.vc_decode_with_array_u8_n"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_decode_with_array_u8_n",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_call_once_impl_32_for_60__39_a_62__32_FnOnce_40__38__39_a_32_mut_32__91_u8_93__41__32__45__62__32_Result_60_usize_44__32_DecodeError_62_"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeTarget_for_array_u8_n/decode_with__refines.coma",
+      "coma_sha256": "9da439244fe9aec9e14e376a709fe4eebdd378bbb60c8b3b161673ee0255d2a8",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeTarget_for_array_u8_n/decode_with__refines/proof.json",
+      "proof_json_sha256": "b5ac309964d1c02b9fd8238577c2c7bff789aa68ad4e674bc0a0b0409722b14b",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.refines"
+      ],
+      "reconstructed_root_names": [
+        "Coma.refines"
+      ],
+      "target_kind": "trait_refinement",
+      "target_vc": "refines",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeTarget_for_refmut_T/decode_with.coma",
+      "coma_sha256": "1f7fb7ae5d383c60c7488cb061366b2475452c6d9362893373dd4e3f21fc6385",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeTarget_for_refmut_T/decode_with/proof.json",
+      "proof_json_sha256": "1566b0401ea0c4ad3f25bbb520e6c3550a5fa31e1645e4ae00fbe299731ae341",
+      "root_goals": 2,
+      "root_names": [
+        "Coma.vc_decode_with_T",
+        "Coma.vc_decode_with_refmut_T"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_decode_with_T",
+        "Coma.vc_decode_with_refmut_T"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_decode_with_refmut_T",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_decode_with_T"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeTarget_for_refmut_T/decode_with__refines.coma",
+      "coma_sha256": "b9a3d5b229f11d854b41a2b6ab04e4d9115eec312579329653ab33ac1805e878",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeTarget_for_refmut_T/decode_with__refines/proof.json",
+      "proof_json_sha256": "5ce3373ab5f55f3e194eb99ad1ae9d114b9b73c0510ef76cce9c30d9182e32ba",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.refines"
+      ],
+      "reconstructed_root_names": [
+        "Coma.refines"
+      ],
+      "target_kind": "trait_refinement",
+      "target_vc": "refines",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeTarget_for_slice_u8/decode_with.coma",
+      "coma_sha256": "fa2678511c05998627c8a6dc0418705af88799d4a5981e9e7fcfe0dff016f0cb",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeTarget_for_slice_u8/decode_with/proof.json",
+      "proof_json_sha256": "40ed2768f26104ca94f789cd93549c048b739e3493703c8f60efb586bdd222cd",
+      "root_goals": 2,
+      "root_names": [
+        "Coma.vc_call_once_impl_32_for_60__39_a_62__32_FnOnce_40__38__39_a_32_mut_32__91_u8_93__41__32__45__62__32_Result_60_usize_44__32_DecodeError_62_",
+        "Coma.vc_decode_with_slice_u8"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_call_once_impl_32_for_60__39_a_62__32_FnOnce_40__38__39_a_32_mut_32__91_u8_93__41__32__45__62__32_Result_60_usize_44__32_DecodeError_62_",
+        "Coma.vc_decode_with_slice_u8"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_decode_with_slice_u8",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_call_once_impl_32_for_60__39_a_62__32_FnOnce_40__38__39_a_32_mut_32__91_u8_93__41__32__45__62__32_Result_60_usize_44__32_DecodeError_62_"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeTarget_for_slice_u8/decode_with__refines.coma",
+      "coma_sha256": "dae049e98d412eaf421063e041a1974ea9f533edfdfe112abb23921ceba6b882",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeTarget_for_slice_u8/decode_with__refines/proof.json",
+      "proof_json_sha256": "c9b921340af09cdcba29fdecb4b2d98246c0169ed7ecfb20d69a551c13f0dd19",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.refines"
+      ],
+      "reconstructed_root_names": [
+        "Coma.refines"
+      ],
+      "target_kind": "trait_refinement",
+      "target_vc": "refines",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_I/new.coma",
+      "coma_sha256": "2f8f4cfb451c326ffc269fcad5e45df5eee03e8a760b58888f23345dc2fadb22",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_I/new/proof.json",
+      "proof_json_sha256": "962ecab642dab8706d946117945c7e668b2cbdce1034fda0745677b67023e363",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_new_I"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_new_I"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_new_I",
+      "proved_leaves": 0,
+      "computed_roots": [
+        "Coma.vc_new_I"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_I/with_alphabet.coma",
+      "coma_sha256": "9008147b96fafc850ec25f4144697eed869ceb1026eb86e9b40b6360dfb6454d",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_I/with_alphabet/proof.json",
+      "proof_json_sha256": "02c3320711481c3773c4844b3a6619ef58c9a61c9ebf9d5d1ed1d0f6433b222b",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_with_alphabet_I"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_with_alphabet_I"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_with_alphabet_I",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_ref_slice_u8/onto.coma",
+      "coma_sha256": "c60a2233d97c05c1461843c85932446321b971caf12cb10968fb84fc6deae03f",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_ref_slice_u8/onto/proof.json",
+      "proof_json_sha256": "b47ee3210ee0c9aa9e49918889c91159cf7d6bd6cdb917f9a013351c080ecc41",
+      "root_goals": 7,
+      "root_names": [
+        "Coma.vc_as_ref_slice_u8",
+        "Coma.vc_closure0",
+        "Coma.vc_encode_into",
+        "Coma.vc_encode_with_refmut_slice_u8",
+        "Coma.vc_len_u8",
+        "Coma.vc_max_encoded_len",
+        "Coma.vc_onto"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_as_ref_slice_u8",
+        "Coma.vc_closure0",
+        "Coma.vc_encode_into",
+        "Coma.vc_encode_with_refmut_slice_u8",
+        "Coma.vc_len_u8",
+        "Coma.vc_max_encoded_len",
+        "Coma.vc_onto"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_onto",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_as_ref_slice_u8",
+        "Coma.vc_closure0",
+        "Coma.vc_encode_into",
+        "Coma.vc_encode_with_refmut_slice_u8",
+        "Coma.vc_len_u8",
+        "Coma.vc_max_encoded_len"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_ref_slice_u8_0/onto_vec.coma",
+      "coma_sha256": "61912603b157b57b7b91ad29e4d200e6574357c33de0ef36383bda5df922a8dc",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_ref_slice_u8_0/onto_vec/proof.json",
+      "proof_json_sha256": "fd9a3fa6244a427c80ad2178fc5df37d9105470fc1cbcb4aa4c8a7e894b2879e",
+      "root_goals": 10,
+      "root_names": [
+        "Coma.vc_elim_Err",
+        "Coma.vc_elim_Ok",
+        "Coma.vc_encode_into",
+        "Coma.vc_grow_zero",
+        "Coma.vc_index_mut_Vec_u8_Global",
+        "Coma.vc_len_u8",
+        "Coma.vc_len_u8'0",
+        "Coma.vc_max_encoded_len",
+        "Coma.vc_onto_vec",
+        "Coma.vc_truncate"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_elim_Err",
+        "Coma.vc_elim_Ok",
+        "Coma.vc_encode_into",
+        "Coma.vc_grow_zero",
+        "Coma.vc_index_mut_Vec_u8_Global",
+        "Coma.vc_len_u8",
+        "Coma.vc_len_u8'0",
+        "Coma.vc_max_encoded_len",
+        "Coma.vc_onto_vec",
+        "Coma.vc_truncate"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_onto_vec",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_elim_Err",
+        "Coma.vc_elim_Ok",
+        "Coma.vc_encode_into",
+        "Coma.vc_grow_zero",
+        "Coma.vc_index_mut_Vec_u8_Global",
+        "Coma.vc_len_u8",
+        "Coma.vc_len_u8'0",
+        "Coma.vc_max_encoded_len",
+        "Coma.vc_truncate"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_ref_slice_u8_1/into_vec.coma",
+      "coma_sha256": "c606d1f99d5d28845e190b549f4f0a44a841c7a64d004260a6ad8b63ecb97b68",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_ref_slice_u8_1/into_vec/proof.json",
+      "proof_json_sha256": "39707a7adeb687c0eeec1cff7f2be6b803d0a5d6b174291b9b2179a78ea36186",
+      "root_goals": 4,
+      "root_names": [
+        "Coma.vc_from_str",
+        "Coma.vc_into_vec",
+        "Coma.vc_new_u8",
+        "Coma.vc_onto_vec"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_from_str",
+        "Coma.vc_into_vec",
+        "Coma.vc_new_u8",
+        "Coma.vc_onto_vec"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_into_vec",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_from_str",
+        "Coma.vc_new_u8",
+        "Coma.vc_onto_vec"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeTarget_for_refmut_T/encode_with.coma",
+      "coma_sha256": "2f5962cbbce5d5e93f070e85adb16f89383fe9a5ec3f30c7f080a860a87d0423",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeTarget_for_refmut_T/encode_with/proof.json",
+      "proof_json_sha256": "fbaa983825bc1ff53d19656269801d4682d28f6481f08f8e32f8e90ce5c4b357",
+      "root_goals": 2,
+      "root_names": [
+        "Coma.vc_encode_with_T",
+        "Coma.vc_encode_with_refmut_T"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_encode_with_T",
+        "Coma.vc_encode_with_refmut_T"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_encode_with_refmut_T",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_encode_with_T"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeTarget_for_refmut_T/encode_with__refines.coma",
+      "coma_sha256": "d83c48f0f23ef05ddbba440c9fbe7916d86b62f2bfc0536d578a42f2dcaff313",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeTarget_for_refmut_T/encode_with__refines/proof.json",
+      "proof_json_sha256": "a019463910c4d6f228f938efc8e4eaf2f7fe7692006e39f3bc04f308e6a203ee",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.refines"
+      ],
+      "reconstructed_root_names": [
+        "Coma.refines"
+      ],
+      "target_kind": "trait_refinement",
+      "target_vc": "refines",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeTarget_for_slice_u8/encode_with.coma",
+      "coma_sha256": "a9879b457874b686dd8ad14a5ffff0af655848cf02ed0cfc4cf5dedb301ddd61",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeTarget_for_slice_u8/encode_with/proof.json",
+      "proof_json_sha256": "8ab95495a4deeb19ded5dbf8bfabcd155b01f676ad5fe18faa73bc0195cf7e48",
+      "root_goals": 2,
+      "root_names": [
+        "Coma.vc_call_once_impl_32_for_60__39_a_62__32_FnOnce_40__38__39_a_32_mut_32__91_u8_93__41__32__45__62__32_Result_60_usize_44__32_EncodeError_62_",
+        "Coma.vc_encode_with_slice_u8"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_call_once_impl_32_for_60__39_a_62__32_FnOnce_40__38__39_a_32_mut_32__91_u8_93__41__32__45__62__32_Result_60_usize_44__32_EncodeError_62_",
+        "Coma.vc_encode_with_slice_u8"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_encode_with_slice_u8",
+      "proved_leaves": 1,
+      "computed_roots": [
+        "Coma.vc_call_once_impl_32_for_60__39_a_62__32_FnOnce_40__38__39_a_32_mut_32__91_u8_93__41__32__45__62__32_Result_60_usize_44__32_EncodeError_62_"
+      ],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeTarget_for_slice_u8/encode_with__refines.coma",
+      "coma_sha256": "0d8c49c18f54fbc22e22897eb617dd4ab786dcaec159f974a2d83c51a3d966c9",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeTarget_for_slice_u8/encode_with__refines/proof.json",
+      "proof_json_sha256": "5bec7a728d6f5340dafa619d721e2f3e0476d628c8e765fa93eff4cd9e3d7daa",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.refines"
+      ],
+      "reconstructed_root_names": [
+        "Coma.refines"
+      ],
+      "target_kind": "trait_refinement",
+      "target_vc": "refines",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/max_encoded_len.coma",
+      "coma_sha256": "6f81a310a0ef7925de060ed7189eb74d658fa01b3cbc24918fd9562808614f99",
+      "proof_json": "coma/verif/bs58_creusot_extensions_rlib/wrappers/max_encoded_len/proof.json",
+      "proof_json_sha256": "dca8c1c993ec9262060c1c1cd85881ae28ab2698a0e64a26437a1400945089ac",
+      "root_goals": 1,
+      "root_names": [
+        "Coma.vc_max_encoded_len"
+      ],
+      "reconstructed_root_names": [
+        "Coma.vc_max_encoded_len"
+      ],
+      "target_kind": "body_vc",
+      "target_vc": "vc_max_encoded_len",
+      "proved_leaves": 1,
+      "computed_roots": [],
+      "closed": true
+    }
+  ]
+}

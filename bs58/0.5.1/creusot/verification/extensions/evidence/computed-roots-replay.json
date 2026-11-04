@@ -1,0 +1,1729 @@
+{
+  "full_record_sha256": "a076b2c0855f2bf01baa43d88077e1ff733027835311c92d0d0309950f40113a",
+  "full_record_availability": "Local accepted run and local evidence archive; not hosted by this compact file.",
+  "root_count": 123,
+  "roots": [
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/checked_state/impl_DecodeBuilder_I/as_cb58.coma",
+      "root": "Coma.vc_as_cb58_I",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_as_cb58_I"
+      ],
+      "expected_printed_goal_name": "vc_as_cb58_I",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "963c5b043c5b741e40dcbcfc8f7f6180b9bba1fe674cccd9c853ad2b930863d9",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/checked_state/impl_DecodeBuilder_I/new.coma",
+      "root": "Coma.vc_new_I",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_new_I"
+      ],
+      "expected_printed_goal_name": "vc_new_I",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "971e05b4017b0c59dd887cd86beebf6494f34ee755ccec2d5ae57ef62f9249e1",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/checked_state/impl_DecodeBuilder_I/with_check.coma",
+      "root": "Coma.vc_with_check_I",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_with_check_I"
+      ],
+      "expected_printed_goal_name": "vc_with_check_I",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "6a57c91bdd9f51a7379b51541e9e3d4f33ddab57e18ded3002481eae87feb2f3",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/checked_state/impl_EncodeBuilder_I/as_cb58.coma",
+      "root": "Coma.vc_as_cb58_I",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_as_cb58_I"
+      ],
+      "expected_printed_goal_name": "vc_as_cb58_I",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "963c5b043c5b741e40dcbcfc8f7f6180b9bba1fe674cccd9c853ad2b930863d9",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/checked_state/impl_EncodeBuilder_I/new.coma",
+      "root": "Coma.vc_new_I",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_new_I"
+      ],
+      "expected_printed_goal_name": "vc_new_I",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "971e05b4017b0c59dd887cd86beebf6494f34ee755ccec2d5ae57ef62f9249e1",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/checked_state/impl_EncodeBuilder_I/with_check.coma",
+      "root": "Coma.vc_with_check_I",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_with_check_I"
+      ],
+      "expected_printed_goal_name": "vc_with_check_I",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "6a57c91bdd9f51a7379b51541e9e3d4f33ddab57e18ded3002481eae87feb2f3",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/checked_state/impl_EncodeBuilder_I/with_check_version.coma",
+      "root": "Coma.vc_with_check_version_I",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_with_check_version_I"
+      ],
+      "expected_printed_goal_name": "vc_with_check_version_I",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "36f6ad4b66e62c5204e4ecd28afc093ea99c86a5e1e512ad7c834ffb5df031f5",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/decode_into.coma",
+      "root": "Coma.vc_decode_append_step",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_decode_append_step"
+      ],
+      "expected_printed_goal_name": "vc_decode_append_step",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "b7fa43e68953b145304c884fad82c98681058caa6f906720edb991092801ef7e",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/decode_into.coma",
+      "root": "Coma.vc_decode_horner_step",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_decode_horner_step"
+      ],
+      "expected_printed_goal_name": "vc_decode_horner_step",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "b7fa43e68953b145304c884fad82c98681058caa6f906720edb991092801ef7e",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/decode_into.coma",
+      "root": "Coma.vc_decode_tail_step",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_decode_tail_step"
+      ],
+      "expected_printed_goal_name": "vc_decode_tail_step",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "b7fa43e68953b145304c884fad82c98681058caa6f906720edb991092801ef7e",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/decode_into.coma",
+      "root": "Coma.vc_full_prefix_le",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_full_prefix_le"
+      ],
+      "expected_printed_goal_name": "vc_full_prefix_le",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "b7fa43e68953b145304c884fad82c98681058caa6f906720edb991092801ef7e",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/decode_into.coma",
+      "root": "Coma.vc_len_u8",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_len_u8"
+      ],
+      "expected_printed_goal_name": "vc_len_u8",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "b7fa43e68953b145304c884fad82c98681058caa6f906720edb991092801ef7e",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/decode_into.coma",
+      "root": "Coma.vc_new_unit",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_new_unit"
+      ],
+      "expected_printed_goal_name": "vc_new_unit",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "b7fa43e68953b145304c884fad82c98681058caa6f906720edb991092801ef7e",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/decode_into_const.coma",
+      "root": "Coma.vc_decode_append_step",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_decode_append_step"
+      ],
+      "expected_printed_goal_name": "vc_decode_append_step",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "ec0c32a9430d685cf9c74ca5648da8f23e17a35383d9a07b3f6ed6ac13669d3d",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/decode_into_const.coma",
+      "root": "Coma.vc_decode_horner_step",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_decode_horner_step"
+      ],
+      "expected_printed_goal_name": "vc_decode_horner_step",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "ec0c32a9430d685cf9c74ca5648da8f23e17a35383d9a07b3f6ed6ac13669d3d",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/decode_into_const.coma",
+      "root": "Coma.vc_le_extend_step",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_le_extend_step"
+      ],
+      "expected_printed_goal_name": "vc_le_extend_step",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "ec0c32a9430d685cf9c74ca5648da8f23e17a35383d9a07b3f6ed6ac13669d3d",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/decode_into_const.coma",
+      "root": "Coma.vc_len_u8",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_len_u8"
+      ],
+      "expected_printed_goal_name": "vc_len_u8",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "ec0c32a9430d685cf9c74ca5648da8f23e17a35383d9a07b3f6ed6ac13669d3d",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/decode_into_const.coma",
+      "root": "Coma.vc_new_unit",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_new_unit"
+      ],
+      "expected_printed_goal_name": "vc_new_unit",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "ec0c32a9430d685cf9c74ca5648da8f23e17a35383d9a07b3f6ed6ac13669d3d",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/decode.coma",
+      "root": "Coma.vc_from_input_I",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_from_input_I"
+      ],
+      "expected_printed_goal_name": "vc_from_input_I",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "e348297f200644605144e0e5d1bbaf587c6193d1619044aacf6c3e25dc3c5299",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/decode.coma",
+      "root": "Coma.vc_new_unwrap",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_new_unwrap"
+      ],
+      "expected_printed_goal_name": "vc_new_unwrap",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "e348297f200644605144e0e5d1bbaf587c6193d1619044aacf6c3e25dc3c5299",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/decode.coma",
+      "root": "Coma.vc_set_BITCOIN",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_set_BITCOIN"
+      ],
+      "expected_printed_goal_name": "vc_set_BITCOIN",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "e348297f200644605144e0e5d1bbaf587c6193d1619044aacf6c3e25dc3c5299",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/decode.coma",
+      "root": "Coma.vc_set_DEFAULT",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_set_DEFAULT"
+      ],
+      "expected_printed_goal_name": "vc_set_DEFAULT",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "e348297f200644605144e0e5d1bbaf587c6193d1619044aacf6c3e25dc3c5299",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/encode.coma",
+      "root": "Coma.vc_from_input_I",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_from_input_I"
+      ],
+      "expected_printed_goal_name": "vc_from_input_I",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "dde17b170a446313221f48d28ee972f761d681352b016c491b7fbf18323468f2",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/encode.coma",
+      "root": "Coma.vc_new_unwrap",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_new_unwrap"
+      ],
+      "expected_printed_goal_name": "vc_new_unwrap",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "dde17b170a446313221f48d28ee972f761d681352b016c491b7fbf18323468f2",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/encode.coma",
+      "root": "Coma.vc_set_BITCOIN",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_set_BITCOIN"
+      ],
+      "expected_printed_goal_name": "vc_set_BITCOIN",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "dde17b170a446313221f48d28ee972f761d681352b016c491b7fbf18323468f2",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/encode.coma",
+      "root": "Coma.vc_set_DEFAULT",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_set_DEFAULT"
+      ],
+      "expected_printed_goal_name": "vc_set_DEFAULT",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "dde17b170a446313221f48d28ee972f761d681352b016c491b7fbf18323468f2",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_Alphabet/BITCOIN.coma",
+      "root": "Coma.vc_new_unwrap",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_new_unwrap"
+      ],
+      "expected_printed_goal_name": "vc_new_unwrap",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "b227df7ce5bb38be1dac56313052ce0cee13ef855e6753e637325efd3c5c703a",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_Alphabet/DEFAULT.coma",
+      "root": "Coma.vc_new_unwrap",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_new_unwrap"
+      ],
+      "expected_printed_goal_name": "vc_new_unwrap",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "68acedfa30b2d31af9458e962b51e541f2aea3954ba5e253ed2d545a2709c637",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_Alphabet/DEFAULT.coma",
+      "root": "Coma.vc_set_BITCOIN",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_set_BITCOIN"
+      ],
+      "expected_printed_goal_name": "vc_set_BITCOIN",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "68acedfa30b2d31af9458e962b51e541f2aea3954ba5e253ed2d545a2709c637",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_Alphabet/FLICKR.coma",
+      "root": "Coma.vc_new_unwrap",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_new_unwrap"
+      ],
+      "expected_printed_goal_name": "vc_new_unwrap",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "01c8e660ee62d16c4a1d6e925d5fe6b2595d9b8849d81eecf624f8b2ea39f217",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_Alphabet/MONERO.coma",
+      "root": "Coma.vc_new_unwrap",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_new_unwrap"
+      ],
+      "expected_printed_goal_name": "vc_new_unwrap",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "1d965a217fc004868043cf5c0c7013aaee70d4ff6d80b27f50c3e6cccc88ea40",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_Alphabet/RIPPLE.coma",
+      "root": "Coma.vc_new_unwrap",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_new_unwrap"
+      ],
+      "expected_printed_goal_name": "vc_new_unwrap",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "630cc2be7dd3a893181ab2e4343ded5eedaebdea58116ffdee11020830ab742c",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_Alphabet/bitcoin.coma",
+      "root": "Coma.vc_new_unwrap",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_new_unwrap"
+      ],
+      "expected_printed_goal_name": "vc_new_unwrap",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "186245c8e566fb1d71c7b190b28a93df67fd4cfc69fd10c5f6c2c0f2c5a38369",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_DecodeBuilder_I/from_input.coma",
+      "root": "Coma.vc_new_I",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_new_I"
+      ],
+      "expected_printed_goal_name": "vc_new_I",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "d012c18074b044deea49da410a45b4cd434ab425a236a22aaa3a3f7f99360faa",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_DecodeBuilder_I/from_input.coma",
+      "root": "Coma.vc_new_unwrap",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_new_unwrap"
+      ],
+      "expected_printed_goal_name": "vc_new_unwrap",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "d012c18074b044deea49da410a45b4cd434ab425a236a22aaa3a3f7f99360faa",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_DecodeBuilder_I/from_input.coma",
+      "root": "Coma.vc_set_BITCOIN",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_set_BITCOIN"
+      ],
+      "expected_printed_goal_name": "vc_set_BITCOIN",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "d012c18074b044deea49da410a45b4cd434ab425a236a22aaa3a3f7f99360faa",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_DecodeBuilder_I/from_input.coma",
+      "root": "Coma.vc_set_DEFAULT",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_set_DEFAULT"
+      ],
+      "expected_printed_goal_name": "vc_set_DEFAULT",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "d012c18074b044deea49da410a45b4cd434ab425a236a22aaa3a3f7f99360faa",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_EncodeBuilder_I/from_input.coma",
+      "root": "Coma.vc_new_I",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_new_I"
+      ],
+      "expected_printed_goal_name": "vc_new_I",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "d012c18074b044deea49da410a45b4cd434ab425a236a22aaa3a3f7f99360faa",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_EncodeBuilder_I/from_input.coma",
+      "root": "Coma.vc_new_unwrap",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_new_unwrap"
+      ],
+      "expected_printed_goal_name": "vc_new_unwrap",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "d012c18074b044deea49da410a45b4cd434ab425a236a22aaa3a3f7f99360faa",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_EncodeBuilder_I/from_input.coma",
+      "root": "Coma.vc_set_BITCOIN",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_set_BITCOIN"
+      ],
+      "expected_printed_goal_name": "vc_set_BITCOIN",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "d012c18074b044deea49da410a45b4cd434ab425a236a22aaa3a3f7f99360faa",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/defaults/impl_EncodeBuilder_I/from_input.coma",
+      "root": "Coma.vc_set_DEFAULT",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_set_DEFAULT"
+      ],
+      "expected_printed_goal_name": "vc_set_DEFAULT",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "d012c18074b044deea49da410a45b4cd434ab425a236a22aaa3a3f7f99360faa",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/encode_into.coma",
+      "root": "Coma.vc_append_step",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_append_step"
+      ],
+      "expected_printed_goal_name": "vc_append_step",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "ffa115fd0cca5eb8553c9da829132047788e5ca44d98a6cc97b9ccaff0ebc83e",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/encode_into.coma",
+      "root": "Coma.vc_horner_step",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_horner_step"
+      ],
+      "expected_printed_goal_name": "vc_horner_step",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "ffa115fd0cca5eb8553c9da829132047788e5ca44d98a6cc97b9ccaff0ebc83e",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/encode_into.coma",
+      "root": "Coma.vc_len_u8",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_len_u8"
+      ],
+      "expected_printed_goal_name": "vc_len_u8",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "ffa115fd0cca5eb8553c9da829132047788e5ca44d98a6cc97b9ccaff0ebc83e",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/encode_into.coma",
+      "root": "Coma.vc_new_unit",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_new_unit"
+      ],
+      "expected_printed_goal_name": "vc_new_unit",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "ffa115fd0cca5eb8553c9da829132047788e5ca44d98a6cc97b9ccaff0ebc83e",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/impl_Alphabet/new.coma",
+      "root": "Coma.vc_len_u8",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_len_u8"
+      ],
+      "expected_printed_goal_name": "vc_len_u8",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "1c046d310fa64e507297096b02d00859e561f3014e90ff2fdb37b8bc8efb7194",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/impl_Clone_for_AlphabetError/clone.coma",
+      "root": "Coma.vc_clone_AlphabetError",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_clone_AlphabetError"
+      ],
+      "expected_printed_goal_name": "vc_clone_AlphabetError",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "c828e92e129a039d1f194c0a9ad3e32be2e2a5bf5651e7211e2079726fc8e442",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/impl_Clone_for_DecodeError/clone.coma",
+      "root": "Coma.vc_clone_DecodeError",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_clone_DecodeError"
+      ],
+      "expected_printed_goal_name": "vc_clone_DecodeError",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "3b2b878be6eaedb749514abb1ea4a8527b675240b1d103af8c7be213c5631066",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/impl_Clone_for_EncodeError/clone.coma",
+      "root": "Coma.vc_clone_EncodeError",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_clone_EncodeError"
+      ],
+      "expected_printed_goal_name": "vc_clone_EncodeError",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "4ebc1a89b12d7a1e3b38d718e5cb18bb9a3943a1ffe4b02519c3ea1e6d5f883f",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/impl_PartialEq_for_AlphabetError/eq.coma",
+      "root": "Coma.vc_elim_DuplicateCharacter",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_elim_DuplicateCharacter"
+      ],
+      "expected_printed_goal_name": "vc_elim_DuplicateCharacter",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "00c97fec0bbad19dccfd999875b3f1659bb59eed48dabd3e9bbe9ebcbf2214f7",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/impl_PartialEq_for_AlphabetError/eq.coma",
+      "root": "Coma.vc_elim_NonAsciiCharacter",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_elim_NonAsciiCharacter"
+      ],
+      "expected_printed_goal_name": "vc_elim_NonAsciiCharacter",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "00c97fec0bbad19dccfd999875b3f1659bb59eed48dabd3e9bbe9ebcbf2214f7",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/impl_PartialEq_for_AlphabetError/eq__refines.coma",
+      "root": "Coma.refines",
+      "original_exit": 0,
+      "original_goal_names": [
+        "refines"
+      ],
+      "expected_printed_goal_name": "refines",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "c5d657f9ea5bd350579d1cfea72f12163e84d098acb9d9d4f4945a061ee3450a",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/impl_PartialEq_for_DecodeError/eq.coma",
+      "root": "Coma.vc_elim_InvalidCharacter",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_elim_InvalidCharacter"
+      ],
+      "expected_printed_goal_name": "vc_elim_InvalidCharacter",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "64b73bfee043bb03c30cdbdb56425f13ec1b7dbcc370106ad16cd53c087aca88",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/impl_PartialEq_for_DecodeError/eq.coma",
+      "root": "Coma.vc_elim_NonAsciiCharacter",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_elim_NonAsciiCharacter"
+      ],
+      "expected_printed_goal_name": "vc_elim_NonAsciiCharacter",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "64b73bfee043bb03c30cdbdb56425f13ec1b7dbcc370106ad16cd53c087aca88",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/impl_PartialEq_for_DecodeError/eq__refines.coma",
+      "root": "Coma.refines",
+      "original_exit": 0,
+      "original_goal_names": [
+        "refines"
+      ],
+      "expected_printed_goal_name": "refines",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "c5d657f9ea5bd350579d1cfea72f12163e84d098acb9d9d4f4945a061ee3450a",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/impl_PartialEq_for_EncodeError/eq.coma",
+      "root": "Coma.vc_eq_EncodeError",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_eq_EncodeError"
+      ],
+      "expected_printed_goal_name": "vc_eq_EncodeError",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "d6fb96c487790386b5d98d38cdec39a4d46aa8725975894134d6b85e2bb1cb0a",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/impl_PartialEq_for_EncodeError/eq__refines.coma",
+      "root": "Coma.refines",
+      "original_exit": 0,
+      "original_goal_names": [
+        "refines"
+      ],
+      "expected_printed_goal_name": "refines",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "c5d657f9ea5bd350579d1cfea72f12163e84d098acb9d9d4f4945a061ee3450a",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/vec_utils/grow_zero.coma",
+      "root": "Coma.vc_len_u8",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_len_u8"
+      ],
+      "expected_printed_goal_name": "vc_len_u8",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "b32171ecdc705c2d7d78fbf91f279592820f968ca57edf3eb6779038872006d3",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/vec_utils/grow_zero.coma",
+      "root": "Coma.vc_push_u8",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_push_u8"
+      ],
+      "expected_printed_goal_name": "vc_push_u8",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "b32171ecdc705c2d7d78fbf91f279592820f968ca57edf3eb6779038872006d3",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/vec_utils/truncate.coma",
+      "root": "Coma.vc_len_u8",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_len_u8"
+      ],
+      "expected_printed_goal_name": "vc_len_u8",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "08dcb3fa60e522d3fd988b87849849dc2389d03a0934f0ff01467d8728923d4b",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/vec_utils/truncate.coma",
+      "root": "Coma.vc_pop_u8",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_pop_u8"
+      ],
+      "expected_printed_goal_name": "vc_pop_u8",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "08dcb3fa60e522d3fd988b87849849dc2389d03a0934f0ff01467d8728923d4b",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/encode_decode_roundtrip.coma",
+      "root": "Coma.vc_elim_Err",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_elim_Err"
+      ],
+      "expected_printed_goal_name": "vc_elim_Err",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "2f3dbabdaf47e4d964d2193c888a2a2c734f953f39e69e9a24593dd9d9fbaa48",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/encode_decode_roundtrip.coma",
+      "root": "Coma.vc_elim_Ok",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_elim_Ok"
+      ],
+      "expected_printed_goal_name": "vc_elim_Ok",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "2f3dbabdaf47e4d964d2193c888a2a2c734f953f39e69e9a24593dd9d9fbaa48",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/encode_decode_roundtrip.coma",
+      "root": "Coma.vc_from_str",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_from_str"
+      ],
+      "expected_printed_goal_name": "vc_from_str",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "2f3dbabdaf47e4d964d2193c888a2a2c734f953f39e69e9a24593dd9d9fbaa48",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/encode_decode_roundtrip.coma",
+      "root": "Coma.vc_index_Vec_u8_Global",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_index_Vec_u8_Global"
+      ],
+      "expected_printed_goal_name": "vc_index_Vec_u8_Global",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "2f3dbabdaf47e4d964d2193c888a2a2c734f953f39e69e9a24593dd9d9fbaa48",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/encode_decode_roundtrip.coma",
+      "root": "Coma.vc_into_vec",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_into_vec"
+      ],
+      "expected_printed_goal_name": "vc_into_vec",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "2f3dbabdaf47e4d964d2193c888a2a2c734f953f39e69e9a24593dd9d9fbaa48",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/encode_decode_roundtrip.coma",
+      "root": "Coma.vc_into_vec'0",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_into_vecqt0"
+      ],
+      "expected_printed_goal_name": "vc_into_vecqt0",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "2f3dbabdaf47e4d964d2193c888a2a2c734f953f39e69e9a24593dd9d9fbaa48",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/encode_decode_roundtrip.coma",
+      "root": "Coma.vc_new_ref_slice_u8",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_new_ref_slice_u8"
+      ],
+      "expected_printed_goal_name": "vc_new_ref_slice_u8",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "2f3dbabdaf47e4d964d2193c888a2a2c734f953f39e69e9a24593dd9d9fbaa48",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/encode_decode_roundtrip.coma",
+      "root": "Coma.vc_new_ref_slice_u8'0",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_new_ref_slice_u8qt0"
+      ],
+      "expected_printed_goal_name": "vc_new_ref_slice_u8qt0",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "2f3dbabdaf47e4d964d2193c888a2a2c734f953f39e69e9a24593dd9d9fbaa48",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_Alphabet/new_unwrap.coma",
+      "root": "Coma.vc_elim_Ok",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_elim_Ok"
+      ],
+      "expected_printed_goal_name": "vc_elim_Ok",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "12584b9bf8e9ac5779ca34db0cedf28bcff148a1554eb3b9971ed3f3e0612550",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_Alphabet/new_unwrap.coma",
+      "root": "Coma.vc_new",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_new"
+      ],
+      "expected_printed_goal_name": "vc_new",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "12584b9bf8e9ac5779ca34db0cedf28bcff148a1554eb3b9971ed3f3e0612550",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_I/new.coma",
+      "root": "Coma.vc_new_I",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_new_I"
+      ],
+      "expected_printed_goal_name": "vc_new_I",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "971e05b4017b0c59dd887cd86beebf6494f34ee755ccec2d5ae57ef62f9249e1",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8/into_array_const.coma",
+      "root": "Coma.vc_decode_into_const",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_decode_into_const"
+      ],
+      "expected_printed_goal_name": "vc_decode_into_const",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "66092c15dc18347a279a3e3dea1510e34f68e519f99c045e0ce13fca2c0f22f9",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8/into_array_const.coma",
+      "root": "Coma.vc_from_str",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_from_str"
+      ],
+      "expected_printed_goal_name": "vc_from_str",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "66092c15dc18347a279a3e3dea1510e34f68e519f99c045e0ce13fca2c0f22f9",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8/onto.coma",
+      "root": "Coma.vc_as_ref_slice_u8",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_as_ref_slice_u8"
+      ],
+      "expected_printed_goal_name": "vc_as_ref_slice_u8",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "e2a2d8a95d985e317054188b20db3ee57964710707632de474a665a5ec856da0",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8/onto.coma",
+      "root": "Coma.vc_closure0",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_closure0"
+      ],
+      "expected_printed_goal_name": "vc_closure0",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "e2a2d8a95d985e317054188b20db3ee57964710707632de474a665a5ec856da0",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8/onto.coma",
+      "root": "Coma.vc_decode_into",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_decode_into"
+      ],
+      "expected_printed_goal_name": "vc_decode_into",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "e2a2d8a95d985e317054188b20db3ee57964710707632de474a665a5ec856da0",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8/onto.coma",
+      "root": "Coma.vc_decode_with_refmut_slice_u8",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_decode_with_refmut_slice_u8"
+      ],
+      "expected_printed_goal_name": "vc_decode_with_refmut_slice_u8",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "e2a2d8a95d985e317054188b20db3ee57964710707632de474a665a5ec856da0",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8/onto.coma",
+      "root": "Coma.vc_len_u8",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_len_u8"
+      ],
+      "expected_printed_goal_name": "vc_len_u8",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "e2a2d8a95d985e317054188b20db3ee57964710707632de474a665a5ec856da0",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8/onto_array.coma",
+      "root": "Coma.vc_as_ref_slice_u8",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_as_ref_slice_u8"
+      ],
+      "expected_printed_goal_name": "vc_as_ref_slice_u8",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "295b80aa8972ad1c38f5961bbb1d3ed8b92dec9f55d2ccb6084a0953088e640a",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8/onto_array.coma",
+      "root": "Coma.vc_closure0",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_closure0"
+      ],
+      "expected_printed_goal_name": "vc_closure0",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "295b80aa8972ad1c38f5961bbb1d3ed8b92dec9f55d2ccb6084a0953088e640a",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8/onto_array.coma",
+      "root": "Coma.vc_decode_into",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_decode_into"
+      ],
+      "expected_printed_goal_name": "vc_decode_into",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "295b80aa8972ad1c38f5961bbb1d3ed8b92dec9f55d2ccb6084a0953088e640a",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8/onto_array.coma",
+      "root": "Coma.vc_decode_with_refmut_array_u8_n",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_decode_with_refmut_array_u8_n"
+      ],
+      "expected_printed_goal_name": "vc_decode_with_refmut_array_u8_n",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "295b80aa8972ad1c38f5961bbb1d3ed8b92dec9f55d2ccb6084a0953088e640a",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8/onto_array.coma",
+      "root": "Coma.vc_len_u8",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_len_u8"
+      ],
+      "expected_printed_goal_name": "vc_len_u8",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "295b80aa8972ad1c38f5961bbb1d3ed8b92dec9f55d2ccb6084a0953088e640a",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8_0/onto_vec.coma",
+      "root": "Coma.vc_decode_into",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_decode_into"
+      ],
+      "expected_printed_goal_name": "vc_decode_into",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "890f51dfaf030e90878b9b3fd024e8a7cba3a409f941034a83d113612b41b876",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8_0/onto_vec.coma",
+      "root": "Coma.vc_elim_Err",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_elim_Err"
+      ],
+      "expected_printed_goal_name": "vc_elim_Err",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "890f51dfaf030e90878b9b3fd024e8a7cba3a409f941034a83d113612b41b876",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8_0/onto_vec.coma",
+      "root": "Coma.vc_elim_Ok",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_elim_Ok"
+      ],
+      "expected_printed_goal_name": "vc_elim_Ok",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "890f51dfaf030e90878b9b3fd024e8a7cba3a409f941034a83d113612b41b876",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8_0/onto_vec.coma",
+      "root": "Coma.vc_grow_zero",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_grow_zero"
+      ],
+      "expected_printed_goal_name": "vc_grow_zero",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "890f51dfaf030e90878b9b3fd024e8a7cba3a409f941034a83d113612b41b876",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8_0/onto_vec.coma",
+      "root": "Coma.vc_index_mut_Vec_u8_Global",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_index_mut_Vec_u8_Global"
+      ],
+      "expected_printed_goal_name": "vc_index_mut_Vec_u8_Global",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "890f51dfaf030e90878b9b3fd024e8a7cba3a409f941034a83d113612b41b876",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8_0/onto_vec.coma",
+      "root": "Coma.vc_len_u8",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_len_u8"
+      ],
+      "expected_printed_goal_name": "vc_len_u8",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "890f51dfaf030e90878b9b3fd024e8a7cba3a409f941034a83d113612b41b876",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8_0/onto_vec.coma",
+      "root": "Coma.vc_len_u8'0",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_len_u8qt0"
+      ],
+      "expected_printed_goal_name": "vc_len_u8qt0",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "890f51dfaf030e90878b9b3fd024e8a7cba3a409f941034a83d113612b41b876",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8_0/onto_vec.coma",
+      "root": "Coma.vc_truncate",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_truncate"
+      ],
+      "expected_printed_goal_name": "vc_truncate",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "890f51dfaf030e90878b9b3fd024e8a7cba3a409f941034a83d113612b41b876",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8_1/into_array_const_unwrap.coma",
+      "root": "Coma.vc_elim_Err",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_elim_Err"
+      ],
+      "expected_printed_goal_name": "vc_elim_Err",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "6b31a60c66ebc54989cdeed813212b8cf503eadae4fab8f1398e9956cec5b47c",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8_1/into_array_const_unwrap.coma",
+      "root": "Coma.vc_elim_Ok",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_elim_Ok"
+      ],
+      "expected_printed_goal_name": "vc_elim_Ok",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "6b31a60c66ebc54989cdeed813212b8cf503eadae4fab8f1398e9956cec5b47c",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8_1/into_array_const_unwrap.coma",
+      "root": "Coma.vc_from_str",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_from_str"
+      ],
+      "expected_printed_goal_name": "vc_from_str",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "6b31a60c66ebc54989cdeed813212b8cf503eadae4fab8f1398e9956cec5b47c",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8_1/into_array_const_unwrap.coma",
+      "root": "Coma.vc_into_array_const",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_into_array_const"
+      ],
+      "expected_printed_goal_name": "vc_into_array_const",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "6b31a60c66ebc54989cdeed813212b8cf503eadae4fab8f1398e9956cec5b47c",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8_2/into_vec.coma",
+      "root": "Coma.vc_elim_Err",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_elim_Err"
+      ],
+      "expected_printed_goal_name": "vc_elim_Err",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "f7ac57edbcbdafa023feedc48eb1792afe0700825e719e4bcd575b02979d6971",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8_2/into_vec.coma",
+      "root": "Coma.vc_new_u8",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_new_u8"
+      ],
+      "expected_printed_goal_name": "vc_new_u8",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "f7ac57edbcbdafa023feedc48eb1792afe0700825e719e4bcd575b02979d6971",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeBuilder_ref_slice_u8_2/into_vec.coma",
+      "root": "Coma.vc_onto_vec",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_onto_vec"
+      ],
+      "expected_printed_goal_name": "vc_onto_vec",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "f7ac57edbcbdafa023feedc48eb1792afe0700825e719e4bcd575b02979d6971",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeTarget_for_array_u8_n/decode_with.coma",
+      "root": "Coma.vc_call_once_impl_32_for_60__39_a_62__32_FnOnce_40__38__39_a_32_mut_32__91_u8_93__41__32__45__62__32_Result_60_usize_44__32_DecodeError_62_",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_call_once_impl_32_for_60__39_a_62__32_FnOnce_40__38__39_a_32_mut_32__91_u8_93__41__32__45__62__32_Result_60_usize_44__32_DecodeError_62_"
+      ],
+      "expected_printed_goal_name": "vc_call_once_impl_32_for_60__39_a_62__32_FnOnce_40__38__39_a_32_mut_32__91_u8_93__41__32__45__62__32_Result_60_usize_44__32_DecodeError_62_",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "606d68e6502423c2e87e303736283f87b80e586fb782fc0f0e02d8eef92ffd5e",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeTarget_for_refmut_T/decode_with.coma",
+      "root": "Coma.vc_decode_with_T",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_decode_with_T"
+      ],
+      "expected_printed_goal_name": "vc_decode_with_T",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "39f3ebeb05f0f2e9b806bea045c3c2bee19d8e92e9ccce379617cff6cbc7fea8",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_DecodeTarget_for_slice_u8/decode_with.coma",
+      "root": "Coma.vc_call_once_impl_32_for_60__39_a_62__32_FnOnce_40__38__39_a_32_mut_32__91_u8_93__41__32__45__62__32_Result_60_usize_44__32_DecodeError_62_",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_call_once_impl_32_for_60__39_a_62__32_FnOnce_40__38__39_a_32_mut_32__91_u8_93__41__32__45__62__32_Result_60_usize_44__32_DecodeError_62_"
+      ],
+      "expected_printed_goal_name": "vc_call_once_impl_32_for_60__39_a_62__32_FnOnce_40__38__39_a_32_mut_32__91_u8_93__41__32__45__62__32_Result_60_usize_44__32_DecodeError_62_",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "7ae9d55323eb913de664b47f8f7d448886a90f38e236c1c947dba4b84869b26f",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_I/new.coma",
+      "root": "Coma.vc_new_I",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_new_I"
+      ],
+      "expected_printed_goal_name": "vc_new_I",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "971e05b4017b0c59dd887cd86beebf6494f34ee755ccec2d5ae57ef62f9249e1",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_ref_slice_u8/onto.coma",
+      "root": "Coma.vc_as_ref_slice_u8",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_as_ref_slice_u8"
+      ],
+      "expected_printed_goal_name": "vc_as_ref_slice_u8",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "1dac21b55b49e63b8ef0861ddff10e43afb56481560c9adc61b6f6dcb470acdf",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_ref_slice_u8/onto.coma",
+      "root": "Coma.vc_closure0",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_closure0"
+      ],
+      "expected_printed_goal_name": "vc_closure0",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "1dac21b55b49e63b8ef0861ddff10e43afb56481560c9adc61b6f6dcb470acdf",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_ref_slice_u8/onto.coma",
+      "root": "Coma.vc_encode_into",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_encode_into"
+      ],
+      "expected_printed_goal_name": "vc_encode_into",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "1dac21b55b49e63b8ef0861ddff10e43afb56481560c9adc61b6f6dcb470acdf",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_ref_slice_u8/onto.coma",
+      "root": "Coma.vc_encode_with_refmut_slice_u8",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_encode_with_refmut_slice_u8"
+      ],
+      "expected_printed_goal_name": "vc_encode_with_refmut_slice_u8",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "1dac21b55b49e63b8ef0861ddff10e43afb56481560c9adc61b6f6dcb470acdf",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_ref_slice_u8/onto.coma",
+      "root": "Coma.vc_len_u8",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_len_u8"
+      ],
+      "expected_printed_goal_name": "vc_len_u8",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "1dac21b55b49e63b8ef0861ddff10e43afb56481560c9adc61b6f6dcb470acdf",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_ref_slice_u8/onto.coma",
+      "root": "Coma.vc_max_encoded_len",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_max_encoded_len"
+      ],
+      "expected_printed_goal_name": "vc_max_encoded_len",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "1dac21b55b49e63b8ef0861ddff10e43afb56481560c9adc61b6f6dcb470acdf",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_ref_slice_u8_0/onto_vec.coma",
+      "root": "Coma.vc_elim_Err",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_elim_Err"
+      ],
+      "expected_printed_goal_name": "vc_elim_Err",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "48787d5b8009994a5000e0522d7d1b4db3c08129187332447361e09f6ffd9ae3",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_ref_slice_u8_0/onto_vec.coma",
+      "root": "Coma.vc_elim_Ok",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_elim_Ok"
+      ],
+      "expected_printed_goal_name": "vc_elim_Ok",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "48787d5b8009994a5000e0522d7d1b4db3c08129187332447361e09f6ffd9ae3",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_ref_slice_u8_0/onto_vec.coma",
+      "root": "Coma.vc_encode_into",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_encode_into"
+      ],
+      "expected_printed_goal_name": "vc_encode_into",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "48787d5b8009994a5000e0522d7d1b4db3c08129187332447361e09f6ffd9ae3",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_ref_slice_u8_0/onto_vec.coma",
+      "root": "Coma.vc_grow_zero",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_grow_zero"
+      ],
+      "expected_printed_goal_name": "vc_grow_zero",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "48787d5b8009994a5000e0522d7d1b4db3c08129187332447361e09f6ffd9ae3",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_ref_slice_u8_0/onto_vec.coma",
+      "root": "Coma.vc_index_mut_Vec_u8_Global",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_index_mut_Vec_u8_Global"
+      ],
+      "expected_printed_goal_name": "vc_index_mut_Vec_u8_Global",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "48787d5b8009994a5000e0522d7d1b4db3c08129187332447361e09f6ffd9ae3",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_ref_slice_u8_0/onto_vec.coma",
+      "root": "Coma.vc_len_u8",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_len_u8"
+      ],
+      "expected_printed_goal_name": "vc_len_u8",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "48787d5b8009994a5000e0522d7d1b4db3c08129187332447361e09f6ffd9ae3",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_ref_slice_u8_0/onto_vec.coma",
+      "root": "Coma.vc_len_u8'0",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_len_u8qt0"
+      ],
+      "expected_printed_goal_name": "vc_len_u8qt0",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "48787d5b8009994a5000e0522d7d1b4db3c08129187332447361e09f6ffd9ae3",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_ref_slice_u8_0/onto_vec.coma",
+      "root": "Coma.vc_max_encoded_len",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_max_encoded_len"
+      ],
+      "expected_printed_goal_name": "vc_max_encoded_len",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "48787d5b8009994a5000e0522d7d1b4db3c08129187332447361e09f6ffd9ae3",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_ref_slice_u8_0/onto_vec.coma",
+      "root": "Coma.vc_truncate",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_truncate"
+      ],
+      "expected_printed_goal_name": "vc_truncate",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "48787d5b8009994a5000e0522d7d1b4db3c08129187332447361e09f6ffd9ae3",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_ref_slice_u8_1/into_vec.coma",
+      "root": "Coma.vc_from_str",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_from_str"
+      ],
+      "expected_printed_goal_name": "vc_from_str",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "9a21b238cfdf2f0768dc71ac158e11630a2607af68985ec0d380561276f2e643",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_ref_slice_u8_1/into_vec.coma",
+      "root": "Coma.vc_new_u8",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_new_u8"
+      ],
+      "expected_printed_goal_name": "vc_new_u8",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "9a21b238cfdf2f0768dc71ac158e11630a2607af68985ec0d380561276f2e643",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeBuilder_ref_slice_u8_1/into_vec.coma",
+      "root": "Coma.vc_onto_vec",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_onto_vec"
+      ],
+      "expected_printed_goal_name": "vc_onto_vec",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "9a21b238cfdf2f0768dc71ac158e11630a2607af68985ec0d380561276f2e643",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeTarget_for_refmut_T/encode_with.coma",
+      "root": "Coma.vc_encode_with_T",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_encode_with_T"
+      ],
+      "expected_printed_goal_name": "vc_encode_with_T",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "72362c2beae6ed0d8fc58a7c79097e1ae8ead65ae4aa7f9d9d8f9c7b69b38315",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    },
+    {
+      "target": "coma/verif/bs58_creusot_extensions_rlib/wrappers/impl_EncodeTarget_for_slice_u8/encode_with.coma",
+      "root": "Coma.vc_call_once_impl_32_for_60__39_a_62__32_FnOnce_40__38__39_a_32_mut_32__91_u8_93__41__32__45__62__32_Result_60_usize_44__32_EncodeError_62_",
+      "original_exit": 0,
+      "original_goal_names": [
+        "vc_call_once_impl_32_for_60__39_a_62__32_FnOnce_40__38__39_a_32_mut_32__91_u8_93__41__32__45__62__32_Result_60_usize_44__32_EncodeError_62_"
+      ],
+      "expected_printed_goal_name": "vc_call_once_impl_32_for_60__39_a_62__32_FnOnce_40__38__39_a_32_mut_32__91_u8_93__41__32__45__62__32_Result_60_usize_44__32_EncodeError_62_",
+      "original_root_identity_unambiguous": true,
+      "module_root_print_map_sha256": "0a4b8cc3a60bd4033ccb5719cfce023184cb17a79f8085abb6e6ee252fa1a239",
+      "transformed_exit": 0,
+      "transformed_stdout_bytes": 0,
+      "closed": true
+    }
+  ]
+}

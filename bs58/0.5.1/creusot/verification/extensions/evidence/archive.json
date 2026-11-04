@@ -1,0 +1,9 @@
+{
+  "archive": "/home/lab8/mwaga/proof.rs/publication/bs58/0.5.1/creusot/.work/evidence-archives/bs58-0.5.1-creusot-extensions-vkijxx6d.tar.gz",
+  "sha256": "dbf591a2b4b734a773cbcfc592d4c3b92f12cf072496f46188cf2dca7bb96cd4",
+  "bytes": 443010,
+  "members": 582,
+  "manifest_sha256": "cae0497baa373de1cfc17f331ec78ab6c716fa2f9e4b395a64eef2e3040f406c",
+  "availability": "Local-only; no public download URL. Public source and compact summaries permit reproduction.",
+  "validation": "All members reopened and byte-compared. Cargo private configuration, binaries and build caches excluded."
+}
