@@ -1,5 +1,15 @@
 # Creusot results for the unindent 0.2.4 adaptation
 
+## Subsequent guidance update
+
+The later repository-guidance update changes `AGENTS.md` and the shared
+Creusot verification/composition skills, which this run fingerprints. The saved
+bundle remains evidence for its original inputs and published source commit;
+it is now historical with respect to those instruction files. Rust sources,
+contracts, models, tools and saved proof sessions were not changed by this
+documentation update. No fresh proof run was performed for the new guidance,
+and no manifest hashes or published report were rewritten to imply one.
+
 ## Accepted local proof
 
 Fresh run `creusot-AAyoak5d` on 2026-11-05 passed native checks, fresh Coma

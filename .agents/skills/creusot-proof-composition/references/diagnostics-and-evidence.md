@@ -36,6 +36,11 @@ successful remedy for those inputs and tools, not a rule that similar timeouts a
 
 ### Switching solvers
 
+Compare the active prover portfolio with earlier successful runs before changing contracts or
+adding lemmas. A configured solver excluded by a narrowed portfolio may close the exact unchanged
+goal. Record that diagnostic, fingerprint every solver selected for acceptance, and rerun the complete
+integrated portfolio; an isolated retry does not replace the integrated result.
+
 The example [solver policy](../../../../percent-encoding/2.3.2/verification/assumptions.md) records Z3's
 timeout/unknown result and checks the same unmodified exported SMT file with CVC5. Preserve the primary
 result when a secondary solver succeeds. Save the input hash, export transformations, command, version,
