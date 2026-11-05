@@ -1,0 +1,9 @@
+name = "adapted-probe"
+defaultTargets = ["Scanners"]
+[[lean_lib]]
+name = "CoreAdapted"
+[[lean_lib]]
+name = "Scanners"
+[[require]]
+name = "aeneas"
+path = "@AENEAS_BACKEND@"

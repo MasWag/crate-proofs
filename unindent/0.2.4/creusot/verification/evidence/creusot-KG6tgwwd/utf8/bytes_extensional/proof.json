@@ -1,0 +1,6 @@
+{
+  "profile": [],
+  "proofs": {
+    "Coma": { "vc_bytes_extensional_T": { "prover": "z3", "time": 0.01 } }
+  }
+}

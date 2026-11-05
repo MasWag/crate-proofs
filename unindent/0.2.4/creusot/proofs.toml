@@ -1,0 +1,27 @@
+[report]
+title = "Unindentation of bytes and strings in an adapted implementation"
+explanation = '''
+This Creusot continuation checks an adapted implementation of `unindent` 0.2.4. Its contracts cover `unindent_bytes`, `unindent`, and the concrete `Unindent` implementations for `[u8]`, `str`, and `String`. The byte API accepts arbitrary representable byte slices, including invalid UTF-8; the string API starts with a valid Rust string.
+
+The specified output is the ordered sequence of retained input bytes. The first line does not contribute to the indentation minimum. For subsequent nonblank lines, the minimum counts leading SPACE and TAB bytes, each as one byte; each later line loses up to that many bytes. A leading LF or CRLF is suppressed, and an initial CR in CRLF is removed. Other CR bytes remain ordinary bytes, including in interior CRLF sequences. Empty and trailing fields are retained according to the source-position selection rule. The contracts state exact output bytes, an output length no greater than the input, and termination without a modeled panic. The string contract also requires successful UTF-8 conversion: the application proof connects the byte selection to preservation of UTF-8 by showing that omitted bytes are ASCII.
+'''
+trusted_assumptions = '''
+The proof uses Creusot's standard-library models for arithmetic, slices, vectors, results, characters, and strings. These describe observable values and operations rather than proving the standard library or allocator. In addition, the model assumes two standard UTF-8 encoding facts: an ASCII scalar encodes as its corresponding single byte, and every byte encoding a non-ASCII scalar is at least 128. It models `str::as_bytes` as the UTF-8 encoding of the string view and `String::from_utf8` as succeeding exactly for bytes with a valid encoding witness, preserving those bytes. These are assumptions about standard encoding and conversion, not assumptions that unindentation preserves UTF-8; the application preservation bridge is a separate proof obligation.
+'''
+limitations = '''
+The executable proof subject is a verification adaptation: it replaces the release's iterator-based processing with indexed margin discovery and a bytewise retention scan. Extraction of the original `Split` pipeline is unsupported by this track. Finite native comparisons against the release covered 300,617 byte inputs, 299,593 Unicode inputs, and 74,898 input/flag pairs; these comparisons are evidence of agreement on those cases, not an all-input equivalence proof. No formal release-equivalence theorem is established.
+
+The checked output contract is expressed in terms of retained source positions. An independent mathematical review relates it to the separate sequence-of-lines specification, but a machine-checked bridge between those specifications remains open. The generic `&T` extension is available in native code and excluded from this Creusot selection; behavior of an arbitrary downstream `T` is not covered. The prior Aeneas report is a separate result tied to its own inputs.
+
+The cargo-proofs 0.4.1 Creusot importer records only `panic_contract`. The local functional and termination contracts described here are not additional service `functional_correctness` or `no_ub` claims.
+
+The models do not establish allocation availability or behavior under external resource exhaustion. Other targets and minimum supported Rust versions are outside this run's scope.
+'''
+environment = '''
+The selected subject is the verification adaptation of crates.io `unindent` 0.2.4, using Creusot 0.13 with its `nightly-2026-06-22` extraction compiler and Why3/Why3find on `x86_64-unknown-linux-gnu`. The source identity, specification, standard-library boundary ledger, and proof inputs and evidence are recorded in this workspace's `verification` directory. The integrated proof results, independent audit, and fingerprints are recorded in `verification/results.md`.
+'''
+
+[tool]
+name = 'creusot'
+version = '0.13.0'
+target = 'annotated'

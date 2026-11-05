@@ -1,0 +1,6 @@
+{
+  "profile": [],
+  "proofs": {
+    "Coma": { "vc_bytes_split_join": { "prover": "z3", "time": 0.081 } }
+  }
+}

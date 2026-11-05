@@ -1,0 +1,28 @@
+{
+  "entries": [],
+  "impl_entries": [
+    "{impl crate::unindent::Unindent for _}::unindent"
+  ],
+  "llbc": "unindent.llbc",
+  "cargo_args": [
+    "--lib",
+    "--locked"
+  ],
+  "models": {
+    "Unindent.lean": [
+      "Shared0T.Insts.UnindentUnindentUnindent.unindent"
+    ]
+  },
+  "local_scope": {
+    "opaque_crate": true,
+    "include": [
+      "crate::unindent::Unindent",
+      "{impl crate::unindent::Unindent for _}::unindent"
+    ]
+  },
+  "charon_exclude": [
+    "{impl crate::unindent::Unindent for str}::unindent",
+    "{impl crate::unindent::Unindent for alloc::string::String}::unindent",
+    "{impl crate::unindent::Unindent for Slice<u8>}::unindent"
+  ]
+}

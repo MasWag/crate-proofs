@@ -1,0 +1,35 @@
+{
+  "extraction_rust": "nightly-2026-09-17",
+  "lean": "leanprover/lean4:v4.35.0",
+  "native_rust": "1.94.1",
+  "opam_sha256": "966d513e5aa0194b132ed2c427f81bcd86df09558510f420a8c77bd1257feded",
+  "recipe": "aeneas-opam-v1",
+  "repositories": {
+    "aeneas": {
+      "patches": [],
+      "revision": "be86ab0f1989d04944292b345b24c435be3ad10a",
+      "tree": "3a478c054742dc07cdc32bb691cc51719d5c85fa",
+      "url": "https://github.com/AeneasVerif/aeneas.git"
+    },
+    "charon": {
+      "patches": [],
+      "revision": "08d7c9d50144bd84848212c24701253585e90d1f",
+      "tree": "39f618410c91093635be66d0697ce99616e6a111",
+      "url": "https://github.com/AeneasVerif/charon.git"
+    },
+    "proofs-rs": {
+      "patches": [
+        {
+          "file": "patches/cargo-proofs-preparation.patch",
+          "purpose": "Prepare pinned managed sources and tool provenance before Cargo metadata and in detached checkout; retain standard Lake/theorem auditing and official toolchain checks. Enumerate observed public local glob reexports for generic reference API discovery.",
+          "regressions": "84 CLI unit tests and 3 integration tests; focused generic-reference public-glob scanner case; preparation source inventory, tree replay, log separation and tampering cases.",
+          "sha256": "e8a1c3da21cddccac2655c02a7252834e3f56c600a09004adc60d59f1c256890"
+        }
+      ],
+      "revision": "0a39304e702b196e6dff917bbf17c63dc01abcc6",
+      "tree": "f8c6f1c3c6586a53f5b92f26bdf68501358f2d2a",
+      "url": "https://github.com/proofs-rs/proofs-rs.git"
+    }
+  },
+  "schema_version": 1
+}

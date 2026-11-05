@@ -1,0 +1,20 @@
+{
+  "report_id": 22,
+  "revision": 1,
+  "url": "https://proofs.rs/report/22",
+  "visibility": "public",
+  "withdrawn_at": null,
+  "claim_count": 2,
+  "finding_count": 0,
+  "run_ids": [
+    "86126bb7-920f-46d9-9ec3-8a743a7b4fca"
+  ],
+  "prose_matches_after_boundary_whitespace_trim": true,
+  "source_commit": "ce78df957d982a6049e602a5083bee5b3636b5ea",
+  "recording_cli_version": "0.4.1",
+  "recording_cli_sha256": "354622fd1dfc42b5f91f130009dc2a382d23288aea7f31595f51085051baa269",
+  "api_paths": [
+    "unindent::unindent",
+    "unindent::unindent_bytes"
+  ]
+}

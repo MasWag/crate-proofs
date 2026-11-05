@@ -1,0 +1,153 @@
+warning: Patch `creusot-std v0.15.0-dev (/home/lab8/mwaga/creusot/creusot-std)` was not used in the crate graph.
+Check that the patched package version and available features are compatible
+with the dependency requirements. If the patch has a different version from
+what is locked in the Cargo.lock file, run `cargo update` to use the new
+version. This may also occur with an optional dependency that is not enabled.
+   Compiling proc-macro2 v1.0.107
+   Compiling libc v0.2.191
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.27
+   Compiling getrandom v0.4.3
+   Compiling cfg-if v1.0.5
+   Compiling syn v2.0.119
+   Compiling uuid v1.29.0
+   Compiling pearlite-syn v0.13.0
+   Compiling creusot-std-proc v0.13.0
+   Compiling creusot-std v0.13.0
+   Compiling unindent v0.2.4 (/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot)
+warning: unused import: `crate::spec::*`
+ --> src/lemmas.rs:2:5
+  |
+2 | use crate::spec::*;
+  |     ^^^^^^^^^^^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `old`
+  --> src/lib.rs:42:9
+   |
+42 |     let old = snapshot!(result@);
+   |         ^^^ help: if this is intentional, prefix it with an underscore: `_old`
+   |
+   = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `append_range` is never used
+  --> src/lib.rs:40:4
+   |
+40 | fn append_range(s: &[u8], start: usize, end: usize, initial: Vec<u8>) -> Vec<u8> {
+   |    ^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `unindent` is never used
+ --> src/../../.work/source/src/unindent.rs:3:8
+  |
+3 | pub fn unindent(s: &str) -> String {
+  |        ^^^^^^^^
+
+warning: function `unindent_bytes` is never used
+  --> src/../../.work/source/src/unindent.rs:10:8
+   |
+10 | pub fn unindent_bytes(s: &[u8]) -> Vec<u8> {
+   |        ^^^^^^^^^^^^^^
+
+warning: trait `Unindent` is never used
+  --> src/../../.work/source/src/unindent.rs:53:11
+   |
+53 | pub trait Unindent {
+   |           ^^^^^^^^
+
+warning: hiding a lifetime that's elided elsewhere is confusing
+   --> src/../../.work/source/src/unindent.rs:103:14
+    |
+103 |     fn lines(&self) -> Split<u8, fn(&u8) -> bool>;
+    |              ^^^^^     ^^^^^^^^^^^^^^^^^^^^^^^^^^ the same lifetime is hidden here
+    |              |
+    |              the lifetime is elided here
+    |
+    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing
+    = note: `#[warn(mismatched_lifetime_syntaxes)]` on by default
+help: use `'_` for type paths
+    |
+103 |     fn lines(&self) -> Split<'_, u8, fn(&u8) -> bool>;
+    |                              +++
+
+warning: hiding a lifetime that's elided elsewhere is confusing
+   --> src/../../.work/source/src/unindent.rs:107:14
+    |
+107 |     fn lines(&self) -> Split<u8, fn(&u8) -> bool> {
+    |              ^^^^^     ^^^^^^^^^^^^^^^^^^^^^^^^^^ the same lifetime is hidden here
+    |              |
+    |              the lifetime is elided here
+    |
+    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing
+help: use `'_` for type paths
+    |
+107 |     fn lines(&self) -> Split<'_, u8, fn(&u8) -> bool> {
+    |                              +++
+
+warning: `unindent` (lib) generated 3 warnings (run `cargo fix --lib -p unindent` to apply 1 suggestion)
+warning: trait `Unindent` is never used
+  --> tests/../../.work/source/src/unindent.rs:53:11
+   |
+53 | pub trait Unindent {
+   |           ^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: hiding a lifetime that's elided elsewhere is confusing
+   --> tests/../../.work/source/src/unindent.rs:103:14
+    |
+103 |     fn lines(&self) -> Split<u8, fn(&u8) -> bool>;
+    |              ^^^^^     ^^^^^^^^^^^^^^^^^^^^^^^^^^ the same lifetime is hidden here
+    |              |
+    |              the lifetime is elided here
+    |
+    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing
+    = note: `#[warn(mismatched_lifetime_syntaxes)]` on by default
+help: use `'_` for type paths
+    |
+103 |     fn lines(&self) -> Split<'_, u8, fn(&u8) -> bool>;
+    |                              +++
+
+warning: hiding a lifetime that's elided elsewhere is confusing
+   --> tests/../../.work/source/src/unindent.rs:107:14
+    |
+107 |     fn lines(&self) -> Split<u8, fn(&u8) -> bool> {
+    |              ^^^^^     ^^^^^^^^^^^^^^^^^^^^^^^^^^ the same lifetime is hidden here
+    |              |
+    |              the lifetime is elided here
+    |
+    = help: the same lifetime is referred to in inconsistent ways, making the signature confusing
+help: use `'_` for type paths
+    |
+107 |     fn lines(&self) -> Split<'_, u8, fn(&u8) -> bool> {
+    |                              +++
+
+warning: `unindent` (lib test) generated 8 warnings (3 duplicates) (run `cargo fix --lib -p unindent --tests` to apply 2 suggestions)
+warning: `unindent` (test "differential") generated 3 warnings (run `cargo fix --test "differential"` to apply 2 suggestions)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 7.45s
+     Running unittests src/lib.rs (.work/runs/creusot-AAyoak5d/native-target/debug/deps/unindent-efd919ba7b6e5d9d)
+
+running 1 test
+native flagged string/bytes cases=74898
+test flag_tests::preserve_flag_differential ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.11s
+
+     Running tests/differential.rs (.work/runs/creusot-AAyoak5d/native-target/debug/deps/differential-5a3aaccb67bbf15b)
+
+running 2 tests
+native byte differential cases=300617
+test arbitrary_bytes_differential ... ok
+native string differential cases=299593
+test unicode_strings_differential ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.44s
+
+   Doc-tests unindent
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

@@ -1,0 +1,21 @@
+{
+  "profile": [],
+  "proofs": {
+    "Coma": {
+      "vc_common_margin": { "prover": "z3", "time": 0.006 },
+      "vc_deref_Ghost_Int": { "prover": "z3", "time": 0.007 },
+      "vc_deref_mut_Ghost_Seq_Int": { "prover": "z3", "time": 0.003 },
+      "vc_do_unindent_bytes": {
+        "tactic": "compute_specified",
+        "children": [ { "prover": "alt-ergo", "time": 8.7 } ]
+      },
+      "vc_into_ghost_Int": { "prover": "z3", "time": 0.004 },
+      "vc_len_u8": { "prover": "z3", "time": 0.004 },
+      "vc_new_Int": { "prover": "z3", "time": 0.006 },
+      "vc_new_unit": { "prover": "z3", "time": 0.007 },
+      "vc_push_back_ghost_Int": { "prover": "z3", "time": 0.006 },
+      "vc_push_u8": { "prover": "z3", "time": 0.005 },
+      "vc_with_capacity_u8": { "prover": "z3", "time": 0.004 }
+    }
+  }
+}

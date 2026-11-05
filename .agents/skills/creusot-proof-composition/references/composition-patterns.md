@@ -105,6 +105,34 @@ same attributes or witnesses are needed with future tools or models.
 branch. A successful isolated probe or finite UTF-8 edge tests do not establish whole-API proof.
 Cow variants and byte equality do not establish allocation, capacity, pointer identity, or OOM guarantees.
 
+## Specify complete byte deletion
+
+**Use when:** an indexed adaptation filters bytes and a line/chunk decomposition is difficult to compose.
+A declarative source-position relation can specify exact output independently of the runtime loop:
+require in-range strictly increasing positions, equality of each output byte with its source byte,
+and completeness for every position satisfying the retention predicate. A subsequence relation alone
+permits dropping required bytes. Define the retention rule independently; when it depends on a finite
+minimum, require an attained candidate and a lower bound on every candidate, with an explicit empty-set
+case. A lower-bound-only contract can admit a constant-zero implementation.
+
+For valid UTF-8 input, ordered deletion of ASCII bytes preserves validity. One sufficient checked
+bridge proves that every input byte at least 128 is retained, derives ordered ASCII-only erasure,
+then preserves a character-encoding witness through that relation. Arbitrary subsequence deletion can
+invalidate UTF-8; retaining non-ASCII bytes is essential to this argument. Prove sequence head/tail, concatenation and
+erasure steps in small helpers when the caller's quantified context obscures them.
+
+Inspect the frozen character model before using this approach. Additional facts about ASCII singleton
+encoding or the bytes of non-ASCII scalars belong in a reviewed, crate-local standard-model ledger;
+this pattern does not authorize adding them automatically. Conversion contracts must expose the
+encoding witness and exact bytes, and the caller must establish successful conversion and unwrap.
+
+**Completion:** the exact selection and application erasure/encoding lemmas close with the callers.
+If another decomposition specification remains unconnected, report the checked source-position
+contract and the open equivalence obligation separately. The
+[unindent source map](../../../../unindent/0.2.4/creusot/verification/source-correspondence.md)
+and [assumption ledger](../../../../unindent/0.2.4/creusot/verification/assumptions.md)
+illustrate that distinction; their application models are not shared defaults.
+
 ## Separate callback arguments from external effects
 
 **Use when:** an external call's roots close, but its contract has no guarantee about output or side effects.

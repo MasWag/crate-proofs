@@ -1,0 +1,1 @@
+{"entries": ["crate::unindent_bytes"], "llbc": "unindent.llbc", "cargo_args": ["--lib", "--locked"], "models": {"Unindent.lean": ["unindent_bytes"]}}

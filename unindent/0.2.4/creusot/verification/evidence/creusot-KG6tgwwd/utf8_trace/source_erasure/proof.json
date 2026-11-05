@@ -1,0 +1,6 @@
+{
+  "profile": [],
+  "proofs": {
+    "Coma": { "vc_source_erasure": { "prover": "z3", "time": 0.127 } }
+  }
+}

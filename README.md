@@ -66,6 +66,7 @@ Do not treat hyper or atoi as verified; first assess feasibility on an important
 | httpdate | 1.0.3 | [Procedure](httpdate/1.0.3/README.md) / [scope and recorded results](httpdate/1.0.3/verification/coverage.md) |
 | form_urlencoded | 1.2.2 | [Scope](form_urlencoded/1.2.2/verification/coverage.md) / [recorded results](form_urlencoded/1.2.2/verification/results.md) |
 | percent-encoding | 2.3.2 | [Scope](percent-encoding/2.3.2/verification/coverage.md) / [recorded results](percent-encoding/2.3.2/verification/results.md) |
+| unindent | 0.2.4 | [Aeneas procedure](unindent/0.2.4/README.md) / [separate Creusot adaptation](unindent/0.2.4/creusot/README.md) / [Creusot results](unindent/0.2.4/creusot/verification/results.md) |
 
 Use the linked results pages and manifests for each version’s current input freshness and selected proof scope. Historical bundles remain tied to their own frozen inputs. These are not whole-crate or unmodified-release verification claims. Native and differential tests are reported separately.
 

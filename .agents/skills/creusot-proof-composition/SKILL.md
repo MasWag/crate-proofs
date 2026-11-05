@@ -40,6 +40,7 @@ Read only the reference needed for the observed symptom.
 | Loop step, empty input, or refl/trans remains open | Which empty, map, concat, suffix, or snoc law is missing | [Sequence boundaries](references/composition-patterns.md#prove-sequence-boundaries-in-small-steps) |
 | `next` passes but collection does not | Connections among remaining state, produced sequence, and accumulated output | [Iterator composition](references/composition-patterns.md#connect-an-iterator-to-its-consumer) |
 | Cow/UTF-8 contents or variants do not connect | Scalar/byte views, concrete-type contracts, and existing postcondition witnesses | [Cow and UTF-8](references/composition-patterns.md#separate-cow-and-utf-8-guarantees) |
+| Byte filtering needs an exact output contract or UTF-8 preservation | Complete ordered source positions, deletion conditions, and encoding witnesses | [Byte deletion](references/composition-patterns.md#specify-complete-byte-deletion) |
 | Formatter VCs close without an output guarantee | Whether the contract covers calls, results, request traces, or rendered contents | [Observation scope](references/composition-patterns.md#separate-callback-arguments-from-external-effects) |
 | Timeout, translation error, or ineffective dependency model | Actual callee/SMT, exported laws, tools, and execution conditions | [Diagnostic order](references/diagnostics-and-evidence.md#narrow-the-cause-in-order) |
 
@@ -57,6 +58,8 @@ locally and check actual use and dependency evidence under the
 
 When a small probe passes, record its types, preconditions, external models, and tool version.
 Do not update production API status from a successful probe alone.
+
+If the checked relation differs from the intended specification, keep their equivalence as a separate obligation. A reviewed mathematical argument is not a checked bridge. Equivalence between two specifications and equivalence between adapted and release implementations are also distinct; closing every selected function goal does not discharge either automatically.
 
 ## 3. Compose without changing the meaning
 

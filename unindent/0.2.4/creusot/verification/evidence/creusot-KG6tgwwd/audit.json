@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "manifest_sha256": "3231fc7230d64581d3f83a3d27f4579e4e1aa1f1823213d47606440a24eab025",
+  "selected_targets": 36,
+  "closed_root_goals": 61,
+  "expected_open_targets": 0,
+  "excluded_generated_targets": 0,
+  "why3_root_reconstruction": true,
+  "complete_generated_inventory_checked": true,
+  "limitations": "Checks saved record consistency against current inputs; does not run provers, recheck certificates, prove upstream equivalence, or establish freshness independently of the recorded run."
+}

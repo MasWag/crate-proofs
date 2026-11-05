@@ -1,0 +1,6 @@
+{
+  "profile": [],
+  "proofs": {
+    "Coma": { "vc_leading_end_index": { "prover": "z3", "time": 0.007 } }
+  }
+}

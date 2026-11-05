@@ -107,8 +107,12 @@ def extract(root, config_path, output):
         dependency_args.append('--remove-unused-clauses')
     excludes = config.get('charon_exclude', [])
     exact_path = r'(?:crate|core|alloc|std)(?:::[A-Za-z][A-Za-z_0-9]*)+'
+    excluded_local_impl = (r'\{impl crate::[A-Za-z_][A-Za-z_0-9]*(?:::[A-Za-z_][A-Za-z_0-9]*)*'
+                           r' for (?:str|Slice<u8>|(?:core|alloc|std)(?:::[A-Za-z][A-Za-z_0-9]*)+)\}'
+                           r'::[A-Za-z_][A-Za-z_0-9]*')
     if not isinstance(excludes, list) or any(
-        not isinstance(s, str) or not re.fullmatch(exact_path, s) for s in excludes
+        not isinstance(s, str) or not (re.fullmatch(exact_path, s)
+                                     or re.fullmatch(excluded_local_impl, s)) for s in excludes
     ):
         raise ValueError('charon_exclude requires explicit paths without wildcards')
     dependency_args.extend(a for path in excludes for a in ('--exclude', path))

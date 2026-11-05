@@ -1,0 +1,67 @@
+(* #"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 123 0 123 61 *)
+
+let%span sutf8 = "/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 122 10 122 21
+let%span sord = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/ord.rs" 22 8 22 20
+let%span sord'0 = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/ord.rs" 34 8 34 21
+let%span sseq = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/seq.rs" 160 8 160 39
+let%span swell_founded = "/home/lab8/mwaga/proof.rs/toolchain/creusot-env/cargo/registry/src/index.crates.io-1949cf8c6b5b557f/creusot-std-0.13.0/src/logic/well_founded.rs" 43 8 43 33
+
+use creusot.int.UInt8
+use seq.Seq
+use int.Int
+
+function tail_u8 (self: Seq.seq UInt8.t) : Seq.seq UInt8.t = [%#sseq] Seq.([..]) self 1 (Seq.length self)
+
+predicate ge_log_Int [@inline:trivial] (self: int) (other: int) = [%#sord'0] other <= self
+
+meta "rewrite_def" predicate ge_log_Int
+
+predicate gt_log_Int [@inline:trivial] (self: int) (other: int) = [%#sord] other < self
+
+meta "rewrite_def" predicate gt_log_Int
+
+predicate well_founded_relation_Int [@inline:trivial] (self: int) (other: int) =
+  [%#swell_founded] ge_log_Int self 0 /\ gt_log_Int self other
+
+meta "rewrite_def" predicate well_founded_relation_Int
+
+meta "compute_max_steps" 1000000
+
+meta "select_lsinst" "all"
+
+constant input : Seq.seq UInt8.t
+
+constant output : Seq.seq UInt8.t
+
+predicate ascii_erasure [#"/home/lab8/mwaga/crate-proofs/unindent/0.2.4/creusot/src/utf8.rs" 123 0 123 61] (input: Seq.seq UInt8.t) (output: Seq.seq UInt8.t)
+
+goal vc_ascii_erasure: if Seq.length input = 0 then
+    true
+  else
+    if UInt8.t'int (Seq.get input 0) < 128 then
+      ([@expl:variant decreases] well_founded_relation_Int ([%#sutf8] Seq.length input) ([%#sutf8] Seq.length (tail_u8 input)))
+      /\ (if ascii_erasure (tail_u8 input) output then
+        true
+      else
+        if gt_log_Int (Seq.length output) 0 then
+          if Seq.get input 0 = Seq.get output 0 then
+            [@expl:variant decreases] well_founded_relation_Int ([%#sutf8] Seq.length input) ([%#sutf8] Seq.length (tail_u8 input))
+          else
+            true
+        
+        else
+          true
+      
+      )
+    else
+      if gt_log_Int (Seq.length output) 0 then
+        if Seq.get input 0 = Seq.get output 0 then
+          [@expl:variant decreases] well_founded_relation_Int ([%#sutf8] Seq.length input) ([%#sutf8] Seq.length (tail_u8 input))
+        else
+          true
+      
+      else
+        true
+    
+  
+  

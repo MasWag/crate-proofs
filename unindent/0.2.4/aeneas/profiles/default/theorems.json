@@ -1,0 +1,69 @@
+{
+  "checked": [
+    {
+      "name": "unindent.Proofs.shared_unindent_eq",
+      "module": "Proofs.Delegation",
+      "kind": "support"
+    },
+    {
+      "name": "unindent.Proofs.shared_unindent_spec",
+      "module": "Proofs.Delegation",
+      "kind": "public-contract",
+      "precondition": "The underlying T::unindent returns successfully and its output satisfies the chosen postcondition."
+    },
+    {
+      "name": "UnindentProof.countSpaces_total_exact",
+      "module": "Proofs.CountSpaces",
+      "kind": "support"
+    }
+  ],
+  "recorder_mappings": [
+    {
+      "api": "<&T as unindent::Unindent>::unindent",
+      "theorem": "unindent.Proofs.shared_unindent_spec"
+    }
+  ],
+  "extracted_but_unproved": [],
+  "coverage_ledger": [
+    {
+      "api": "unindent",
+      "status": "original-core-extraction-blocked",
+      "reason": "higher-ranked callback/function-pointer types in byte line iterator; concrete wrappers depend on this core"
+    },
+    {
+      "api": "unindent_bytes",
+      "status": "original-core-extraction-blocked",
+      "reason": "higher-ranked callback/function-pointer types in byte line iterator; concrete wrappers depend on this core"
+    },
+    {
+      "api": "<str as Unindent>::unindent",
+      "status": "original-core-extraction-blocked",
+      "reason": "higher-ranked callback/function-pointer types in byte line iterator; concrete wrappers depend on this core"
+    },
+    {
+      "api": "<String as Unindent>::unindent",
+      "status": "original-core-extraction-blocked",
+      "reason": "higher-ranked callback/function-pointer types in byte line iterator; concrete wrappers depend on this core"
+    },
+    {
+      "api": "<[u8] as Unindent>::unindent",
+      "status": "original-core-extraction-blocked",
+      "reason": "higher-ranked callback/function-pointer types in byte line iterator; concrete wrappers depend on this core"
+    },
+    {
+      "api": "do_unindent",
+      "status": "original-core-extraction-blocked",
+      "reason": "higher-ranked callback/function-pointer types in byte line iterator; concrete wrappers depend on this core"
+    },
+    {
+      "api": "do_unindent_bytes",
+      "status": "original-core-extraction-blocked",
+      "reason": "higher-ranked callback/function-pointer types in byte line iterator; concrete wrappers depend on this core"
+    },
+    {
+      "api": "adapted unindent_bytes",
+      "status": "adapted-core-extracted-unproved",
+      "reason": "explicit index refactoring extracts; equivalence to release and total functional contract unproved"
+    }
+  ]
+}
