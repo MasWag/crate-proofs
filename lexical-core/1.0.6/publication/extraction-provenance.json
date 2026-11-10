@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "status": "fresh extraction and new-namespace Lean build passed; CLI recording/publication separate",
+  "source_manifest": "Cargo.toml",
+  "selected_library": "../verification/facade/src/lib.rs",
+  "extraction_config": "extraction.json",
+  "aeneas_revision": "be86ab0f1989d04944292b345b24c435be3ad10a",
+  "charon_revision": "08d7c9d50144bd84848212c24701253585e90d1f",
+  "extraction_rust": "nightly-2026-09-17",
+  "lean": "leanprover/lean4:v4.35.0",
+  "tool_binary_sha256": {
+    "aeneas": "6950aa31f46263b255883f94c2005d278621552faa514fc23214d71a820bf2cc",
+    "charon": "19caa20c2af93613d1be587514d324a8578f319b9b3b695193dba26ec3f81fed",
+    "charon-driver": "8a48a406a9e753fa2b069d4fc061eed3b14bd5aa7bd491ceca02e634743799b7"
+  },
+  "model_sha256": "aadf64a9a811152c321f394e686b35a7144e84f8ce1aea1731a1df00747f322f",
+  "proof_source_sha256": "a1c04234b43379fa936091bf38b45781a466cba567cb9d3c55d7ff01b1c74b08",
+  "local_raw_output": "/private/tmp/lexical-core-publication-ns8kevbm/output",
+  "raw_sha256": {
+    "charon.log": "d9d51040d7b96bd6a0c93b593723a6f0e455944f297795c92a6fb7ba953464eb",
+    "aeneas.log": "94fd80ea4e53719bdeb56f45f9d7e9872fb6e7ff8fe67900cec264587090eafc",
+    "Facade.llbc": "f44ca73c73c769f14f331c0b43a2e01645049c853df331a7f1e85a830f08ce9a",
+    "extraction.json": "58478a3246bc2d112fa3971a89e70919b0de7e96f48c6b0a59ae028ccbf1d094"
+  },
+  "compiler_context": "Temporary cwd outside inherited repository Cargo configuration; runtime absolute --manifest-path selects actual publication Cargo.toml/shared Rust source. Portable extraction.json omits this runtime path."
+}

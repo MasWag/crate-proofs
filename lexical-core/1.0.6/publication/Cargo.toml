@@ -1,0 +1,16 @@
+[package]
+name = "lexical-core"
+version = "1.0.6"
+edition = "2021"
+publish = false
+license = "MIT OR Apache-2.0"
+description = "Explicit trait-bound-erased lexical-core facade verification fork"
+
+[lib]
+name = "lexical_core"
+path = "../verification/facade/src/lib.rs"
+
+[dependencies]
+lexical-util = { version = "=1.0.7", default-features = false }
+
+[workspace]

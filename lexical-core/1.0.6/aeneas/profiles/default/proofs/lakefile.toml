@@ -1,0 +1,14 @@
+name = "lexical_core_proofs"
+version = "0.1.0"
+defaultTargets = ["Proofs"]
+
+[[require]]
+name = "aeneas"
+path = "@AENEAS_BACKEND@"
+
+[[lean_lib]]
+name = "Facade"
+srcDir = "Generated/@TARGET@"
+
+[[lean_lib]]
+name = "Proofs"

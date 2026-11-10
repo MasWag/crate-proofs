@@ -1,0 +1,7 @@
+# lexical-core 1.0.6 verification
+
+This workspace investigates the checksum-pinned crates.io release using Aeneas and Lean. The facade statements concern a derived harness with weakened trait bounds. A separate compact decimal `u8` writer adaptation has an all-values contract; for buffers of at least three bytes the contract specifies the canonical decimal prefix, count and unchanged suffix. Neither adaptation has a formal equivalence proof to release code, and the compact helper does not establish the public returned-slice or backward-function behavior. See profile results for managed acceptance status. See the [facade results](aeneas/profiles/default/results.md), [compact results](aeneas/profiles/compact_write/results.md), and [specification](verification/SPEC.md) for scope and extraction boundaries.
+
+The [native findings](verification/findings/README.md) describe two independently reproduced custom-format parser behaviors on the unchanged release. Native tests are not formal proof. No evidence has been published or issue filed.
+
+The profiles record supported targets and checks; after setup, run `bash lexical-core/1.0.6/scripts/verify.sh` for the facade or add `--profile compact_write` for the compact helper, from the repository root. Cargo configuration inherited from the execution directory is part of the verification environment; see the profile and scripts before changing it.

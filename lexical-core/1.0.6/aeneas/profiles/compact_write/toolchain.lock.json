@@ -1,0 +1,47 @@
+{
+  "extraction_rust": "nightly-2026-09-17",
+  "host_build_environment": {
+    "DUNE_CACHE": "disabled",
+    "ac_cv_func_accept4": "no",
+    "ac_cv_func_dup3": "no",
+    "ac_cv_func_pipe2": "no"
+  },
+  "lean": "leanprover/lean4:v4.35.0",
+  "native_rust": "1.94.1",
+  "opam_sha256": "fee6d390a233271cbcdb0a72a116a7761e4cf1351468bdb3ec93758323819f20",
+  "recipe": "aeneas-opam-v1",
+  "repositories": {
+    "aeneas": {
+      "patches": [],
+      "revision": "be86ab0f1989d04944292b345b24c435be3ad10a",
+      "tree": "3a478c054742dc07cdc32bb691cc51719d5c85fa",
+      "url": "https://github.com/AeneasVerif/aeneas.git"
+    },
+    "charon": {
+      "patches": [],
+      "revision": "08d7c9d50144bd84848212c24701253585e90d1f",
+      "tree": "39f618410c91093635be66d0697ce99616e6a111",
+      "url": "https://github.com/AeneasVerif/charon.git"
+    },
+    "proofs-rs": {
+      "patches": [
+        {
+          "file": "patches/cargo-proofs-preparation.patch",
+          "purpose": "Prepare pinned sources and patched tools before Cargo discovery; standard Lake/audit-only SARIF; named profile selection, target input provenance and maintained source references. Read-only independent tool-tree replay and actual tracked-file checks prevent shared-index races and index-flag bypass, including fresh checkouts.",
+          "regressions": "CLI unit/integration tests; source tampering/log separation/profile-selection tests; actual Lean/Aeneas extraction and rejection tests. Concurrent checks under held index locks; fresh missing-tree replay; assume-unchanged/skip-worktree tamper rejection.",
+          "sha256": "c6f12abf3e1e3b6f2ec910179612f3a71d51351826f7b3c7bdb97e9df700e5eb"
+        },
+        {
+          "file": "patches/cargo-proofs-raw-module.patch",
+          "purpose": "Normalize raw module identifiers for file/public paths and resolve direct crate-root trait/type imports only in Rust2015, so unchanged option-ext source is discoverable without weakening alias-cycle checks.",
+          "regressions": "All24 scan::tests pass, including external/inline raw-module regression and Rust2015 root-trait import fixture plus Rust2018 rejection. Actual option-ext adapter discovery returns exactly the3 qualified concrete impl APIs with unchanged preconditions.",
+          "sha256": "46903989a00186358602ad766592df89899e2de98da3646eeb961a82f67038b8"
+        }
+      ],
+      "revision": "2446bcad7d492be2d2036629e5dc94d186a23213",
+      "tree": "b8eafed3b8232d5bee44fc7b8af0126937a99519",
+      "url": "https://github.com/proofs-rs/proofs-rs.git"
+    }
+  },
+  "schema_version": 1
+}

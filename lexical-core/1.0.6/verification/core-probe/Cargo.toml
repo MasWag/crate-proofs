@@ -1,0 +1,10 @@
+[package]
+name="lexical-core-core-probe"
+version="0.1.0"
+edition="2021"
+publish=false
+[lib]
+path="src/lib.rs"
+[dependencies]
+lexical-core={path="../.."}
+[workspace]

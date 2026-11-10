@@ -1,0 +1,82 @@
+{
+  "date": "2026-11-10",
+  "type": "native comparison only; not formal release equivalence",
+  "packages": [
+    {
+      "package": "lexical-core-1.0.6",
+      "archive_sha256": "7d8d125a277f807e55a77304455eb7b1cb52f2b18c143b60e766c120bd64a594",
+      "all_source_members_match_archive": true,
+      "files": 12
+    },
+    {
+      "package": "lexical-write-integer-1.0.6",
+      "archive_sha256": "409851a618475d2d5796377cad353802345cba92c867d9fbcde9cf4eac4e14df",
+      "all_source_members_match_archive": true,
+      "files": 29
+    },
+    {
+      "package": "lexical-util-1.0.7",
+      "archive_sha256": "2604dd126bb14f13fb5d1bd6a66155079cb9fa655b37f875b3a742c705dbed17",
+      "all_source_members_match_archive": true,
+      "files": 47
+    }
+  ],
+  "target": "aarch64-apple-darwin",
+  "rust": "1.94.1",
+  "profile": "test default overflow checks",
+  "cwd": "/Users/mwaga/crate-proofs/lexical-core/1.0.6",
+  "features": [
+    "compact",
+    "write-integers"
+  ],
+  "default_features": false,
+  "argv": [
+    "env",
+    "CARGO_HOME=/Users/mwaga/crate-proofs/lexical-core/1.0.6/.work/cargo-home",
+    "CARGO_TARGET_DIR=/Users/mwaga/crate-proofs/lexical-core/1.0.6/.work/compact-write-native/target",
+    "rustup",
+    "run",
+    "1.94.1",
+    "cargo",
+    "test",
+    "--locked",
+    "--offline",
+    "--manifest-path",
+    "/Users/mwaga/crate-proofs/lexical-core/1.0.6/verification/compact-write/Cargo.toml",
+    "--",
+    "--nocapture"
+  ],
+  "exit_code": 0,
+  "comparisons": 4608,
+  "values": "all 256 u8 values",
+  "buffer_lengths": [
+    3,
+    4,
+    16,
+    127,
+    128,
+    129
+  ],
+  "initial_patterns": [
+    0,
+    85,
+    255
+  ],
+  "observables": [
+    "derived vs release compact exact count and full mutated buffer",
+    "public lexical_core::write returned bytes and full mutated buffer",
+    "Rust std to_string expected ASCII",
+    "unchanged suffix after output"
+  ],
+  "files_sha256": {
+    "verification/compact-write/Cargo.toml": "32015fb756c9ab0404a67a7f1aab373192a83c1d115e4d0fe9e03033b730c400",
+    "verification/compact-write/Cargo.lock": "a381717eee85780970cb7560cdfe0c9a21c77a156638d831ad9d3afd8bf6d8ba",
+    "verification/compact-write/src/lib.rs": "0741bee5e5ce5c4f857c926eb7366e5b8b41e2b4859062cfdd350b7a39439b7e",
+    "verification/compact-write/derive.py": "2aad4340f42ed1a729504a2ec07079e91852c67bd02fb56dcb597633568bc665",
+    "verification/compact-write/tests/correspondence.rs": "21178ec9af333d899d9f1ba25f9b2298b66386ba91129897938b4be7eda6b354",
+    "verification/execution-config.json": "b89f0ee76d613215b6df11299d468d7672ec1ed33e58678e635dec40c1728ec8"
+  },
+  "log": ".work/compact-write-native/native.log",
+  "log_sha256": "95e45e140905f8686ca6c78e23772e0130c5987451c82bb36e27a850fbf43255",
+  "availability": "Native full log and build are local-only ignored .work; no public archive exists."
+}

@@ -1,0 +1,45 @@
+{
+  "entries": [
+    "crate::parse_u32"
+  ],
+  "llbc": "CoreProbe.llbc",
+  "cargo_args": [
+    "--lib",
+    "--locked",
+    "--offline",
+    "--manifest-path",
+    "verification/core-probe/Cargo.toml"
+  ],
+  "models": {
+    "CoreProbe.lean": [
+      "parse_u32"
+    ]
+  },
+  "dependency_include": [
+    "lexical_core::parse",
+    "{impl lexical_core::FromLexical for _}::from_lexical",
+    "lexical_parse_integer::algorithm",
+    "lexical_parse_integer::api",
+    "lexical_parse_integer::options",
+    "lexical_parse_integer::parse",
+    "{impl lexical_parse_integer::FromLexical for _}::from_lexical",
+    "lexical_util::num",
+    "lexical_util::digit",
+    "lexical_util::constants",
+    "lexical_util::format",
+    "lexical_util::error",
+    "lexical_util::iterator",
+    "lexical_util::algorithm",
+    "lexical_util::div128",
+    "lexical_util::step",
+    "lexical_util::api",
+    "lexical_util::options",
+    "lexical_util::float",
+    "lexical_util::mul",
+    "lexical_util::shift",
+    "lexical_util::mask",
+    "lexical_util::prebuilt_formats",
+    "lexical_util::format_flags"
+  ],
+  "remove_unused_clauses": true
+}

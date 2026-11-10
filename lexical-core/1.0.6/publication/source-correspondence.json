@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "package": "lexical-core",
+  "version": "1.0.6",
+  "kind": "explicit verification fork",
+  "library_path": "../verification/facade/src/lib.rs",
+  "library_sha256": "ac6203545af9dcfbde998f798736cfe4c39d246439130cdf81cd0d4dbf624592",
+  "source_relation": "Cargo selects the same physical trait-bound-erased harness Rust file used by the accepted local facade profile, with crate library name changed to lexical_core. It copies the six release function definitions exactly; unused trait and option bounds are erased.",
+  "release_equivalence": "No formal release dictionary/trait-surface equivalence is claimed.",
+  "model_relation": "Fresh Charon/Aeneas extraction from this publication manifest generates namespace lexical_core. The publication proof module proves the six forwarding equalities and six conditional total-success transfers directly against that fresh model.",
+  "extraction_execution": "Compiler invoked from a temporary directory outside repository ancestors to avoid uncommitted Cargo configuration. The actual publication Cargo.toml and shared physical library source are selected by absolute --manifest-path at runtime; extraction.json is the portable selection template.",
+  "model_sha256": "aadf64a9a811152c321f394e686b35a7144e84f8ce1aea1731a1df00747f322f"
+}

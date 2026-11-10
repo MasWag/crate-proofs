@@ -1,0 +1,109 @@
+{
+  "checked": [
+    {
+      "name": "LexicalCorePublicationProofs.parse_eq",
+      "module": "Proofs",
+      "scope": "trait-bound-erased-public-forwarding-equality",
+      "precondition": "true"
+    },
+    {
+      "name": "LexicalCorePublicationProofs.parse_spec",
+      "module": "Proofs",
+      "scope": "trait-bound-erased-conditional-public-facade",
+      "precondition": "The selected trait dictionary call terminates with Result.ok out and satisfies the independent output relation P; concrete numeric dictionary correctness is an explicit premise, not proved here."
+    },
+    {
+      "name": "LexicalCorePublicationProofs.parse_partial_eq",
+      "module": "Proofs",
+      "scope": "trait-bound-erased-public-forwarding-equality",
+      "precondition": "true"
+    },
+    {
+      "name": "LexicalCorePublicationProofs.parse_partial_spec",
+      "module": "Proofs",
+      "scope": "trait-bound-erased-conditional-public-facade",
+      "precondition": "The selected trait dictionary call terminates with Result.ok out and satisfies the independent output relation P; concrete numeric dictionary correctness is an explicit premise, not proved here."
+    },
+    {
+      "name": "LexicalCorePublicationProofs.parse_with_options_eq",
+      "module": "Proofs",
+      "scope": "trait-bound-erased-public-forwarding-equality",
+      "precondition": "true"
+    },
+    {
+      "name": "LexicalCorePublicationProofs.parse_with_options_spec",
+      "module": "Proofs",
+      "scope": "trait-bound-erased-conditional-public-facade",
+      "precondition": "The selected trait dictionary call terminates with Result.ok out and satisfies the independent output relation P; concrete numeric dictionary correctness is an explicit premise, not proved here."
+    },
+    {
+      "name": "LexicalCorePublicationProofs.parse_partial_with_options_eq",
+      "module": "Proofs",
+      "scope": "trait-bound-erased-public-forwarding-equality",
+      "precondition": "true"
+    },
+    {
+      "name": "LexicalCorePublicationProofs.parse_partial_with_options_spec",
+      "module": "Proofs",
+      "scope": "trait-bound-erased-conditional-public-facade",
+      "precondition": "The selected trait dictionary call terminates with Result.ok out and satisfies the independent output relation P; concrete numeric dictionary correctness is an explicit premise, not proved here."
+    },
+    {
+      "name": "LexicalCorePublicationProofs.write_eq",
+      "module": "Proofs",
+      "scope": "trait-bound-erased-public-forwarding-equality",
+      "precondition": "true"
+    },
+    {
+      "name": "LexicalCorePublicationProofs.write_spec",
+      "module": "Proofs",
+      "scope": "trait-bound-erased-conditional-public-facade",
+      "precondition": "The selected trait dictionary call terminates with Result.ok out and satisfies the independent output relation P; concrete numeric dictionary correctness is an explicit premise, not proved here."
+    },
+    {
+      "name": "LexicalCorePublicationProofs.write_with_options_eq",
+      "module": "Proofs",
+      "scope": "trait-bound-erased-public-forwarding-equality",
+      "precondition": "true"
+    },
+    {
+      "name": "LexicalCorePublicationProofs.write_with_options_spec",
+      "module": "Proofs",
+      "scope": "trait-bound-erased-conditional-public-facade",
+      "precondition": "The selected trait dictionary call terminates with Result.ok out and satisfies the independent output relation P; concrete numeric dictionary correctness is an explicit premise, not proved here."
+    }
+  ],
+  "recorder_mappings": [
+    {
+      "api": "lexical_core::parse",
+      "theorem": "LexicalCorePublicationProofs.parse_spec"
+    },
+    {
+      "api": "lexical_core::parse_partial",
+      "theorem": "LexicalCorePublicationProofs.parse_partial_spec"
+    },
+    {
+      "api": "lexical_core::parse_with_options",
+      "theorem": "LexicalCorePublicationProofs.parse_with_options_spec"
+    },
+    {
+      "api": "lexical_core::parse_partial_with_options",
+      "theorem": "LexicalCorePublicationProofs.parse_partial_with_options_spec"
+    },
+    {
+      "api": "lexical_core::write",
+      "theorem": "LexicalCorePublicationProofs.write_spec"
+    },
+    {
+      "api": "lexical_core::write_with_options",
+      "theorem": "LexicalCorePublicationProofs.write_with_options_spec"
+    }
+  ],
+  "extracted_but_unproved": [
+    "Concrete integer parse/partial numerical contract and release dependency algorithms",
+    "Concrete integer write digits and buffer contract",
+    "Concrete float parse rounding/special-value contract",
+    "Concrete float write rounding/shortest-format contract",
+    "Concrete FromLexical/ToLexical implementations and options-dependent algorithms"
+  ]
+}

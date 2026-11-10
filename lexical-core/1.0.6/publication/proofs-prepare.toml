@@ -1,0 +1,4 @@
+schema_version = 1
+command = ["python3.11", "setup.py"]
+source_lock = "upstream-source.lock.json"
+source_dir = ".work/upstream-source"

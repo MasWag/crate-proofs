@@ -1,0 +1,152 @@
+{
+  "date": "2026-11-10",
+  "kind": "native-behavior-evidence",
+  "source": "unchanged crates.io releases; every extracted registry source file compared with corresponding archive member",
+  "cwd": "/private/tmp",
+  "target": "aarch64-apple-darwin",
+  "profile": "dev/test, default overflow checks enabled",
+  "features": [
+    "parse-integers",
+    "format",
+    "power-of-two"
+  ],
+  "default_features": false,
+  "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)\nbinary: rustc\ncommit-hash: e408947bfd200af42db322daf0fadfe7e26d3bd1\ncommit-date: 2026-03-25\nhost: aarch64-apple-darwin\nrelease: 1.94.1\nLLVM version: 21.1.8\n",
+  "packages": [
+    {
+      "name_version": "lexical-core-1.0.6",
+      "registry_archive_sha256": "7d8d125a277f807e55a77304455eb7b1cb52f2b18c143b60e766c120bd64a594",
+      "all_registry_files_match_archive": true,
+      "file_count": 12,
+      "key_source_sha256": {
+        "src/lib.rs": "10e1a4f5addf7ff1efcf0085020447f06f14f1a8912382139973afe8677956a9"
+      }
+    },
+    {
+      "name_version": "lexical-parse-integer-1.0.6",
+      "registry_archive_sha256": "9a7a039f8fb9c19c996cd7b2fcce303c1b2874fe1aca544edc85c4a5f8489b34",
+      "all_registry_files_match_archive": true,
+      "file_count": 22,
+      "key_source_sha256": {
+        "src/lib.rs": "ed2dd590d55c81d2297d917c5987c4e75ab6e2281fd32288fb8ea02c282448ca",
+        "src/algorithm.rs": "c98d417dc2e8969d82150a8b80dcd285b9ea692a647c049fa7ae13edc477c7cf"
+      }
+    },
+    {
+      "name_version": "lexical-util-1.0.7",
+      "registry_archive_sha256": "2604dd126bb14f13fb5d1bd6a66155079cb9fa655b37f875b3a742c705dbed17",
+      "all_registry_files_match_archive": true,
+      "file_count": 47,
+      "key_source_sha256": {
+        "src/lib.rs": "50e0873f8ce8bddfbad7ee3df852c92fe3e379a1e20741ff6dc6ccb5ac3a6f6f"
+      }
+    }
+  ],
+  "files": {
+    "source.lock.json": "e2665278f6ff3d380f0adda11a7d3e610de1fc8b25549dee19adb635c6aac457",
+    "verification/behavior/Cargo.toml": "be1e068e8aef4a8a00a02c5431b6a509121c08899cddd9ecd7baa140dc20e6d4",
+    "verification/behavior/Cargo.lock": "74bf222af237c4f2f69f14c998dbfe786bc7c02f31322cdc682ce0b17471cb18",
+    "verification/behavior/tests/regressions.rs": "fe842f5bfb925e003050019e51d64f199a4ac185fca37e6c12b50497d18c19eb",
+    "verification/behavior/examples/lc_001.rs": "abfa9cee258da930a1c1fce6ffc2a7f872761e23cac2af0610382876da688acb",
+    "verification/behavior/examples/lc_002.rs": "4b7fb03bd5936e60ba947db8a6415f9a544b4e850c624027b9ef454358e27f98",
+    "verification/behavior/run.sh": "b18a4a324a953bb17b91c60f35ff29f17f67ffccb8342207b2355ab0296355ac"
+  },
+  "logs": {
+    ".work/behavior/controls.log": "c05fa5be36b6018533501d43127b128791058e7478464d4825cf1b2cbc55a404",
+    ".work/behavior/lc_001.log": "e3fe93dea5fb6a8c8e73b590c0ba63b974d99f3c877a69a6e1c848269cc1a1d1",
+    ".work/behavior/lc_002.log": "62f434e9b8cf0dfbec76486605a06e40a7606982f68d473d5f60e1068a8c1360",
+    ".work/behavior/regressions.log": "6ba165fc545730e6cae888f28ac09e1a586b82ca0cf848c7f2077e092232f64a"
+  },
+  "runs": [
+    {
+      "label": "controls",
+      "argv": [
+        "env",
+        "CARGO_HOME=/Users/mwaga/crate-proofs/lexical-core/1.0.6/.work/cargo-home",
+        "CARGO_TARGET_DIR=/Users/mwaga/crate-proofs/lexical-core/1.0.6/.work/behavior/target",
+        "rustup",
+        "run",
+        "1.94.1",
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "/Users/mwaga/crate-proofs/lexical-core/1.0.6/verification/behavior/Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "cwd": "/private/tmp",
+      "exit_code": 0,
+      "sha256": "c05fa5be36b6018533501d43127b128791058e7478464d4825cf1b2cbc55a404"
+    },
+    {
+      "label": "regressions",
+      "argv": [
+        "env",
+        "CARGO_HOME=/Users/mwaga/crate-proofs/lexical-core/1.0.6/.work/cargo-home",
+        "CARGO_TARGET_DIR=/Users/mwaga/crate-proofs/lexical-core/1.0.6/.work/behavior/target",
+        "rustup",
+        "run",
+        "1.94.1",
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "/Users/mwaga/crate-proofs/lexical-core/1.0.6/verification/behavior/Cargo.toml",
+        "--",
+        "--ignored",
+        "--nocapture"
+      ],
+      "cwd": "/private/tmp",
+      "exit_code": 101,
+      "sha256": "6ba165fc545730e6cae888f28ac09e1a586b82ca0cf848c7f2077e092232f64a"
+    },
+    {
+      "label": "lc_001",
+      "argv": [
+        "env",
+        "CARGO_HOME=/Users/mwaga/crate-proofs/lexical-core/1.0.6/.work/cargo-home",
+        "CARGO_TARGET_DIR=/Users/mwaga/crate-proofs/lexical-core/1.0.6/.work/behavior/target",
+        "rustup",
+        "run",
+        "1.94.1",
+        "cargo",
+        "run",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "/Users/mwaga/crate-proofs/lexical-core/1.0.6/verification/behavior/Cargo.toml",
+        "--example",
+        "lc_001"
+      ],
+      "cwd": "/private/tmp",
+      "exit_code": 101,
+      "sha256": "e3fe93dea5fb6a8c8e73b590c0ba63b974d99f3c877a69a6e1c848269cc1a1d1"
+    },
+    {
+      "label": "lc_002",
+      "argv": [
+        "env",
+        "CARGO_HOME=/Users/mwaga/crate-proofs/lexical-core/1.0.6/.work/cargo-home",
+        "CARGO_TARGET_DIR=/Users/mwaga/crate-proofs/lexical-core/1.0.6/.work/behavior/target",
+        "rustup",
+        "run",
+        "1.94.1",
+        "cargo",
+        "run",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "/Users/mwaga/crate-proofs/lexical-core/1.0.6/verification/behavior/Cargo.toml",
+        "--example",
+        "lc_002"
+      ],
+      "cwd": "/private/tmp",
+      "exit_code": 101,
+      "sha256": "62f434e9b8cf0dfbec76486605a06e40a7606982f68d473d5f60e1068a8c1360"
+    }
+  ],
+  "availability": "Complete logs and build output are local-only ignored .work/behavior artifacts; no public archive exists."
+}

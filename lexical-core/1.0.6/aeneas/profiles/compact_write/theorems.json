@@ -1,0 +1,33 @@
+{
+  "checked": [
+    {
+      "name": "CompactWriteProofs.decimal_u8_spec",
+      "module": "Proofs",
+      "scope": "source-adapted-core-total-success",
+      "precondition": "The caller buffer length is at least 3; value is any u8 and initial bytes are arbitrary."
+    },
+    {
+      "name": "CompactWriteProofs.decimal_u8_wp",
+      "module": "Proofs",
+      "scope": "source-adapted-core-total-wp",
+      "precondition": "The caller buffer length is at least 3; value is any u8 and initial bytes are arbitrary."
+    },
+    {
+      "name": "CompactWriteProofs.decimalAscii_canonical",
+      "module": "Proofs",
+      "scope": "independent-mathematical-model",
+      "precondition": "n \u2264 255."
+    }
+  ],
+  "recorder_mappings": [
+    {
+      "api": "lexical_core_compact_write::decimal_u8",
+      "theorem": "CompactWriteProofs.decimal_u8_spec"
+    }
+  ],
+  "extracted_but_unproved": [
+    "The unchanged generic release Compact::compact body remains blocked; no Lean release-equivalence bridge is proved.",
+    "Other integer types/radices and lexical-core release public writers.",
+    "All integer and float parsing, float formatting, and options."
+  ]
+}

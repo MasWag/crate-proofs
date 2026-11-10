@@ -1,0 +1,63 @@
+[report]
+title = "Partial verification of a lexical-core 1.0.6 facade fork"
+explanation = '''
+This report covers a verification fork of the lexical-core 1.0.6 generic facade. Its six parse and write functions forward their inputs to the supplied trait method and return that method's exact result. This includes parsing errors and the writer's returned slice and mutable-borrow backward function.
+
+The mapped conditional contracts transfer any chosen output property to a facade call when the corresponding supplied trait call already terminates successfully and satisfies that property. They do not establish that a concrete numeric implementation satisfies the premise.
+
+Separately, a source-adapted compact decimal u8 helper was proved for every u8 and every initial buffer of at least three bytes: it succeeds, writes the canonical ASCII decimal prefix, returns its exact length and preserves the remaining buffer. This supplemental helper theorem is not a claim about an unchanged public API.
+'''
+trusted_assumptions = '''
+The results depend on the pinned Rust-to-Lean translation, Aeneas standard models and Lean kernel. Trait methods supplied to the facade are arbitrary; the success and output property needed for the conditional contracts are premises. Source correspondence checks and native comparisons support the adaptations but are not formal equivalence proofs.
+'''
+limitations = '''
+The fork copies the six release function definitions exactly but replaces their trait types with method-only traits, removing unused supertraits and associated-type bounds. A source check compares function text and required method signatures; source review supports projecting release dictionaries to those methods. No checked equivalence relates the fork to the release facade. The unchanged facade translation emits unused float cast fields that fail to compile in Lean.
+
+The compact helper specializes the release algorithm to u8 and decimal, makes casts concrete and inlines the copy helper. Its theorem covers a count and updated buffer, not the public returned slice or its backward function; no formal bridge to the release algorithm is established. Native comparisons cover finite buffer cases only.
+
+No unchanged-release concrete integer or floating-point parsing or writing algorithm is proved. In particular, the facade premises do not establish numeric correctness, error behavior, buffer capacity or panic freedom for built-in implementations. Custom formats and options and other types require separate contracts. Native findings are separate from formal proof.
+'''
+environment = '''
+The facade fork uses lexical-util 1.0.7 with default features disabled and contains no concrete numeric implementations. The supplemental compact helper derives from lexical-write-integer 1.0.6 and lexical-util 1.0.7. Verification uses unmodified pinned Aeneas and Charon and Lean 4.35.0 on aarch64-apple-darwin. The compact helper's managed proof and audit passed separately; the mapped facade claims are against this fork's freshly generated model.
+'''
+
+[tool]
+name = "aeneas"
+version = "be86ab0f1989d04944292b345b24c435be3ad10a"
+lean_dir = "proofs"
+
+[[tool.proofs]]
+api = "lexical_core::parse"
+module = "Proofs"
+theorem = "LexicalCorePublicationProofs.parse_spec"
+precondition = "The selected trait dictionary call terminates with Result.ok out and satisfies the independent output relation P; concrete numeric dictionary correctness is an explicit premise, not proved here."
+
+[[tool.proofs]]
+api = "lexical_core::parse_partial"
+module = "Proofs"
+theorem = "LexicalCorePublicationProofs.parse_partial_spec"
+precondition = "The selected trait dictionary call terminates with Result.ok out and satisfies the independent output relation P; concrete numeric dictionary correctness is an explicit premise, not proved here."
+
+[[tool.proofs]]
+api = "lexical_core::parse_with_options"
+module = "Proofs"
+theorem = "LexicalCorePublicationProofs.parse_with_options_spec"
+precondition = "The selected trait dictionary call terminates with Result.ok out and satisfies the independent output relation P; concrete numeric dictionary correctness is an explicit premise, not proved here."
+
+[[tool.proofs]]
+api = "lexical_core::parse_partial_with_options"
+module = "Proofs"
+theorem = "LexicalCorePublicationProofs.parse_partial_with_options_spec"
+precondition = "The selected trait dictionary call terminates with Result.ok out and satisfies the independent output relation P; concrete numeric dictionary correctness is an explicit premise, not proved here."
+
+[[tool.proofs]]
+api = "lexical_core::write"
+module = "Proofs"
+theorem = "LexicalCorePublicationProofs.write_spec"
+precondition = "The selected trait dictionary call terminates with Result.ok out and satisfies the independent output relation P; concrete numeric dictionary correctness is an explicit premise, not proved here."
+
+[[tool.proofs]]
+api = "lexical_core::write_with_options"
+module = "Proofs"
+theorem = "LexicalCorePublicationProofs.write_with_options_spec"
+precondition = "The selected trait dictionary call terminates with Result.ok out and satisfies the independent output relation P; concrete numeric dictionary correctness is an explicit premise, not proved here."

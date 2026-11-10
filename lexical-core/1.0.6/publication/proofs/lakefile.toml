@@ -1,0 +1,15 @@
+name = "lexical_core_publication_proofs"
+version = "0.1.0"
+defaultTargets = ["Proofs"]
+
+[[require]]
+name = "aeneas"
+git = "https://github.com/AeneasVerif/aeneas.git"
+rev = "be86ab0f1989d04944292b345b24c435be3ad10a"
+subDir = "backends/lean"
+
+[[lean_lib]]
+name = "Facade"
+
+[[lean_lib]]
+name = "Proofs"

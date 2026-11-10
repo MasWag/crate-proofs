@@ -1,0 +1,10 @@
+{
+  "entries": ["crate::release_compact_u8"],
+  "llbc": "CompactWrite.llbc",
+  "cargo_args": ["--lib", "--locked", "--offline", "--manifest-path", "verification/compact-write/Cargo.toml"],
+  "dependency_include": [
+    "lexical_write_integer::compact", "lexical_util::algorithm", "lexical_util::digit", "lexical_util::num", "lexical_util::constants"
+  ],
+  "remove_unused_clauses": true,
+  "models": {"CompactWrite.lean": ["release_compact_u8"]}
+}

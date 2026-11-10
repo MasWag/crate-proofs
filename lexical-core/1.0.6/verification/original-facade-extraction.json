@@ -1,0 +1,42 @@
+{
+  "entries": [
+    "crate::parse",
+    "crate::parse_partial",
+    "crate::parse_with_options",
+    "crate::parse_partial_with_options",
+    "crate::write",
+    "crate::write_with_options"
+  ],
+  "llbc": "Facade.llbc",
+  "cargo_args": [
+    "--lib",
+    "--locked",
+    "--offline"
+  ],
+  "local_scope": {
+    "opaque_crate": true,
+    "include": [
+      "crate::parse",
+      "crate::parse_partial",
+      "crate::parse_with_options",
+      "crate::parse_partial_with_options",
+      "crate::write",
+      "crate::write_with_options",
+      "crate::FromLexical",
+      "crate::FromLexicalWithOptions",
+      "crate::ToLexical",
+      "crate::ToLexicalWithOptions"
+    ]
+  },
+  "models": {
+    "Facade.lean": [
+      "parse",
+      "parse_partial",
+      "parse_with_options",
+      "parse_partial_with_options",
+      "write",
+      "write_with_options"
+    ]
+  },
+  "remove_unused_clauses": true
+}

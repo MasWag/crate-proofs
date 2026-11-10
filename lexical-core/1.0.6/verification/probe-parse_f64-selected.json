@@ -1,0 +1,65 @@
+{
+  "entries": [
+    "crate::parse_f64"
+  ],
+  "llbc": "CoreProbe.llbc",
+  "cargo_args": [
+    "--lib",
+    "--locked",
+    "--offline",
+    "--manifest-path",
+    "verification/core-probe/Cargo.toml"
+  ],
+  "models": {
+    "CoreProbe.lean": [
+      "parse_f64"
+    ]
+  },
+  "dependency_include": [
+    "lexical_core::parse",
+    "{impl lexical_core::FromLexical for _}::from_lexical",
+    "lexical_parse_float::api",
+    "lexical_parse_float::bellerophon",
+    "lexical_parse_float::bigint",
+    "lexical_parse_float::binary",
+    "lexical_parse_float::float",
+    "lexical_parse_float::fpu",
+    "lexical_parse_float::lemire",
+    "lexical_parse_float::libm",
+    "lexical_parse_float::limits",
+    "lexical_parse_float::mask",
+    "lexical_parse_float::number",
+    "lexical_parse_float::options",
+    "lexical_parse_float::parse",
+    "lexical_parse_float::shared",
+    "lexical_parse_float::slow",
+    "lexical_parse_float::table",
+    "lexical_parse_float::table_bellerophon_decimal",
+    "lexical_parse_float::table_bellerophon_radix",
+    "lexical_parse_float::table_binary",
+    "lexical_parse_float::table_decimal",
+    "lexical_parse_float::table_large",
+    "lexical_parse_float::table_lemire",
+    "lexical_parse_float::table_radix",
+    "lexical_parse_float::table_small",
+    "{impl lexical_parse_float::FromLexical for _}::from_lexical",
+    "lexical_util::num",
+    "lexical_util::digit",
+    "lexical_util::constants",
+    "lexical_util::format",
+    "lexical_util::error",
+    "lexical_util::iterator",
+    "lexical_util::algorithm",
+    "lexical_util::div128",
+    "lexical_util::step",
+    "lexical_util::api",
+    "lexical_util::options",
+    "lexical_util::float",
+    "lexical_util::mul",
+    "lexical_util::shift",
+    "lexical_util::mask",
+    "lexical_util::prebuilt_formats",
+    "lexical_util::format_flags"
+  ],
+  "remove_unused_clauses": true
+}

@@ -1,0 +1,55 @@
+{
+  "entries": [
+    "crate::write_f64"
+  ],
+  "llbc": "CoreProbe.llbc",
+  "cargo_args": [
+    "--lib",
+    "--locked",
+    "--offline",
+    "--manifest-path",
+    "verification/core-probe/Cargo.toml"
+  ],
+  "models": {
+    "CoreProbe.lean": [
+      "write_f64"
+    ]
+  },
+  "dependency_include": [
+    "lexical_core::write",
+    "{impl lexical_core::ToLexical for _}::to_lexical",
+    "lexical_write_float::algorithm",
+    "lexical_write_float::api",
+    "lexical_write_float::binary",
+    "lexical_write_float::compact",
+    "lexical_write_float::float",
+    "lexical_write_float::hex",
+    "lexical_write_float::index",
+    "lexical_write_float::options",
+    "lexical_write_float::radix",
+    "lexical_write_float::shared",
+    "lexical_write_float::table",
+    "lexical_write_float::table_dragonbox",
+    "lexical_write_float::table_grisu",
+    "lexical_write_float::write",
+    "{impl lexical_write_float::ToLexical for _}::to_lexical",
+    "lexical_util::num",
+    "lexical_util::digit",
+    "lexical_util::constants",
+    "lexical_util::format",
+    "lexical_util::error",
+    "lexical_util::iterator",
+    "lexical_util::algorithm",
+    "lexical_util::div128",
+    "lexical_util::step",
+    "lexical_util::api",
+    "lexical_util::options",
+    "lexical_util::float",
+    "lexical_util::mul",
+    "lexical_util::shift",
+    "lexical_util::mask",
+    "lexical_util::prebuilt_formats",
+    "lexical_util::format_flags"
+  ],
+  "remove_unused_clauses": true
+}

@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "release_api_macro_path": ".work/cargo-home/registry/src/index.crates.io-1949cf8c6b5b557f/lexical-util-1.0.7/src/api.rs",
+  "release_api_macro_sha256": "0b16f52800031d8f1739df185d4a9d56f3d8a8646e688c17adf58ab46f5c036c",
+  "function_adaptation": "All six release function definitions including signatures and bodies copied byte-for-byte; attributes/documentation omitted.",
+  "trait_adaptation": "Required method signatures copied with Result alias, Number/FormattedSize parent clauses and Options ParseOptions/WriteOptions bounds omitted. All actual lexical-core dictionaries project to these method-only records; no concrete dictionary instances are asserted or proved.",
+  "formal_equivalence": "Open: no Lean theorem relates unbuildable release trait model to adapted model. Source correspondence is checked textually and reviewed separately."
+}

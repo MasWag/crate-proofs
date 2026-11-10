@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "profile": "compact_write",
+  "status": "passed",
+  "host": "aarch64-apple-darwin",
+  "target": "aarch64-apple-darwin",
+  "local_run": ".work/runs/compact_write-ufg0jwe_",
+  "result_sha256": "d9f903986a2c69edb1e88e3e900a001671cf82b2366fc9ab30d10e1368d9eeb1",
+  "inputs_before_sha256": "50a4f676eb9c7dd53a6d83164d1f86fd59d4e05c2223159eaba10060e1101606",
+  "inputs_after_sha256": "50a4f676eb9c7dd53a6d83164d1f86fd59d4e05c2223159eaba10060e1101606",
+  "inputs_identical": true,
+  "audit_status": "passed",
+  "checked_theorems": [
+    "CompactWriteProofs.decimal_u8_spec",
+    "CompactWriteProofs.decimal_u8_wp",
+    "CompactWriteProofs.decimalAscii_canonical"
+  ],
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "audit_result_sha256": "2501773cb2f282e62611bd64a80fecfc3dd977de4164cc0b53c67558e49c64c5",
+  "native_log_sha256": "d364418f70f7af12855f0f251006ea4538e0da5636bb25254ac6edd2a03087ae",
+  "scope": "Configured extraction comparisons and named theorem audit; native observations are separate",
+  "limitations": "Local-only run evidence; source adaptations and conditional premises are recorded in profile specifications. No release-equivalence theorem, whole-crate correctness, recording or publication is claimed.",
+  "reproduction": {
+    "cwd": "repository root",
+    "command": "AENEAS_LAKE_CACHE=$PWD/lexical-parse-integer/1.0.6/.work/build/sign/aarch64-apple-darwin/proofs/.lake/packages bash lexical-core/1.0.6/scripts/verify.sh --profile compact_write --offline",
+    "lake_dependency_donor": "lexical-parse-integer/1.0.6/.work/build/sign/aarch64-apple-darwin/proofs/.lake/packages",
+    "managed_tool_cache": ".work/tools/b2f666ef0902d4b779bbbb0f81e7b9b90d1fe3f630dda0dfe475b7e35c1acd4e",
+    "cargo_home": "lexical-core/1.0.6/.work/cargo-home (set by version wrapper)",
+    "native_rust": "1.94.1",
+    "extraction_rust": "nightly-2026-09-17",
+    "lean": "leanprover/lean4:v4.35.0",
+    "cache_policy": "Donor dependencies are checked against locked revisions and clean tracked source; offline reproduction requires preprepared pinned tools, release archives and registry/Lake dependencies."
+  }
+}

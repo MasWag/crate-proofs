@@ -1,0 +1,18 @@
+{
+  "entries": [
+    "crate::write_f64"
+  ],
+  "llbc": "CoreProbe.llbc",
+  "cargo_args": [
+    "--lib",
+    "--locked",
+    "--offline",
+    "--manifest-path",
+    "verification/core-probe/Cargo.toml"
+  ],
+  "models": {
+    "CoreProbe.lean": [
+      "write_f64"
+    ]
+  }
+}

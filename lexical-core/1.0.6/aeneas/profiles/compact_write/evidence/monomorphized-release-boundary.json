@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "status": "blocked",
+  "scope": "Unchanged lexical-write-integer1.0.6 Compact::compact specialized to u8 using supported Charon --monomorphize; no verifier modifications",
+  "tool_revisions": {
+    "aeneas": "be86ab0f1989d04944292b345b24c435be3ad10a",
+    "charon": "08d7c9d50144bd84848212c24701253585e90d1f"
+  },
+  "charon_exit_code": 0,
+  "aeneas_exit_code": 1,
+  "first_boundary": "Internal error at compact.rs45:36-45:46 (128-byte zero array repeat) in prepasses; Compact::compact::<u8> body ignored",
+  "additional_boundaries": [
+    "Monomorphized core::convert::AsRef<[u8]>::as_ref signature internal errors",
+    "Monomorphized standard-library slice function names no longer match backend models, producing unknown external axioms"
+  ],
+  "cwd": "/Users/mwaga/crate-proofs/lexical-core/1.0.6",
+  "commands": {
+    "charon": [
+      "charon",
+      "cargo",
+      "--preset=aeneas",
+      "--monomorphize",
+      "--start-from",
+      "crate::release_compact_u8",
+      "--include",
+      "lexical_write_integer::compact",
+      "--include",
+      "lexical_util::algorithm",
+      "--include",
+      "lexical_util::digit",
+      "--include",
+      "lexical_util::num",
+      "--include",
+      "lexical_util::constants",
+      "--remove-unused-clauses",
+      "--dest-file",
+      "/Users/mwaga/crate-proofs/lexical-core/1.0.6/.work/probes/compact-release-mono/CompactWrite.llbc",
+      "--",
+      "--lib",
+      "--locked",
+      "--offline",
+      "--manifest-path",
+      "verification/compact-write/Cargo.toml"
+    ],
+    "aeneas": [
+      "aeneas",
+      "-backend",
+      "lean",
+      "-dest",
+      "/Users/mwaga/crate-proofs/lexical-core/1.0.6/.work/probes/compact-release-mono",
+      "/Users/mwaga/crate-proofs/lexical-core/1.0.6/.work/probes/compact-release-mono/CompactWrite.llbc"
+    ]
+  },
+  "local_raw_evidence": ".work/probes/compact-release-mono",
+  "files_sha256": {
+    "charon.log": "5e975417d3492c9b5f4fea87120db593db6142de8eade900c22f390be9c54016",
+    "aeneas.log": "a75bf48af4f99ed702487af7ec73f3b23863a3490ab7e7548cf6a24720265afe",
+    "CompactWrite.llbc": "b95e8fa3068742b129b9e7c229d108048e0d28e39fb421dd34bcd15c3e0a100d",
+    "CompactWrite.lean": "a9d0df52591ea8472fbdf24345e8509874bd69dbb4bee5eb1d45d3d391cdd972"
+  },
+  "claim": "No extraction acceptance, no generated edits, no numeric correctness or release-equivalence theorem."
+}

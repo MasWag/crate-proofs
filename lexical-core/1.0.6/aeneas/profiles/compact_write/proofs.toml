@@ -1,0 +1,27 @@
+[report]
+title = "Adapted compact decimal u8 writer"
+explanation = '''
+For every u8 value and every initial byte buffer of at least three bytes, the selected derived helper's total-success contract states that it writes the canonical ASCII decimal representation, returns its exact length, and preserves the buffer after that prefix. The independent decimal model specifies digits, positional value and the absence of leading zeroes except for zero. The proof handles all 256 values while buffer contents and length remain arbitrary.
+'''
+trusted_assumptions = '''
+The conclusions depend on the pinned Rust-to-Lean translation, Aeneas scalar, array and slice models, and the Lean kernel. A checked source transformation recipe and finite native comparisons support correspondence to release code; they do not establish formal equivalence.
+'''
+limitations = '''
+The derived helper specializes the release compact algorithm to u8 and radix 10, removes a trivially true width assertion, makes conversions concrete and inlines the copy helper. It retains the reverse-digit scratch buffer, quotient/remainder loop and digit table. Its theorem returns a count and updated buffer; it does not establish the public returned-slice or mutable-borrow backward-function behavior. No checked bridge relates it to the unchanged release implementation.
+
+Other integer types, radices and formatting options, smaller buffers, parsing and floating-point algorithms are outside this profile. The unchanged generic compact extraction remains blocked. Native comparisons cover finite buffers and are separate from proof.
+'''
+environment = '''
+The derived harness uses lexical-write-integer 1.0.6 and lexical-util 1.0.7 source, with unmodified pinned Aeneas and Charon and Lean 4.35.0 on aarch64-apple-darwin. See profile results for managed acceptance status.
+'''
+
+[tool]
+name = "aeneas"
+version = "be86ab0f1989d04944292b345b24c435be3ad10a"
+lean_dir = ".work/selected-proofs"
+
+[[tool.proofs]]
+api = "lexical_core_compact_write::decimal_u8"
+module = "Proofs"
+theorem = "CompactWriteProofs.decimal_u8_spec"
+precondition = "The caller buffer length is at least 3; value is any u8 and initial bytes are arbitrary."

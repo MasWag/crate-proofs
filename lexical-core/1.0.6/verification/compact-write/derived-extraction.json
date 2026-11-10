@@ -1,0 +1,7 @@
+{
+  "entries": ["crate::decimal_u8"],
+  "llbc": "CompactWrite.llbc",
+  "cargo_args": ["--lib", "--locked", "--offline", "--manifest-path", "verification/compact-write/Cargo.toml"],
+  "local_scope": {"opaque_crate": true, "include": ["crate::decimal_u8", "crate::digit_to_char"]},
+  "models": {"CompactWrite.lean": ["decimal_u8", "digit_to_char"]}
+}

@@ -1,0 +1,59 @@
+[report]
+title = "lexical-core 1.0.6 adapted facade forwarding"
+explanation = '''
+The six generic parsing and writing functions in a trait-bound-erased facade harness forward the same inputs to the corresponding supplied trait method. Their generated bodies return exactly the method's result, including parser errors and, for writers, the returned slice and mutable-borrow backward function.
+
+Each conditional success theorem transfers an output property from the supplied trait call to the facade only when that call already terminates successfully and satisfies the property. These statements do not establish numeric parsing or formatting correctness.
+'''
+trusted_assumptions = '''
+The conclusions depend on the pinned Rust-to-Lean translation, Aeneas standard models and Lean kernel. The supplied trait methods are arbitrary; their success and any desired output property are premises of the conditional theorems. The source correspondence check described below is not a formal equivalence proof.
+'''
+limitations = '''
+The harness copies the six release function definitions exactly but replaces their trait types with method-only traits, dropping unused supertraits and associated-type bounds. A source check compares the function text and required method signatures; source review supports projecting the release dictionaries to those methods. No checked equivalence relates the adapted model to the release facade. The original facade translation emits unused float cast fields that fail to compile in Lean.
+
+No concrete integer or floating-point parse or write algorithm is proved. The conditional premise does not establish success, error behavior, numerical correctness, buffer capacity, or panic freedom for a built-in implementation. Custom formats and options and other features require separate contracts. Native tests and findings are separate evidence.
+'''
+environment = '''
+The selected harness uses lexical-util 1.0.7 with default features disabled; it has no concrete numeric implementations. Extraction uses unmodified pinned Aeneas and Charon, with Lean 4.35.0 on aarch64-apple-darwin. Probes of concrete release call graphs use lexical-core default features. See profile results for managed acceptance status.
+'''
+
+[tool]
+name = "aeneas"
+version = "be86ab0f1989d04944292b345b24c435be3ad10a"
+lean_dir = ".work/selected-proofs"
+
+[[tool.proofs]]
+api = "lexical_core_facade_harness::parse"
+module = "Proofs"
+theorem = "LexicalCoreProofs.parse_spec"
+precondition = "The selected trait dictionary call terminates with Result.ok out and satisfies the independent output relation P; concrete numeric dictionary correctness is an explicit premise, not proved here."
+
+[[tool.proofs]]
+api = "lexical_core_facade_harness::parse_partial"
+module = "Proofs"
+theorem = "LexicalCoreProofs.parse_partial_spec"
+precondition = "The selected trait dictionary call terminates with Result.ok out and satisfies the independent output relation P; concrete numeric dictionary correctness is an explicit premise, not proved here."
+
+[[tool.proofs]]
+api = "lexical_core_facade_harness::parse_with_options"
+module = "Proofs"
+theorem = "LexicalCoreProofs.parse_with_options_spec"
+precondition = "The selected trait dictionary call terminates with Result.ok out and satisfies the independent output relation P; concrete numeric dictionary correctness is an explicit premise, not proved here."
+
+[[tool.proofs]]
+api = "lexical_core_facade_harness::parse_partial_with_options"
+module = "Proofs"
+theorem = "LexicalCoreProofs.parse_partial_with_options_spec"
+precondition = "The selected trait dictionary call terminates with Result.ok out and satisfies the independent output relation P; concrete numeric dictionary correctness is an explicit premise, not proved here."
+
+[[tool.proofs]]
+api = "lexical_core_facade_harness::write"
+module = "Proofs"
+theorem = "LexicalCoreProofs.write_spec"
+precondition = "The selected trait dictionary call terminates with Result.ok out and satisfies the independent output relation P; concrete numeric dictionary correctness is an explicit premise, not proved here."
+
+[[tool.proofs]]
+api = "lexical_core_facade_harness::write_with_options"
+module = "Proofs"
+theorem = "LexicalCoreProofs.write_with_options_spec"
+precondition = "The selected trait dictionary call terminates with Result.ok out and satisfies the independent output relation P; concrete numeric dictionary correctness is an explicit premise, not proved here."

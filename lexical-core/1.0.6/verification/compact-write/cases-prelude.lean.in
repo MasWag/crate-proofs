@@ -1,0 +1,33 @@
+import CompactWrite
+open Aeneas Aeneas.Std Result ControlFlow Error
+open lexical_core_compact_write
+set_option maxHeartbeats 8000000
+set_option linter.unusedTactic false
+set_option maxRecDepth 10000
+namespace CompactWriteProofs
+
+theorem loop_stop (digits : Array U8 128#usize) (index : Usize) (value : U8)
+    (h : value.val < 10) :
+    decimal_u8_loop digits index value = .ok (digits, index, value) := by
+  unfold decimal_u8_loop
+  rw [loop.eq_def]
+  have hv : ¬ value ≥ 10#u8 := by scalar_tac
+  simp [decimal_u8_loop.body, hv]
+
+theorem loop_step (digits : Array U8 128#usize) (index : Usize) (value : U8)
+    (h : 10 ≤ value.val) :
+    decimal_u8_loop digits index value = (do
+      let r ← value % 10#u8
+      let value1 ← value / 10#u8
+      let index1 ← index - 1#usize
+      let i ← lift (UScalar.cast .U32 r)
+      let i1 ← digit_to_char i
+      let a ← Array.update digits index1 i1
+      decimal_u8_loop a index1 value1) := by
+  unfold decimal_u8_loop
+  rw [loop.eq_def]
+  have hv : value ≥ 10#u8 := by scalar_tac
+  simp [decimal_u8_loop.body, hv]
+
+
+

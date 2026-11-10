@@ -1,0 +1,3 @@
+See version-local verification/SPEC.md, designed independently by Astra. This profile proves all six generic facade forwarding equalities and conditional total-success transfer. The dictionary success and output property are explicit premises; no numeric algorithm contract follows without separately proving that premise. Writer equality includes the returned slice and backward function.
+
+Selected model is the verification/facade Rust harness, with all six release function definitions copied exactly and unused supertrait/Options bounds explicitly omitted. Release-model formal equivalence is open. Original release extraction is retained as a failing Lean-emission boundary check.

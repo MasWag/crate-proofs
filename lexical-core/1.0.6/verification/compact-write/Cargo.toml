@@ -1,0 +1,11 @@
+[package]
+name = "lexical-core-compact-write"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+lexical-write-integer = { version = "=1.0.6", default-features = false, features = ["compact"] }
+lexical-core = { version = "=1.0.6", default-features = false, features = ["write-integers", "compact"] }
+
+[workspace]

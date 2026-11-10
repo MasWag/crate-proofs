@@ -1,0 +1,9 @@
+default = "default"
+
+[profiles.default]
+path = "aeneas/profiles/default"
+dependencies = []
+
+[profiles.compact_write]
+path = "aeneas/profiles/compact_write"
+dependencies = []

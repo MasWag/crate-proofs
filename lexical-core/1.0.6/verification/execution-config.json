@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "cargo_home": ".work/cargo-home",
+  "inherited_cargo_config": {
+    "path": "/Users/mwaga/crate-proofs/.cargo/config.toml",
+    "sha256": "06f72117aa7d62643bcc985492d51243b06d64f8c28b1d766d35b3597f837bed"
+  },
+  "note": "Repository ancestor config applies the unused creusot-std patch recorded by Cargo.lock. It is not a dependency; no Creusot toolchain activated."
+}
