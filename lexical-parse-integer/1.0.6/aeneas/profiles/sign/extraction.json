@@ -1,0 +1,6 @@
+{
+  "entries": ["crate::parse_sign_state"],
+  "llbc": "Sign.llbc",
+  "cargo_args": ["--lib", "--locked", "--offline", "--manifest-path", "verification/sign-harness/Cargo.toml"],
+  "models": {"Sign.lean": ["parse_sign_state"]}
+}

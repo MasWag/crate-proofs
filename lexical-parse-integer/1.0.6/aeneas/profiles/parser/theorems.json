@@ -1,0 +1,110 @@
+{
+  "checked": [
+    {
+      "name": "LexicalScalarProofs.checked_u32_spec",
+      "module": "Proofs.Scalar",
+      "scope": "public-model",
+      "precondition": "Outlines the default decimal checked scalar loop from the release macro; input bytes and initial u32 value are arbitrary. This is the harness helper, not the complete parser."
+    },
+    {
+      "name": "LexicalScalarProofs.checked_i32_negative_from_spec",
+      "module": "Proofs.Signed",
+      "scope": "public-model",
+      "precondition": "Initial i32 value is nonpositive and cursor + input length fits usize; this is the outlined negative checked scalar helper, not the complete parser."
+    },
+    {
+      "name": "LexicalScalarProofs.checked_i32_positive_from_spec",
+      "module": "Proofs.Positive",
+      "scope": "public-model",
+      "precondition": "Initial i32 value is nonnegative and cursor + input length fits usize; this is the outlined positive checked scalar helper, not the complete parser."
+    },
+    {
+      "name": "LexicalScalarProofs.checked_u8_from_spec",
+      "module": "Proofs.U8",
+      "scope": "public-model",
+      "precondition": "Initial cursor plus input length fits usize; this is the outlined u8 checked scalar loop."
+    },
+    {
+      "name": "LexicalScalarProofs.unchecked_u8_from_spec",
+      "module": "Proofs.U8",
+      "scope": "public-model",
+      "precondition": "Initial value is zero, input length is at most two, and cursor plus length fits usize; this is the outlined u8 unchecked scalar loop."
+    },
+    {
+      "name": "LexicalScalarProofs.complete_u8_success",
+      "module": "Proofs.Complete",
+      "scope": "public-model",
+      "precondition": "No input precondition. This proves the separately reviewed default-format u8 front-end adaptation, not the original generic parser body."
+    },
+    {
+      "name": "LexicalDigitProofs.char_to_digit_const_spec",
+      "module": "Proofs.Digit",
+      "scope": "public-model",
+      "precondition": "Radix is between 2 and 36 inclusive; this maps an extracted lexical-util dependency body, not lexical-parse-integer source."
+    },
+    {
+      "name": "LexicalScalarProofs.partial_u8_success",
+      "module": "Proofs.Partial",
+      "scope": "public-model",
+      "precondition": "No input precondition. This proves the separately reviewed default-format partial u8 front-end adaptation, including value, count, and error index."
+    },
+    {
+      "name": "LexicalScalarProofs.complete_i8_success",
+      "module": "Proofs.I8Front",
+      "scope": "public-model",
+      "precondition": "No input precondition. This proves the separately reviewed default-format signed i8 complete front-end adaptation, including sign, value, and error index."
+    },
+    {
+      "name": "LexicalScalarProofs.partial_i8_success",
+      "module": "Proofs.I8Partial",
+      "scope": "public-model",
+      "precondition": "No input precondition. This proves the separately reviewed default-format signed i8 partial front-end adaptation, including sign, value, count, and error index."
+    }
+  ],
+  "recorder_mappings": [
+    {
+      "api": "lexical_parse_integer_parser_harness::checked_u32",
+      "theorem": "LexicalScalarProofs.checked_u32_spec"
+    },
+    {
+      "api": "lexical_parse_integer_parser_harness::checked_i32_negative_from",
+      "theorem": "LexicalScalarProofs.checked_i32_negative_from_spec"
+    },
+    {
+      "api": "lexical_parse_integer_parser_harness::checked_i32_positive_from",
+      "theorem": "LexicalScalarProofs.checked_i32_positive_from_spec"
+    },
+    {
+      "api": "lexical_parse_integer_parser_harness::checked_u8_from",
+      "theorem": "LexicalScalarProofs.checked_u8_from_spec"
+    },
+    {
+      "api": "lexical_parse_integer_parser_harness::unchecked_u8_from",
+      "theorem": "LexicalScalarProofs.unchecked_u8_from_spec"
+    },
+    {
+      "api": "lexical_parse_integer_parser_harness::complete_u8",
+      "theorem": "LexicalScalarProofs.complete_u8_success"
+    },
+    {
+      "api": "lexical_util::digit::char_to_digit_const",
+      "theorem": "LexicalDigitProofs.char_to_digit_const_spec"
+    },
+    {
+      "api": "lexical_parse_integer_parser_harness::partial_u8",
+      "theorem": "LexicalScalarProofs.partial_u8_success"
+    },
+    {
+      "api": "lexical_parse_integer_parser_harness::complete_i8",
+      "theorem": "LexicalScalarProofs.complete_i8_success"
+    },
+    {
+      "api": "lexical_parse_integer_parser_harness::partial_i8",
+      "theorem": "LexicalScalarProofs.partial_i8_success"
+    }
+  ],
+  "extracted_but_unproved": [
+    "lexical_parse_integer::algorithm::algorithm_complete",
+    "lexical_parse_integer::algorithm::algorithm_partial"
+  ]
+}

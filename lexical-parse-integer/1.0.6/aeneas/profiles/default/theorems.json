@@ -1,0 +1,170 @@
+{
+  "checked": [
+    {
+      "name": "LexicalParseIntegerProofs.parse4_decimal_success",
+      "module": "Proofs.Decode",
+      "scope": "public-model",
+      "precondition": "FORMAT has MANTISSA_RADIX=10 (including STANDARD), and all four packed bytes are ASCII decimal digits; the checked body is the disclosed decimal specialization."
+    },
+    {
+      "name": "LexicalParseIntegerProofs.parse4_decimal",
+      "module": "Proofs.Decode",
+      "scope": "helper"
+    },
+    {
+      "name": "LexicalParseIntegerProofs.parse4_packed_decimal",
+      "module": "Proofs.Decode",
+      "scope": "helper"
+    },
+    {
+      "name": "LexicalParseIntegerProofs.parse4_arithmetic",
+      "module": "Proofs.Decode",
+      "scope": "helper"
+    },
+    {
+      "name": "LexicalParseIntegerProofs.result_spec_success",
+      "module": "Proofs.Decode",
+      "scope": "helper"
+    },
+    {
+      "name": "LexicalParseIntegerProofs.is4_eq_swar",
+      "module": "Proofs.Validate",
+      "scope": "helper"
+    },
+    {
+      "name": "LexicalParseIntegerProofs.is8_eq_swar",
+      "module": "Proofs.Validate",
+      "scope": "helper"
+    },
+    {
+      "name": "LexicalParseIntegerProofs.is4_total",
+      "module": "Proofs.Validate",
+      "scope": "helper"
+    },
+    {
+      "name": "LexicalParseIntegerProofs.is8_total",
+      "module": "Proofs.Validate",
+      "scope": "helper"
+    },
+    {
+      "name": "LexicalParseIntegerProofs.parse8_decimal_success",
+      "module": "Proofs.Decode",
+      "scope": "public-model",
+      "precondition": "FORMAT has MANTISSA_RADIX=10 (including STANDARD), and all eight packed bytes are ASCII decimal digits; the checked body is the disclosed decimal specialization."
+    },
+    {
+      "name": "LexicalParseIntegerProofs.mask8_lanes",
+      "module": "Proofs.Decode",
+      "scope": "helper"
+    },
+    {
+      "name": "LexicalParseIntegerProofs.parse8_arithmetic",
+      "module": "Proofs.Decode",
+      "scope": "helper"
+    },
+    {
+      "name": "LexicalParseIntegerProofs.decimal8_packed_arithmetic",
+      "module": "Proofs.Decode",
+      "scope": "helper"
+    },
+    {
+      "name": "LexicalParseIntegerProofs.parse8_packed_decimal",
+      "module": "Proofs.Decode",
+      "scope": "helper"
+    },
+    {
+      "name": "LexicalParseIntegerProofs.parse8_decimal",
+      "module": "Proofs.Decode",
+      "scope": "helper"
+    },
+    {
+      "name": "LexicalParseIntegerProofs.is4_decimal",
+      "module": "Proofs.Validate",
+      "scope": "public-model",
+      "precondition": "FORMAT has MANTISSA_RADIX=10 (including STANDARD); the checked body is the disclosed decimal specialization."
+    },
+    {
+      "name": "LexicalParseIntegerProofs.is8_decimal",
+      "module": "Proofs.Validate",
+      "scope": "public-model",
+      "precondition": "FORMAT has MANTISSA_RADIX=10 (including STANDARD); the checked body is the disclosed decimal specialization."
+    },
+    {
+      "name": "LexicalParseIntegerProofs.repeated_bound",
+      "module": "Proofs.Recognition",
+      "scope": "helper"
+    },
+    {
+      "name": "LexicalParseIntegerProofs.byte_math",
+      "module": "Proofs.Recognition",
+      "scope": "helper"
+    },
+    {
+      "name": "LexicalParseIntegerProofs.recognition_arithmetic",
+      "module": "Proofs.Recognition",
+      "scope": "helper"
+    },
+    {
+      "name": "LexicalParseIntegerProofs.byte_mask",
+      "module": "Proofs.Recognition",
+      "scope": "helper"
+    },
+    {
+      "name": "LexicalParseIntegerProofs.highClear_mask",
+      "module": "Proofs.Recognition",
+      "scope": "helper"
+    },
+    {
+      "name": "LexicalParseIntegerProofs.digits_spec",
+      "module": "Proofs.Recognition",
+      "scope": "helper"
+    },
+    {
+      "name": "LexicalParseIntegerProofs.mask_wrap",
+      "module": "Proofs.Recognition",
+      "scope": "helper"
+    },
+    {
+      "name": "LexicalParseIntegerProofs.recognition_mask",
+      "module": "Proofs.Recognition",
+      "scope": "helper"
+    },
+    {
+      "name": "LexicalParseIntegerProofs.bitvec_mask_nat",
+      "module": "Proofs.Validate",
+      "scope": "helper"
+    },
+    {
+      "name": "LexicalParseIntegerProofs.swar4_correct",
+      "module": "Proofs.Validate",
+      "scope": "helper"
+    },
+    {
+      "name": "LexicalParseIntegerProofs.swar8_correct",
+      "module": "Proofs.Validate",
+      "scope": "helper"
+    }
+  ],
+  "recorder_mappings": [
+    {
+      "api": "lexical_parse_integer::algorithm::parse_4digits",
+      "theorem": "LexicalParseIntegerProofs.parse4_decimal_success"
+    },
+    {
+      "api": "lexical_parse_integer::algorithm::parse_8digits",
+      "theorem": "LexicalParseIntegerProofs.parse8_decimal_success"
+    },
+    {
+      "api": "lexical_parse_integer::algorithm::is_4digits",
+      "theorem": "LexicalParseIntegerProofs.is4_decimal"
+    },
+    {
+      "api": "lexical_parse_integer::algorithm::is_8digits",
+      "theorem": "LexicalParseIntegerProofs.is8_decimal"
+    }
+  ],
+  "extracted_but_unproved": [
+    "algorithm::algorithm_complete",
+    "algorithm::algorithm_partial"
+  ]
+}

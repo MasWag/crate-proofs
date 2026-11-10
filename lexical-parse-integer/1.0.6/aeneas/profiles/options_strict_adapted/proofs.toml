@@ -1,0 +1,29 @@
+[report]
+title = "Adapted strict options construction"
+explanation = "The adapted strict constructor returns options with the builder's Boolean state; adapted SMALL_NUMBERS and LARGE_NUMBERS have true and false states respectively. The separately proved release build returns Ok for either state, so its error branch is unreachable under that contract."
+trusted_assumptions = "Pinned Rust-to-Lean translation, Aeneas scalar models, and Lean kernel."
+limitations = "The copied source replaces the build_strict error-arm panic with build_unchecked. A source checker checks the copy and manifest against the release with that replacement. These mappings name the adapted crate; formal Rust-to-Rust equivalence is not established. Unchanged build_strict encounters an Aeneas internal error at the panic branch."
+environment = "Pinned unmodified Aeneas and Charon, Lean 4.35.0, macOS arm64, lexical-util 1.0.7. See profile results for run status."
+
+[tool]
+name = "aeneas"
+version = "be86ab0f1989d04944292b345b24c435be3ad10a"
+lean_dir = ".work/selected-proofs"
+
+[[tool.proofs]]
+api = "lexical_parse_integer_options_strict_adapted::options::OptionsBuilder::build_strict"
+module = "Proofs"
+theorem = "LexicalStrictAdaptedProofs.strict_success"
+precondition = "Every builder state returns normally with the same Boolean flag in the adapted build_strict body; the unchanged release panic arm is not verified."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_options_strict_adapted::options::SMALL_NUMBERS"
+module = "Proofs"
+theorem = "LexicalStrictAdaptedProofs.small_numbers"
+precondition = "The adapted SMALL_NUMBERS constant returns normally with no_multi_digit=true."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_options_strict_adapted::options::LARGE_NUMBERS"
+module = "Proofs"
+theorem = "LexicalStrictAdaptedProofs.large_numbers"
+precondition = "The adapted LARGE_NUMBERS constant returns normally with no_multi_digit=false."

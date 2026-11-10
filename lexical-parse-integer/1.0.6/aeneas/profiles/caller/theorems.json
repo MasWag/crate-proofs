@@ -1,0 +1,26 @@
+{
+  "checked": [
+    {
+      "name": "CallerProofs.try4_contract",
+      "module": "CallerProofs",
+      "scope": "adapted-model",
+      "precondition": "bytes is the iterator's remaining contiguous slice; cursor plus its length is at most usize::MAX; decimal radix 10"
+    },
+    {
+      "name": "CallerProofs.try8_contract",
+      "module": "CallerProofs",
+      "scope": "adapted-model",
+      "precondition": "bytes is the iterator's remaining contiguous slice; cursor plus its length is at most usize::MAX; decimal radix 10"
+    }
+  ],
+  "recorder_mappings": [
+    {
+      "api": "lexical_parse_integer_caller_harness::safe::try4",
+      "theorem": "CallerProofs.try4_contract"
+    },
+    {
+      "api": "lexical_parse_integer_caller_harness::safe::try8",
+      "theorem": "CallerProofs.try8_contract"
+    }
+  ]
+}

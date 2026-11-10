@@ -1,0 +1,37 @@
+{
+  "entries": [
+    "crate::checked_u8",
+    "crate::checked_u16",
+    "crate::checked_u32",
+    "crate::checked_u64",
+    "crate::checked_u128",
+    "crate::checked_usize",
+    "crate::checked_i8_positive",
+    "crate::checked_i8_negative",
+    "crate::checked_i16_positive",
+    "crate::checked_i16_negative",
+    "crate::checked_i32_positive",
+    "crate::checked_i32_negative",
+    "crate::checked_i64_positive",
+    "crate::checked_i64_negative",
+    "crate::checked_i128_positive",
+    "crate::checked_i128_negative",
+    "crate::checked_isize_positive",
+    "crate::checked_isize_negative"
+  ],
+  "llbc": "GenericScalar.llbc",
+  "cargo_args": ["--lib", "--locked", "--offline"],
+  "dependency_include": [
+    "lexical_util::digit::char_to_digit_const",
+    "lexical_util::digit::char_to_valid_digit_const"
+  ],
+  "models": {
+    "GenericScalar.lean": [
+      "checked_u8", "checked_u16", "checked_u32", "checked_u64", "checked_u128", "checked_usize",
+      "checked_i8_positive", "checked_i8_negative", "checked_i16_positive", "checked_i16_negative",
+      "checked_i32_positive", "checked_i32_negative", "checked_i64_positive", "checked_i64_negative",
+      "checked_i128_positive", "checked_i128_negative", "checked_isize_positive", "checked_isize_negative",
+      "lexical_util.digit.char_to_digit_const", "lexical_util.digit.char_to_valid_digit_const"
+    ]
+  }
+}

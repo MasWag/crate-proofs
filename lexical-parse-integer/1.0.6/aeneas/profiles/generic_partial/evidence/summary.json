@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "status": "passed-local-only",
+  "profile": "generic_partial",
+  "reviewed_at_utc": "2026-11-06T14:01:31.891941+00:00",
+  "run_id": "generic_partial-_9ysg4wa",
+  "run_relative_path": ".work/runs/generic_partial-_9ysg4wa",
+  "host": "aarch64-apple-darwin",
+  "target": "aarch64-apple-darwin",
+  "offline": true,
+  "result_sha256": "d49358aeb767dbb81c6e96bc55d270ad8f0fd376ec4d4b393998379989f3c161",
+  "input_fingerprint_sha256": "97eb023f92a1c2109d702653e194069380b0410eb17247a9d659255d2d82aa71",
+  "inputs_before_after_equal": true,
+  "audit_result_sha256": "a464ac69bcef842553ab140f08339208b1d98b23ca820b94d6ec9ebf45fdc078",
+  "audit_inputs_before_after_equal": true,
+  "checked_theorems": 18,
+  "mapping_metadata_checked": true,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "mapped_apis": [
+    "lexical_parse_integer_generic_harness::partial::checked_u8_partial",
+    "lexical_parse_integer_generic_harness::partial::checked_u16_partial",
+    "lexical_parse_integer_generic_harness::partial::checked_u32_partial",
+    "lexical_parse_integer_generic_harness::partial::checked_u64_partial",
+    "lexical_parse_integer_generic_harness::partial::checked_u128_partial",
+    "lexical_parse_integer_generic_harness::partial::checked_usize_partial",
+    "lexical_parse_integer_generic_harness::partial::checked_i8_positive_partial",
+    "lexical_parse_integer_generic_harness::partial::checked_i8_negative_partial",
+    "lexical_parse_integer_generic_harness::partial::checked_i16_positive_partial",
+    "lexical_parse_integer_generic_harness::partial::checked_i16_negative_partial",
+    "lexical_parse_integer_generic_harness::partial::checked_i32_positive_partial",
+    "lexical_parse_integer_generic_harness::partial::checked_i32_negative_partial",
+    "lexical_parse_integer_generic_harness::partial::checked_i64_positive_partial",
+    "lexical_parse_integer_generic_harness::partial::checked_i64_negative_partial",
+    "lexical_parse_integer_generic_harness::partial::checked_i128_positive_partial",
+    "lexical_parse_integer_generic_harness::partial::checked_i128_negative_partial",
+    "lexical_parse_integer_generic_harness::partial::checked_isize_positive_partial",
+    "lexical_parse_integer_generic_harness::partial::checked_isize_negative_partial"
+  ],
+  "generated_models": [
+    {
+      "fresh_relative_path": ".work/runs/generic_partial-_9ysg4wa/extraction-0/GenericPartial.lean",
+      "maintained_relative_path": "aeneas/profiles/generic_partial/proofs/Generated/aarch64-apple-darwin/GenericPartial.lean",
+      "sha256": "a4125d18aafa45e65cf1dce83ac4cc816d29e914221549616c5381d4193ab971",
+      "fresh_regeneration_matches_maintained": true
+    }
+  ],
+  "native": [
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "verification/generic-harness/Cargo.toml"
+      ],
+      "rust_test_summaries": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "passed_total": 4
+    }
+  ],
+  "report_title": "Generic radix checked scalar partial helper adaptations",
+  "selected_scope_from_report": "For radix 2 through 36 and every byte slice with cursor plus remaining length\nat most usize::MAX, 18 outlined partial-mode checked scalar helpers return the\nexact accumulated value and absolute consumed cursor at the first nondigit or\nend of input, or report the first overflow or underflow at its absolute cursor.\nThe terminating nondigit is excluded from the consumed count. This covers\nunsigned and positive/negative signed modes for 8, 16, 32, 64, 128 and pointer\nwidths. Unsigned initial accumulators are arbitrary; positive and negative signed\nmodes require nonnegative and nonpositive initial accumulators, respectively.\n",
+  "limitations_from_report": "These are slice-based outlined helper bodies. Their release macro correspondence\nuses reviewed source transformations, including iterator/cursor substitution,\nruntime radix, partial-mode early return, and expansion of Option::and_then.\nThe source comparison and native tests do not formally establish Rust-to-Rust\nequivalence to the original generic parser. Unchecked prefix selection,\nsign/empty handling, full frontends, format separators and multi-digit paths\nare outside these 18 helper theorems.\n",
+  "local_evidence_only": true,
+  "online_publication_claimed": false
+}

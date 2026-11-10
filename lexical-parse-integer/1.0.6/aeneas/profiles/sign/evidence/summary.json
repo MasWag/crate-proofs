@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "status": "passed-local-only",
+  "profile": "sign",
+  "reviewed_at_utc": "2026-11-06T14:01:31.891941+00:00",
+  "run_id": "sign-ojzz29eb",
+  "run_relative_path": ".work/runs/sign-ojzz29eb",
+  "host": "aarch64-apple-darwin",
+  "target": "aarch64-apple-darwin",
+  "offline": true,
+  "result_sha256": "7c8d11381c0f61344a4181171226804adbc0ce497e6d71deef2e63797af53e7d",
+  "input_fingerprint_sha256": "20cf8cfc146a50936197081d593dd21996be2f1efa9b82bc8327fe425fdbfc93",
+  "inputs_before_after_equal": true,
+  "audit_result_sha256": "1f20df73820240700ec060ee755aa002aeed8da7c37836bd4987eae62950178d",
+  "audit_inputs_before_after_equal": true,
+  "checked_theorems": 1,
+  "mapping_metadata_checked": true,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "mapped_apis": [
+    "lexical_parse_integer_sign_harness::parse_sign_state"
+  ],
+  "generated_models": [
+    {
+      "fresh_relative_path": ".work/runs/sign-ojzz29eb/extraction-0/Sign.lean",
+      "maintained_relative_path": "aeneas/profiles/sign/proofs/Generated/aarch64-apple-darwin/Sign.lean",
+      "sha256": "5a1cd4db56d7120aac355007f7cc7bd9a4cd22f69f7b970f6a2b163d05d44834",
+      "fresh_regeneration_matches_maintained": true
+    }
+  ],
+  "native": [
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "verification/sign-harness/Cargo.toml"
+      ],
+      "rust_test_summaries": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "passed_total": 1
+    }
+  ],
+  "report_title": "Sign helper in lexical-parse-integer 1.0.6",
+  "selected_scope_from_report": "For every optional byte and flag combination, provided an accepted sign can advance the cursor without exceeding usize::MAX, the adapted sign helper returns the specified result, cursor, and error index. Errors and absence of a sign leave the cursor unchanged.",
+  "limitations_from_report": "The harness exposes byte, cursor, and computed flags as arguments. Its textual release macro correspondence is checked separately from Lean; caller flag computation and the full parser are outside this profile.",
+  "local_evidence_only": true,
+  "online_publication_claimed": false
+}

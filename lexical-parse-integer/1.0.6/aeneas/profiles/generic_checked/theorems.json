@@ -1,0 +1,190 @@
+{
+  "checked": [
+    {
+      "name": "LexicalGenericU8Proofs.checked_u8_spec",
+      "module": "Proofs.UnsignedU8",
+      "scope": "public-model",
+      "precondition": "Initial unsigned accumulator is arbitrary; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+    },
+    {
+      "name": "LexicalGenericU16Proofs.checked_u16_spec",
+      "module": "Proofs.UnsignedU16",
+      "scope": "public-model",
+      "precondition": "Initial unsigned accumulator is arbitrary; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+    },
+    {
+      "name": "LexicalGenericU32Proofs.checked_u32_spec",
+      "module": "Proofs.UnsignedU32",
+      "scope": "public-model",
+      "precondition": "Initial unsigned accumulator is arbitrary; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+    },
+    {
+      "name": "LexicalGenericU64Proofs.checked_u64_spec",
+      "module": "Proofs.UnsignedU64",
+      "scope": "public-model",
+      "precondition": "Initial unsigned accumulator is arbitrary; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+    },
+    {
+      "name": "LexicalGenericU128Proofs.checked_u128_spec",
+      "module": "Proofs.UnsignedU128",
+      "scope": "public-model",
+      "precondition": "Initial unsigned accumulator is arbitrary; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+    },
+    {
+      "name": "LexicalGenericUsizeProofs.checked_usize_spec",
+      "module": "Proofs.UnsignedUsize",
+      "scope": "public-model",
+      "precondition": "Initial unsigned accumulator is arbitrary; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+    },
+    {
+      "name": "LexicalGenericI8PosProofs.checked_i8_positive_spec",
+      "module": "Proofs.SignedI8Pos",
+      "scope": "public-model",
+      "precondition": "Initial signed accumulator is nonnegative; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+    },
+    {
+      "name": "LexicalGenericI8NegProofs.checked_i8_negative_spec",
+      "module": "Proofs.SignedI8Neg",
+      "scope": "public-model",
+      "precondition": "Initial signed accumulator is nonpositive; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+    },
+    {
+      "name": "LexicalGenericI16PosProofs.checked_i16_positive_spec",
+      "module": "Proofs.SignedI16Pos",
+      "scope": "public-model",
+      "precondition": "Initial signed accumulator is nonnegative; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+    },
+    {
+      "name": "LexicalGenericI16NegProofs.checked_i16_negative_spec",
+      "module": "Proofs.SignedI16Neg",
+      "scope": "public-model",
+      "precondition": "Initial signed accumulator is nonpositive; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+    },
+    {
+      "name": "LexicalGenericI32PosProofs.checked_i32_positive_spec",
+      "module": "Proofs.SignedI32Pos",
+      "scope": "public-model",
+      "precondition": "Initial signed accumulator is nonnegative; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+    },
+    {
+      "name": "LexicalGenericI32NegProofs.checked_i32_negative_spec",
+      "module": "Proofs.SignedI32Neg",
+      "scope": "public-model",
+      "precondition": "Initial signed accumulator is nonpositive; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+    },
+    {
+      "name": "LexicalGenericI64PosProofs.checked_i64_positive_spec",
+      "module": "Proofs.SignedI64Pos",
+      "scope": "public-model",
+      "precondition": "Initial signed accumulator is nonnegative; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+    },
+    {
+      "name": "LexicalGenericI64NegProofs.checked_i64_negative_spec",
+      "module": "Proofs.SignedI64Neg",
+      "scope": "public-model",
+      "precondition": "Initial signed accumulator is nonpositive; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+    },
+    {
+      "name": "LexicalGenericI128PosProofs.checked_i128_positive_spec",
+      "module": "Proofs.SignedI128Pos",
+      "scope": "public-model",
+      "precondition": "Initial signed accumulator is nonnegative; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+    },
+    {
+      "name": "LexicalGenericI128NegProofs.checked_i128_negative_spec",
+      "module": "Proofs.SignedI128Neg",
+      "scope": "public-model",
+      "precondition": "Initial signed accumulator is nonpositive; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+    },
+    {
+      "name": "LexicalGenericIsizePosProofs.checked_isize_positive_spec",
+      "module": "Proofs.SignedIsizePos",
+      "scope": "public-model",
+      "precondition": "Initial signed accumulator is nonnegative; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+    },
+    {
+      "name": "LexicalGenericIsizeNegProofs.checked_isize_negative_spec",
+      "module": "Proofs.SignedIsizeNeg",
+      "scope": "public-model",
+      "precondition": "Initial signed accumulator is nonpositive; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+    }
+  ],
+  "recorder_mappings": [
+    {
+      "api": "lexical_parse_integer_generic_harness::checked_u8",
+      "theorem": "LexicalGenericU8Proofs.checked_u8_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::checked_u16",
+      "theorem": "LexicalGenericU16Proofs.checked_u16_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::checked_u32",
+      "theorem": "LexicalGenericU32Proofs.checked_u32_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::checked_u64",
+      "theorem": "LexicalGenericU64Proofs.checked_u64_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::checked_u128",
+      "theorem": "LexicalGenericU128Proofs.checked_u128_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::checked_usize",
+      "theorem": "LexicalGenericUsizeProofs.checked_usize_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::checked_i8_positive",
+      "theorem": "LexicalGenericI8PosProofs.checked_i8_positive_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::checked_i8_negative",
+      "theorem": "LexicalGenericI8NegProofs.checked_i8_negative_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::checked_i16_positive",
+      "theorem": "LexicalGenericI16PosProofs.checked_i16_positive_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::checked_i16_negative",
+      "theorem": "LexicalGenericI16NegProofs.checked_i16_negative_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::checked_i32_positive",
+      "theorem": "LexicalGenericI32PosProofs.checked_i32_positive_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::checked_i32_negative",
+      "theorem": "LexicalGenericI32NegProofs.checked_i32_negative_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::checked_i64_positive",
+      "theorem": "LexicalGenericI64PosProofs.checked_i64_positive_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::checked_i64_negative",
+      "theorem": "LexicalGenericI64NegProofs.checked_i64_negative_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::checked_i128_positive",
+      "theorem": "LexicalGenericI128PosProofs.checked_i128_positive_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::checked_i128_negative",
+      "theorem": "LexicalGenericI128NegProofs.checked_i128_negative_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::checked_isize_positive",
+      "theorem": "LexicalGenericIsizePosProofs.checked_isize_positive_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::checked_isize_negative",
+      "theorem": "LexicalGenericIsizeNegProofs.checked_isize_negative_spec"
+    }
+  ],
+  "extracted_but_unproved": [
+    "lexical_parse_integer::algorithm::algorithm_complete",
+    "lexical_parse_integer::algorithm::algorithm_partial"
+  ]
+}

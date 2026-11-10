@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "status": "passed-local-only",
+  "profile": "options_strict_adapted",
+  "reviewed_at_utc": "2026-11-06T14:01:31.891941+00:00",
+  "run_id": "options_strict_adapted-25t1ib4w",
+  "run_relative_path": ".work/runs/options_strict_adapted-25t1ib4w",
+  "host": "aarch64-apple-darwin",
+  "target": "aarch64-apple-darwin",
+  "offline": true,
+  "result_sha256": "3930ff951f03e9e9e77ca7a59b727957cc0928b76a788e78ea9778113c19a075",
+  "input_fingerprint_sha256": "eeec19b846acc285d9c1e1ddddb32792c855961920b76fb735bfb8460cd2a88a",
+  "inputs_before_after_equal": true,
+  "audit_result_sha256": "4553c28bd42f38ca3b24320db25e34c9c7533c47d8accba717d1659f362523e7",
+  "audit_inputs_before_after_equal": true,
+  "checked_theorems": 3,
+  "mapping_metadata_checked": true,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "mapped_apis": [
+    "lexical_parse_integer_options_strict_adapted::options::OptionsBuilder::build_strict",
+    "lexical_parse_integer_options_strict_adapted::options::SMALL_NUMBERS",
+    "lexical_parse_integer_options_strict_adapted::options::LARGE_NUMBERS"
+  ],
+  "generated_models": [
+    {
+      "fresh_relative_path": ".work/runs/options_strict_adapted-25t1ib4w/extraction-0/Strict.lean",
+      "maintained_relative_path": "aeneas/profiles/options_strict_adapted/proofs/Generated/aarch64-apple-darwin/Strict.lean",
+      "sha256": "3df0097b75727f2ae4f0bfd6db79cb2c967b9be121f4dc8719e5f040c4257be5",
+      "fresh_regeneration_matches_maintained": true
+    }
+  ],
+  "native": [
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "verification/options-strict-harness/Cargo.toml",
+        "--features",
+        "power-of-two",
+        "--test",
+        "strict_compare"
+      ],
+      "rust_test_summaries": [
+        [
+          2,
+          0,
+          0
+        ]
+      ],
+      "passed_total": 2
+    }
+  ],
+  "report_title": "Adapted strict options construction",
+  "selected_scope_from_report": "The adapted strict constructor returns options with the builder's Boolean state; adapted SMALL_NUMBERS and LARGE_NUMBERS have true and false states respectively. The separately proved release build returns Ok for either state, so its error branch is unreachable under that contract.",
+  "limitations_from_report": "The copied source replaces the build_strict error-arm panic with build_unchecked. A source checker checks the copy and manifest against the release with that replacement. These mappings name the adapted crate; formal Rust-to-Rust equivalence is not established. Unchanged build_strict encounters an Aeneas internal error at the panic branch.",
+  "local_evidence_only": true,
+  "online_publication_claimed": false
+}

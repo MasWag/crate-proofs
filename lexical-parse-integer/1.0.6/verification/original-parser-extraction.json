@@ -1,0 +1,8 @@
+{
+  "entries": ["crate::algorithm::algorithm_complete"],
+  "llbc": "LexicalParseInteger.llbc",
+  "cargo_args": ["--lib", "--locked"],
+  "models": {
+    "LexicalParseInteger.lean": ["algorithm.algorithm_complete"]
+  }
+}

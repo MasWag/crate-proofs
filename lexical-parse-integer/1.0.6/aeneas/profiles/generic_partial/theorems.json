@@ -1,0 +1,190 @@
+{
+  "checked": [
+    {
+      "name": "LexicalGenericPartialU8Proofs.checked_u8_partial_spec",
+      "module": "Proofs.UnsignedU8",
+      "scope": "public-model",
+      "precondition": "Initial unsigned accumulator is arbitrary; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+    },
+    {
+      "name": "LexicalGenericPartialU16Proofs.checked_u16_partial_spec",
+      "module": "Proofs.UnsignedU16",
+      "scope": "public-model",
+      "precondition": "Initial unsigned accumulator is arbitrary; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+    },
+    {
+      "name": "LexicalGenericPartialU32Proofs.checked_u32_partial_spec",
+      "module": "Proofs.UnsignedU32",
+      "scope": "public-model",
+      "precondition": "Initial unsigned accumulator is arbitrary; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+    },
+    {
+      "name": "LexicalGenericPartialU64Proofs.checked_u64_partial_spec",
+      "module": "Proofs.UnsignedU64",
+      "scope": "public-model",
+      "precondition": "Initial unsigned accumulator is arbitrary; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+    },
+    {
+      "name": "LexicalGenericPartialU128Proofs.checked_u128_partial_spec",
+      "module": "Proofs.UnsignedU128",
+      "scope": "public-model",
+      "precondition": "Initial unsigned accumulator is arbitrary; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+    },
+    {
+      "name": "LexicalGenericPartialUsizeProofs.checked_usize_partial_spec",
+      "module": "Proofs.UnsignedUsize",
+      "scope": "public-model",
+      "precondition": "Initial unsigned accumulator is arbitrary; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+    },
+    {
+      "name": "LexicalGenericPartialI8PosProofs.checked_i8_positive_partial_spec",
+      "module": "Proofs.SignedI8Pos",
+      "scope": "public-model",
+      "precondition": "Initial signed accumulator is nonnegative; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+    },
+    {
+      "name": "LexicalGenericPartialI8NegProofs.checked_i8_negative_partial_spec",
+      "module": "Proofs.SignedI8Neg",
+      "scope": "public-model",
+      "precondition": "Initial signed accumulator is nonpositive; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+    },
+    {
+      "name": "LexicalGenericPartialI16PosProofs.checked_i16_positive_partial_spec",
+      "module": "Proofs.SignedI16Pos",
+      "scope": "public-model",
+      "precondition": "Initial signed accumulator is nonnegative; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+    },
+    {
+      "name": "LexicalGenericPartialI16NegProofs.checked_i16_negative_partial_spec",
+      "module": "Proofs.SignedI16Neg",
+      "scope": "public-model",
+      "precondition": "Initial signed accumulator is nonpositive; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+    },
+    {
+      "name": "LexicalGenericPartialI32PosProofs.checked_i32_positive_partial_spec",
+      "module": "Proofs.SignedI32Pos",
+      "scope": "public-model",
+      "precondition": "Initial signed accumulator is nonnegative; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+    },
+    {
+      "name": "LexicalGenericPartialI32NegProofs.checked_i32_negative_partial_spec",
+      "module": "Proofs.SignedI32Neg",
+      "scope": "public-model",
+      "precondition": "Initial signed accumulator is nonpositive; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+    },
+    {
+      "name": "LexicalGenericPartialI64PosProofs.checked_i64_positive_partial_spec",
+      "module": "Proofs.SignedI64Pos",
+      "scope": "public-model",
+      "precondition": "Initial signed accumulator is nonnegative; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+    },
+    {
+      "name": "LexicalGenericPartialI64NegProofs.checked_i64_negative_partial_spec",
+      "module": "Proofs.SignedI64Neg",
+      "scope": "public-model",
+      "precondition": "Initial signed accumulator is nonpositive; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+    },
+    {
+      "name": "LexicalGenericPartialI128PosProofs.checked_i128_positive_partial_spec",
+      "module": "Proofs.SignedI128Pos",
+      "scope": "public-model",
+      "precondition": "Initial signed accumulator is nonnegative; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+    },
+    {
+      "name": "LexicalGenericPartialI128NegProofs.checked_i128_negative_partial_spec",
+      "module": "Proofs.SignedI128Neg",
+      "scope": "public-model",
+      "precondition": "Initial signed accumulator is nonpositive; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+    },
+    {
+      "name": "LexicalGenericPartialIsizePosProofs.checked_isize_positive_partial_spec",
+      "module": "Proofs.SignedIsizePos",
+      "scope": "public-model",
+      "precondition": "Initial signed accumulator is nonnegative; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+    },
+    {
+      "name": "LexicalGenericPartialIsizeNegProofs.checked_isize_negative_partial_spec",
+      "module": "Proofs.SignedIsizeNeg",
+      "scope": "public-model",
+      "precondition": "Initial signed accumulator is nonpositive; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+    }
+  ],
+  "recorder_mappings": [
+    {
+      "api": "lexical_parse_integer_generic_harness::partial::checked_u8_partial",
+      "theorem": "LexicalGenericPartialU8Proofs.checked_u8_partial_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::partial::checked_u16_partial",
+      "theorem": "LexicalGenericPartialU16Proofs.checked_u16_partial_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::partial::checked_u32_partial",
+      "theorem": "LexicalGenericPartialU32Proofs.checked_u32_partial_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::partial::checked_u64_partial",
+      "theorem": "LexicalGenericPartialU64Proofs.checked_u64_partial_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::partial::checked_u128_partial",
+      "theorem": "LexicalGenericPartialU128Proofs.checked_u128_partial_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::partial::checked_usize_partial",
+      "theorem": "LexicalGenericPartialUsizeProofs.checked_usize_partial_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::partial::checked_i8_positive_partial",
+      "theorem": "LexicalGenericPartialI8PosProofs.checked_i8_positive_partial_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::partial::checked_i8_negative_partial",
+      "theorem": "LexicalGenericPartialI8NegProofs.checked_i8_negative_partial_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::partial::checked_i16_positive_partial",
+      "theorem": "LexicalGenericPartialI16PosProofs.checked_i16_positive_partial_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::partial::checked_i16_negative_partial",
+      "theorem": "LexicalGenericPartialI16NegProofs.checked_i16_negative_partial_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::partial::checked_i32_positive_partial",
+      "theorem": "LexicalGenericPartialI32PosProofs.checked_i32_positive_partial_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::partial::checked_i32_negative_partial",
+      "theorem": "LexicalGenericPartialI32NegProofs.checked_i32_negative_partial_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::partial::checked_i64_positive_partial",
+      "theorem": "LexicalGenericPartialI64PosProofs.checked_i64_positive_partial_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::partial::checked_i64_negative_partial",
+      "theorem": "LexicalGenericPartialI64NegProofs.checked_i64_negative_partial_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::partial::checked_i128_positive_partial",
+      "theorem": "LexicalGenericPartialI128PosProofs.checked_i128_positive_partial_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::partial::checked_i128_negative_partial",
+      "theorem": "LexicalGenericPartialI128NegProofs.checked_i128_negative_partial_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::partial::checked_isize_positive_partial",
+      "theorem": "LexicalGenericPartialIsizePosProofs.checked_isize_positive_partial_spec"
+    },
+    {
+      "api": "lexical_parse_integer_generic_harness::partial::checked_isize_negative_partial",
+      "theorem": "LexicalGenericPartialIsizeNegProofs.checked_isize_negative_partial_spec"
+    }
+  ],
+  "extracted_but_unproved": [
+    "lexical_parse_integer::algorithm::algorithm_complete",
+    "lexical_parse_integer::algorithm::algorithm_partial"
+  ]
+}

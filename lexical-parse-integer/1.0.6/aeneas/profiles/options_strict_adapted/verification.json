@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "supported_targets": ["aarch64-apple-darwin"],
+  "native": [
+    ["cargo", "test", "--locked", "--offline", "--manifest-path", "verification/options-strict-harness/Cargo.toml", "--features", "power-of-two", "--test", "strict_compare"]
+  ],
+  "extractions": [
+    {
+      "config": "extraction.json",
+      "cwd": "verification/options-strict-harness",
+      "models": {"Strict.lean": "proofs/Generated/@TARGET@/Strict.lean"}
+    }
+  ],
+  "inventory": "theorems.json",
+  "report": "proofs.toml",
+  "lean_dir": "proofs",
+  "additional_checks": [
+    ["python3.11", "scripts/check-execution-config.py"],
+    ["python3.11", "verification/options-strict-harness/check-adaptation.py"],
+    ["python3.11", "scripts/check-original-options-blocker.py"]
+  ],
+  "post_checks": [
+    ["python3.11", "scripts/check-execution-config.py"],
+    ["python3.11", "verification/options-strict-harness/check-adaptation.py"],
+    ["python3.11", "scripts/check-original-options-blocker.py"]
+  ]
+}

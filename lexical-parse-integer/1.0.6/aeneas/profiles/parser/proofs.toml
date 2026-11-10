@@ -1,0 +1,90 @@
+[report]
+title = "Decimal scalar loops and u8 and i8 parser adaptations"
+explanation = """
+For every byte slice, the adapted standard decimal complete and partial u8 and
+i8 parsers return the specified value or error, including sign handling, the
+first overflow, underflow, or invalid-byte position, and the consumed count in partial mode.
+The signed contracts account for the asymmetric i8 limits. The checked u32 and
+u8 scalar loops allow arbitrary initial accumulators; the positive and negative
+i32 loops require nonnegative and nonpositive initial accumulators, respectively.
+Cursor-based loops require cursor plus remaining length to fit in usize. The
+unchecked u8 loop is covered starting at zero with at most two bytes. Separately,
+lexical-util's extracted char_to_digit_const returns the specified ASCII digit
+option for every byte and radix from 2 through 36.
+"""
+trusted_assumptions = "The result relies on the pinned Rust-to-Lean translation, Aeneas scalar and slice models, and Lean kernel."
+limitations = """
+The parser mappings concern harness adaptations, not the original generic
+release parser. The scalar loops outline the release macro and replace its
+iterator with slices; a source checker checks the specified loop transformations.
+The selected front ends and iterator adaptation were separately reviewed.
+Neither source comparison nor review is a formal Rust-to-Rust equivalence proof.
+Other widths and formats and block fast-path integration are outside these front-end
+theorems. The digit conversion mapping concerns the extracted lexical-util body.
+"""
+environment = "Pinned unmodified Aeneas and Charon, Lean 4.35.0, macOS arm64. Native release correspondence tests are separate from formal proofs; see profile results for run status."
+
+[tool]
+name = "aeneas"
+version = "be86ab0f1989d04944292b345b24c435be3ad10a"
+lean_dir = ".work/selected-proofs"
+
+[[tool.proofs]]
+api = "lexical_parse_integer_parser_harness::checked_u32"
+module = "Proofs.Scalar"
+theorem = "LexicalScalarProofs.checked_u32_spec"
+precondition = "Outlines the default decimal checked scalar loop from the release macro; input bytes and initial u32 value are arbitrary. This is the harness helper, not the complete parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_parser_harness::checked_i32_negative_from"
+module = "Proofs.Signed"
+theorem = "LexicalScalarProofs.checked_i32_negative_from_spec"
+precondition = "Initial i32 value is nonpositive and cursor + input length fits usize; this is the outlined negative checked scalar helper, not the complete parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_parser_harness::checked_i32_positive_from"
+module = "Proofs.Positive"
+theorem = "LexicalScalarProofs.checked_i32_positive_from_spec"
+precondition = "Initial i32 value is nonnegative and cursor + input length fits usize; this is the outlined positive checked scalar helper, not the complete parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_parser_harness::checked_u8_from"
+module = "Proofs.U8"
+theorem = "LexicalScalarProofs.checked_u8_from_spec"
+precondition = "Initial cursor plus input length fits usize; this is the outlined u8 checked scalar loop."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_parser_harness::unchecked_u8_from"
+module = "Proofs.U8"
+theorem = "LexicalScalarProofs.unchecked_u8_from_spec"
+precondition = "Initial value is zero, input length is at most two, and cursor plus length fits usize; this is the outlined u8 unchecked scalar loop."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_parser_harness::complete_u8"
+module = "Proofs.Complete"
+theorem = "LexicalScalarProofs.complete_u8_success"
+precondition = "No input precondition. This proves the separately reviewed default-format u8 front-end adaptation, not the original generic parser body."
+
+[[tool.proofs]]
+api = "lexical_util::digit::char_to_digit_const"
+module = "Proofs.Digit"
+theorem = "LexicalDigitProofs.char_to_digit_const_spec"
+precondition = "Radix is between 2 and 36 inclusive; this maps an extracted lexical-util dependency body, not lexical-parse-integer source."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_parser_harness::partial_u8"
+module = "Proofs.Partial"
+theorem = "LexicalScalarProofs.partial_u8_success"
+precondition = "No input precondition. This proves the separately reviewed default-format partial u8 front-end adaptation, including value, count, and error index."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_parser_harness::complete_i8"
+module = "Proofs.I8Front"
+theorem = "LexicalScalarProofs.complete_i8_success"
+precondition = "No input precondition. This proves the separately reviewed default-format signed i8 complete front-end adaptation, including sign, value, and error index."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_parser_harness::partial_i8"
+module = "Proofs.I8Partial"
+theorem = "LexicalScalarProofs.partial_i8_success"
+precondition = "No input precondition. This proves the separately reviewed default-format signed i8 partial front-end adaptation, including sign, value, count, and error index."

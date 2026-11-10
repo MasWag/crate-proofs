@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "supported_targets": ["aarch64-apple-darwin"],
+  "native": [
+    ["cargo", "test", "--locked"],
+    ["cargo", "test", "--locked", "--manifest-path", "verification/parser-harness/Cargo.toml"]
+  ],
+  "extractions": [
+    {
+      "config": "extraction.json",
+      "cwd": "verification/parser-harness",
+      "models": {
+        "Parser.lean": "proofs/Generated/@TARGET@/Parser.lean"
+      }
+    }
+  ],
+  "inventory": "theorems.json",
+  "report": "proofs.toml",
+  "lean_dir": "proofs",
+  "additional_checks": [
+    ["python3.11", "scripts/check-execution-config.py"],
+    ["python3.11", "scripts/check-parser-adaptation.py"]
+  ],
+  "post_checks": [
+    ["python3.11", "scripts/check-execution-config.py"],
+    ["python3.11", "scripts/check-parser-adaptation.py"]
+  ]
+}

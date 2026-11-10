@@ -1,0 +1,17 @@
+name = "lexical_parse_integer_caller_proofs"
+version = "0.1.0"
+defaultTargets = ["CallerProofs"]
+
+[[require]]
+name = "lexical_parse_integer_proofs"
+path = "../../default/proofs"
+
+[[lean_lib]]
+name = "LexicalParseIntegerCallerSafe"
+srcDir = "Generated/@TARGET@"
+
+[[lean_lib]]
+name = "CallerSpecs"
+
+[[lean_lib]]
+name = "CallerProofs"

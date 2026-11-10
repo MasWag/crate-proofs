@@ -1,0 +1,17 @@
+name = "lexical_parse_integer_proofs"
+version = "0.1.0"
+defaultTargets = ["Proofs"]
+
+[[require]]
+name = "aeneas"
+path = "@AENEAS_BACKEND@"
+
+[[lean_lib]]
+name = "LexicalParseInteger"
+srcDir = "Generated/@TARGET@"
+
+[[lean_lib]]
+name = "Specs"
+
+[[lean_lib]]
+name = "Proofs"

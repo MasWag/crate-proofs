@@ -1,0 +1,9 @@
+[package]
+name = "lexical-parse-integer-radix-harness"
+version = "1.0.6"
+edition = "2021"
+
+[lib]
+path = "src/lib.rs"
+
+[workspace]

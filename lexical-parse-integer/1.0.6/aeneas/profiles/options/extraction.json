@@ -1,0 +1,48 @@
+{
+  "entries": [
+    "crate::options::OptionsBuilder::new",
+    "crate::options::OptionsBuilder::get_no_multi_digit",
+    "crate::options::OptionsBuilder::no_multi_digit",
+    "crate::options::OptionsBuilder::is_valid",
+    "crate::options::OptionsBuilder::build_unchecked",
+    "crate::options::OptionsBuilder::build",
+    "crate::options::Options::new",
+    "crate::options::Options::from_radix",
+    "crate::options::Options::is_valid",
+    "crate::options::Options::get_no_multi_digit",
+    "crate::options::Options::no_multi_digit",
+    "crate::options::Options::set_no_multi_digit",
+    "crate::options::Options::builder",
+    "crate::options::Options::rebuild",
+    "crate::options::STANDARD"
+  ],
+  "foreign_impl_entries": [
+    "{impl core::default::Default for crate::options::OptionsBuilder}::default",
+    "{impl core::default::Default for crate::options::Options}::default",
+    "{impl lexical_util::options::ParseOptions for crate::options::Options}::is_valid"
+  ],
+  "llbc": "Options.llbc",
+  "cargo_args": ["--lib", "--locked", "--offline", "--features", "power-of-two"],
+  "models": {
+    "Options.lean": [
+      "options.OptionsBuilder.new",
+      "options.OptionsBuilder.get_no_multi_digit",
+      "options.OptionsBuilder.impl.no_multi_digit",
+      "options.OptionsBuilder.is_valid",
+      "options.OptionsBuilder.build_unchecked",
+      "options.OptionsBuilder.build",
+      "options.OptionsBuilder.Insts.CoreDefaultDefault.default",
+      "options.Options.builder",
+      "options.Options.new",
+      "options.Options.from_radix",
+      "options.Options.rebuild",
+      "options.Options.is_valid",
+      "options.Options.get_no_multi_digit",
+      "options.Options.impl.no_multi_digit",
+      "options.Options.set_no_multi_digit",
+      "options.Options.Insts.CoreDefaultDefault.default",
+      "options.Options.Insts.Lexical_utilOptionsParseOptions.is_valid",
+      "options.STANDARD"
+    ]
+  }
+}

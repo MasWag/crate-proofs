@@ -1,0 +1,11 @@
+--- trial-no-multidigit/src/algorithm.rs
++++ trial-else-if/src/algorithm.rs
+@@ -658,7 +658,7 @@
+     let mut value = T::ZERO;
+     if cannot_overflow && is_negative {
+         parse_digits_unchecked!(value, iter, wrapping_sub, start_index, $invalid_digit, $no_multi_digit, true);
+-    } if cannot_overflow {
++    } else if cannot_overflow {
+         parse_digits_unchecked!(value, iter, wrapping_add, start_index, $invalid_digit, $no_multi_digit, true);
+     } else if is_negative {
+         parse_digits_checked!(value, iter, checked_sub, wrapping_sub, start_index, $invalid_digit, Underflow, $no_multi_digit, overflow_digits);

@@ -1,0 +1,19 @@
+{
+  "entries": ["crate::try4_u32", "crate::try8_u64"],
+  "dependency_include": [
+    "lexical_parse_integer::algorithm::try_parse_4digits",
+    "lexical_parse_integer::algorithm::try_parse_8digits",
+    "lexical_parse_integer::algorithm::is_4digits",
+    "lexical_parse_integer::algorithm::parse_4digits",
+    "lexical_parse_integer::algorithm::is_8digits",
+    "lexical_parse_integer::algorithm::parse_8digits",
+    "lexical_util::iterator::Iter::peek_u32",
+    "lexical_util::iterator::Iter::peek_u64",
+    "lexical_util::noskip"
+  ],
+  "llbc": "LexicalParseIntegerCaller.llbc",
+  "cargo_args": ["--lib", "--locked", "--offline"],
+  "models": {
+    "LexicalParseIntegerCaller.lean": ["try4_u32", "try8_u64"]
+  }
+}

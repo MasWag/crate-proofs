@@ -1,0 +1,191 @@
+{
+  "checked": [
+    {
+      "name": "LexicalParseIntegerOptionsProofs.builder_new",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "Every call returns normally with no_multi_digit=true."
+    },
+    {
+      "name": "LexicalParseIntegerOptionsProofs.builder_get",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "For either Boolean state, returns that state."
+    },
+    {
+      "name": "LexicalParseIntegerOptionsProofs.builder_set",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "For either initial state and requested Boolean, returns a builder carrying the requested state."
+    },
+    {
+      "name": "LexicalParseIntegerOptionsProofs.builder_valid",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "For either Boolean state, returns true."
+    },
+    {
+      "name": "LexicalParseIntegerOptionsProofs.builder_build_unchecked",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "For either Boolean state, returns options carrying the same state."
+    },
+    {
+      "name": "LexicalParseIntegerOptionsProofs.builder_build",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "For either Boolean state, returns Ok options carrying the same state."
+    },
+    {
+      "name": "LexicalParseIntegerOptionsProofs.builder_default",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "Every call returns normally with no_multi_digit=true."
+    },
+    {
+      "name": "LexicalParseIntegerOptionsProofs.options_builder",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "Every call returns a default-state builder."
+    },
+    {
+      "name": "LexicalParseIntegerOptionsProofs.options_new",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "Every call returns normally with no_multi_digit=true."
+    },
+    {
+      "name": "LexicalParseIntegerOptionsProofs.options_from_radix",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "With power-of-two enabled, for every u8 radix argument, returns default-state options without validating the radix."
+    },
+    {
+      "name": "LexicalParseIntegerOptionsProofs.options_rebuild",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "For either Boolean state, returns a builder carrying the same state."
+    },
+    {
+      "name": "LexicalParseIntegerOptionsProofs.options_valid",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "For either Boolean state, returns true."
+    },
+    {
+      "name": "LexicalParseIntegerOptionsProofs.options_get",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "For either Boolean state, returns that state."
+    },
+    {
+      "name": "LexicalParseIntegerOptionsProofs.options_no_multi_digit",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "For either initial state and requested Boolean, updates borrowed options to the requested state and returns normally."
+    },
+    {
+      "name": "LexicalParseIntegerOptionsProofs.options_set_no_multi_digit",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "For either initial state and requested Boolean, updates borrowed options to the requested state and returns normally."
+    },
+    {
+      "name": "LexicalParseIntegerOptionsProofs.options_default",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "Every call returns normally with no_multi_digit=true."
+    },
+    {
+      "name": "LexicalParseIntegerOptionsProofs.parse_options_valid",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "For either Boolean state, trait forwarding returns true."
+    },
+    {
+      "name": "LexicalParseIntegerOptionsProofs.standard_state",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "The release constant evaluates normally to options with no_multi_digit=true."
+    }
+  ],
+  "recorder_mappings": [
+    {
+      "api": "lexical_parse_integer::options::OptionsBuilder::new",
+      "theorem": "LexicalParseIntegerOptionsProofs.builder_new"
+    },
+    {
+      "api": "lexical_parse_integer::options::OptionsBuilder::get_no_multi_digit",
+      "theorem": "LexicalParseIntegerOptionsProofs.builder_get"
+    },
+    {
+      "api": "lexical_parse_integer::options::OptionsBuilder::no_multi_digit",
+      "theorem": "LexicalParseIntegerOptionsProofs.builder_set"
+    },
+    {
+      "api": "lexical_parse_integer::options::OptionsBuilder::is_valid",
+      "theorem": "LexicalParseIntegerOptionsProofs.builder_valid"
+    },
+    {
+      "api": "lexical_parse_integer::options::OptionsBuilder::build_unchecked",
+      "theorem": "LexicalParseIntegerOptionsProofs.builder_build_unchecked"
+    },
+    {
+      "api": "lexical_parse_integer::options::OptionsBuilder::build",
+      "theorem": "LexicalParseIntegerOptionsProofs.builder_build"
+    },
+    {
+      "api": "lexical_parse_integer::options::<OptionsBuilder as Default>::default",
+      "theorem": "LexicalParseIntegerOptionsProofs.builder_default"
+    },
+    {
+      "api": "lexical_parse_integer::options::Options::builder",
+      "theorem": "LexicalParseIntegerOptionsProofs.options_builder"
+    },
+    {
+      "api": "lexical_parse_integer::options::Options::new",
+      "theorem": "LexicalParseIntegerOptionsProofs.options_new"
+    },
+    {
+      "api": "lexical_parse_integer::options::Options::from_radix",
+      "theorem": "LexicalParseIntegerOptionsProofs.options_from_radix"
+    },
+    {
+      "api": "lexical_parse_integer::options::Options::rebuild",
+      "theorem": "LexicalParseIntegerOptionsProofs.options_rebuild"
+    },
+    {
+      "api": "lexical_parse_integer::options::Options::is_valid",
+      "theorem": "LexicalParseIntegerOptionsProofs.options_valid"
+    },
+    {
+      "api": "lexical_parse_integer::options::Options::get_no_multi_digit",
+      "theorem": "LexicalParseIntegerOptionsProofs.options_get"
+    },
+    {
+      "api": "lexical_parse_integer::options::Options::no_multi_digit",
+      "theorem": "LexicalParseIntegerOptionsProofs.options_no_multi_digit"
+    },
+    {
+      "api": "lexical_parse_integer::options::Options::set_no_multi_digit",
+      "theorem": "LexicalParseIntegerOptionsProofs.options_set_no_multi_digit"
+    },
+    {
+      "api": "lexical_parse_integer::options::<Options as Default>::default",
+      "theorem": "LexicalParseIntegerOptionsProofs.options_default"
+    },
+    {
+      "api": "lexical_parse_integer::options::<Options as lexical_util::options::ParseOptions>::is_valid",
+      "theorem": "LexicalParseIntegerOptionsProofs.parse_options_valid"
+    },
+    {
+      "api": "lexical_parse_integer::options::STANDARD",
+      "theorem": "LexicalParseIntegerOptionsProofs.standard_state"
+    }
+  ],
+  "extracted_but_unproved": [
+    "OptionsBuilder::build_strict",
+    "SMALL_NUMBERS",
+    "LARGE_NUMBERS"
+  ]
+}

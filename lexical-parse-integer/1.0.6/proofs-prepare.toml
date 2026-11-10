@@ -1,0 +1,8 @@
+schema_version = 1
+command = ["bash", "scripts/setup.sh", "--profile", "options"]
+source_lock = "source.lock.json"
+source_dir = ".work/source"
+toolchain_lock = "aeneas/profiles/options/toolchain.lock.json"
+tool_dir = ".work/selected-tools"
+lean_source = "aeneas/profiles/options/proofs"
+lean_build = ".work/build/options/@HOST@/proofs"

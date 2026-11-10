@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "host": "aarch64-apple-darwin",
+  "cargo_home": ".work/cargo-home",
+  "cargo_invocation_cwd": ".",
+  "charon_invocation_cwds": [".", "verification/harness"],
+  "inherited_cargo_config": {
+    "path": "/Users/mwaga/.cargo/config.toml",
+    "sha256": "06f72117aa7d62643bcc985492d51243b06d64f8c28b1d766d35b3597f837bed"
+  },
+  "note": "The inherited patch is unused in this Cargo graph; Cargo.lock records it. The tool home isolates cached dependencies, not ancestor config discovery."
+}

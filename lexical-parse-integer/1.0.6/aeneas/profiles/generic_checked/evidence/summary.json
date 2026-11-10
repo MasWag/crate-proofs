@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "status": "passed-local-only",
+  "profile": "generic_checked",
+  "reviewed_at_utc": "2026-11-06T14:01:31.891941+00:00",
+  "run_id": "generic_checked-jqglkzgd",
+  "run_relative_path": ".work/runs/generic_checked-jqglkzgd",
+  "host": "aarch64-apple-darwin",
+  "target": "aarch64-apple-darwin",
+  "offline": true,
+  "result_sha256": "67250364414c4d077ba651c161a4cfcca28e396011025eebbdd190a42a4c2c26",
+  "input_fingerprint_sha256": "f6bc6e64a60a9b4eceed8e7f2c097358c82bef266ce1adfd7f971c7445e36e94",
+  "inputs_before_after_equal": true,
+  "audit_result_sha256": "8aea76836b9bfeb6d14f7263533a4b8ec44613cef9fd47539237c3a2672d15ea",
+  "audit_inputs_before_after_equal": true,
+  "checked_theorems": 18,
+  "mapping_metadata_checked": true,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "mapped_apis": [
+    "lexical_parse_integer_generic_harness::checked_u8",
+    "lexical_parse_integer_generic_harness::checked_u16",
+    "lexical_parse_integer_generic_harness::checked_u32",
+    "lexical_parse_integer_generic_harness::checked_u64",
+    "lexical_parse_integer_generic_harness::checked_u128",
+    "lexical_parse_integer_generic_harness::checked_usize",
+    "lexical_parse_integer_generic_harness::checked_i8_positive",
+    "lexical_parse_integer_generic_harness::checked_i8_negative",
+    "lexical_parse_integer_generic_harness::checked_i16_positive",
+    "lexical_parse_integer_generic_harness::checked_i16_negative",
+    "lexical_parse_integer_generic_harness::checked_i32_positive",
+    "lexical_parse_integer_generic_harness::checked_i32_negative",
+    "lexical_parse_integer_generic_harness::checked_i64_positive",
+    "lexical_parse_integer_generic_harness::checked_i64_negative",
+    "lexical_parse_integer_generic_harness::checked_i128_positive",
+    "lexical_parse_integer_generic_harness::checked_i128_negative",
+    "lexical_parse_integer_generic_harness::checked_isize_positive",
+    "lexical_parse_integer_generic_harness::checked_isize_negative"
+  ],
+  "generated_models": [
+    {
+      "fresh_relative_path": ".work/runs/generic_checked-jqglkzgd/extraction-0/GenericScalar.lean",
+      "maintained_relative_path": "aeneas/profiles/generic_checked/proofs/Generated/aarch64-apple-darwin/GenericScalar.lean",
+      "sha256": "b3b5320fa1846da3bfa5fb7b09aa67e97ab0edf9b6f5063c4caa2c417bd8c856",
+      "fresh_regeneration_matches_maintained": true
+    }
+  ],
+  "native": [
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "verification/generic-harness/Cargo.toml"
+      ],
+      "rust_test_summaries": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "passed_total": 4
+    }
+  ],
+  "report_title": "Generic radix checked scalar helper adaptations",
+  "selected_scope_from_report": "For radix 2 through 36 and every byte slice with cursor plus length at most\nusize::MAX, 18 outlined complete-mode checked scalar helpers return the first invalid digit or arithmetic overflow/underflow\nat its absolute cursor, or the exact accumulated value. This covers unsigned\nand positive/negative signed modes for 8, 16, 32, 64, 128 and pointer widths.\nPositive and negative signed modes require nonnegative and nonpositive initial\naccumulators, respectively; unsigned initial accumulators are arbitrary.\n",
+  "limitations_from_report": "These are slice-based outlined helper bodies. Their release macro correspondence\nuses reviewed source transformations, including iterator/cursor substitution,\nruntime radix, direct complete-mode invalid-digit handling, and expansion of\nOption::and_then. The source comparison and native differential tests do not\nformally establish Rust-to-Rust equivalence to the original generic parser.\nUnchecked prefix selection, sign/empty handling, partial mode, full frontends,\nformat separators and multi-digit paths are outside these 18 helper theorems.\n",
+  "local_evidence_only": true,
+  "online_publication_claimed": false
+}

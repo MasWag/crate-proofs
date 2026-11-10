@@ -1,0 +1,139 @@
+[report]
+title = "Generic radix checked scalar partial helper adaptations"
+explanation = """
+For radix 2 through 36 and every byte slice with cursor plus remaining length
+at most usize::MAX, 18 outlined partial-mode checked scalar helpers return the
+exact accumulated value and absolute consumed cursor at the first nondigit or
+end of input, or report the first overflow or underflow at its absolute cursor.
+The terminating nondigit is excluded from the consumed count. This covers
+unsigned and positive/negative signed modes for 8, 16, 32, 64, 128 and pointer
+widths. Unsigned initial accumulators are arbitrary; positive and negative signed
+modes require nonnegative and nonpositive initial accumulators, respectively.
+"""
+trusted_assumptions = "Pinned Aeneas translation, its scalar and slice models, and the Lean kernel."
+limitations = """
+These are slice-based outlined helper bodies. Their release macro correspondence
+uses reviewed source transformations, including iterator/cursor substitution,
+runtime radix, partial-mode early return, and expansion of Option::and_then.
+The source comparison and native tests do not formally establish Rust-to-Rust
+equivalence to the original generic parser. Unchecked prefix selection,
+sign/empty handling, full frontends, format separators and multi-digit paths
+are outside these 18 helper theorems.
+"""
+environment = """
+Pinned lexical-parse-integer 1.0.6 and lexical-util 1.0.7, unmodified Aeneas and
+Charon, Lean 4.35.0, macOS arm64. See profile results for run status. Native tests are separate evidence.
+"""
+
+[tool]
+name = "aeneas"
+version = "be86ab0f1989d04944292b345b24c435be3ad10a"
+lean_dir = ".work/selected-proofs"
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::partial::checked_u8_partial"
+module = "Proofs.UnsignedU8"
+theorem = "LexicalGenericPartialU8Proofs.checked_u8_partial_spec"
+precondition = "Initial unsigned accumulator is arbitrary; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::partial::checked_u16_partial"
+module = "Proofs.UnsignedU16"
+theorem = "LexicalGenericPartialU16Proofs.checked_u16_partial_spec"
+precondition = "Initial unsigned accumulator is arbitrary; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::partial::checked_u32_partial"
+module = "Proofs.UnsignedU32"
+theorem = "LexicalGenericPartialU32Proofs.checked_u32_partial_spec"
+precondition = "Initial unsigned accumulator is arbitrary; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::partial::checked_u64_partial"
+module = "Proofs.UnsignedU64"
+theorem = "LexicalGenericPartialU64Proofs.checked_u64_partial_spec"
+precondition = "Initial unsigned accumulator is arbitrary; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::partial::checked_u128_partial"
+module = "Proofs.UnsignedU128"
+theorem = "LexicalGenericPartialU128Proofs.checked_u128_partial_spec"
+precondition = "Initial unsigned accumulator is arbitrary; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::partial::checked_usize_partial"
+module = "Proofs.UnsignedUsize"
+theorem = "LexicalGenericPartialUsizeProofs.checked_usize_partial_spec"
+precondition = "Initial unsigned accumulator is arbitrary; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::partial::checked_i8_positive_partial"
+module = "Proofs.SignedI8Pos"
+theorem = "LexicalGenericPartialI8PosProofs.checked_i8_positive_partial_spec"
+precondition = "Initial signed accumulator is nonnegative; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::partial::checked_i8_negative_partial"
+module = "Proofs.SignedI8Neg"
+theorem = "LexicalGenericPartialI8NegProofs.checked_i8_negative_partial_spec"
+precondition = "Initial signed accumulator is nonpositive; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::partial::checked_i16_positive_partial"
+module = "Proofs.SignedI16Pos"
+theorem = "LexicalGenericPartialI16PosProofs.checked_i16_positive_partial_spec"
+precondition = "Initial signed accumulator is nonnegative; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::partial::checked_i16_negative_partial"
+module = "Proofs.SignedI16Neg"
+theorem = "LexicalGenericPartialI16NegProofs.checked_i16_negative_partial_spec"
+precondition = "Initial signed accumulator is nonpositive; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::partial::checked_i32_positive_partial"
+module = "Proofs.SignedI32Pos"
+theorem = "LexicalGenericPartialI32PosProofs.checked_i32_positive_partial_spec"
+precondition = "Initial signed accumulator is nonnegative; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::partial::checked_i32_negative_partial"
+module = "Proofs.SignedI32Neg"
+theorem = "LexicalGenericPartialI32NegProofs.checked_i32_negative_partial_spec"
+precondition = "Initial signed accumulator is nonpositive; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::partial::checked_i64_positive_partial"
+module = "Proofs.SignedI64Pos"
+theorem = "LexicalGenericPartialI64PosProofs.checked_i64_positive_partial_spec"
+precondition = "Initial signed accumulator is nonnegative; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::partial::checked_i64_negative_partial"
+module = "Proofs.SignedI64Neg"
+theorem = "LexicalGenericPartialI64NegProofs.checked_i64_negative_partial_spec"
+precondition = "Initial signed accumulator is nonpositive; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::partial::checked_i128_positive_partial"
+module = "Proofs.SignedI128Pos"
+theorem = "LexicalGenericPartialI128PosProofs.checked_i128_positive_partial_spec"
+precondition = "Initial signed accumulator is nonnegative; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::partial::checked_i128_negative_partial"
+module = "Proofs.SignedI128Neg"
+theorem = "LexicalGenericPartialI128NegProofs.checked_i128_negative_partial_spec"
+precondition = "Initial signed accumulator is nonpositive; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::partial::checked_isize_positive_partial"
+module = "Proofs.SignedIsizePos"
+theorem = "LexicalGenericPartialIsizePosProofs.checked_isize_positive_partial_spec"
+precondition = "Initial signed accumulator is nonnegative; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::partial::checked_isize_negative_partial"
+module = "Proofs.SignedIsizeNeg"
+theorem = "LexicalGenericPartialIsizeNegProofs.checked_isize_negative_partial_spec"
+precondition = "Initial signed accumulator is nonpositive; radix 2..36, cursor + bytes length fits usize. Outlined partial-mode checked helper; first nondigit returns accumulated value and absolute consumed cursor."

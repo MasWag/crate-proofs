@@ -1,0 +1,15 @@
+[package]
+name = "lexical-parse-integer-generic-front-harness"
+version = "1.0.6"
+edition = "2021"
+publish = false
+
+[dependencies]
+lexical-util = { version = "=1.0.7", default-features = false, features = ["parse-integers", "radix"] }
+
+checked = { package = "lexical-parse-integer-generic-harness", path = "../generic-harness" }
+
+[dev-dependencies]
+release = { package = "lexical-parse-integer", path = "../..", features = ["radix"] }
+
+[workspace]

@@ -1,0 +1,36 @@
+{
+  "checked": [
+    {
+      "name": "LexicalStrictAdaptedProofs.strict_success",
+      "module": "Proofs",
+      "scope": "source-adapted-model",
+      "precondition": "Every builder state returns normally with the same Boolean flag in the adapted build_strict body; the unchanged release panic arm is not verified."
+    },
+    {
+      "name": "LexicalStrictAdaptedProofs.small_numbers",
+      "module": "Proofs",
+      "scope": "source-adapted-model",
+      "precondition": "The adapted SMALL_NUMBERS constant returns normally with no_multi_digit=true."
+    },
+    {
+      "name": "LexicalStrictAdaptedProofs.large_numbers",
+      "module": "Proofs",
+      "scope": "source-adapted-model",
+      "precondition": "The adapted LARGE_NUMBERS constant returns normally with no_multi_digit=false."
+    }
+  ],
+  "recorder_mappings": [
+    {
+      "api": "lexical_parse_integer_options_strict_adapted::options::OptionsBuilder::build_strict",
+      "theorem": "LexicalStrictAdaptedProofs.strict_success"
+    },
+    {
+      "api": "lexical_parse_integer_options_strict_adapted::options::SMALL_NUMBERS",
+      "theorem": "LexicalStrictAdaptedProofs.small_numbers"
+    },
+    {
+      "api": "lexical_parse_integer_options_strict_adapted::options::LARGE_NUMBERS",
+      "theorem": "LexicalStrictAdaptedProofs.large_numbers"
+    }
+  ]
+}

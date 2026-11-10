@@ -1,0 +1,14 @@
+{
+  "entries": [
+    "crate::algorithm::try_parse_4digits",
+    "crate::algorithm::try_parse_8digits"
+  ],
+  "llbc": "LexicalParseIntegerCallerOriginal.llbc",
+  "cargo_args": ["--lib", "--locked", "--offline"],
+  "models": {
+    "LexicalParseIntegerCallerOriginal.lean": [
+      "algorithm.try_parse_4digits",
+      "algorithm.try_parse_8digits"
+    ]
+  }
+}

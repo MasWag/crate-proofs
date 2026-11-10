@@ -1,0 +1,17 @@
+[report]
+title = "Sign helper in lexical-parse-integer 1.0.6"
+explanation = "For every optional byte and flag combination, provided an accepted sign can advance the cursor without exceeding usize::MAX, the adapted sign helper returns the specified result, cursor, and error index. Errors and absence of a sign leave the cursor unchanged."
+trusted_assumptions = "Pinned Rust-to-Lean translation, Aeneas scalar models, and Lean kernel."
+limitations = "The harness exposes byte, cursor, and computed flags as arguments. Its textual release macro correspondence is checked separately from Lean; caller flag computation and the full parser are outside this profile."
+environment = "Pinned unmodified Aeneas and Charon, Lean 4.35.0, macOS arm64, lexical-util 1.0.7. See profile results for run status."
+
+[tool]
+name = "aeneas"
+version = "be86ab0f1989d04944292b345b24c435be3ad10a"
+lean_dir = ".work/selected-proofs"
+
+[[tool.proofs]]
+api = "lexical_parse_integer_sign_harness::parse_sign_state"
+module = "Proofs"
+theorem = "LexicalParseIntegerSignProofs.sign_spec"
+precondition = "All sign flags and optional bytes; only a branch that advances the cursor requires cursor below usize::MAX. The normal result, cursor, and error indices agree with the independent sign model."

@@ -1,0 +1,16 @@
+{
+  "entries": [
+    "crate::options::OptionsBuilder::build_strict",
+    "crate::options::SMALL_NUMBERS",
+    "crate::options::LARGE_NUMBERS"
+  ],
+  "llbc": "OptionsBlocker.llbc",
+  "cargo_args": ["--lib", "--locked", "--offline", "--features", "power-of-two"],
+  "models": {
+    "OptionsBlocker.lean": [
+      "options.OptionsBuilder.build_strict",
+      "options.SMALL_NUMBERS",
+      "options.LARGE_NUMBERS"
+    ]
+  }
+}

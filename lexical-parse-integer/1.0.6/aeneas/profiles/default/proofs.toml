@@ -1,0 +1,133 @@
+[report]
+title = "Four- and eight-digit decimal helpers in lexical-parse-integer 1.0.6"
+explanation = '''
+For every packed 32-bit or 64-bit word, the corresponding decimal-specialized
+`is_4digits` or `is_8digits` body returns successfully and reports true exactly
+when all four or eight bytes are ASCII decimal digits. For words satisfying
+that condition, the corresponding `parse_4digits` or `parse_8digits` body
+returns successfully with their positional decimal value, reading bytes from
+least to most significant. For example, the bytes `1`, `2`, `3`, `4` decode
+to 1234. These helper theorems do not establish complete or partial parsing.
+'''
+trusted_assumptions = '''
+The result relies on the pinned Rust-to-Lean translation, Aeneas scalar models,
+and Lean kernel. The theorems and their transitive axiom dependencies are checked
+by the profile audit; this does not independently establish the correctness of
+the translation or scalar models.
+'''
+limitations = '''
+The checked bodies are decimal specializations of the published helpers: their
+const `FORMAT` parameter is removed and the `NumberFormat::MANTISSA_RADIX`
+lookup is replaced with `10u32`. A source checker confirms the rest of each
+copied helper body matches the release. This supports correspondence for radix 10,
+but Rust-to-Rust equivalence to the release has not been formally proved.
+
+The decoder theorems assume all packed bytes are decimal digits. The
+recognizer theorems characterize that condition, but their composition with
+callers is not proved. Public parsing traits, overflow handling, and complete
+or partial parser correctness are not established by these mappings. Aeneas rejects an outer-loop
+break in the original complete parser, leaving that algorithm unproved.
+'''
+environment = '''
+The profile pins the crates.io 1.0.6 release, unmodified upstream Aeneas and
+Charon, Lean 4.35.0, and macOS arm64. The proofs-rs CLI has preparation and
+discovery patches; these do not modify Aeneas or the generated model. Native
+tests and formal verification are separate checks. See the profile results
+and source and tool locks for the reproducible inputs and evidence.
+'''
+
+[[report.findings]]
+title = "Partial parsing omits a single zero from the consumed length"
+body = '''
+## Description
+
+`from_lexical_partial_with_options` reports too few consumed bytes for a single zero when the format forbids integer leading zeros.
+
+## Prerequisites
+
+- Rust version: 1.94.1
+- lexical-parse-integer version: 1.0.6
+- Features: `format`, `power-of-two`
+- Direct dependency: `lexical-util` 1.0.7 with `format` and `power-of-two`
+
+## Test case
+
+```rust
+use lexical_parse_integer::{FromLexicalWithOptions, Options};
+use lexical_util::format::NumberFormatBuilder;
+
+fn main() {
+    const FORMAT: u128 = NumberFormatBuilder::new()
+        .no_integer_leading_zeros(true).build_strict();
+    let result = u8::from_lexical_partial_with_options::<FORMAT>(b"0", &Options::new());
+    assert_eq!(result, Ok((0, 1))); // actual: Ok((0, 0))
+}
+```
+
+## Additional Context
+
+This also occurs with `-0`, which reports one consumed byte instead of two. Related: https://github.com/Alexhuszagh/rust-lexical/issues/225.
+'''
+
+[[report.findings]]
+title = "Suffix format advances past an unrelated invalid byte"
+body = '''
+## Description
+
+With a base suffix configured, `from_lexical_partial_with_options` can count an unrelated invalid byte as consumed. `from_lexical_with_options` can consequently report the next byte as the invalid digit.
+
+## Prerequisites
+
+- Rust version: 1.94.1
+- lexical-parse-integer version: 1.0.6
+- Features: `format`, `power-of-two`
+- Direct dependency: `lexical-util` 1.0.7 with `format` and `power-of-two`
+
+## Test case
+
+```rust
+use core::num::NonZeroU8;
+use lexical_parse_integer::{FromLexicalWithOptions, Options};
+use lexical_util::format::NumberFormatBuilder;
+
+fn main() {
+    const FORMAT: u128 = NumberFormatBuilder::new()
+        .base_suffix(NonZeroU8::new(b'h')).build_strict();
+    let result = u8::from_lexical_partial_with_options::<FORMAT>(b"12?x", &Options::new());
+    assert_eq!(result, Ok((12, 2))); // actual: Ok((12, 3))
+}
+```
+
+## Additional Context
+
+For the same input, complete parsing returns `InvalidDigit(3)` instead of `InvalidDigit(2)`. The configured suffix is `h`, not `?`.
+'''
+
+[tool]
+name = "aeneas"
+version = "be86ab0f1989d04944292b345b24c435be3ad10a"
+lean_dir = ".work/selected-proofs"
+
+[[tool.proofs]]
+api = "lexical_parse_integer::algorithm::parse_4digits"
+module = "Proofs.Decode"
+theorem = "LexicalParseIntegerProofs.parse4_decimal_success"
+precondition = "FORMAT has MANTISSA_RADIX=10 (including STANDARD), and all four packed bytes are ASCII decimal digits; the checked body is the disclosed decimal specialization."
+
+[[tool.proofs]]
+api = "lexical_parse_integer::algorithm::parse_8digits"
+module = "Proofs.Decode"
+theorem = "LexicalParseIntegerProofs.parse8_decimal_success"
+precondition = "FORMAT has MANTISSA_RADIX=10 (including STANDARD), and all eight packed bytes are ASCII decimal digits; the checked body is the disclosed decimal specialization."
+
+[[tool.proofs]]
+api = "lexical_parse_integer::algorithm::is_4digits"
+module = "Proofs.Validate"
+theorem = "LexicalParseIntegerProofs.is4_decimal"
+precondition = "FORMAT has MANTISSA_RADIX=10 (including STANDARD); the checked body is the disclosed decimal specialization."
+
+[[tool.proofs]]
+api = "lexical_parse_integer::algorithm::is_8digits"
+module = "Proofs.Validate"
+theorem = "LexicalParseIntegerProofs.is8_decimal"
+precondition = "FORMAT has MANTISSA_RADIX=10 (including STANDARD); the checked body is the disclosed decimal specialization."

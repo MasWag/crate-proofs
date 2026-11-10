@@ -1,0 +1,203 @@
+# Editorial draft only: public API mappings and publication run are pending.
+[report]
+title = "Selected options and adapted integer parsing contracts for lexical-parse-integer 1.0.6"
+explanation = """
+Thirteen directly extracted release methods, six on `OptionsBuilder` and seven
+on `Options`, have total-success contracts for the `no_multi_digit` Boolean.
+Constructors and builders return the specified state, getters return it, and setters
+assign the requested state. `build` returns `Ok` carrying that state.
+
+A separate local proof, not among the mapped APIs, establishes that with the
+`power-of-two` feature `from_radix` returns default options for every u8 argument
+without validating the radix.
+
+Separate supporting proofs cover complete and partial safe front-end adaptations
+for all signed and unsigned integer widths, every radix from 2 through 36 and
+arbitrary bytes, using standard no-format syntax and `no_multi_digit=true`.
+They establish exact values, error positions and partial consumed counts. The
+`usize` and `isize` front-end contracts require a 64-bit platform. Other supporting
+proofs cover adapted four- and eight-byte digit recognition and decoding for
+radices 2 through 10, decimal block callers, scalar loops and sign handling.
+These adapted contracts are not mappings of the original public parser APIs.
+"""
+trusted_assumptions = """
+The results rely on the pinned Rust-to-Lean translation, Aeneas scalar and slice
+models, and Lean kernel. Audits check the named theorems and their transitive
+axioms; they do not independently establish translation or model correctness.
+"""
+limitations = """
+The original generic and public parsing bodies are not proved by the adapted
+front-end contracts. The adaptations replace iterator and raw cursor operations
+with safe slices and cursors, outline macros, and make radix explicit. Source
+checks and review compare the selected transformations to the release; native
+differential tests provide separate evidence. They do not formally prove
+Rust-to-Rust equivalence. Original raw-memory paths, optimized multi-digit
+integration, custom format grammar and option independence remain outside these
+front-end proofs. The original complete parser encounters an Aeneas extraction
+blocker at a macro-expanded outer-loop break. The original strict builder's panic
+branch also encounters an Aeneas internal error; a separately checked adapted
+strict constructor does not establish equivalence to that original body.
+
+The two findings below concern custom formats and are supported by native
+reproductions. They do not imply that all other custom formats were examined.
+"""
+environment = """
+The supporting managed profiles pin the crates.io 1.0.6 release and lexical-util
+1.0.7, unmodified Aeneas and Charon, Lean 4.35.0, and macOS arm64. Their final
+local managed runs passed on 2026-11-06; profile results and evidence record the
+scope and inputs. Native tests are separate from formal proofs. The repository's shared Aeneas extraction wrapper includes a generic external-trait
+selector. The pinned cargo-proofs driver uses separate preparation and raw-module
+patches; preparation invokes the version-local setup and checks. Neither the
+wrapper extension nor the driver patches change Aeneas or Charon. Publication requires its own
+recorded cargo-proofs run and source evidence.
+"""
+
+[[report.findings]]
+title = "Partial parsing omits a single zero from the consumed length"
+body = '''
+## Description
+
+`from_lexical_partial_with_options` reports too few consumed bytes for a single zero when the format forbids integer leading zeros.
+
+## Prerequisites
+
+- Rust version: 1.94.1
+- lexical-parse-integer version: 1.0.6
+- Features: `format`, `power-of-two`
+- Direct dependency: `lexical-util` 1.0.7 with `format` and `power-of-two`
+
+## Test case
+
+```rust
+use lexical_parse_integer::{FromLexicalWithOptions, Options};
+use lexical_util::format::NumberFormatBuilder;
+
+fn main() {
+    const FORMAT: u128 = NumberFormatBuilder::new()
+        .no_integer_leading_zeros(true).build_strict();
+    let result = u8::from_lexical_partial_with_options::<FORMAT>(b"0", &Options::new());
+    assert_eq!(result, Ok((0, 1))); // actual: Ok((0, 0))
+}
+```
+
+## Additional Context
+
+This also occurs with `-0`, which reports one consumed byte instead of two. Related: https://github.com/Alexhuszagh/rust-lexical/issues/225.
+'''
+
+[[report.findings]]
+title = "Suffix format advances past an unrelated invalid byte"
+body = '''
+## Description
+
+With a base suffix configured, `from_lexical_partial_with_options` can count an unrelated invalid byte as consumed. `from_lexical_with_options` can consequently report the next byte as the invalid digit.
+
+## Prerequisites
+
+- Rust version: 1.94.1
+- lexical-parse-integer version: 1.0.6
+- Features: `format`, `power-of-two`
+- Direct dependency: `lexical-util` 1.0.7 with `format` and `power-of-two`
+
+## Test case
+
+```rust
+use core::num::NonZeroU8;
+use lexical_parse_integer::{FromLexicalWithOptions, Options};
+use lexical_util::format::NumberFormatBuilder;
+
+fn main() {
+    const FORMAT: u128 = NumberFormatBuilder::new()
+        .base_suffix(NonZeroU8::new(b'h')).build_strict();
+    let result = u8::from_lexical_partial_with_options::<FORMAT>(b"12?x", &Options::new());
+    assert_eq!(result, Ok((12, 2))); // actual: Ok((12, 3))
+}
+```
+
+## Additional Context
+
+For the same input, complete parsing returns `InvalidDigit(3)` instead of `InvalidDigit(2)`. The configured suffix is `h`, not `?`.
+'''
+
+[tool]
+name = "aeneas"
+version = "be86ab0f1989d04944292b345b24c435be3ad10a"
+lean_dir = "proofs"
+
+[[tool.proofs]]
+api = "options::OptionsBuilder::new"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.builder_new"
+precondition = "Every call returns normally with no_multi_digit=true."
+
+[[tool.proofs]]
+api = "options::OptionsBuilder::get_no_multi_digit"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.builder_get"
+precondition = "For either Boolean state, returns that state."
+
+[[tool.proofs]]
+api = "options::OptionsBuilder::no_multi_digit"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.builder_set"
+precondition = "For either initial state and requested Boolean, returns a builder carrying the requested state."
+
+[[tool.proofs]]
+api = "options::OptionsBuilder::is_valid"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.builder_valid"
+precondition = "For either Boolean state, returns true."
+
+[[tool.proofs]]
+api = "options::OptionsBuilder::build_unchecked"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.builder_build_unchecked"
+precondition = "For either Boolean state, returns options carrying the same state."
+
+[[tool.proofs]]
+api = "options::OptionsBuilder::build"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.builder_build"
+precondition = "For either Boolean state, returns Ok options carrying the same state."
+
+[[tool.proofs]]
+api = "options::Options::builder"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.options_builder"
+precondition = "Every call returns a default-state builder."
+
+[[tool.proofs]]
+api = "options::Options::new"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.options_new"
+precondition = "Every call returns normally with no_multi_digit=true."
+
+[[tool.proofs]]
+api = "options::Options::rebuild"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.options_rebuild"
+precondition = "For either Boolean state, returns a builder carrying the same state."
+
+[[tool.proofs]]
+api = "options::Options::is_valid"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.options_valid"
+precondition = "For either Boolean state, returns true."
+
+[[tool.proofs]]
+api = "options::Options::get_no_multi_digit"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.options_get"
+precondition = "For either Boolean state, returns that state."
+
+[[tool.proofs]]
+api = "options::Options::no_multi_digit"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.options_no_multi_digit"
+precondition = "For either initial state and requested Boolean, updates borrowed options to the requested state and returns normally."
+
+[[tool.proofs]]
+api = "options::Options::set_no_multi_digit"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.options_set_no_multi_digit"
+precondition = "For either initial state and requested Boolean, updates borrowed options to the requested state and returns normally."

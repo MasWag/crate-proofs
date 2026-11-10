@@ -26,10 +26,10 @@ def extract(root, config_path, output):
     foreign_impl_entries = config.get('foreign_impl_entries', [])
     if not isinstance(foreign_impl_entries, list) or any(
         not isinstance(e, str) or not re.fullmatch(
-            rf'\{{impl (?:core|alloc|std)::{ident_path} for crate::{ident_path}\}}::[A-Za-z][A-Za-z_0-9]*', e)
+            rf'\{{impl (?!crate::){ident_path} for crate::{ident_path}\}}::[A-Za-z][A-Za-z_0-9]*', e)
         for e in foreign_impl_entries
     ):
-        raise ValueError('foreign_impl_entries must select an exact standard trait method on a concrete local type')
+        raise ValueError('foreign_impl_entries must select an exact external trait method on a concrete local type')
     if not (entries or impl_entries or foreign_impl_entries):
         raise ValueError('at least one ordinary or implementation entry is required')
     if not models or any(Path(p).is_absolute() or '..' in Path(p).parts or not p.endswith('.lean') for p in models):

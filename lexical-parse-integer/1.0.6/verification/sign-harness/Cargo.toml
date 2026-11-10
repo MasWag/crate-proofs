@@ -1,0 +1,9 @@
+[package]
+name = "lexical-parse-integer-sign-harness"
+version = "1.0.6"
+edition = "2021"
+
+[dependencies]
+lexical-util = { version = "1.0.7", default-features = false, features = ["parse-integers"] }
+
+[workspace]

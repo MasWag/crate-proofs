@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "status": "passed-local-only",
+  "profile": "caller",
+  "reviewed_at_utc": "2026-11-06T14:01:31.891941+00:00",
+  "run_id": "caller-i_t5f06e",
+  "run_relative_path": ".work/runs/caller-i_t5f06e",
+  "host": "aarch64-apple-darwin",
+  "target": "aarch64-apple-darwin",
+  "offline": true,
+  "result_sha256": "6ff20a110de68e5f4b66c07bfd21b86c6c9dd4d867837aefc7519a52574b381d",
+  "input_fingerprint_sha256": "68ca106c12be5aa57d972c77c9e8886d5b75380c20e445dc1c0e945592bc6e65",
+  "inputs_before_after_equal": true,
+  "audit_result_sha256": "f4431d0039a6664331cc416e2c61646327101b05946a9066e4ea4c95447be1f0",
+  "audit_inputs_before_after_equal": true,
+  "checked_theorems": 2,
+  "mapping_metadata_checked": true,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "mapped_apis": [
+    "lexical_parse_integer_caller_harness::safe::try4",
+    "lexical_parse_integer_caller_harness::safe::try8"
+  ],
+  "generated_models": [
+    {
+      "fresh_relative_path": ".work/runs/caller-i_t5f06e/extraction-0/LexicalParseIntegerCallerSafe.lean",
+      "maintained_relative_path": "aeneas/profiles/caller/proofs/Generated/aarch64-apple-darwin/LexicalParseIntegerCallerSafe.lean",
+      "sha256": "6e07e5b8b94895066506a541d525b9ce7a82a63924442f8dd8aea53b54ef1bce",
+      "fresh_regeneration_matches_maintained": true
+    }
+  ],
+  "native": [
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "verification/caller-harness/Cargo.toml"
+      ],
+      "rust_test_summaries": [
+        [
+          3,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "passed_total": 3
+    }
+  ],
+  "report_title": "Decimal block caller adaptation in lexical-parse-integer 1.0.6",
+  "selected_scope_from_report": "For an input slice containing the iterator's remaining bytes and an absolute\ncursor such that cursor plus the slice length is at most usize::MAX, the adapted\nfour- and eight-digit callers return successfully for all slice lengths. They\nreturn a value exactly when the next four or eight bytes are ASCII decimal\ndigits; that value is the positional decimal value. A call returning a value advances\nthe cursor by the block width. A short or invalid block returns no value and\nleaves the cursor unchanged.\n",
+  "limitations_from_report": "These theorems prove the checked safe-read adaptation in the caller harness.\nThe published callers use lexical-util's Bytes iterator, an unaligned pointer\nread, and unchecked iterator advancement. Pinned Aeneas does not translate\nthose dependencies into usable bodies, so formal equivalence to the published\ncallers is not established. Native differential tests compare the adaptation\nwith the release callers at zero and nonzero iterator positions; they are\nseparate evidence. The helper bodies are decimal specializations of the\npublished format-generic routines. Other target widths, formats, and public\nparsing traits are outside these mappings.\n",
+  "local_evidence_only": true,
+  "online_publication_claimed": false
+}

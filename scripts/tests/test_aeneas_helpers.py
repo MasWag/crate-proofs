@@ -270,11 +270,19 @@ class ExtractionValidation(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.run_extract('axiom unresolved : Type\ndef update := 0\n', options=options)
 
+    def test_concrete_dependency_trait_selection_keeps_body_checks(self):
+        options = {'foreign_impl_entries': ['{impl lexical_util::options::ParseOptions for crate::options::Options}::is_valid']}
+        self.run_extract('def update := 0\n', options=options)
+        with self.assertRaises(ValueError):
+            self.run_extract('axiom unresolved : Type\ndef update := 0\n', options=options)
+
     def test_reject_broad_or_injected_foreign_trait_selectors(self):
         for entry in ('{impl core::cmp::Ord for _}::cmp',
                       '{impl core::cmp::Ord for core::net::Ipv4Addr}::cmp',
                       '{impl _ for crate::Range}::next',
                       '{impl core::Iterator for crate::Range}::_',
+                      '{impl lexical_util::options::ParseOptions for _}::is_valid',
+                      '{impl crate::LocalTrait for crate::Options}::is_valid',
                       '{impl core::Iterator for crate::Range}::next --opaque',
                       '{impl core::Iterator for crate::Range}::next\n'):
             with self.subTest(entry=entry), self.assertRaises(ValueError):

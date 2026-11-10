@@ -1,0 +1,174 @@
+[report]
+title = "Generic scalar complete and partial frontend adaptations"
+explanation = """
+For radix 2 through 36 and every byte slice, 24 extracted standard-syntax
+no_multi_digit=true whole-input frontend adaptations return exactly the value,
+error, and partial consumed count specified by the independently authored
+mathematical parser. This covers complete and partial parsing of six unsigned
+and six signed integer types. The usize and isize contracts require a 64-bit
+platform; the other types require only the radix bound.
+"""
+trusted_assumptions = "Pinned Aeneas translation, its scalar and slice models, and the Lean kernel."
+limitations = """
+These theorems concern safe slice/cursor front-end adaptations with outlined
+macros and an explicit radix. Source checks and review cover the selected release
+macro and front-end transformations, including the unchecked prefix; they do not
+establish formal Rust-to-Rust equivalence to the original parser or raw iterator. The
+64-bit platform premise applies to usize/isize whole-input contracts. Format
+separators, prefixes and suffixes, optimized multi-digit paths, and option
+independence are outside this profile.
+"""
+environment = """
+Pinned lexical-parse-integer 1.0.6 and lexical-util 1.0.7, unmodified Aeneas
+and Charon, Lean 4.35.0, macOS arm64. See profile results for run status.
+Native release comparisons are separate evidence.
+"""
+
+[tool]
+name = "aeneas"
+version = "be86ab0f1989d04944292b345b24c435be3ad10a"
+lean_dir = ".work/selected-proofs"
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_front_harness::complete_u8"
+module = "FrontTrial"
+theorem = "FrontTrial.complete_u8_success"
+precondition = "Radix 2..36; every byte slice. Adapted standard syntax and no_multi_digit=true whole-input complete parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_front_harness::complete_u16"
+module = "FrontU16Trial"
+theorem = "FrontU16Trial.complete_u16_success"
+precondition = "Radix 2..36; every byte slice. Adapted standard syntax and no_multi_digit=true whole-input complete parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_front_harness::complete_u32"
+module = "FrontU32Trial"
+theorem = "FrontU32Trial.complete_u32_success"
+precondition = "Radix 2..36; every byte slice. Adapted standard syntax and no_multi_digit=true whole-input complete parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_front_harness::complete_u64"
+module = "FrontU64Trial"
+theorem = "FrontU64Trial.complete_u64_success"
+precondition = "Radix 2..36; every byte slice. Adapted standard syntax and no_multi_digit=true whole-input complete parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_front_harness::complete_u128"
+module = "FrontU128Trial"
+theorem = "FrontU128Trial.complete_u128_success"
+precondition = "Radix 2..36; every byte slice. Adapted standard syntax and no_multi_digit=true whole-input complete parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_front_harness::complete_usize"
+module = "FrontUsizeTrial"
+theorem = "FrontUsizeTrial.complete_usize_success"
+precondition = "Radix 2..36; every byte slice. Selected platform width is 64 bits. Adapted standard syntax and no_multi_digit=true whole-input complete parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_front_harness::complete_i8"
+module = "SignedFrontI8"
+theorem = "SignedFrontI8.complete_i8_success"
+precondition = "Radix 2..36; every byte slice. Adapted standard syntax and no_multi_digit=true whole-input complete parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_front_harness::complete_i16"
+module = "SignedFrontI16"
+theorem = "SignedFrontI16.complete_i16_success"
+precondition = "Radix 2..36; every byte slice. Adapted standard syntax and no_multi_digit=true whole-input complete parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_front_harness::complete_i32"
+module = "SignedFrontI32"
+theorem = "SignedFrontI32.complete_i32_success"
+precondition = "Radix 2..36; every byte slice. Adapted standard syntax and no_multi_digit=true whole-input complete parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_front_harness::complete_i64"
+module = "SignedFrontI64"
+theorem = "SignedFrontI64.complete_i64_success"
+precondition = "Radix 2..36; every byte slice. Adapted standard syntax and no_multi_digit=true whole-input complete parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_front_harness::complete_i128"
+module = "SignedFrontI128"
+theorem = "SignedFrontI128.complete_i128_success"
+precondition = "Radix 2..36; every byte slice. Adapted standard syntax and no_multi_digit=true whole-input complete parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_front_harness::complete_isize"
+module = "SignedFrontIsize"
+theorem = "SignedFrontIsize.complete_isize_success"
+precondition = "Radix 2..36; every byte slice. Selected platform width is 64 bits. Adapted standard syntax and no_multi_digit=true whole-input complete parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_front_harness::partial_u8"
+module = "FrontPartialU8Trial"
+theorem = "FrontPartialU8Trial.partial_u8_success"
+precondition = "Radix 2..36; every byte slice. Adapted standard syntax and no_multi_digit=true whole-input partial parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_front_harness::partial_u16"
+module = "FrontPartialU16Trial"
+theorem = "FrontPartialU16Trial.partial_u16_success"
+precondition = "Radix 2..36; every byte slice. Adapted standard syntax and no_multi_digit=true whole-input partial parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_front_harness::partial_u32"
+module = "FrontPartialU32Trial"
+theorem = "FrontPartialU32Trial.partial_u32_success"
+precondition = "Radix 2..36; every byte slice. Adapted standard syntax and no_multi_digit=true whole-input partial parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_front_harness::partial_u64"
+module = "FrontPartialU64Trial"
+theorem = "FrontPartialU64Trial.partial_u64_success"
+precondition = "Radix 2..36; every byte slice. Adapted standard syntax and no_multi_digit=true whole-input partial parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_front_harness::partial_u128"
+module = "FrontPartialU128Trial"
+theorem = "FrontPartialU128Trial.partial_u128_success"
+precondition = "Radix 2..36; every byte slice. Adapted standard syntax and no_multi_digit=true whole-input partial parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_front_harness::partial_usize"
+module = "FrontPartialUsizeTrial"
+theorem = "FrontPartialUsizeTrial.partial_usize_success"
+precondition = "Radix 2..36; every byte slice. Selected platform width is 64 bits. Adapted standard syntax and no_multi_digit=true whole-input partial parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_front_harness::partial_i8"
+module = "SignedPartialFrontI8"
+theorem = "SignedPartialFrontI8.partial_i8_success"
+precondition = "Radix 2..36; every byte slice. Adapted standard syntax and no_multi_digit=true whole-input partial parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_front_harness::partial_i16"
+module = "SignedPartialFrontI16"
+theorem = "SignedPartialFrontI16.partial_i16_success"
+precondition = "Radix 2..36; every byte slice. Adapted standard syntax and no_multi_digit=true whole-input partial parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_front_harness::partial_i32"
+module = "SignedPartialFrontI32"
+theorem = "SignedPartialFrontI32.partial_i32_success"
+precondition = "Radix 2..36; every byte slice. Adapted standard syntax and no_multi_digit=true whole-input partial parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_front_harness::partial_i64"
+module = "SignedPartialFrontI64"
+theorem = "SignedPartialFrontI64.partial_i64_success"
+precondition = "Radix 2..36; every byte slice. Adapted standard syntax and no_multi_digit=true whole-input partial parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_front_harness::partial_i128"
+module = "SignedPartialFrontI128"
+theorem = "SignedPartialFrontI128.partial_i128_success"
+precondition = "Radix 2..36; every byte slice. Adapted standard syntax and no_multi_digit=true whole-input partial parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_front_harness::partial_isize"
+module = "SignedPartialFrontIsize"
+theorem = "SignedPartialFrontIsize.partial_isize_success"
+precondition = "Radix 2..36; every byte slice. Selected platform width is 64 bits. Adapted standard syntax and no_multi_digit=true whole-input partial parser."

@@ -1,0 +1,49 @@
+[report]
+title = "Four- and eight-digit helpers for radices 2 through 10"
+explanation = """
+For every packed word and radix from 2 through 10, the four- and eight-byte
+recognizers return true exactly when every byte is an ASCII digit valid for
+that radix. When all bytes are valid, the corresponding decoders return their
+positional value in that radix. These are checked contracts for adapted helper
+bodies. See profile results for run status.
+"""
+trusted_assumptions = "The result relies on the pinned Rust-to-Lean translation, Aeneas scalar models, and Lean kernel."
+limitations = """
+The adapted helpers take an explicit radix in place of the release's const
+FORMAT radix lookup. A source checker compares the adapted bodies with the
+release bodies under that replacement; Rust-to-Rust equivalence is not formally
+proved. These helper contracts do not establish the complete or partial parser.
+"""
+environment = """
+Pinned unmodified Aeneas and Charon, Lean 4.35.0, macOS arm64. Native tests
+and formal proofs are separate checks. See profile results for run status.
+"""
+
+[tool]
+name = "aeneas"
+version = "be86ab0f1989d04944292b345b24c435be3ad10a"
+lean_dir = ".work/selected-proofs"
+
+[[tool.proofs]]
+api = "lexical_parse_integer::algorithm::is_4digits"
+module = "Proofs.Validate"
+theorem = "LexicalParseIntegerRadixProofs.is4_digits"
+precondition = "The release FORMAT mantissa radix equals the explicit u32 radix argument, and 2 <= radix <= 10. The adapted helper body is source checked; Rust-to-Rust equivalence is not formally proved."
+
+[[tool.proofs]]
+api = "lexical_parse_integer::algorithm::is_8digits"
+module = "Proofs.Validate"
+theorem = "LexicalParseIntegerRadixProofs.is8_digits"
+precondition = "The release FORMAT mantissa radix equals the explicit u32 radix argument, and 2 <= radix <= 10. The adapted helper body is source checked; Rust-to-Rust equivalence is not formally proved."
+
+[[tool.proofs]]
+api = "lexical_parse_integer::algorithm::parse_4digits"
+module = "Proofs.Decode"
+theorem = "LexicalParseIntegerRadixProofs.parse4_value_success"
+precondition = "The release FORMAT mantissa radix equals the explicit u32 radix argument, 2 <= radix <= 10, and all four packed bytes are ASCII digits for that radix. The adapted helper body is source checked; Rust-to-Rust equivalence is not formally proved."
+
+[[tool.proofs]]
+api = "lexical_parse_integer::algorithm::parse_8digits"
+module = "Proofs.Decode"
+theorem = "LexicalParseIntegerRadixProofs.parse8_value_success"
+precondition = "The release FORMAT mantissa radix equals the explicit u32 radix argument, 2 <= radix <= 10, and all eight packed bytes are ASCII digits for that radix. The adapted helper body is source checked; Rust-to-Rust equivalence is not formally proved."

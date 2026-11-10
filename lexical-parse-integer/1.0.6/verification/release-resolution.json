@@ -1,0 +1,15 @@
+{
+  "archive_sha256": "9a7a039f8fb9c19c996cd7b2fcce303c1b2874fe1aca544edc85c4a5f8489b34",
+  "archive_url": "https://static.crates.io/crates/lexical-parse-integer/lexical-parse-integer-1.0.6.crate",
+  "latest_non_yanked_checksum": "9a7a039f8fb9c19c996cd7b2fcce303c1b2874fe1aca544edc85c4a5f8489b34",
+  "latest_non_yanked_version": "1.0.6",
+  "limitations": "Registry index, package metadata and archive identities were independently checked; no Git tree equality or formal source-to-Lean correctness claim.",
+  "published_at": "2025-09-21T03:34:50Z",
+  "registry_index_fetched_at_utc": "2026-11-05T11:27:43.872716+00:00",
+  "registry_index_sha256": "c0fe62ed0d723680f885b49bb1775f921d0335ff9957de3151f5fe47e5e86b9a",
+  "registry_index_url": "https://index.crates.io/le/xi/lexical-parse-integer",
+  "registry_metadata_sha256": "c83bd9abe3ec65a8fb7b921d38110e30e6c064b239a4fec0f183e5814570faa3",
+  "release_vcs_sha1": "ddfc0f6bfcc0085ff982f567f41f24a5541a14ea",
+  "schema_version": 1,
+  "source_captured_at_utc": "2026-11-05T11:25:13.831789+00:00"
+}

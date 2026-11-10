@@ -1,0 +1,13 @@
+[package]
+name = "lexical-parse-integer-parser-harness"
+version = "1.0.6"
+edition = "2021"
+publish = false
+
+[dependencies]
+lexical-util = { version = "=1.0.7", default-features = false, features = ["parse-integers"] }
+
+[dev-dependencies]
+release = { package = "lexical-parse-integer", path = "../.." }
+
+[workspace]

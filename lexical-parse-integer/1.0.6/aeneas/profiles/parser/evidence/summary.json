@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "status": "passed-local-only",
+  "profile": "parser",
+  "reviewed_at_utc": "2026-11-06T14:01:31.891941+00:00",
+  "run_id": "parser-r_8t62n3",
+  "run_relative_path": ".work/runs/parser-r_8t62n3",
+  "host": "aarch64-apple-darwin",
+  "target": "aarch64-apple-darwin",
+  "offline": true,
+  "result_sha256": "2eaececd455e7ccfc07f17f567c10d0b28f32c244aaa8fc0db3ae441c7c79859",
+  "input_fingerprint_sha256": "7f50e6925f1c6d898785d9b76032a455f5e25c56ab2ddc1dbd81a0aec808d4cb",
+  "inputs_before_after_equal": true,
+  "audit_result_sha256": "8467852a9bcabe4f583cef7c684fc01d137c513b29307ea3a09501d1fd2ea4aa",
+  "audit_inputs_before_after_equal": true,
+  "checked_theorems": 10,
+  "mapping_metadata_checked": true,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "mapped_apis": [
+    "lexical_parse_integer_parser_harness::checked_u32",
+    "lexical_parse_integer_parser_harness::checked_i32_negative_from",
+    "lexical_parse_integer_parser_harness::checked_i32_positive_from",
+    "lexical_parse_integer_parser_harness::checked_u8_from",
+    "lexical_parse_integer_parser_harness::unchecked_u8_from",
+    "lexical_parse_integer_parser_harness::complete_u8",
+    "lexical_util::digit::char_to_digit_const",
+    "lexical_parse_integer_parser_harness::partial_u8",
+    "lexical_parse_integer_parser_harness::complete_i8",
+    "lexical_parse_integer_parser_harness::partial_i8"
+  ],
+  "generated_models": [
+    {
+      "fresh_relative_path": ".work/runs/parser-r_8t62n3/extraction-0/Parser.lean",
+      "maintained_relative_path": "aeneas/profiles/parser/proofs/Generated/aarch64-apple-darwin/Parser.lean",
+      "sha256": "05b9a46c61786dceced92241730778931b18aa9570edc3aa92b75af1d92a3a85",
+      "fresh_regeneration_matches_maintained": true
+    }
+  ],
+  "native": [
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked"
+      ],
+      "rust_test_summaries": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          8,
+          0,
+          0
+        ],
+        [
+          12,
+          0,
+          0
+        ],
+        [
+          3,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          17,
+          0,
+          0
+        ]
+      ],
+      "passed_total": 43
+    },
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--manifest-path",
+        "verification/parser-harness/Cargo.toml"
+      ],
+      "rust_test_summaries": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "passed_total": 1
+    }
+  ],
+  "report_title": "Decimal scalar loops and u8 and i8 parser adaptations",
+  "selected_scope_from_report": "For every byte slice, the adapted standard decimal complete and partial u8 and\ni8 parsers return the specified value or error, including sign handling, the\nfirst overflow, underflow, or invalid-byte position, and the consumed count in partial mode.\nThe signed contracts account for the asymmetric i8 limits. The checked u32 and\nu8 scalar loops allow arbitrary initial accumulators; the positive and negative\ni32 loops require nonnegative and nonpositive initial accumulators, respectively.\nCursor-based loops require cursor plus remaining length to fit in usize. The\nunchecked u8 loop is covered starting at zero with at most two bytes. Separately,\nlexical-util's extracted char_to_digit_const returns the specified ASCII digit\noption for every byte and radix from 2 through 36.\n",
+  "limitations_from_report": "The parser mappings concern harness adaptations, not the original generic\nrelease parser. The scalar loops outline the release macro and replace its\niterator with slices; a source checker checks the specified loop transformations.\nThe selected front ends and iterator adaptation were separately reviewed.\nNeither source comparison nor review is a formal Rust-to-Rust equivalence proof.\nOther widths and formats and block fast-path integration are outside these front-end\ntheorems. The digit conversion mapping concerns the extracted lexical-util body.\n",
+  "local_evidence_only": true,
+  "online_publication_claimed": false
+}

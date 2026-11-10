@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "status": "passed-local-only",
+  "profile": "radix",
+  "reviewed_at_utc": "2026-11-06T14:01:31.891941+00:00",
+  "run_id": "radix-v49p8hmq",
+  "run_relative_path": ".work/runs/radix-v49p8hmq",
+  "host": "aarch64-apple-darwin",
+  "target": "aarch64-apple-darwin",
+  "offline": true,
+  "result_sha256": "2fa7e59ee05686b67634e3112529af6480d13782d5d8ddf46ec8a2a2a4bd89f4",
+  "input_fingerprint_sha256": "12cad1f057170bb0f5e189a16fb8e65b2ac7094dab17494a1644545f2af3163e",
+  "inputs_before_after_equal": true,
+  "audit_result_sha256": "ab32b6fc1dd36da47a279ea1f70e1c2dca227b43bd5c8c0f44f10400e58ce625",
+  "audit_inputs_before_after_equal": true,
+  "checked_theorems": 4,
+  "mapping_metadata_checked": true,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "mapped_apis": [
+    "lexical_parse_integer::algorithm::is_4digits",
+    "lexical_parse_integer::algorithm::is_8digits",
+    "lexical_parse_integer::algorithm::parse_4digits",
+    "lexical_parse_integer::algorithm::parse_8digits"
+  ],
+  "generated_models": [
+    {
+      "fresh_relative_path": ".work/runs/radix-v49p8hmq/extraction-0/LexicalParseIntegerRadix.lean",
+      "maintained_relative_path": "aeneas/profiles/radix/proofs/Generated/aarch64-apple-darwin/LexicalParseIntegerRadix.lean",
+      "sha256": "a7c02acacbf19f930a39c8b2537cd400569a67f2497256ce72036b89b2e09b5b",
+      "fresh_regeneration_matches_maintained": true
+    }
+  ],
+  "native": [
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked"
+      ],
+      "rust_test_summaries": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          8,
+          0,
+          0
+        ],
+        [
+          12,
+          0,
+          0
+        ],
+        [
+          3,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          17,
+          0,
+          0
+        ]
+      ],
+      "passed_total": 43
+    },
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--manifest-path",
+        "verification/radix-harness/Cargo.toml"
+      ],
+      "rust_test_summaries": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "passed_total": 0
+    }
+  ],
+  "report_title": "Four- and eight-digit helpers for radices 2 through 10",
+  "selected_scope_from_report": "For every packed word and radix from 2 through 10, the four- and eight-byte\nrecognizers return true exactly when every byte is an ASCII digit valid for\nthat radix. When all bytes are valid, the corresponding decoders return their\npositional value in that radix. These are checked contracts for adapted helper\nbodies. See profile results for run status.\n",
+  "limitations_from_report": "The adapted helpers take an explicit radix in place of the release's const\nFORMAT radix lookup. A source checker compares the adapted bodies with the\nrelease bodies under that replacement; Rust-to-Rust equivalence is not formally\nproved. These helper contracts do not establish the complete or partial parser.\n",
+  "local_evidence_only": true,
+  "online_publication_claimed": false
+}

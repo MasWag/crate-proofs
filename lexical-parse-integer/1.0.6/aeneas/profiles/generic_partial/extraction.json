@@ -1,0 +1,56 @@
+{
+  "entries": [
+    "crate::partial::checked_u8_partial",
+    "crate::partial::checked_u16_partial",
+    "crate::partial::checked_u32_partial",
+    "crate::partial::checked_u64_partial",
+    "crate::partial::checked_u128_partial",
+    "crate::partial::checked_usize_partial",
+    "crate::partial::checked_i8_positive_partial",
+    "crate::partial::checked_i8_negative_partial",
+    "crate::partial::checked_i16_positive_partial",
+    "crate::partial::checked_i16_negative_partial",
+    "crate::partial::checked_i32_positive_partial",
+    "crate::partial::checked_i32_negative_partial",
+    "crate::partial::checked_i64_positive_partial",
+    "crate::partial::checked_i64_negative_partial",
+    "crate::partial::checked_i128_positive_partial",
+    "crate::partial::checked_i128_negative_partial",
+    "crate::partial::checked_isize_positive_partial",
+    "crate::partial::checked_isize_negative_partial"
+  ],
+  "llbc": "GenericPartial.llbc",
+  "cargo_args": [
+    "--lib",
+    "--locked",
+    "--offline"
+  ],
+  "dependency_include": [
+    "lexical_util::digit::char_to_digit_const",
+    "lexical_util::digit::char_to_valid_digit_const"
+  ],
+  "models": {
+    "GenericPartial.lean": [
+      "partial.checked_u8_partial",
+      "partial.checked_u16_partial",
+      "partial.checked_u32_partial",
+      "partial.checked_u64_partial",
+      "partial.checked_u128_partial",
+      "partial.checked_usize_partial",
+      "partial.checked_i8_positive_partial",
+      "partial.checked_i8_negative_partial",
+      "partial.checked_i16_positive_partial",
+      "partial.checked_i16_negative_partial",
+      "partial.checked_i32_positive_partial",
+      "partial.checked_i32_negative_partial",
+      "partial.checked_i64_positive_partial",
+      "partial.checked_i64_negative_partial",
+      "partial.checked_i128_positive_partial",
+      "partial.checked_i128_negative_partial",
+      "partial.checked_isize_positive_partial",
+      "partial.checked_isize_negative_partial",
+      "lexical_util.digit.char_to_digit_const",
+      "lexical_util.digit.char_to_valid_digit_const"
+    ]
+  }
+}

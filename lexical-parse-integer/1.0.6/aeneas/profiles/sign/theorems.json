@@ -1,0 +1,16 @@
+{
+  "checked": [
+    {
+      "name": "LexicalParseIntegerSignProofs.sign_spec",
+      "module": "Proofs",
+      "scope": "source-adapted-model",
+      "precondition": "All sign flags and optional bytes; only a branch that advances the cursor requires cursor below usize::MAX. The normal result, cursor, and error indices agree with the independent sign model."
+    }
+  ],
+  "recorder_mappings": [
+    {
+      "api": "lexical_parse_integer_sign_harness::parse_sign_state",
+      "theorem": "LexicalParseIntegerSignProofs.sign_spec"
+    }
+  ]
+}

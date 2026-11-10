@@ -1,0 +1,9 @@
+[package]
+name = "lexical-parse-integer-options-harness"
+version = "1.0.6"
+edition = "2021"
+
+[dependencies]
+release = { package = "lexical-parse-integer", path = "../..", features = ["power-of-two"] }
+
+[workspace]

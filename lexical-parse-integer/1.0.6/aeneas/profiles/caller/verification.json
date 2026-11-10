@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "supported_targets": ["aarch64-apple-darwin"],
+  "native": [
+    ["cargo", "test", "--locked", "--offline", "--manifest-path", "verification/caller-harness/Cargo.toml"]
+  ],
+  "extractions": [
+    {
+      "config": "extraction.json",
+      "cwd": "verification/caller-harness",
+      "models": {
+        "LexicalParseIntegerCallerSafe.lean": "proofs/Generated/@TARGET@/LexicalParseIntegerCallerSafe.lean"
+      }
+    }
+  ],
+  "inventory": "theorems.json",
+  "report": "proofs.toml",
+  "lean_dir": "proofs",
+  "additional_checks": [
+    ["python3.11", "scripts/check-execution-config.py"],
+    ["python3.11", "scripts/check-swar-adaptation.py"],
+    ["python3.11", "verification/caller-harness/check-dependency.py"]
+  ],
+  "post_checks": [
+    ["python3.11", "scripts/check-execution-config.py"],
+    ["python3.11", "scripts/check-swar-adaptation.py"],
+    ["python3.11", "verification/caller-harness/check-dependency.py"]
+  ]
+}

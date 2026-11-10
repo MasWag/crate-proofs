@@ -1,0 +1,21 @@
+{
+  "entries": [
+    "crate::is_4digits",
+    "crate::parse_4digits",
+    "crate::is_8digits",
+    "crate::parse_8digits"
+  ],
+  "llbc": "LexicalParseInteger.llbc",
+  "cargo_args": [
+    "--lib",
+    "--locked"
+  ],
+  "models": {
+    "LexicalParseInteger.lean": [
+      "is_4digits",
+      "parse_4digits",
+      "is_8digits",
+      "parse_8digits"
+    ]
+  }
+}

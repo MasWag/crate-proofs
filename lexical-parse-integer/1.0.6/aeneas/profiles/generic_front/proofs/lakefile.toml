@@ -1,0 +1,211 @@
+name = "lexical_generic_front_proofs"
+version = "0.1.0"
+defaultTargets = ["Proofs"]
+[[require]]
+name = "aeneas"
+path = "@AENEAS_BACKEND@"
+[[lean_lib]]
+name = "GenericFront"
+srcDir = "Generated/@TARGET@"
+[[lean_lib]]
+name = "DigitSpecs"
+[[lean_lib]]
+name = "FrontPartialU128Trial"
+[[lean_lib]]
+name = "FrontPartialU16Trial"
+[[lean_lib]]
+name = "FrontPartialU32Trial"
+[[lean_lib]]
+name = "FrontPartialU64Trial"
+[[lean_lib]]
+name = "FrontPartialU8Trial"
+[[lean_lib]]
+name = "FrontPartialUsizeTrial"
+[[lean_lib]]
+name = "FrontTrial"
+[[lean_lib]]
+name = "FrontU128Trial"
+[[lean_lib]]
+name = "FrontU16Trial"
+[[lean_lib]]
+name = "FrontU32Trial"
+[[lean_lib]]
+name = "FrontU64Trial"
+[[lean_lib]]
+name = "FrontUsizeTrial"
+[[lean_lib]]
+name = "GenericComposition"
+[[lean_lib]]
+name = "GenericDigit"
+[[lean_lib]]
+name = "GenericPartialU128Trial"
+[[lean_lib]]
+name = "GenericPartialU16Trial"
+[[lean_lib]]
+name = "GenericPartialU32Trial"
+[[lean_lib]]
+name = "GenericPartialU64Trial"
+[[lean_lib]]
+name = "GenericPartialU8Trial"
+[[lean_lib]]
+name = "GenericPartialUsizeTrial"
+[[lean_lib]]
+name = "GenericScalarSpecs"
+[[lean_lib]]
+name = "GenericTrial"
+[[lean_lib]]
+name = "GenericU128Trial"
+[[lean_lib]]
+name = "GenericU16Trial"
+[[lean_lib]]
+name = "GenericU32Trial"
+[[lean_lib]]
+name = "GenericU64Trial"
+[[lean_lib]]
+name = "GenericUsizeTrial"
+[[lean_lib]]
+name = "PartialI128Neg"
+[[lean_lib]]
+name = "PartialI128Pos"
+[[lean_lib]]
+name = "PartialI16Neg"
+[[lean_lib]]
+name = "PartialI16Pos"
+[[lean_lib]]
+name = "PartialI32Neg"
+[[lean_lib]]
+name = "PartialI32Pos"
+[[lean_lib]]
+name = "PartialI64Neg"
+[[lean_lib]]
+name = "PartialI64Pos"
+[[lean_lib]]
+name = "PartialI8Neg"
+[[lean_lib]]
+name = "PartialI8Pos"
+[[lean_lib]]
+name = "PartialIsizeNeg"
+[[lean_lib]]
+name = "PartialIsizePos"
+[[lean_lib]]
+name = "Proofs"
+[[lean_lib]]
+name = "SignedFrontI128"
+[[lean_lib]]
+name = "SignedFrontI16"
+[[lean_lib]]
+name = "SignedFrontI32"
+[[lean_lib]]
+name = "SignedFrontI64"
+[[lean_lib]]
+name = "SignedFrontI8"
+[[lean_lib]]
+name = "SignedFrontIsize"
+[[lean_lib]]
+name = "SignedI128Neg"
+[[lean_lib]]
+name = "SignedI128Pos"
+[[lean_lib]]
+name = "SignedI16Neg"
+[[lean_lib]]
+name = "SignedI16Pos"
+[[lean_lib]]
+name = "SignedI32Neg"
+[[lean_lib]]
+name = "SignedI32Pos"
+[[lean_lib]]
+name = "SignedI64Neg"
+[[lean_lib]]
+name = "SignedI64Pos"
+[[lean_lib]]
+name = "SignedI8Neg"
+[[lean_lib]]
+name = "SignedI8Pos"
+[[lean_lib]]
+name = "SignedIsizeNeg"
+[[lean_lib]]
+name = "SignedIsizePos"
+[[lean_lib]]
+name = "SignedPartialFrontI128"
+[[lean_lib]]
+name = "SignedPartialFrontI16"
+[[lean_lib]]
+name = "SignedPartialFrontI32"
+[[lean_lib]]
+name = "SignedPartialFrontI64"
+[[lean_lib]]
+name = "SignedPartialFrontI8"
+[[lean_lib]]
+name = "SignedPartialFrontIsize"
+[[lean_lib]]
+name = "SignedPartialUncheckedI128Neg"
+[[lean_lib]]
+name = "SignedPartialUncheckedI128Pos"
+[[lean_lib]]
+name = "SignedPartialUncheckedI16Neg"
+[[lean_lib]]
+name = "SignedPartialUncheckedI16Pos"
+[[lean_lib]]
+name = "SignedPartialUncheckedI32Neg"
+[[lean_lib]]
+name = "SignedPartialUncheckedI32Pos"
+[[lean_lib]]
+name = "SignedPartialUncheckedI64Neg"
+[[lean_lib]]
+name = "SignedPartialUncheckedI64Pos"
+[[lean_lib]]
+name = "SignedPartialUncheckedI8Neg"
+[[lean_lib]]
+name = "SignedPartialUncheckedI8Pos"
+[[lean_lib]]
+name = "SignedPartialUncheckedIsizeNeg"
+[[lean_lib]]
+name = "SignedPartialUncheckedIsizePos"
+[[lean_lib]]
+name = "SignedUncheckedI128Neg"
+[[lean_lib]]
+name = "SignedUncheckedI128Pos"
+[[lean_lib]]
+name = "SignedUncheckedI16Neg"
+[[lean_lib]]
+name = "SignedUncheckedI16Pos"
+[[lean_lib]]
+name = "SignedUncheckedI32Neg"
+[[lean_lib]]
+name = "SignedUncheckedI32Pos"
+[[lean_lib]]
+name = "SignedUncheckedI64Neg"
+[[lean_lib]]
+name = "SignedUncheckedI64Pos"
+[[lean_lib]]
+name = "SignedUncheckedI8Neg"
+[[lean_lib]]
+name = "SignedUncheckedI8Pos"
+[[lean_lib]]
+name = "SignedUncheckedIsizeNeg"
+[[lean_lib]]
+name = "SignedUncheckedIsizePos"
+[[lean_lib]]
+name = "UncheckedPartialU128Trial"
+[[lean_lib]]
+name = "UncheckedPartialU16Trial"
+[[lean_lib]]
+name = "UncheckedPartialU32Trial"
+[[lean_lib]]
+name = "UncheckedPartialU64Trial"
+[[lean_lib]]
+name = "UncheckedPartialU8Trial"
+[[lean_lib]]
+name = "UncheckedPartialUsizeTrial"
+[[lean_lib]]
+name = "UncheckedTrial"
+[[lean_lib]]
+name = "UncheckedU128Trial"
+[[lean_lib]]
+name = "UncheckedU16Trial"
+[[lean_lib]]
+name = "UncheckedU32Trial"
+[[lean_lib]]
+name = "UncheckedU64Trial"
+[[lean_lib]]
+name = "UncheckedUsizeTrial"

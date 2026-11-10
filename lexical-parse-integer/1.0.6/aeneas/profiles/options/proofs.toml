@@ -1,0 +1,119 @@
+[report]
+title = "Integer parsing options in lexical-parse-integer 1.0.6"
+explanation = "Seventeen extracted release methods and the STANDARD constant have total-success contracts for their Boolean option state. Builders and options preserve or set the specified state; mutable setters update their receiver and return unit. With power-of-two enabled, from_radix returns default options for every u8 argument without validating the radix."
+trusted_assumptions = "Pinned Rust-to-Lean translation, Aeneas scalar models, and Lean kernel."
+limitations = "The original build_strict body and its SMALL_NUMBERS and LARGE_NUMBERS constants are excluded: Aeneas encounters an internal error at its panic branch. Parser correctness is outside this profile."
+environment = "Pinned unmodified Aeneas and Charon, Lean 4.35.0, macOS arm64, lexical-util 1.0.7. See profile results for run status."
+
+[tool]
+name = "aeneas"
+version = "be86ab0f1989d04944292b345b24c435be3ad10a"
+lean_dir = ".work/selected-proofs"
+
+[[tool.proofs]]
+api = "lexical_parse_integer::options::OptionsBuilder::new"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.builder_new"
+precondition = "Every call returns normally with no_multi_digit=true."
+
+[[tool.proofs]]
+api = "lexical_parse_integer::options::OptionsBuilder::get_no_multi_digit"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.builder_get"
+precondition = "For either Boolean state, returns that state."
+
+[[tool.proofs]]
+api = "lexical_parse_integer::options::OptionsBuilder::no_multi_digit"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.builder_set"
+precondition = "For either initial state and requested Boolean, returns a builder carrying the requested state."
+
+[[tool.proofs]]
+api = "lexical_parse_integer::options::OptionsBuilder::is_valid"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.builder_valid"
+precondition = "For either Boolean state, returns true."
+
+[[tool.proofs]]
+api = "lexical_parse_integer::options::OptionsBuilder::build_unchecked"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.builder_build_unchecked"
+precondition = "For either Boolean state, returns options carrying the same state."
+
+[[tool.proofs]]
+api = "lexical_parse_integer::options::OptionsBuilder::build"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.builder_build"
+precondition = "For either Boolean state, returns Ok options carrying the same state."
+
+[[tool.proofs]]
+api = "lexical_parse_integer::options::<OptionsBuilder as Default>::default"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.builder_default"
+precondition = "Every call returns normally with no_multi_digit=true."
+
+[[tool.proofs]]
+api = "lexical_parse_integer::options::Options::builder"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.options_builder"
+precondition = "Every call returns a default-state builder."
+
+[[tool.proofs]]
+api = "lexical_parse_integer::options::Options::new"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.options_new"
+precondition = "Every call returns normally with no_multi_digit=true."
+
+[[tool.proofs]]
+api = "lexical_parse_integer::options::Options::from_radix"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.options_from_radix"
+precondition = "With power-of-two enabled, for every u8 radix argument, returns default-state options without validating the radix."
+
+[[tool.proofs]]
+api = "lexical_parse_integer::options::Options::rebuild"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.options_rebuild"
+precondition = "For either Boolean state, returns a builder carrying the same state."
+
+[[tool.proofs]]
+api = "lexical_parse_integer::options::Options::is_valid"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.options_valid"
+precondition = "For either Boolean state, returns true."
+
+[[tool.proofs]]
+api = "lexical_parse_integer::options::Options::get_no_multi_digit"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.options_get"
+precondition = "For either Boolean state, returns that state."
+
+[[tool.proofs]]
+api = "lexical_parse_integer::options::Options::no_multi_digit"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.options_no_multi_digit"
+precondition = "For either initial state and requested Boolean, updates borrowed options to the requested state and returns normally."
+
+[[tool.proofs]]
+api = "lexical_parse_integer::options::Options::set_no_multi_digit"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.options_set_no_multi_digit"
+precondition = "For either initial state and requested Boolean, updates borrowed options to the requested state and returns normally."
+
+[[tool.proofs]]
+api = "lexical_parse_integer::options::<Options as Default>::default"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.options_default"
+precondition = "Every call returns normally with no_multi_digit=true."
+
+[[tool.proofs]]
+api = "lexical_parse_integer::options::<Options as lexical_util::options::ParseOptions>::is_valid"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.parse_options_valid"
+precondition = "For either Boolean state, trait forwarding returns true."
+
+[[tool.proofs]]
+api = "lexical_parse_integer::options::STANDARD"
+module = "Proofs"
+theorem = "LexicalParseIntegerOptionsProofs.standard_state"
+precondition = "The release constant evaluates normally to options with no_multi_digit=true."

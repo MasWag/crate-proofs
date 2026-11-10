@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "status": "passed-local-only",
+  "profile": "default",
+  "reviewed_at_utc": "2026-11-06T14:01:31.891941+00:00",
+  "run_id": "default-szuh3wgu",
+  "run_relative_path": ".work/runs/default-szuh3wgu",
+  "host": "aarch64-apple-darwin",
+  "target": "aarch64-apple-darwin",
+  "offline": true,
+  "result_sha256": "676e7c2d0d608d97ff5a3bf09182fec2802baaf8d5b8d531e0401350f4bd2f8a",
+  "input_fingerprint_sha256": "e6ad3a9ff4e9b72e8410be209c6c2369e5d4d738e18dd038c447415c6c444736",
+  "inputs_before_after_equal": true,
+  "audit_result_sha256": "ca01ba2d3402e6f8065e1c7e045578783babd7acc50702c890860a5b2ae44675",
+  "audit_inputs_before_after_equal": true,
+  "checked_theorems": 28,
+  "mapping_metadata_checked": true,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "mapped_apis": [
+    "lexical_parse_integer::algorithm::parse_4digits",
+    "lexical_parse_integer::algorithm::parse_8digits",
+    "lexical_parse_integer::algorithm::is_4digits",
+    "lexical_parse_integer::algorithm::is_8digits"
+  ],
+  "generated_models": [
+    {
+      "fresh_relative_path": ".work/runs/default-szuh3wgu/extraction-0/LexicalParseInteger.lean",
+      "maintained_relative_path": "aeneas/profiles/default/proofs/Generated/aarch64-apple-darwin/LexicalParseInteger.lean",
+      "sha256": "82750b0406bb60069b6664ad773ec589d69b59453537a43cc3e14080e87a225c",
+      "fresh_regeneration_matches_maintained": true
+    }
+  ],
+  "native": [
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked"
+      ],
+      "rust_test_summaries": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          8,
+          0,
+          0
+        ],
+        [
+          12,
+          0,
+          0
+        ],
+        [
+          3,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          17,
+          0,
+          0
+        ]
+      ],
+      "passed_total": 43
+    },
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--manifest-path",
+        "verification/harness/Cargo.toml"
+      ],
+      "rust_test_summaries": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "passed_total": 0
+    }
+  ],
+  "report_title": "Four- and eight-digit decimal helpers in lexical-parse-integer 1.0.6",
+  "selected_scope_from_report": "For every packed 32-bit or 64-bit word, the corresponding decimal-specialized\n`is_4digits` or `is_8digits` body returns successfully and reports true exactly\nwhen all four or eight bytes are ASCII decimal digits. For words satisfying\nthat condition, the corresponding `parse_4digits` or `parse_8digits` body\nreturns successfully with their positional decimal value, reading bytes from\nleast to most significant. For example, the bytes `1`, `2`, `3`, `4` decode\nto 1234. These helper theorems do not establish complete or partial parsing.\n",
+  "limitations_from_report": "The checked bodies are decimal specializations of the published helpers: their\nconst `FORMAT` parameter is removed and the `NumberFormat::MANTISSA_RADIX`\nlookup is replaced with `10u32`. A source checker confirms the rest of each\ncopied helper body matches the release. This supports correspondence for radix 10,\nbut Rust-to-Rust equivalence to the release has not been formally proved.\n\nThe decoder theorems assume all packed bytes are decimal digits. The\nrecognizer theorems characterize that condition, but their composition with\ncallers is not proved. Public parsing traits, overflow handling, and complete\nor partial parser correctness are not established by these mappings. Aeneas rejects an outer-loop\nbreak in the original complete parser, leaving that algorithm unproved.\n",
+  "local_evidence_only": true,
+  "online_publication_claimed": false
+}

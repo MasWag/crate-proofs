@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "status": "passed-local-only",
+  "profile": "options",
+  "reviewed_at_utc": "2026-11-06T14:01:31.891941+00:00",
+  "run_id": "options-j84kfv7k",
+  "run_relative_path": ".work/runs/options-j84kfv7k",
+  "host": "aarch64-apple-darwin",
+  "target": "aarch64-apple-darwin",
+  "offline": true,
+  "result_sha256": "a294617384d3b58039847b2a92dd559422611cb4b9b2fc912eefd7a63930b53d",
+  "input_fingerprint_sha256": "838b5f3fac830a32377e19f17011ce3ee7910d73e1a2a4f3f19de26c0987d78c",
+  "inputs_before_after_equal": true,
+  "audit_result_sha256": "15b4b8df5624df6b81c42c32f3bb28ebd5f7260b3484be36c9116672ce190a2d",
+  "audit_inputs_before_after_equal": true,
+  "checked_theorems": 18,
+  "mapping_metadata_checked": true,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "mapped_apis": [
+    "lexical_parse_integer::options::OptionsBuilder::new",
+    "lexical_parse_integer::options::OptionsBuilder::get_no_multi_digit",
+    "lexical_parse_integer::options::OptionsBuilder::no_multi_digit",
+    "lexical_parse_integer::options::OptionsBuilder::is_valid",
+    "lexical_parse_integer::options::OptionsBuilder::build_unchecked",
+    "lexical_parse_integer::options::OptionsBuilder::build",
+    "lexical_parse_integer::options::<OptionsBuilder as Default>::default",
+    "lexical_parse_integer::options::Options::builder",
+    "lexical_parse_integer::options::Options::new",
+    "lexical_parse_integer::options::Options::from_radix",
+    "lexical_parse_integer::options::Options::rebuild",
+    "lexical_parse_integer::options::Options::is_valid",
+    "lexical_parse_integer::options::Options::get_no_multi_digit",
+    "lexical_parse_integer::options::Options::no_multi_digit",
+    "lexical_parse_integer::options::Options::set_no_multi_digit",
+    "lexical_parse_integer::options::<Options as Default>::default",
+    "lexical_parse_integer::options::<Options as lexical_util::options::ParseOptions>::is_valid",
+    "lexical_parse_integer::options::STANDARD"
+  ],
+  "generated_models": [
+    {
+      "fresh_relative_path": ".work/runs/options-j84kfv7k/extraction-0/Options.lean",
+      "maintained_relative_path": "aeneas/profiles/options/proofs/Generated/aarch64-apple-darwin/Options.lean",
+      "sha256": "19d3bb4f283a5c7328c19b81b8229807ad2aa5281056025d8676b0a7969b941b",
+      "fresh_regeneration_matches_maintained": true
+    }
+  ],
+  "native": [
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--features",
+        "power-of-two"
+      ],
+      "rust_test_summaries": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          8,
+          0,
+          0
+        ],
+        [
+          13,
+          0,
+          0
+        ],
+        [
+          3,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          17,
+          0,
+          0
+        ]
+      ],
+      "passed_total": 44
+    },
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "verification/options-harness/Cargo.toml"
+      ],
+      "rust_test_summaries": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "passed_total": 2
+    }
+  ],
+  "report_title": "Integer parsing options in lexical-parse-integer 1.0.6",
+  "selected_scope_from_report": "Seventeen extracted release methods and the STANDARD constant have total-success contracts for their Boolean option state. Builders and options preserve or set the specified state; mutable setters update their receiver and return unit. With power-of-two enabled, from_radix returns default options for every u8 argument without validating the radix.",
+  "limitations_from_report": "The original build_strict body and its SMALL_NUMBERS and LARGE_NUMBERS constants are excluded: Aeneas encounters an internal error at its panic branch. Parser correctness is outside this profile.",
+  "local_evidence_only": true,
+  "online_publication_claimed": false
+}

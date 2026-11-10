@@ -1,0 +1,137 @@
+[report]
+title = "Generic radix checked scalar helper adaptations"
+explanation = """
+For radix 2 through 36 and every byte slice with cursor plus length at most
+usize::MAX, 18 outlined complete-mode checked scalar helpers return the first invalid digit or arithmetic overflow/underflow
+at its absolute cursor, or the exact accumulated value. This covers unsigned
+and positive/negative signed modes for 8, 16, 32, 64, 128 and pointer widths.
+Positive and negative signed modes require nonnegative and nonpositive initial
+accumulators, respectively; unsigned initial accumulators are arbitrary.
+"""
+trusted_assumptions = "Pinned Aeneas translation, its scalar and slice models, and the Lean kernel."
+limitations = """
+These are slice-based outlined helper bodies. Their release macro correspondence
+uses reviewed source transformations, including iterator/cursor substitution,
+runtime radix, direct complete-mode invalid-digit handling, and expansion of
+Option::and_then. The source comparison and native differential tests do not
+formally establish Rust-to-Rust equivalence to the original generic parser.
+Unchecked prefix selection, sign/empty handling, partial mode, full frontends,
+format separators and multi-digit paths are outside these 18 helper theorems.
+"""
+environment = """
+Pinned lexical-parse-integer 1.0.6 and lexical-util 1.0.7, unmodified Aeneas and
+Charon, Lean 4.35.0, macOS arm64. See profile results for run status. Native tests are separate evidence.
+"""
+
+[tool]
+name = "aeneas"
+version = "be86ab0f1989d04944292b345b24c435be3ad10a"
+lean_dir = ".work/selected-proofs"
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::checked_u8"
+module = "Proofs.UnsignedU8"
+theorem = "LexicalGenericU8Proofs.checked_u8_spec"
+precondition = "Initial unsigned accumulator is arbitrary; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::checked_u16"
+module = "Proofs.UnsignedU16"
+theorem = "LexicalGenericU16Proofs.checked_u16_spec"
+precondition = "Initial unsigned accumulator is arbitrary; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::checked_u32"
+module = "Proofs.UnsignedU32"
+theorem = "LexicalGenericU32Proofs.checked_u32_spec"
+precondition = "Initial unsigned accumulator is arbitrary; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::checked_u64"
+module = "Proofs.UnsignedU64"
+theorem = "LexicalGenericU64Proofs.checked_u64_spec"
+precondition = "Initial unsigned accumulator is arbitrary; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::checked_u128"
+module = "Proofs.UnsignedU128"
+theorem = "LexicalGenericU128Proofs.checked_u128_spec"
+precondition = "Initial unsigned accumulator is arbitrary; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::checked_usize"
+module = "Proofs.UnsignedUsize"
+theorem = "LexicalGenericUsizeProofs.checked_usize_spec"
+precondition = "Initial unsigned accumulator is arbitrary; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::checked_i8_positive"
+module = "Proofs.SignedI8Pos"
+theorem = "LexicalGenericI8PosProofs.checked_i8_positive_spec"
+precondition = "Initial signed accumulator is nonnegative; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::checked_i8_negative"
+module = "Proofs.SignedI8Neg"
+theorem = "LexicalGenericI8NegProofs.checked_i8_negative_spec"
+precondition = "Initial signed accumulator is nonpositive; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::checked_i16_positive"
+module = "Proofs.SignedI16Pos"
+theorem = "LexicalGenericI16PosProofs.checked_i16_positive_spec"
+precondition = "Initial signed accumulator is nonnegative; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::checked_i16_negative"
+module = "Proofs.SignedI16Neg"
+theorem = "LexicalGenericI16NegProofs.checked_i16_negative_spec"
+precondition = "Initial signed accumulator is nonpositive; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::checked_i32_positive"
+module = "Proofs.SignedI32Pos"
+theorem = "LexicalGenericI32PosProofs.checked_i32_positive_spec"
+precondition = "Initial signed accumulator is nonnegative; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::checked_i32_negative"
+module = "Proofs.SignedI32Neg"
+theorem = "LexicalGenericI32NegProofs.checked_i32_negative_spec"
+precondition = "Initial signed accumulator is nonpositive; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::checked_i64_positive"
+module = "Proofs.SignedI64Pos"
+theorem = "LexicalGenericI64PosProofs.checked_i64_positive_spec"
+precondition = "Initial signed accumulator is nonnegative; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::checked_i64_negative"
+module = "Proofs.SignedI64Neg"
+theorem = "LexicalGenericI64NegProofs.checked_i64_negative_spec"
+precondition = "Initial signed accumulator is nonpositive; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::checked_i128_positive"
+module = "Proofs.SignedI128Pos"
+theorem = "LexicalGenericI128PosProofs.checked_i128_positive_spec"
+precondition = "Initial signed accumulator is nonnegative; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::checked_i128_negative"
+module = "Proofs.SignedI128Neg"
+theorem = "LexicalGenericI128NegProofs.checked_i128_negative_spec"
+precondition = "Initial signed accumulator is nonpositive; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::checked_isize_positive"
+module = "Proofs.SignedIsizePos"
+theorem = "LexicalGenericIsizePosProofs.checked_isize_positive_spec"
+precondition = "Initial signed accumulator is nonnegative; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."
+
+[[tool.proofs]]
+api = "lexical_parse_integer_generic_harness::checked_isize_negative"
+module = "Proofs.SignedIsizeNeg"
+theorem = "LexicalGenericIsizeNegProofs.checked_isize_negative_spec"
+precondition = "Initial signed accumulator is nonpositive; radix 2..36, cursor + bytes length fits usize. Outlined complete-mode checked helper; not a full parser."

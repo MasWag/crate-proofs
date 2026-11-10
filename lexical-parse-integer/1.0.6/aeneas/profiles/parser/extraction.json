@@ -1,0 +1,72 @@
+{
+  "entries": [
+    "crate::checked_u32",
+    "crate::checked_u32_from",
+    "crate::checked_i32_negative_from",
+    "crate::checked_i32_positive_from",
+    "crate::checked_u8_from",
+    "crate::unchecked_u8_from",
+    "crate::complete_u8",
+    "crate::complete_u8_from_cursor",
+    "crate::checked_u8_partial_from",
+    "crate::unchecked_u8_partial_from",
+    "crate::partial_u8",
+    "crate::partial_u8_from_cursor",
+    "crate::sign_i8",
+    "crate::complete_i8",
+    "crate::partial_i8",
+    "crate::checked_i8_positive_from",
+    "crate::checked_i8_positive_partial_from",
+    "crate::checked_i8_negative_from",
+    "crate::checked_i8_negative_partial_from",
+    "crate::unchecked_i8_positive_from",
+    "crate::unchecked_i8_positive_partial_from",
+    "crate::unchecked_i8_negative_from",
+    "crate::unchecked_i8_negative_partial_from",
+    "crate::complete_i8_positive_from_cursor",
+    "crate::complete_i8_negative_from_cursor",
+    "crate::partial_i8_positive_from_cursor",
+    "crate::partial_i8_negative_from_cursor"
+  ],
+  "llbc": "Parser.llbc",
+  "cargo_args": [
+    "--lib",
+    "--locked",
+    "--offline"
+  ],
+  "dependency_include": [
+    "lexical_util::digit::char_to_digit_const",
+    "lexical_util::digit::char_to_valid_digit_const"
+  ],
+  "models": {
+    "Parser.lean": [
+      "checked_u32",
+      "checked_u32_from",
+      "checked_i32_negative_from",
+      "checked_i32_positive_from",
+      "checked_u8_from",
+      "unchecked_u8_from",
+      "complete_u8",
+      "complete_u8_from_cursor",
+      "checked_u8_partial_from",
+      "unchecked_u8_partial_from",
+      "partial_u8",
+      "partial_u8_from_cursor",
+      "sign_i8",
+      "complete_i8",
+      "partial_i8",
+      "checked_i8_positive_from",
+      "checked_i8_positive_partial_from",
+      "checked_i8_negative_from",
+      "checked_i8_negative_partial_from",
+      "unchecked_i8_positive_from",
+      "unchecked_i8_positive_partial_from",
+      "unchecked_i8_negative_from",
+      "unchecked_i8_negative_partial_from",
+      "complete_i8_positive_from_cursor",
+      "complete_i8_negative_from_cursor",
+      "partial_i8_positive_from_cursor",
+      "partial_i8_negative_from_cursor"
+    ]
+  }
+}

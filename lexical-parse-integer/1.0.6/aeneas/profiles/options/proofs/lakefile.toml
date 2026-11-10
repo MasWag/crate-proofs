@@ -1,0 +1,17 @@
+name = "lexical_parse_integer_options_proofs"
+version = "0.1.0"
+defaultTargets = ["Proofs"]
+
+[[require]]
+name = "aeneas"
+path = "@AENEAS_BACKEND@"
+
+[[lean_lib]]
+name = "Options"
+srcDir = "Generated/@TARGET@"
+
+[[lean_lib]]
+name = "OptionsSpecs"
+
+[[lean_lib]]
+name = "Proofs"

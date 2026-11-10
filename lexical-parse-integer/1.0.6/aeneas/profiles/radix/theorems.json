@@ -1,0 +1,38 @@
+{
+  "checked": [
+    {
+      "name": "LexicalParseIntegerRadixProofs.is4_digits",
+      "module": "Proofs.Validate",
+      "scope": "public-model",
+      "precondition": "The release FORMAT mantissa radix equals the explicit u32 radix argument, and 2 <= radix <= 10. The adapted helper body is source checked; Rust-to-Rust equivalence is not formally proved."
+    },
+    {
+      "name": "LexicalParseIntegerRadixProofs.is8_digits",
+      "module": "Proofs.Validate",
+      "scope": "public-model",
+      "precondition": "The release FORMAT mantissa radix equals the explicit u32 radix argument, and 2 <= radix <= 10. The adapted helper body is source checked; Rust-to-Rust equivalence is not formally proved."
+    },
+    {
+      "name": "LexicalParseIntegerRadixProofs.parse4_value_success",
+      "module": "Proofs.Decode",
+      "scope": "public-model",
+      "precondition": "The release FORMAT mantissa radix equals the explicit u32 radix argument, 2 <= radix <= 10, and all four packed bytes are ASCII digits for that radix. The adapted helper body is source checked; Rust-to-Rust equivalence is not formally proved."
+    },
+    {
+      "name": "LexicalParseIntegerRadixProofs.parse8_value_success",
+      "module": "Proofs.Decode",
+      "scope": "public-model",
+      "precondition": "The release FORMAT mantissa radix equals the explicit u32 radix argument, 2 <= radix <= 10, and all eight packed bytes are ASCII digits for that radix. The adapted helper body is source checked; Rust-to-Rust equivalence is not formally proved."
+    }
+  ],
+  "recorder_mappings": [
+    {"api": "lexical_parse_integer::algorithm::is_4digits", "theorem": "LexicalParseIntegerRadixProofs.is4_digits"},
+    {"api": "lexical_parse_integer::algorithm::is_8digits", "theorem": "LexicalParseIntegerRadixProofs.is8_digits"},
+    {"api": "lexical_parse_integer::algorithm::parse_4digits", "theorem": "LexicalParseIntegerRadixProofs.parse4_value_success"},
+    {"api": "lexical_parse_integer::algorithm::parse_8digits", "theorem": "LexicalParseIntegerRadixProofs.parse8_value_success"}
+  ],
+  "extracted_but_unproved": [
+    "algorithm::algorithm_complete",
+    "algorithm::algorithm_partial"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "status": "passed-local-only",
+  "accepted_at_utc": "2026-11-05T16:34:31.499261+00:00",
+  "run_id": "default-zbqap6ra",
+  "run_relative_path": ".work/runs/default-zbqap6ra",
+  "host": "aarch64-apple-darwin",
+  "target": "aarch64-apple-darwin",
+  "profile": "default",
+  "offline": true,
+  "result_sha256": "be8694ba25d24964c2841b699b2acd9a5c89794d7bf94ead1e1c5ea3127dca98",
+  "input_fingerprint_sha256": "d65bfc53a6e39396a8dbd3ee9b37d2797ac35b9661bd71b8707202cb3314e073",
+  "inputs_before_after_equal": true,
+  "audit_result_sha256": "68fe4bf65541f71227c954971fe6143fa63825bec6abd7a08f701fb0d42abe42",
+  "audit_inputs_before_after_equal": true,
+  "checked_theorems": 28,
+  "mapped_helper_apis": [
+    "lexical_parse_integer::algorithm::parse_4digits",
+    "lexical_parse_integer::algorithm::parse_8digits",
+    "lexical_parse_integer::algorithm::is_4digits",
+    "lexical_parse_integer::algorithm::is_8digits"
+  ],
+  "mapping_metadata_checked": true,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "generated_model_sha256": "82750b0406bb60069b6664ad773ec589d69b59453537a43cc3e14080e87a225c",
+  "fresh_regeneration_matches_maintained_model": true,
+  "native_default_passed_tests": 43,
+  "native_harness_passed_tests": 0,
+  "original_parser_blocker_reproduced": true,
+  "source_adaptation_check_passed": true,
+  "inherited_cargo_config_check_passed": true,
+  "limitations": [
+    "Both unchanged complete and partial parser bodies pass Charon but clean Aeneas rejects macro-expanded outer-loop breaks; neither is proved.",
+    "Decimal recognizer and decoder contracts are checked for the adapted radix-10 helper bodies; caller composition, error handling, and complete/partial parsing remain unproved.",
+    "The mapped helper theorems concern a decimal specialization with reviewed, not formally proved, release correspondence.",
+    "Raw logs and this run exist only in ignored local .work; no downloadable archive or publication is claimed."
+  ],
+  "partial_parser_probe": {
+    "status": "aeneas-unsupported-outer-loop-break",
+    "local_path": ".work/probe-partial-1",
+    "llbc_sha256": "4c370714fc4716afbe6ee2eb6ecfb68520804c9dceb0bb9a17cd784d1f302ffa",
+    "aeneas_log_sha256": "71cfa7c295aedbccbbf120ff66f8a9ca13f61670add0b29cb515760e7d9eaa9d",
+    "source_span": "src/algorithm.rs:712-720",
+    "note": "Separate ignored exploratory probe; not a selected extraction in this managed run."
+  }
+}

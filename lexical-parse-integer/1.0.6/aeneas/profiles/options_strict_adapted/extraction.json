@@ -1,0 +1,21 @@
+{
+  "entries": [
+    "crate::options::OptionsBuilder::build_strict",
+    "crate::options::SMALL_NUMBERS",
+    "crate::options::LARGE_NUMBERS"
+  ],
+  "llbc": "Strict.llbc",
+  "cargo_args": ["--lib", "--locked", "--offline", "--features", "power-of-two"],
+  "models": {
+    "Strict.lean": [
+      "options.OptionsBuilder.new",
+      "options.OptionsBuilder.impl.no_multi_digit",
+      "options.OptionsBuilder.build_unchecked",
+      "options.OptionsBuilder.build",
+      "options.OptionsBuilder.build_strict",
+      "options.Options.builder",
+      "options.SMALL_NUMBERS",
+      "options.LARGE_NUMBERS"
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "entries": ["crate::safe::try4", "crate::safe::try8"],
+  "llbc": "LexicalParseIntegerCallerSafe.llbc",
+  "cargo_args": ["--lib", "--locked", "--offline"],
+  "models": {
+    "LexicalParseIntegerCallerSafe.lean": [
+      "safe.try4", "safe.try8",
+      "swar.is_4digits", "swar.parse_4digits",
+      "swar.is_8digits", "swar.parse_8digits"
+    ]
+  }
+}

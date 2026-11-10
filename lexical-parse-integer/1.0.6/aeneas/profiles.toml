@@ -1,0 +1,41 @@
+default = "default"
+
+[profiles.default]
+path = "aeneas/profiles/default"
+dependencies = []
+
+[profiles.radix]
+path = "aeneas/profiles/radix"
+dependencies = []
+
+[profiles.caller]
+path = "aeneas/profiles/caller"
+dependencies = ["default"]
+
+[profiles.parser]
+path = "aeneas/profiles/parser"
+dependencies = []
+
+[profiles.options]
+path = "aeneas/profiles/options"
+dependencies = []
+
+[profiles.sign]
+path = "aeneas/profiles/sign"
+dependencies = []
+
+[profiles.generic_checked]
+path = "aeneas/profiles/generic_checked"
+dependencies = []
+
+[profiles.generic_partial]
+path = "aeneas/profiles/generic_partial"
+dependencies = []
+
+[profiles.generic_front]
+path = "aeneas/profiles/generic_front"
+dependencies = []
+
+[profiles.options_strict_adapted]
+path = "aeneas/profiles/options_strict_adapted"
+dependencies = []

@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "status": "passed-local-only",
+  "profile": "generic_front",
+  "reviewed_at_utc": "2026-11-06T14:01:31.891941+00:00",
+  "run_id": "generic_front-p9k_xq33",
+  "run_relative_path": ".work/runs/generic_front-p9k_xq33",
+  "host": "aarch64-apple-darwin",
+  "target": "aarch64-apple-darwin",
+  "offline": true,
+  "result_sha256": "5e89feb3c77896fdcc1f69bb606f423773b8b8e99619a5182851cae431419bed",
+  "input_fingerprint_sha256": "447cb3fbe8a86a8dadd24b288ed0a72e73a3b410afbe16e38f268376f0db1630",
+  "inputs_before_after_equal": true,
+  "audit_result_sha256": "3055d8c912d70941bc3317b8c9254cc529e4723518ca57b18ea72fe617a26794",
+  "audit_inputs_before_after_equal": true,
+  "checked_theorems": 24,
+  "mapping_metadata_checked": true,
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "mapped_apis": [
+    "lexical_parse_integer_generic_front_harness::complete_u8",
+    "lexical_parse_integer_generic_front_harness::complete_u16",
+    "lexical_parse_integer_generic_front_harness::complete_u32",
+    "lexical_parse_integer_generic_front_harness::complete_u64",
+    "lexical_parse_integer_generic_front_harness::complete_u128",
+    "lexical_parse_integer_generic_front_harness::complete_usize",
+    "lexical_parse_integer_generic_front_harness::complete_i8",
+    "lexical_parse_integer_generic_front_harness::complete_i16",
+    "lexical_parse_integer_generic_front_harness::complete_i32",
+    "lexical_parse_integer_generic_front_harness::complete_i64",
+    "lexical_parse_integer_generic_front_harness::complete_i128",
+    "lexical_parse_integer_generic_front_harness::complete_isize",
+    "lexical_parse_integer_generic_front_harness::partial_u8",
+    "lexical_parse_integer_generic_front_harness::partial_u16",
+    "lexical_parse_integer_generic_front_harness::partial_u32",
+    "lexical_parse_integer_generic_front_harness::partial_u64",
+    "lexical_parse_integer_generic_front_harness::partial_u128",
+    "lexical_parse_integer_generic_front_harness::partial_usize",
+    "lexical_parse_integer_generic_front_harness::partial_i8",
+    "lexical_parse_integer_generic_front_harness::partial_i16",
+    "lexical_parse_integer_generic_front_harness::partial_i32",
+    "lexical_parse_integer_generic_front_harness::partial_i64",
+    "lexical_parse_integer_generic_front_harness::partial_i128",
+    "lexical_parse_integer_generic_front_harness::partial_isize"
+  ],
+  "generated_models": [
+    {
+      "fresh_relative_path": ".work/runs/generic_front-p9k_xq33/extraction-0/GenericFront.lean",
+      "maintained_relative_path": "aeneas/profiles/generic_front/proofs/Generated/aarch64-apple-darwin/GenericFront.lean",
+      "sha256": "6846bc050bd3b0c4b24455d3a21b0c884e3d45fd3d257d45958ee0a1fcef5c40",
+      "fresh_regeneration_matches_maintained": true
+    }
+  ],
+  "native": [
+    {
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "verification/generic-parser-front-harness/Cargo.toml"
+      ],
+      "rust_test_summaries": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "passed_total": 1
+    }
+  ],
+  "report_title": "Generic scalar complete and partial frontend adaptations",
+  "selected_scope_from_report": "For radix 2 through 36 and every byte slice, 24 extracted standard-syntax\nno_multi_digit=true whole-input frontend adaptations return exactly the value,\nerror, and partial consumed count specified by the independently authored\nmathematical parser. This covers complete and partial parsing of six unsigned\nand six signed integer types. The usize and isize contracts require a 64-bit\nplatform; the other types require only the radix bound.\n",
+  "limitations_from_report": "These theorems concern safe slice/cursor front-end adaptations with outlined\nmacros and an explicit radix. Source checks and review cover the selected release\nmacro and front-end transformations, including the unchecked prefix; they do not\nestablish formal Rust-to-Rust equivalence to the original parser or raw iterator. The\n64-bit platform premise applies to usize/isize whole-input contracts. Format\nseparators, prefixes and suffixes, optimized multi-digit paths, and option\nindependence are outside this profile.\n",
+  "local_evidence_only": true,
+  "online_publication_claimed": false
+}

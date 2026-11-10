@@ -1,0 +1,15 @@
+name = "lexical_parser_proofs"
+version = "0.1.0"
+defaultTargets = ["Proofs"]
+[[require]]
+name = "aeneas"
+path = "@AENEAS_BACKEND@"
+[[lean_lib]]
+name = "Parser"
+srcDir = "Generated/@TARGET@"
+[[lean_lib]]
+name = "ScalarSpecs"
+[[lean_lib]]
+name = "DigitSpecs"
+[[lean_lib]]
+name = "Proofs"

@@ -1,0 +1,45 @@
+--- release/src/algorithm.rs
++++ trial/src/algorithm.rs
+@@ -479,38 +479,10 @@
+ /// * `no_multi_digit` - If to disable multi-digit optimizations.
+ /// * `is_end` - If iter corresponds to the full input.
+ macro_rules! parse_digits_unchecked {
+-    (
+-        $value:ident,
+-        $iter:ident,
+-        $add_op:ident,
+-        $start_index:ident,
+-        $invalid_digit:ident,
+-        $no_multi_digit:expr,
+-        $is_end:expr
+-    ) => {{
+-        let can_multi = can_try_parse_multidigits::<_, FORMAT>(&$iter);
+-        let use_multi = can_multi && !$no_multi_digit;
+-
+-        // these cannot overflow. also, we use at most 3 for a 128-bit float and 1 for a
+-        // 64-bit float NOTE: Miri will complain about this if we use radices >=
+-        // 16 but since they won't go into `try_parse_8digits!` or
+-        // `try_parse_4digits` it will be optimized out and the overflow won't
+-        // matter.
+-        let format = NumberFormat::<FORMAT> {};
+-        if use_multi && T::BITS >= 64 && $iter.buffer_length() >= 8 {
+-            // Try our fast, 8-digit at a time optimizations.
+-            let radix8 = T::from_u32(format.radix8());
+-            while let Some(value) = try_parse_8digits::<T, _, FORMAT>(&mut $iter) {
+-                $value = $value.wrapping_mul(radix8).$add_op(value);
+-            }
+-        } else if use_multi && T::BITS == 32 && $iter.buffer_length() >= 4 {
+-            // Try our fast, 8-digit at a time optimizations.
+-            let radix4 = T::from_u32(format.radix4());
+-            while let Some(value) = try_parse_4digits::<T, _, FORMAT>(&mut $iter) {
+-                $value = $value.wrapping_mul(radix4).$add_op(value);
+-            }
+-        }
+-        parse_1digit_unchecked!($value, $iter, $add_op, $start_index, $invalid_digit, $is_end)
++    ($value:ident, $iter:ident, $add_op:ident, $start_index:ident,
++     $invalid_digit:ident, $no_multi_digit:expr, $is_end:expr) => {{
++        parse_1digit_unchecked!($value, $iter, $add_op, $start_index,
++                                $invalid_digit, $is_end)
+     }};
+ }
+ 

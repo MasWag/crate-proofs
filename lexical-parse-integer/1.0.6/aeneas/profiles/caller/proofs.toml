@@ -1,0 +1,51 @@
+[report]
+title = "Decimal block caller adaptation in lexical-parse-integer 1.0.6"
+explanation = '''
+For an input slice containing the iterator's remaining bytes and an absolute
+cursor such that cursor plus the slice length is at most usize::MAX, the adapted
+four- and eight-digit callers return successfully for all slice lengths. They
+return a value exactly when the next four or eight bytes are ASCII decimal
+digits; that value is the positional decimal value. A call returning a value advances
+the cursor by the block width. A short or invalid block returns no value and
+leaves the cursor unchanged.
+'''
+trusted_assumptions = '''
+The Lean contracts depend on the pinned Aeneas Rust-to-Lean translation,
+Aeneas scalar and slice models, the imported decimal helper theorems, and Lean's
+kernel. The caller input represents a remaining contiguous iterator slice,
+and cursor plus its length fits in usize.
+'''
+limitations = '''
+These theorems prove the checked safe-read adaptation in the caller harness.
+The published callers use lexical-util's Bytes iterator, an unaligned pointer
+read, and unchecked iterator advancement. Pinned Aeneas does not translate
+those dependencies into usable bodies, so formal equivalence to the published
+callers is not established. Native differential tests compare the adaptation
+with the release callers at zero and nonzero iterator positions; they are
+separate evidence. The helper bodies are decimal specializations of the
+published format-generic routines. Other target widths, formats, and public
+parsing traits are outside these mappings.
+'''
+environment = '''
+lexical-parse-integer 1.0.6, lexical-util 1.0.7, Rust 1.94.1, pinned unmodified
+Aeneas and Charon, Lean 4.35.0, macOS arm64. Inputs and tools are pinned by the
+version-local source and tool locks. The caller harness has its own Cargo
+workspace and lockfile. See profile results for run status.
+'''
+
+[tool]
+name = "aeneas"
+version = "be86ab0f1989d04944292b345b24c435be3ad10a"
+lean_dir = ".work/selected-proofs"
+
+[[tool.proofs]]
+api = "lexical_parse_integer_caller_harness::safe::try4"
+module = "CallerProofs"
+theorem = "CallerProofs.try4_contract"
+precondition = "bytes is the iterator's remaining contiguous slice; cursor plus its length is at most usize::MAX; decimal radix 10"
+
+[[tool.proofs]]
+api = "lexical_parse_integer_caller_harness::safe::try8"
+module = "CallerProofs"
+theorem = "CallerProofs.try8_contract"
+precondition = "bytes is the iterator's remaining contiguous slice; cursor plus its length is at most usize::MAX; decimal radix 10"
