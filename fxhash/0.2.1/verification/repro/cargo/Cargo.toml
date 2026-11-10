@@ -1,0 +1,17 @@
+[package]
+name = "fxhash-readme-repro"
+version = "0.0.0"
+edition = "2021"
+publish = false
+[workspace]
+[dependencies]
+fxhash = { path = "../../../.work/source", version = "=0.2.1" }
+[[bin]]
+name = "readme-map"
+path = "../readme-map.rs"
+[[bin]]
+name = "readme-set"
+path = "../readme-set.rs"
+[[bin]]
+name = "readme-default"
+path = "../readme-default.rs"

@@ -1,0 +1,32 @@
+name = "fxhash_proofs"
+version = "0.1.0"
+defaultTargets = ["Contracts", "ByteProofs", "WriteContracts"]
+
+[[require]]
+name = "aeneas"
+path = "@AENEAS_BACKEND@"
+
+[[lean_lib]]
+name = "FxhashAdapted"
+srcDir = "Generated/@TARGET@"
+
+[[lean_lib]]
+name = "Specs"
+
+[[lean_lib]]
+name = "Contracts"
+
+[[lean_lib]]
+name = "ByteProofs"
+
+[[lean_lib]]
+name = "WriteContracts"
+
+[[lean_lib]]
+name = "SpecRecurrence"
+
+[[lean_lib]]
+name = "ByteDecode"
+
+[[lean_lib]]
+name = "ByteFunctional"

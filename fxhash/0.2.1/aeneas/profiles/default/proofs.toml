@@ -1,0 +1,213 @@
+[report]
+title = "Selected fxhash 0.2.1 integer-write and byte-write guarantees"
+explanation = '''
+This partial verification covers selected operations on the adapted fxhash 0.2.1 implementation. Default initializes FxHasher32, FxHasher64 and the native-width FxHasher to zero; finish returns the current state as a u64 without changing it.
+
+For every initial state and unsigned input, the FxHasher32, FxHasher64 and native-width FxHasher write_u8, write_u16, write_u32, write_u64 and write_usize methods succeed with the specified state. A mixing round rotates the state left five bits, XORs the input word, then multiplies modulo the state width by 0x27220a95 for 32 bits or 0x517cc1b727220a95 for 64 bits. FxHasher64 uses one round; FxHasher32 uses one round for inputs up to 32 bits and, for a 64-bit u64 or usize input, two rounds with the low 32 bits first. On the checked 64-bit target, FxHasher uses the 64-bit one-round rule and usize has 64 bits.
+
+For every modeled initial state and byte slice, including an empty slice, Hasher::write succeeds and produces the state specified by the byte algorithm for all three hasher types. FxHasher32 mixes consecutive little-endian 4-byte blocks and then each remaining byte. FxHasher64 and, on the checked target, FxHasher mix consecutive little-endian 8-byte blocks, an optional 4-byte block, and then each remaining byte. Each block or byte uses the mixing round described above; an empty slice leaves the state unchanged.
+'''
+trusted_assumptions = '''
+These results rely on the Aeneas translation from Rust to Lean, its models of fixed-width arithmetic, slices, arrays, iteration and loop execution, and Lean's checking of the stated theorems. The Lean Usize model width must match the 64-bit Rust extraction target for the native-width claims. Source correspondence is supported by the adaptation check and finite native comparisons described below; it is not itself a formal equivalence theorem.
+'''
+limitations = '''
+This is partial coverage. Generic Hash composition, collection aliases, inherited Hasher methods, and standard collection behavior are not established by these claims. Hash distribution, collision resistance and cryptographic security are outside scope. The checked target is macOS arm64; other targets and byte orders are not covered by this run.
+
+The model is extracted from derived Rust. The integer `.bitxor(word)` expression is replaced by `^ word`, a private `write` helper and its call are renamed to avoid a generated-name collision, and guarded native-endian 32- and 64-bit reads are replaced by fixed indexed byte arrays and `from_le_bytes`. The adapted source rejects non-little-endian targets. A source checker checks these changes. Source review supports equivalence: the XOR uses the same integer operation, the rename preserves the call, and the original length guards make the indexed reads valid and select the same bytes in the same order on the supported little-endian target. Finite differential tests against the release passed in debug and release; neither source review nor testing is a formal equivalence proof.
+'''
+environment = '''
+Pinned fxhash 0.2.1 release source and unmodified Aeneas/Charon, with Lean 4.35.0 on macOS arm64. The derived source and tool pins are recorded in the version-local verification evidence. Native differential tests are separate from the formal results; the release's own native test suite contains no tests. The inherited ancestor Cargo configuration is an execution input; its Creusot patch is unused by this Aeneas run.
+'''
+
+[[report.findings]]
+title = "Fix collection constructors in the 0.2.1 release README"
+body = '''
+## Description
+
+The `fxhash` 0.2.1 README examples call `FxHashMap::new()` and `FxHashSet::new()`, but these aliases use `FxBuildHasher` and the examples do not compile with those constructors.
+
+## Steps to Reproduce
+
+With `fxhash = "=0.2.1"` as a dependency, compile:
+
+```rust
+use fxhash::FxHashMap;
+
+fn main() {
+    let mut hashmap = FxHashMap::new();
+    hashmap.insert("black", 0);
+    hashmap.insert("white", 255);
+}
+```
+
+The README's `FxHashSet::new()` example is affected in the same way.
+
+## Expected Behavior
+
+Both README examples compile and create collections using the Fx hasher.
+
+## Actual Behavior
+
+Compilation fails with E0599: no associated function named `new` is found for the collection with `BuildHasherDefault<FxHasher>`.
+
+## Environment
+
+- `fxhash` 0.2.1; Rust 1.94.1, `aarch64-apple-darwin`
+
+## Screenshots/Logs
+
+The compiler reports E0599 at the `::new()` call.
+
+## Additional Context
+
+`FxHashMap::default()` and `FxHashSet::default()` compile and run in the tested control. The current upstream README already uses `default()`. Related: [#1](https://github.com/cbreeden/fxhash/issues/1) and [#18](https://github.com/cbreeden/fxhash/issues/18).
+'''
+
+[tool]
+name = "aeneas"
+version = "be86ab0f1989d04944292b345b24c435be3ad10a"
+lean_dir = ".work/selected-proofs"
+
+[[tool.proofs]]
+api = "<fxhash::FxHasher32 as Default>::default"
+module = "Contracts"
+theorem = "FxHashContracts.fxHasher32_default"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<fxhash::FxHasher64 as Default>::default"
+module = "Contracts"
+theorem = "FxHashContracts.fxHasher64_default"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<fxhash::FxHasher as Default>::default"
+module = "Contracts"
+theorem = "FxHashContracts.fxHasher_default"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<fxhash::FxHasher32 as Hasher>::finish"
+module = "Contracts"
+theorem = "FxHashContracts.fxHasher32_finish"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<fxhash::FxHasher64 as Hasher>::finish"
+module = "Contracts"
+theorem = "FxHashContracts.fxHasher64_finish"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<fxhash::FxHasher as Hasher>::finish"
+module = "Contracts"
+theorem = "FxHashContracts.fxHasher_finish"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<fxhash::FxHasher32 as Hasher>::write_u32"
+module = "Contracts"
+theorem = "FxHashContracts.fxHasher32_write_u32"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<fxhash::FxHasher64 as Hasher>::write_u64"
+module = "Contracts"
+theorem = "FxHashContracts.fxHasher64_write_u64"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<fxhash::FxHasher32 as Hasher>::write_u8"
+module = "Contracts"
+theorem = "FxHashContracts.fxHasher32_write_u8"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<fxhash::FxHasher32 as Hasher>::write_u16"
+module = "Contracts"
+theorem = "FxHashContracts.fxHasher32_write_u16"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<fxhash::FxHasher64 as Hasher>::write_u8"
+module = "Contracts"
+theorem = "FxHashContracts.fxHasher64_write_u8"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<fxhash::FxHasher64 as Hasher>::write_u16"
+module = "Contracts"
+theorem = "FxHashContracts.fxHasher64_write_u16"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<fxhash::FxHasher64 as Hasher>::write_u32"
+module = "Contracts"
+theorem = "FxHashContracts.fxHasher64_write_u32"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<fxhash::FxHasher64 as Hasher>::write_usize"
+module = "Contracts"
+theorem = "FxHashContracts.fxHasher64_write_usize"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<fxhash::FxHasher32 as Hasher>::write_u64"
+module = "Contracts"
+theorem = "FxHashContracts.fxHasher32_write_u64"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<fxhash::FxHasher32 as Hasher>::write_usize"
+module = "Contracts"
+theorem = "FxHashContracts.fxHasher32_write_usize"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<fxhash::FxHasher as Hasher>::write_u8"
+module = "Contracts"
+theorem = "FxHashContracts.fxHasher_write_u8"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<fxhash::FxHasher as Hasher>::write_u16"
+module = "Contracts"
+theorem = "FxHashContracts.fxHasher_write_u16"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<fxhash::FxHasher as Hasher>::write_u32"
+module = "Contracts"
+theorem = "FxHashContracts.fxHasher_write_u32"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<fxhash::FxHasher as Hasher>::write_u64"
+module = "Contracts"
+theorem = "FxHashContracts.fxHasher_write_u64"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<fxhash::FxHasher as Hasher>::write_usize"
+module = "Contracts"
+theorem = "FxHashContracts.fxHasher_write_usize"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<fxhash::FxHasher32 as Hasher>::write"
+module = "WriteContracts"
+theorem = "FxHashWriteContracts.fxHasher32_write_exact"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<fxhash::FxHasher64 as Hasher>::write"
+module = "WriteContracts"
+theorem = "FxHashWriteContracts.fxHasher64_write_exact"
+precondition = "true"
+
+[[tool.proofs]]
+api = "<fxhash::FxHasher as Hasher>::write"
+module = "WriteContracts"
+theorem = "FxHashWriteContracts.fxHasher_write_exact"
+precondition = "true"

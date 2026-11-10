@@ -1,0 +1,13 @@
+[package]
+name = "fxhash-adapted"
+version = "0.2.1"
+edition = "2015"
+publish = false
+
+[lib]
+path = "../../.work/adapted/lib.rs"
+
+[dependencies.byteorder]
+version = "1.0.0"
+
+[workspace]

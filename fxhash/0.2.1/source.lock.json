@@ -1,0 +1,38 @@
+{
+  "aliases": [],
+  "files": {
+    ".gitignore": {
+      "executable": false,
+      "sha256": "89c358fac86a5eb00bcea9fd3df772fc981998fd14e3cdb92d2273a21d18fcf6"
+    },
+    "Cargo.toml": {
+      "executable": false,
+      "sha256": "83bb4c3e7fbfb7380c175923ba7dfe150e4e09bd4ebfb45e65e5f8a494d36ab9"
+    },
+    "Cargo.toml.orig": {
+      "executable": false,
+      "sha256": "42f07fb23f8b37acf45914ccb71df077455a353850e148afeabb5c684f8ebaab"
+    },
+    "README.md": {
+      "executable": false,
+      "sha256": "7b9227f966b312e221bd372fef79438b2446a21241eb7542520eac29bfbc10d0"
+    },
+    "bench.rs": {
+      "executable": false,
+      "sha256": "b4dc3ef9eeb043ffb470b37a0c2a36306a024af808eac8517924359298d3e183"
+    },
+    "lib.rs": {
+      "executable": false,
+      "sha256": "885b72a1c977dc1c3ff4e0652719e62b6d8c3e713403e571afd581283f72df7b"
+    }
+  },
+  "kind": "registry",
+  "manifest_exceptions": {
+    "dev-dependencies": "Omitted benchmark-only seahash/fnv dependencies because the selected library and native library tests do not use them; benchmark target is excluded from proof and native test scope."
+  },
+  "name": "fxhash",
+  "schema_version": 1,
+  "sha256": "c31b6d751ae2c7f11320402d34e41349dd1016f8d5d45e48c4312bc8625af50c",
+  "url": "https://static.crates.io/crates/fxhash/fxhash-0.2.1.crate",
+  "version": "0.2.1"
+}

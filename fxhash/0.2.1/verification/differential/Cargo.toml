@@ -1,0 +1,12 @@
+[package]
+name = "fxhash-differential"
+version = "0.0.0"
+edition = "2021"
+publish = false
+[workspace]
+[dependencies]
+release_fx = { package = "fxhash", version = "=0.2.1", path = "../../.work/source" }
+adapted_fx = { package = "fxhash-adapted", version = "=0.2.1", path = "../harness" }
+[[test]]
+name = "traces"
+path = "traces.rs"

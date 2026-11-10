@@ -1,0 +1,384 @@
+{
+  "acceptance_basis": "Original archived inputs; packaging does not rerun verification.",
+  "archive_sha256": "b8e49fbcc476a6ce9c3b6f3bd55c07c7beed32eab2be2dc4383a60cd53d64787",
+  "audit": {
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "checked": [
+      {
+        "module": "Contracts",
+        "name": "FxHashContracts.hashWord32_correct",
+        "scope": "helper"
+      },
+      {
+        "module": "Contracts",
+        "name": "FxHashContracts.hashWord64_correct",
+        "scope": "helper"
+      },
+      {
+        "module": "Contracts",
+        "name": "FxHashContracts.hashWordUsize_correct",
+        "scope": "helper"
+      },
+      {
+        "module": "Contracts",
+        "name": "FxHashContracts.fxHasher32_default",
+        "scope": "public-model"
+      },
+      {
+        "module": "Contracts",
+        "name": "FxHashContracts.fxHasher64_default",
+        "scope": "public-model"
+      },
+      {
+        "module": "Contracts",
+        "name": "FxHashContracts.fxHasher_default",
+        "scope": "public-model"
+      },
+      {
+        "module": "Contracts",
+        "name": "FxHashContracts.fxHasher32_finish",
+        "scope": "public-model"
+      },
+      {
+        "module": "Contracts",
+        "name": "FxHashContracts.fxHasher64_finish",
+        "scope": "public-model"
+      },
+      {
+        "module": "Contracts",
+        "name": "FxHashContracts.fxHasher_finish",
+        "scope": "public-model"
+      },
+      {
+        "module": "Contracts",
+        "name": "FxHashContracts.fxHasher32_write_u32",
+        "scope": "public-model"
+      },
+      {
+        "module": "Contracts",
+        "name": "FxHashContracts.fxHasher64_write_u64",
+        "scope": "public-model"
+      },
+      {
+        "module": "Contracts",
+        "name": "FxHashContracts.fxHasher32_write_u8",
+        "scope": "public-model"
+      },
+      {
+        "module": "Contracts",
+        "name": "FxHashContracts.fxHasher32_write_u16",
+        "scope": "public-model"
+      },
+      {
+        "module": "Contracts",
+        "name": "FxHashContracts.fxHasher64_write_u8",
+        "scope": "public-model"
+      },
+      {
+        "module": "Contracts",
+        "name": "FxHashContracts.fxHasher64_write_u16",
+        "scope": "public-model"
+      },
+      {
+        "module": "Contracts",
+        "name": "FxHashContracts.fxHasher64_write_u32",
+        "scope": "public-model"
+      },
+      {
+        "module": "Contracts",
+        "name": "FxHashContracts.fxHasher64_write_usize",
+        "scope": "public-model"
+      },
+      {
+        "module": "Contracts",
+        "name": "FxHashContracts.fxHasher32_write_u64",
+        "scope": "public-model"
+      },
+      {
+        "module": "Contracts",
+        "name": "FxHashContracts.fxHasher32_write_usize",
+        "scope": "public-model"
+      },
+      {
+        "module": "Contracts",
+        "name": "FxHashContracts.fxHasher_write_u8",
+        "scope": "public-model"
+      },
+      {
+        "module": "Contracts",
+        "name": "FxHashContracts.fxHasher_write_u16",
+        "scope": "public-model"
+      },
+      {
+        "module": "Contracts",
+        "name": "FxHashContracts.fxHasher_write_u32",
+        "scope": "public-model"
+      },
+      {
+        "module": "Contracts",
+        "name": "FxHashContracts.fxHasher_write_u64",
+        "scope": "public-model"
+      },
+      {
+        "module": "Contracts",
+        "name": "FxHashContracts.fxHasher_write_usize",
+        "scope": "public-model"
+      },
+      {
+        "module": "ByteProofs",
+        "name": "FxHash.ByteProofs.index_succeeds",
+        "scope": "helper"
+      },
+      {
+        "module": "ByteProofs",
+        "name": "FxHash.ByteProofs.write32_loop0_body_short",
+        "scope": "helper"
+      },
+      {
+        "module": "ByteProofs",
+        "name": "FxHash.ByteProofs.write64_loop0_body_short",
+        "scope": "helper"
+      },
+      {
+        "module": "ByteProofs",
+        "name": "FxHash.ByteProofs.write32_loop0_body_long",
+        "scope": "helper"
+      },
+      {
+        "module": "ByteProofs",
+        "name": "FxHash.ByteProofs.write64_loop0_body_long",
+        "scope": "helper"
+      },
+      {
+        "module": "ByteProofs",
+        "name": "FxHash.ByteProofs.write32_loop0_succeeds",
+        "scope": "helper"
+      },
+      {
+        "module": "ByteProofs",
+        "name": "FxHash.ByteProofs.write64_loop0_succeeds",
+        "scope": "helper"
+      },
+      {
+        "module": "ByteProofs",
+        "name": "FxHash.ByteProofs.iterator_next_some",
+        "scope": "helper"
+      },
+      {
+        "module": "ByteProofs",
+        "name": "FxHash.ByteProofs.iterator_next_none",
+        "scope": "helper"
+      },
+      {
+        "module": "ByteProofs",
+        "name": "FxHash.ByteProofs.write32_loop1_succeeds",
+        "scope": "helper"
+      },
+      {
+        "module": "ByteProofs",
+        "name": "FxHash.ByteProofs.write64_loop1_succeeds",
+        "scope": "helper"
+      },
+      {
+        "module": "ByteProofs",
+        "name": "FxHash.ByteProofs.write32_succeeds",
+        "scope": "helper"
+      },
+      {
+        "module": "ByteProofs",
+        "name": "FxHash.ByteProofs.write64_succeeds",
+        "scope": "helper"
+      },
+      {
+        "module": "ByteProofs",
+        "name": "FxHash.ByteProofs.decode_one",
+        "scope": "helper"
+      },
+      {
+        "module": "ByteProofs",
+        "name": "FxHash.ByteProofs.decode_two",
+        "scope": "helper"
+      },
+      {
+        "module": "WriteContracts",
+        "name": "FxHashWriteContracts.fxHasher32_write_succeeds",
+        "scope": "helper"
+      },
+      {
+        "module": "WriteContracts",
+        "name": "FxHashWriteContracts.fxHasher64_write_succeeds",
+        "scope": "helper"
+      },
+      {
+        "module": "WriteContracts",
+        "name": "FxHashWriteContracts.fxHasher_write_succeeds",
+        "scope": "helper"
+      },
+      {
+        "module": "SpecRecurrence",
+        "name": "FxHash.Spec.words_cons_block",
+        "scope": "helper"
+      },
+      {
+        "module": "SpecRecurrence",
+        "name": "FxHash.Spec.words32_little_short",
+        "scope": "helper"
+      },
+      {
+        "module": "SpecRecurrence",
+        "name": "FxHash.Spec.words64_little_short",
+        "scope": "helper"
+      },
+      {
+        "module": "SpecRecurrence",
+        "name": "FxHash.Spec.words32_little_cons_block",
+        "scope": "helper"
+      },
+      {
+        "module": "SpecRecurrence",
+        "name": "FxHash.Spec.words64_little_cons_block",
+        "scope": "helper"
+      },
+      {
+        "module": "SpecRecurrence",
+        "name": "FxHash.Spec.write32_little_cons_block",
+        "scope": "helper"
+      },
+      {
+        "module": "SpecRecurrence",
+        "name": "FxHash.Spec.write64_little_cons_block",
+        "scope": "helper"
+      },
+      {
+        "module": "SpecRecurrence",
+        "name": "FxHash.Spec.write32_little_short",
+        "scope": "helper"
+      },
+      {
+        "module": "SpecRecurrence",
+        "name": "FxHash.Spec.write64_little_short",
+        "scope": "helper"
+      },
+      {
+        "module": "SpecRecurrence",
+        "name": "FxHash.Spec.take_four_eq_getElems",
+        "scope": "helper"
+      },
+      {
+        "module": "SpecRecurrence",
+        "name": "FxHash.Spec.take_eight_eq_getElems",
+        "scope": "helper"
+      },
+      {
+        "module": "ByteDecode",
+        "name": "FxHash.ByteDecode.index_exact",
+        "scope": "helper"
+      },
+      {
+        "module": "ByteDecode",
+        "name": "FxHash.ByteDecode.fromLEBytes_toNat",
+        "scope": "helper"
+      },
+      {
+        "module": "ByteDecode",
+        "name": "FxHash.ByteDecode.decode_four",
+        "scope": "helper"
+      },
+      {
+        "module": "ByteDecode",
+        "name": "FxHash.ByteDecode.decode_eight",
+        "scope": "helper"
+      },
+      {
+        "module": "ByteDecode",
+        "name": "FxHash.ByteDecode.decode_four_widen",
+        "scope": "helper"
+      },
+      {
+        "module": "ByteFunctional",
+        "name": "FxHash.ByteFunctional.loop1_32",
+        "scope": "helper"
+      },
+      {
+        "module": "ByteFunctional",
+        "name": "FxHash.ByteFunctional.loop1_64",
+        "scope": "helper"
+      },
+      {
+        "module": "ByteFunctional",
+        "name": "FxHash.ByteFunctional.loop0_32",
+        "scope": "helper"
+      },
+      {
+        "module": "ByteFunctional",
+        "name": "FxHash.ByteFunctional.loop0_64",
+        "scope": "helper"
+      },
+      {
+        "module": "ByteFunctional",
+        "name": "FxHash.ByteFunctional.write32_exact",
+        "scope": "helper"
+      },
+      {
+        "module": "ByteFunctional",
+        "name": "FxHash.ByteFunctional.write64_exact",
+        "scope": "helper"
+      },
+      {
+        "module": "WriteContracts",
+        "name": "FxHashWriteContracts.fxHasher32_write_exact",
+        "scope": "public-model"
+      },
+      {
+        "module": "WriteContracts",
+        "name": "FxHashWriteContracts.fxHasher64_write_exact",
+        "scope": "public-model"
+      },
+      {
+        "module": "WriteContracts",
+        "name": "FxHashWriteContracts.fxHasher_write_exact",
+        "scope": "public-model"
+      }
+    ],
+    "mapping_metadata_checked": true,
+    "scope": "named Lean theorem and transitive axiom audit only",
+    "status": "passed"
+  },
+  "host": "aarch64-apple-darwin",
+  "input_fingerprints": {
+    "after": {
+      "member": "payload/inputs-after.json",
+      "sha256": "38c35fd9af9130e87e858ed14e236c3373ee46c609507e2ad56d3c4df7a4d2aa"
+    },
+    "before": {
+      "member": "payload/inputs-before.json",
+      "sha256": "38c35fd9af9130e87e858ed14e236c3373ee46c609507e2ad56d3c4df7a4d2aa"
+    },
+    "equal": true
+  },
+  "kind": "archived-managed-run-summary",
+  "original_audit": {
+    "member": "payload/audit/result.json",
+    "sha256": "1ec47287966b84ef15fbb7470d85e083bc24a8f52f69678cf5e4cacc19d8b0e3"
+  },
+  "original_result": {
+    "member": "payload/result.json",
+    "sha256": "9a0d5aa9844b52c500da654587347ac9c6850f52ce301276326ee21a2141f515"
+  },
+  "profile": "default",
+  "reported_status": "passed",
+  "sarif": "Not a cargo-proofs recording result.",
+  "schema_version": 1,
+  "scope": "Configured extraction comparisons and named theorem audit; native observations are separate",
+  "stages": {
+    "before_after_fingerprints": "equal",
+    "extraction_and_profile_checks": "See original pipeline receipt and profile configuration.",
+    "lean_build_and_axiom_audit": "passed",
+    "native_tests": "Separate observations in original run; not formal proof."
+  },
+  "target": "aarch64-apple-darwin"
+}

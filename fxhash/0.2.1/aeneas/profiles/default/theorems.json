@@ -1,0 +1,438 @@
+{
+  "checked": [
+    {
+      "name": "FxHashContracts.hashWord32_correct",
+      "module": "Contracts",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHashContracts.hashWord64_correct",
+      "module": "Contracts",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHashContracts.hashWordUsize_correct",
+      "module": "Contracts",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHashContracts.fxHasher32_default",
+      "module": "Contracts",
+      "scope": "public-model"
+    },
+    {
+      "name": "FxHashContracts.fxHasher64_default",
+      "module": "Contracts",
+      "scope": "public-model"
+    },
+    {
+      "name": "FxHashContracts.fxHasher_default",
+      "module": "Contracts",
+      "scope": "public-model"
+    },
+    {
+      "name": "FxHashContracts.fxHasher32_finish",
+      "module": "Contracts",
+      "scope": "public-model"
+    },
+    {
+      "name": "FxHashContracts.fxHasher64_finish",
+      "module": "Contracts",
+      "scope": "public-model"
+    },
+    {
+      "name": "FxHashContracts.fxHasher_finish",
+      "module": "Contracts",
+      "scope": "public-model"
+    },
+    {
+      "name": "FxHashContracts.fxHasher32_write_u32",
+      "module": "Contracts",
+      "scope": "public-model"
+    },
+    {
+      "name": "FxHashContracts.fxHasher64_write_u64",
+      "module": "Contracts",
+      "scope": "public-model"
+    },
+    {
+      "name": "FxHashContracts.fxHasher32_write_u8",
+      "module": "Contracts",
+      "scope": "public-model"
+    },
+    {
+      "name": "FxHashContracts.fxHasher32_write_u16",
+      "module": "Contracts",
+      "scope": "public-model"
+    },
+    {
+      "name": "FxHashContracts.fxHasher64_write_u8",
+      "module": "Contracts",
+      "scope": "public-model"
+    },
+    {
+      "name": "FxHashContracts.fxHasher64_write_u16",
+      "module": "Contracts",
+      "scope": "public-model"
+    },
+    {
+      "name": "FxHashContracts.fxHasher64_write_u32",
+      "module": "Contracts",
+      "scope": "public-model"
+    },
+    {
+      "name": "FxHashContracts.fxHasher64_write_usize",
+      "module": "Contracts",
+      "scope": "public-model"
+    },
+    {
+      "name": "FxHashContracts.fxHasher32_write_u64",
+      "module": "Contracts",
+      "scope": "public-model"
+    },
+    {
+      "name": "FxHashContracts.fxHasher32_write_usize",
+      "module": "Contracts",
+      "scope": "public-model"
+    },
+    {
+      "name": "FxHashContracts.fxHasher_write_u8",
+      "module": "Contracts",
+      "scope": "public-model"
+    },
+    {
+      "name": "FxHashContracts.fxHasher_write_u16",
+      "module": "Contracts",
+      "scope": "public-model"
+    },
+    {
+      "name": "FxHashContracts.fxHasher_write_u32",
+      "module": "Contracts",
+      "scope": "public-model"
+    },
+    {
+      "name": "FxHashContracts.fxHasher_write_u64",
+      "module": "Contracts",
+      "scope": "public-model"
+    },
+    {
+      "name": "FxHashContracts.fxHasher_write_usize",
+      "module": "Contracts",
+      "scope": "public-model"
+    },
+    {
+      "name": "FxHash.ByteProofs.index_succeeds",
+      "module": "ByteProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.ByteProofs.write32_loop0_body_short",
+      "module": "ByteProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.ByteProofs.write64_loop0_body_short",
+      "module": "ByteProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.ByteProofs.write32_loop0_body_long",
+      "module": "ByteProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.ByteProofs.write64_loop0_body_long",
+      "module": "ByteProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.ByteProofs.write32_loop0_succeeds",
+      "module": "ByteProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.ByteProofs.write64_loop0_succeeds",
+      "module": "ByteProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.ByteProofs.iterator_next_some",
+      "module": "ByteProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.ByteProofs.iterator_next_none",
+      "module": "ByteProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.ByteProofs.write32_loop1_succeeds",
+      "module": "ByteProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.ByteProofs.write64_loop1_succeeds",
+      "module": "ByteProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.ByteProofs.write32_succeeds",
+      "module": "ByteProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.ByteProofs.write64_succeeds",
+      "module": "ByteProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.ByteProofs.decode_one",
+      "module": "ByteProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.ByteProofs.decode_two",
+      "module": "ByteProofs",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHashWriteContracts.fxHasher32_write_succeeds",
+      "module": "WriteContracts",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHashWriteContracts.fxHasher64_write_succeeds",
+      "module": "WriteContracts",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHashWriteContracts.fxHasher_write_succeeds",
+      "module": "WriteContracts",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.Spec.words_cons_block",
+      "module": "SpecRecurrence",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.Spec.words32_little_short",
+      "module": "SpecRecurrence",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.Spec.words64_little_short",
+      "module": "SpecRecurrence",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.Spec.words32_little_cons_block",
+      "module": "SpecRecurrence",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.Spec.words64_little_cons_block",
+      "module": "SpecRecurrence",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.Spec.write32_little_cons_block",
+      "module": "SpecRecurrence",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.Spec.write64_little_cons_block",
+      "module": "SpecRecurrence",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.Spec.write32_little_short",
+      "module": "SpecRecurrence",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.Spec.write64_little_short",
+      "module": "SpecRecurrence",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.Spec.take_four_eq_getElems",
+      "module": "SpecRecurrence",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.Spec.take_eight_eq_getElems",
+      "module": "SpecRecurrence",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.ByteDecode.index_exact",
+      "module": "ByteDecode",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.ByteDecode.fromLEBytes_toNat",
+      "module": "ByteDecode",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.ByteDecode.decode_four",
+      "module": "ByteDecode",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.ByteDecode.decode_eight",
+      "module": "ByteDecode",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.ByteDecode.decode_four_widen",
+      "module": "ByteDecode",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.ByteFunctional.loop1_32",
+      "module": "ByteFunctional",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.ByteFunctional.loop1_64",
+      "module": "ByteFunctional",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.ByteFunctional.loop0_32",
+      "module": "ByteFunctional",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.ByteFunctional.loop0_64",
+      "module": "ByteFunctional",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.ByteFunctional.write32_exact",
+      "module": "ByteFunctional",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHash.ByteFunctional.write64_exact",
+      "module": "ByteFunctional",
+      "scope": "helper"
+    },
+    {
+      "name": "FxHashWriteContracts.fxHasher32_write_exact",
+      "module": "WriteContracts",
+      "scope": "public-model"
+    },
+    {
+      "name": "FxHashWriteContracts.fxHasher64_write_exact",
+      "module": "WriteContracts",
+      "scope": "public-model"
+    },
+    {
+      "name": "FxHashWriteContracts.fxHasher_write_exact",
+      "module": "WriteContracts",
+      "scope": "public-model"
+    }
+  ],
+  "recorder_mappings": [
+    {
+      "api": "<fxhash::FxHasher32 as Default>::default",
+      "theorem": "FxHashContracts.fxHasher32_default"
+    },
+    {
+      "api": "<fxhash::FxHasher64 as Default>::default",
+      "theorem": "FxHashContracts.fxHasher64_default"
+    },
+    {
+      "api": "<fxhash::FxHasher as Default>::default",
+      "theorem": "FxHashContracts.fxHasher_default"
+    },
+    {
+      "api": "<fxhash::FxHasher32 as Hasher>::finish",
+      "theorem": "FxHashContracts.fxHasher32_finish"
+    },
+    {
+      "api": "<fxhash::FxHasher64 as Hasher>::finish",
+      "theorem": "FxHashContracts.fxHasher64_finish"
+    },
+    {
+      "api": "<fxhash::FxHasher as Hasher>::finish",
+      "theorem": "FxHashContracts.fxHasher_finish"
+    },
+    {
+      "api": "<fxhash::FxHasher32 as Hasher>::write_u32",
+      "theorem": "FxHashContracts.fxHasher32_write_u32"
+    },
+    {
+      "api": "<fxhash::FxHasher64 as Hasher>::write_u64",
+      "theorem": "FxHashContracts.fxHasher64_write_u64"
+    },
+    {
+      "api": "<fxhash::FxHasher32 as Hasher>::write_u8",
+      "theorem": "FxHashContracts.fxHasher32_write_u8"
+    },
+    {
+      "api": "<fxhash::FxHasher32 as Hasher>::write_u16",
+      "theorem": "FxHashContracts.fxHasher32_write_u16"
+    },
+    {
+      "api": "<fxhash::FxHasher64 as Hasher>::write_u8",
+      "theorem": "FxHashContracts.fxHasher64_write_u8"
+    },
+    {
+      "api": "<fxhash::FxHasher64 as Hasher>::write_u16",
+      "theorem": "FxHashContracts.fxHasher64_write_u16"
+    },
+    {
+      "api": "<fxhash::FxHasher64 as Hasher>::write_u32",
+      "theorem": "FxHashContracts.fxHasher64_write_u32"
+    },
+    {
+      "api": "<fxhash::FxHasher64 as Hasher>::write_usize",
+      "theorem": "FxHashContracts.fxHasher64_write_usize"
+    },
+    {
+      "api": "<fxhash::FxHasher32 as Hasher>::write_u64",
+      "theorem": "FxHashContracts.fxHasher32_write_u64"
+    },
+    {
+      "api": "<fxhash::FxHasher32 as Hasher>::write_usize",
+      "theorem": "FxHashContracts.fxHasher32_write_usize"
+    },
+    {
+      "api": "<fxhash::FxHasher as Hasher>::write_u8",
+      "theorem": "FxHashContracts.fxHasher_write_u8"
+    },
+    {
+      "api": "<fxhash::FxHasher as Hasher>::write_u16",
+      "theorem": "FxHashContracts.fxHasher_write_u16"
+    },
+    {
+      "api": "<fxhash::FxHasher as Hasher>::write_u32",
+      "theorem": "FxHashContracts.fxHasher_write_u32"
+    },
+    {
+      "api": "<fxhash::FxHasher as Hasher>::write_u64",
+      "theorem": "FxHashContracts.fxHasher_write_u64"
+    },
+    {
+      "api": "<fxhash::FxHasher as Hasher>::write_usize",
+      "theorem": "FxHashContracts.fxHasher_write_usize"
+    },
+    {
+      "api": "<fxhash::FxHasher32 as Hasher>::write",
+      "theorem": "FxHashWriteContracts.fxHasher32_write_exact"
+    },
+    {
+      "api": "<fxhash::FxHasher64 as Hasher>::write",
+      "theorem": "FxHashWriteContracts.fxHasher64_write_exact"
+    },
+    {
+      "api": "<fxhash::FxHasher as Hasher>::write",
+      "theorem": "FxHashWriteContracts.fxHasher_write_exact"
+    }
+  ],
+  "extracted_but_unproved": []
+}

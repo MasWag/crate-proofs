@@ -1,0 +1,24 @@
+[package]
+name = "fxhash"
+version = "0.2.1"
+authors = ["cbreeden <github@u.breeden.cc>"]
+description = "A fast, non-secure, hashing algorithm derived from an internal hasher used in FireFox and Rustc."
+documentation = "https://docs.rs/fxhash"
+readme = ".work/source/README.md"
+keywords = ["hash"]
+categories = ["algorithms"]
+license = "Apache-2.0/MIT"
+repository = "https://github.com/cbreeden/fxhash"
+
+[lib]
+name = "fxhash"
+path = ".work/source/lib.rs"
+
+[[bench]]
+name = "fxhash"
+path = ".work/source/bench.rs"
+
+[dependencies.byteorder]
+version = "1.0.0"
+
+[workspace]

@@ -1,0 +1,3 @@
+# fxhash 0.2.1 Aeneas scope
+
+Verify the pinned crates.io release source in `.work/source` using the independent Cargo workspace. Aeneas and Charon repositories must remain unmodified (`patches: []`). Treat byte-order and trait models as explicit boundaries. Keep the 32/64-bit hash loops, tails, integer writes, and stateful Hasher methods in the coverage ledger, even if extraction is blocked. Separate release-source correspondence, generated-model correspondence, closed Lean goals, and native tests. Do not claim `hash<T>` or collection aliases without their generic/standard-library obligations.
