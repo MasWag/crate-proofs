@@ -36,10 +36,16 @@
           "purpose": "Normalize raw module identifiers for file/public paths and resolve direct crate-root trait/type imports only in Rust2015, so unchanged option-ext source is discoverable without weakening alias-cycle checks.",
           "regressions": "All24 scan::tests pass, including external/inline raw-module regression and Rust2015 root-trait import fixture plus Rust2018 rejection. Actual option-ext adapter discovery returns exactly the3 qualified concrete impl APIs with unchanged preconditions.",
           "sha256": "46903989a00186358602ad766592df89899e2de98da3646eeb961a82f67038b8"
+        },
+        {
+          "file": "patches/cargo-proofs-rust2015-trait-parameters.patch",
+          "purpose": "Discover unchanged Rust2015 trait declarations with anonymous parameters using span-preserving declaration-token normalization limited to the legacy edition.",
+          "regressions": "Mixed anonymous and named trait parameters, tuple/function-pointer types, preserved public API paths and source lines, newer edition rejection, invalid anonymous free-function rejection; full CLI unit/integration tests.",
+          "sha256": "c753977b194a9a4f466019ce61818e59cf3bff7c51329a8ab046e22c5057496c"
         }
       ],
       "revision": "2446bcad7d492be2d2036629e5dc94d186a23213",
-      "tree": "b8eafed3b8232d5bee44fc7b8af0126937a99519",
+      "tree": "ede01d9313adb95776eb383d2619af3992604f43",
       "url": "https://github.com/proofs-rs/proofs-rs.git"
     }
   },

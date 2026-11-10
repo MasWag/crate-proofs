@@ -1,0 +1,118 @@
+--- a/cli/src/scan.rs
++++ b/cli/src/scan.rs
+@@ -10,7 +10,76 @@
+ use syn::{
+     parse::Parser, punctuated::Punctuated, spanned::Spanned, Attribute, Item, Meta, Token, UseTree,
+ };
++
++// Syn deliberately parses modern Rust only. In Rust 2015 trait declarations,
++// anonymous parameters are legal. Normalize only their declaration tokens for
++// discovery; retain original spans and never rewrite the source being verified.
++fn legacy_trait_parameters(tokens: proc_macro2::TokenStream, in_trait: bool) -> syn::Result<proc_macro2::TokenStream> {
++    use proc_macro2::{Delimiter, Group, TokenTree};
++    struct Arguments(proc_macro2::TokenStream);
++    impl syn::parse::Parse for Arguments {
++        fn parse(input: syn::parse::ParseStream) -> syn::Result<Self> {
++            let mut out = proc_macro2::TokenStream::new();
++            while !input.is_empty() {
++                let fork = input.fork();
++                if let Ok(arg) = fork.parse::<syn::FnArg>() {
++                    input.advance_to(&fork);
++                    arg.to_tokens(&mut out);
++                } else {
++                    let ty: syn::Type = input.parse()?;
++                    let span = ty.span();
++                    out.extend(quote::quote_spanned!(span=> _: #ty));
++                }
++                if !input.is_empty() {
++                    let comma: Token![,] = input.parse()?;
++                    comma.to_tokens(&mut out);
++                }
++            }
++            Ok(Self(out))
++        }
++    }
++    use syn::parse::discouraged::Speculative;
++    let mut out = proc_macro2::TokenStream::new();
++    let mut trait_pending = false;
++    let mut fn_pending = false;
++    let mut angles = 0usize;
++    for token in tokens {
++        match token {
++            TokenTree::Ident(ref ident) if ident == "trait" => trait_pending = true,
++            TokenTree::Ident(ref ident) if in_trait && ident == "fn" => fn_pending = true,
++            TokenTree::Punct(ref p) if fn_pending && p.as_char() == '<' => angles += 1,
++            TokenTree::Punct(ref p) if fn_pending && p.as_char() == '>' => angles = angles.saturating_sub(1),
++            TokenTree::Group(ref group) => {
++                let inner = if fn_pending && angles == 0 && group.delimiter() == Delimiter::Parenthesis {
++                    fn_pending = false;
++                    syn::parse2::<Arguments>(group.stream())?.0
++                } else if group.delimiter() == Delimiter::Brace {
++                    let is_trait = trait_pending;
++                    trait_pending = false;
++                    // Trait method bodies are ordinary Rust, not trait declarations.
++                    legacy_trait_parameters(group.stream(), is_trait)?
++                } else { group.stream() };
++                let mut replacement = Group::new(group.delimiter(), inner);
++                replacement.set_span(group.span());
++                out.extend([TokenTree::Group(replacement)]);
++                continue;
++            }
++            TokenTree::Punct(ref p) if p.as_char() == ';' => { trait_pending = false; fn_pending = false; }
++            _ => {}
++        }
++        out.extend([token]);
++    }
++    Ok(out)
++}
+ 
++fn rust_2015(project: &Project) -> bool {
++    let manifest = fs::read_to_string(&project.manifest).unwrap_or_default();
++    let package: toml::Value = toml::from_str(&manifest)
++        .unwrap_or_else(|_| toml::Value::Table(Default::default()));
++    let edition = package.get("package").and_then(|p| p.get("edition"));
++    edition.is_none() || edition.and_then(toml::Value::as_str) == Some("2015")
++}
++
+ #[derive(Clone, Debug)]
+ pub struct Contract {
+     pub api_paths: Vec<String>,
+@@ -758,6 +827,12 @@
+         // Pearlite bodies need not be valid Rust. Only declarations are relevant.
+         let parsed = if self.creusot {
+             syn::parse2(declarations(syn::parse_str(&source)?))
++        } else if rust_2015(self.project) {
++            // Preserve parse_file's handling of shebangs and inner attributes on
++            // ordinary files; the compatibility pass is needed only on failure.
++            syn::parse_file(&source).or_else(|_| {
++                syn::parse2(legacy_trait_parameters(syn::parse_str(&source)?, false)?)
++            })
+         } else {
+             syn::parse_file(&source)
+         }
+@@ -1286,6 +1361,25 @@
+             cfg: BTreeSet::from(["kani".into()]),
+         };
+         (d, p)
++    }
++    #[test]
++    fn rust2015_anonymous_trait_arguments_preserve_discovery() {
++        let source = "pub trait HashWord { fn hash_word(&mut self, Self); fn mixed<'a>(&self, named: u32, &'a [u8], (u8,u8), fn(u8,u8)); }\npub fn visible() {}";
++        let (_dir, p) = project(source);
++        let found = public_contracts(&p, false, CreusotTarget::All).unwrap();
++        assert_eq!(found.len(), 1);
++        assert_eq!(found[0].api_paths, ["visible"]);
++        assert_eq!(found[0].first_line, 2);
++        assert_eq!(fs::read_to_string(&p.root_source).unwrap(), source);
++        for edition in ["2018", "2021", "2024"] {
++            fs::write(&p.manifest, format!("[package]\nname='demo'\nversion='1.0.0'\nedition='{edition}'\n")).unwrap();
++            assert!(public_contracts(&p, false, CreusotTarget::All).is_err());
++        }
++    }
++    #[test]
++    fn legacy_normalization_does_not_accept_anonymous_free_functions() {
++        let (_dir, p) = project("pub fn invalid(u32) {} ");
++        assert!(public_contracts(&p, false, CreusotTarget::All).is_err());
+     }
+     #[test]
+     fn raw_identifier_modules_use_unescaped_paths() {
