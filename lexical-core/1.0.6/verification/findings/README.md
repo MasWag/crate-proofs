@@ -1,5 +1,7 @@
 # Native behavior findings
 
+> **Native compiler correction:** The original native runs used rustc 1.99.1. Fresh runs explicitly pinned to rustc 1.94.1 reproduce all reported native results; see [the recheck record](../../publication/native-recheck.json). Original evidence remains unchanged.
+
 - [LC-001](LC-001.md): single-zero consumption undercounts; [issue-ready draft](LC-001-issue.md). This is the known upstream [#225](https://github.com/Alexhuszagh/rust-lexical/issues/225) symptom.
 - [LC-002](LC-002.md): a configured suffix can advance past an unrelated byte; [issue-ready draft](LC-002-issue.md).
 
@@ -10,3 +12,11 @@ The issue drafts follow the upstream bug template read on 2026-11-10, `.github/I
 The current upstream template directory was inspected and a root `CONTRIBUTING.md` read returned 404. A repository issue search for `suffix` found no exact match for LC-002; this is not an exhaustive novelty check. Upstream fixes were not checked.
 
 See the [native harness](../behavior/README.md) and [evidence manifest](../behavior/evidence.json) for exact inputs, commands, source checks and local-only log digests. Native regression tests do not establish formal correctness.
+
+## 2026-11-10 native compiler provenance correction
+
+The original native run's target `.rustc_info.json` identifies Homebrew rustc 1.99.1, despite the command selecting Cargo through `rustup run 1.94.1`. The earlier Rust 1.94.1 attribution in the retained native evidence describes the intended toolchain, not the compiler actually used. Original logs, manifests and hashes are preserved unchanged.
+
+A fresh recheck explicitly selected the absolute Cargo and rustc 1.94.1 binaries and prepended that toolchain's `bin` directory to `PATH`. Both fresh targets' `.rustc_info.json` confirm `rustc 1.94.1 (e408947bf 2026-03-25)`. Controls passed, the four ignored expected-correct regression assertions and both issue snippets reproduced their documented failures, and all 4,608 compact comparison cases passed. The public issue snippets' Rust 1.94.1 prerequisite is supported by this fresh run. No Rust proof input, generated Lean, specification or formal theorem changed.
+
+See [the append-only native recheck record](../../publication/native-recheck.json) for exact commands, compiler metadata, source/log digests and local-only evidence availability.

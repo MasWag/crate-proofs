@@ -10,13 +10,15 @@ The proof package uses ordinary module paths and an official Git Aeneas dependen
 
 ## Recording
 
-Use a clean, pushed source checkout. The current development checkout has unrelated ancestor Cargo configuration; the publication lock was generated from a temporary execution directory outside those ancestors. The clean publication checkout must likewise use its own committed configuration, not an inherited Creusot environment. Rust 1.94.1 was used for Cargo metadata; extraction used nightly-2026-09-17.
+Use a clean, pushed source checkout. The current development checkout has unrelated ancestor Cargo configuration; the publication lock was generated from a temporary execution directory outside those ancestors. The clean publication checkout must likewise use its own committed configuration, not an inherited Creusot environment. The Rust 1.94.1 toolchain was configured for Cargo metadata, but initial runs inherited Homebrew rustc 1.99.1. Direct toolchain queries did not establish which compiler Cargo used. The recording environment below explicitly selects the native toolchain directory and `RUSTC`; extraction used nightly-2026-09-17.
 
 For the local dependency donor prepared in this session, set these variables before entering the clean publication checkout:
 
 ```sh
 export LEXICAL_CORE_PUBLICATION_LAKE_CACHE=/Users/mwaga/crate-proofs/lexical-core/1.0.6/publication/proofs/.lake/packages
 export CARGO_HOME=/Users/mwaga/crate-proofs/lexical-core/1.0.6/.work/cargo-home
+export PATH=/Users/mwaga/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin:$PATH
+export RUSTC=/Users/mwaga/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc
 export RUSTUP_TOOLCHAIN=1.94.1
 export ELAN_TOOLCHAIN=leanprover/lean4:v4.35.0
 ```

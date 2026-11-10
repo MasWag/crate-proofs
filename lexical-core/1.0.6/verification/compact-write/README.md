@@ -1,5 +1,7 @@
 # Compact decimal u8 core
 
+> **Native compiler correction:** The original native runs used rustc 1.99.1. Fresh runs explicitly pinned to rustc 1.94.1 reproduce all reported native results; see [the recheck record](../../publication/native-recheck.json). Original evidence remains unchanged.
+
 This independent workspace retains an explicit u8/decimal specialization of lexical-write-integer 1.0.6's compact conversion algorithm. The proof targets `decimal_u8` in this derived input: all 256 representable u8 values and every initial caller buffer of length at least three, with arbitrary contents. It establishes successful termination, canonical ASCII decimal bytes, exact length and preservation of the caller buffer after those bytes. It returns a length and updated buffer; it does not establish a public returned-slice or mutable-borrow backward-function contract.
 
 The maintained proof is in [the compact_write profile](../../aeneas/profiles/compact_write/). Its `Proofs.lean` compares the generated function with an independent arithmetic decimal specification; `decimalAscii_canonical` establishes digit range, no leading zero, length one through three and positional value. The universal theorem composes 256 kernel-checked numeric cases. Initial buffer contents and length are universally quantified in every case. This is finite exhaustion of the complete u8 value domain, with symbolic buffers, rather than native testing.
@@ -34,3 +36,11 @@ env CARGO_HOME=/Users/mwaga/crate-proofs/lexical-core/1.0.6/.work/cargo-home rus
 ```
 
 Use the version's managed `scripts/verify.sh --profile compact_write` for extraction, regeneration comparison, build and theorem audit. See the profile's current results for accepted runs; a standalone Lean build is not managed acceptance.
+
+## 2026-11-10 native compiler provenance correction
+
+The original native run's target `.rustc_info.json` identifies Homebrew rustc 1.99.1, despite the command selecting Cargo through `rustup run 1.94.1`. The earlier Rust 1.94.1 attribution in the retained native evidence describes the intended toolchain, not the compiler actually used. Original logs, manifests and hashes are preserved unchanged.
+
+A fresh recheck explicitly selected the absolute Cargo and rustc 1.94.1 binaries and prepended that toolchain's `bin` directory to `PATH`. Both fresh targets' `.rustc_info.json` confirm `rustc 1.94.1 (e408947bf 2026-03-25)`. Controls passed, the four ignored expected-correct regression assertions and both issue snippets reproduced their documented failures, and all 4,608 compact comparison cases passed. The public issue snippets' Rust 1.94.1 prerequisite is supported by this fresh run. No Rust proof input, generated Lean, specification or formal theorem changed.
+
+See [the append-only native recheck record](../../publication/native-recheck.json) for exact commands, compiler metadata, source/log digests and local-only evidence availability.

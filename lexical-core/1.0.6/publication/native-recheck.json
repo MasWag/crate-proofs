@@ -1,0 +1,246 @@
+{
+  "date": "2026-11-10",
+  "kind": "append-only native compiler provenance correction",
+  "reason": "The original native target .rustc_info.json records Homebrew rustc1.99.1. Selecting cargo through rustup run1.94.1 did not pin the compiler discovered via PATH. Original logs and evidence manifests remain unchanged; their stated native compiler1.94.1 was incorrect. This fresh run explicitly pins PATH and RUSTC and independently reproduces all observations with rustc1.94.1. Formal proof files are unchanged.",
+  "rustc_vV": "rustc 1.94.1 (e408947bf 2026-03-25)\nbinary: rustc\ncommit-hash: e408947bfd200af42db322daf0fadfe7e26d3bd1\ncommit-date: 2026-03-25\nhost: aarch64-apple-darwin\nrelease: 1.94.1\nLLVM version: 21.1.8\n",
+  "cargo_vV": "cargo 1.94.1 (29ea6fb6a 2026-03-24)\nrelease: 1.94.1\ncommit-hash: 29ea6fb6a5db279426f4cc4e17aa385f05a0cfbc\ncommit-date: 2026-03-24\nhost: aarch64-apple-darwin\nlibgit2: 1.9.2 (sys:0.20.3 vendored)\nlibcurl: 8.7.1 (sys:0.4.83+curl-8.15.0 system ssl:(SecureTransport) LibreSSL/3.3.6)\nssl: OpenSSL 3.5.4 30 Sep 2025\nos: Mac OS 26.6.2 [64-bit]\n",
+  "runs": [
+    {
+      "label": "behavior-controls",
+      "argv": [
+        "/Users/mwaga/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "/Users/mwaga/crate-proofs/lexical-core/1.0.6/verification/behavior/Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "cwd": "/private/tmp",
+      "environment": {
+        "PATH": "/Users/mwaga/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin:$PATH",
+        "RUSTC": "/Users/mwaga/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc",
+        "CARGO_HOME": "/Users/mwaga/crate-proofs/lexical-core/1.0.6/.work/cargo-home",
+        "CARGO_TARGET_DIR": "/Users/mwaga/crate-proofs/lexical-core/1.0.6/.work/publication-native-check/run-feezgtw2/behavior-target"
+      },
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "log": ".work/publication-native-check/run-feezgtw2/behavior-controls.log",
+      "log_sha256": "2f150df68a19ec2f607325abf428b49ac844c556973ef1bbb242b9ea47bb5644"
+    },
+    {
+      "label": "behavior-regressions",
+      "argv": [
+        "/Users/mwaga/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "/Users/mwaga/crate-proofs/lexical-core/1.0.6/verification/behavior/Cargo.toml",
+        "--",
+        "--ignored",
+        "--nocapture"
+      ],
+      "cwd": "/private/tmp",
+      "environment": {
+        "PATH": "/Users/mwaga/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin:$PATH",
+        "RUSTC": "/Users/mwaga/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc",
+        "CARGO_HOME": "/Users/mwaga/crate-proofs/lexical-core/1.0.6/.work/cargo-home",
+        "CARGO_TARGET_DIR": "/Users/mwaga/crate-proofs/lexical-core/1.0.6/.work/publication-native-check/run-feezgtw2/behavior-target"
+      },
+      "exit_code": 101,
+      "expected_exit_code": 101,
+      "log": ".work/publication-native-check/run-feezgtw2/behavior-regressions.log",
+      "log_sha256": "787c5925c883538ad050e80dd9f01049cef06d58fc45f34a872e97a6a57efc6b"
+    },
+    {
+      "label": "lc_001",
+      "argv": [
+        "/Users/mwaga/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "run",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "/Users/mwaga/crate-proofs/lexical-core/1.0.6/verification/behavior/Cargo.toml",
+        "--example",
+        "lc_001"
+      ],
+      "cwd": "/private/tmp",
+      "environment": {
+        "PATH": "/Users/mwaga/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin:$PATH",
+        "RUSTC": "/Users/mwaga/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc",
+        "CARGO_HOME": "/Users/mwaga/crate-proofs/lexical-core/1.0.6/.work/cargo-home",
+        "CARGO_TARGET_DIR": "/Users/mwaga/crate-proofs/lexical-core/1.0.6/.work/publication-native-check/run-feezgtw2/behavior-target"
+      },
+      "exit_code": 101,
+      "expected_exit_code": 101,
+      "log": ".work/publication-native-check/run-feezgtw2/lc_001.log",
+      "log_sha256": "d8e455c906de6bd8abf1e4d2204a3b1c87c467ac6142222fe0f1ae575735dba5"
+    },
+    {
+      "label": "lc_002",
+      "argv": [
+        "/Users/mwaga/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "run",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "/Users/mwaga/crate-proofs/lexical-core/1.0.6/verification/behavior/Cargo.toml",
+        "--example",
+        "lc_002"
+      ],
+      "cwd": "/private/tmp",
+      "environment": {
+        "PATH": "/Users/mwaga/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin:$PATH",
+        "RUSTC": "/Users/mwaga/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc",
+        "CARGO_HOME": "/Users/mwaga/crate-proofs/lexical-core/1.0.6/.work/cargo-home",
+        "CARGO_TARGET_DIR": "/Users/mwaga/crate-proofs/lexical-core/1.0.6/.work/publication-native-check/run-feezgtw2/behavior-target"
+      },
+      "exit_code": 101,
+      "expected_exit_code": 101,
+      "log": ".work/publication-native-check/run-feezgtw2/lc_002.log",
+      "log_sha256": "79b178a063c5f19c9fc7f226196e7739697d44e02f833b996ff4f8208aa5dd89"
+    },
+    {
+      "label": "compact-correspondence",
+      "argv": [
+        "/Users/mwaga/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/cargo",
+        "test",
+        "--locked",
+        "--offline",
+        "--manifest-path",
+        "/Users/mwaga/crate-proofs/lexical-core/1.0.6/verification/compact-write/Cargo.toml",
+        "--",
+        "--nocapture"
+      ],
+      "cwd": "/Users/mwaga/crate-proofs/lexical-core/1.0.6",
+      "environment": {
+        "PATH": "/Users/mwaga/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin:$PATH",
+        "RUSTC": "/Users/mwaga/.rustup/toolchains/1.94.1-aarch64-apple-darwin/bin/rustc",
+        "CARGO_HOME": "/Users/mwaga/crate-proofs/lexical-core/1.0.6/.work/cargo-home",
+        "CARGO_TARGET_DIR": "/Users/mwaga/crate-proofs/lexical-core/1.0.6/.work/publication-native-check/run-feezgtw2/compact-target"
+      },
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "log": ".work/publication-native-check/run-feezgtw2/compact-correspondence.log",
+      "log_sha256": "8281145f01b18b5103abc468d599338b9d037274a3e22f5a59725e4b20efbdeb"
+    }
+  ],
+  "compiler_target_evidence": [
+    {
+      "target": "behavior",
+      "path": ".work/publication-native-check/run-feezgtw2/behavior-target/.rustc_info.json",
+      "sha256": "5a732c1ae8e9e66347f3a6f658f2fd05026ebbb096ee15ab0d5182d1ab99d439",
+      "data": {
+        "rustc_fingerprint": 2228617137753296197,
+        "outputs": {
+          "17747080675513052775": {
+            "success": true,
+            "status": "",
+            "code": 0,
+            "stdout": "rustc 1.94.1 (e408947bf 2026-03-25)\nbinary: rustc\ncommit-hash: e408947bfd200af42db322daf0fadfe7e26d3bd1\ncommit-date: 2026-03-25\nhost: aarch64-apple-darwin\nrelease: 1.94.1\nLLVM version: 21.1.8\n",
+            "stderr": ""
+          },
+          "7971740275564407648": {
+            "success": true,
+            "status": "",
+            "code": 0,
+            "stdout": "___\nlib___.rlib\nlib___.dylib\nlib___.dylib\nlib___.a\nlib___.dylib\n/Users/mwaga/.rustup/toolchains/1.94.1-aarch64-apple-darwin\noff\npacked\nunpacked\n___\ndebug_assertions\npanic=\"unwind\"\nproc_macro\ntarget_abi=\"\"\ntarget_arch=\"aarch64\"\ntarget_endian=\"little\"\ntarget_env=\"\"\ntarget_family=\"unix\"\ntarget_feature=\"aes\"\ntarget_feature=\"crc\"\ntarget_feature=\"dit\"\ntarget_feature=\"dotprod\"\ntarget_feature=\"dpb\"\ntarget_feature=\"dpb2\"\ntarget_feature=\"fcma\"\ntarget_feature=\"fhm\"\ntarget_feature=\"flagm\"\ntarget_feature=\"fp16\"\ntarget_feature=\"frintts\"\ntarget_feature=\"jsconv\"\ntarget_feature=\"lor\"\ntarget_feature=\"lse\"\ntarget_feature=\"neon\"\ntarget_feature=\"paca\"\ntarget_feature=\"pacg\"\ntarget_feature=\"pan\"\ntarget_feature=\"pmuv3\"\ntarget_feature=\"ras\"\ntarget_feature=\"rcpc\"\ntarget_feature=\"rcpc2\"\ntarget_feature=\"rdm\"\ntarget_feature=\"sb\"\ntarget_feature=\"sha2\"\ntarget_feature=\"sha3\"\ntarget_feature=\"ssbs\"\ntarget_feature=\"vh\"\ntarget_has_atomic=\"128\"\ntarget_has_atomic=\"16\"\ntarget_has_atomic=\"32\"\ntarget_has_atomic=\"64\"\ntarget_has_atomic=\"8\"\ntarget_has_atomic=\"ptr\"\ntarget_os=\"macos\"\ntarget_pointer_width=\"64\"\ntarget_vendor=\"apple\"\nunix\n",
+            "stderr": ""
+          }
+        },
+        "successes": {}
+      }
+    },
+    {
+      "target": "compact",
+      "path": ".work/publication-native-check/run-feezgtw2/compact-target/.rustc_info.json",
+      "sha256": "74e211deec26fc51788e34a6b7bb15ace072f2430d36cac18fcdfabbaa526443",
+      "data": {
+        "rustc_fingerprint": 2228617137753296197,
+        "outputs": {
+          "7971740275564407648": {
+            "success": true,
+            "status": "",
+            "code": 0,
+            "stdout": "___\nlib___.rlib\nlib___.dylib\nlib___.dylib\nlib___.a\nlib___.dylib\n/Users/mwaga/.rustup/toolchains/1.94.1-aarch64-apple-darwin\noff\npacked\nunpacked\n___\ndebug_assertions\npanic=\"unwind\"\nproc_macro\ntarget_abi=\"\"\ntarget_arch=\"aarch64\"\ntarget_endian=\"little\"\ntarget_env=\"\"\ntarget_family=\"unix\"\ntarget_feature=\"aes\"\ntarget_feature=\"crc\"\ntarget_feature=\"dit\"\ntarget_feature=\"dotprod\"\ntarget_feature=\"dpb\"\ntarget_feature=\"dpb2\"\ntarget_feature=\"fcma\"\ntarget_feature=\"fhm\"\ntarget_feature=\"flagm\"\ntarget_feature=\"fp16\"\ntarget_feature=\"frintts\"\ntarget_feature=\"jsconv\"\ntarget_feature=\"lor\"\ntarget_feature=\"lse\"\ntarget_feature=\"neon\"\ntarget_feature=\"paca\"\ntarget_feature=\"pacg\"\ntarget_feature=\"pan\"\ntarget_feature=\"pmuv3\"\ntarget_feature=\"ras\"\ntarget_feature=\"rcpc\"\ntarget_feature=\"rcpc2\"\ntarget_feature=\"rdm\"\ntarget_feature=\"sb\"\ntarget_feature=\"sha2\"\ntarget_feature=\"sha3\"\ntarget_feature=\"ssbs\"\ntarget_feature=\"vh\"\ntarget_has_atomic=\"128\"\ntarget_has_atomic=\"16\"\ntarget_has_atomic=\"32\"\ntarget_has_atomic=\"64\"\ntarget_has_atomic=\"8\"\ntarget_has_atomic=\"ptr\"\ntarget_os=\"macos\"\ntarget_pointer_width=\"64\"\ntarget_vendor=\"apple\"\nunix\n",
+            "stderr": ""
+          },
+          "17747080675513052775": {
+            "success": true,
+            "status": "",
+            "code": 0,
+            "stdout": "rustc 1.94.1 (e408947bf 2026-03-25)\nbinary: rustc\ncommit-hash: e408947bfd200af42db322daf0fadfe7e26d3bd1\ncommit-date: 2026-03-25\nhost: aarch64-apple-darwin\nrelease: 1.94.1\nLLVM version: 21.1.8\n",
+            "stderr": ""
+          }
+        },
+        "successes": {}
+      }
+    }
+  ],
+  "files_sha256": {
+    "verification/behavior/Cargo.toml": "be1e068e8aef4a8a00a02c5431b6a509121c08899cddd9ecd7baa140dc20e6d4",
+    "verification/behavior/Cargo.lock": "74bf222af237c4f2f69f14c998dbfe786bc7c02f31322cdc682ce0b17471cb18",
+    "verification/behavior/tests/regressions.rs": "fe842f5bfb925e003050019e51d64f199a4ac185fca37e6c12b50497d18c19eb",
+    "verification/behavior/examples/lc_001.rs": "abfa9cee258da930a1c1fce6ffc2a7f872761e23cac2af0610382876da688acb",
+    "verification/behavior/examples/lc_002.rs": "4b7fb03bd5936e60ba947db8a6415f9a544b4e850c624027b9ef454358e27f98",
+    "verification/compact-write/Cargo.toml": "32015fb756c9ab0404a67a7f1aab373192a83c1d115e4d0fe9e03033b730c400",
+    "verification/compact-write/Cargo.lock": "a381717eee85780970cb7560cdfe0c9a21c77a156638d831ad9d3afd8bf6d8ba",
+    "verification/compact-write/src/lib.rs": "0741bee5e5ce5c4f857c926eb7366e5b8b41e2b4859062cfdd350b7a39439b7e",
+    "verification/compact-write/tests/correspondence.rs": "21178ec9af333d899d9f1ba25f9b2298b66386ba91129897938b4be7eda6b354",
+    "verification/behavior/evidence.json": "57508a41f7c62df029d4efbd59e1045fdfd642bfac1f5647455600b522cb5ac6",
+    "verification/compact-write/native-evidence.json": "fe1b45a9a1ea4fbdcad6f1492d7858209e0e604aca8f6dec6f7a094b7161a826"
+  },
+  "availability": "Full fresh logs, target metadata and build artifacts remain local-only ignored .work/publication-native-check; no public archive exists.",
+  "original_compiler_target_evidence": [
+    {
+      "path": ".work/behavior/target/.rustc_info.json",
+      "sha256": "3c8327da4145c35a67fef0735d4ba1be74437099446235c5f3c439f14f86c36a",
+      "data": {
+        "rustc_fingerprint": 3201721581826571463,
+        "outputs": {
+          "17747080675513052775": {
+            "success": true,
+            "status": "",
+            "code": 0,
+            "stdout": "rustc 1.99.1 (58cf8f9c3 2026-10-13) (Homebrew)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: aarch64-apple-darwin\nrelease: 1.99.1\nLLVM version: 23.1.3\n",
+            "stderr": ""
+          },
+          "7971740275564407648": {
+            "success": true,
+            "status": "",
+            "code": 0,
+            "stdout": "___\nlib___.rlib\nlib___.dylib\nlib___.dylib\nlib___.a\nlib___.dylib\n/opt/homebrew/Cellar/rust/1.99.1\noff\npacked\nunpacked\n___\ndebug_assertions\npanic=\"unwind\"\nproc_macro\ntarget_abi=\"\"\ntarget_arch=\"aarch64\"\ntarget_endian=\"little\"\ntarget_env=\"\"\ntarget_family=\"unix\"\ntarget_feature=\"aes\"\ntarget_feature=\"crc\"\ntarget_feature=\"dit\"\ntarget_feature=\"dotprod\"\ntarget_feature=\"dpb\"\ntarget_feature=\"dpb2\"\ntarget_feature=\"fcma\"\ntarget_feature=\"fhm\"\ntarget_feature=\"flagm\"\ntarget_feature=\"fp16\"\ntarget_feature=\"frintts\"\ntarget_feature=\"jsconv\"\ntarget_feature=\"lor\"\ntarget_feature=\"lse\"\ntarget_feature=\"neon\"\ntarget_feature=\"paca\"\ntarget_feature=\"pacg\"\ntarget_feature=\"pan\"\ntarget_feature=\"pmuv3\"\ntarget_feature=\"ras\"\ntarget_feature=\"rcpc\"\ntarget_feature=\"rcpc2\"\ntarget_feature=\"rdm\"\ntarget_feature=\"sb\"\ntarget_feature=\"sha2\"\ntarget_feature=\"sha3\"\ntarget_feature=\"ssbs\"\ntarget_feature=\"vh\"\ntarget_has_atomic=\"128\"\ntarget_has_atomic=\"16\"\ntarget_has_atomic=\"32\"\ntarget_has_atomic=\"64\"\ntarget_has_atomic=\"8\"\ntarget_has_atomic=\"ptr\"\ntarget_has_atomic_primitive_alignment=\"128\"\ntarget_has_atomic_primitive_alignment=\"16\"\ntarget_has_atomic_primitive_alignment=\"32\"\ntarget_has_atomic_primitive_alignment=\"64\"\ntarget_has_atomic_primitive_alignment=\"8\"\ntarget_has_atomic_primitive_alignment=\"ptr\"\ntarget_os=\"macos\"\ntarget_pointer_width=\"64\"\ntarget_vendor=\"apple\"\nunix\n",
+            "stderr": ""
+          }
+        },
+        "successes": {}
+      }
+    },
+    {
+      "path": ".work/compact-write-native/target/.rustc_info.json",
+      "sha256": "39b7aafc613cf8cb3b43fd4fa115c99490687cad2ac696c72092ffda28bf018d",
+      "data": {
+        "rustc_fingerprint": 3201721581826571463,
+        "outputs": {
+          "7971740275564407648": {
+            "success": true,
+            "status": "",
+            "code": 0,
+            "stdout": "___\nlib___.rlib\nlib___.dylib\nlib___.dylib\nlib___.a\nlib___.dylib\n/opt/homebrew/Cellar/rust/1.99.1\noff\npacked\nunpacked\n___\ndebug_assertions\npanic=\"unwind\"\nproc_macro\ntarget_abi=\"\"\ntarget_arch=\"aarch64\"\ntarget_endian=\"little\"\ntarget_env=\"\"\ntarget_family=\"unix\"\ntarget_feature=\"aes\"\ntarget_feature=\"crc\"\ntarget_feature=\"dit\"\ntarget_feature=\"dotprod\"\ntarget_feature=\"dpb\"\ntarget_feature=\"dpb2\"\ntarget_feature=\"fcma\"\ntarget_feature=\"fhm\"\ntarget_feature=\"flagm\"\ntarget_feature=\"fp16\"\ntarget_feature=\"frintts\"\ntarget_feature=\"jsconv\"\ntarget_feature=\"lor\"\ntarget_feature=\"lse\"\ntarget_feature=\"neon\"\ntarget_feature=\"paca\"\ntarget_feature=\"pacg\"\ntarget_feature=\"pan\"\ntarget_feature=\"pmuv3\"\ntarget_feature=\"ras\"\ntarget_feature=\"rcpc\"\ntarget_feature=\"rcpc2\"\ntarget_feature=\"rdm\"\ntarget_feature=\"sb\"\ntarget_feature=\"sha2\"\ntarget_feature=\"sha3\"\ntarget_feature=\"ssbs\"\ntarget_feature=\"vh\"\ntarget_has_atomic=\"128\"\ntarget_has_atomic=\"16\"\ntarget_has_atomic=\"32\"\ntarget_has_atomic=\"64\"\ntarget_has_atomic=\"8\"\ntarget_has_atomic=\"ptr\"\ntarget_has_atomic_primitive_alignment=\"128\"\ntarget_has_atomic_primitive_alignment=\"16\"\ntarget_has_atomic_primitive_alignment=\"32\"\ntarget_has_atomic_primitive_alignment=\"64\"\ntarget_has_atomic_primitive_alignment=\"8\"\ntarget_has_atomic_primitive_alignment=\"ptr\"\ntarget_os=\"macos\"\ntarget_pointer_width=\"64\"\ntarget_vendor=\"apple\"\nunix\n",
+            "stderr": ""
+          },
+          "17747080675513052775": {
+            "success": true,
+            "status": "",
+            "code": 0,
+            "stdout": "rustc 1.99.1 (58cf8f9c3 2026-10-13) (Homebrew)\nbinary: rustc\ncommit-hash: 58cf8f9c35b355199727627d07ae34a4e2846d67\ncommit-date: 2026-10-13\nhost: aarch64-apple-darwin\nrelease: 1.99.1\nLLVM version: 23.1.3\n",
+            "stderr": ""
+          }
+        },
+        "successes": {}
+      }
+    }
+  ]
+}
