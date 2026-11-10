@@ -45,14 +45,16 @@ environment = """
 The supporting managed profiles pin the crates.io 1.0.6 release and lexical-util
 1.0.7, unmodified Aeneas and Charon, Lean 4.35.0, and macOS arm64. Their final
 local managed runs passed on 2026-11-06; profile results and evidence record the
-scope and inputs. Native tests are separate from formal proofs. The repository's shared Aeneas extraction wrapper includes a generic external-trait
-selector. The pinned cargo-proofs driver contains separate preparation and
-raw-module patches, but the publication run does not enable preparation. It
-checks the committed Lean models with the standard Lake theorem and axiom audit;
-Rust extraction and managed setup are supported by the separate managed runs,
-not repeated by the publication run. Neither the wrapper extension nor the driver
-patches change Aeneas or Charon. Publication requires its own
-recorded cargo-proofs run and source evidence.
+scope and inputs. Native tests are separate from formal proofs. Those managed
+runs used a cargo-proofs driver with preparation and raw-module patches and the
+repository's shared extraction wrapper with a generic external-trait selector.
+These changes do not modify Aeneas or Charon.
+
+The standalone publication uses unmodified official cargo-proofs 0.4.1 from
+proofs-rs commit 3746712b39f2a45d8c067d24d83f767997040cae. Its planned run
+checks committed Lean models through Lake and audits the selected theorems and
+axioms; it does not enable preparation or repeat Rust extraction. Publication
+requires its own recorded cargo-proofs run and source evidence.
 """
 
 [[report.findings]]
