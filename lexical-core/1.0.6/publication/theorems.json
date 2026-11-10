@@ -75,27 +75,27 @@
   ],
   "recorder_mappings": [
     {
-      "api": "lexical_core::parse",
+      "api": "parse",
       "theorem": "LexicalCorePublicationProofs.parse_spec"
     },
     {
-      "api": "lexical_core::parse_partial",
+      "api": "parse_partial",
       "theorem": "LexicalCorePublicationProofs.parse_partial_spec"
     },
     {
-      "api": "lexical_core::parse_with_options",
+      "api": "parse_with_options",
       "theorem": "LexicalCorePublicationProofs.parse_with_options_spec"
     },
     {
-      "api": "lexical_core::parse_partial_with_options",
+      "api": "parse_partial_with_options",
       "theorem": "LexicalCorePublicationProofs.parse_partial_with_options_spec"
     },
     {
-      "api": "lexical_core::write",
+      "api": "write",
       "theorem": "LexicalCorePublicationProofs.write_spec"
     },
     {
-      "api": "lexical_core::write_with_options",
+      "api": "write_with_options",
       "theorem": "LexicalCorePublicationProofs.write_with_options_spec"
     }
   ],

@@ -27,37 +27,37 @@ version = "be86ab0f1989d04944292b345b24c435be3ad10a"
 lean_dir = "proofs"
 
 [[tool.proofs]]
-api = "lexical_core::parse"
+api = "parse"
 module = "Proofs"
 theorem = "LexicalCorePublicationProofs.parse_spec"
 precondition = "The selected trait dictionary call terminates with Result.ok out and satisfies the independent output relation P; concrete numeric dictionary correctness is an explicit premise, not proved here."
 
 [[tool.proofs]]
-api = "lexical_core::parse_partial"
+api = "parse_partial"
 module = "Proofs"
 theorem = "LexicalCorePublicationProofs.parse_partial_spec"
 precondition = "The selected trait dictionary call terminates with Result.ok out and satisfies the independent output relation P; concrete numeric dictionary correctness is an explicit premise, not proved here."
 
 [[tool.proofs]]
-api = "lexical_core::parse_with_options"
+api = "parse_with_options"
 module = "Proofs"
 theorem = "LexicalCorePublicationProofs.parse_with_options_spec"
 precondition = "The selected trait dictionary call terminates with Result.ok out and satisfies the independent output relation P; concrete numeric dictionary correctness is an explicit premise, not proved here."
 
 [[tool.proofs]]
-api = "lexical_core::parse_partial_with_options"
+api = "parse_partial_with_options"
 module = "Proofs"
 theorem = "LexicalCorePublicationProofs.parse_partial_with_options_spec"
 precondition = "The selected trait dictionary call terminates with Result.ok out and satisfies the independent output relation P; concrete numeric dictionary correctness is an explicit premise, not proved here."
 
 [[tool.proofs]]
-api = "lexical_core::write"
+api = "write"
 module = "Proofs"
 theorem = "LexicalCorePublicationProofs.write_spec"
 precondition = "The selected trait dictionary call terminates with Result.ok out and satisfies the independent output relation P; concrete numeric dictionary correctness is an explicit premise, not proved here."
 
 [[tool.proofs]]
-api = "lexical_core::write_with_options"
+api = "write_with_options"
 module = "Proofs"
 theorem = "LexicalCorePublicationProofs.write_with_options_spec"
 precondition = "The selected trait dictionary call terminates with Result.ok out and satisfies the independent output relation P; concrete numeric dictionary correctness is an explicit premise, not proved here."
