@@ -1,0 +1,25 @@
+[report]
+title = "Clock-zone operations in clock-dbm 0.1.0"
+explanation = '''
+clock-dbm represents sets of nonnegative clock valuations using difference-bound matrices. The release contracts establish that successful constraint insertion keeps exactly the valuations satisfying the original zone and the added constraint or constraints; successful intersection keeps exactly the valuations in both zones. The subset, entailment and constraint-intersection queries have the corresponding semantic meanings. Closure preserves the represented zone and produces a canonical result, or detects emptiness, subject to its range behavior.
+
+Future and past describe exactly the valuations reachable by a common nonnegative real delay forward and backward, respectively. Successful reset sets the selected clock to the requested value while preserving the others; successful free permits any nonnegative value for that clock while preserving the others. Successful ExtraM extrapolation yields the canonical zone of the specified entrywise normalization and contains the original zone. The packed-bound contracts cover strict and weak bounds, infinity, ordering and checked addition.
+
+These are guarantees under the release contracts and their input validation. A successful result is not promised for every valid operation: intermediate bounds may be unrepresentable and return Error::Range. Invalid clock indices, mismatched dimensions and invalid constants also have the errors specified by the individual contracts. For SharedDbm, the corresponding operation contracts and snapshot isolation are established relative to the Rc assumptions below.
+'''
+trusted_assumptions = '''
+The result relies on Rust and Creusot translation, Why3 and the configured SMT solvers, and the creusot-std models of library operations. In particular, SharedDbm relies on the trusted Rc value model and three release-local external specifications: get_mut permits mutation when it returns a unique mutable handle and leaves the handle unchanged on None; strong_count is specified only to terminate and selects between separately correct paths; unwrap_or_clone returns the value or a clone satisfying the element's Clone contract. These specifications reflect the documented operations, but the standard-library Rc implementation is not proved here. The shared update code mutates through get_mut and otherwise updates a copy; snapshot isolation is derived relative to that model, not assumed directly.
+'''
+limitations = '''
+The proof applies to the unchanged 0.1.0 registry release and the recorded target and configuration. It does not establish behavior under allocation failure, hashing or formatting, or a universal termination guarantee. It does not establish ExtraM idempotence or a finite-image counting argument, timed-automaton reachability, or a separate theorem for constraint! macro expansion. For some shared updates reaching the kernel, the contracts do not uniquely determine whether the result is Ok or Error::Range; stronger equivalence between update paths is not claimed.
+
+For full closure, the release proves a sufficient no-Range condition B * 2^d <= MAX_CONSTANT, where d is the number of clocks including the reference clock and B bounds the magnitude of finite input constants. That condition is not a general no-Range guarantee for incremental constraints, intersection or ExtraM. Individual contracts state their range-error conditions and successful results.
+'''
+environment = '''
+A fresh full-gate run on 2026-11-13 checked the unchanged crates.io 0.1.0 archive on macOS arm64, with default features, the distributed lockfile, Creusot 0.14.0 and Rust nightly-2026-08-03. All generated proof obligations closed, with independent reconstruction of the generated roots and session audit; all 21 deliberately defective negative controls were rejected. The native build and tests also passed, separately from the formal proof. Verification scope and reproduction: https://github.com/MasWag/crate-proofs/blob/proofs/clock-dbm-0.1.0/clock-dbm/0.1.0/verification/publication-summary.md . The publication run separately replays the proof without the prover cache; its API mappings and execution log accompany this report. This local proof scope is distinct from the per-API claims recorded by the reporting service.
+'''
+
+[tool]
+name = "creusot"
+version = "0.14.0"
+target = "annotated"
