@@ -1,0 +1,100 @@
+--- a/cli/src/config.rs
++++ b/cli/src/config.rs
+@@ -22,6 +22,8 @@
+ #[serde(deny_unknown_fields)]
+ pub struct Report {
+     pub title: String,
++    #[serde(default, skip_serializing_if = "Vec::is_empty")]
++    pub findings: Vec<Finding>,
+     #[serde(default, skip_serializing_if = "Option::is_none")]
+     pub explanation: Option<String>,
+     #[serde(default, skip_serializing_if = "Option::is_none")]
+@@ -30,6 +32,14 @@
+     pub limitations: Option<String>,
+     #[serde(default, skip_serializing_if = "Option::is_none")]
+     pub environment: Option<String>,
++}
++#[derive(Deserialize, Serialize, Clone)]
++#[serde(deny_unknown_fields)]
++pub struct Finding {
++    #[serde(default, skip_serializing_if = "Vec::is_empty")]
++    pub api_paths: Vec<String>,
++    pub title: String,
++    pub body: String,
+ }
+ #[derive(Default, Deserialize, Serialize)]
+ #[serde(deny_unknown_fields)]
+@@ -356,6 +366,16 @@
+ mod tests {
+     use super::*;
+     #[test]
++    fn accepts_editorial_findings_in_recording_config() {
++        let config: Config = toml::from_str(
++            "[report]\ntitle='Local'\n[[report.findings]]\ntitle='Issue'\nbody='Evidence'\n[tool]\nname='aeneas'\nversion='1'\n",
++        )
++        .unwrap();
++        assert_eq!(config.report.findings[0].title, "Issue");
++        assert_eq!(config.report.findings[0].body, "Evidence");
++    }
++
++    #[test]
+     fn dependency_reviews_are_optional_strict_and_positive() {
+         let base = "[report]\ntitle='Local'\n[tool]\nname='kani'\nversion='1'\n";
+         assert!(toml::from_str::<Config>(base)
+--- a/cli/src/scan.rs
++++ b/cli/src/scan.rs
+@@ -154,6 +154,7 @@
+                         | "creusot"
+                         | "aeneas"
+                         | "test"
++                        | "doctest"
+                         | "doc"
+                         | "docsrs"
+                         | "unix"
+@@ -908,7 +909,19 @@
+                         let syn::Type::Path(owner) = &*i.self_ty else {
+                             continue;
+                         };
+-                        if owner.qself.is_some() || segments(&owner.path).is_err() {
++                        // Lifetime-only owner arguments identify the same nominal
++                        // public type. Keep concrete type/const instantiations distinct.
++                        if owner.qself.is_some()
++                            || owner.path.leading_colon.is_some()
++                            || owner.path.segments.iter().any(|segment| match &segment.arguments {
++                                syn::PathArguments::None => false,
++                                syn::PathArguments::AngleBracketed(args) => args
++                                    .args
++                                    .iter()
++                                    .any(|arg| !matches!(arg, syn::GenericArgument::Lifetime(_))),
++                                syn::PathArguments::Parenthesized(_) => true,
++                            })
++                        {
+                             continue;
+                         }
+                         CallableContext::Inherent {
+@@ -1273,6 +1286,25 @@
+         (d, p)
+     }
+     #[test]
++    fn aeneas_discovers_lifetime_impls_and_excludes_doctest_api() {
++        let (_dir, p) = project(r#"
++mod hidden {
++    pub struct Builder<'a>(&'a str);
++    impl<'a> Builder<'a> { pub fn new(input: &'a str) -> Self { Self(input) } }
++    pub struct Concrete<T>(T);
++    impl Concrete<u8> { pub fn excluded() {} }
++}
++pub use hidden::{Builder, Concrete};
++impl ::hidden::Builder<'static> { pub fn absolute() {} }
++#[cfg(doctest)]
++pub fn doctest_only() {}
++"#);
++        let contracts = public_contracts(&p, false, CreusotTarget::All).unwrap();
++        assert_eq!(contracts.len(), 1);
++        assert_eq!(contracts[0].api_paths, ["Builder::new"]);
++    }
++
++    #[test]
+     fn structural_paths_match_importer_fixtures() {
+         let cases: serde_json::Value =
+             serde_json::from_str(include_str!("../tests/fixtures/canonical-trait-paths.json"))

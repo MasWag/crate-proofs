@@ -1,0 +1,181 @@
+{
+  "checked": [
+    {
+      "name": "TomlWriteVerification.string_basic",
+      "module": "BuilderProofs",
+      "scope": "public-model"
+    },
+    {
+      "name": "TomlWriteVerification.string_ml_basic",
+      "module": "BuilderProofs",
+      "scope": "public-model"
+    },
+    {
+      "name": "TomlWriteVerification.string_literal",
+      "module": "BuilderProofs",
+      "scope": "public-model"
+    },
+    {
+      "name": "TomlWriteVerification.string_ml_literal",
+      "module": "BuilderProofs",
+      "scope": "public-model"
+    },
+    {
+      "name": "TomlWriteVerification.string_basic_pretty",
+      "module": "BuilderProofs",
+      "scope": "public-model"
+    },
+    {
+      "name": "TomlWriteVerification.string_ml_basic_pretty",
+      "module": "BuilderProofs",
+      "scope": "public-model"
+    },
+    {
+      "name": "TomlWriteVerification.key_basic",
+      "module": "BuilderProofs",
+      "scope": "public-model"
+    },
+    {
+      "name": "TomlWriteVerification.key_unquoted",
+      "module": "BuilderProofs",
+      "scope": "public-model"
+    },
+    {
+      "name": "TomlWriteVerification.key_literal",
+      "module": "BuilderProofs",
+      "scope": "public-model"
+    },
+    {
+      "name": "TomlWriteVerification.key_basic_pretty",
+      "module": "BuilderProofs",
+      "scope": "public-model"
+    },
+    {
+      "name": "TomlWriteVerification.key_metrics",
+      "module": "MetricsProofs",
+      "scope": "algorithm"
+    },
+    {
+      "name": "TomlWriteVerification.key_constructor",
+      "module": "MetricsProofs",
+      "scope": "public-model"
+    },
+    {
+      "name": "TomlWriteVerification.key_unquoted_after_new",
+      "module": "MetricsProofs",
+      "scope": "composition"
+    },
+    {
+      "name": "TomlWriteVerification.single_quote_overflow_step",
+      "module": "MetricsProofs",
+      "scope": "model-counterexample-step",
+      "precondition": "The corresponding counter is 255 and there is a matching quote at the current index."
+    },
+    {
+      "name": "TomlWriteVerification.double_quote_overflow_step",
+      "module": "MetricsProofs",
+      "scope": "model-counterexample-step",
+      "precondition": "The corresponding counter is 255 and there is a matching quote at the current index."
+    },
+    {
+      "name": "TomlWriteVerification.value_metrics",
+      "module": "ValueMetricsProofs",
+      "scope": "algorithm",
+      "precondition": "Every consecutive run of apostrophes or double quotes has length at most 255."
+    },
+    {
+      "name": "TomlWriteVerification.string_constructor",
+      "module": "ValueMetricsProofs",
+      "scope": "public-model",
+      "precondition": "Every consecutive run of apostrophes or double quotes has length at most 255."
+    },
+    {
+      "name": "TomlWriteVerification.string_constructor_overflow",
+      "module": "ValueMetricsProofs",
+      "scope": "model-failure",
+      "precondition": "At least one consecutive run of apostrophes or double quotes has length 256 or more."
+    },
+    {
+      "name": "TomlWriteVerification.DefaultSelection.key_default",
+      "module": "DefaultSelectionProofs",
+      "scope": "adapted-public-model"
+    },
+    {
+      "name": "TomlWriteVerification.DefaultSelection.string_default",
+      "module": "DefaultSelectionProofs",
+      "scope": "adapted-public-model"
+    },
+    {
+      "name": "TomlWriteVerification.DefaultSelection.key_option_chain",
+      "module": "DefaultSelectionProofs",
+      "scope": "source-option-model"
+    },
+    {
+      "name": "TomlWriteVerification.DefaultSelection.string_option_chain",
+      "module": "DefaultSelectionProofs",
+      "scope": "source-option-model"
+    },
+    {
+      "name": "TomlWriteVerification.DefaultSelection.key_default_after_new",
+      "module": "DefaultSelectionProofs",
+      "scope": "adapted-composition"
+    },
+    {
+      "name": "TomlWriteVerification.DefaultSelection.string_default_after_new",
+      "module": "DefaultSelectionProofs",
+      "scope": "adapted-composition",
+      "precondition": "Every consecutive run of apostrophes or double quotes has length at most 255."
+    }
+  ],
+  "recorder_mappings": [
+    {
+      "api": "TomlStringBuilder::as_basic",
+      "theorem": "TomlWriteVerification.string_basic"
+    },
+    {
+      "api": "TomlStringBuilder::as_ml_basic",
+      "theorem": "TomlWriteVerification.string_ml_basic"
+    },
+    {
+      "api": "TomlStringBuilder::as_literal",
+      "theorem": "TomlWriteVerification.string_literal"
+    },
+    {
+      "api": "TomlStringBuilder::as_ml_literal",
+      "theorem": "TomlWriteVerification.string_ml_literal"
+    },
+    {
+      "api": "TomlStringBuilder::as_basic_pretty",
+      "theorem": "TomlWriteVerification.string_basic_pretty"
+    },
+    {
+      "api": "TomlStringBuilder::as_ml_basic_pretty",
+      "theorem": "TomlWriteVerification.string_ml_basic_pretty"
+    },
+    {
+      "api": "TomlKeyBuilder::as_basic",
+      "theorem": "TomlWriteVerification.key_basic"
+    },
+    {
+      "api": "TomlKeyBuilder::as_unquoted",
+      "theorem": "TomlWriteVerification.key_unquoted"
+    },
+    {
+      "api": "TomlKeyBuilder::as_literal",
+      "theorem": "TomlWriteVerification.key_literal"
+    },
+    {
+      "api": "TomlKeyBuilder::as_basic_pretty",
+      "theorem": "TomlWriteVerification.key_basic_pretty"
+    },
+    {
+      "api": "TomlKeyBuilder::new",
+      "theorem": "TomlWriteVerification.key_constructor"
+    },
+    {
+      "api": "TomlStringBuilder::new",
+      "theorem": "TomlWriteVerification.string_constructor"
+    }
+  ],
+  "extracted_but_unproved": []
+}

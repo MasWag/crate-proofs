@@ -1,0 +1,77 @@
+--- a/src/string.rs
++++ b/src/string.rs
+@@ -13,17 +13,23 @@
+     }
+ 
+     pub fn as_default(&self) -> TomlString<'s> {
+-        self.as_basic_pretty()
+-            .or_else(|| self.as_literal())
+-            .or_else(|| self.as_ml_basic_pretty())
+-            .or_else(|| self.as_ml_literal())
+-            .unwrap_or_else(|| {
+-                if self.metrics.newline {
+-                    self.as_ml_basic()
+-                } else {
+-                    self.as_basic()
+-                }
+-            })
++        if let Some(value) = self.as_basic_pretty() {
++            return value;
++        }
++        if let Some(value) = self.as_literal() {
++            return value;
++        }
++        if let Some(value) = self.as_ml_basic_pretty() {
++            return value;
++        }
++        if let Some(value) = self.as_ml_literal() {
++            return value;
++        }
++        if self.metrics.newline {
++            self.as_ml_basic()
++        } else {
++            self.as_basic()
++        }
+     }
+ 
+     pub fn as_literal(&self) -> Option<TomlString<'s>> {
+@@ -121,10 +127,16 @@
+     }
+ 
+     pub fn as_default(&self) -> TomlKey<'s> {
+-        self.as_unquoted()
+-            .or_else(|| self.as_basic_pretty())
+-            .or_else(|| self.as_literal())
+-            .unwrap_or_else(|| self.as_basic())
++        if let Some(value) = self.as_unquoted() {
++            return value;
++        }
++        if let Some(value) = self.as_basic_pretty() {
++            return value;
++        }
++        if let Some(value) = self.as_literal() {
++            return value;
++        }
++        self.as_basic()
+     }
+ 
+     pub fn as_unquoted(&self) -> Option<TomlKey<'s>> {
+@@ -181,14 +193,16 @@
+ #[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug)]
+ #[repr(u8)]
+ #[allow(clippy::enum_variant_names)]
+-enum Encoding {
++enum DefaultEncoding {
+     LiteralString,
+     BasicString,
+     MlLiteralString,
+     MlBasicString,
+ }
+ 
+-impl Encoding {}
++type Encoding = DefaultEncoding;
++
++impl DefaultEncoding {}
+ 
+ fn write_toml_value<W: crate::TomlWrite + ?Sized>(
+     decoded: &str,

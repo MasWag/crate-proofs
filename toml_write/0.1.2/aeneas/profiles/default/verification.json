@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "supported_targets": [
+    "aarch64-apple-darwin"
+  ],
+  "native": [
+    [
+      "cargo",
+      "test",
+      "--locked"
+    ],
+    [
+      "cargo",
+      "test",
+      "--locked",
+      "--no-default-features"
+    ],
+    [
+      "cargo",
+      "test",
+      "--locked",
+      "--no-default-features",
+      "--features",
+      "alloc"
+    ]
+  ],
+  "extractions": [],
+  "inventory": "theorems.json",
+  "report": "proofs.toml",
+  "lean_dir": "proofs",
+  "additional_checks": [
+    [
+      "python3",
+      "scripts/extract-split.py"
+    ],
+    [
+      "python3",
+      "scripts/extract-default-selection.py"
+    ]
+  ]
+}

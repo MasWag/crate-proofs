@@ -1,0 +1,126 @@
+{
+  "acceptance_basis": "Original archived inputs; packaging does not rerun verification.",
+  "archive_sha256": "8d14cfb0d8f516fed4fb24a761170d557bfaab5efd81b4008a5709f25721f588",
+  "audit": {
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "checked": [
+      {
+        "module": "BuilderProofs",
+        "name": "TomlWriteVerification.string_basic",
+        "scope": "public-model"
+      },
+      {
+        "module": "BuilderProofs",
+        "name": "TomlWriteVerification.string_ml_basic",
+        "scope": "public-model"
+      },
+      {
+        "module": "BuilderProofs",
+        "name": "TomlWriteVerification.string_literal",
+        "scope": "public-model"
+      },
+      {
+        "module": "BuilderProofs",
+        "name": "TomlWriteVerification.string_ml_literal",
+        "scope": "public-model"
+      },
+      {
+        "module": "BuilderProofs",
+        "name": "TomlWriteVerification.string_basic_pretty",
+        "scope": "public-model"
+      },
+      {
+        "module": "BuilderProofs",
+        "name": "TomlWriteVerification.string_ml_basic_pretty",
+        "scope": "public-model"
+      },
+      {
+        "module": "BuilderProofs",
+        "name": "TomlWriteVerification.key_basic",
+        "scope": "public-model"
+      },
+      {
+        "module": "BuilderProofs",
+        "name": "TomlWriteVerification.key_unquoted",
+        "scope": "public-model"
+      },
+      {
+        "module": "BuilderProofs",
+        "name": "TomlWriteVerification.key_literal",
+        "scope": "public-model"
+      },
+      {
+        "module": "BuilderProofs",
+        "name": "TomlWriteVerification.key_basic_pretty",
+        "scope": "public-model"
+      },
+      {
+        "module": "MetricsProofs",
+        "name": "TomlWriteVerification.key_metrics",
+        "scope": "algorithm"
+      },
+      {
+        "module": "MetricsProofs",
+        "name": "TomlWriteVerification.key_constructor",
+        "scope": "public-model"
+      },
+      {
+        "module": "MetricsProofs",
+        "name": "TomlWriteVerification.key_unquoted_after_new",
+        "scope": "composition"
+      },
+      {
+        "module": "MetricsProofs",
+        "name": "TomlWriteVerification.single_quote_overflow_step",
+        "precondition": "The corresponding counter is 255 and there is a matching quote at the current index.",
+        "scope": "model-counterexample-step"
+      },
+      {
+        "module": "MetricsProofs",
+        "name": "TomlWriteVerification.double_quote_overflow_step",
+        "precondition": "The corresponding counter is 255 and there is a matching quote at the current index.",
+        "scope": "model-counterexample-step"
+      }
+    ],
+    "mapping_metadata_checked": true,
+    "scope": "named Lean theorem and transitive axiom audit only",
+    "status": "passed"
+  },
+  "host": "aarch64-apple-darwin",
+  "input_fingerprints": {
+    "after": {
+      "member": "payload/inputs-after.json",
+      "sha256": "2cf6b62131a55f835e8e4cd907874ca37c4e7146488de54a4d01ca0bda724c0f"
+    },
+    "before": {
+      "member": "payload/inputs-before.json",
+      "sha256": "2cf6b62131a55f835e8e4cd907874ca37c4e7146488de54a4d01ca0bda724c0f"
+    },
+    "equal": true
+  },
+  "kind": "archived-managed-run-summary",
+  "original_audit": {
+    "member": "payload/audit/result.json",
+    "sha256": "85f6f9801f3b3077ae5ddc6e7a8ddf10dd56f3b5478fab39b8d46a05b781d3d7"
+  },
+  "original_result": {
+    "member": "payload/result.json",
+    "sha256": "d91c879ed5e32633cca8cb3d222ea997cb1e6082c30828de58e4aa0a376c71a2"
+  },
+  "profile": "default",
+  "reported_status": "passed",
+  "sarif": "Not a cargo-proofs recording result.",
+  "schema_version": 1,
+  "scope": "Configured extraction comparisons and named theorem audit; native observations are separate",
+  "stages": {
+    "before_after_fingerprints": "equal",
+    "extraction_and_profile_checks": "See original pipeline receipt and profile configuration.",
+    "lean_build_and_axiom_audit": "passed",
+    "native_tests": "Separate observations in original run; not formal proof."
+  },
+  "target": "aarch64-apple-darwin"
+}

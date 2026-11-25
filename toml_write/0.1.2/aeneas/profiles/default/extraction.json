@@ -1,0 +1,50 @@
+{
+  "methods": [
+    "calculate",
+    "new",
+    "as_basic",
+    "as_ml_basic",
+    "as_basic_pretty",
+    "as_ml_basic_pretty",
+    "as_literal",
+    "as_ml_literal",
+    "as_unquoted"
+  ],
+  "types": [
+    "ValueMetrics",
+    "KeyMetrics",
+    "TomlStringBuilder",
+    "TomlKeyBuilder",
+    "Encoding",
+    "TomlString",
+    "TomlKey"
+  ],
+  "models": {
+    "Types.lean": [
+      "string.ValueMetrics",
+      "string.KeyMetrics",
+      "string.TomlStringBuilder",
+      "string.TomlKeyBuilder",
+      "string.Encoding",
+      "string.TomlString",
+      "string.TomlKey"
+    ],
+    "Funs.lean": [
+      "string.TomlStringBuilder.as_basic",
+      "string.TomlStringBuilder.as_ml_basic",
+      "string.TomlStringBuilder.as_literal",
+      "string.TomlStringBuilder.as_ml_literal",
+      "string.TomlStringBuilder.as_basic_pretty",
+      "string.TomlStringBuilder.as_ml_basic_pretty",
+      "string.TomlKeyBuilder.as_basic",
+      "string.TomlKeyBuilder.as_unquoted",
+      "string.TomlKeyBuilder.as_literal",
+      "string.TomlKeyBuilder.as_basic_pretty",
+      "string.KeyMetrics.calculate",
+      "string.ValueMetrics.calculate",
+      "string.TomlStringBuilder.new",
+      "string.TomlKeyBuilder.new"
+    ]
+  },
+  "target": "aarch64-apple-darwin"
+}

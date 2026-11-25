@@ -1,0 +1,175 @@
+{
+  "acceptance_basis": "Original archived inputs; packaging does not rerun verification.",
+  "archive_sha256": "80885a78aa4e16a9140a9e8e32e4574690a314a91f10bde89a5efa844e271fc2",
+  "audit": {
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "checked": [
+      {
+        "module": "BuilderProofs",
+        "name": "TomlWriteVerification.string_basic",
+        "scope": "public-model"
+      },
+      {
+        "module": "BuilderProofs",
+        "name": "TomlWriteVerification.string_ml_basic",
+        "scope": "public-model"
+      },
+      {
+        "module": "BuilderProofs",
+        "name": "TomlWriteVerification.string_literal",
+        "scope": "public-model"
+      },
+      {
+        "module": "BuilderProofs",
+        "name": "TomlWriteVerification.string_ml_literal",
+        "scope": "public-model"
+      },
+      {
+        "module": "BuilderProofs",
+        "name": "TomlWriteVerification.string_basic_pretty",
+        "scope": "public-model"
+      },
+      {
+        "module": "BuilderProofs",
+        "name": "TomlWriteVerification.string_ml_basic_pretty",
+        "scope": "public-model"
+      },
+      {
+        "module": "BuilderProofs",
+        "name": "TomlWriteVerification.key_basic",
+        "scope": "public-model"
+      },
+      {
+        "module": "BuilderProofs",
+        "name": "TomlWriteVerification.key_unquoted",
+        "scope": "public-model"
+      },
+      {
+        "module": "BuilderProofs",
+        "name": "TomlWriteVerification.key_literal",
+        "scope": "public-model"
+      },
+      {
+        "module": "BuilderProofs",
+        "name": "TomlWriteVerification.key_basic_pretty",
+        "scope": "public-model"
+      },
+      {
+        "module": "MetricsProofs",
+        "name": "TomlWriteVerification.key_metrics",
+        "scope": "algorithm"
+      },
+      {
+        "module": "MetricsProofs",
+        "name": "TomlWriteVerification.key_constructor",
+        "scope": "public-model"
+      },
+      {
+        "module": "MetricsProofs",
+        "name": "TomlWriteVerification.key_unquoted_after_new",
+        "scope": "composition"
+      },
+      {
+        "module": "MetricsProofs",
+        "name": "TomlWriteVerification.single_quote_overflow_step",
+        "precondition": "The corresponding counter is 255 and there is a matching quote at the current index.",
+        "scope": "model-counterexample-step"
+      },
+      {
+        "module": "MetricsProofs",
+        "name": "TomlWriteVerification.double_quote_overflow_step",
+        "precondition": "The corresponding counter is 255 and there is a matching quote at the current index.",
+        "scope": "model-counterexample-step"
+      },
+      {
+        "module": "ValueMetricsProofs",
+        "name": "TomlWriteVerification.value_metrics",
+        "precondition": "Every consecutive run of apostrophes or double quotes has length at most 255.",
+        "scope": "algorithm"
+      },
+      {
+        "module": "ValueMetricsProofs",
+        "name": "TomlWriteVerification.string_constructor",
+        "precondition": "Every consecutive run of apostrophes or double quotes has length at most 255.",
+        "scope": "public-model"
+      },
+      {
+        "module": "ValueMetricsProofs",
+        "name": "TomlWriteVerification.string_constructor_overflow",
+        "precondition": "At least one consecutive run of apostrophes or double quotes has length 256 or more.",
+        "scope": "model-failure"
+      },
+      {
+        "module": "DefaultSelectionProofs",
+        "name": "TomlWriteVerification.DefaultSelection.key_default",
+        "scope": "adapted-public-model"
+      },
+      {
+        "module": "DefaultSelectionProofs",
+        "name": "TomlWriteVerification.DefaultSelection.string_default",
+        "scope": "adapted-public-model"
+      },
+      {
+        "module": "DefaultSelectionProofs",
+        "name": "TomlWriteVerification.DefaultSelection.key_option_chain",
+        "scope": "source-option-model"
+      },
+      {
+        "module": "DefaultSelectionProofs",
+        "name": "TomlWriteVerification.DefaultSelection.string_option_chain",
+        "scope": "source-option-model"
+      },
+      {
+        "module": "DefaultSelectionProofs",
+        "name": "TomlWriteVerification.DefaultSelection.key_default_after_new",
+        "scope": "adapted-composition"
+      },
+      {
+        "module": "DefaultSelectionProofs",
+        "name": "TomlWriteVerification.DefaultSelection.string_default_after_new",
+        "precondition": "Every consecutive run of apostrophes or double quotes has length at most 255.",
+        "scope": "adapted-composition"
+      }
+    ],
+    "mapping_metadata_checked": true,
+    "scope": "named Lean theorem and transitive axiom audit only",
+    "status": "passed"
+  },
+  "host": "aarch64-apple-darwin",
+  "input_fingerprints": {
+    "after": {
+      "member": "payload/inputs-after.json",
+      "sha256": "e42d6d653f56b01d07930eca42104b3ee4580b9baa7e5f313d0d4e0a6acb070b"
+    },
+    "before": {
+      "member": "payload/inputs-before.json",
+      "sha256": "e42d6d653f56b01d07930eca42104b3ee4580b9baa7e5f313d0d4e0a6acb070b"
+    },
+    "equal": true
+  },
+  "kind": "archived-managed-run-summary",
+  "original_audit": {
+    "member": "payload/audit/result.json",
+    "sha256": "466275a3084d0aaa2233757595100cac52fbc0ffaab3cfbed2fdcf1dfc98cc2c"
+  },
+  "original_result": {
+    "member": "payload/result.json",
+    "sha256": "3016f378f268a5aafc7feee8c94c1ebc6682788be54b5eb76cdcfb37135bd7af"
+  },
+  "profile": "default",
+  "reported_status": "passed",
+  "sarif": "Not a cargo-proofs recording result.",
+  "schema_version": 1,
+  "scope": "Configured extraction comparisons and named theorem audit; native observations are separate",
+  "stages": {
+    "before_after_fingerprints": "equal",
+    "extraction_and_profile_checks": "See original pipeline receipt and profile configuration.",
+    "lean_build_and_axiom_audit": "passed",
+    "native_tests": "Separate observations in original run; not formal proof."
+  },
+  "target": "aarch64-apple-darwin"
+}

@@ -1,0 +1,190 @@
+[report]
+title = "toml_write 0.1.2 string and key metrics and builder selection"
+explanation = """
+The selected release-source string and key builder methods choose an encoding from the cached
+metrics in the builder. For every modeled builder state, the checked theorem
+statements establish that each selected method returns successfully and makes the
+choice specified by those metrics. Basic selectors always return their corresponding
+encoding; optional selectors return it only when their recorded flags and quote
+counts satisfy the method's conditions. The returned value retains the decoded
+string and, for strings, the recorded newline flag.
+
+The selector proofs alone use cached state. For keys, a separate constructor theorem
+specifies that the metrics mark an unquoted key exactly when the input bytes are
+nonempty and all are ASCII letters, digits, hyphen, or underscore. The other flags
+record whether any byte is a single quote, double quote, backslash, ASCII C0 control
+byte other than tab, or DEL. A composed theorem specifies that the constructor and
+selector return successfully, with the selector returning `Some` exactly under that
+nonempty ASCII condition and `None` otherwise.
+
+For strings whose longest consecutive runs of apostrophes and double quotes are
+each at most 255, the string constructor theorem specifies successful construction
+with the original text and exact metrics: both longest runs and the presence of
+backslash, line feed, and ASCII C0 controls other than tab and line feed, or DEL.
+This is a bound on each run, not on total length or total quote count. A complementary
+theorem specifies modeled integer overflow when either run reaches 256. In the checked-arithmetic model this covers both constructor outcomes. The managed
+run and audit are documented in the profile's `results.md`.
+
+Separate theorems for adapted default methods specify the first eligible encoding
+in the documented order, for every raw builder state. Composition theorems connect
+them to the key constructor and, under the two quote-run bounds, the string
+constructor. The default-method adaptation and its correspondence to the release
+are described under limitations.
+"""
+trusted_assumptions = """
+The statements concern Aeneas translations of the selected Rust bodies and rely
+on the translation, Rust and standard-library models, and Lean's kernel. For the key and string
+scans, the supplied models of `str::as_bytes` and `str::is_empty` assume that the
+immutable byte slice is exactly the input string's modeled bytes and that emptiness
+agrees with that byte sequence. Rust's `str` supplies the UTF-8 validity guarantee;
+the Lean string model itself is a byte sequence. These operations are not proved
+against the Rust standard library here. For release default methods, relating the
+original `Option::or_else` and `unwrap_or_else` closure behavior to the mathematical
+option chain is a reviewed semantic assumption; the closures were not extracted.
+The pure option-chain equivalences themselves are checked in Lean.
+"""
+limitations = """
+The bounded string-constructor success statement excludes quote runs longer than
+255; the complementary failure theorem uses checked arithmetic. Native release
+profile behavior differs, as described in the finding. Writing or serializing TOML
+output remains outside the selected theorems, so they do not establish valid TOML
+output or end-to-end panic freedom. In particular, the formatting model does not
+retain the argument text needed to prove the writer's output.
+
+The two default-method bodies are verified on an adaptation, separately from the
+12 mapped original release APIs. The patch replaces the lazy option chains with
+ordered early-return branches and renames the encoding enum through an alias for
+generated Lean compatibility. The independent review relates each branch and
+fallback to the original lazy chain, but no extracted release-closure equivalence
+theorem is claimed. A native differential check compares all 32 key and 524,288
+string cached-metric states with one fixed decoded string; it supplements rather
+than replaces that semantic correspondence. Other selected Rust bodies are unchanged
+from the pinned release.
+"""
+
+environment = """
+The selected scope is the `toml_write` 0.1.2 release and the `aarch64-apple-darwin`
+target with default features. The managed run and named-theorem and transitive-axiom audit are documented in the profile's `results.md`. The proof uses unpatched Aeneas
+and Charon. The cargo-proofs CLI carries a preparation patch to stage pinned sources
+and proof inputs, including in its isolated checkout. A second recorder patch parses
+finding entries and corrects API discovery for lifetime-only inherent implementations
+and `cfg(doctest)` items excluded from the library target. These CLI patches are
+separate from Aeneas and Charon; their sources and checks are recorded in
+`toolchain.lock.json` and the profile's `patches` directory. Native tests also ran
+with default, no-default, and alloc-only features; those tests are separate from the
+formal results.
+"""
+
+[[report.findings]]
+title = "String builder panics on 256 consecutive quotes"
+body = """
+## Description
+
+In `toml_write` 0.1.2, `TomlStringBuilder::new` panics on a valid string containing 256 consecutive double quotes when overflow checks are enabled. A run of apostrophes also triggers the panic, as does converting the affected string with `ToTomlValue`.
+
+## Steps to Reproduce
+
+With `toml_write = "=0.1.2"`, run this in the default dev profile:
+
+```rust
+use toml_write::TomlStringBuilder;
+
+fn main() {
+    let input = "\\"".repeat(256);
+    let _ = TomlStringBuilder::new(&input);
+}
+```
+
+## Expected Behavior
+
+The builder accepts the valid string so it can be encoded as a TOML string.
+
+## Actual Behavior
+
+The call panics with `attempt to add with overflow` in `ValueMetrics::calculate`.
+
+## Environment
+
+`toml_write` 0.1.2, default features, Rust 1.94.1, default dev profile. The tested default release profile did not panic for this input.
+
+## Additional Context
+
+Related: [toml-rs/toml#1188](https://github.com/toml-rs/toml/issues/1188) reports the same counter overflow in a later `toml_writer` release.
+"""
+
+[tool]
+name = "aeneas"
+version = "be86ab0f1989d04944292b345b24c435be3ad10a"
+lean_dir = ".work/selected-proofs"
+
+[[tool.proofs]]
+api = "TomlStringBuilder::as_basic"
+module = "BuilderProofs"
+precondition = "true"
+theorem = "TomlWriteVerification.string_basic"
+
+[[tool.proofs]]
+api = "TomlStringBuilder::as_ml_basic"
+module = "BuilderProofs"
+precondition = "true"
+theorem = "TomlWriteVerification.string_ml_basic"
+
+[[tool.proofs]]
+api = "TomlStringBuilder::as_literal"
+module = "BuilderProofs"
+precondition = "true"
+theorem = "TomlWriteVerification.string_literal"
+
+[[tool.proofs]]
+api = "TomlStringBuilder::as_ml_literal"
+module = "BuilderProofs"
+precondition = "true"
+theorem = "TomlWriteVerification.string_ml_literal"
+
+[[tool.proofs]]
+api = "TomlStringBuilder::as_basic_pretty"
+module = "BuilderProofs"
+precondition = "true"
+theorem = "TomlWriteVerification.string_basic_pretty"
+
+[[tool.proofs]]
+api = "TomlStringBuilder::as_ml_basic_pretty"
+module = "BuilderProofs"
+precondition = "true"
+theorem = "TomlWriteVerification.string_ml_basic_pretty"
+
+[[tool.proofs]]
+api = "TomlKeyBuilder::as_basic"
+module = "BuilderProofs"
+precondition = "true"
+theorem = "TomlWriteVerification.key_basic"
+
+[[tool.proofs]]
+api = "TomlKeyBuilder::as_unquoted"
+module = "BuilderProofs"
+precondition = "true"
+theorem = "TomlWriteVerification.key_unquoted"
+
+[[tool.proofs]]
+api = "TomlKeyBuilder::as_literal"
+module = "BuilderProofs"
+precondition = "true"
+theorem = "TomlWriteVerification.key_literal"
+
+[[tool.proofs]]
+api = "TomlKeyBuilder::as_basic_pretty"
+module = "BuilderProofs"
+precondition = "true"
+theorem = "TomlWriteVerification.key_basic_pretty"
+
+[[tool.proofs]]
+api = "TomlKeyBuilder::new"
+module = "MetricsProofs"
+theorem = "TomlWriteVerification.key_constructor"
+precondition = "true"
+
+[[tool.proofs]]
+api = "TomlStringBuilder::new"
+module = "ValueMetricsProofs"
+theorem = "TomlWriteVerification.string_constructor"
+precondition = "Every consecutive run of apostrophes or double quotes has length at most 255."

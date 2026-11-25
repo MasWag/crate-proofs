@@ -1,0 +1,32 @@
+name = "toml_write_proofs"
+version = "0.1.0"
+defaultTargets = ["BuilderProofs", "MetricsProofs", "ValueMetricsProofs", "DefaultSelectionProofs"]
+
+[[require]]
+name = "aeneas"
+path = "@AENEAS_BACKEND@"
+
+[[lean_lib]]
+name = "TomlWrite.FunsExternal"
+
+[[lean_lib]]
+name = "TomlWriteModel"
+srcDir = "Generated/@TARGET@"
+globs = ["TomlWrite.Types", "TomlWrite.Funs"]
+
+[[lean_lib]]
+name = "BuilderProofs"
+
+[[lean_lib]]
+name = "MetricsProofs"
+
+[[lean_lib]]
+name = "ValueMetricsProofs"
+
+[[lean_lib]]
+name = "TomlDefaultModel"
+srcDir = "Generated/@TARGET@"
+globs = ["TomlDefaultModel.TomlWrite"]
+
+[[lean_lib]]
+name = "DefaultSelectionProofs"
