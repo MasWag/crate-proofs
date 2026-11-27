@@ -1,0 +1,13 @@
+name = "utf8_proofs"
+defaultTargets = ["Proofs"]
+
+[[require]]
+name = "aeneas"
+path = "@AENEAS_BACKEND@"
+
+[[lean_lib]]
+name = "Utf8"
+srcDir = "Generated/@TARGET@"
+
+[[lean_lib]]
+name = "Proofs"

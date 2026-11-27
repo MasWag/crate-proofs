@@ -1,0 +1,83 @@
+{
+  "checked": [
+    {
+      "name": "Utf8Proofs.empty_total",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "true"
+    },
+    {
+      "name": "Utf8Proofs.is_empty_total",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "true"
+    },
+    {
+      "name": "Utf8Proofs.new_total",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "bytes.len() \u2264 4"
+    },
+    {
+      "name": "Utf8Proofs.take_buffer_total",
+      "module": "Proofs",
+      "scope": "private-model",
+      "precondition": "state.buffer_len \u2264 4"
+    },
+    {
+      "name": "Utf8Proofs.incomplete_clone_total",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "true"
+    },
+    {
+      "name": "Utf8Proofs.decode_error_clone_total",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "true"
+    },
+    {
+      "name": "Utf8Proofs.lossy_new_total",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "true"
+    },
+    {
+      "name": "Utf8Proofs.bufread_new_total",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "true"
+    }
+  ],
+  "recorder_mappings": [
+    {
+      "api": "Incomplete::empty",
+      "theorem": "Utf8Proofs.empty_total"
+    },
+    {
+      "api": "Incomplete::is_empty",
+      "theorem": "Utf8Proofs.is_empty_total"
+    },
+    {
+      "api": "Incomplete::new",
+      "theorem": "Utf8Proofs.new_total"
+    },
+    {
+      "api": "<utf8::Incomplete as core::clone::Clone>::clone",
+      "theorem": "Utf8Proofs.incomplete_clone_total"
+    },
+    {
+      "api": "<utf8::DecodeError as core::clone::Clone>::clone",
+      "theorem": "Utf8Proofs.decode_error_clone_total"
+    },
+    {
+      "api": "LossyDecoder::new",
+      "theorem": "Utf8Proofs.lossy_new_total"
+    },
+    {
+      "api": "BufReadDecoder::new",
+      "theorem": "Utf8Proofs.bufread_new_total"
+    }
+  ],
+  "extracted_but_unproved": []
+}

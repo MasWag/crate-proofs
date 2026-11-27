@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "supported_targets": [
+    "aarch64-apple-darwin"
+  ],
+  "native": [
+    [
+      "/opt/homebrew/bin/python3",
+      "scripts/check-core-adapted.py"
+    ],
+    [
+      "cargo",
+      "test",
+      "--manifest-path",
+      ".work/core-adapted-source/Cargo.toml",
+      "--locked",
+      "--offline"
+    ]
+  ],
+  "additional_checks": [
+    [
+      "/opt/homebrew/bin/python3",
+      "scripts/check-core-adapted.py"
+    ]
+  ],
+  "post_checks": [
+    [
+      "/opt/homebrew/bin/python3",
+      "scripts/check-core-adapted.py",
+      "--check"
+    ]
+  ],
+  "extractions": [
+    {
+      "config": "extraction.json",
+      "cwd": ".work/core-adapted-source",
+      "models": {
+        "Utf8.lean": "proofs/Generated/@TARGET@/Utf8Core.lean"
+      }
+    }
+  ],
+  "inventory": "theorems.json",
+  "report": "proofs.toml",
+  "lean_dir": "proofs"
+}

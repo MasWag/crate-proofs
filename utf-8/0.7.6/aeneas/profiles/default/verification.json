@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "supported_targets": [
+    "aarch64-apple-darwin"
+  ],
+  "native": [
+    [
+      "cargo",
+      "test",
+      "--locked",
+      "--offline"
+    ]
+  ],
+  "extractions": [
+    {
+      "config": "extraction.json",
+      "models": {
+        "Utf8.lean": "proofs/Generated/@TARGET@/Utf8.lean"
+      }
+    }
+  ],
+  "inventory": "theorems.json",
+  "report": "proofs.toml",
+  "lean_dir": "proofs"
+}

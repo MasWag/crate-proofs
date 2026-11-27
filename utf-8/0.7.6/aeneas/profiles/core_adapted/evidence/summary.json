@@ -1,0 +1,67 @@
+{
+  "acceptance_basis": "Original archived inputs; packaging does not rerun verification.",
+  "archive_sha256": "00034da09584a9995660343f875b2b9e5982579cafb4a0d9f048c4926ed4b4d5",
+  "audit": {
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "checked": [
+      {
+        "module": "CoreProofs",
+        "name": "CoreProofs.splice_decomposition",
+        "precondition": "true",
+        "scope": "private-model"
+      },
+      {
+        "module": "CoreProofs",
+        "name": "CoreProofs.splice_prefix_total",
+        "precondition": "state.buffer_len \u2264 4",
+        "scope": "private-model"
+      },
+      {
+        "module": "ClassifiedProofs",
+        "name": "ClassifiedProofs.classified_total",
+        "precondition": "state.buffer_len \u2264 4 and initial length \u2264 descriptor-selected endpoint \u2264 initial length + copied input length",
+        "scope": "private-model"
+      }
+    ],
+    "mapping_metadata_checked": true,
+    "scope": "named Lean theorem and transitive axiom audit only",
+    "status": "passed"
+  },
+  "host": "aarch64-apple-darwin",
+  "input_fingerprints": {
+    "after": {
+      "member": "payload/inputs-after.json",
+      "sha256": "9d5afa2c90686ee452cb6cea107fd1718689bcb07454edb50eb6ab1804c7521d"
+    },
+    "before": {
+      "member": "payload/inputs-before.json",
+      "sha256": "9d5afa2c90686ee452cb6cea107fd1718689bcb07454edb50eb6ab1804c7521d"
+    },
+    "equal": true
+  },
+  "kind": "archived-managed-run-summary",
+  "original_audit": {
+    "member": "payload/audit/result.json",
+    "sha256": "cc8020f9ec0faafcd3c96052254ff2ba669e9f43746735404b49352211d21758"
+  },
+  "original_result": {
+    "member": "payload/result.json",
+    "sha256": "063c13efb2de27c7258a03f223151dbf7ae598bd7b99a87dd3e9db58530467d9"
+  },
+  "profile": "core_adapted",
+  "reported_status": "passed",
+  "sarif": "Not a cargo-proofs recording result.",
+  "schema_version": 1,
+  "scope": "Configured extraction comparisons and named theorem audit; native observations are separate",
+  "stages": {
+    "before_after_fingerprints": "equal",
+    "extraction_and_profile_checks": "See original pipeline receipt and profile configuration.",
+    "lean_build_and_axiom_audit": "passed",
+    "native_tests": "Separate observations in original run; not formal proof."
+  },
+  "target": "aarch64-apple-darwin"
+}

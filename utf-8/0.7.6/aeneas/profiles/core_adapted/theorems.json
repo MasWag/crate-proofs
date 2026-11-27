@@ -1,0 +1,24 @@
+{
+  "checked": [
+    {
+      "name": "CoreProofs.splice_decomposition",
+      "module": "CoreProofs",
+      "scope": "private-model",
+      "precondition": "true"
+    },
+    {
+      "name": "CoreProofs.splice_prefix_total",
+      "module": "CoreProofs",
+      "scope": "private-model",
+      "precondition": "state.buffer_len \u2264 4"
+    },
+    {
+      "name": "ClassifiedProofs.classified_total",
+      "module": "ClassifiedProofs",
+      "scope": "private-model",
+      "precondition": "state.buffer_len \u2264 4 and initial length \u2264 descriptor-selected endpoint \u2264 initial length + copied input length"
+    }
+  ],
+  "recorder_mappings": [],
+  "extracted_but_unproved": []
+}

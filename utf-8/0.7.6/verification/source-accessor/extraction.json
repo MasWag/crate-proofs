@@ -1,0 +1,21 @@
+{
+  "entries": [
+    "crate::decode_error_source"
+  ],
+  "llbc": "Utf8SourceAccessor.llbc",
+  "cargo_args": [
+    "--lib",
+    "--locked",
+    "--offline"
+  ],
+  "charon_include": [
+    "core::error::Error::source"
+  ],
+  "remove_unused_clauses": true,
+  "models": {
+    "Utf8SourceAccessor.lean": [
+      "decode_error_source",
+      "core.error.Error.source.default"
+    ]
+  }
+}

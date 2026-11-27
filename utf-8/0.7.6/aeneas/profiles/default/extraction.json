@@ -1,0 +1,32 @@
+{
+  "entries": [
+    "crate::Incomplete::empty",
+    "crate::Incomplete::is_empty",
+    "crate::Incomplete::new",
+    "crate::Incomplete::take_buffer",
+    "crate::lossy::LossyDecoder::new",
+    "crate::read::BufReadDecoder::new"
+  ],
+  "llbc": "Utf8.llbc",
+  "cargo_args": [
+    "--lib",
+    "--locked"
+  ],
+  "models": {
+    "Utf8.lean": [
+      "Incomplete.empty",
+      "Incomplete.is_empty",
+      "Incomplete.new",
+      "Incomplete.take_buffer",
+      "lossy.LossyDecoder.new",
+      "read.BufReadDecoder.new",
+      "Incomplete.Insts.CoreCloneClone.clone",
+      "DecodeError.Insts.CoreCloneClone.clone"
+    ]
+  },
+  "foreign_impl_entries": [
+    "{impl core::clone::Clone for crate::Incomplete}::clone",
+    "{impl core::clone::Clone for crate::DecodeError}::clone"
+  ],
+  "remove_unused_clauses": true
+}

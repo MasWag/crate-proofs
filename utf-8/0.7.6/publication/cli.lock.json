@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "kind": "publication-cli",
+  "package": "cargo-proofs",
+  "version": "0.4.1",
+  "base_revision": "2446bcad7d492be2d2036629e5dc94d186a23213",
+  "base_tree": "ab4746200e10d41147403f818d5e2c8c5057135a",
+  "repository": "https://github.com/proofs-rs/proofs-rs.git",
+  "native_rust": "1.94.1",
+  "base_preparation_patch": {
+    "path": "aeneas/profiles/default/patches/cargo-proofs-preparation.patch",
+    "sha256": "c6f12abf3e1e3b6f2ec910179612f3a71d51351826f7b3c7bdb97e9df700e5eb"
+  },
+  "publication_patch": {
+    "path": "publication/patches/cargo-proofs-utf8-publication.patch",
+    "sha256": "7732a64af36c85e6ce00414a97168ae74cc6407e70f789a709160b8e3b6d4806",
+    "purpose": "Typed findings authoring/publication on new reports; source discovery of generic nominal constructors and built-in derived Clone with strict exclusions."
+  },
+  "verifier_changes": false,
+  "note": "This lock covers only the publication CLI. Aeneas and Charon remain those in the unchanged default toolchain lock.",
+  "cargo_lock_sha256": "be1683dbb8b3073a22b1642a3dc4f2b47f0be1937222019d507a9952c130b2ef",
+  "scope": "Target-specific utf-8 0.7.6 publication adapter; not a general Rust macro/generic resolver."
+}

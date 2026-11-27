@@ -1,0 +1,55 @@
+--- a/src/lib.rs
++++ b/src/lib.rs
+@@ -147,27 +147,42 @@
+     /// (consumed_from_input, Some(Err(()))): error bytes in buffer
+     /// (consumed_from_input, Some(Ok(()))): UTF-8 string in buffer
+     fn try_complete_offsets(&mut self, input: &[u8]) -> (usize, Option<Result<(), ()>>) {
++        let n = self.buffer_len as usize;
++        let k = cmp::min(4 - n, input.len());
++        let mut combined = self.buffer;
++        let mut i = 0;
++        while i < k { combined[n+i] = input[i]; i += 1; }
++        let classification = match str::from_utf8(&combined[..n+k]) {
++            Ok(_) => Ok(()),
++            Err(e) => Err((e.valid_up_to(), e.error_len())),
++        };
++        self.classified_offsets(input, classification)
++    }
++    fn splice_prefix(&mut self, input: &[u8]) -> (usize,usize) {
+         let initial_buffer_len = self.buffer_len as usize;
+-        let copied_from_input;
+-        {
+-            let unwritten = &mut self.buffer[initial_buffer_len..];
+-            copied_from_input = cmp::min(unwritten.len(), input.len());
+-            unwritten[..copied_from_input].copy_from_slice(&input[..copied_from_input]);
+-        }
++        let available = 4 - initial_buffer_len;
++        let copied_from_input = cmp::min(available, input.len());
++        if 0 < copied_from_input { self.buffer[initial_buffer_len + 0] = input[0]; }
++        if 1 < copied_from_input { self.buffer[initial_buffer_len + 1] = input[1]; }
++        if 2 < copied_from_input { self.buffer[initial_buffer_len + 2] = input[2]; }
++        if 3 < copied_from_input { self.buffer[initial_buffer_len + 3] = input[3]; }
++        (initial_buffer_len, copied_from_input)
++    }
++    fn classified_offsets(&mut self, input: &[u8], classification: Result<(), (usize, Option<usize>)>) -> (usize, Option<Result<(), ()>>) {
++        let (initial_buffer_len, copied_from_input) = self.splice_prefix(input);
+         let spliced = &self.buffer[..initial_buffer_len + copied_from_input];
+-        match str::from_utf8(spliced) {
++        match classification {
+             Ok(_) => {
+                 self.buffer_len = spliced.len() as u8;
+                 (copied_from_input, Some(Ok(())))
+             }
+-            Err(error) => {
+-                let valid_up_to = error.valid_up_to();
++            Err((valid_up_to, error_len)) => {
+                 if valid_up_to > 0 {
+                     let consumed = valid_up_to.checked_sub(initial_buffer_len).unwrap();
+                     self.buffer_len = valid_up_to as u8;
+                     (consumed, Some(Ok(())))
+                 } else {
+-                    match error.error_len() {
++                    match error_len {
+                         Some(invalid_sequence_length) => {
+                             let consumed = invalid_sequence_length
+                                 .checked_sub(initial_buffer_len).unwrap();

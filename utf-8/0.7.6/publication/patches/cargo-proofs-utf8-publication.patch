@@ -1,0 +1,367 @@
+--- a/cli/src/config.rs
++++ b/cli/src/config.rs
+@@ -22,6 +22,8 @@
+ #[serde(deny_unknown_fields)]
+ pub struct Report {
+     pub title: String,
++    #[serde(default, skip_serializing_if = "Vec::is_empty")]
++    pub findings: Vec<Finding>,
+     #[serde(default, skip_serializing_if = "Option::is_none")]
+     pub explanation: Option<String>,
+     #[serde(default, skip_serializing_if = "Option::is_none")]
+@@ -30,6 +32,45 @@
+     pub limitations: Option<String>,
+     #[serde(default, skip_serializing_if = "Option::is_none")]
+     pub environment: Option<String>,
++}
++#[derive(Deserialize, Serialize, Clone)]
++#[serde(deny_unknown_fields)]
++pub struct Finding {
++    #[serde(default, skip_serializing_if = "Vec::is_empty")]
++    pub api_paths: Vec<String>,
++    pub title: String,
++    pub body: String,
++}
++impl Report {
++    pub fn validate(&self) -> Result<()> {
++        ensure!(!self.title.trim().is_empty(), "[report].title is required");
++        ensure!(
++            self.findings.len() <= 20,
++            "At most 20 report.findings are allowed"
++        );
++        for (index, finding) in self.findings.iter().enumerate() {
++            ensure!(
++                finding.api_paths.len() <= 50,
++                "At most 50 API paths per finding are allowed"
++            );
++            ensure!(
++                finding.api_paths.iter().all(|p| !p.trim().is_empty()),
++                "Finding API paths must not be empty"
++            );
++            for (name, value, limit) in [
++                ("title", &finding.title, 1000),
++                ("body", &finding.body, 10000),
++            ] {
++                // Match the service's JavaScript string-length limit.
++                ensure!(
++                    !value.trim().is_empty() && value.trim().encode_utf16().count() <= limit,
++                    "report.findings[{}].{name} must contain 1–{limit} characters",
++                    index + 1
++                );
++            }
++        }
++        Ok(())
++    }
+ }
+ #[derive(Default, Deserialize, Serialize)]
+ #[serde(deny_unknown_fields)]
+@@ -269,10 +310,7 @@
+             &fs::read_to_string(self.config_path())
+                 .context("Read proofs.toml; run cargo proofs init first")?,
+         )?;
+-        ensure!(
+-            !config.report.title.trim().is_empty(),
+-            "[report].title is required"
+-        );
++        config.report.validate()?;
+         config.tool.validate()?;
+         Ok(config)
+     }
+@@ -356,6 +394,16 @@
+ mod tests {
+     use super::*;
+     #[test]
++    fn accepts_editorial_findings_in_recording_config() {
++        let config: Config = toml::from_str(
++            "[report]\ntitle='Local'\n[[report.findings]]\ntitle='Issue'\nbody='Evidence'\n[tool]\nname='aeneas'\nversion='1'\n",
++        )
++        .unwrap();
++        assert_eq!(config.report.findings[0].title, "Issue");
++        assert_eq!(config.report.findings[0].body, "Evidence");
++    }
++
++    #[test]
+     fn dependency_reviews_are_optional_strict_and_positive() {
+         let base = "[report]\ntitle='Local'\n[tool]\nname='kani'\nversion='1'\n";
+         assert!(toml::from_str::<Config>(base)
+--- a/cli/src/draft.rs
++++ b/cli/src/draft.rs
+@@ -147,9 +147,36 @@
+         claims.push(merged);
+     }
+     body["claims"] = Value::Array(claims);
++    // Findings are created with a new report only; revisions preserve their independent history.
++    if existing.is_none() && !config.report.findings.is_empty() {
++        body["findings"] = json!(config.report.findings.iter().map(|f|
++            json!({"title":f.title,"body":f.body})).collect::<Vec<_>>());
++    }
+     Ok(body)
+ }
+ 
++/// Resolve each related API independently; aliases resolving to one ID are deduplicated.
++pub fn resolve_finding_apis(
++    config: &Config,
++    body: &mut Value,
++    mut resolve: impl FnMut(&str) -> Result<String>,
++) -> Result<()> {
++    if let Some(findings) = body.get_mut("findings").and_then(Value::as_array_mut) {
++        for (finding, local) in findings.iter_mut().zip(&config.report.findings) {
++            let mut ids = BTreeMap::new();
++            for path in &local.api_paths {
++                let id = resolve(path.trim())
++                    .with_context(|| format!("Resolve API {path} for finding {}", local.title))?;
++                ids.insert(id, ());
++            }
++            if !ids.is_empty() {
++                finding["api_item_ids"] = json!(ids.into_keys().collect::<Vec<_>>());
++            }
++        }
++    }
++    Ok(())
++}
++
+ pub fn compose(
+     config: &Config,
+     generated: Value,
+@@ -178,6 +205,40 @@
+ 
+ #[cfg(test)]
+ mod tests {
++    #[test]
++    fn related_finding_apis_resolve_independently_and_stay_out_of_revisions() {
++        let cfg: Config = toml::from_str("[report]\ntitle='Report'\n[[report.findings]]\ntitle='Observation'\nbody='Body'\napi_paths=['sample::a','sample::alias','sample::b']\n[tool]\nname='kani'\nversion='1'\n").unwrap();
++        let generated = json!({"claims":[],"run_ids":["run"]});
++        let mut body = merge(&cfg, generated.clone(), None).unwrap();
++        assert!(body["findings"][0].get("api_paths").is_none());
++        resolve_finding_apis(&cfg, &mut body, |path| {
++            Ok(if path == "sample::b" { "b" } else { "a" }.into())
++        })
++        .unwrap();
++        assert_eq!(body["findings"][0]["api_item_ids"], json!(["a", "b"]));
++        assert!(resolve_finding_apis(&cfg, &mut body, |_| anyhow::bail!("missing API")).is_err());
++        let mut revision = merge(&cfg, generated, Some(&body)).unwrap();
++        resolve_finding_apis(&cfg, &mut revision, |_| {
++            panic!("revisions must not resolve local findings")
++        })
++        .unwrap();
++        assert!(revision.get("findings").is_none());
++    }
++    #[test]
++    fn findings_are_created_once_and_never_added_to_revision_payloads() {
++        let cfg: Config = toml::from_str("[report]\ntitle='Report'\n[[report.findings]]\ntitle='Observation'\nbody='**Markdown**'\n[tool]\nname='kani'\nversion='1'\n").unwrap();
++        let generated = json!({"claims":[],"run_ids":["run"]});
++        let first = merge(&cfg, generated.clone(), None).unwrap();
++        assert_eq!(first["findings"][0]["body"], "**Markdown**");
++        let mut existing = first.clone();
++        existing["findings"][0]["body"] = json!("Web edit");
++        let revision = merge(&cfg, generated, Some(&existing)).unwrap();
++        assert!(revision.get("findings").is_none());
++        assert!(snapshot(&existing).unwrap().get("findings").is_none());
++        assert_eq!(existing["findings"][0]["body"], "Web edit");
++        assert_eq!(first["run_ids"], revision["run_ids"]);
++    }
++
+     use super::*;
+     #[test]
+     fn formal_reference_updates_without_overwriting_author_prose() {
+--- a/cli/src/publish.rs
++++ b/cli/src/publish.rs
+@@ -298,6 +298,9 @@
+         claims.push(claim);
+     }
+     let selected = options.report.or(saved.report_id);
++    if selected.is_some() && !config.report.findings.is_empty() {
++        eprintln!("report.findings creates findings only for a new report; existing findings are unchanged.");
++    }
+     let remote = selected
+         .map(|id| api.get(&format!("/api/v1/reports/{id}")))
+         .transpose()?;
+@@ -332,6 +335,10 @@
+     let generated = json!({"crate":project.name,"version":project.version,"tool_version_id":tool,"evidence_url":format!("{}/tree/{}", source["repositoryUri"].as_str().unwrap(), source["revisionId"].as_str().unwrap()),"run_ids":[run_id],"claims":claims});
+     // Unspecified editorial fields are preserved. Force changes only fields owned by this CLI/config.
+     let mut body = crate::draft::compose(&config, generated, &remote, &saved, selected)?;
++    crate::draft::resolve_finding_apis(&config, &mut body, |path| {
++        let (id, _) = api.resolve(&project.name, &project.version, &[path.to_owned()])?;
++        Ok(id)
++    })?;
+     validate_dependencies(&api, &body, &entry["properties"]["proofs"])?;
+     if let Some(report) = &remote {
+         body["expected_revision"] = report["revision_no"].clone();
+--- a/cli/src/scan.rs
++++ b/cli/src/scan.rs
+@@ -84,6 +84,40 @@
+         paths.push(path.rsplit("::").next().unwrap().to_owned());
+     }
+     paths
++}
++
++fn generic_owner(owner: &syn::TypePath, generics: &syn::Generics) -> bool {
++    if owner.qself.is_some() || owner.path.leading_colon.is_some() { return false; }
++    let parameters: BTreeSet<_> = generics.params.iter().filter_map(|p| match p {
++        syn::GenericParam::Type(p) => Some(p.ident.to_string()),
++        syn::GenericParam::Const(p) => Some(p.ident.to_string()),
++        _ => None,
++    }).collect();
++    let mut seen = BTreeSet::new();
++    for segment in &owner.path.segments {
++        match &segment.arguments {
++            syn::PathArguments::None => {},
++            syn::PathArguments::Parenthesized(_) => return false,
++            syn::PathArguments::AngleBracketed(args) => for arg in &args.args {
++                let name = match arg {
++                    syn::GenericArgument::Lifetime(_) => continue,
++                    syn::GenericArgument::Type(syn::Type::Path(p)) if p.qself.is_none() => {
++                        let Ok(parts) = segments(&p.path) else { return false; };
++                        if parts.len()!=1 { return false; }
++                        parts[0].clone()
++                    },
++                    syn::GenericArgument::Const(syn::Expr::Path(p)) if p.qself.is_none() => {
++                        let Ok(parts) = segments(&p.path) else { return false; };
++                        if parts.len()!=1 { return false; }
++                        parts[0].clone()
++                    },
++                    _ => return false,
++                };
++                if !parameters.contains(&name) || !seen.insert(name) { return false; }
++            },
++        }
++    }
++    seen == parameters
+ }
+ 
+ fn segments(path: &syn::Path) -> Result<Vec<String>> {
+@@ -154,6 +188,7 @@
+                         | "creusot"
+                         | "aeneas"
+                         | "test"
++                        | "doctest"
+                         | "doc"
+                         | "docsrs"
+                         | "unix"
+@@ -771,7 +806,32 @@
+             file.parent().unwrap().join(file.file_stem().unwrap())
+         };
+         self.items(&parsed.items, &file, &module_dir, module, public)
++    }
++    fn derived_clone(&mut self, attributes: &[Attribute], name: &syn::Ident,
++        generics: &syn::Generics, span: proc_macro2::Span, file: &Path, module: &[String]) -> Result<()> {
++        if self.creusot { return Ok(()); }
++        let Some(ms) = attrs(attributes, self.project)? else { return Ok(()); };
++        let mut builtin = false;
++        for meta in ms.iter().filter(|m| m.path().is_ident("derive")) {
++            let Meta::List(list) = meta else { continue; };
++            for path in Punctuated::<syn::Path, Token![,]>::parse_terminated.parse2(list.tokens.clone())? {
++                let parts=segments(&path)?;
++                if parts == ["Clone"] {
++                    let shadowed = self.imports.iter().any(|i| i.alias=="Clone" && module.starts_with(&i.module));
++                    builtin |= !shadowed;
++                } else if parts == ["core","clone","Clone"] || parts == ["std","clone","Clone"] {
++                    builtin = true;
++                }
++            }
++        }
++        if !builtin { return Ok(()); }
++        let (_, args, _) = generics.split_for_impl();
++        self.function(attributes, &syn::parse_quote!(fn clone(&self) -> Self),
++            &syn::Visibility::Inherited, span, file, module,
++            CallableContext::TraitImpl { self_ty:syn::parse_quote!(#name #args),
++                trait_path:syn::parse_quote!(core::clone::Clone), generics:generics.clone() })
+     }
++
+     fn items(
+         &mut self,
+         items: &[Item],
+@@ -841,6 +901,7 @@
+                     }
+                 }
+                 Item::Struct(i) => {
++                    self.derived_clone(&i.attrs, &i.ident, &i.generics, i.span(), file, module)?;
+                     if attrs(&i.attrs, self.project)?.is_some() {
+                         self.types.insert(item_path(module, &i.ident.to_string()));
+                     }
+@@ -852,6 +913,7 @@
+                     }
+                 }
+                 Item::Enum(i) => {
++                    self.derived_clone(&i.attrs, &i.ident, &i.generics, i.span(), file, module)?;
+                     if attrs(&i.attrs, self.project)?.is_some() {
+                         self.types.insert(item_path(module, &i.ident.to_string()));
+                     }
+@@ -908,9 +970,10 @@
+                         let syn::Type::Path(owner) = &*i.self_ty else {
+                             continue;
+                         };
+-                        if owner.qself.is_some() || segments(&owner.path).is_err() {
+-                            continue;
+-                        }
++                        // Nominal generic owners are discoverable only when every
++                        // non-lifetime argument is a distinct impl parameter, not
++                        // a concrete specialization or repeated equality constraint.
++                        if !generic_owner(owner, &i.generics) { continue; }
+                         CallableContext::Inherent {
+                             self_ty: (*i.self_ty).clone(),
+                         }
+@@ -1271,7 +1334,63 @@
+             cfg: BTreeSet::from(["kani".into()]),
+         };
+         (d, p)
++    }
++    #[test]
++    fn aeneas_discovers_lifetime_impls_and_excludes_doctest_api() {
++        let (_dir, p) = project(r#"
++mod hidden {
++    pub struct Builder<'a>(&'a str);
++    impl<'a> Builder<'a> { pub fn new(input: &'a str) -> Self { Self(input) } }
++    pub struct Concrete<T>(T);
++    impl Concrete<u8> { pub fn excluded() {} }
++}
++pub use hidden::{Builder, Concrete};
++impl ::hidden::Builder<'static> { pub fn absolute() {} }
++#[cfg(doctest)]
++pub fn doctest_only() {}
++"#);
++        let contracts = public_contracts(&p, false, CreusotTarget::All).unwrap();
++        assert_eq!(contracts.len(), 1);
++        assert_eq!(contracts[0].api_paths, ["Builder::new"]);
++    }
++
++    #[test]
++    fn generic_owners_preserve_nominal_paths_without_accepting_specializations() {
++        let (_dir,p)=project(r#"
++mod hidden {
++ pub struct Generic<T,const N:usize>(T,[u8;N]);
++ impl<T,const N:usize> Generic<T,N> { pub fn new(value:T)->Self { todo!() } }
++ impl Generic<u8,4> { pub fn concrete() {} }
++ pub struct Pair<T,U>(T,U);
++ impl<T> Pair<T,T> { pub fn equal_only() {} }
++ impl<T> Pair<Vec<T>,T> { pub fn nested() {} }
++}
++pub use hidden::{Generic,Pair};
++"#);
++        let cs=public_contracts(&p,false,CreusotTarget::All).unwrap();
++        assert_eq!(cs.iter().map(|c|c.api_paths.clone()).collect::<Vec<_>>(),[vec!["Generic::new".to_owned()]]);
++    }
++
++    #[test]
++    fn builtin_derived_clone_respects_cfg_reexports_and_macro_shadowing() {
++        let (_dir,p)=project(r#"
++mod hidden { #[derive(Clone)] pub struct State; #[derive(Clone)] pub enum Error<'a> { Text(&'a str) } }
++pub use hidden::{State,Error};
++pub struct NoClone;
++#[cfg(test)] #[derive(Clone)] pub struct TestOnly;
++#[derive(other::Clone)] pub struct Custom;
++mod shadow { use custom::Clone; #[derive(Clone)] pub struct HiddenClone; #[derive(core::clone::Clone)] pub struct Qualified; }
++pub use shadow::{HiddenClone,Qualified};
++"#);
++        let cs=public_contracts(&p,false,CreusotTarget::All).unwrap();
++        assert_eq!(cs.len(),3);
++        for name in ["State","Error","Qualified"] {
++            let wanted=format!("<demo::{name} as core::clone::Clone>::clone");
++            assert_eq!(cs.iter().filter(|c|c.api_paths.contains(&wanted)).count(),1);
++        }
++        assert!(!cs.iter().any(|c|c.api_paths.iter().any(|p|p.contains("NoClone")||p.contains("TestOnly")||p.contains("Custom")||p.contains("HiddenClone"))));
+     }
++
+     #[test]
+     fn structural_paths_match_importer_fixtures() {
+         let cases: serde_json::Value =

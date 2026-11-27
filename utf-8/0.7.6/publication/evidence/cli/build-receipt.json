@@ -1,0 +1,55 @@
+{
+  "status": "built-and-tested",
+  "scope": "utf-8 0.7.6 publication compatibility only",
+  "cli_lock_sha256": "c7b84460d106b99e83ffd2562c575ec7cf551032ec5de61d52e69a1e65ee305c",
+  "binary": "/Users/mwaga/crate-proofs/utf-8/0.7.6/.work/publication-cli/target/release/cargo-proofs",
+  "binary_sha256": "765e7e3a94ffbaf57b0ba119b56e65d37b2a82e2801b22e0d3d07c9819f6a225",
+  "commands": [
+    [
+      "cargo",
+      "test",
+      "--release",
+      "--locked",
+      "--offline",
+      "--manifest-path",
+      "/Users/mwaga/crate-proofs/utf-8/0.7.6/.work/publication-cli/run-pvjlk09s/cli/Cargo.toml",
+      "--bin",
+      "cargo-proofs",
+      "scan::tests"
+    ],
+    [
+      "cargo",
+      "test",
+      "--release",
+      "--locked",
+      "--offline",
+      "--manifest-path",
+      "/Users/mwaga/crate-proofs/utf-8/0.7.6/.work/publication-cli/run-pvjlk09s/cli/Cargo.toml",
+      "--bin",
+      "cargo-proofs",
+      "config::tests"
+    ],
+    [
+      "cargo",
+      "test",
+      "--release",
+      "--locked",
+      "--offline",
+      "--manifest-path",
+      "/Users/mwaga/crate-proofs/utf-8/0.7.6/.work/publication-cli/run-pvjlk09s/cli/Cargo.toml",
+      "--bin",
+      "cargo-proofs",
+      "draft::tests"
+    ],
+    [
+      "cargo",
+      "build",
+      "--release",
+      "--locked",
+      "--offline",
+      "--manifest-path",
+      "/Users/mwaga/crate-proofs/utf-8/0.7.6/.work/publication-cli/run-pvjlk09s/cli/Cargo.toml"
+    ]
+  ],
+  "verifier_tools_unchanged": true
+}

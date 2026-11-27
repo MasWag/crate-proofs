@@ -1,0 +1,20 @@
+[tool]
+name = "aeneas"
+version = "be86ab0f1989d04944292b345b24c435be3ad10a"
+lean_dir = ".work/selected-proofs"
+proofs = []
+
+[report]
+title = "Selected adapted buffer transitions for utf-8 0.7.6"
+explanation = '''
+This experimental profile studies private helpers in an adapted source, with no public API claims. For an initial buffer length n at most four, the splice helper returns successfully in the translated model, copies the first min(4 - n, input length) bytes into the buffer at n, preserves the other bytes, and leaves the stored length unchanged. A classified transition additionally takes an explicit descriptor. When its selected endpoint lies between n and n plus the copied length, it returns the endpoint minus n and the descriptor's result tag, retains the copied buffer and sets the stored length to the endpoint.
+'''
+trusted_assumptions = '''
+The results depend on Charon and Aeneas translation and models of Rust operations and the Lean kernel. The classification descriptor is an input to the selected helper: its correspondence to standard UTF-8 validation and the Unicode byte language is not proved here.
+'''
+limitations = '''
+The executable source is adapted from the release. It factors buffer copying and descriptor-based branching into private helpers; its original-signature wrapper still uses the standard UTF-8 validator. Source review argues that this preserves the relevant release behavior, but formal release-to-adapted equivalence is not established. The selected helpers do not establish decoder, string conversion, streaming, or whole-crate correctness. The theorem requires a bounded initial length and, for the classified transition, bounds on its descriptor-selected endpoint.
+'''
+environment = '''
+The core_adapted profile is separate from the unchanged release profile. The local correspondence record, source patch, toolchain lock and results describe the source identity, target, evidence and remaining obligations.
+'''

@@ -1,0 +1,1 @@
+{"entries": ["crate::Incomplete::classified_offsets", "crate::Incomplete::splice_prefix"], "llbc": "Utf8.llbc", "cargo_args": ["--lib", "--locked", "--offline"], "charon_include": [], "models": {"Utf8.lean": ["Incomplete.classified_offsets", "Incomplete.splice_prefix"]}}

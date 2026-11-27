@@ -1,0 +1,12 @@
+name = "utf8_core_adapted"
+defaultTargets = ["CoreProofs", "ClassifiedProofs"]
+[[require]]
+name = "aeneas"
+path = "@AENEAS_BACKEND@"
+[[lean_lib]]
+name = "Utf8Core"
+srcDir = "Generated/@TARGET@"
+[[lean_lib]]
+name = "CoreProofs"
+[[lean_lib]]
+name = "ClassifiedProofs"

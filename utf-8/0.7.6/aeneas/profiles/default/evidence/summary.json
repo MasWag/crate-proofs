@@ -1,0 +1,97 @@
+{
+  "acceptance_basis": "Original archived inputs; packaging does not rerun verification.",
+  "archive_sha256": "b2509dda204c261e2be749dc8058313a3315cb78c85e58c9bb4f534dfab03f96",
+  "audit": {
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "checked": [
+      {
+        "module": "Proofs",
+        "name": "Utf8Proofs.empty_total",
+        "precondition": "true",
+        "scope": "public-model"
+      },
+      {
+        "module": "Proofs",
+        "name": "Utf8Proofs.is_empty_total",
+        "precondition": "true",
+        "scope": "public-model"
+      },
+      {
+        "module": "Proofs",
+        "name": "Utf8Proofs.new_total",
+        "precondition": "bytes.len() \u2264 4",
+        "scope": "public-model"
+      },
+      {
+        "module": "Proofs",
+        "name": "Utf8Proofs.take_buffer_total",
+        "precondition": "state.buffer_len \u2264 4",
+        "scope": "private-model"
+      },
+      {
+        "module": "Proofs",
+        "name": "Utf8Proofs.incomplete_clone_total",
+        "precondition": "true",
+        "scope": "public-model"
+      },
+      {
+        "module": "Proofs",
+        "name": "Utf8Proofs.decode_error_clone_total",
+        "precondition": "true",
+        "scope": "public-model"
+      },
+      {
+        "module": "Proofs",
+        "name": "Utf8Proofs.lossy_new_total",
+        "precondition": "true",
+        "scope": "public-model"
+      },
+      {
+        "module": "Proofs",
+        "name": "Utf8Proofs.bufread_new_total",
+        "precondition": "true",
+        "scope": "public-model"
+      }
+    ],
+    "mapping_metadata_checked": true,
+    "scope": "named Lean theorem and transitive axiom audit only",
+    "status": "passed"
+  },
+  "host": "aarch64-apple-darwin",
+  "input_fingerprints": {
+    "after": {
+      "member": "payload/inputs-after.json",
+      "sha256": "242df5948e2f59c86e7083d3a2545e0ea2f04339a731c9b23e976262f798b866"
+    },
+    "before": {
+      "member": "payload/inputs-before.json",
+      "sha256": "242df5948e2f59c86e7083d3a2545e0ea2f04339a731c9b23e976262f798b866"
+    },
+    "equal": true
+  },
+  "kind": "archived-managed-run-summary",
+  "original_audit": {
+    "member": "payload/audit/result.json",
+    "sha256": "3b72703008e8a4b5e09468556ca79b73dfd0f8dabae816fc7c35a4f05f406a42"
+  },
+  "original_result": {
+    "member": "payload/result.json",
+    "sha256": "d958fb2303914276a4b79493980f3ddf1632d1040ef88caf4bc122ae96eef296"
+  },
+  "profile": "default",
+  "reported_status": "passed",
+  "sarif": "Not a cargo-proofs recording result.",
+  "schema_version": 1,
+  "scope": "Configured extraction comparisons and named theorem audit; native observations are separate",
+  "stages": {
+    "before_after_fingerprints": "equal",
+    "extraction_and_profile_checks": "See original pipeline receipt and profile configuration.",
+    "lean_build_and_axiom_audit": "passed",
+    "native_tests": "Separate observations in original run; not formal proof."
+  },
+  "target": "aarch64-apple-darwin"
+}

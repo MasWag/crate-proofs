@@ -1,0 +1,9 @@
+default = "default"
+
+[profiles.default]
+path = "aeneas/profiles/default"
+dependencies = []
+
+[profiles.core_adapted]
+path = "aeneas/profiles/core_adapted"
+dependencies = []

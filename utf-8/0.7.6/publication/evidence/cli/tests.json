@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "scanner_tests": 25,
+  "configuration_tests": 3,
+  "draft_tests": 7,
+  "discovered_public_contracts": 7,
+  "findings_parsed": 2,
+  "logs": {
+    "config-tests.log": {
+      "sha256": "57d7139e266ce5a3df16032b3171b6da70018b215f983a97cdab9cdd36bc41f5",
+      "local_log": "utf-8/0.7.6/.work/publication-cli/retained-tests/config-tests.log"
+    },
+    "discovery.log": {
+      "sha256": "04cd0e83855d529dd29295d88be0df3e92fbd4c973a2c64b16f8c40d183ac976",
+      "local_log": "utf-8/0.7.6/.work/publication-cli/retained-tests/discovery.log"
+    },
+    "scan-tests.log": {
+      "sha256": "d7ab83f5249d0d7e667064881c53671ae204c3538dbc76711a1bd1daa70847a0",
+      "local_log": "utf-8/0.7.6/.work/publication-cli/retained-tests/scan-tests.log"
+    },
+    "draft-tests.log": {
+      "sha256": "f29628f6610de10d29faf8b767f22cfed27b4d14cf3ba81ffc8ce3afb34a61e8",
+      "local_log": "utf-8/0.7.6/.work/publication-cli/retained-tests/draft-tests.log"
+    }
+  }
+}
