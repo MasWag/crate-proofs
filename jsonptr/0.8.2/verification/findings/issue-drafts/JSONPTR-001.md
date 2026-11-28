@@ -18,4 +18,7 @@ The assertion fails because the result is `Some` containing `"b"`. The
 pointer has one token, `ab`, so there is no initial token `a` to remove.
 `pointer.starts_with(prefix)` already returns `false`.
 
+The separator check in the open pull request #132 would make this example
+return `None`.
+
 Reproduced with Rust 1.91.0 on aarch64 macOS in debug and release.

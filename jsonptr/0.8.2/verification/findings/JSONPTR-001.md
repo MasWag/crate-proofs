@@ -5,7 +5,7 @@
 - Confidence and resolution — reproduced at pinned inputs, open in 0.8.2
 - First observed and last reproduced — 2026-11-27
 - Upstream report — [chanced/jsonptr#131](https://github.com/chanced/jsonptr/issues/131) describes the same cause on 0.7.1
-- Upstream fix — no later revision tested
+- Upstream fix — open pull request [chanced/jsonptr#132](https://github.com/chanced/jsonptr/pull/132) (checked 2026-11-28, unmerged and unreleased) makes `strip_prefix` return `None` unless the remainder is empty or starts with `/`; reviewed from its diff only, not built or tested here
 - Pinned inputs, exact commands and raw logs — [shared native evidence](README.md#shared-native-evidence)
 - Reproducer — [`strip_prefix_requires_a_token_boundary`](../native/src/main.rs)
 - Local upstream follow-up — [draft](issue-drafts/JSONPTR-001.md)
