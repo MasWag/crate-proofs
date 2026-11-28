@@ -1,0 +1,1 @@
+{"entries": ["crate::encode_s32", "crate::encode_fixed_s32", "crate::decode_s32"], "llbc": "signed32.llbc", "local_scope": {"opaque_crate": true, "include": ["crate::encode_s32", "crate::encode_fixed_s32", "crate::decode_s32"]}, "models": {"Signed32.lean": ["encode_s32", "encode_fixed_s32", "decode_s32"]}, "remove_unused_clauses": true}

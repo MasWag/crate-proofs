@@ -1,0 +1,109 @@
+name = "leb128fmt-proofs"
+defaultTargets = ["LebProofs", "LebProofs64", "ProofsSigned32", "ProofsSigned64", "ProofsErrors", "ProofsUIntSliceEncode", "ProofsUIntSliceDecode", "ProofsSIntSliceDecode", "ProofsErrorDefaultsHarness", "ProofsUIntFixedWrite", "ProofsSignedWriterGuards", "ProofsSIntSliceEncode", "ProofsSIntFixedWrite", "ProofsConcreteUnsignedWriters", "ProofsErrorObservers", "ProofsConcreteSignedWriters"]
+
+[[require]]
+name = "aeneas"
+path = "@AENEAS_BACKEND@"
+
+[[lean_lib]]
+name = "LebCore"
+srcDir = "Generated/@TARGET@"
+
+[[lean_lib]]
+name = "LebProofs"
+
+[[lean_lib]]
+name = "Unsigned64"
+srcDir = "Generated/@TARGET@"
+
+[[lean_lib]]
+name = "LebProofs64"
+
+[[lean_lib]]
+name = "Signed32"
+srcDir = "Generated/@TARGET@"
+
+[[lean_lib]]
+name = "ProofsSigned32"
+
+[[lean_lib]]
+name = "Signed64"
+srcDir = "Generated/@TARGET@"
+
+[[lean_lib]]
+name = "ProofsSigned64"
+
+[[lean_lib]]
+name = "SignedDecodeMath"
+
+[[lean_lib]]
+name = "LebErrors"
+srcDir = "Generated/@TARGET@"
+
+[[lean_lib]]
+name = "ProofsErrors"
+
+[[lean_lib]]
+name = "SliceConcrete"
+srcDir = "Generated/@TARGET@"
+
+[[lean_lib]]
+name = "LebErrorDefaults"
+srcDir = "Generated/@TARGET@"
+
+[[lean_lib]]
+name = "ProofsUIntSliceEncode"
+
+[[lean_lib]]
+name = "ProofsUIntSliceDecode"
+
+[[lean_lib]]
+name = "ProofsSIntSliceDecode"
+
+[[lean_lib]]
+name = "ProofsErrorDefaultsHarness"
+
+[[lean_lib]]
+name = "ProofsUIntFixedWrite"
+
+[[lean_lib]]
+name = "SintSlices"
+srcDir = "Generated/@TARGET@"
+
+[[lean_lib]]
+name = "ProofsSignedWriterGuards"
+
+[[lean_lib]]
+name = "SignedWriteCommon"
+
+[[lean_lib]]
+name = "ProofsSIntSliceEncode"
+
+[[lean_lib]]
+name = "ProofsSIntFixedWrite"
+
+[[lean_lib]]
+name = "ConcreteWriters"
+srcDir = "Generated/@TARGET@"
+globs = ["ConcreteWriters.Types", "ConcreteWriters.Funs"]
+
+[[lean_lib]]
+name = "ConcreteWriterExternal"
+globs = ["ConcreteWriters.FunsExternal"]
+
+[[lean_lib]]
+name = "WriterMaxLen"
+srcDir = "Generated/@TARGET@"
+
+[[lean_lib]]
+name = "ProofsConcreteUnsignedWriters"
+
+[[lean_lib]]
+name = "Observer"
+srcDir = "Generated/@TARGET@"
+
+[[lean_lib]]
+name = "ProofsErrorObservers"
+
+[[lean_lib]]
+name = "ProofsConcreteSignedWriters"

@@ -1,0 +1,129 @@
+{
+  "acceptance_basis": "Original archived inputs; packaging does not rerun verification.",
+  "archive_sha256": "c63e4c356386bfdbfda23dea749fbde7aedf6ae313ba66655350e1f4d4b476c2",
+  "audit": {
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "checked": [
+      {
+        "module": "LebProofs",
+        "name": "leb128fmt.is_last_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "LebProofs",
+        "name": "leb128fmt.max_len_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "LebProofs",
+        "name": "leb128fmt.encode_u32_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "LebProofs",
+        "name": "leb128fmt.encode_fixed_u32_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "LebProofs",
+        "name": "leb128fmt.decode_u32_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "LebProofs64",
+        "name": "leb128fmt.wide.encode_u64_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "LebProofs64",
+        "name": "leb128fmt.wide.encode_fixed_u64_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "LebProofs64",
+        "name": "leb128fmt.wide.decode_u64_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsSigned32",
+        "name": "leb128fmt.signed32.encode_s32_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsSigned32",
+        "name": "leb128fmt.signed32.encode_fixed_s32_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsSigned64",
+        "name": "leb128fmt.signed64.encode_s64_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsSigned64",
+        "name": "leb128fmt.signed64.encode_fixed_s64_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsSigned32",
+        "name": "leb128fmt.signed32.decode_s32_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsSigned64",
+        "name": "leb128fmt.signed64.decode_s64_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsErrors",
+        "name": "leb128fmt.Error.is_more_bytes_needed_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsErrors",
+        "name": "leb128fmt.Error.is_invalid_encoding_spec",
+        "scope": "public-model"
+      }
+    ],
+    "mapping_metadata_checked": true,
+    "scope": "named Lean theorem and transitive axiom audit only",
+    "status": "passed"
+  },
+  "host": "aarch64-apple-darwin",
+  "input_fingerprints": {
+    "after": {
+      "member": "payload/inputs-after.json",
+      "sha256": "17071e654cf1aac38d1ad2ef8c2dbbc114c8e3cfe651323f66356382e0dd027f"
+    },
+    "before": {
+      "member": "payload/inputs-before.json",
+      "sha256": "17071e654cf1aac38d1ad2ef8c2dbbc114c8e3cfe651323f66356382e0dd027f"
+    },
+    "equal": true
+  },
+  "kind": "archived-managed-run-summary",
+  "original_audit": {
+    "member": "payload/audit/result.json",
+    "sha256": "15d3f5df34087671a01f04c481d244799fa4f9db9cd6028610ff47ad6cf9c0be"
+  },
+  "original_result": {
+    "member": "payload/result.json",
+    "sha256": "b35b735099c553b259426ba8621d06a28c84884fd19f0ed4f23d96c1a6bbb3c7"
+  },
+  "profile": "default",
+  "reported_status": "passed",
+  "sarif": "Not a cargo-proofs recording result.",
+  "schema_version": 1,
+  "scope": "Configured extraction comparisons and named theorem audit; native observations are separate",
+  "stages": {
+    "before_after_fingerprints": "equal",
+    "extraction_and_profile_checks": "See original pipeline receipt and profile configuration.",
+    "lean_build_and_axiom_audit": "passed",
+    "native_tests": "Separate observations in original run; not formal proof."
+  },
+  "target": "aarch64-apple-darwin"
+}

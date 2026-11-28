@@ -1,0 +1,31 @@
+{
+  "entries": [
+    "crate::encode_uint_slice",
+    "crate::encode_fixed_uint_slice",
+    "crate::decode_uint_slice"
+  ],
+  "llbc": "uint_slices.llbc",
+  "models": {
+    "UintSlices.lean": [
+      "encode_uint_slice",
+      "encode_fixed_uint_slice",
+      "decode_uint_slice"
+    ]
+  },
+  "local_scope": {
+    "opaque_crate": true,
+    "include": [
+      "crate::encode_uint_slice",
+      "crate::encode_fixed_uint_slice",
+      "crate::decode_uint_slice",
+      "crate::Error",
+      "crate::InnerError",
+      "crate::UInt",
+      "crate::SInt",
+      "crate::private::Sealed",
+      "crate::max_len",
+      "crate::is_last"
+    ]
+  },
+  "remove_unused_clauses": true
+}

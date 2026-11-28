@@ -1,0 +1,8 @@
+[package]
+name = "leb128fmt-slice-probe"
+version = "0.1.0"
+edition = "2021"
+publish = false
+[dependencies]
+leb128fmt = { path = "../..", default-features = false }
+[workspace]

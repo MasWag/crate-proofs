@@ -1,0 +1,57 @@
+{
+  "entries": [
+    "crate::u8_writer",
+    "crate::u8_fixed",
+    "crate::u8_reader",
+    "crate::u16_reader",
+    "crate::u32_reader",
+    "crate::u64_reader",
+    "crate::u128_reader",
+    "crate::i16_reader",
+    "crate::i32_reader",
+    "crate::i64_reader",
+    "crate::i128_reader"
+  ],
+  "llbc": "SliceConcrete.llbc",
+  "dependency_include": [
+    "leb128fmt::encode_uint_slice",
+    "leb128fmt::encode_fixed_uint_slice",
+    "leb128fmt::decode_uint_slice",
+    "leb128fmt::decode_sint_slice",
+    "leb128fmt::UInt",
+    "leb128fmt::SInt",
+    "leb128fmt::private::Sealed",
+    "leb128fmt::max_len",
+    "leb128fmt::is_last",
+    "leb128fmt::Error",
+    "leb128fmt::InnerError",
+    "leb128fmt::_::BITS",
+    "core::ops::bit::_::bitand",
+    "core::ops::bit::_::shr",
+    "core::ops::bit::_::shl",
+    "core::ops::bit::_::bitor_assign",
+    "core::ops::bit::_::shr_assign",
+    "core::convert::_::try_from",
+    "core::convert::num::_::from"
+  ],
+  "models": {
+    "SliceConcrete.lean": [
+      "u8_writer",
+      "u8_fixed",
+      "u8_reader",
+      "u16_reader",
+      "u32_reader",
+      "u64_reader",
+      "u128_reader",
+      "i16_reader",
+      "i32_reader",
+      "i64_reader",
+      "i128_reader",
+      "leb128fmt.encode_uint_slice",
+      "leb128fmt.encode_fixed_uint_slice",
+      "leb128fmt.decode_uint_slice",
+      "leb128fmt.decode_sint_slice"
+    ]
+  },
+  "remove_unused_clauses": true
+}

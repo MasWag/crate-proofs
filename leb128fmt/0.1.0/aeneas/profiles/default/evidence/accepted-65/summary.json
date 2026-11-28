@@ -1,0 +1,390 @@
+{
+  "acceptance_basis": "Original archived inputs; packaging does not rerun verification.",
+  "archive_sha256": "41849b0bcc484a543fa442f1ec67c65263cd470ccb85822545726c75b3addbac",
+  "audit": {
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "checked": [
+      {
+        "module": "LebProofs",
+        "name": "leb128fmt.is_last_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "LebProofs",
+        "name": "leb128fmt.max_len_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "LebProofs",
+        "name": "leb128fmt.encode_u32_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "LebProofs",
+        "name": "leb128fmt.encode_fixed_u32_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "LebProofs",
+        "name": "leb128fmt.decode_u32_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "LebProofs64",
+        "name": "leb128fmt.wide.encode_u64_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "LebProofs64",
+        "name": "leb128fmt.wide.encode_fixed_u64_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "LebProofs64",
+        "name": "leb128fmt.wide.decode_u64_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsSigned32",
+        "name": "leb128fmt.signed32.encode_s32_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsSigned32",
+        "name": "leb128fmt.signed32.encode_fixed_s32_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsSigned64",
+        "name": "leb128fmt.signed64.encode_s64_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsSigned64",
+        "name": "leb128fmt.signed64.encode_fixed_s64_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsSigned32",
+        "name": "leb128fmt.signed32.decode_s32_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsSigned64",
+        "name": "leb128fmt.signed64.decode_s64_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsErrors",
+        "name": "leb128fmt.Error.is_more_bytes_needed_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsErrors",
+        "name": "leb128fmt.Error.is_invalid_encoding_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsUIntSliceEncode",
+        "name": "leb128fmt.sliceProof.u8_writer_spec",
+        "precondition": "T = u8 and BITS <= 8 and initial cursor <= buffer length",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsUIntSliceDecode",
+        "name": "leb128fmt.sliceProof.u8_reader_spec",
+        "precondition": "T = u8 and 7 <= BITS <= 8",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsUIntSliceDecode",
+        "name": "leb128fmt.sliceProof.u16_reader_spec",
+        "precondition": "T = u16 and 7 <= BITS <= 16",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsUIntSliceDecode",
+        "name": "leb128fmt.sliceProof.u32_reader_spec",
+        "precondition": "T = u32 and 7 <= BITS <= 32",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsUIntSliceDecode",
+        "name": "leb128fmt.sliceProof.u64_reader_spec",
+        "precondition": "T = u64 and 7 <= BITS <= 64",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsUIntSliceDecode",
+        "name": "leb128fmt.sliceProof.u128_reader_spec",
+        "precondition": "T = u128 and 7 <= BITS <= 128",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsSIntSliceDecode",
+        "name": "leb128fmt_slice_probe.i16_reader_spec",
+        "precondition": "T = i16 and BITS <= 16",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsSIntSliceDecode",
+        "name": "leb128fmt_slice_probe.i16_reader_oversize",
+        "scope": "oversize model assertion"
+      },
+      {
+        "module": "ProofsSIntSliceDecode",
+        "name": "leb128fmt_slice_probe.i32_reader_spec",
+        "precondition": "T = i32 and BITS <= 32",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsSIntSliceDecode",
+        "name": "leb128fmt_slice_probe.i32_reader_oversize",
+        "scope": "oversize model assertion"
+      },
+      {
+        "module": "ProofsSIntSliceDecode",
+        "name": "leb128fmt_slice_probe.i64_reader_spec",
+        "precondition": "T = i64 and BITS <= 64",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsSIntSliceDecode",
+        "name": "leb128fmt_slice_probe.i64_reader_oversize",
+        "scope": "oversize model assertion"
+      },
+      {
+        "module": "ProofsSIntSliceDecode",
+        "name": "leb128fmt_slice_probe.i128_reader_spec",
+        "precondition": "T = i128 and BITS <= 128",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsSIntSliceDecode",
+        "name": "leb128fmt_slice_probe.i128_reader_oversize",
+        "scope": "oversize model assertion"
+      },
+      {
+        "module": "ProofsErrors",
+        "name": "leb128fmt.Error.clone_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsErrors",
+        "name": "leb128fmt.Error.eq_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsErrorDefaultsHarness",
+        "name": "leb128fmt_error_defaults.clone_from_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsErrorDefaultsHarness",
+        "name": "leb128fmt_error_defaults.not_equal_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsErrors",
+        "name": "leb128fmt.U8.uint_bits_spec",
+        "scope": "primitive associated constant"
+      },
+      {
+        "module": "ProofsErrors",
+        "name": "leb128fmt.U16.uint_bits_spec",
+        "scope": "primitive associated constant"
+      },
+      {
+        "module": "ProofsErrors",
+        "name": "leb128fmt.U32.uint_bits_spec",
+        "scope": "primitive associated constant"
+      },
+      {
+        "module": "ProofsErrors",
+        "name": "leb128fmt.U64.uint_bits_spec",
+        "scope": "primitive associated constant"
+      },
+      {
+        "module": "ProofsErrors",
+        "name": "leb128fmt.U128.uint_bits_spec",
+        "scope": "primitive associated constant"
+      },
+      {
+        "module": "ProofsErrors",
+        "name": "leb128fmt.I8.sint_bits_spec",
+        "scope": "primitive associated constant"
+      },
+      {
+        "module": "ProofsErrors",
+        "name": "leb128fmt.I16.sint_bits_spec",
+        "scope": "primitive associated constant"
+      },
+      {
+        "module": "ProofsErrors",
+        "name": "leb128fmt.I32.sint_bits_spec",
+        "scope": "primitive associated constant"
+      },
+      {
+        "module": "ProofsErrors",
+        "name": "leb128fmt.I64.sint_bits_spec",
+        "scope": "primitive associated constant"
+      },
+      {
+        "module": "ProofsErrors",
+        "name": "leb128fmt.I128.sint_bits_spec",
+        "scope": "primitive associated constant"
+      },
+      {
+        "module": "ProofsUIntSliceDecode",
+        "name": "leb128fmt.sliceProof.u8_reader_first",
+        "scope": "initial terminator and empty suffix"
+      },
+      {
+        "module": "ProofsUIntSliceDecode",
+        "name": "leb128fmt.sliceProof.u8_reader_oversize",
+        "scope": "oversize model assertion"
+      },
+      {
+        "module": "ProofsUIntSliceDecode",
+        "name": "leb128fmt.sliceProof.u16_reader_first",
+        "scope": "initial terminator and empty suffix"
+      },
+      {
+        "module": "ProofsUIntSliceDecode",
+        "name": "leb128fmt.sliceProof.u16_reader_oversize",
+        "scope": "oversize model assertion"
+      },
+      {
+        "module": "ProofsUIntSliceDecode",
+        "name": "leb128fmt.sliceProof.u32_reader_first",
+        "scope": "initial terminator and empty suffix"
+      },
+      {
+        "module": "ProofsUIntSliceDecode",
+        "name": "leb128fmt.sliceProof.u32_reader_oversize",
+        "scope": "oversize model assertion"
+      },
+      {
+        "module": "ProofsUIntSliceDecode",
+        "name": "leb128fmt.sliceProof.u64_reader_first",
+        "scope": "initial terminator and empty suffix"
+      },
+      {
+        "module": "ProofsUIntSliceDecode",
+        "name": "leb128fmt.sliceProof.u64_reader_oversize",
+        "scope": "oversize model assertion"
+      },
+      {
+        "module": "ProofsUIntSliceDecode",
+        "name": "leb128fmt.sliceProof.u128_reader_first",
+        "scope": "initial terminator and empty suffix"
+      },
+      {
+        "module": "ProofsUIntSliceDecode",
+        "name": "leb128fmt.sliceProof.u128_reader_oversize",
+        "scope": "oversize model assertion"
+      },
+      {
+        "module": "ProofsUIntFixedWrite",
+        "name": "leb128fmt.sliceProof.u8_fixed_spec",
+        "precondition": "T = u8 and 1 <= BITS <= 8 and initial cursor <= buffer length",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsErrorDefaultsHarness",
+        "name": "leb128fmt_error_defaults.assert_receiver_is_total_eq_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsErrorDefaultsHarness",
+        "name": "leb128fmt_error_defaults.description_spec",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsUIntSliceDecode",
+        "name": "leb128fmt.sliceProof.u8_reader_small_width",
+        "precondition": "T = u8 and BITS < 7",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsUIntSliceDecode",
+        "name": "leb128fmt.sliceProof.u16_reader_small_width",
+        "precondition": "T = u16 and BITS < 7",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsUIntSliceDecode",
+        "name": "leb128fmt.sliceProof.u32_reader_small_width",
+        "precondition": "T = u32 and BITS < 7",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsUIntSliceDecode",
+        "name": "leb128fmt.sliceProof.u64_reader_small_width",
+        "precondition": "T = u64 and BITS < 7",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsUIntSliceDecode",
+        "name": "leb128fmt.sliceProof.u128_reader_small_width",
+        "precondition": "T = u128 and BITS < 7",
+        "scope": "public-model"
+      },
+      {
+        "module": "ProofsSignedWriterGuards",
+        "name": "leb128fmt.sliceProof.signed_writers_reject",
+        "scope": "conditional generic writer guard"
+      },
+      {
+        "module": "ProofsSignedWriterGuards",
+        "name": "leb128fmt.sliceProof.signed_fixed_writer_short",
+        "scope": "conditional generic writer guard"
+      },
+      {
+        "module": "ProofsSignedWriterGuards",
+        "name": "leb128fmt.sliceProof.signed_shortest_writer_full",
+        "scope": "conditional generic writer guard"
+      }
+    ],
+    "mapping_metadata_checked": true,
+    "scope": "named Lean theorem and transitive axiom audit only",
+    "status": "passed"
+  },
+  "host": "aarch64-apple-darwin",
+  "input_fingerprints": {
+    "after": {
+      "member": "payload/inputs-after.json",
+      "sha256": "9c37f19f2d6c269956ccdba4e52430ffc6c447e0028d89125c73af8e67b86a69"
+    },
+    "before": {
+      "member": "payload/inputs-before.json",
+      "sha256": "9c37f19f2d6c269956ccdba4e52430ffc6c447e0028d89125c73af8e67b86a69"
+    },
+    "equal": true
+  },
+  "kind": "archived-managed-run-summary",
+  "original_audit": {
+    "member": "payload/audit/result.json",
+    "sha256": "0d6f5cadd012a580d53a1afa574e9a665489b6d6e6f6329a3ef8301be321fc02"
+  },
+  "original_result": {
+    "member": "payload/result.json",
+    "sha256": "5a3a10a0369fd3daca4ec91edce7bfc1aa60deda62ee58908481681430fd66a3"
+  },
+  "profile": "default",
+  "reported_status": "passed",
+  "sarif": "Not a cargo-proofs recording result.",
+  "schema_version": 1,
+  "scope": "Configured extraction comparisons and named theorem audit; native observations are separate",
+  "stages": {
+    "before_after_fingerprints": "equal",
+    "extraction_and_profile_checks": "See original pipeline receipt and profile configuration.",
+    "lean_build_and_axiom_audit": "passed",
+    "native_tests": "Separate observations in original run; not formal proof."
+  },
+  "target": "aarch64-apple-darwin"
+}

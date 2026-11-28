@@ -1,0 +1,14 @@
+{
+  "archive": "1648341a2877129957d1aa7a15690a67c88605a4c00308654f87716cf6e1fbc1.tar.gz",
+  "availability": "local-only",
+  "compressed_bytes": 3494429,
+  "files": 142,
+  "kind": "local-evidence-archive",
+  "manifest_sha256": "01d1a8a41659a58429f50f5bdd50bca979b9dce5ba1b45cd2782e99146531e64",
+  "member_root": "payload/",
+  "public_url": null,
+  "schema_version": 1,
+  "scope": "Original execution records; not a new verification or SARIF result.",
+  "sha256": "1648341a2877129957d1aa7a15690a67c88605a4c00308654f87716cf6e1fbc1",
+  "uncompressed_bytes": 16208281
+}

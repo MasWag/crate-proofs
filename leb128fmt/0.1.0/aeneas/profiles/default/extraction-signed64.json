@@ -1,0 +1,1 @@
+{"entries": ["crate::encode_s64", "crate::encode_fixed_s64", "crate::decode_s64"], "llbc": "signed64.llbc", "local_scope": {"opaque_crate": true, "include": ["crate::encode_s64", "crate::encode_fixed_s64", "crate::decode_s64"]}, "models": {"Signed64.lean": ["encode_s64", "encode_fixed_s64", "decode_s64"]}, "remove_unused_clauses": true}

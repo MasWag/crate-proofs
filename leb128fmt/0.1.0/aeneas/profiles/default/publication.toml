@@ -1,0 +1,356 @@
+[report]
+title = "Selected LEB128 codecs and error operations in leb128fmt 0.1.0"
+explanation = '''
+For every `u32` or `u64`, `encode_u32` or `encode_u64` returns the shortest unsigned LEB128 encoding and its length in an array; unused bytes are zero. The corresponding fixed encoders return five or ten bytes respectively, with continuation bits on all but the last byte. For every input array, `decode_u32` or `decode_u64` returns the value and length of the first terminated unsigned LEB128 encoding when its value fits in the corresponding width, and `None` otherwise. Padding is accepted. Bytes after the first terminator do not affect the result.
+
+For every `i32` or `i64`, the corresponding `encode_s32` or `encode_s64` returns the shortest signed LEB128 encoding and its length; unused array bytes are zero. The fixed signed encoders return the full five- or ten-byte representation with sign extension and continuation bits on all but the last byte. The corresponding signed decoders return the signed value and length of the first terminated encoding if it fits in the corresponding width, and `None` otherwise. They accept padding, and bytes following the first terminator do not affect the result.
+
+For `encode_uint_slice` with any supported unsigned primitive, widths from 0 through the storage width and a cursor at or before the buffer end, the value is rejected without changing buffer or cursor when it does not fit the width. Otherwise the function writes its shortest encoding and advances the cursor when there is space. If space runs out, it writes the prefix that fits, returns `None`, and preserves the cursor; bytes outside that prefix are unchanged. For `encode_fixed_uint_slice` with any supported unsigned primitive at widths 1 through the storage width and a cursor at or before the buffer end, the function writes exactly `ceil(BITS / 7)` bytes and advances the cursor when the value fits and space is sufficient. Otherwise it returns `None` with the entire buffer and cursor unchanged.
+
+For `decode_uint_slice` with `u8`, `u16`, `u32`, `u64`, or `u128`, widths from 7 through the storage width, the checked result follows the first terminating byte and preserves the cursor on errors. At widths divisible by seven, the release permits an additional group whose terminal payload is zero; this differs from rejecting a continuation at the requested maximum length. For widths below seven, the decoder returns a first terminal byte unchanged even when it exceeds the requested width. On continued input it accumulates payload groups with each shifted contribution reduced modulo `2^N`, where `N` is the storage width in bits, without enforcing the requested field width. It returns more-bytes-needed if input ends before the next group. If a next byte is present when the shift reaches or exceeds the storage width, the translated execution produces an integer-overflow failure. This last statement describes the checked model and does not assert native behavior under every overflow setting. The signed slice decoder is checked for `i16`, `i32`, `i64`, and `i128` at widths from zero through the storage width. It reads at most `floor(BITS / 7) + 1` groups, tests values against an effective signed width of `BITS + 1` when `BITS` is divisible by seven and `BITS` otherwise, and preserves the cursor on errors. In the bounded-group cases above, an exhausted input yields the more-bytes-needed error before the group limit, and an invalid final group yields invalid-encoding. When any of these signed or unsigned decoders is requested to use a width exceeding its storage width, the checked execution reaches an assertion failure; that is a failure characterization, not a success guarantee.
+
+For `encode_sint_slice` with any supported signed primitive and a cursor at or before the buffer end, a value rejected by the release guard leaves the state unchanged. An accepted value is written in its shortest signed encoding when it fits; on short capacity the fitting prefix is written and the cursor is preserved; bytes outside the written interval are unchanged. For the fixed signed writer at widths 1 through the storage width, rejection or short capacity leaves the state unchanged. When capacity is sufficient, an accepted value must fit the available groups for the checked successful-encoding guarantee. That group-fit condition holds for every value representable in the requested signed field. At narrower widths the release guard also accepts some values outside that field; the fixed guarantee does not cover an accepted value needing more groups than the field provides.
+
+The derived `Error` clone and equality operations preserve and compare variants. Additional local proofs establish that the inherited `clone_from` and inequality operations respectively copy the source variant and return the complement of equality. The inherited, doc-hidden `Eq::assert_receiver_is_total_eq` method returns unit for each `Error`. The inherited deprecated `std::error::Error::description` returns `description() is deprecated; use Display`. A checked observer calling `source` reports `None` for both error variants; a separate local proof establishes the same observation for the deprecated `cause`. The `UInt::BITS` and `SInt::BITS` constants equal the widths of their respective primitive types.
+
+The error predicates `is_more_bytes_needed` and `is_invalid_encoding` return true exactly for their respective error variants. `is_last` returns true exactly when the byte is below 128. `max_len` returns the ceiling of the bit width divided by seven, including zero for zero bits. The successful-execution contracts exclude modeled execution failure for their stated inputs.
+'''
+trusted_assumptions = '''
+The concrete writer proofs use a local adapter for the extracted primitive conversions. It erases the generated conversion error payload to the pinned backend’s unit error model; the proofs establish that narrowing the masked payload succeeds and preserves its value, so that error payload is not observed in the proved paths. The adapter also forwards the fixed writer’s length helper to a separately extracted release body. This connection relies on the extracted operations and their correspondence to Rust. The results depend on the correspondence of the pinned Rust-to-Lean translation and Aeneas models for integer arithmetic, shifts, indexing and arrays to the Rust operations, and on Lean's kernel. They do not independently establish that correspondence.
+'''
+limitations = '''
+The slice claims are restricted to the types, widths and cursor conditions stated above. The unsigned small-width decoder claim describes the implementation's actual behavior, including modeled failure, rather than the intended field-range contract. The actual decoder behavior at multiples of seven is broader than the intended field limit, as the findings illustrate. Parameterized array macro expansions at other widths, error formatting and the full dynamic return signatures of the standard error `source` and deprecated `cause` methods remain outside the proved scope. The observers establish only whether those methods return `None`. The service catalogue does not expose the five locally proved inherited methods `clone_from`, `ne`, `assert_receiver_is_total_eq`, `description`, and `cause`; they therefore have no published API claim in this report. Native observations in `verification/findings/` are separate from the formal results.
+
+'''
+environment = '''
+The profile uses the unchanged executable source of the pinned 0.1.0 registry release, with no crate source adaptation, unpatched Aeneas and Charon revisions, and Lean 4.35.0 on `aarch64-apple-darwin`. The original concrete array and helper extraction uses default features; the slice and concrete-writer harnesses select the release dependency with default features disabled; the inherited error-default and error-observer harnesses use default features. The Rust harness functions call the original release bodies or actual trait dictionaries; the error observers use optimized MIR and check the result of those actual calls. Local proofs-rs CLI patches prepare pinned inputs and adjust API discovery; they do not change the Lean models or contracts. The profile specification, source and tool locks, theorem inventory and results record describe the scope and supporting run.
+'''
+
+[tool]
+name = "aeneas"
+version = "be86ab0f1989d04944292b345b24c435be3ad10a"
+lean_dir = ".work/selected-proofs"
+rustdoc_toolchain = "nightly-2026-09-17"
+
+[[tool.proofs]]
+api = "leb128fmt::is_last"
+module = "LebProofs"
+theorem = "leb128fmt.is_last_spec"
+precondition = "true"
+
+[[tool.proofs]]
+api = "leb128fmt::max_len"
+module = "LebProofs"
+theorem = "leb128fmt.max_len_spec"
+precondition = "true"
+
+[[tool.proofs]]
+api = "leb128fmt::encode_u32"
+module = "LebProofs"
+theorem = "leb128fmt.encode_u32_spec"
+precondition = "true"
+
+[[tool.proofs]]
+api = "leb128fmt::encode_fixed_u32"
+module = "LebProofs"
+theorem = "leb128fmt.encode_fixed_u32_spec"
+precondition = "true"
+
+[[tool.proofs]]
+api = "leb128fmt::decode_u32"
+module = "LebProofs"
+theorem = "leb128fmt.decode_u32_spec"
+precondition = "true"
+
+[[tool.proofs]]
+api = "leb128fmt::encode_u64"
+module = "LebProofs64"
+theorem = "leb128fmt.wide.encode_u64_spec"
+precondition = "true"
+
+[[tool.proofs]]
+api = "leb128fmt::encode_fixed_u64"
+module = "LebProofs64"
+theorem = "leb128fmt.wide.encode_fixed_u64_spec"
+precondition = "true"
+
+[[tool.proofs]]
+api = "leb128fmt::decode_u64"
+module = "LebProofs64"
+theorem = "leb128fmt.wide.decode_u64_spec"
+precondition = "true"
+
+[[tool.proofs]]
+api = "leb128fmt::encode_s32"
+module = "ProofsSigned32"
+theorem = "leb128fmt.signed32.encode_s32_spec"
+precondition = "true"
+
+[[tool.proofs]]
+api = "leb128fmt::encode_fixed_s32"
+module = "ProofsSigned32"
+theorem = "leb128fmt.signed32.encode_fixed_s32_spec"
+precondition = "true"
+
+[[tool.proofs]]
+api = "leb128fmt::encode_s64"
+module = "ProofsSigned64"
+theorem = "leb128fmt.signed64.encode_s64_spec"
+precondition = "true"
+
+[[tool.proofs]]
+api = "leb128fmt::encode_fixed_s64"
+module = "ProofsSigned64"
+theorem = "leb128fmt.signed64.encode_fixed_s64_spec"
+precondition = "true"
+
+[[tool.proofs]]
+api = "leb128fmt::decode_s32"
+module = "ProofsSigned32"
+theorem = "leb128fmt.signed32.decode_s32_spec"
+precondition = "true"
+
+[[tool.proofs]]
+api = "leb128fmt::decode_s64"
+module = "ProofsSigned64"
+theorem = "leb128fmt.signed64.decode_s64_spec"
+precondition = "true"
+
+[[tool.proofs]]
+api = "leb128fmt::Error::is_more_bytes_needed"
+module = "ProofsErrors"
+theorem = "leb128fmt.Error.is_more_bytes_needed_spec"
+precondition = "true"
+
+[[tool.proofs]]
+api = "leb128fmt::Error::is_invalid_encoding"
+module = "ProofsErrors"
+theorem = "leb128fmt.Error.is_invalid_encoding_spec"
+precondition = "true"
+
+[[tool.proofs]]
+api = "leb128fmt::encode_uint_slice"
+module = "ProofsUIntSliceEncode"
+theorem = "leb128fmt.sliceProof.u8_writer_spec"
+precondition = "T = u8 and BITS <= 8 and initial cursor <= buffer length"
+
+[[tool.proofs]]
+api = "leb128fmt::decode_uint_slice"
+module = "ProofsUIntSliceDecode"
+theorem = "leb128fmt.sliceProof.u8_reader_spec"
+precondition = "T = u8 and 7 <= BITS <= 8"
+
+[[tool.proofs]]
+api = "leb128fmt::decode_uint_slice"
+module = "ProofsUIntSliceDecode"
+theorem = "leb128fmt.sliceProof.u16_reader_spec"
+precondition = "T = u16 and 7 <= BITS <= 16"
+
+[[tool.proofs]]
+api = "leb128fmt::decode_uint_slice"
+module = "ProofsUIntSliceDecode"
+theorem = "leb128fmt.sliceProof.u32_reader_spec"
+precondition = "T = u32 and 7 <= BITS <= 32"
+
+[[tool.proofs]]
+api = "leb128fmt::decode_uint_slice"
+module = "ProofsUIntSliceDecode"
+theorem = "leb128fmt.sliceProof.u64_reader_spec"
+precondition = "T = u64 and 7 <= BITS <= 64"
+
+[[tool.proofs]]
+api = "leb128fmt::decode_uint_slice"
+module = "ProofsUIntSliceDecode"
+theorem = "leb128fmt.sliceProof.u128_reader_spec"
+precondition = "T = u128 and 7 <= BITS <= 128"
+
+[[tool.proofs]]
+api = "leb128fmt::decode_sint_slice"
+module = "ProofsSIntSliceDecode"
+theorem = "leb128fmt_slice_probe.i16_reader_spec"
+precondition = "T = i16 and BITS <= 16"
+
+[[tool.proofs]]
+api = "leb128fmt::decode_sint_slice"
+module = "ProofsSIntSliceDecode"
+theorem = "leb128fmt_slice_probe.i32_reader_spec"
+precondition = "T = i32 and BITS <= 32"
+
+[[tool.proofs]]
+api = "leb128fmt::decode_sint_slice"
+module = "ProofsSIntSliceDecode"
+theorem = "leb128fmt_slice_probe.i64_reader_spec"
+precondition = "T = i64 and BITS <= 64"
+
+[[tool.proofs]]
+api = "leb128fmt::decode_sint_slice"
+module = "ProofsSIntSliceDecode"
+theorem = "leb128fmt_slice_probe.i128_reader_spec"
+precondition = "T = i128 and BITS <= 128"
+
+[[tool.proofs]]
+api = "leb128fmt::Error::clone"
+module = "ProofsErrors"
+theorem = "leb128fmt.Error.clone_spec"
+precondition = "true"
+
+[[tool.proofs]]
+api = "leb128fmt::Error::eq"
+module = "ProofsErrors"
+theorem = "leb128fmt.Error.eq_spec"
+precondition = "true"
+
+
+
+[[tool.proofs]]
+api = "leb128fmt::encode_fixed_uint_slice"
+module = "ProofsUIntFixedWrite"
+theorem = "leb128fmt.sliceProof.u8_fixed_spec"
+precondition = "T = u8 and 1 <= BITS <= 8 and initial cursor <= buffer length"
+
+
+
+[[tool.proofs]]
+api = "leb128fmt::decode_uint_slice"
+module = "ProofsUIntSliceDecode"
+theorem = "leb128fmt.sliceProof.u8_reader_small_width"
+precondition = "T = u8 and BITS < 7"
+
+[[tool.proofs]]
+api = "leb128fmt::decode_uint_slice"
+module = "ProofsUIntSliceDecode"
+theorem = "leb128fmt.sliceProof.u16_reader_small_width"
+precondition = "T = u16 and BITS < 7"
+
+[[tool.proofs]]
+api = "leb128fmt::decode_uint_slice"
+module = "ProofsUIntSliceDecode"
+theorem = "leb128fmt.sliceProof.u32_reader_small_width"
+precondition = "T = u32 and BITS < 7"
+
+[[tool.proofs]]
+api = "leb128fmt::decode_uint_slice"
+module = "ProofsUIntSliceDecode"
+theorem = "leb128fmt.sliceProof.u64_reader_small_width"
+precondition = "T = u64 and BITS < 7"
+
+[[tool.proofs]]
+api = "leb128fmt::decode_uint_slice"
+module = "ProofsUIntSliceDecode"
+theorem = "leb128fmt.sliceProof.u128_reader_small_width"
+precondition = "T = u128 and BITS < 7"
+
+[[tool.proofs]]
+api = "leb128fmt::encode_uint_slice"
+module = "ProofsConcreteUnsignedWriters"
+theorem = "leb128fmt.writerProof.u16_writer_spec"
+precondition = "T = u16 and BITS <= 16 and initial cursor <= buffer length"
+
+[[tool.proofs]]
+api = "leb128fmt::encode_uint_slice"
+module = "ProofsConcreteUnsignedWriters"
+theorem = "leb128fmt.writerProof.u32_writer_spec"
+precondition = "T = u32 and BITS <= 32 and initial cursor <= buffer length"
+
+[[tool.proofs]]
+api = "leb128fmt::encode_uint_slice"
+module = "ProofsConcreteUnsignedWriters"
+theorem = "leb128fmt.writerProof.u64_writer_spec"
+precondition = "T = u64 and BITS <= 64 and initial cursor <= buffer length"
+
+[[tool.proofs]]
+api = "leb128fmt::encode_uint_slice"
+module = "ProofsConcreteUnsignedWriters"
+theorem = "leb128fmt.writerProof.u128_writer_spec"
+precondition = "T = u128 and BITS <= 128 and initial cursor <= buffer length"
+
+[[tool.proofs]]
+api = "leb128fmt::encode_fixed_uint_slice"
+module = "ProofsConcreteUnsignedWriters"
+theorem = "leb128fmt.writerProof.u16_fixed_spec"
+precondition = "T = u16 and 1 <= BITS <= 16 and initial cursor <= buffer length"
+
+[[tool.proofs]]
+api = "leb128fmt::encode_fixed_uint_slice"
+module = "ProofsConcreteUnsignedWriters"
+theorem = "leb128fmt.writerProof.u32_fixed_spec"
+precondition = "T = u32 and 1 <= BITS <= 32 and initial cursor <= buffer length"
+
+[[tool.proofs]]
+api = "leb128fmt::encode_fixed_uint_slice"
+module = "ProofsConcreteUnsignedWriters"
+theorem = "leb128fmt.writerProof.u64_fixed_spec"
+precondition = "T = u64 and 1 <= BITS <= 64 and initial cursor <= buffer length"
+
+[[tool.proofs]]
+api = "leb128fmt::encode_fixed_uint_slice"
+module = "ProofsConcreteUnsignedWriters"
+theorem = "leb128fmt.writerProof.u128_fixed_spec"
+precondition = "T = u128 and 1 <= BITS <= 128 and initial cursor <= buffer length"
+
+[[tool.proofs]]
+api = "leb128fmt::Error::source"
+module = "ProofsErrorObservers"
+theorem = "leb128fmt_error_observers.source_is_none_spec"
+precondition = "true"
+
+
+[[tool.proofs]]
+api = "leb128fmt::encode_sint_slice"
+module = "ProofsConcreteSignedWriters"
+theorem = "leb128fmt_writer_model.i8_writer_spec"
+precondition = "T = i8 and initial cursor <= buffer length"
+
+[[tool.proofs]]
+api = "leb128fmt::encode_sint_slice"
+module = "ProofsConcreteSignedWriters"
+theorem = "leb128fmt_writer_model.i16_writer_spec"
+precondition = "T = i16 and initial cursor <= buffer length"
+
+[[tool.proofs]]
+api = "leb128fmt::encode_sint_slice"
+module = "ProofsConcreteSignedWriters"
+theorem = "leb128fmt_writer_model.i32_writer_spec"
+precondition = "T = i32 and initial cursor <= buffer length"
+
+[[tool.proofs]]
+api = "leb128fmt::encode_sint_slice"
+module = "ProofsConcreteSignedWriters"
+theorem = "leb128fmt_writer_model.i64_writer_spec"
+precondition = "T = i64 and initial cursor <= buffer length"
+
+[[tool.proofs]]
+api = "leb128fmt::encode_sint_slice"
+module = "ProofsConcreteSignedWriters"
+theorem = "leb128fmt_writer_model.i128_writer_spec"
+precondition = "T = i128 and initial cursor <= buffer length"
+
+[[tool.proofs]]
+api = "leb128fmt::encode_fixed_sint_slice"
+module = "ProofsConcreteSignedWriters"
+theorem = "leb128fmt_writer_model.i8_fixed_spec"
+precondition = "T = i8 and initial cursor <= buffer length and 1 <= BITS <= 8 and a guard-accepted value fits the fixed groups when capacity is sufficient"
+
+[[tool.proofs]]
+api = "leb128fmt::encode_fixed_sint_slice"
+module = "ProofsConcreteSignedWriters"
+theorem = "leb128fmt_writer_model.i16_fixed_spec"
+precondition = "T = i16 and initial cursor <= buffer length and 1 <= BITS <= 16 and a guard-accepted value fits the fixed groups when capacity is sufficient"
+
+[[tool.proofs]]
+api = "leb128fmt::encode_fixed_sint_slice"
+module = "ProofsConcreteSignedWriters"
+theorem = "leb128fmt_writer_model.i32_fixed_spec"
+precondition = "T = i32 and initial cursor <= buffer length and 1 <= BITS <= 32 and a guard-accepted value fits the fixed groups when capacity is sufficient"
+
+[[tool.proofs]]
+api = "leb128fmt::encode_fixed_sint_slice"
+module = "ProofsConcreteSignedWriters"
+theorem = "leb128fmt_writer_model.i64_fixed_spec"
+precondition = "T = i64 and initial cursor <= buffer length and 1 <= BITS <= 64 and a guard-accepted value fits the fixed groups when capacity is sufficient"
+
+[[tool.proofs]]
+api = "leb128fmt::encode_fixed_sint_slice"
+module = "ProofsConcreteSignedWriters"
+theorem = "leb128fmt_writer_model.i128_fixed_spec"
+precondition = "T = i128 and initial cursor <= buffer length and 1 <= BITS <= 128 and a guard-accepted value fits the fixed groups when capacity is sufficient"

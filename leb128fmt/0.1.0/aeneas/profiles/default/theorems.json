@@ -1,0 +1,968 @@
+{
+  "checked": [
+    {
+      "name": "leb128fmt.is_last_spec",
+      "module": "LebProofs",
+      "scope": "public-model"
+    },
+    {
+      "name": "leb128fmt.max_len_spec",
+      "module": "LebProofs",
+      "scope": "public-model"
+    },
+    {
+      "name": "leb128fmt.encode_u32_spec",
+      "module": "LebProofs",
+      "scope": "public-model"
+    },
+    {
+      "name": "leb128fmt.encode_fixed_u32_spec",
+      "module": "LebProofs",
+      "scope": "public-model"
+    },
+    {
+      "name": "leb128fmt.decode_u32_spec",
+      "module": "LebProofs",
+      "scope": "public-model"
+    },
+    {
+      "name": "leb128fmt.wide.encode_u64_spec",
+      "module": "LebProofs64",
+      "scope": "public-model"
+    },
+    {
+      "name": "leb128fmt.wide.encode_fixed_u64_spec",
+      "module": "LebProofs64",
+      "scope": "public-model"
+    },
+    {
+      "name": "leb128fmt.wide.decode_u64_spec",
+      "module": "LebProofs64",
+      "scope": "public-model"
+    },
+    {
+      "name": "leb128fmt.signed32.encode_s32_spec",
+      "module": "ProofsSigned32",
+      "scope": "public-model"
+    },
+    {
+      "name": "leb128fmt.signed32.encode_fixed_s32_spec",
+      "module": "ProofsSigned32",
+      "scope": "public-model"
+    },
+    {
+      "name": "leb128fmt.signed64.encode_s64_spec",
+      "module": "ProofsSigned64",
+      "scope": "public-model"
+    },
+    {
+      "name": "leb128fmt.signed64.encode_fixed_s64_spec",
+      "module": "ProofsSigned64",
+      "scope": "public-model"
+    },
+    {
+      "name": "leb128fmt.signed32.decode_s32_spec",
+      "module": "ProofsSigned32",
+      "scope": "public-model"
+    },
+    {
+      "name": "leb128fmt.signed64.decode_s64_spec",
+      "module": "ProofsSigned64",
+      "scope": "public-model"
+    },
+    {
+      "name": "leb128fmt.Error.is_more_bytes_needed_spec",
+      "module": "ProofsErrors",
+      "scope": "public-model"
+    },
+    {
+      "name": "leb128fmt.Error.is_invalid_encoding_spec",
+      "module": "ProofsErrors",
+      "scope": "public-model"
+    },
+    {
+      "name": "leb128fmt.sliceProof.u8_writer_spec",
+      "module": "ProofsUIntSliceEncode",
+      "scope": "public-model",
+      "precondition": "T = u8 and BITS <= 8 and initial cursor <= buffer length"
+    },
+    {
+      "name": "leb128fmt.sliceProof.u8_reader_spec",
+      "module": "ProofsUIntSliceDecode",
+      "scope": "public-model",
+      "precondition": "T = u8 and 7 <= BITS <= 8"
+    },
+    {
+      "name": "leb128fmt.sliceProof.u16_reader_spec",
+      "module": "ProofsUIntSliceDecode",
+      "scope": "public-model",
+      "precondition": "T = u16 and 7 <= BITS <= 16"
+    },
+    {
+      "name": "leb128fmt.sliceProof.u32_reader_spec",
+      "module": "ProofsUIntSliceDecode",
+      "scope": "public-model",
+      "precondition": "T = u32 and 7 <= BITS <= 32"
+    },
+    {
+      "name": "leb128fmt.sliceProof.u64_reader_spec",
+      "module": "ProofsUIntSliceDecode",
+      "scope": "public-model",
+      "precondition": "T = u64 and 7 <= BITS <= 64"
+    },
+    {
+      "name": "leb128fmt.sliceProof.u128_reader_spec",
+      "module": "ProofsUIntSliceDecode",
+      "scope": "public-model",
+      "precondition": "T = u128 and 7 <= BITS <= 128"
+    },
+    {
+      "name": "leb128fmt_slice_probe.i16_reader_spec",
+      "module": "ProofsSIntSliceDecode",
+      "scope": "public-model",
+      "precondition": "T = i16 and BITS <= 16"
+    },
+    {
+      "name": "leb128fmt_slice_probe.i16_reader_oversize",
+      "module": "ProofsSIntSliceDecode",
+      "scope": "oversize model assertion"
+    },
+    {
+      "name": "leb128fmt_slice_probe.i32_reader_spec",
+      "module": "ProofsSIntSliceDecode",
+      "scope": "public-model",
+      "precondition": "T = i32 and BITS <= 32"
+    },
+    {
+      "name": "leb128fmt_slice_probe.i32_reader_oversize",
+      "module": "ProofsSIntSliceDecode",
+      "scope": "oversize model assertion"
+    },
+    {
+      "name": "leb128fmt_slice_probe.i64_reader_spec",
+      "module": "ProofsSIntSliceDecode",
+      "scope": "public-model",
+      "precondition": "T = i64 and BITS <= 64"
+    },
+    {
+      "name": "leb128fmt_slice_probe.i64_reader_oversize",
+      "module": "ProofsSIntSliceDecode",
+      "scope": "oversize model assertion"
+    },
+    {
+      "name": "leb128fmt_slice_probe.i128_reader_spec",
+      "module": "ProofsSIntSliceDecode",
+      "scope": "public-model",
+      "precondition": "T = i128 and BITS <= 128"
+    },
+    {
+      "name": "leb128fmt_slice_probe.i128_reader_oversize",
+      "module": "ProofsSIntSliceDecode",
+      "scope": "oversize model assertion"
+    },
+    {
+      "name": "leb128fmt.Error.clone_spec",
+      "module": "ProofsErrors",
+      "scope": "public-model"
+    },
+    {
+      "name": "leb128fmt.Error.eq_spec",
+      "module": "ProofsErrors",
+      "scope": "public-model"
+    },
+    {
+      "name": "leb128fmt_error_defaults.clone_from_spec",
+      "module": "ProofsErrorDefaultsHarness",
+      "scope": "public-model"
+    },
+    {
+      "name": "leb128fmt_error_defaults.not_equal_spec",
+      "module": "ProofsErrorDefaultsHarness",
+      "scope": "public-model"
+    },
+    {
+      "name": "leb128fmt.U8.uint_bits_spec",
+      "module": "ProofsErrors",
+      "scope": "primitive associated constant"
+    },
+    {
+      "name": "leb128fmt.U16.uint_bits_spec",
+      "module": "ProofsErrors",
+      "scope": "primitive associated constant"
+    },
+    {
+      "name": "leb128fmt.U32.uint_bits_spec",
+      "module": "ProofsErrors",
+      "scope": "primitive associated constant"
+    },
+    {
+      "name": "leb128fmt.U64.uint_bits_spec",
+      "module": "ProofsErrors",
+      "scope": "primitive associated constant"
+    },
+    {
+      "name": "leb128fmt.U128.uint_bits_spec",
+      "module": "ProofsErrors",
+      "scope": "primitive associated constant"
+    },
+    {
+      "name": "leb128fmt.I8.sint_bits_spec",
+      "module": "ProofsErrors",
+      "scope": "primitive associated constant"
+    },
+    {
+      "name": "leb128fmt.I16.sint_bits_spec",
+      "module": "ProofsErrors",
+      "scope": "primitive associated constant"
+    },
+    {
+      "name": "leb128fmt.I32.sint_bits_spec",
+      "module": "ProofsErrors",
+      "scope": "primitive associated constant"
+    },
+    {
+      "name": "leb128fmt.I64.sint_bits_spec",
+      "module": "ProofsErrors",
+      "scope": "primitive associated constant"
+    },
+    {
+      "name": "leb128fmt.I128.sint_bits_spec",
+      "module": "ProofsErrors",
+      "scope": "primitive associated constant"
+    },
+    {
+      "name": "leb128fmt.sliceProof.u8_reader_first",
+      "module": "ProofsUIntSliceDecode",
+      "scope": "initial terminator and empty suffix"
+    },
+    {
+      "name": "leb128fmt.sliceProof.u8_reader_oversize",
+      "module": "ProofsUIntSliceDecode",
+      "scope": "oversize model assertion"
+    },
+    {
+      "name": "leb128fmt.sliceProof.u16_reader_first",
+      "module": "ProofsUIntSliceDecode",
+      "scope": "initial terminator and empty suffix"
+    },
+    {
+      "name": "leb128fmt.sliceProof.u16_reader_oversize",
+      "module": "ProofsUIntSliceDecode",
+      "scope": "oversize model assertion"
+    },
+    {
+      "name": "leb128fmt.sliceProof.u32_reader_first",
+      "module": "ProofsUIntSliceDecode",
+      "scope": "initial terminator and empty suffix"
+    },
+    {
+      "name": "leb128fmt.sliceProof.u32_reader_oversize",
+      "module": "ProofsUIntSliceDecode",
+      "scope": "oversize model assertion"
+    },
+    {
+      "name": "leb128fmt.sliceProof.u64_reader_first",
+      "module": "ProofsUIntSliceDecode",
+      "scope": "initial terminator and empty suffix"
+    },
+    {
+      "name": "leb128fmt.sliceProof.u64_reader_oversize",
+      "module": "ProofsUIntSliceDecode",
+      "scope": "oversize model assertion"
+    },
+    {
+      "name": "leb128fmt.sliceProof.u128_reader_first",
+      "module": "ProofsUIntSliceDecode",
+      "scope": "initial terminator and empty suffix"
+    },
+    {
+      "name": "leb128fmt.sliceProof.u128_reader_oversize",
+      "module": "ProofsUIntSliceDecode",
+      "scope": "oversize model assertion"
+    },
+    {
+      "name": "leb128fmt.sliceProof.u8_fixed_spec",
+      "module": "ProofsUIntFixedWrite",
+      "scope": "public-model",
+      "precondition": "T = u8 and 1 <= BITS <= 8 and initial cursor <= buffer length"
+    },
+    {
+      "name": "leb128fmt_error_defaults.assert_receiver_is_total_eq_spec",
+      "module": "ProofsErrorDefaultsHarness",
+      "scope": "public-model"
+    },
+    {
+      "name": "leb128fmt_error_defaults.description_spec",
+      "module": "ProofsErrorDefaultsHarness",
+      "scope": "public-model"
+    },
+    {
+      "name": "leb128fmt.sliceProof.u8_reader_small_width",
+      "module": "ProofsUIntSliceDecode",
+      "scope": "public-model",
+      "precondition": "T = u8 and BITS < 7"
+    },
+    {
+      "name": "leb128fmt.sliceProof.u16_reader_small_width",
+      "module": "ProofsUIntSliceDecode",
+      "scope": "public-model",
+      "precondition": "T = u16 and BITS < 7"
+    },
+    {
+      "name": "leb128fmt.sliceProof.u32_reader_small_width",
+      "module": "ProofsUIntSliceDecode",
+      "scope": "public-model",
+      "precondition": "T = u32 and BITS < 7"
+    },
+    {
+      "name": "leb128fmt.sliceProof.u64_reader_small_width",
+      "module": "ProofsUIntSliceDecode",
+      "scope": "public-model",
+      "precondition": "T = u64 and BITS < 7"
+    },
+    {
+      "name": "leb128fmt.sliceProof.u128_reader_small_width",
+      "module": "ProofsUIntSliceDecode",
+      "scope": "public-model",
+      "precondition": "T = u128 and BITS < 7"
+    },
+    {
+      "name": "leb128fmt.sliceProof.signed_writers_reject",
+      "module": "ProofsSignedWriterGuards",
+      "scope": "conditional generic writer guard"
+    },
+    {
+      "name": "leb128fmt.sliceProof.signed_fixed_writer_short",
+      "module": "ProofsSignedWriterGuards",
+      "scope": "conditional generic writer guard"
+    },
+    {
+      "name": "leb128fmt.sliceProof.signed_shortest_writer_full",
+      "module": "ProofsSignedWriterGuards",
+      "scope": "conditional generic writer guard"
+    },
+    {
+      "name": "leb128fmt.sliceProof.encode_sint_slice_spec",
+      "module": "ProofsSIntSliceEncode",
+      "scope": "conditional generic writer algorithm"
+    },
+    {
+      "name": "leb128fmt.sliceProof.encode_fixed_sint_slice_spec",
+      "module": "ProofsSIntFixedWrite",
+      "scope": "conditional generic writer algorithm"
+    },
+    {
+      "name": "leb128fmt.sliceProof.signed_fixed_slice_spec",
+      "module": "ProofsSIntFixedWrite",
+      "scope": "conditional generic writer algorithm"
+    },
+    {
+      "name": "leb128fmt.writerProof.writer_max_len_eq",
+      "module": "ProofsConcreteUnsignedWriters",
+      "scope": "external helper body correspondence"
+    },
+    {
+      "name": "leb128fmt.writerProof.u16_writer_spec",
+      "module": "ProofsConcreteUnsignedWriters",
+      "scope": "public-model",
+      "precondition": "T = u16 and BITS <= 16 and initial cursor <= buffer length"
+    },
+    {
+      "name": "leb128fmt.writerProof.u32_writer_spec",
+      "module": "ProofsConcreteUnsignedWriters",
+      "scope": "public-model",
+      "precondition": "T = u32 and BITS <= 32 and initial cursor <= buffer length"
+    },
+    {
+      "name": "leb128fmt.writerProof.u64_writer_spec",
+      "module": "ProofsConcreteUnsignedWriters",
+      "scope": "public-model",
+      "precondition": "T = u64 and BITS <= 64 and initial cursor <= buffer length"
+    },
+    {
+      "name": "leb128fmt.writerProof.u128_writer_spec",
+      "module": "ProofsConcreteUnsignedWriters",
+      "scope": "public-model",
+      "precondition": "T = u128 and BITS <= 128 and initial cursor <= buffer length"
+    },
+    {
+      "name": "leb128fmt.writerProof.u16_fixed_spec",
+      "module": "ProofsConcreteUnsignedWriters",
+      "scope": "public-model",
+      "precondition": "T = u16 and 1 <= BITS <= 16 and initial cursor <= buffer length"
+    },
+    {
+      "name": "leb128fmt.writerProof.u32_fixed_spec",
+      "module": "ProofsConcreteUnsignedWriters",
+      "scope": "public-model",
+      "precondition": "T = u32 and 1 <= BITS <= 32 and initial cursor <= buffer length"
+    },
+    {
+      "name": "leb128fmt.writerProof.u64_fixed_spec",
+      "module": "ProofsConcreteUnsignedWriters",
+      "scope": "public-model",
+      "precondition": "T = u64 and 1 <= BITS <= 64 and initial cursor <= buffer length"
+    },
+    {
+      "name": "leb128fmt.writerProof.u128_fixed_spec",
+      "module": "ProofsConcreteUnsignedWriters",
+      "scope": "public-model",
+      "precondition": "T = u128 and 1 <= BITS <= 128 and initial cursor <= buffer length"
+    },
+    {
+      "name": "leb128fmt_error_observers.source_is_none_spec",
+      "module": "ProofsErrorObservers",
+      "scope": "actual-call result discriminant"
+    },
+    {
+      "name": "leb128fmt_error_observers.cause_is_none_spec",
+      "module": "ProofsErrorObservers",
+      "scope": "actual-call result discriminant"
+    },
+    {
+      "name": "leb128fmt_writer_model.i8_writer_spec",
+      "module": "ProofsConcreteSignedWriters",
+      "scope": "public-model",
+      "precondition": "T = i8 and initial cursor <= buffer length"
+    },
+    {
+      "name": "leb128fmt_writer_model.i16_writer_spec",
+      "module": "ProofsConcreteSignedWriters",
+      "scope": "public-model",
+      "precondition": "T = i16 and initial cursor <= buffer length"
+    },
+    {
+      "name": "leb128fmt_writer_model.i32_writer_spec",
+      "module": "ProofsConcreteSignedWriters",
+      "scope": "public-model",
+      "precondition": "T = i32 and initial cursor <= buffer length"
+    },
+    {
+      "name": "leb128fmt_writer_model.i64_writer_spec",
+      "module": "ProofsConcreteSignedWriters",
+      "scope": "public-model",
+      "precondition": "T = i64 and initial cursor <= buffer length"
+    },
+    {
+      "name": "leb128fmt_writer_model.i128_writer_spec",
+      "module": "ProofsConcreteSignedWriters",
+      "scope": "public-model",
+      "precondition": "T = i128 and initial cursor <= buffer length"
+    },
+    {
+      "name": "leb128fmt_writer_model.i8_fixed_spec",
+      "module": "ProofsConcreteSignedWriters",
+      "scope": "public-model",
+      "precondition": "T = i8 and initial cursor <= buffer length and 1 <= BITS <= 8 and a guard-accepted value fits the fixed groups when capacity is sufficient"
+    },
+    {
+      "name": "leb128fmt_writer_model.i16_fixed_spec",
+      "module": "ProofsConcreteSignedWriters",
+      "scope": "public-model",
+      "precondition": "T = i16 and initial cursor <= buffer length and 1 <= BITS <= 16 and a guard-accepted value fits the fixed groups when capacity is sufficient"
+    },
+    {
+      "name": "leb128fmt_writer_model.i32_fixed_spec",
+      "module": "ProofsConcreteSignedWriters",
+      "scope": "public-model",
+      "precondition": "T = i32 and initial cursor <= buffer length and 1 <= BITS <= 32 and a guard-accepted value fits the fixed groups when capacity is sufficient"
+    },
+    {
+      "name": "leb128fmt_writer_model.i64_fixed_spec",
+      "module": "ProofsConcreteSignedWriters",
+      "scope": "public-model",
+      "precondition": "T = i64 and initial cursor <= buffer length and 1 <= BITS <= 64 and a guard-accepted value fits the fixed groups when capacity is sufficient"
+    },
+    {
+      "name": "leb128fmt_writer_model.i128_fixed_spec",
+      "module": "ProofsConcreteSignedWriters",
+      "scope": "public-model",
+      "precondition": "T = i128 and initial cursor <= buffer length and 1 <= BITS <= 128 and a guard-accepted value fits the fixed groups when capacity is sufficient"
+    }
+  ],
+  "recorder_mappings": [
+    {
+      "api": "leb128fmt::is_last",
+      "theorem": "leb128fmt.is_last_spec"
+    },
+    {
+      "api": "leb128fmt::max_len",
+      "theorem": "leb128fmt.max_len_spec"
+    },
+    {
+      "api": "leb128fmt::encode_u32",
+      "theorem": "leb128fmt.encode_u32_spec"
+    },
+    {
+      "api": "leb128fmt::encode_fixed_u32",
+      "theorem": "leb128fmt.encode_fixed_u32_spec"
+    },
+    {
+      "api": "leb128fmt::decode_u32",
+      "theorem": "leb128fmt.decode_u32_spec"
+    },
+    {
+      "api": "leb128fmt::encode_u64",
+      "theorem": "leb128fmt.wide.encode_u64_spec"
+    },
+    {
+      "api": "leb128fmt::encode_fixed_u64",
+      "theorem": "leb128fmt.wide.encode_fixed_u64_spec"
+    },
+    {
+      "api": "leb128fmt::decode_u64",
+      "theorem": "leb128fmt.wide.decode_u64_spec"
+    },
+    {
+      "api": "leb128fmt::encode_s32",
+      "theorem": "leb128fmt.signed32.encode_s32_spec"
+    },
+    {
+      "api": "leb128fmt::encode_fixed_s32",
+      "theorem": "leb128fmt.signed32.encode_fixed_s32_spec"
+    },
+    {
+      "api": "leb128fmt::encode_s64",
+      "theorem": "leb128fmt.signed64.encode_s64_spec"
+    },
+    {
+      "api": "leb128fmt::encode_fixed_s64",
+      "theorem": "leb128fmt.signed64.encode_fixed_s64_spec"
+    },
+    {
+      "api": "leb128fmt::decode_s32",
+      "theorem": "leb128fmt.signed32.decode_s32_spec"
+    },
+    {
+      "api": "leb128fmt::decode_s64",
+      "theorem": "leb128fmt.signed64.decode_s64_spec"
+    },
+    {
+      "api": "leb128fmt::Error::is_more_bytes_needed",
+      "theorem": "leb128fmt.Error.is_more_bytes_needed_spec"
+    },
+    {
+      "api": "leb128fmt::Error::is_invalid_encoding",
+      "theorem": "leb128fmt.Error.is_invalid_encoding_spec"
+    },
+    {
+      "api": "leb128fmt::encode_uint_slice",
+      "theorem": "leb128fmt.sliceProof.u8_writer_spec"
+    },
+    {
+      "api": "leb128fmt::decode_uint_slice",
+      "theorem": "leb128fmt.sliceProof.u8_reader_spec"
+    },
+    {
+      "api": "leb128fmt::decode_uint_slice",
+      "theorem": "leb128fmt.sliceProof.u16_reader_spec"
+    },
+    {
+      "api": "leb128fmt::decode_uint_slice",
+      "theorem": "leb128fmt.sliceProof.u32_reader_spec"
+    },
+    {
+      "api": "leb128fmt::decode_uint_slice",
+      "theorem": "leb128fmt.sliceProof.u64_reader_spec"
+    },
+    {
+      "api": "leb128fmt::decode_uint_slice",
+      "theorem": "leb128fmt.sliceProof.u128_reader_spec"
+    },
+    {
+      "api": "leb128fmt::decode_sint_slice",
+      "theorem": "leb128fmt_slice_probe.i16_reader_spec"
+    },
+    {
+      "api": "leb128fmt::decode_sint_slice",
+      "theorem": "leb128fmt_slice_probe.i32_reader_spec"
+    },
+    {
+      "api": "leb128fmt::decode_sint_slice",
+      "theorem": "leb128fmt_slice_probe.i64_reader_spec"
+    },
+    {
+      "api": "leb128fmt::decode_sint_slice",
+      "theorem": "leb128fmt_slice_probe.i128_reader_spec"
+    },
+    {
+      "api": "leb128fmt::Error::clone",
+      "theorem": "leb128fmt.Error.clone_spec"
+    },
+    {
+      "api": "leb128fmt::Error::eq",
+      "theorem": "leb128fmt.Error.eq_spec"
+    },
+    {
+      "api": "leb128fmt::Error::clone_from",
+      "theorem": "leb128fmt_error_defaults.clone_from_spec"
+    },
+    {
+      "api": "leb128fmt::Error::ne",
+      "theorem": "leb128fmt_error_defaults.not_equal_spec"
+    },
+    {
+      "api": "leb128fmt::encode_fixed_uint_slice",
+      "theorem": "leb128fmt.sliceProof.u8_fixed_spec"
+    },
+    {
+      "api": "leb128fmt::Error::assert_receiver_is_total_eq",
+      "theorem": "leb128fmt_error_defaults.assert_receiver_is_total_eq_spec"
+    },
+    {
+      "api": "leb128fmt::Error::description",
+      "theorem": "leb128fmt_error_defaults.description_spec"
+    },
+    {
+      "api": "leb128fmt::decode_uint_slice",
+      "theorem": "leb128fmt.sliceProof.u8_reader_small_width"
+    },
+    {
+      "api": "leb128fmt::decode_uint_slice",
+      "theorem": "leb128fmt.sliceProof.u16_reader_small_width"
+    },
+    {
+      "api": "leb128fmt::decode_uint_slice",
+      "theorem": "leb128fmt.sliceProof.u32_reader_small_width"
+    },
+    {
+      "api": "leb128fmt::decode_uint_slice",
+      "theorem": "leb128fmt.sliceProof.u64_reader_small_width"
+    },
+    {
+      "api": "leb128fmt::decode_uint_slice",
+      "theorem": "leb128fmt.sliceProof.u128_reader_small_width"
+    },
+    {
+      "api": "leb128fmt::encode_uint_slice",
+      "theorem": "leb128fmt.writerProof.u16_writer_spec"
+    },
+    {
+      "api": "leb128fmt::encode_uint_slice",
+      "theorem": "leb128fmt.writerProof.u32_writer_spec"
+    },
+    {
+      "api": "leb128fmt::encode_uint_slice",
+      "theorem": "leb128fmt.writerProof.u64_writer_spec"
+    },
+    {
+      "api": "leb128fmt::encode_uint_slice",
+      "theorem": "leb128fmt.writerProof.u128_writer_spec"
+    },
+    {
+      "api": "leb128fmt::encode_fixed_uint_slice",
+      "theorem": "leb128fmt.writerProof.u16_fixed_spec"
+    },
+    {
+      "api": "leb128fmt::encode_fixed_uint_slice",
+      "theorem": "leb128fmt.writerProof.u32_fixed_spec"
+    },
+    {
+      "api": "leb128fmt::encode_fixed_uint_slice",
+      "theorem": "leb128fmt.writerProof.u64_fixed_spec"
+    },
+    {
+      "api": "leb128fmt::encode_fixed_uint_slice",
+      "theorem": "leb128fmt.writerProof.u128_fixed_spec"
+    },
+    {
+      "api": "leb128fmt::Error::source",
+      "theorem": "leb128fmt_error_observers.source_is_none_spec"
+    },
+    {
+      "api": "leb128fmt::Error::cause",
+      "theorem": "leb128fmt_error_observers.cause_is_none_spec"
+    },
+    {
+      "api": "leb128fmt::encode_sint_slice",
+      "theorem": "leb128fmt_writer_model.i8_writer_spec"
+    },
+    {
+      "api": "leb128fmt::encode_sint_slice",
+      "theorem": "leb128fmt_writer_model.i16_writer_spec"
+    },
+    {
+      "api": "leb128fmt::encode_sint_slice",
+      "theorem": "leb128fmt_writer_model.i32_writer_spec"
+    },
+    {
+      "api": "leb128fmt::encode_sint_slice",
+      "theorem": "leb128fmt_writer_model.i64_writer_spec"
+    },
+    {
+      "api": "leb128fmt::encode_sint_slice",
+      "theorem": "leb128fmt_writer_model.i128_writer_spec"
+    },
+    {
+      "api": "leb128fmt::encode_fixed_sint_slice",
+      "theorem": "leb128fmt_writer_model.i8_fixed_spec"
+    },
+    {
+      "api": "leb128fmt::encode_fixed_sint_slice",
+      "theorem": "leb128fmt_writer_model.i16_fixed_spec"
+    },
+    {
+      "api": "leb128fmt::encode_fixed_sint_slice",
+      "theorem": "leb128fmt_writer_model.i32_fixed_spec"
+    },
+    {
+      "api": "leb128fmt::encode_fixed_sint_slice",
+      "theorem": "leb128fmt_writer_model.i64_fixed_spec"
+    },
+    {
+      "api": "leb128fmt::encode_fixed_sint_slice",
+      "theorem": "leb128fmt_writer_model.i128_fixed_spec"
+    }
+  ],
+  "coverage": [
+    {
+      "api": "is_last",
+      "status": "unchanged-release-body",
+      "theorem": "leb128fmt.is_last_spec"
+    },
+    {
+      "api": "max_len",
+      "status": "unchanged-release-body",
+      "theorem": "leb128fmt.max_len_spec"
+    },
+    {
+      "api": "encode_u32",
+      "status": "unchanged-release-body",
+      "theorem": "leb128fmt.encode_u32_spec"
+    },
+    {
+      "api": "encode_fixed_u32",
+      "status": "unchanged-release-body",
+      "theorem": "leb128fmt.encode_fixed_u32_spec"
+    },
+    {
+      "api": "decode_u32",
+      "status": "unchanged-release-body",
+      "theorem": "leb128fmt.decode_u32_spec"
+    },
+    {
+      "api": "encode_u64",
+      "status": "unchanged-release-body",
+      "theorem": "leb128fmt.wide.encode_u64_spec"
+    },
+    {
+      "api": "encode_fixed_u64",
+      "status": "unchanged-release-body",
+      "theorem": "leb128fmt.wide.encode_fixed_u64_spec"
+    },
+    {
+      "api": "decode_u64",
+      "status": "unchanged-release-body",
+      "theorem": "leb128fmt.wide.decode_u64_spec"
+    },
+    {
+      "api": "encode_s32",
+      "status": "unchanged-release-body",
+      "theorem": "leb128fmt.signed32.encode_s32_spec"
+    },
+    {
+      "api": "encode_fixed_s32",
+      "status": "unchanged-release-body",
+      "theorem": "leb128fmt.signed32.encode_fixed_s32_spec"
+    },
+    {
+      "api": "decode_s32",
+      "status": "unchanged-release-body",
+      "theorem": "leb128fmt.signed32.decode_s32_spec"
+    },
+    {
+      "api": "encode_s64",
+      "status": "unchanged-release-body",
+      "theorem": "leb128fmt.signed64.encode_s64_spec"
+    },
+    {
+      "api": "encode_fixed_s64",
+      "status": "unchanged-release-body",
+      "theorem": "leb128fmt.signed64.encode_fixed_s64_spec"
+    },
+    {
+      "api": "decode_s64",
+      "status": "unchanged-release-body",
+      "theorem": "leb128fmt.signed64.decode_s64_spec"
+    },
+    {
+      "api": "encode_uint_slice",
+      "status": "checked concrete writer contract for all supported unsigned primitives",
+      "theorems": [
+        "leb128fmt.sliceProof.u8_writer_spec",
+        "leb128fmt.writerProof.u16_writer_spec",
+        "leb128fmt.writerProof.u32_writer_spec",
+        "leb128fmt.writerProof.u64_writer_spec",
+        "leb128fmt.writerProof.u128_writer_spec"
+      ]
+    },
+    {
+      "api": "encode_fixed_uint_slice",
+      "status": "checked concrete writer contract for all supported unsigned primitives",
+      "theorems": [
+        "leb128fmt.sliceProof.u8_fixed_spec",
+        "leb128fmt.writerProof.u16_fixed_spec",
+        "leb128fmt.writerProof.u32_fixed_spec",
+        "leb128fmt.writerProof.u64_fixed_spec",
+        "leb128fmt.writerProof.u128_fixed_spec"
+      ]
+    },
+    {
+      "api": "decode_uint_slice",
+      "status": "checked exact release-model behavior for every supported unsigned primitive, width and cursor; oversized assertions and small-width shift failures characterized separately from successful returns",
+      "theorems": [
+        "leb128fmt.sliceProof.u8_reader_spec",
+        "leb128fmt.sliceProof.u16_reader_spec",
+        "leb128fmt.sliceProof.u32_reader_spec",
+        "leb128fmt.sliceProof.u64_reader_spec",
+        "leb128fmt.sliceProof.u128_reader_spec",
+        "leb128fmt.sliceProof.u8_reader_small_width",
+        "leb128fmt.sliceProof.u16_reader_small_width",
+        "leb128fmt.sliceProof.u32_reader_small_width",
+        "leb128fmt.sliceProof.u64_reader_small_width",
+        "leb128fmt.sliceProof.u128_reader_small_width"
+      ]
+    },
+    {
+      "api": "encode_sint_slice",
+      "status": "checked concrete writer contract for all supported signed primitives",
+      "probe_config": "extraction-signed-writers.json",
+      "support_theorems": [
+        "leb128fmt.sliceProof.signed_writers_reject",
+        "leb128fmt.sliceProof.signed_shortest_writer_full",
+        "leb128fmt.sliceProof.encode_sint_slice_spec"
+      ],
+      "theorems": [
+        "leb128fmt_writer_model.i8_writer_spec",
+        "leb128fmt_writer_model.i16_writer_spec",
+        "leb128fmt_writer_model.i32_writer_spec",
+        "leb128fmt_writer_model.i64_writer_spec",
+        "leb128fmt_writer_model.i128_writer_spec"
+      ]
+    },
+    {
+      "api": "encode_fixed_sint_slice",
+      "status": "checked concrete writer contract for all supported signed primitives; group fit required for guard-accepted values when capacity is sufficient",
+      "probe_config": "extraction-signed-writers.json",
+      "support_theorems": [
+        "leb128fmt.sliceProof.signed_writers_reject",
+        "leb128fmt.sliceProof.signed_fixed_writer_short",
+        "leb128fmt.sliceProof.encode_fixed_sint_slice_spec",
+        "leb128fmt.sliceProof.signed_fixed_slice_spec"
+      ],
+      "theorems": [
+        "leb128fmt_writer_model.i8_fixed_spec",
+        "leb128fmt_writer_model.i16_fixed_spec",
+        "leb128fmt_writer_model.i32_fixed_spec",
+        "leb128fmt_writer_model.i64_fixed_spec",
+        "leb128fmt_writer_model.i128_fixed_spec"
+      ]
+    },
+    {
+      "api": "decode_sint_slice",
+      "status": "checked release behavior for every supported signed primitive at BITS <= storage width; oversized assertion audited separately",
+      "theorems": [
+        "leb128fmt_slice_probe.i16_reader_spec",
+        "leb128fmt_slice_probe.i32_reader_spec",
+        "leb128fmt_slice_probe.i64_reader_spec",
+        "leb128fmt_slice_probe.i128_reader_spec"
+      ]
+    },
+    {
+      "api": "six exported array codec macros",
+      "status": "arbitrary invocations excluded; concrete release expansions tracked separately"
+    },
+    {
+      "api": "Error::is_more_bytes_needed",
+      "status": "unchanged-release-body",
+      "theorem": "leb128fmt.Error.is_more_bytes_needed_spec"
+    },
+    {
+      "api": "Error::is_invalid_encoding",
+      "status": "unchanged-release-body",
+      "theorem": "leb128fmt.Error.is_invalid_encoding_spec"
+    },
+    {
+      "api": "Error::clone",
+      "status": "checked selected release trait implementation",
+      "theorem": "leb128fmt.Error.clone_spec"
+    },
+    {
+      "api": "Error::eq",
+      "status": "checked selected release trait implementation",
+      "theorem": "leb128fmt.Error.eq_spec"
+    },
+    {
+      "api": "Error::clone_from",
+      "status": "checked inherited standard default via the release trait implementation",
+      "theorem": "leb128fmt_error_defaults.clone_from_spec"
+    },
+    {
+      "api": "Error::ne",
+      "status": "checked inherited standard default via the release trait implementation",
+      "theorem": "leb128fmt_error_defaults.not_equal_spec"
+    },
+    {
+      "api": "UInt::BITS",
+      "status": "checked for all supported primitives",
+      "theorems": [
+        "leb128fmt.U8.uint_bits_spec",
+        "leb128fmt.U16.uint_bits_spec",
+        "leb128fmt.U32.uint_bits_spec",
+        "leb128fmt.U64.uint_bits_spec",
+        "leb128fmt.U128.uint_bits_spec"
+      ]
+    },
+    {
+      "api": "SInt::BITS",
+      "status": "checked for all supported primitives",
+      "theorems": [
+        "leb128fmt.I8.sint_bits_spec",
+        "leb128fmt.I16.sint_bits_spec",
+        "leb128fmt.I32.sint_bits_spec",
+        "leb128fmt.I64.sint_bits_spec",
+        "leb128fmt.I128.sint_bits_spec"
+      ]
+    },
+    {
+      "api": "Error::fmt (Display)",
+      "status": "concrete formatter extraction blocked by dynamic types; pinned formatter model omits output and writer failure"
+    },
+    {
+      "api": "Error::fmt (Debug)",
+      "status": "concrete formatter extraction blocked by dynamic types; pinned formatter model omits output and writer failure"
+    },
+    {
+      "api": "Error::source",
+      "status": "actual optimized-MIR call observer proves absence; direct dynamic-result translation retains formatter or trait-field limitation",
+      "theorem": "leb128fmt_error_observers.source_is_none_spec"
+    },
+    {
+      "api": "Error::assert_receiver_is_total_eq",
+      "status": "checked deprecated stable inherited Eq default",
+      "theorem": "leb128fmt_error_defaults.assert_receiver_is_total_eq_spec"
+    },
+    {
+      "api": "private::Sealed",
+      "status": "marker trait with no runtime methods"
+    },
+    {
+      "api": "Eq::assert_fields_are_eq",
+      "status": "unstable compiler derive hook outside the stable callable API"
+    },
+    {
+      "api": "Error::description",
+      "status": "checked deprecated stable inherited Error default",
+      "theorem": "leb128fmt_error_defaults.description_spec"
+    },
+    {
+      "api": "Error::cause",
+      "status": "actual optimized-MIR call observer proves absence; direct dynamic-result translation retains formatter or trait-field limitation",
+      "theorem": "leb128fmt_error_observers.cause_is_none_spec"
+    },
+    {
+      "api": "Error::provide and Error::type_id",
+      "status": "unstable standard trait methods outside the stable callable API"
+    }
+  ]
+}

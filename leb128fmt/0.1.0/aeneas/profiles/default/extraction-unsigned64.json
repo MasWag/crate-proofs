@@ -1,0 +1,1 @@
+{"entries": ["crate::encode_u64", "crate::encode_fixed_u64", "crate::decode_u64"], "llbc": "unsigned64.llbc", "local_scope": {"opaque_crate": true, "include": ["crate::encode_u64", "crate::encode_fixed_u64", "crate::decode_u64"]}, "models": {"Unsigned64.lean": ["encode_u64", "encode_fixed_u64", "decode_u64"]}, "remove_unused_clauses": true}

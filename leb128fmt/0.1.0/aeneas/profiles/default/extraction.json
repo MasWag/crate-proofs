@@ -1,0 +1,30 @@
+{
+  "entries": [
+    "crate::is_last",
+    "crate::encode_u32",
+    "crate::decode_u32",
+    "crate::encode_fixed_u32",
+    "crate::max_len"
+  ],
+  "llbc": "leb_core.llbc",
+  "local_scope": {
+    "opaque_crate": true,
+    "include": [
+      "crate::is_last",
+      "crate::encode_u32",
+      "crate::decode_u32",
+      "crate::encode_fixed_u32",
+      "crate::max_len"
+    ]
+  },
+  "models": {
+    "LebCore.lean": [
+      "is_last",
+      "encode_u32",
+      "decode_u32",
+      "encode_fixed_u32",
+      "max_len"
+    ]
+  },
+  "remove_unused_clauses": true
+}

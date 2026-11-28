@@ -1,0 +1,49 @@
+{
+  "entries": [
+    "crate::Error::is_more_bytes_needed",
+    "crate::Error::is_invalid_encoding"
+  ],
+  "foreign_impl_entries": [
+    "{impl core::clone::Clone for crate::Error}::clone",
+    "{impl core::cmp::PartialEq for crate::Error}::eq"
+  ],
+  "llbc": "leb_errors.llbc",
+  "local_scope": {
+    "opaque_crate": true,
+    "include": [
+      "crate::_::is_more_bytes_needed",
+      "crate::_::is_invalid_encoding",
+      "crate::_::clone",
+      "crate::_::eq",
+      "crate::Error",
+      "crate::InnerError",
+      "crate::UInt",
+      "crate::SInt",
+      "crate::private::Sealed",
+      "crate::_::BITS"
+    ]
+  },
+  "models": {
+    "LebErrors.lean": [
+      "Error.is_more_bytes_needed",
+      "Error.is_invalid_encoding",
+      "Error.Insts.CoreCloneClone.clone",
+      "Error.Insts.CoreCmpPartialEqError.eq",
+      "U8.Insts.Leb128fmtUInt.BITS",
+      "U16.Insts.Leb128fmtUInt.BITS",
+      "U32.Insts.Leb128fmtUInt.BITS",
+      "U64.Insts.Leb128fmtUInt.BITS",
+      "U128.Insts.Leb128fmtUInt.BITS",
+      "I8.Insts.Leb128fmtSInt.BITS",
+      "I16.Insts.Leb128fmtSInt.BITS",
+      "I32.Insts.Leb128fmtSInt.BITS",
+      "I64.Insts.Leb128fmtSInt.BITS",
+      "I128.Insts.Leb128fmtSInt.BITS"
+    ]
+  },
+  "remove_unused_clauses": true,
+  "impl_entries": [
+    "{impl crate::UInt for _}::BITS",
+    "{impl crate::SInt for _}::BITS"
+  ]
+}

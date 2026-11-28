@@ -1,0 +1,16 @@
+{
+  "checked_date": "2026-11-28",
+  "registry_url": "https://index.crates.io/le/b1/leb128fmt",
+  "registry_response_sha256": "3df8898e7bd40faae5672ad6617986900d6134fd27f640e57103f37ca5ab447a",
+  "latest_non_yanked": "0.1.0",
+  "versions": [
+    "0.1.0"
+  ],
+  "api_attempt": "https://crates.io/api/v1/crates/leb128fmt returned HTTP 403; used official sparse registry index",
+  "upstream_template_review": {
+    "tree": "35fd7e9fe96b944f529aba53859330fe0b3b3903",
+    "url": "https://api.github.com/repos/bluk/leb128fmt/git/trees/HEAD?recursive=1",
+    "result": "No issue templates or contribution instructions in tree",
+    "issue_search": "Connected GitHub issue search repo:bluk/leb128fmt returned no issues; no issue filed"
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "supported_targets": [
+    "aarch64-apple-darwin"
+  ],
+  "native": [
+    [
+      "cargo",
+      "test",
+      "--locked"
+    ],
+    [
+      "cargo",
+      "test",
+      "--locked",
+      "--release"
+    ],
+    [
+      "cargo",
+      "test",
+      "--locked",
+      "--no-default-features"
+    ],
+    [
+      "cargo",
+      "test",
+      "--locked",
+      "--all-features"
+    ]
+  ],
+  "additional_checks": [
+    [
+      "python3.11",
+      "scripts/check-cargo-context.py",
+      "before"
+    ],
+    [
+      "bash",
+      "scripts/check-native-observations.sh"
+    ],
+    [
+      "bash",
+      "scripts/check-extraction-probes.sh"
+    ],
+    [
+      "bash",
+      "scripts/check-slice-conversion-boundary.sh"
+    ],
+    [
+      "bash",
+      "scripts/check-error-trait-boundaries.sh"
+    ],
+    [
+      "bash",
+      "scripts/check-concrete-writer-models.sh"
+    ],
+    [
+      "bash",
+      "scripts/check-error-observers.sh"
+    ]
+  ],
+  "extractions": [
+    {
+      "config": "extraction.json",
+      "models": {
+        "LebCore.lean": "proofs/Generated/@TARGET@/LebCore.lean"
+      }
+    },
+    {
+      "config": "extraction-unsigned64.json",
+      "models": {
+        "Unsigned64.lean": "proofs/Generated/@TARGET@/Unsigned64.lean"
+      }
+    },
+    {
+      "config": "extraction-signed32.json",
+      "models": {
+        "Signed32.lean": "proofs/Generated/@TARGET@/Signed32.lean"
+      }
+    },
+    {
+      "config": "extraction-signed64.json",
+      "models": {
+        "Signed64.lean": "proofs/Generated/@TARGET@/Signed64.lean"
+      }
+    },
+    {
+      "config": "extraction-errors.json",
+      "models": {
+        "LebErrors.lean": "proofs/Generated/@TARGET@/LebErrors.lean"
+      }
+    },
+    {
+      "config": "extraction-slices.json",
+      "cwd": "verification/slice-instantiations",
+      "models": {
+        "SliceConcrete.lean": "proofs/Generated/@TARGET@/SliceConcrete.lean"
+      }
+    },
+    {
+      "config": "extraction-error-defaults.json",
+      "cwd": "verification/harness/error-defaults",
+      "models": {
+        "LebErrorDefaults.lean": "proofs/Generated/@TARGET@/LebErrorDefaults.lean"
+      }
+    },
+    {
+      "config": "extraction-signed-writers.json",
+      "models": {
+        "SintSlices.lean": "proofs/Generated/@TARGET@/SintSlices.lean"
+      }
+    }
+  ],
+  "inventory": "theorems.json",
+  "report": "proofs.toml",
+  "lean_dir": "proofs",
+  "post_checks": [
+    [
+      "python3.11",
+      "scripts/check-cargo-context.py",
+      "after"
+    ]
+  ]
+}

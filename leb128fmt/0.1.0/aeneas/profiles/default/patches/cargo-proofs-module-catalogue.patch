@@ -1,0 +1,614 @@
+--- a/cli/src/aeneas.rs
++++ b/cli/src/aeneas.rs
+@@ -1,4 +1,5 @@
+ //! Resolves committed Aeneas manifests and checks Lean propositions and their axioms.
++mod rustdoc;
+ use crate::{
+     config::{CreusotTarget, Project, Tool},
+     scan,
+@@ -7,7 +8,7 @@
+ use serde::{Deserialize, Serialize};
+ use serde_json::{json, Value};
+ use std::{
+-    collections::BTreeSet,
++    collections::{BTreeMap, BTreeSet},
+     fs,
+     io::Write,
+     path::{Path, PathBuf},
+@@ -34,6 +35,9 @@
+     }
+     if let Some(path) = &tool.translation_manifest {
+         value["translation_manifest"] = json!(path);
++    }
++    if let Some(toolchain) = &tool.rustdoc_toolchain {
++        value["rustdoc_toolchain"] = json!(toolchain);
+     }
+     Ok(value)
+ }
+@@ -84,6 +88,22 @@
+         ensure!(
+             safe_relative(path),
+             "translation_manifest must stay within lean_dir"
++        );
++    }
++    if let Some(toolchain) = &tool.rustdoc_toolchain {
++        let dated_nightly = toolchain.strip_prefix("nightly-").is_some_and(|date| {
++            date.len() == 10
++                && date.bytes().enumerate().all(|(i, b)| {
++                    if matches!(i, 4 | 7) {
++                        b == b'-'
++                    } else {
++                        b.is_ascii_digit()
++                    }
++                })
++        });
++        ensure!(
++            dated_nightly,
++            "rustdoc_toolchain must be a pinned nightly-YYYY-MM-DD"
+         );
+     }
+     let mut theorems = BTreeSet::new();
+@@ -141,6 +161,38 @@
+     Ok(())
+ }
+ 
++fn crate_relative_api<'a>(lib_name: &str, api: &'a str) -> &'a str {
++    api.strip_prefix(lib_name)
++        .and_then(|suffix| suffix.strip_prefix("::"))
++        .unwrap_or(api)
++}
++
++fn compiler_catalogue(project: &Project, tool: &Tool) -> Result<Option<rustdoc::Catalogue>> {
++    tool.rustdoc_toolchain
++        .as_deref()
++        .map(|toolchain| rustdoc::Catalogue::capture(project, toolchain))
++        .transpose()
++}
++
++fn resolve_callables(
++    project: &Project,
++    public: &[scan::Contract],
++    catalogue: Option<&rustdoc::Catalogue>,
++    api: &str,
++) -> Result<Vec<scan::Contract>> {
++    let found: Vec<_> = public
++        .iter()
++        .filter(|c| c.api_paths.iter().any(|p| p == api))
++        .cloned()
++        .collect();
++    if found.is_empty() {
++        if let Some(catalogue) = catalogue {
++            return catalogue.resolve(project, api);
++        }
++    }
++    Ok(found)
++}
++
+ pub fn discover(project: &Project, tool: &Tool) -> Result<Vec<scan::Contract>> {
+     validate(tool)?;
+     ensure!(
+@@ -151,13 +203,12 @@
+     pinned_version(&dir, &tool.version)?;
+     // No Creusot attributes or Kani harnesses are inferred for Aeneas.
+     let public = scan::public_contracts(project, false, CreusotTarget::All)?;
++    let catalogue = compiler_catalogue(project, tool)?;
+     tool.proofs
+         .iter()
+         .map(|proof| {
+-            let found: Vec<_> = public
+-                .iter()
+-                .filter(|c| c.api_paths.contains(&proof.api))
+-                .collect();
++            let api = crate_relative_api(&project.lib_name, &proof.api);
++            let found = resolve_callables(project, &public, catalogue.as_ref(), api)?;
+             ensure!(
+                 found.len() == 1,
+                 "Aeneas API {} must resolve to exactly one public Rust callable",
+@@ -207,7 +258,61 @@
+         .collect()
+ }
+ 
++fn proof_batches(tool: &Tool) -> Vec<Tool> {
++    // Manifest discovery starts from the declared module closure. Explicit
++    // mappings, in contrast, can be checked in independent environments.
++    if !tool.proof_modules.is_empty() || tool.proofs.is_empty() {
++        return vec![tool.clone()];
++    }
++    let mut groups = BTreeMap::<&str, Vec<Proof>>::new();
++    for proof in &tool.proofs {
++        groups.entry(&proof.module).or_default().push(proof.clone());
++    }
++    groups
++        .into_values()
++        .map(|proofs| Tool {
++            proofs,
++            ..tool.clone()
++        })
++        .collect()
++}
++
++fn isolated_sources(mut programs: Vec<String>) -> String {
++    if programs.len() == 1 {
++        return programs.pop().unwrap();
++    }
++    let programs = programs
++        .iter()
++        .map(|program| serde_json::to_string(program).expect("serialize Lean source"))
++        .collect::<Vec<_>>()
++        .join(",\n    ");
++    // The recorder and the public replay both use lake env lean --stdin.
++    // Each child Lean process inherits that same pinned Lake environment.
++    format!(
++        r#"import Lean
++open Lean Elab Command
++run_cmd do
++  for program in #[
++    {programs}] do
++    let output ← liftIO <| IO.Process.output {{cmd := "lean", args := #["--stdin"]}} (some program)
++    liftIO <| IO.print output.stdout
++    liftIO <| IO.eprint output.stderr
++    unless output.exitCode == 0 do
++      throwError "Isolated Lean check failed"
++"#
++    )
++}
++
+ pub fn audit_source(tool: &Tool) -> String {
++    isolated_sources(
++        proof_batches(tool)
++            .iter()
++            .map(single_audit_source)
++            .collect(),
++    )
++}
++
++fn single_audit_source(tool: &Tool) -> String {
+     let mut source = String::from("import Lean\n");
+     for module in tool
+         .proofs
+@@ -477,7 +582,12 @@
+     } else {
+         None
+     };
+-    let mut source = probe_source(tool, &modules);
++    let batches = proof_batches(tool);
++    let mut programs: Vec<_> = batches
++        .iter()
++        .map(|batch| probe_source(batch, &modules))
++        .collect();
++    let source = isolated_sources(programs.clone());
+     let mut child = Command::new("lake")
+         .args(["env", "lean", "--stdin"])
+         .current_dir(&dir)
+@@ -499,6 +609,10 @@
+         "Lean formal extraction failed:\n{stdout}\n{stderr}"
+     );
+     let public = scan::public_contracts(project, false, CreusotTarget::All)?;
++    let catalogue = compiler_catalogue(project, tool)?;
++    if let Some(catalogue) = &catalogue {
++        stderr.push_str(&format!("{}\n", catalogue.observation));
++    }
+     let mut candidates = std::collections::BTreeMap::<String, Vec<crate::record::Contract>>::new();
+     let mut observed = BTreeSet::new();
+     for line in stdout
+@@ -521,7 +635,7 @@
+                 formal["module"] == proof.module,
+                 "Explicit theorem module mismatch: {theorem}"
+             );
+-            proof.api.clone()
++            crate_relative_api(&project.lib_name, &proof.api).to_owned()
+         } else {
+             let head = formal["program_head"].as_str().unwrap_or("");
+             let Some((manifest, sha)) = &manifest else {
+@@ -571,10 +685,7 @@
+             provenance = json!({"path":manifest_path.to_string_lossy(),"sha256":sha,"aeneas_version":manifest["aeneas_version"],"charon_version":manifest["charon_version"],"entry":entry});
+             api
+         };
+-        let found: Vec<_> = public
+-            .iter()
+-            .filter(|c| c.api_paths.contains(&api))
+-            .collect();
++        let found = resolve_callables(project, &public, catalogue.as_ref(), &api)?;
+         if found.len() != 1 {
+             ensure!(
+                 manual.is_none(),
+@@ -696,18 +807,96 @@
+             .collect(),
+         ..Tool::default()
+     };
+-    source.push_str(
+-        audit_source(&replay)
+-            .split_once("open Lean Elab Command\n")
+-            .unwrap()
+-            .1,
+-    );
++    for (batch, program) in batches.iter().zip(&mut programs) {
++        let checked = Tool {
++            proofs: replay
++                .proofs
++                .iter()
++                .filter(|proof| {
++                    !batch.proof_modules.is_empty()
++                        || batch
++                            .proofs
++                            .iter()
++                            .any(|original| original.theorem == proof.theorem)
++                })
++                .cloned()
++                .collect(),
++            ..Tool::default()
++        };
++        program.push_str(
++            single_audit_source(&checked)
++                .split_once("open Lean Elab Command\n")
++                .unwrap()
++                .1,
++        );
++    }
++    let source = isolated_sources(programs);
+     Ok((selected, stdout, stderr, source))
+ }
+ 
+ #[cfg(test)]
+ mod tests {
+     use super::*;
++
++    #[test]
++    #[ignore = "requires Lean 4.35.0"]
++    fn independent_lean_processes_accept_colliding_imports() {
++        let temp = tempfile::tempdir().unwrap();
++        let dir = temp.path();
++        for module in ["FixtureOne", "FixtureTwo"] {
++            fs::write(
++                dir.join(format!("{module}.lean")),
++                "def common : Nat := 3\n",
++            )
++            .unwrap();
++            let status = Command::new("lean")
++                .args(["-o", &format!("{module}.olean"), &format!("{module}.lean")])
++                .current_dir(dir)
++                .status()
++                .unwrap();
++            assert!(status.success());
++        }
++        let run = |source: &str| {
++            let mut child = Command::new("lean")
++                .arg("--stdin")
++                .current_dir(dir)
++                .env("LEAN_PATH", dir)
++                .stdin(Stdio::piped())
++                .stdout(Stdio::piped())
++                .stderr(Stdio::piped())
++                .spawn()
++                .unwrap();
++            child
++                .stdin
++                .take()
++                .unwrap()
++                .write_all(source.as_bytes())
++                .unwrap();
++            child.wait_with_output().unwrap()
++        };
++        assert!(!run("import FixtureOne\nimport FixtureTwo\n")
++            .status
++            .success());
++        let isolated = isolated_sources(vec![
++            "import FixtureOne\n#eval common".to_owned(),
++            "import FixtureTwo\n#eval common".to_owned(),
++        ]);
++        let output = run(&isolated);
++        assert!(
++            output.status.success(),
++            "{}{}",
++            String::from_utf8_lossy(&output.stdout),
++            String::from_utf8_lossy(&output.stderr)
++        );
++        assert_eq!(
++            String::from_utf8_lossy(&output.stdout)
++                .lines()
++                .filter(|line| *line == "3")
++                .count(),
++            2
++        );
++    }
++
+     #[test]
+     fn target_specific_generated_sources() {
+         let d = tempfile::tempdir().unwrap();
+--- a/cli/src/config.rs
++++ b/cli/src/config.rs
+@@ -31,7 +31,7 @@
+     #[serde(default, skip_serializing_if = "Option::is_none")]
+     pub environment: Option<String>,
+ }
+-#[derive(Default, Deserialize, Serialize)]
++#[derive(Clone, Default, Deserialize, Serialize)]
+ #[serde(deny_unknown_fields)]
+ pub struct Tool {
+     pub name: String,
+@@ -46,6 +46,8 @@
+     pub proof_modules: Vec<String>,
+     #[serde(default, skip_serializing_if = "Option::is_none")]
+     pub translation_manifest: Option<PathBuf>,
++    #[serde(default, skip_serializing_if = "Option::is_none")]
++    pub rustdoc_toolchain: Option<String>,
+ }
+ #[derive(Clone, Copy, Debug, Deserialize, Serialize, clap::ValueEnum, PartialEq, Eq)]
+ #[serde(rename_all = "lowercase")]
+@@ -74,7 +76,8 @@
+                 || (self.lean_dir.is_none()
+                     && self.proofs.is_empty()
+                     && self.proof_modules.is_empty()
+-                    && self.translation_manifest.is_none()),
++                    && self.translation_manifest.is_none()
++                    && self.rustdoc_toolchain.is_none()),
+             "lean_dir and proofs apply only to Aeneas"
+         );
+         if self.is_aeneas() {
+--- /dev/null
++++ b/cli/src/aeneas/rustdoc.rs
+@@ -0,0 +1,264 @@
++//! Resolve explicit mappings missed by the source scanner from a compiler catalogue.
++use crate::{config::Project, scan::Contract};
++use anyhow::{ensure, Context, Result};
++use serde_json::Value;
++use std::{fs, path::Path, process::Command};
++
++pub(super) struct Catalogue {
++    document: Value,
++    pub(super) observation: String,
++}
++
++impl Catalogue {
++    pub(super) fn capture(project: &Project, toolchain: &str) -> Result<Self> {
++        let target = tempfile::tempdir()?;
++        let package = project
++            .manifest
++            .parent()
++            .context("Missing package directory")?;
++        let output = Command::new("cargo")
++            .arg(format!("+{toolchain}"))
++            .args(["rustdoc", "--locked", "--lib", "--manifest-path"])
++            .arg(&project.manifest)
++            .args(["--", "-Z", "unstable-options", "--output-format", "json"])
++            .current_dir(package)
++            .env("CARGO_TARGET_DIR", target.path())
++            .output()
++            .context("Generate Rustdoc JSON with the selected nightly")?;
++        ensure!(
++            output.status.success(),
++            "Rustdoc API discovery failed: {}",
++            String::from_utf8_lossy(&output.stderr)
++        );
++        let path = target
++            .path()
++            .join("doc")
++            .join(format!("{}.json", project.lib_name));
++        let bytes = fs::read(&path).context("Read compiler-generated Rustdoc catalogue")?;
++        let document: Value = serde_json::from_slice(&bytes)?;
++        let format = document["format_version"]
++            .as_u64()
++            .context("Missing Rustdoc format version")?;
++        ensure!(
++            matches!(format, 60 | 61),
++            "Unsupported Rustdoc JSON format {format}"
++        );
++        let root = id(&document["root"]).context("Missing Rustdoc root ID")?;
++        ensure!(
++            document["index"][&root]["name"] == project.lib_name
++                && document["crate_version"] == project.version
++                && document["includes_private"] == false,
++            "Rustdoc catalogue does not match the selected public library"
++        );
++        let sha = crate::preparation::sha(&path)?;
++        Ok(Self {
++            document,
++            observation: format!(
++                "Rustdoc catalogue from {toolchain} (format {format}, SHA-256 {sha})"
++            ),
++        })
++    }
++
++    pub(super) fn resolve(&self, project: &Project, api: &str) -> Result<Vec<Contract>> {
++        let paths = self.document["paths"]
++            .as_object()
++            .context("Missing Rustdoc paths")?;
++        let index = self.document["index"]
++            .as_object()
++            .context("Missing Rustdoc index")?;
++        let package = project
++            .manifest
++            .parent()
++            .context("Missing package directory")?;
++        let mut found = vec![];
++        for (item_id, path) in paths {
++            if path["crate_id"] != 0 {
++                continue;
++            }
++            let Some(public_path) = path_string(&path["path"]) else {
++                continue;
++            };
++            let Some(relative) = public_path.strip_prefix(&format!("{}::", project.lib_name))
++            else {
++                continue;
++            };
++            let Some(item) = index
++                .get(item_id)
++                .filter(|item| item["visibility"] == "public")
++            else {
++                continue;
++            };
++            if relative == api && item["inner"]["function"].is_object() {
++                found.push(callable(package, vec![relative.to_owned()], &item["span"])?);
++            }
++
++            let Some(name) = api
++                .strip_prefix(relative)
++                .and_then(|suffix| suffix.strip_prefix("::"))
++            else {
++                continue;
++            };
++            if name.contains("::") {
++                continue;
++            }
++            let impls = ["struct", "enum", "union"]
++                .into_iter()
++                .find_map(|kind| item["inner"][kind]["impls"].as_array());
++            let Some(impls) = impls else { continue };
++            for impl_id in impls.iter().filter_map(id) {
++                let Some(implementation) = index.get(&impl_id) else {
++                    continue;
++                };
++                let imp = &implementation["inner"]["impl"];
++                let trait_ref = &imp["trait"];
++                if !trait_ref.is_object()
++                    || !trait_ref["args"].is_null()
++                    || !imp["blanket_impl"].is_null()
++                    || imp["is_synthetic"] != false
++                    || imp["is_negative"] != false
++                    || imp["for"]["resolved_path"]["args"].is_object()
++                    || id(&imp["for"]["resolved_path"]["id"]).as_deref() != Some(item_id)
++                    || !implementation["span"].is_object()
++                {
++                    continue;
++                }
++                let Some(trait_path) = id(&trait_ref["id"])
++                    .and_then(|id| paths.get(&id))
++                    .and_then(|path| path_string(&path["path"]))
++                else {
++                    continue;
++                };
++                let method = imp["items"]
++                    .as_array()
++                    .into_iter()
++                    .flatten()
++                    .filter_map(id)
++                    .filter_map(|id| index.get(&id))
++                    .find(|method| {
++                        method["name"] == name && method["inner"]["function"].is_object()
++                    });
++                let default = imp["provided_trait_methods"]
++                    .as_array()
++                    .is_some_and(|methods| methods.iter().any(|method| method == name));
++                if method.is_some() || default {
++                    let span = method
++                        .map(|method| &method["span"])
++                        .filter(|span| span.is_object())
++                        .unwrap_or(&implementation["span"]);
++                    let canonical = format!("<{public_path} as {trait_path}>::{name}");
++                    let mut api_paths = vec![canonical];
++                    if let Some(label) = trait_ref["path"].as_str() {
++                        let display = format!("<{public_path} as {label}>::{name}");
++                        if !api_paths.contains(&display) {
++                            api_paths.push(display);
++                        }
++                    }
++                    found.push(callable(package, api_paths, span)?);
++                }
++            }
++        }
++        Ok(found)
++    }
++}
++
++fn id(value: &Value) -> Option<String> {
++    value
++        .as_str()
++        .map(str::to_owned)
++        .or_else(|| value.as_u64().map(|id| id.to_string()))
++}
++
++fn path_string(path: &Value) -> Option<String> {
++    let segments = path
++        .as_array()?
++        .iter()
++        .map(Value::as_str)
++        .collect::<Option<Vec<_>>>()?;
++    Some(segments.join("::"))
++}
++
++fn callable(package: &Path, api_paths: Vec<String>, span: &Value) -> Result<Contract> {
++    let file = package
++        .join(
++            span["filename"]
++                .as_str()
++                .context("Missing Rustdoc source span")?,
++        )
++        .canonicalize()
++        .context("Resolve Rustdoc source span")?;
++    ensure!(
++        file.starts_with(package) && file.is_file(),
++        "Rustdoc source span escapes the selected package"
++    );
++    let first_line = span["begin"][0]
++        .as_u64()
++        .context("Missing Rustdoc source line")? as usize;
++    let last_line = span["end"][0]
++        .as_u64()
++        .context("Missing Rustdoc source line")? as usize;
++    Ok(Contract {
++        harness: api_paths[0].clone(),
++        api_paths,
++        file,
++        first_line,
++        last_line,
++        precondition: "true".to_owned(),
++    })
++}
++
++#[cfg(test)]
++#[test]
++#[ignore = "requires the pinned nightly Rustdoc compiler"]
++fn compiler_catalogue_resolves_expanded_functions_and_trait_defaults() {
++    let temp = tempfile::tempdir().unwrap();
++    let package = temp.path().canonicalize().unwrap();
++    fs::create_dir(package.join("src")).unwrap();
++    fs::write(
++        package.join("Cargo.toml"),
++        "[package]\nname = \"discovery-fixture\"\nversion = \"0.1.0\"\nedition = \"2021\"\n",
++    )
++    .unwrap();
++    fs::write(
++        package.join("Cargo.lock"),
++        "version = 4\n\n[[package]]\nname = \"discovery-fixture\"\nversion = \"0.1.0\"\n",
++    )
++    .unwrap();
++    fs::write(
++        package.join("src/lib.rs"),
++        r#"
++macro_rules! expose { () => { pub fn expanded() {} }; }
++expose!();
++fn private_helper() {}
++#[derive(Clone)]
++pub struct Item;
++"#,
++    )
++    .unwrap();
++    let project = Project {
++        config_override: None,
++        name: "discovery-fixture".to_owned(),
++        version: "0.1.0".to_owned(),
++        lib_name: "discovery_fixture".to_owned(),
++        manifest: package.join("Cargo.toml"),
++        root_source: package.join("src/lib.rs"),
++        features: Default::default(),
++        cfg: Default::default(),
++    };
++    let catalogue = Catalogue::capture(&project, "nightly-2026-09-17").unwrap();
++    assert_eq!(
++        catalogue.resolve(&project, "expanded").unwrap()[0].api_paths,
++        ["expanded"]
++    );
++    let default = catalogue.resolve(&project, "Item::clone_from").unwrap();
++    assert!(default[0]
++        .api_paths
++        .contains(&"<discovery_fixture::Item as core::clone::Clone>::clone_from".to_owned()));
++    assert!(catalogue
++        .resolve(&project, "private_helper")
++        .unwrap()
++        .is_empty());
++    assert!(catalogue
++        .resolve(&project, "Item::fabricated")
++        .unwrap()
++        .is_empty());
++}

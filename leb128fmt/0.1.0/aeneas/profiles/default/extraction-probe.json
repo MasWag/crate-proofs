@@ -1,0 +1,7 @@
+{
+  "entries": ["crate::encode_u32", "crate::decode_u32", "crate::encode_fixed_u32", "crate::is_last"],
+  "llbc": "leb_core.llbc",
+  "local_scope": {"opaque_crate": true, "include": ["crate::encode_u32", "crate::decode_u32", "crate::encode_fixed_u32", "crate::is_last"]},
+  "models": {"LebCore.lean": ["encode_u32", "decode_u32", "encode_fixed_u32", "is_last"]},
+  "remove_unused_clauses": true
+}

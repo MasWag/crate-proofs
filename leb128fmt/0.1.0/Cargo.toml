@@ -1,0 +1,27 @@
+[package]
+name = "leb128fmt"
+version = "0.1.0"
+authors = ["Bryant Luk <code@bryantluk.com>"]
+edition = "2021"
+rust-version = "1.56.0"
+description = "A library to encode and decode LEB128 compressed integers."
+documentation = "https://docs.rs/leb128fmt"
+readme = "README.md"
+keywords = ["leb128", "encoding", "no_std", "compression"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/bluk/leb128fmt"
+
+[lib]
+path = ".work/source/src/lib.rs"
+
+[features]
+default = ["std"]
+std = []
+alloc = []
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
+
+[workspace]
+exclude = [".work"]

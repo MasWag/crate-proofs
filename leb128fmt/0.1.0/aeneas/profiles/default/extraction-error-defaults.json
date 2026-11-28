@@ -1,0 +1,39 @@
+{
+  "entries": [
+    "crate::clone_from",
+    "crate::not_equal",
+    "crate::assert_receiver_is_total_eq",
+    "crate::description"
+  ],
+  "llbc": "leb_error_defaults.llbc",
+  "local_scope": {
+    "opaque_crate": true,
+    "include": [
+      "crate::clone_from",
+      "crate::not_equal",
+      "crate::assert_receiver_is_total_eq",
+      "crate::description"
+    ]
+  },
+  "dependency_include": [
+    "leb128fmt::Error",
+    "leb128fmt::InnerError",
+    "leb128fmt::_::clone",
+    "leb128fmt::_::eq",
+    "core::clone::Clone::clone_from",
+    "core::cmp::PartialEq::ne",
+    "core::cmp::Eq::assert_receiver_is_total_eq",
+    "core::error::Error::description"
+  ],
+  "models": {
+    "LebErrorDefaults.lean": [
+      "clone_from",
+      "not_equal",
+      "leb128fmt.Error.Insts.CoreCloneClone.clone",
+      "leb128fmt.Error.Insts.CoreCmpPartialEqError.eq",
+      "assert_receiver_is_total_eq",
+      "description"
+    ]
+  },
+  "remove_unused_clauses": true
+}
