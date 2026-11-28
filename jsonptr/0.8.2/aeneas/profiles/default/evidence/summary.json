@@ -1,0 +1,234 @@
+{
+  "acceptance_basis": "Original archived inputs; packaging does not rerun verification.",
+  "archive_sha256": "ea579e009b5b1d94224df88bab18fe67f7c0b16744560892264e148b1f3aae46",
+  "audit": {
+    "allowed_axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "checked": [
+      {
+        "module": "Proofs",
+        "name": "JsonptrProofs.validateBytes",
+        "precondition": "offset = 0 and bytes is nonempty",
+        "scope": "private-model"
+      },
+      {
+        "module": "Proofs",
+        "name": "JsonptrProofs.indexForLenUnchecked",
+        "precondition": "true",
+        "scope": "public-model"
+      },
+      {
+        "module": "Proofs",
+        "name": "JsonptrProofs.indexForLen",
+        "precondition": "true",
+        "scope": "public-model"
+      },
+      {
+        "module": "Proofs",
+        "name": "JsonptrProofs.indexForLenInclusive",
+        "precondition": "true",
+        "scope": "public-model"
+      },
+      {
+        "module": "DerivedProofs",
+        "name": "JsonptrDerivedProofs.indexEq",
+        "precondition": "true",
+        "scope": "public-model",
+        "statement": "unchanged release body; contract in DerivedSpecs"
+      },
+      {
+        "module": "DerivedProofs",
+        "name": "JsonptrDerivedProofs.indexClone",
+        "precondition": "true",
+        "scope": "public-model",
+        "statement": "unchanged release body; contract in DerivedSpecs"
+      },
+      {
+        "module": "DerivedProofs",
+        "name": "JsonptrDerivedProofs.indexCmp",
+        "precondition": "true",
+        "scope": "public-model",
+        "statement": "unchanged release body; contract in DerivedSpecs"
+      },
+      {
+        "module": "DerivedProofs",
+        "name": "JsonptrDerivedProofs.indexFrom",
+        "precondition": "true",
+        "scope": "public-model",
+        "statement": "unchanged release body; contract in DerivedSpecs"
+      },
+      {
+        "module": "DerivedProofs",
+        "name": "JsonptrDerivedProofs.oobEqClone",
+        "precondition": "true",
+        "scope": "public-model",
+        "statement": "unchanged release body; contract in DerivedSpecs"
+      },
+      {
+        "module": "DerivedProofs",
+        "name": "JsonptrDerivedProofs.ice",
+        "precondition": "true",
+        "scope": "public-model",
+        "statement": "unchanged release body; contract in DerivedSpecs"
+      },
+      {
+        "module": "DerivedProofs",
+        "name": "JsonptrDerivedProofs.invalidEncoding",
+        "precondition": "true",
+        "scope": "public-model",
+        "statement": "unchanged release body; contract in DerivedSpecs"
+      },
+      {
+        "module": "DerivedProofs",
+        "name": "JsonptrDerivedProofs.encodingErrorEq",
+        "precondition": "true",
+        "scope": "public-model",
+        "statement": "unchanged release body; contract in DerivedSpecs"
+      },
+      {
+        "module": "DerivedProofs",
+        "name": "JsonptrDerivedProofs.parseErrorEq",
+        "precondition": "true",
+        "scope": "public-model",
+        "statement": "unchanged release body; contract in DerivedSpecs"
+      },
+      {
+        "module": "DerivedProofs",
+        "name": "JsonptrDerivedProofs.replaceErrorEq",
+        "precondition": "true",
+        "scope": "public-model",
+        "statement": "unchanged release body; contract in DerivedSpecs"
+      },
+      {
+        "module": "DerivedProofs",
+        "name": "JsonptrDerivedProofs.parseErrorAccessors",
+        "precondition": "true",
+        "scope": "public-model",
+        "statement": "unchanged release body; contract in DerivedSpecs"
+      },
+      {
+        "module": "DerivedProofs",
+        "name": "JsonptrDerivedProofs.completeOffset",
+        "precondition": "pointer offset + source offset <= usize::MAX",
+        "scope": "public-model",
+        "statement": "unchanged release body; contract in DerivedSpecs"
+      },
+      {
+        "module": "DerivedProofs",
+        "name": "JsonptrDerivedProofs.encodingErrorUrl",
+        "precondition": "true",
+        "scope": "public-model",
+        "statement": "unchanged release body; contract in DerivedSpecs"
+      },
+      {
+        "module": "DerivedProofs",
+        "name": "JsonptrDerivedProofs.assignErrorUrl",
+        "precondition": "true",
+        "scope": "public-model",
+        "statement": "unchanged release body; contract in DerivedSpecs"
+      },
+      {
+        "module": "DerivedProofs",
+        "name": "JsonptrDerivedProofs.labelNew",
+        "precondition": "true",
+        "scope": "public-model",
+        "statement": "unchanged release body; contract in DerivedSpecs"
+      },
+      {
+        "module": "DerivedProofs",
+        "name": "JsonptrDerivedProofs.reportAccessors",
+        "precondition": "true",
+        "scope": "public-model",
+        "statement": "unchanged release body; contract in DerivedSpecs"
+      },
+      {
+        "module": "DerivedProofs",
+        "name": "JsonptrDerivedProofs.asStr",
+        "precondition": "true",
+        "scope": "public-model",
+        "statement": "unchanged release body; contract in DerivedSpecs"
+      },
+      {
+        "module": "DerivedProofs",
+        "name": "JsonptrDerivedProofs.completeOffsetTotal_refuted",
+        "precondition": "true",
+        "scope": "refutation-or-record",
+        "statement": "N7 refutation"
+      },
+      {
+        "module": "DerivedProofs",
+        "name": "JsonptrDerivedProofs.resolveErrorUrl_refuted",
+        "precondition": "true",
+        "scope": "refutation-or-record",
+        "statement": "N3 refutation"
+      },
+      {
+        "module": "DerivedProofs",
+        "name": "JsonptrDerivedProofs.parseErrorUrl_refuted",
+        "precondition": "true",
+        "scope": "refutation-or-record",
+        "statement": "N10 refutation"
+      },
+      {
+        "module": "DerivedProofs",
+        "name": "JsonptrDerivedProofs.parseIndexErrorUrl_refuted",
+        "precondition": "true",
+        "scope": "refutation-or-record",
+        "statement": "N9 refutation"
+      },
+      {
+        "module": "DerivedProofs",
+        "name": "JsonptrDerivedProofs.url_record",
+        "precondition": "true",
+        "scope": "refutation-or-record",
+        "statement": "behaviour record"
+      },
+      {
+        "module": "DerivedProofs",
+        "name": "JsonptrDerivedProofs.urlRecord",
+        "precondition": "true",
+        "scope": "refutation-or-record",
+        "statement": "behaviour record"
+      }
+    ],
+    "mapping_metadata_checked": true,
+    "scope": "named Lean theorem and transitive axiom audit only",
+    "status": "passed"
+  },
+  "host": "aarch64-apple-darwin",
+  "input_fingerprints": {
+    "after": {
+      "member": "payload/inputs-after.json",
+      "sha256": "41fe04bcc70b4d8d15033e76a8fe4f8c9a6370a65d0ea0598ef5c9a8441e157b"
+    },
+    "before": {
+      "member": "payload/inputs-before.json",
+      "sha256": "41fe04bcc70b4d8d15033e76a8fe4f8c9a6370a65d0ea0598ef5c9a8441e157b"
+    },
+    "equal": true
+  },
+  "kind": "archived-managed-run-summary",
+  "original_audit": {
+    "member": "payload/audit/result.json",
+    "sha256": "07f88e486387ee38cb462a5bf30c4ea1212c9cdf3d3d8c8e9a25497971f45ab7"
+  },
+  "original_result": {
+    "member": "payload/result.json",
+    "sha256": "8ed5e2a6262ac635d69ac33ac26dd5f808a403d394ff5f567a7f624639398e5c"
+  },
+  "profile": "default",
+  "reported_status": "passed",
+  "sarif": "Not a cargo-proofs recording result.",
+  "schema_version": 1,
+  "scope": "Configured extraction comparisons and named theorem audit; native observations are separate",
+  "stages": {
+    "before_after_fingerprints": "equal",
+    "extraction_and_profile_checks": "See original pipeline receipt and profile configuration.",
+    "lean_build_and_axiom_audit": "passed",
+    "native_tests": "Separate observations in original run; not formal proof."
+  },
+  "target": "aarch64-apple-darwin"
+}

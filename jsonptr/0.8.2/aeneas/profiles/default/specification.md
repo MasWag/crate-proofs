@@ -1,0 +1,49 @@
+# jsonptr 0.8.2 functional contracts
+
+Astra designed these targets independently of the Lean proofs. The source identity is in the version's source.lock.json. The theorem inventory and audit determine which targets have closed. The grammar and read semantics follow [RFC 6901 sections 3–4](https://www.rfc-editor.org/rfc/rfc6901.html#section-3). Mutation and error payloads come from the crate API.
+
+## Domains and observations
+
+Represent a pointer by a finite list of Unicode strings, one decoded object key per token. Write E for the characterwise encoding that maps slash to `~1`, tilde to `~0`, and every other scalar to itself. Render the list by concatenating slash followed by E(key) for each key. This distinguishes root, rendered as the empty string, from one empty key, rendered as slash. Adjacent slashes preserve empty keys. The model includes NUL, multibyte characters and keys whose spelling resembles an escape. For example E("~1") is "~01".
+
+Each total contract requires the generated function to return outer Aeneas `Result.ok` with the specified Rust value or Rust error. Mutable operations specify the final document or buffer as well. Include all machine-representable arguments for safe numeric APIs, including zero and usize::MAX. Borrowed strings are valid UTF-8 and slices have Rust-representable length. Allocating operations require representable capacities and sufficient memory. A typed pointer or token used in a consumer proof must satisfy its representation invariant. Every safe producer has a separate obligation to establish it. Unsafe constructors require the caller to supply that invariant. Generic trait dispatch requires contracts for the concrete implementation or explicit premises on user-defined implementations.
+
+## Pointer syntax and token codec
+
+* A string parses successfully exactly when it renders some key list. Success preserves every input byte. On failure a nonempty string without a leading slash gives NoLeadingSlash. Otherwise let j be the first byte position of a tilde without an immediately following ASCII 0 or 1. Let d be the last separator before j. The error is InvalidEncoding with pointer offset d, token-source offset j − d and source Tilde. The complete offset is j. Rich errors retain the original input. The static constructor succeeds on grammatical input and documents a panic for malformed literals.
+* The private validate_bytes kernel called at offset zero has the same syntax and errors on every nonempty byte slice when ordinary bytes include arbitrary values other than slash and tilde. It does not test UTF-8. The wrapper is responsible for its empty-input branch and for lifting the kernel result into its public return type. A kernel theorem alone covers neither operation.
+* For every string x, Token::new(x).encoded() equals E(x). For all lawful tokens with encoded bytes e, decoded() yields the unique x with E(x) = e. Both round trips preserve all characters. Token::from_encoded(e) succeeds with unchanged bytes exactly on the image of E. Scan the maximal prefix of complete grammar atoms. A slash in ordinary position produces Slash at its byte index. A pending tilde followed by slash produces Slash at that slash, followed by any other invalid byte produces Tilde at that byte, and at end produces Tilde at the byte length. Token display uses decoded text, while owned and borrowed encoded accessors preserve e.
+
+## Index interpretation and bounds
+
+For Index::Num(i), let n = i. For Index::Next, let n = L, the supplied length. for_len_unchecked returns n. for_len and for_len_incl respectively use n < L and n ≤ L. A true predicate returns Ok(n). A false predicate returns Err(OutOfBoundsError { length: L, index: n }). These contracts quantify over both enum variants, every i and every L independently of whether an array of length L can be allocated.
+
+Index parsing maps "-" to Next. Otherwise accept "0" or a nonzero ASCII digit followed by zero or more ASCII digits whose decimal value fits usize. Return Num of that value. Error precedence is LeadingZeros for any longer spelling starting with "0", then InvalidCharacter at the first non-ASCII-digit position, then the integer parsing error for empty input or overflow. Bytes preceding the first invalid character are ASCII digits, so its character and byte offsets agree. Token::to_index parses its encoded representation; is_next tests exact equality with "-".
+
+## Document operations
+
+Use finite JSON trees with unique object keys, arrays in order and scalar leaves. TOML tables and arrays follow the same tree rules with TOML scalar leaves. Equality of keys compares exact decoded strings. Let k be the first failing token, zero-based, and d the sum of 1 + byteLength(E(key)) over preceding tokens. Error payloads carry position k and offset d.
+
+* Resolve consumes a token by looking up a decoded object key or interpreting an array index under the strict bound. A missing object field gives NotFound, an invalid array index gives FailedToParseIndex with its parsing cause, and a failed strict bound gives OutOfBounds with its numeric payload. A scalar with tokens left gives Unreachable. Exhaustion returns the selected node, including the original root for the empty pointer. Mutable resolution must select the same node and write back a replacement at exactly that location while preserving all siblings. On failure the input document is preserved.
+* Assignment replaces the selected existing node and returns Some(old), including at root. At a missing object key or array position exactly equal to length (including Next), it inserts the remaining path with the supplied leaf and returns None. Expansion on a fresh path builds a singleton array for a "0" or "-" key and a singleton object/table with the decoded key otherwise. Encountering a scalar before exhaustion replaces it by expansion of the whole remaining path and returns Some(old scalar). In existing arrays apply the inclusive bound. Parse and bounds errors have the positions and causes above, and preserve the entire document. Siblings are preserved on success.
+* Deletion at root returns Some(old) and replaces the document with JSON null or an empty TOML table. Else resolve the parent, remove the named object member or strictly indexed array element and return Some(old). Preserve unaffected members and the relative order of remaining elements. Failed traversal or selection returns None and leaves the document equal to its input.
+
+## Coverage ledger
+
+These rows define the intended obligations by API family. Coverage of a caller requires a theorem about that caller, including representation and dispatch boundaries.
+
+| API family | Required observation |
+| --- | --- |
+| validate_bytes, validate, Pointer::parse, PointerBuf::parse, FromStr/TryFrom, from_static | Acceptance, preservation, first error and root as specified above, with each wrapper's actual return type |
+| Token constructors, decoded/encoded, integer and string conversions, ownership and display | Characterwise codec, validation, exact representation and decimal spelling for integer conversions |
+| Index::from_str, TryFrom, Token::to_index/is_next, Index bounds and display | Decimal grammar, error precedence, strict/inclusive predicates, decimal output or "-" |
+| Pointer tokens/count, components, front/first, back/last, split_front/back, parent | Iterate the ordered list, including empty keys; components prepends Root. Endpoints and splits agree with list decomposition, returning None for root |
+| Pointer::get, PointerIndex, split_at_offset/deprecated split_at | Single token by position, token-list slicing for supported Rust range and bound forms; resulting pointers are grammatical. A byte split succeeds exactly at an existing slash, including byte zero only for a nonroot pointer |
+| starts_with/ends_with, strip_prefix/suffix, intersection | Compare whole token sequences. ends_with(root) is true only at root as documented. Strip returns the remainder on whole sequence matches, including empty prefix/suffix. Intersection yields the longest common token prefix |
+| PointerBuf::from_tokens, push/pop front/back, append, replace, clear, Pointer::concat, with_leading/trailing_token | Corresponding list operations. Pop returns removed token or None. Replace returns Some(old) or an error carrying supplied index and original count, preserving the buffer on error |
+| Pointer/PointerBuf root/new, is_empty/is_root, len, as_str/as_ptr, to_buf/into_buf, borrowing/dereference, conversions/serialization | Preserve rendered form; len counts bytes. JSON value conversion produces the string value. Deserialization must enforce syntax |
+| Resolve, ResolveMut, Assign, Delete and Pointer forwarding methods | Tree contracts above for each enabled JSON/TOML implementation, including mutable backward effects |
+| Diagnostics and error inspection, Label/Report/Diagnose, optional miette | Preserve original subject/cause, classify variants correctly; byte spans for matching subjects must fit the source. Publicly constructible errors need independent arithmetic-domain checks |
+| Other trait implementations and optional build surfaces | Derivations, formatting, comparisons, hashing, iteration adapters, external serializer integrations and alternate features need separate selection and evidence |
+
+Release source inspection exposes a counterexample to the strip_prefix obligation. With self "/ab" and prefix "/a" it returns Some("b"), which fails the representation invariant. A second edge case is the bound tuple with excluded lower endpoint usize::MAX, whose mathematical successor is outside the index domain. The 0.8.2 implementation computes a machine successor. A third concerns diagnostic spans: parsing "/a~" locates the bad tilde at byte 2, but invalid_encoding_len uses the separator position and returns 2 for this three-byte subject. Preserve these obligations when reporting proof scope.

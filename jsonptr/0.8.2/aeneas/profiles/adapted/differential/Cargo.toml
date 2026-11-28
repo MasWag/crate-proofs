@@ -1,0 +1,15 @@
+[package]
+name = "jsonptr-adapted-differential"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+# Finite native comparison of release APIs with the adapted bodies. Both live in
+# the patched tree .work/adapted (the release items are unchanged there).
+# This is evidence of agreement on the enumerated inputs, not a proof.
+[dependencies]
+jsonptr = { path = "../../../../.work/adapted", default-features = false, features = ["std", "json", "resolve"] }
+serde_json = { version = "1.0.140", default-features = false, features = ["std"] }
+
+[workspace]
+resolver = "2"

@@ -1,0 +1,663 @@
+{
+  "checked": [
+    {
+      "name": "JsonptrAdaptedProofs.validateAdapted",
+      "module": "Proofs.Validate",
+      "scope": "private-model",
+      "precondition": "true",
+      "statement": "Target 1, adapted pointer::validate: JsonptrAdaptedSpec.ValidateContract"
+    },
+    {
+      "name": "JsonptrAdaptedProofs.newAdapted",
+      "module": "Proofs.Codec",
+      "scope": "private-model",
+      "precondition": "SliceBound x (len <= isize::MAX)",
+      "statement": "Target 2, adapted Token::new / encoded: JsonptrAdaptedSpec.EncodeContract"
+    },
+    {
+      "name": "JsonptrAdaptedProofs.decodedAdapted",
+      "module": "Proofs.Codec",
+      "scope": "private-model",
+      "precondition": "SliceBound e (len <= isize::MAX)",
+      "statement": "Target 3, adapted Token::decoded: JsonptrAdaptedSpec.DecodeContract"
+    },
+    {
+      "name": "JsonptrAdaptedProofs.fromEncodedAdapted",
+      "module": "Proofs.Token",
+      "scope": "private-model",
+      "precondition": "true",
+      "statement": "Target 4, adapted Token::from_encoded: JsonptrAdaptedSpec.FromEncodedContract"
+    },
+    {
+      "name": "JsonptrAdaptedProofs.fromStrAdapted",
+      "module": "Proofs.Index",
+      "scope": "private-model",
+      "precondition": "true",
+      "statement": "Target 5, adapted Index::from_str / Token::to_index: JsonptrAdaptedSpec.IndexContract"
+    },
+    {
+      "name": "JsonptrAdaptedProofs.splitFrontAdapted",
+      "module": "Proofs.Split",
+      "scope": "private-model",
+      "precondition": "bytes xs = [] or its first byte is 47 (Pointer representation invariant)",
+      "statement": "Target 6, adapted Pointer::split_front / tokens: JsonptrAdaptedSpec.SplitFrontContract"
+    },
+    {
+      "name": "JsonptrAdaptedProofs.resolveAdapted",
+      "module": "Proofs.Resolve",
+      "scope": "private-model",
+      "precondition": "render keys = bytes ptr and SliceBound ptr",
+      "statement": "Target 7, adapted JSON Resolve::resolve in tail-recursive form over the local document type: JsonptrAdaptedSpec.ResolveContract"
+    },
+    {
+      "name": "JsonptrAdaptedProofs.resolveStepAdapted",
+      "module": "Proofs.Resolve",
+      "scope": "support",
+      "precondition": "encode k = bytes tok and SliceBound tok",
+      "statement": "Support for target 7: one loop iteration, JsonptrAdaptedSpec.ResolveStepContract"
+    },
+    {
+      "name": "JsonptrAdaptedProofs.forLen_ok_lt",
+      "module": "Proofs.Resolve",
+      "scope": "support",
+      "precondition": "forLen i length = ok n",
+      "statement": "Specification sanity fact forLen_ok_lt"
+    },
+    {
+      "name": "JsonptrAdaptedProofs.Model.decode_encode",
+      "module": "Proofs.Model",
+      "scope": "support",
+      "precondition": "true",
+      "statement": "Specification sanity fact decode_encode"
+    },
+    {
+      "name": "JsonptrAdaptedProofs.Model.encode_injective",
+      "module": "Proofs.Model",
+      "scope": "support",
+      "precondition": "encode x = encode y",
+      "statement": "Specification sanity fact encode_injective"
+    },
+    {
+      "name": "JsonptrAdaptedProofs.Model.encode_length",
+      "module": "Proofs.Model",
+      "scope": "support",
+      "precondition": "true",
+      "statement": "Specification sanity fact encode_length"
+    },
+    {
+      "name": "JsonptrExtProofs.tokensAdapted",
+      "module": "ExtProofs.Tier2",
+      "scope": "private-model",
+      "precondition": "ValidPtr xs",
+      "statement": "TokensContract"
+    },
+    {
+      "name": "JsonptrExtProofs.countAdapted",
+      "module": "ExtProofs.Tier2",
+      "scope": "private-model",
+      "precondition": "ValidPtr xs",
+      "statement": "CountContract"
+    },
+    {
+      "name": "JsonptrExtProofs.frontAdapted",
+      "module": "ExtProofs.Tier2",
+      "scope": "private-model",
+      "precondition": "ValidPtr xs",
+      "statement": "FrontContract"
+    },
+    {
+      "name": "JsonptrExtProofs.backAdapted",
+      "module": "ExtProofs.Tier2",
+      "scope": "private-model",
+      "precondition": "ValidPtr xs",
+      "statement": "BackContract"
+    },
+    {
+      "name": "JsonptrExtProofs.splitBackAdapted",
+      "module": "ExtProofs.Tier2",
+      "scope": "private-model",
+      "precondition": "ValidPtr xs",
+      "statement": "SplitBackContract"
+    },
+    {
+      "name": "JsonptrExtProofs.parentAdapted",
+      "module": "ExtProofs.Tier2",
+      "scope": "private-model",
+      "precondition": "ValidPtr xs",
+      "statement": "ParentContract"
+    },
+    {
+      "name": "JsonptrExtProofs.getIndexAdapted",
+      "module": "ExtProofs.Tier2",
+      "scope": "private-model",
+      "precondition": "ValidPtr xs",
+      "statement": "GetIndexContract"
+    },
+    {
+      "name": "JsonptrExtProofs.componentsAdapted",
+      "module": "ExtProofs.Tier2",
+      "scope": "private-model",
+      "precondition": "ValidPtr xs",
+      "statement": "ComponentsContract"
+    },
+    {
+      "name": "JsonptrExtProofs.componentFromTokenAdapted",
+      "module": "ExtProofs.Tier2",
+      "scope": "private-model",
+      "precondition": "ValidTok t",
+      "statement": "ComponentFromTokenContract"
+    },
+    {
+      "name": "JsonptrExtProofs.splitAtOffsetAdapted",
+      "module": "ExtProofs.Tier2",
+      "scope": "private-model",
+      "precondition": "ValidPtr xs",
+      "statement": "SplitAtOffsetContract"
+    },
+    {
+      "name": "JsonptrExtProofs.startsWithAdapted",
+      "module": "ExtProofs.Tier2",
+      "scope": "private-model",
+      "precondition": "both valid",
+      "statement": "StartsWithContract"
+    },
+    {
+      "name": "JsonptrExtProofs.endsWithAdapted",
+      "module": "ExtProofs.Tier2",
+      "scope": "private-model",
+      "precondition": "both valid",
+      "statement": "EndsWithContract"
+    },
+    {
+      "name": "JsonptrExtProofs.stripSuffixAdapted",
+      "module": "ExtProofs.Tier2",
+      "scope": "private-model",
+      "precondition": "both valid",
+      "statement": "StripSuffixContract"
+    },
+    {
+      "name": "JsonptrExtProofs.intersectionAdapted",
+      "module": "ExtProofs.Tier2",
+      "scope": "private-model",
+      "precondition": "both valid",
+      "statement": "IntersectionContract"
+    },
+    {
+      "name": "JsonptrExtProofs.getRangeAdapted",
+      "module": "ExtProofs.Ranges",
+      "scope": "private-model",
+      "precondition": "ValidPtr xs",
+      "statement": "GetRangeContract"
+    },
+    {
+      "name": "JsonptrExtProofs.getRangeFromAdapted",
+      "module": "ExtProofs.Ranges",
+      "scope": "private-model",
+      "precondition": "ValidPtr xs",
+      "statement": "GetRangeFromContract"
+    },
+    {
+      "name": "JsonptrExtProofs.getRangeToAdapted",
+      "module": "ExtProofs.Ranges",
+      "scope": "private-model",
+      "precondition": "ValidPtr xs",
+      "statement": "GetRangeToContract"
+    },
+    {
+      "name": "JsonptrExtProofs.getRangeInclusiveAdapted",
+      "module": "ExtProofs.Ranges",
+      "scope": "private-model",
+      "precondition": "ValidPtr xs",
+      "statement": "GetRangeInclusiveContract"
+    },
+    {
+      "name": "JsonptrExtProofs.getRangeToInclusiveAdapted",
+      "module": "ExtProofs.Ranges",
+      "scope": "private-model",
+      "precondition": "ValidPtr xs",
+      "statement": "GetRangeToInclusiveContract"
+    },
+    {
+      "name": "JsonptrExtProofs.getRangeFullAdapted",
+      "module": "ExtProofs.Ranges",
+      "scope": "private-model",
+      "precondition": "ValidPtr xs",
+      "statement": "GetRangeFullContract"
+    },
+    {
+      "name": "JsonptrExtProofs.getBoundsExceptMax",
+      "module": "ExtProofs.Tier2Refute",
+      "scope": "support",
+      "precondition": "start is not Excluded(usize::MAX)",
+      "statement": "behaviour record GetBoundsExceptMaxRecord"
+    },
+    {
+      "name": "JsonptrExtProofs.getBounds_refuted",
+      "module": "ExtProofs.Tier2Refute",
+      "scope": "support",
+      "precondition": "true",
+      "statement": "JSONPTR-002 refutation"
+    },
+    {
+      "name": "JsonptrExtProofs.stripPrefix_refuted",
+      "module": "ExtProofs.Tier2Refute",
+      "scope": "support",
+      "precondition": "true",
+      "statement": "JSONPTR-001 refutation"
+    },
+    {
+      "name": "JsonptrExtProofs.stripPrefixWhenStartsWith",
+      "module": "ExtProofs.Tier2",
+      "scope": "support",
+      "precondition": "starts_with holds",
+      "statement": "behaviour record"
+    },
+    {
+      "name": "JsonptrExtProofs.stripPrefix_release_record",
+      "module": "ExtProofs.Tier2Refute",
+      "scope": "support",
+      "precondition": "true",
+      "statement": "behaviour record"
+    },
+    {
+      "name": "JsonptrExtProofs.bufNewAdapted",
+      "module": "ExtProofs.Tier3",
+      "scope": "private-model",
+      "precondition": "true",
+      "statement": "BufNewContract"
+    },
+    {
+      "name": "JsonptrExtProofs.toBufAdapted",
+      "module": "ExtProofs.Tier3",
+      "scope": "private-model",
+      "precondition": "ValidPtr",
+      "statement": "ToBufContract"
+    },
+    {
+      "name": "JsonptrExtProofs.fromTokensAdapted",
+      "module": "ExtProofs.Tier3",
+      "scope": "private-model",
+      "precondition": "tokens valid, LenBound",
+      "statement": "FromTokensContract"
+    },
+    {
+      "name": "JsonptrExtProofs.pushBackAdapted",
+      "module": "ExtProofs.Tier3",
+      "scope": "private-model",
+      "precondition": "valid, LenBound",
+      "statement": "PushBackContract"
+    },
+    {
+      "name": "JsonptrExtProofs.pushFrontAdapted",
+      "module": "ExtProofs.Tier3",
+      "scope": "private-model",
+      "precondition": "valid, LenBound",
+      "statement": "PushFrontContract"
+    },
+    {
+      "name": "JsonptrExtProofs.popBackAdapted",
+      "module": "ExtProofs.Tier3",
+      "scope": "private-model",
+      "precondition": "valid",
+      "statement": "PopBackContract"
+    },
+    {
+      "name": "JsonptrExtProofs.popFrontAdapted",
+      "module": "ExtProofs.Tier3",
+      "scope": "private-model",
+      "precondition": "valid",
+      "statement": "PopFrontContract"
+    },
+    {
+      "name": "JsonptrExtProofs.appendAdapted",
+      "module": "ExtProofs.Tier3",
+      "scope": "private-model",
+      "precondition": "valid, LenBound",
+      "statement": "AppendContract"
+    },
+    {
+      "name": "JsonptrExtProofs.replaceAdapted",
+      "module": "ExtProofs.Tier3",
+      "scope": "private-model",
+      "precondition": "valid, LenBound",
+      "statement": "ReplaceContract"
+    },
+    {
+      "name": "JsonptrExtProofs.clearAdapted",
+      "module": "ExtProofs.Tier3",
+      "scope": "private-model",
+      "precondition": "true",
+      "statement": "ClearContract"
+    },
+    {
+      "name": "JsonptrExtProofs.withTrailingTokenAdapted",
+      "module": "ExtProofs.Tier3",
+      "scope": "private-model",
+      "precondition": "valid, LenBound",
+      "statement": "WithTrailingTokenContract"
+    },
+    {
+      "name": "JsonptrExtProofs.withLeadingTokenAdapted",
+      "module": "ExtProofs.Tier3",
+      "scope": "private-model",
+      "precondition": "valid, LenBound",
+      "statement": "WithLeadingTokenContract"
+    },
+    {
+      "name": "JsonptrExtProofs.concatAdapted",
+      "module": "ExtProofs.Tier3",
+      "scope": "private-model",
+      "precondition": "valid, LenBound",
+      "statement": "ConcatContract"
+    },
+    {
+      "name": "JsonptrExtProofs.tokenEncodedAdapted",
+      "module": "ExtProofs.Tier3",
+      "scope": "private-model",
+      "precondition": "ValidTok",
+      "statement": "TokenEncodedContract"
+    },
+    {
+      "name": "JsonptrExtProofs.tokenToOwnedAdapted",
+      "module": "ExtProofs.Tier3",
+      "scope": "private-model",
+      "precondition": "ValidTok",
+      "statement": "TokenToOwnedContract"
+    },
+    {
+      "name": "JsonptrExtProofs.sotStringAdapted",
+      "module": "ExtProofs.Tier3",
+      "scope": "private-model",
+      "precondition": "true",
+      "statement": "SotStringContract"
+    },
+    {
+      "name": "JsonptrExtProofs.sotTokenAdapted",
+      "module": "ExtProofs.Tier3",
+      "scope": "private-model",
+      "precondition": "valid token",
+      "statement": "SotTokenContract"
+    },
+    {
+      "name": "JsonptrExtProofs.pointerParseAdaptedDischarged",
+      "module": "ExtProofs.Discharge",
+      "scope": "private-model",
+      "precondition": "true",
+      "statement": "PointerParseContract"
+    },
+    {
+      "name": "JsonptrExtProofs.bufTryFromStrAdaptedDischarged",
+      "module": "ExtProofs.Discharge",
+      "scope": "private-model",
+      "precondition": "true",
+      "statement": "BufTryFromStrContract"
+    },
+    {
+      "name": "JsonptrExtProofs.bufTryFromStringAdaptedDischarged",
+      "module": "ExtProofs.Discharge",
+      "scope": "private-model",
+      "precondition": "true",
+      "statement": "BufTryFromStringContract"
+    },
+    {
+      "name": "JsonptrExtProofs.bufParseAdaptedDischarged",
+      "module": "ExtProofs.Discharge",
+      "scope": "private-model",
+      "precondition": "true",
+      "statement": "BufParseContract"
+    },
+    {
+      "name": "JsonptrExtProofs.fromStaticAdaptedDischarged",
+      "module": "ExtProofs.Discharge",
+      "scope": "private-model",
+      "precondition": "true",
+      "statement": "FromStaticContract"
+    },
+    {
+      "name": "JsonptrExtProofs.isNextAdaptedDischarged",
+      "module": "ExtProofs.Discharge",
+      "scope": "private-model",
+      "precondition": "ValidTok",
+      "statement": "IsNextContract"
+    },
+    {
+      "name": "JsonptrExtProofs.resolveMutAdapted",
+      "module": "ExtProofs.Tier4",
+      "scope": "private-model",
+      "precondition": "render keys = bytes ptr, SliceBound",
+      "statement": "ResolveMutContract"
+    },
+    {
+      "name": "JsonptrExtProofs.assignAdapted",
+      "module": "ExtProofs.Tier4",
+      "scope": "private-model",
+      "precondition": "render keys = bytes ptr, SliceBound, TreeBound",
+      "statement": "AssignContract"
+    },
+    {
+      "name": "JsonptrExtProofs.deleteJsonAdapted",
+      "module": "ExtProofs.Tier4",
+      "scope": "private-model",
+      "precondition": "render keys = bytes ptr, SliceBound",
+      "statement": "DeleteJsonContract"
+    },
+    {
+      "name": "JsonptrExtProofs.deleteTomlAdapted",
+      "module": "ExtProofs.Tier4",
+      "scope": "private-model",
+      "precondition": "render keys = bytes ptr, SliceBound",
+      "statement": "DeleteTomlContract"
+    },
+    {
+      "name": "JsonptrExtProofs.resolveErrorAccessors",
+      "module": "ExtProofs.Tier56",
+      "scope": "private-model",
+      "precondition": "true",
+      "statement": "ResolveErrorAccessorsContract"
+    },
+    {
+      "name": "JsonptrExtProofs.assignErrorAccessors",
+      "module": "ExtProofs.Tier5",
+      "scope": "private-model",
+      "precondition": "true",
+      "statement": "AssignErrorAccessorsContract"
+    },
+    {
+      "name": "JsonptrExtProofs.resolveErrorLabelAdapted",
+      "module": "ExtProofs.Tier5",
+      "scope": "private-model",
+      "precondition": "ValidPtr origin, offset < usize::MAX",
+      "statement": "ResolveErrorLabelContract"
+    },
+    {
+      "name": "JsonptrExtProofs.assignErrorLabelAdapted",
+      "module": "ExtProofs.Tier5",
+      "scope": "private-model",
+      "precondition": "ValidPtr origin, offset < usize::MAX",
+      "statement": "AssignErrorLabelContract"
+    },
+    {
+      "name": "JsonptrExtProofs.diagnoseAdapted",
+      "module": "ExtProofs.Tier5",
+      "scope": "private-model",
+      "precondition": "true",
+      "statement": "DiagnoseContract"
+    },
+    {
+      "name": "JsonptrExtProofs.isRootAdapted",
+      "module": "ExtProofs.Tier56",
+      "scope": "private-model",
+      "precondition": "ValidPtr",
+      "statement": "IsRootContract"
+    },
+    {
+      "name": "JsonptrExtProofs.lenAdapted",
+      "module": "ExtProofs.Tier56",
+      "scope": "private-model",
+      "precondition": "ValidPtr",
+      "statement": "LenContract"
+    },
+    {
+      "name": "JsonptrExtProofs.strEqAdapted",
+      "module": "ExtProofs.Tier56",
+      "scope": "private-model",
+      "precondition": "true",
+      "statement": "StrEqContract"
+    },
+    {
+      "name": "JsonptrExtProofs.componentEqAdapted",
+      "module": "ExtProofs.Tier56",
+      "scope": "private-model",
+      "precondition": "true",
+      "statement": "ComponentEqContract"
+    },
+    {
+      "name": "JsonptrExtProofs.bufCloneAdapted",
+      "module": "ExtProofs.Tier56",
+      "scope": "private-model",
+      "precondition": "true",
+      "statement": "BufCloneContract"
+    },
+    {
+      "name": "JsonptrExtProofs.strCmpAdapted",
+      "module": "ExtProofs.Tier6",
+      "scope": "private-model",
+      "precondition": "true",
+      "statement": "StrCmpContract"
+    },
+    {
+      "name": "JsonptrExtProofs.strPartialCmpAdapted",
+      "module": "ExtProofs.Tier6",
+      "scope": "private-model",
+      "precondition": "true",
+      "statement": "StrPartialCmpContract"
+    },
+    {
+      "name": "JsonptrExtProofs.componentCmpAdapted",
+      "module": "ExtProofs.Tier6",
+      "scope": "private-model",
+      "precondition": "true",
+      "statement": "ComponentCmpContract"
+    },
+    {
+      "name": "JsonptrExtProofs.invalidEncodingLen_refuted",
+      "module": "ExtProofs.Tier56",
+      "scope": "support",
+      "precondition": "true",
+      "statement": "JSONPTR-003 refutation"
+    },
+    {
+      "name": "JsonptrExtProofs.invalidEncodingLenTotal_refuted",
+      "module": "ExtProofs.Tier56",
+      "scope": "support",
+      "precondition": "true",
+      "statement": "N5 refutation"
+    },
+    {
+      "name": "JsonptrExtProofs.encodingErrorLabelTotal_refuted",
+      "module": "ExtProofs.Tier56",
+      "scope": "support",
+      "precondition": "true",
+      "statement": "N8 refutation"
+    },
+    {
+      "name": "JsonptrExtProofs.parseErrorLabel_refuted",
+      "module": "ExtProofs.Tier5",
+      "scope": "support",
+      "precondition": "true",
+      "statement": "JSONPTR-003 refutation (labels)"
+    },
+    {
+      "name": "JsonptrExtProofs.parseIndexErrorLabel_refuted",
+      "module": "ExtProofs.Tier5",
+      "scope": "support",
+      "precondition": "true",
+      "statement": "N1 refutation"
+    },
+    {
+      "name": "JsonptrExtProofs.parseIndexErrorLabel_refuted_N2",
+      "module": "ExtProofs.Tier5",
+      "scope": "support",
+      "precondition": "true",
+      "statement": "N2 refutation"
+    },
+    {
+      "name": "JsonptrExtProofs.parseIndexErrorLabel_N1",
+      "module": "ExtProofs.Tier5",
+      "scope": "support",
+      "precondition": "true",
+      "statement": "N1 behaviour record (fail on \"00\")"
+    },
+    {
+      "name": "JsonptrExtProofs.parseIndexErrorLabel_N2",
+      "module": "ExtProofs.Tier5",
+      "scope": "support",
+      "precondition": "true",
+      "statement": "N2 behaviour record (len 4 on \"1abc\")"
+    },
+    {
+      "name": "JsonptrExtProofs.resolveErrorLabelTotal_refuted",
+      "module": "ExtProofs.Tier5",
+      "scope": "support",
+      "precondition": "true",
+      "statement": "N6 refutation (resolve)"
+    },
+    {
+      "name": "JsonptrExtProofs.assignErrorLabelTotal_refuted",
+      "module": "ExtProofs.Tier5",
+      "scope": "support",
+      "precondition": "true",
+      "statement": "N6 refutation (assign)"
+    },
+    {
+      "name": "JsonptrExtProofs.splitAtOffset_charBoundary",
+      "module": "ExtProofs.CharBoundary",
+      "scope": "support",
+      "precondition": "split taken",
+      "statement": "char-boundary support"
+    },
+    {
+      "name": "JsonptrExtProofs.popBack_generated_charBoundary",
+      "module": "ExtProofs.CharBoundary",
+      "scope": "support",
+      "precondition": "ValidUtf8",
+      "statement": "char-boundary support"
+    },
+    {
+      "name": "JsonptrExtProofs.popFront_generated_charBoundary",
+      "module": "ExtProofs.CharBoundary",
+      "scope": "support",
+      "precondition": "true",
+      "statement": "char-boundary support"
+    },
+    {
+      "name": "JsonptrExtProofs.sliceOne_generated_charBoundary",
+      "module": "ExtProofs.CharBoundary",
+      "scope": "support",
+      "precondition": "ValidPtr, ValidUtf8, nonempty",
+      "statement": "char-boundary support"
+    },
+    {
+      "name": "JsonptrExtProofs.pushFront_charBoundary",
+      "module": "ExtProofs.CharBoundary",
+      "scope": "support",
+      "precondition": "ValidPointer",
+      "statement": "char-boundary support"
+    }
+  ],
+  "recorder_mappings": [],
+  "extracted_but_unproved": [],
+  "extraction_blockers": [
+    "adapted resolve loop (resolve_adapted): Aeneas internal error on a loop-carried shared borrow into the recursive local document type; target 7 is proved for the approved tail-recursive form resolve_recursive_adapted"
+  ],
+  "coverage_ledger": [
+    {
+      "status": "release-correspondence-unproved",
+      "reason": "Adapted bodies come from a recorded patch; their equivalence to the release bodies (and of resolve_recursive_adapted to the loop resolve_adapted) is a reviewed argument plus finite native differential evidence, not a theorem. No public API is mapped to an adapted theorem."
+    },
+    {
+      "status": "tier4-disclosures",
+      "reason": "TreeBound is an input-representability premise (Rust Vec capacity is bounded by isize::MAX bytes, so no real Vec holds usize::MAX non-ZST entries), needed only because the Aeneas Vec::push model fails at full length; assumed only on the input document in AssignContract. Leaf 0 stands for JSON null by convention; scalar payloads are otherwise uninterpreted. One adapted function covers JSON and TOML for resolve_mut and assign (adapted-source.json correspondence). Member/removal order in external maps stays an open correspondence obligation."
+    }
+  ]
+}

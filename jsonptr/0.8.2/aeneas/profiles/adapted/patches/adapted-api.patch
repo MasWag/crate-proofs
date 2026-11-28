@@ -1,0 +1,1431 @@
+diff -ruN base/src/adapted_api.rs ext/src/adapted_api.rs
+--- release/src/adapted_api.rs
++++ adapted/src/adapted_api.rs
+@@ -0,0 +1,1413 @@
++//! Adapted byte-slice bodies for the extended scope (specification sections
++//! 8-21) of the Aeneas `adapted` profile. Not release API.
++//!
++//! Written by the implementation agent as an add-only extension layered after
++//! `adapted-bodies.patch`. Every function names the release span it rewrites
++//! and the substitutions it makes. Release items are not modified.
++#![allow(missing_docs, clippy::all, clippy::pedantic)]
++
++use alloc::vec::Vec;
++
++use crate::index::{from_str_adapted, Index};
++use crate::pointer::{find_slash_adapted, validate_adapted, ParseError, ReplaceError};
++use crate::token::{EncodingError, InvalidEncoding};
++
++/* ----------------------------------------------------------------------- *
++ *  Byte helpers standing for standard-library `str` / `[u8]` operations.  *
++ * ----------------------------------------------------------------------- */
++
++/// `str == str` / `[u8] == [u8]` (`SlicePartialEq`): length test, then a
++/// bytewise loop in index order with an early exit.
++pub fn bytes_eq_ext(a: &[u8], b: &[u8]) -> bool {
++    if a.len() != b.len() {
++        return false;
++    }
++    let mut i = 0;
++    while i < a.len() {
++        if a[i] != b[i] {
++            return false;
++        }
++        i += 1;
++    }
++    true
++}
++
++/// `str::rfind('/')` / the search of `str::rsplit_once('/')`: the last index
++/// of `b'/'`, scanning from the back with an early exit.
++pub fn rfind_slash_ext(s: &[u8]) -> Option<usize> {
++    let mut i = s.len();
++    while i > 0 {
++        i -= 1;
++        if s[i] == b'/' {
++            return Some(i);
++        }
++    }
++    None
++}
++
++/// `<&str as Pattern>::is_prefix_of` (`haystack.starts_with(needle)`):
++/// `h.len() >= n.len() && n == &h[..n.len()]`.
++pub fn str_starts_with_ext(h: &[u8], n: &[u8]) -> bool {
++    h.len() >= n.len() && bytes_eq_ext(n, &h[..n.len()])
++}
++
++/// `<&str as Pattern>::is_suffix_of` (`haystack.ends_with(needle)`):
++/// `h.len() >= n.len() && n == &h[h.len() - n.len()..]`.
++pub fn str_ends_with_ext(h: &[u8], n: &[u8]) -> bool {
++    h.len() >= n.len() && bytes_eq_ext(n, &h[h.len() - n.len()..])
++}
++
++/// `str::to_string` / `to_owned`: a new buffer holding the same bytes.
++pub fn copy_bytes_ext(s: &[u8]) -> Vec<u8> {
++    let mut v = Vec::new();
++    v.extend_from_slice(s);
++    v
++}
++
++/* ----------------------------------------------------------------------- *
++ *  Section 8: tokens, navigation and components.                          *
++ * ----------------------------------------------------------------------- */
++
++/// `Tokens` (release `token.rs:350`), a wrapper around `str::Split<'_, char>`
++/// with the pattern `'/'`. The state is the split's own: the haystack, the
++/// start of the part not yet yielded and the `finished` flag.
++#[derive(Clone, Copy)]
++pub struct TokensAdapted<'a> {
++    pub haystack: &'a [u8],
++    pub start: usize,
++    pub finished: bool,
++}
++
++/// `Tokens::next` (release `token.rs:357`) = `Split::next` mapped through the
++/// unchecked token constructor. Substitutions: the char searcher is a forward
++/// index loop for `b'/'`; `get_end` (with `allow_trailing_empty = true`) is the
++/// final branch; the token constructor returns the bytes.
++pub fn tokens_next_adapted<'a>(it: &mut TokensAdapted<'a>) -> Option<&'a [u8]> {
++    if it.finished {
++        return None;
++    }
++    let h = it.haystack;
++    let mut j = it.start;
++    while j < h.len() {
++        if h[j] == b'/' {
++            let tok = &h[it.start..j];
++            it.start = j + 1;
++            return Some(tok);
++        }
++        j += 1;
++    }
++    it.finished = true;
++    Some(&h[it.start..])
++}
++
++/// `Pointer::tokens` (release `pointer.rs:120`): `split('/')` then one `next`
++/// to skip the piece before the leading slash.
++pub fn tokens_adapted(ptr: &[u8]) -> TokensAdapted<'_> {
++    let mut s = TokensAdapted { haystack: ptr, start: 0, finished: false };
++    let _ = tokens_next_adapted(&mut s);
++    s
++}
++
++/// `Pointer::count` (release `pointer.rs:128`): `Iterator::count`, the default
++/// fold with an overflow-checked `count + 1`.
++pub fn count_adapted(ptr: &[u8]) -> usize {
++    let mut it = tokens_adapted(ptr);
++    let mut n: usize = 0;
++    while let Some(_) = tokens_next_adapted(&mut it) {
++        n += 1;
++    }
++    n
++}
++
++/// `Pointer::back` and `last` (release `pointer.rs:144`, `:154`):
++/// `rsplit_once('/')` keeping the back part. `i + 1` is the end of the match.
++pub fn back_adapted(ptr: &[u8]) -> Option<&[u8]> {
++    match rfind_slash_ext(ptr) {
++        None => None,
++        Some(i) => Some(&ptr[i + 1..]),
++    }
++}
++
++/// `Pointer::front` and `first` (release `pointer.rs:159`, `:176`).
++/// Substitutions: `is_root` is `is_empty`; `split_once('/')` is
++/// `find_slash_adapted` on `&ptr[1..]`.
++pub fn front_adapted(ptr: &[u8]) -> Option<&[u8]> {
++    if ptr.is_empty() {
++        return None;
++    }
++    let rest = &ptr[1..];
++    match find_slash_adapted(rest) {
++        None => Some(rest),
++        Some(i) => Some(&rest[..i]),
++    }
++}
++
++/// `Pointer::split_back` (release `pointer.rs:258`): `rsplit_once('/')`.
++pub fn split_back_adapted(ptr: &[u8]) -> Option<(&[u8], &[u8])> {
++    match rfind_slash_ext(ptr) {
++        None => None,
++        Some(i) => Some((&ptr[..i], &ptr[i + 1..])),
++    }
++}
++
++/// `Pointer::parent` (release `pointer.rs:270`): `rsplit_once('/')` keeping
++/// the front part.
++pub fn parent_adapted(ptr: &[u8]) -> Option<&[u8]> {
++    match rfind_slash_ext(ptr) {
++        None => None,
++        Some(i) => Some(&ptr[..i]),
++    }
++}
++
++/// `Iterator::advance_by` default (`core::iter::Iterator`): a `0..n` loop of
++/// `next` that returns `Err(n - i)` at the first `None`. The `NonZero` payload
++/// is the plain `usize`.
++pub fn advance_by_adapted(it: &mut TokensAdapted<'_>, n: usize) -> Result<(), usize> {
++    let mut i = 0;
++    while i < n {
++        if tokens_next_adapted(it).is_none() {
++            return Err(n - i);
++        }
++        i += 1;
++    }
++    Ok(())
++}
++
++/// `PointerIndex::get` for `usize` (release `pointer/slice.rs:14`):
++/// `tokens().nth(n)`, the default `nth` = `advance_by(n).ok()?` then `next`.
++pub fn get_index_adapted(ptr: &[u8], n: usize) -> Option<&[u8]> {
++    let mut it = tokens_adapted(ptr);
++    match advance_by_adapted(&mut it, n) {
++        Err(_) => return None,
++        Ok(()) => {}
++    }
++    tokens_next_adapted(&mut it)
++}
++
++/// `Component` (release `component.rs:4`) with the token as its encoded bytes.
++#[derive(Clone, Copy, Debug, PartialEq, Eq)]
++pub enum ComponentAdapted<'t> {
++    Root,
++    Token(&'t [u8]),
++}
++
++/// `Components` (release `component.rs:18`): the token iterator and `sent_root`.
++#[derive(Clone, Copy)]
++pub struct ComponentsAdapted<'t> {
++    pub tokens: TokensAdapted<'t>,
++    pub sent_root: bool,
++}
++
++/// `From<&Pointer> for Components` (release `component.rs:35`) and
++/// `Pointer::components` (release `pointer.rs:506`).
++pub fn components_adapted(ptr: &[u8]) -> ComponentsAdapted<'_> {
++    ComponentsAdapted { sent_root: false, tokens: tokens_adapted(ptr) }
++}
++
++/// `Components::next` (release `component.rs:26`). `map(Component::Token)`
++/// is a `match`.
++pub fn components_next_adapted<'t>(it: &mut ComponentsAdapted<'t>) -> Option<ComponentAdapted<'t>> {
++    if !it.sent_root {
++        it.sent_root = true;
++        return Some(ComponentAdapted::Root);
++    }
++    match tokens_next_adapted(&mut it.tokens) {
++        None => None,
++        Some(t) => Some(ComponentAdapted::Token(t)),
++    }
++}
++
++/// `From<Token> for Component` (release `component.rs:11`).
++pub fn component_from_token_adapted(t: &[u8]) -> ComponentAdapted<'_> {
++    ComponentAdapted::Token(t)
++}
++
++/* ----------------------------------------------------------------------- *
++ *  Section 9: range indexing.                                             *
++ * ----------------------------------------------------------------------- */
++
++/// `PointerIndex::get` for `Range<usize>` (release `pointer/slice.rs:22`).
++/// Substitutions: the `for` loop over `tokens()` is a `loop` over
++/// `tokens_next_adapted` that reads the token's length (the only use of the
++/// token) when it is yielded; `?` on the two offsets is a `match` with early
++/// return, start first; the unchecked UTF-8 and pointer constructors return
++/// the byte slice. The machine `idx += 1` and `offset += len + 1` are kept.
++pub fn get_range_adapted(ptr: &[u8], start: usize, end: usize) -> Option<&[u8]> {
++    if end < start {
++        return None;
++    }
++    let mut idx: usize = 0;
++    let mut offset: usize = 0;
++    let mut start_offset: Option<usize> = None;
++    let mut end_offset: Option<usize> = None;
++    let mut it = tokens_adapted(ptr);
++    loop {
++        let token_len = match tokens_next_adapted(&mut it) {
++            None => break,
++            Some(token) => token.len(),
++        };
++        if idx == start {
++            start_offset = Some(offset);
++        }
++        if idx == end {
++            end_offset = Some(offset);
++            break;
++        }
++        idx += 1;
++        offset += token_len + 1;
++    }
++    if idx == end {
++        end_offset = Some(offset);
++    }
++    let s = match start_offset {
++        None => return None,
++        Some(s) => s,
++    };
++    let e = match end_offset {
++        None => return None,
++        Some(e) => e,
++    };
++    Some(&ptr[s..e])
++}
++
++/// `PointerIndex::get` for `RangeFrom<usize>` (release `pointer/slice.rs:62`).
++/// `enumerate()` is an explicit counter incremented when an item is yielded.
++pub fn get_range_from_adapted(ptr: &[u8], start: usize) -> Option<&[u8]> {
++    let mut offset: usize = 0;
++    let mut start_offset: Option<usize> = None;
++    let mut count: usize = 0;
++    let mut it = tokens_adapted(ptr);
++    loop {
++        let token_len = match tokens_next_adapted(&mut it) {
++            None => break,
++            Some(token) => token.len(),
++        };
++        let idx = count;
++        count += 1;
++        if idx == start {
++            start_offset = Some(offset);
++            break;
++        }
++        offset += token_len + 1;
++    }
++    let s = match start_offset {
++        None => return None,
++        Some(s) => s,
++    };
++    Some(&ptr[s..])
++}
++
++/// `PointerIndex::get` for `RangeTo<usize>` (release `pointer/slice.rs:87`).
++pub fn get_range_to_adapted(ptr: &[u8], end: usize) -> Option<&[u8]> {
++    let mut idx: usize = 0;
++    let mut offset: usize = 0;
++    let mut end_offset: Option<usize> = None;
++    let mut it = tokens_adapted(ptr);
++    loop {
++        let token_len = match tokens_next_adapted(&mut it) {
++            None => break,
++            Some(token) => token.len(),
++        };
++        if idx == end {
++            end_offset = Some(offset);
++            break;
++        }
++        idx += 1;
++        offset += token_len + 1;
++    }
++    if idx == end {
++        end_offset = Some(offset);
++    }
++    let e = match end_offset {
++        None => return None,
++        Some(e) => e,
++    };
++    Some(&ptr[..e])
++}
++
++/// `PointerIndex::get` for `RangeInclusive<usize>` (release
++/// `pointer/slice.rs:128`). `into_inner` is the two parameters; it ignores the
++/// `exhausted` flag in the release too.
++pub fn get_range_inclusive_adapted(ptr: &[u8], start: usize, end: usize) -> Option<&[u8]> {
++    if end < start {
++        return None;
++    }
++    let mut offset: usize = 0;
++    let mut start_offset: Option<usize> = None;
++    let mut end_offset: Option<usize> = None;
++    let mut count: usize = 0;
++    let mut it = tokens_adapted(ptr);
++    loop {
++        let token_len = match tokens_next_adapted(&mut it) {
++            None => break,
++            Some(token) => token.len(),
++        };
++        let idx = count;
++        count += 1;
++        if idx == start {
++            start_offset = Some(offset);
++        }
++        offset += token_len + 1;
++        if idx == end {
++            end_offset = Some(offset);
++            break;
++        }
++    }
++    let s = match start_offset {
++        None => return None,
++        Some(s) => s,
++    };
++    let e = match end_offset {
++        None => return None,
++        Some(e) => e,
++    };
++    Some(&ptr[s..e])
++}
++
++/// `PointerIndex::get` for `RangeToInclusive<usize>` (release
++/// `pointer/slice.rs:166`).
++pub fn get_range_to_inclusive_adapted(ptr: &[u8], end: usize) -> Option<&[u8]> {
++    let mut offset: usize = 0;
++    let mut end_offset: Option<usize> = None;
++    let mut count: usize = 0;
++    let mut it = tokens_adapted(ptr);
++    loop {
++        let token_len = match tokens_next_adapted(&mut it) {
++            None => break,
++            Some(token) => token.len(),
++        };
++        let idx = count;
++        count += 1;
++        offset += token_len + 1;
++        if idx == end {
++            end_offset = Some(offset);
++            break;
++        }
++    }
++    let e = match end_offset {
++        None => return None,
++        Some(e) => e,
++    };
++    Some(&ptr[..e])
++}
++
++/// `PointerIndex::get` for `RangeFull` (release `pointer/slice.rs:120`).
++pub fn get_range_full_adapted(ptr: &[u8]) -> Option<&[u8]> {
++    Some(ptr)
++}
++
++/// `core::ops::Bound<usize>`, mirrored one for one.
++#[derive(Clone, Copy, Debug, PartialEq, Eq)]
++pub enum BoundAdapted {
++    Included(usize),
++    Excluded(usize),
++    Unbounded,
++}
++
++/// `PointerIndex::get` for `(Bound<usize>, Bound<usize>)` (release
++/// `pointer/slice.rs:196`). The machine `start + 1` is kept (JSONPTR-002).
++pub fn get_bounds_adapted(ptr: &[u8], start: BoundAdapted, end: BoundAdapted) -> Option<&[u8]> {
++    match (start, end) {
++        (BoundAdapted::Included(s), BoundAdapted::Included(e)) => get_range_inclusive_adapted(ptr, s, e),
++        (BoundAdapted::Included(s), BoundAdapted::Excluded(e)) => get_range_adapted(ptr, s, e),
++        (BoundAdapted::Included(s), BoundAdapted::Unbounded) => get_range_from_adapted(ptr, s),
++        (BoundAdapted::Excluded(s), BoundAdapted::Included(e)) => get_range_inclusive_adapted(ptr, s + 1, e),
++        (BoundAdapted::Excluded(s), BoundAdapted::Excluded(e)) => get_range_adapted(ptr, s + 1, e),
++        (BoundAdapted::Excluded(s), BoundAdapted::Unbounded) => get_range_from_adapted(ptr, s + 1),
++        (BoundAdapted::Unbounded, BoundAdapted::Included(e)) => get_range_to_inclusive_adapted(ptr, e),
++        (BoundAdapted::Unbounded, BoundAdapted::Excluded(e)) => get_range_to_adapted(ptr, e),
++        (BoundAdapted::Unbounded, BoundAdapted::Unbounded) => get_range_full_adapted(ptr),
++    }
++}
++
++/* ----------------------------------------------------------------------- *
++ *  Section 10: byte split.                                                *
++ * ----------------------------------------------------------------------- */
++
++/// `Pointer::split_at_offset` (release `pointer.rs:232`); the deprecated
++/// `split_at` forwards to it. Substitutions: `as_bytes().get(offset).copied()`
++/// is an explicit bounds test and index; `str::split_at` is `<[u8]>::split_at`.
++/// The dropped char-boundary assertion of `str::split_at` cannot fail here:
++/// the byte at `offset` is the ASCII `/`.
++pub fn split_at_offset_adapted(ptr: &[u8], offset: usize) -> Option<(&[u8], &[u8])> {
++    let b = if offset < ptr.len() { Some(ptr[offset]) } else { None };
++    match b {
++        Some(b'/') => {}
++        _ => return None,
++    }
++    let (head, tail) = ptr.split_at(offset);
++    Some((head, tail))
++}
++
++/* ----------------------------------------------------------------------- *
++ *  Section 11: comparison and prefix operations.                          *
++ * ----------------------------------------------------------------------- */
++
++/// `Pointer::starts_with` (release `pointer.rs:307`). `as_str` is the bytes.
++pub fn starts_with_adapted(s: &[u8], other: &[u8]) -> bool {
++    str_starts_with_ext(s, other) && (other.len() == s.len() || s[other.len()] == b'/')
++}
++
++/// `Pointer::ends_with` (release `pointer.rs:298`).
++pub fn ends_with_adapted(s: &[u8], other: &[u8]) -> bool {
++    (s.is_empty() && other.is_empty()) || (!other.is_empty() && str_ends_with_ext(s, other))
++}
++
++/// `Pointer::strip_suffix` (release `pointer.rs:278`): `str::strip_suffix`
++/// (`<&str as Pattern>::strip_suffix_of`), then the unchecked constructor.
++pub fn strip_suffix_adapted<'a>(s: &'a [u8], suffix: &[u8]) -> Option<&'a [u8]> {
++    if str_ends_with_ext(s, suffix) {
++        let i = s.len() - suffix.len();
++        Some(&s[..i])
++    } else {
++        None
++    }
++}
++
++/// `Pointer::strip_prefix` (release `pointer.rs:287`): `str::strip_prefix`
++/// (`<&str as Pattern>::strip_prefix_of`), then the unchecked constructor.
++/// Kept as in the release, so JSONPTR-001 is preserved.
++pub fn strip_prefix_adapted<'a>(s: &'a [u8], prefix: &[u8]) -> Option<&'a [u8]> {
++    if str_starts_with_ext(s, prefix) {
++        Some(&s[prefix.len()..])
++    } else {
++        None
++    }
++}
++
++/// `Pointer::intersection` (release `pointer.rs:396`). Substitutions: `zip`
++/// is a loop that advances `self`'s tokens first and stops when either side
++/// ends; `Token != Token` is `!bytes_eq_ext` on the encoded bytes; `root()` is
++/// the empty slice; `map_or` is a `match`.
++pub fn intersection_adapted<'a>(s: &'a [u8], other: &[u8]) -> &'a [u8] {
++    if s.is_empty() || other.is_empty() {
++        return &[];
++    }
++    let mut idx: usize = 0;
++    let mut a_it = tokens_adapted(s);
++    let mut b_it = tokens_adapted(other);
++    loop {
++        let a = match tokens_next_adapted(&mut a_it) {
++            None => break,
++            Some(a) => a,
++        };
++        let b = match tokens_next_adapted(&mut b_it) {
++            None => break,
++            Some(b) => b,
++        };
++        if !bytes_eq_ext(a, b) {
++            break;
++        }
++        idx += a.len() + 1;
++    }
++    match split_at_offset_adapted(s, idx) {
++        None => s,
++        Some((head, _)) => head,
++    }
++}
++
++/* ----------------------------------------------------------------------- *
++ *  Section 12: buffer construction and mutation.                          *
++ *  `PointerBuf(String)` is a `Vec<u8>`; a token argument is its encoded   *
++ *  bytes (the `Into<Token>` conversion is target 2).                      *
++ * ----------------------------------------------------------------------- */
++
++/// `PointerBuf::new`, `root`, `Default` (release `pointer.rs:921`, `:926`, `:914`).
++pub fn buf_new_adapted() -> Vec<u8> {
++    Vec::new()
++}
++
++/// `Pointer::to_buf` (release `pointer.rs:115`), `ToOwned::to_owned`.
++pub fn to_buf_adapted(ptr: &[u8]) -> Vec<u8> {
++    copy_bytes_ext(ptr)
++}
++
++/// `PointerBuf::from_tokens` (release `pointer.rs:951`) over a slice of
++/// owned encoded tokens (a slice of borrowed slices is an unsupported nested
++/// borrow for Aeneas). The `for` loop is an index loop; `push('/')` and
++/// `push_str` are a byte push and `extend_from_slice`.
++pub fn from_tokens_adapted(tokens: &[Vec<u8>]) -> Vec<u8> {
++    let mut inner = Vec::new();
++    let mut i = 0;
++    while i < tokens.len() {
++        inner.push(b'/');
++        inner.extend_from_slice(&tokens[i]);
++        i += 1;
++    }
++    inner
++}
++
++/// `PointerBuf::push_back` (release `pointer.rs:972`).
++pub fn push_back_adapted(buf: &mut Vec<u8>, token: &[u8]) {
++    buf.push(b'/');
++    buf.extend_from_slice(token);
++}
++
++/// `PointerBuf::push_front` (release `pointer.rs:966`). `insert(0, '/')`
++/// then `insert_str(1, t)` leave `"/" ++ t ++ old`; here that buffer is built
++/// directly (push, then two `extend_from_slice`) and stored. Reason: the
++/// unchanged Aeneas model of `Vec::insert` fails at `index == len`, which Rust
++/// allows (e.g. `insert(0, ..)` on the empty buffer). The dropped
++/// char-boundary assertions cannot fail on a buffer that holds a pointer.
++pub fn push_front_adapted(buf: &mut Vec<u8>, token: &[u8]) {
++    let mut nb = Vec::new();
++    nb.push(b'/');
++    nb.extend_from_slice(token);
++    nb.extend_from_slice(buf);
++    *buf = nb;
++}
++
++/// `PointerBuf::pop_back` (release `pointer.rs:978`). Substitutions: `rfind`
++/// is `rfind_slash_ext`; `split_off(idx + 1)` and `pop()` (which removes the
++/// one-byte `/`) are rebuilt buffers with the same final contents.
++pub fn pop_back_adapted(buf: &mut Vec<u8>) -> Option<Vec<u8>> {
++    match rfind_slash_ext(buf) {
++        Some(idx) => {
++            let at = idx + 1;
++            let back = copy_bytes_ext(&buf[at..]);
++            let head = copy_bytes_ext(&buf[..at]);
++            let new_len = head.len() - 1;
++            *buf = copy_bytes_ext(&head[..new_len]);
++            Some(back)
++        }
++        None => None,
++    }
++}
++
++/// `PointerBuf::pop_front` (release `pointer.rs:990`). Substitutions:
++/// `(!is_root()).then(..)` is an early return; `split_off(idx + 1)` with
++/// `mem::replace`, and `mem::take`, are rebuilt buffers; `remove(0)` (the
++/// one-byte `/`) is a copy of `&token[1..]`.
++pub fn pop_front_adapted(buf: &mut Vec<u8>) -> Option<Vec<u8>> {
++    if buf.len() == 0 {
++        return None;
++    }
++    let token = match find_slash_adapted(&buf[1..]) {
++        Some(idx) => {
++            let at = idx + 1;
++            let tail = copy_bytes_ext(&buf[at..]);
++            let head = copy_bytes_ext(&buf[..at]);
++            *buf = tail;
++            head
++        }
++        None => {
++            let all = copy_bytes_ext(&buf[..]);
++            *buf = Vec::new();
++            all
++        }
++    };
++    Some(copy_bytes_ext(&token[1..]))
++}
++
++/// `PointerBuf::append` (release `pointer.rs:1007`). The returned `&Self` is
++/// the buffer itself and is not returned separately.
++pub fn append_adapted(buf: &mut Vec<u8>, other: &[u8]) {
++    if buf.len() == 0 {
++        *buf = copy_bytes_ext(other);
++    } else if !other.is_empty() {
++        buf.extend_from_slice(other);
++    }
++}
++
++/// `PointerBuf::replace` (release `pointer.rs:1022`). Substitutions: `collect`
++/// is a loop of `push` that stores owned copies of the encoded tokens (a
++/// vector of borrowed slices hits Aeneas internal and nested-borrow errors);
++/// `tokens.get(index).map(to_owned)` is a bounds test and a copy;
++/// `tokens[index] = token.into()` stores a copy of the encoded token; the
++/// rebuild loop is an index loop.
++pub fn replace_adapted(buf: &mut Vec<u8>, index: usize, token: &[u8]) -> Result<Option<Vec<u8>>, ReplaceError> {
++    if buf.len() == 0 {
++        return Err(ReplaceError { count: count_adapted(buf), index });
++    }
++    let mut tokens: Vec<Vec<u8>> = Vec::new();
++    let mut it = tokens_adapted(buf);
++    while let Some(t) = tokens_next_adapted(&mut it) {
++        tokens.push(copy_bytes_ext(t));
++    }
++    if index >= tokens.len() {
++        return Err(ReplaceError { count: tokens.len(), index });
++    }
++    let old = if index < tokens.len() { Some(copy_bytes_ext(&tokens[index])) } else { None };
++    tokens[index] = copy_bytes_ext(token);
++    let mut nb = Vec::new();
++    let mut i = 0;
++    while i < tokens.len() {
++        nb.push(b'/');
++        nb.extend_from_slice(&tokens[i]);
++        i += 1;
++    }
++    *buf = nb;
++    Ok(old)
++}
++
++/// `PointerBuf::clear` (release `pointer.rs:1054`): `String::clear` leaves
++/// the empty buffer; here a new empty buffer (capacity is not observed).
++pub fn clear_adapted(buf: &mut Vec<u8>) {
++    *buf = Vec::new();
++}
++
++/// `Pointer::with_trailing_token` (release `pointer.rs:524`).
++pub fn with_trailing_token_adapted(ptr: &[u8], token: &[u8]) -> Vec<u8> {
++    let mut buf = to_buf_adapted(ptr);
++    push_back_adapted(&mut buf, token);
++    buf
++}
++
++/// `Pointer::with_leading_token` (release `pointer.rs:544`).
++pub fn with_leading_token_adapted(ptr: &[u8], token: &[u8]) -> Vec<u8> {
++    let mut buf = to_buf_adapted(ptr);
++    push_front_adapted(&mut buf, token);
++    buf
++}
++
++/// `Pointer::concat` (release `pointer.rs:565`).
++pub fn concat_adapted(ptr: &[u8], other: &[u8]) -> Vec<u8> {
++    let mut buf = to_buf_adapted(ptr);
++    append_adapted(&mut buf, other);
++    buf
++}
++
++/* ----------------------------------------------------------------------- *
++ *  Section 13: parse wrappers.                                            *
++ * ----------------------------------------------------------------------- */
++
++/// `Pointer::parse` (release `pointer.rs:82`): `validate(..).map(new_unchecked)`.
++pub fn pointer_parse_adapted(s: &[u8]) -> Result<&[u8], ParseError> {
++    match validate_adapted(s) {
++        Ok(v) => Ok(v),
++        Err(e) => Err(e),
++    }
++}
++
++/// `Report<ParseError>` with a byte subject (release `diagnostic.rs:60`).
++#[derive(Debug, PartialEq)]
++pub struct ParseReportAdapted {
++    pub source: ParseError,
++    pub subject: Vec<u8>,
++}
++
++/// `PointerBuf::parse` (release `pointer.rs:942`). `into_report(s)` builds the
++/// pair of the error and the unchanged input.
++pub fn buf_parse_adapted(s: Vec<u8>) -> Result<Vec<u8>, ParseReportAdapted> {
++    match validate_adapted(&s) {
++        Ok(_) => {}
++        Err(err) => return Err(ParseReportAdapted { source: err, subject: s }),
++    }
++    Ok(s)
++}
++
++/// `Diagnose::diagnose` (release `diagnostic.rs:213`) for a `ParseError`
++/// result with a byte subject: `map_err(|e| e.into_report(subject))`, with
++/// `into_report` building the pair. The generic release body pulls the
++/// `Diagnostic` trait structure, whose generated `labels` field fails Lean
++/// universe inference; this instance avoids the trait.
++pub fn diagnose_parse_adapted(r: Result<usize, ParseError>, subject: Vec<u8>) -> Result<usize, ParseReportAdapted> {
++    match r {
++        Ok(t) => Ok(t),
++        Err(e) => Err(ParseReportAdapted { source: e, subject }),
++    }
++}
++
++/// `TryFrom<String> for PointerBuf` (release `pointer.rs:1122`).
++pub fn buf_try_from_string_adapted(value: Vec<u8>) -> Result<Vec<u8>, ParseError> {
++    match validate_adapted(&value) {
++        Ok(_) => {}
++        Err(e) => return Err(e),
++    }
++    Ok(value)
++}
++
++/// `TryFrom<&str> for PointerBuf` (release `pointer.rs:1144`) and `FromStr`
++/// (release `pointer.rs:1059`): `Pointer::parse(..).map(to_buf)`.
++pub fn buf_try_from_str_adapted(value: &[u8]) -> Result<Vec<u8>, ParseError> {
++    match pointer_parse_adapted(value) {
++        Ok(p) => Ok(to_buf_adapted(p)),
++        Err(e) => Err(e),
++    }
++}
++
++/// `Pointer::from_static` (release `pointer.rs:104`): the assertion panics on
++/// invalid input, as documented.
++pub fn from_static_adapted(s: &[u8]) -> &[u8] {
++    let ok = validate_is_ok_adapted(s);
++    assert!(ok, "invalid json pointer");
++    s
++}
++
++/// `validate(s).is_ok()` (`Result::is_ok` as a `match`), used by `from_static`.
++pub fn validate_is_ok_adapted(s: &[u8]) -> bool {
++    match validate_adapted(s) {
++        Ok(_) => true,
++        Err(_) => false,
++    }
++}
++
++/* ----------------------------------------------------------------------- *
++ *  Section 14: small token and index items.                               *
++ * ----------------------------------------------------------------------- */
++
++/// `Token::encoded` (release `token.rs:196`): the stored encoded bytes.
++pub fn token_encoded_adapted(inner: &[u8]) -> &[u8] {
++    inner
++}
++
++/// `Token::into_owned`, `to_owned` (release `token.rs:169`, `:182`): a new
++/// buffer with the same encoded bytes.
++pub fn token_to_owned_adapted(inner: &[u8]) -> Vec<u8> {
++    copy_bytes_ext(inner)
++}
++
++/// `Token::is_next` (release `token.rs:290`): `matches!(to_index(),
++/// Ok(Index::Next))`, with `to_index` = `from_str_adapted` on the encoded bytes.
++pub fn is_next_adapted(inner: &[u8]) -> bool {
++    match from_str_adapted(inner) {
++        Ok(Index::Next) => true,
++        _ => false,
++    }
++}
++
++/// `StringOrToken` (release `index.rs:316`), both payloads as bytes.
++#[derive(Debug, Clone, PartialEq, Eq)]
++pub enum StringOrTokenAdapted {
++    String(Vec<u8>),
++    Token(Vec<u8>),
++}
++
++/// `From<String> for StringOrToken` (release `index.rs:322`).
++pub fn sot_from_string_adapted(value: Vec<u8>) -> StringOrTokenAdapted {
++    StringOrTokenAdapted::String(value)
++}
++
++/// `From<Token> for StringOrToken` (release `index.rs:328`).
++pub fn sot_from_token_adapted(encoded: Vec<u8>) -> StringOrTokenAdapted {
++    StringOrTokenAdapted::Token(encoded)
++}
++
++/// `Deref for StringOrToken` (release `index.rs:334`).
++pub fn sot_deref_adapted(s: &StringOrTokenAdapted) -> &[u8] {
++    match s {
++        StringOrTokenAdapted::String(s) => s,
++        StringOrTokenAdapted::Token(t) => t,
++    }
++}
++
++/* ----------------------------------------------------------------------- *
++ *  Sections 18-19 (subset): accessors that are blocked in the release.    *
++ * ----------------------------------------------------------------------- */
++
++/// `ParseError::invalid_encoding_len` (release `pointer.rs:1196`). `&str` is
++/// its bytes; the machine `subject.len() - 1` is kept (JSONPTR-003, N5).
++pub fn invalid_encoding_len_adapted(err: &ParseError, subject: &[u8]) -> usize {
++    match err {
++        ParseError::NoLeadingSlash => 0,
++        ParseError::InvalidEncoding { offset, .. } => {
++            if *offset < subject.len() - 1 {
++                2
++            } else {
++                1
++            }
++        }
++    }
++}
++
++/// A label without its text: the optional single label of `labels`.
++#[derive(Debug, Clone, Copy, PartialEq, Eq)]
++pub struct SpanAdapted {
++    pub offset: usize,
++    pub len: usize,
++}
++
++/// `Diagnostic::labels` for `ParseError` (release `pointer.rs:1217`): one
++/// label at `complete_offset` with `invalid_encoding_len`. The text is a
++/// fixed string and is dropped; `Box<dyn Iterator>` is the span.
++pub fn parse_error_label_adapted(err: &ParseError, subject: &[u8]) -> SpanAdapted {
++    let offset = err.complete_offset();
++    let len = invalid_encoding_len_adapted(err, subject);
++    SpanAdapted { offset, len }
++}
++
++/// `Diagnostic::labels` for `EncodingError` (release `token.rs:422`). The
++/// machine `self.offset - 1` is kept (N8).
++pub fn encoding_error_label_adapted(err: &EncodingError, subject: &[u8]) -> SpanAdapted {
++    let offset = match err.source {
++        InvalidEncoding::Tilde => {
++            if err.offset == subject.len() {
++                err.offset - 1
++            } else {
++                err.offset
++            }
++        }
++        InvalidEncoding::Slash => err.offset,
++    };
++    SpanAdapted { offset, len: 1 }
++}
++
++/// A UTF-8 continuation byte (`0x80..=0xBF`): not the start of a `char`.
++pub fn is_cont_adapted(b: u8) -> bool {
++    b >= 128 && b <= 191
++}
++
++/// `subject.chars().position(|c| c != '0')` over the UTF-8 bytes: a `char`
++/// starts at a non-continuation byte, and it equals `'0'` exactly when that
++/// byte is `b'0'`. The count is in `char`s, as in the release.
++pub fn position_non_zero_char_adapted(s: &[u8]) -> Option<usize> {
++    let mut i = 0;
++    let mut chars: usize = 0;
++    while i < s.len() {
++        let b = s[i];
++        if !is_cont_adapted(b) {
++            if b != b'0' {
++                return Some(chars);
++            }
++            chars += 1;
++        }
++        i += 1;
++    }
++    None
++}
++
++/// `subject.chars().skip(skip).position(|c| c.is_ascii_digit())` over the
++/// UTF-8 bytes, counting `char`s as the release does.
++pub fn position_digit_after_chars_adapted(s: &[u8], skip: usize) -> Option<usize> {
++    let mut i = 0;
++    let mut chars: usize = 0;
++    let mut pos: usize = 0;
++    while i < s.len() {
++        let b = s[i];
++        if !is_cont_adapted(b) {
++            if chars >= skip {
++                if b.is_ascii_digit() {
++                    return Some(pos);
++                }
++                pos += 1;
++            }
++            chars += 1;
++        }
++        i += 1;
++    }
++    None
++}
++
++/// `Diagnostic::labels` for `ParseIndexError` (release `index.rs:365-391`)
++/// on the subject's bytes. `Box<dyn Iterator>` is the optional span; the
++/// fixed texts are dropped; `expect` is a `panic!` (N1);
++/// `unwrap_or(subject.len())` keeps the byte length (N2).
++pub fn parse_index_error_label_adapted(err: &crate::index::ParseIndexErrorAdapted, subject: &[u8]) -> Option<SpanAdapted> {
++    match err {
++        crate::index::ParseIndexErrorAdapted::InvalidInteger(_) => None,
++        crate::index::ParseIndexErrorAdapted::LeadingZeros => {
++            let len = match position_non_zero_char_adapted(subject) {
++                Some(p) => p,
++                None => panic!("starts with zeros"),
++            };
++            Some(SpanAdapted { offset: 0, len })
++        }
++        crate::index::ParseIndexErrorAdapted::InvalidCharacter(e) => {
++            let len = match position_digit_after_chars_adapted(subject, e.offset) {
++                Some(p) => p,
++                None => subject.len(),
++            };
++            Some(SpanAdapted { offset: e.offset, len })
++        }
++    }
++}
++
++/* ----------------------------------------------------------------------- *
++ *  Section 21: accessors, views, equality and order on byte pointers.     *
++ * ----------------------------------------------------------------------- */
++
++/// `Pointer::is_root` and `is_empty` (release `pointer.rs:133`, `:599`):
++/// `str::is_empty`.
++pub fn is_root_adapted(ptr: &[u8]) -> bool {
++    ptr.is_empty()
++}
++
++/// `Pointer::len` (release `pointer.rs:585`): `str::len`.
++pub fn len_adapted(ptr: &[u8]) -> usize {
++    ptr.len()
++}
++
++/// `str == str`, which every `PartialEq` impl among `Pointer`, `&Pointer`,
++/// `PointerBuf`, `str`, `&str`, `String` reduces to (release
++/// `pointer.rs:693-783`, `:1151`, `:1157`, derived `PartialEq`), and the
++/// derived `PartialEq` of `Token` on its encoded `Cow<str>`.
++pub fn str_eq_adapted(a: &[u8], b: &[u8]) -> bool {
++    bytes_eq_ext(a, b)
++}
++
++/// `Ord for str` = `<[u8] as Ord>::cmp` (the `u8` specialization: compare the
++/// common prefix bytewise, then the lengths), which every `PartialOrd` impl
++/// among the same types reduces to through `Some(cmp)`, and the derived order
++/// of `Token`. The memcmp is an index loop with an early exit.
++pub fn str_cmp_adapted(a: &[u8], b: &[u8]) -> core::cmp::Ordering {
++    let n = if a.len() < b.len() { a.len() } else { b.len() };
++    let mut i = 0;
++    while i < n {
++        if a[i] < b[i] {
++            return core::cmp::Ordering::Less;
++        }
++        if a[i] > b[i] {
++            return core::cmp::Ordering::Greater;
++        }
++        i += 1;
++    }
++    if a.len() < b.len() {
++        core::cmp::Ordering::Less
++    } else if a.len() > b.len() {
++        core::cmp::Ordering::Greater
++    } else {
++        core::cmp::Ordering::Equal
++    }
++}
++
++/// `PartialOrd for str` (`Some(self.cmp(other))`), which every `PartialOrd`
++/// impl among the string-backed types forwards to.
++pub fn str_partial_cmp_adapted(a: &[u8], b: &[u8]) -> Option<core::cmp::Ordering> {
++    Some(str_cmp_adapted(a, b))
++}
++
++/// Derived `PartialEq` of `Component` (release `component.rs:4`). The two
++/// references are dereferenced at entry (`ComponentAdapted` is `Copy`);
++/// matching through the references hits an Aeneas enumeration-expansion error.
++pub fn component_eq_adapted(a: ComponentAdapted<'_>, b: ComponentAdapted<'_>) -> bool {
++    match a {
++        ComponentAdapted::Root => match b {
++            ComponentAdapted::Root => true,
++            ComponentAdapted::Token(_) => false,
++        },
++        ComponentAdapted::Token(x) => match b {
++            ComponentAdapted::Root => false,
++            ComponentAdapted::Token(y) => str_eq_adapted(x, y),
++        },
++    }
++}
++
++/// Derived `Ord` of `Component` (release `component.rs:4`): variant order,
++/// then the token order.
++pub fn component_cmp_adapted(a: ComponentAdapted<'_>, b: ComponentAdapted<'_>) -> core::cmp::Ordering {
++    match a {
++        ComponentAdapted::Root => match b {
++            ComponentAdapted::Root => core::cmp::Ordering::Equal,
++            ComponentAdapted::Token(_) => core::cmp::Ordering::Less,
++        },
++        ComponentAdapted::Token(x) => match b {
++            ComponentAdapted::Root => core::cmp::Ordering::Greater,
++            ComponentAdapted::Token(y) => str_cmp_adapted(x, y),
++        },
++    }
++}
++
++/// Derived `Clone` of `PointerBuf` (release `pointer.rs:914`): `String::clone`.
++pub fn buf_clone_adapted(buf: &Vec<u8>) -> Vec<u8> {
++    buf.clone()
++}
++
++/* ----------------------------------------------------------------------- *
++ *  Section 18 (resolve feature): accessors of the adapted resolve error.  *
++ * ----------------------------------------------------------------------- */
++
++#[cfg(feature = "resolve")]
++pub use resolve_err::*;
++
++#[cfg(feature = "resolve")]
++mod resolve_err {
++    use crate::resolve::ResolveErrorAdapted as E;
++
++    /// `resolve::Error::offset` (release `resolve.rs:168`).
++    pub fn resolve_error_offset_adapted(e: &E) -> usize {
++        match e {
++            E::FailedToParseIndex { offset, .. }
++            | E::OutOfBounds { offset, .. }
++            | E::NotFound { offset, .. }
++            | E::Unreachable { offset, .. } => *offset,
++        }
++    }
++
++    /// `resolve::Error::position` (release `resolve.rs:178`).
++    pub fn resolve_error_position_adapted(e: &E) -> usize {
++        match e {
++            E::FailedToParseIndex { position, .. }
++            | E::OutOfBounds { position, .. }
++            | E::NotFound { position, .. }
++            | E::Unreachable { position, .. } => *position,
++        }
++    }
++
++    /// `resolve::Error::is_unreachable` (release `resolve.rs:189`).
++    pub fn resolve_error_is_unreachable_adapted(e: &E) -> bool {
++        matches!(e, E::Unreachable { .. })
++    }
++
++    /// `resolve::Error::is_not_found` (release `resolve.rs:195`).
++    pub fn resolve_error_is_not_found_adapted(e: &E) -> bool {
++        matches!(e, E::NotFound { .. })
++    }
++
++    /// `resolve::Error::is_out_of_bounds` (release `resolve.rs:201`).
++    pub fn resolve_error_is_out_of_bounds_adapted(e: &E) -> bool {
++        matches!(e, E::OutOfBounds { .. })
++    }
++
++    /// `resolve::Error::is_failed_to_parse_index` (release `resolve.rs:207`).
++    pub fn resolve_error_is_failed_to_parse_index_adapted(e: &E) -> bool {
++        matches!(e, E::FailedToParseIndex { .. })
++    }
++
++    /// `Diagnostic::labels` for `resolve::Error` (release `resolve.rs:219-236`):
++    /// `origin.get(position)?` is `get_index_adapted`; the machine
++    /// `self.offset() + 1` is kept (N6); the text is dropped.
++    pub fn resolve_error_label_adapted(e: &E, origin: &[u8]) -> Option<super::SpanAdapted> {
++        let position = resolve_error_position_adapted(e);
++        let token = match super::get_index_adapted(origin, position) {
++            None => return None,
++            Some(t) => t,
++        };
++        let offset = if resolve_error_offset_adapted(e) + 1 < origin.len() {
++            resolve_error_offset_adapted(e) + 1
++        } else {
++            resolve_error_offset_adapted(e)
++        };
++        let len = token.len();
++        Some(super::SpanAdapted { offset, len })
++    }
++}
++
++/* ----------------------------------------------------------------------- *
++ *  Sections 15-17 (resolve feature): mutable resolution, assignment and   *
++ *  deletion over the local document type of target 7.                     *
++ * ----------------------------------------------------------------------- */
++
++#[cfg(feature = "resolve")]
++pub use doc_mut::*;
++
++#[cfg(feature = "resolve")]
++mod doc_mut {
++    use super::{copy_bytes_ext, split_back_adapted};
++    use crate::index::{from_str_adapted, OutOfBoundsError, ParseIndexErrorAdapted};
++    use crate::pointer::split_front_adapted;
++    use crate::resolve::{bytes_eq_adapted, DocAdapted, ResolveErrorAdapted};
++    use crate::token::decoded_adapted;
++    use alloc::vec::Vec;
++
++    /// First index of a member whose key equals `key` (local stand-in for the
++    /// key search of `Map::get_mut` / `Map::entry` / `Map::remove`; not
++    /// release code).
++    pub fn find_key_adapted(members: &[(Vec<u8>, DocAdapted)], key: &[u8]) -> Option<usize> {
++        let mut i = 0;
++        while i < members.len() {
++            if bytes_eq_adapted(&members[i].0, key) {
++                return Some(i);
++            }
++            i += 1;
++        }
++        None
++    }
++
++    /// `token.decoded()` as owned bytes (`Token::to_string` writes the
++    /// decoded text, so this is also the `to_string` key of `assign`).
++    pub fn decoded_key_adapted(tok: &[u8]) -> Vec<u8> {
++        match decoded_adapted(tok) {
++            Some(v) => v,
++            None => copy_bytes_ext(tok),
++        }
++    }
++
++    /// One iteration of the `ResolveMut for serde_json::Value` loop
++    /// (release `resolve.rs:331-343`), over the local document type: the
++    /// array arm is `parse_index` (`to_index` then `for_len`) and `&mut
++    /// array[idx]`; the object arm is `get_mut` on the decoded key.
++    pub fn resolve_mut_step_adapted<'d>(
++        value: &'d mut DocAdapted,
++        tok: &[u8],
++        position: usize,
++        offset: usize,
++    ) -> Result<&'d mut DocAdapted, ResolveErrorAdapted> {
++        match value {
++            DocAdapted::Array(v) => {
++                let idx = match from_str_adapted(tok) {
++                    Err(source) => {
++                        return Err(ResolveErrorAdapted::FailedToParseIndex { position, offset, source })
++                    }
++                    Ok(idx) => idx,
++                };
++                let idx = match idx.for_len(v.len()) {
++                    Err(source) => return Err(ResolveErrorAdapted::OutOfBounds { position, offset, source }),
++                    Ok(idx) => idx,
++                };
++                Ok(&mut v[idx])
++            }
++            DocAdapted::Object(v) => {
++                let key = decoded_key_adapted(tok);
++                match find_key_adapted(v, &key) {
++                    Some(i) => Ok(&mut v[i].1),
++                    None => Err(ResolveErrorAdapted::NotFound { position, offset }),
++                }
++            }
++            DocAdapted::Leaf(_) => Err(ResolveErrorAdapted::Unreachable { position, offset }),
++        }
++    }
++
++    /// Tail-recursive form of the `ResolveMut` loop (release
++    /// `resolve.rs:325-346`), as approved for target 7: split the front
++    /// token, run the step, return early on error, continue at
++    /// `position + 1` and `offset + (1 + tok_len)`. Stack depth grows with
++    /// the token count.
++    pub fn resolve_mut_rec_adapted<'d>(
++        value: &'d mut DocAdapted,
++        ptr: &[u8],
++        position: usize,
++        offset: usize,
++    ) -> Result<&'d mut DocAdapted, ResolveErrorAdapted> {
++        match split_front_adapted(ptr) {
++            None => Ok(value),
++            Some((tok, rem)) => {
++                let tok_len = tok.len();
++                let child = match resolve_mut_step_adapted(value, tok, position, offset) {
++                    Ok(child) => child,
++                    Err(err) => return Err(err),
++                };
++                let next_offset = offset + (1 + tok_len);
++                let next_position = position + 1;
++                resolve_mut_rec_adapted(child, rem, next_position, next_offset)
++            }
++        }
++    }
++
++    /// Adapted `ResolveMut::resolve_mut` for JSON (release `resolve.rs:325`).
++    pub fn resolve_mut_adapted<'d>(doc: &'d mut DocAdapted, ptr: &[u8]) -> Result<&'d mut DocAdapted, ResolveErrorAdapted> {
++        resolve_mut_rec_adapted(doc, ptr, 0, 0)
++    }
++
++    /// `assign::Error` with `ParseIndexError` replaced by its adapted mirror.
++    #[derive(Debug, PartialEq, Eq)]
++    pub enum AssignErrorAdapted {
++        FailedToParseIndex { position: usize, offset: usize, source: ParseIndexErrorAdapted },
++        OutOfBounds { position: usize, offset: usize, source: OutOfBoundsError },
++    }
++
++    /// `expand` (release `assign.rs:276`): wrap the value once per remaining
++    /// token, from the back. Encoded `"0"`/`"-"` make a one-item array; any
++    /// other token a one-member object keyed by `tok.to_string()` (the decoded
++    /// key). `vec![value]` is `Vec::new` plus `push`; `Map::insert` into a new
++    /// map is a one-member vector. The `while let` over `split_back` is a
++    /// tail recursion on the remaining prefix.
++    pub fn expand_adapted(remaining: &[u8], value: DocAdapted) -> DocAdapted {
++        match split_back_adapted(remaining) {
++            None => value,
++            Some((ptr, tok)) => {
++                let wrapped = if (tok.len() == 1 && tok[0] == b'0') || (tok.len() == 1 && tok[0] == b'-') {
++                    let mut v = Vec::new();
++                    v.push(value);
++                    DocAdapted::Array(v)
++                } else {
++                    let mut obj = Vec::new();
++                    obj.push((decoded_key_adapted(tok), value));
++                    DocAdapted::Object(obj)
++                };
++                expand_adapted(ptr, wrapped)
++            }
++        }
++    }
++
++    /// Tail-recursive form of `assign_value` (release `assign.rs:301-339`)
++    /// with `assign_array`, `assign_object`, `assign_scalar` inlined
++    /// (`assign.rs:341-428`). `Assigned::Continue` is the recursive call with
++    /// `position + 1` and `offset + (1 + tok_len)`; `Assigned::Done` returns.
++    /// `Map::entry(token.to_string())` is a key search on the decoded key;
++    /// a vacant entry is pushed at the end (the model's member order).
++    pub fn assign_rec_adapted(
++        dest: &mut DocAdapted,
++        ptr: &[u8],
++        value: DocAdapted,
++        position: usize,
++        offset: usize,
++    ) -> Result<Option<DocAdapted>, AssignErrorAdapted> {
++        match split_front_adapted(ptr) {
++            None => Ok(Some(core::mem::replace(dest, value))),
++            Some((tok, tail)) => {
++                let tok_len = tok.len();
++                match dest {
++                    DocAdapted::Array(array) => {
++                        let idx = match from_str_adapted(tok) {
++                            Err(source) => {
++                                return Err(AssignErrorAdapted::FailedToParseIndex { position, offset, source })
++                            }
++                            Ok(idx) => idx,
++                        };
++                        let idx = match idx.for_len_incl(array.len()) {
++                            Err(source) => return Err(AssignErrorAdapted::OutOfBounds { position, offset, source }),
++                            Ok(idx) => idx,
++                        };
++                        if idx < array.len() {
++                            if tail.is_empty() {
++                                Ok(Some(core::mem::replace(&mut array[idx], value)))
++                            } else {
++                                let next_offset = offset + (1 + tok_len);
++                                let next_position = position + 1;
++                                assign_rec_adapted(&mut array[idx], tail, value, next_position, next_offset)
++                            }
++                        } else {
++                            let src = expand_adapted(tail, value);
++                            array.push(src);
++                            Ok(None)
++                        }
++                    }
++                    DocAdapted::Object(obj) => {
++                        let key = decoded_key_adapted(tok);
++                        match find_key_adapted(obj, &key) {
++                            Some(i) => {
++                                if tail.is_empty() {
++                                    Ok(Some(core::mem::replace(&mut obj[i].1, value)))
++                                } else {
++                                    let next_offset = offset + (1 + tok_len);
++                                    let next_position = position + 1;
++                                    assign_rec_adapted(&mut obj[i].1, tail, value, next_position, next_offset)
++                                }
++                            }
++                            None => {
++                                let src = expand_adapted(tail, value);
++                                obj.push((key, src));
++                                Ok(None)
++                            }
++                        }
++                    }
++                    DocAdapted::Leaf(_) => {
++                        let e = expand_adapted(ptr, value);
++                        Ok(Some(core::mem::replace(dest, e)))
++                    }
++                }
++            }
++        }
++    }
++
++    /// Adapted `Assign::assign` for JSON (release `assign.rs:291`).
++    pub fn assign_adapted(doc: &mut DocAdapted, ptr: &[u8], value: DocAdapted) -> Result<Option<DocAdapted>, AssignErrorAdapted> {
++        assign_rec_adapted(doc, ptr, value, 0, 0)
++    }
++
++    /// `Vec::remove(idx)` (unmodelled by Aeneas) as a rebuild that moves each
++    /// item out with a placeholder and skips `idx`; order is kept.
++    pub fn remove_at_adapted(items: &mut Vec<DocAdapted>, idx: usize) -> DocAdapted {
++        let mut nb = Vec::new();
++        let mut removed = DocAdapted::Leaf(0);
++        let mut j = 0;
++        while j < items.len() {
++            let x = core::mem::replace(&mut items[j], DocAdapted::Leaf(0));
++            if j == idx {
++                removed = x;
++            } else {
++                nb.push(x);
++            }
++            j += 1;
++        }
++        *items = nb;
++        removed
++    }
++
++    /// `Map::remove(key)` on the local member list (first match), as a
++    /// rebuild like `remove_at_adapted`.
++    pub fn remove_member_adapted(members: &mut Vec<(Vec<u8>, DocAdapted)>, idx: usize) -> DocAdapted {
++        let mut nb = Vec::new();
++        let mut removed = DocAdapted::Leaf(0);
++        let mut j = 0;
++        while j < members.len() {
++            let x = core::mem::replace(&mut members[j].1, DocAdapted::Leaf(0));
++            let k = copy_bytes_ext(&members[j].0);
++            if j == idx {
++                removed = x;
++            } else {
++                nb.push((k, x));
++            }
++            j += 1;
++        }
++        *members = nb;
++        removed
++    }
++
++    /// `Delete::delete` (release `delete.rs:98` JSON, `:136` TOML) with the
++    /// root replacement as a parameter: JSON passes `Value::Null`
++    /// (`Leaf(0)`), TOML an empty table (`Object([])`). This is the one
++    /// difference between the two release spans.
++    pub fn delete_with_adapted(doc: &mut DocAdapted, ptr: &[u8], root_repl: DocAdapted) -> Option<DocAdapted> {
++        let (parent_ptr, last) = match split_back_adapted(ptr) {
++            None => return Some(core::mem::replace(doc, root_repl)),
++            Some(p) => p,
++        };
++        let parent = match resolve_mut_adapted(doc, parent_ptr) {
++            Err(_) => return None,
++            Ok(p) => p,
++        };
++        match parent {
++            DocAdapted::Array(children) => {
++                let idx = match from_str_adapted(last) {
++                    Err(_) => return None,
++                    Ok(i) => i,
++                };
++                let idx = match idx.for_len(children.len()) {
++                    Err(_) => return None,
++                    Ok(i) => i,
++                };
++                Some(remove_at_adapted(children, idx))
++            }
++            DocAdapted::Object(children) => {
++                let key = decoded_key_adapted(last);
++                match find_key_adapted(children, &key) {
++                    None => None,
++                    Some(i) => Some(remove_member_adapted(children, i)),
++                }
++            }
++            DocAdapted::Leaf(_) => None,
++        }
++    }
++
++    /// `Delete for serde_json::Value`: root replacement `Value::Null`.
++    pub fn delete_json_adapted(doc: &mut DocAdapted, ptr: &[u8]) -> Option<DocAdapted> {
++        delete_with_adapted(doc, ptr, DocAdapted::Leaf(0))
++    }
++
++    /// `assign::Error::position` (release `assign.rs:163`).
++    pub fn assign_error_position_adapted(e: &AssignErrorAdapted) -> usize {
++        match e {
++            AssignErrorAdapted::OutOfBounds { position, .. } | AssignErrorAdapted::FailedToParseIndex { position, .. } => *position,
++        }
++    }
++
++    /// `assign::Error::offset` (release `assign.rs:171`).
++    pub fn assign_error_offset_adapted(e: &AssignErrorAdapted) -> usize {
++        match e {
++            AssignErrorAdapted::OutOfBounds { offset, .. } | AssignErrorAdapted::FailedToParseIndex { offset, .. } => *offset,
++        }
++    }
++
++    /// `assign::Error::is_out_of_bounds` (release `assign.rs:181`).
++    pub fn assign_error_is_out_of_bounds_adapted(e: &AssignErrorAdapted) -> bool {
++        matches!(e, AssignErrorAdapted::OutOfBounds { .. })
++    }
++
++    /// `assign::Error::is_failed_to_parse_index` (release `assign.rs:189`).
++    pub fn assign_error_is_failed_to_parse_index_adapted(e: &AssignErrorAdapted) -> bool {
++        matches!(e, AssignErrorAdapted::FailedToParseIndex { .. })
++    }
++
++    /// `Diagnostic::labels` for `assign::Error` (release `assign.rs:218-236`),
++    /// as for `resolve::Error` (N6).
++    pub fn assign_error_label_adapted(e: &AssignErrorAdapted, origin: &[u8]) -> Option<super::SpanAdapted> {
++        let position = assign_error_position_adapted(e);
++        let token = match super::get_index_adapted(origin, position) {
++            None => return None,
++            Some(t) => t,
++        };
++        let offset = if assign_error_offset_adapted(e) + 1 < origin.len() {
++            assign_error_offset_adapted(e) + 1
++        } else {
++            assign_error_offset_adapted(e)
++        };
++        let len = token.len();
++        Some(super::SpanAdapted { offset, len })
++    }
++
++    /// `Delete for toml::Value`: root replacement an empty table.
++    pub fn delete_toml_adapted(doc: &mut DocAdapted, ptr: &[u8]) -> Option<DocAdapted> {
++        delete_with_adapted(doc, ptr, DocAdapted::Object(Vec::new()))
++    }
++}
+diff -ruN base/src/lib.rs ext/src/lib.rs
+--- release/src/lib.rs
++++ adapted/src/lib.rs
+@@ -77,6 +77,10 @@
+ 
+ pub mod index;
+ 
++/// Adapted byte-slice bodies for the extended scope (Aeneas `adapted` profile). Not release API.
++#[doc(hidden)]
++pub mod adapted_api;
++
+ mod component;
+ pub use component::{Component, Components};
+ 

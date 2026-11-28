@@ -1,0 +1,59 @@
+{
+ "release": ".work/source (checked by source.lock.json)",
+ "patches": {
+  "cargo-workspace.patch": "c714345b7279167e77e52c043439af5a07b026495eed336999c177684ef4f433",
+  "adapted-bodies.patch": "b22ee0acf98081927a22922ea83747007ce3e035766aa42a27a80631f8538ac0",
+  "adapted-api.patch": "0d43c21dc711ed0c503ebd534ecc16c2ddf4ff00e8e7d9f7900a8197b559b554"
+ },
+ "files": {
+  ".cargo/config.toml": "382efa67bcc1312cc23cd5c9c2ec470549d0687165f72eb85620021a0e70a881",
+  ".cargo_vcs_info.json": "00528cba5a2dd7452820c4e81a961e581060011b8e275fdf3fcb7179cf8a9d2b",
+  ".github/DOCS.md": "6a3c2248bb234e7fde0ce6ee9d986c7c0dbd25f33807b1808a62490d47c799be",
+  ".github/codecov.yml": "47c451cf94e3fe4f7edf46e42cb9b86c9d65eb7b65ca66f2e50ec936437a21e1",
+  ".github/dependabot.yml": "0721729dc23500350d26acccee5ed86474da5b75c909533994922f6b6cd0d4cb",
+  ".github/workflows/check.yml": "67da3fc628e2abeef21ea00c314c5138c83bf08c39cb06bad4044ea7946e6943",
+  ".github/workflows/nostd.yml": "163484f8609eec0dabe140ac1a0732d1bb01763b1cd01d9d5c414a7db80fea71",
+  ".github/workflows/safety.yml": "f0c86fa67a28e1e95742d6616279e4ce28631643f37710dd51f774e5b78f8b1b",
+  ".github/workflows/scheduled.yml": "70c20d18b697226d8b820639f62a38fb001258ddb6642179172a67ca888809f1",
+  ".github/workflows/test.yml": "b54ac28355735ca0ead5936c6a71ca9ccc377960524af630496f531131cc6a3c",
+  ".gitignore": "7562a8cc5328e6a06da98ceee96a5a91e1120a0bdaf729ee6fc549c68f6a4776",
+  ".helix/languages.toml": "18e9ff6c29fa8efa78ad1a9e527b22d450e2c472d9c3fc70292f5768a899e7ea",
+  ".taplo.toml": "c145e393eb1d7eb30c92925edf7c9b95af6d6ee310ce2a37e0900da36044e6fe",
+  "CHANGELOG.md": "ef14880f56799f770c1ae3ebc7a39a6d6477e025b8e753e890e9dda8d0ae548b",
+  "Cargo.lock": "a81bdb315f26c25d2d13bd05821ee45bea136d8672e753a96775585914e83bc9",
+  "Cargo.toml": "88f1365a44f10215f89909d744519350ae310e0de3368b5a1356fb5717cc79ae",
+  "Cargo.toml.orig": "ca0237088a855811af14040e2e426021fb033a342e4893c96d8bd72fc18265f9",
+  "LICENSE-APACHE": "2cf31f2ae7f3feba667d50fc1d4d21ecf217703c04c3068b83c9a73b6dde723a",
+  "LICENSE-MIT": "2bc107bdc18a74263d20bdefdb8073e17bc1a01b6b374dc5835683a33ee5ba7d",
+  "README.md": "d0887f01b21707d38c420772ffaca0c13b50318815ba93cef23fca3da0188638",
+  "src/adapted_api.rs": "49403bc6fabc6b44d1f11d2a8cfc4434da27abb4ed253f1171c629d901f42056",
+  "src/arbitrary.rs": "53c583026478052b91013b516d8a85c6fd137aeb0705f209b444991bbc4e32d6",
+  "src/assign.rs": "8cd5be17ed3999af7f2d3381611c7c74bc21c07d2a368e92e58c8b5357e42c80",
+  "src/component.rs": "f7cfcc02255c0755be3dd82a4b2940c183e083922c7b047b03672d6da35e1fb3",
+  "src/delete.rs": "4b99103b4ec365dfbb02e30ce43bcdf71d727d48edcb4a695b071eeec00e9ba5",
+  "src/diagnostic.rs": "67f2bfd4dc66eea918b8dc8749fcd6ceb01bfe64d4f96af7d7305e856895037e",
+  "src/index.rs": "a8f03900aca2287cdf93f694fb76382fbdfea3ba89c9e1b7afea20ba14650dd2",
+  "src/lib.rs": "13358a6321d2e79d69fc5d99e46ef895405a0448e3206e712825e690daaa9709",
+  "src/pointer/slice.rs": "8261847ac6c6ece54a35774267e6a9bb842f05ff27afb58535917dc41a98d0a3",
+  "src/pointer.rs": "9a29eade1e1e6c20ce7b43d24064265579bae35bb239d0f36e2325350726243d",
+  "src/resolve.rs": "3c0962ee9c039846c8730eea30771a5afd882eae4d5fafcdc2ab09b4ed801478",
+  "src/token.rs": "d5f55c45e13e348f34b358472a8494fc55522b56c2c9a7f78bcfdfc5b71cb245"
+ },
+ "correspondence": {
+  "adapted_api::doc_mut::resolve_mut_adapted (+_rec_, _step_)": [
+   "src/resolve.rs:325 (JSON ResolveMut)",
+   "src/resolve.rs:425 (TOML ResolveMut)"
+  ],
+  "adapted_api::doc_mut::assign_adapted (+assign_rec_adapted, expand_adapted)": [
+   "src/assign.rs:267-428 (JSON Assign)",
+   "src/assign.rs:439-598 (TOML Assign)"
+  ],
+  "adapted_api::doc_mut::delete_json_adapted": [
+   "src/delete.rs:98"
+  ],
+  "adapted_api::doc_mut::delete_toml_adapted": [
+   "src/delete.rs:136"
+  ],
+  "note": "Leaf 0 stands for JSON null by convention; member/removal order of external maps stays an open correspondence obligation."
+ }
+}

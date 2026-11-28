@@ -1,0 +1,34 @@
+{
+  "extraction_rust": "nightly-2026-09-17",
+  "host_build_environment": {
+    "DUNE_CACHE": "disabled",
+    "ac_cv_func_accept4": "no",
+    "ac_cv_func_dup3": "no",
+    "ac_cv_func_pipe2": "no"
+  },
+  "lean": "leanprover/lean4:v4.35.0",
+  "native_rust": "1.94.1",
+  "opam_sha256": "fee6d390a233271cbcdb0a72a116a7761e4cf1351468bdb3ec93758323819f20",
+  "recipe": "aeneas-opam-v1",
+  "repositories": {
+    "aeneas": {
+      "patches": [],
+      "revision": "be86ab0f1989d04944292b345b24c435be3ad10a",
+      "tree": "3a478c054742dc07cdc32bb691cc51719d5c85fa",
+      "url": "https://github.com/AeneasVerif/aeneas.git"
+    },
+    "charon": {
+      "patches": [],
+      "revision": "08d7c9d50144bd84848212c24701253585e90d1f",
+      "tree": "39f618410c91093635be66d0697ce99616e6a111",
+      "url": "https://github.com/AeneasVerif/charon.git"
+    },
+    "proofs-rs": {
+      "patches": [],
+      "revision": "2446bcad7d492be2d2036629e5dc94d186a23213",
+      "tree": "ab4746200e10d41147403f818d5e2c8c5057135a",
+      "url": "https://github.com/proofs-rs/proofs-rs.git"
+    }
+  },
+  "schema_version": 1
+}

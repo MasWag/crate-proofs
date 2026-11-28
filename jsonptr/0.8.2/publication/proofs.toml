@@ -1,0 +1,634 @@
+# proofs.rs report configuration for jsonptr 0.8.2 (default profile only).
+#
+# Selected package: this directory's Cargo.toml, which compiles the byte-identical
+# crates.io release tree in release/ (checked against ../source.lock.json).
+# Lean package: proofs/ (managed default-profile sources copied byte-for-byte, plus
+# Publication.lean with per-API projections). Run `python3 check.py` here to
+# check the derivation and mapping invariants.
+
+[report]
+title = "Selected index-bound, error-accessor and derived-trait contracts for jsonptr 0.8.2"
+explanation = '''
+jsonptr implements RFC 6901 JSON Pointers: it parses and encodes pointer strings, interprets array indices, and resolves or mutates JSON and TOML documents. The mapped claims in this report cover a small set of release methods around that core, proved on their unchanged release bodies. They do not cover pointer parsing, token encoding and decoding, index parsing or document resolution; see the limitations.
+
+Every mapped contract states that the method returns successfully with the specified value for every input it quantifies over. Within the model, each claim therefore establishes both the exact result and the absence of panics. Only `ParseError::complete_offset` has a premise.
+
+Index bounds. For every `Index` value and every `usize` length `L`, including zero and `usize::MAX`, let `n` be `i` for `Index::Num(i)` and `L` for `Index::Next`. `Index::for_len_unchecked` returns `n`. `Index::for_len` returns `Ok(n)` when `n < L` and otherwise `Err(OutOfBoundsError { length: L, index: n })`. `Index::for_len_incl` behaves the same with `n <= L`. These results do not depend on whether an array of length `L` can exist.
+
+Index traits. The derived `PartialEq` for `Index` is structural equality, and `Clone` returns an identical value. `Ord::cmp` orders `Num` values by their number and places every `Num` before `Next`; `PartialOrd::partial_cmp` returns `Some` of the same ordering. `From<usize>` returns `Index::Num(n)`.
+
+Error values. The derived `Clone` returns an identical value for `OutOfBoundsError`, `InvalidCharacterError` and `InvalidEncoding`. The derived `PartialEq` is field-wise equality for those three types and for `EncodingError`, `ParseError` and `ReplaceError`. `InvalidCharacterError::offset` returns its offset field.
+
+`ParseError` inspection. `offset` and `pointer_offset` return 0 for `NoLeadingSlash` and the pointer offset for `InvalidEncoding`. `source_offset` returns 0 for `NoLeadingSlash` and the offset of the inner `EncodingError` for `InvalidEncoding`. `is_no_leading_slash`, and its deprecated alias `is_no_leading_backslash`, return whether the error is `NoLeadingSlash`; `is_invalid_encoding` returns the opposite. `complete_offset` returns the pointer offset plus the source offset whenever that sum is at most `usize::MAX`. Outside this premise the release addition overflows: it panics in a debug build and wraps in a release build. The JSONPTR-008 finding shows such a value built by hand.
+
+Diagnostics. `Diagnostic::url` returns `https://docs.rs/jsonptr/0.8.2/jsonptr/struct.EncodingError.html` for `EncodingError` and `https://docs.rs/jsonptr/0.8.2/jsonptr/assign/enum.Error.html` for `assign::Error`. `Label::new(text, offset, len)` returns a label whose text, offset and length are exactly the arguments. `Pointer::as_str` returns the pointer's encoded string unchanged.
+
+Supporting work that is not a mapped claim. A theorem on the unchanged private `validate_bytes` kernel shows that, called at offset 0 on any nonempty byte slice, it accepts exactly the RFC 6901 slash-and-escape grammar, reports a missing leading slash, or reports the first tilde not followed by `0` or `1`, giving the offset of the slash that opens the token and the tilde's distance from that slash. It does not cover the public parsing wrappers or their empty-input branch. A separate local profile proves contracts for byte-level rewrites of the core release bodies, described in the limitations. A further audited theorem on the unchanged bodies shows that, for every choice of type parameters, `Report::original` and `Report::into_original` return the stored error and `Report::decompose` returns the stored error and subject as a pair; it is not a recorded claim because the recorder cannot attach claims to methods of the generic `Report` type. None of the results in this paragraph is a recorded claim, and the `validate_bytes` and adapted results are not proofs of any public release API.
+'''
+trusted_assumptions = '''
+The claims rely on the pinned Charon and Aeneas translation of the crate's compiled Rust into Lean, on the Aeneas models of Rust scalars, strings and standard-library operations, and on the Lean kernel. The Lean model leaves the width of `usize` as the platform word size rather than fixing it, but the translated code was compiled only for the 64-bit `aarch64-apple-darwin` target, so no other target is claimed. The model treats every arithmetic overflow as a failure, independent of the build profile. A contract that requires success therefore excludes overflow in both debug and release builds, but it says nothing about the wrapped value a release build would produce outside its premise.
+
+Shared references are modelled as the values they point to. A claim such as `Pointer::as_str` establishes the value read through the returned reference, not the reference's address or lifetime.
+
+A local audit checked the default-profile theorems and their transitive axioms. Fourteen mapped claims use one-line projections that each select one conjunct of an audited theorem; the projections themselves are checked when the report is recorded, not by that audit. The audit allows only Lean's standard `propext`, `Classical.choice` and `Quot.sound`, and finds no `sorry` or added axiom. The audit does not independently establish that the translation or the library models match Rust semantics. The contracts were written independently of the proofs, from RFC 6901 and the crate's public API and documentation.
+'''
+limitations = '''
+The central jsonptr algorithms are not proved on their release bodies. Public pointer parsing, token encoding and decoding, index parsing, pointer splitting and navigation, buffer operations, document resolution, assignment, deletion, and diagnostic span lengths and labels all fail translation with the unmodified tools. The blocking constructs include the `str::as_bytes` reference transmute, raw-pointer dereferences, iterator and borrow-state errors, `core::str::pattern` signatures, `String` and `ParseIntError` internals, and `serde_json` items.
+
+A separate local profile proves contracts for byte-level rewrites of those bodies. It covers pointer validation, the token codec, index parsing, navigation and range access, prefix and suffix operations, byte-wise ordering of pointers and tokens, `PointerBuf` editing, and resolution, mutable resolution, assignment and deletion over a local model of JSON and TOML documents. These are proofs about adapted functions, not about the release APIs, and none of them is a mapped claim. Besides representation invariants for pointers and tokens, some of them assume that built buffers and input arrays or objects have fewer than `usize::MAX` entries. The rewrites replace `&str` with byte slices, iterator adapters with index loops, `str::parse` with explicit checked decimal accumulation, and the traversal loops with tail recursion; the recursive form can exhaust the stack on very long pointers where the release loop cannot. Their correspondence to the release code rests on source review and native differential tests that compare release and adapted results in debug and release builds, including every string of up to seven characters over a small pointer alphabet. That evidence is not a formal equivalence proof. It does not establish that `serde_json` map lookup and array access behave as modelled, and TOML documents were not exercised natively.
+
+Checked theorems on the unchanged release bodies refute four intended contracts. `complete_offset` does not succeed for every error value (JSONPTR-008), so it is claimed only under its premise. `Diagnostic::url` returns a string other than the intended docs.rs address for `resolve::Error`, `ParseIndexError` and `ParseError` (JSONPTR-006), so those three implementations are not claimed. Checked refutations on the adapted functions mirror JSONPTR-001 to JSONPTR-005 and JSONPTR-008 for `strip_prefix`, bound-tuple access and diagnostic labels; the release behavior itself is shown by the native reproductions in those findings. The `"aé1"` case of JSONPTR-005 and the documentation mismatch in JSONPTR-007 rest on native evidence only.
+
+Unproved or untracked methods include the `EncodingError::labels` contract; `ParseError::invalid_encoding_len`, for which only a statement of the release behavior is recorded; forwarding methods that lack a theorem connecting them to the operation they forward to; borrowing and conversion views such as `AsRef`, `Borrow`, `Cow` conversions, `as_ptr`, `Default` for `&Pointer` and `IntoIterator` for `&PointerBuf`; the `Tokens` and `Components` adapter types; `PartialEq` for `resolve::Error` and `assign::Error`; `Clone` and `PartialEq` for `Label` and `Report`; `Clone`, `PartialEq` and `From<ParseIntError>` for `ParseIndexError`; and the immutable `Resolve` implementation for TOML values. `Report::original`, `into_original` and `decompose` have an audited theorem but no recorded claim.
+
+Some behavior cannot be expressed with the unmodified tools and is excluded. `Display` and `Debug` output is not observable because the `Formatter` model discards written text. The generated `Diagnostic` trait structure fails Lean universe inference, so the generic `Report::subject`, `Deref`, `into_report`, `diagnose` and `diagnose_with` are not proved. `Error::source` would need axioms for `dyn Error`. Hashing, raw pointer and `Box` casts, and the behavior of serde, serde_json, toml and miette integrations are also outside scope.
+
+The mapped claims were checked for `aarch64-apple-darwin` with default features disabled and the `resolve` and `assign` features enabled. Other targets and feature combinations are not covered by the formal results. In the same local run, the release crate's own tests passed natively with default features (99 unit tests and 49 doctests) and with all features (105 unit tests and 49 doctests); these tests are separate evidence, not proof.
+
+The eight findings below were reproduced natively against the unmodified release. Some concern APIs outside the mapped claims. None contradicts a mapped claim: the `complete_offset` premise excludes the overflowing case, the two mapped `url` claims are for `EncodingError` and `assign::Error`, which the finding reports as returning the expected addresses, and JSONPTR-007 concerns documentation rather than the values that the accessor claims describe.
+'''
+environment = '''
+The source is the crates.io jsonptr 0.8.2 archive (SHA-256 `72c22d99362c7aac7d77efab6b49c2181674b165d7e6e7c755b3432ded64bf51`), which identifies upstream commit `41a813bd4e7e89a0251bf2fc559c7159933a1066`. The mapped theorems concern its unchanged bodies, translated from optimized MIR for `aarch64-apple-darwin` with `--no-default-features --features resolve,assign`.
+
+The tools are unmodified: Aeneas `be86ab0f1989d04944292b345b24c435be3ad10a`, Charon `08d7c9d50144bd84848212c24701253585e90d1f`, proofs-rs `2446bcad7d492be2d2036629e5dc94d186a23213` for the local managed checks, and Lean 4.35.0. Translation used Rust `nightly-2026-09-17`. The crate's own native tests ran with Rust 1.94.1, and the findings were reproduced with Rust 1.91.0. The report is recorded with the official cargo-proofs 0.4.1 built from proofs-rs `3746712b39f2a45d8c067d24d83f767997040cae`.
+
+The default local managed run passed on 2026-11-28 on an `aarch64-apple-darwin` macOS host. It regenerated the Lean model byte for byte, built it, audited the 27 default-profile theorems and their axioms (the per-API projection theorems are not part of that audit), ran the native tests and found identical input fingerprints before and after the run. The adapted profile's local managed run passed on the same date with its own model regeneration, audit and differential tests. The Cargo lockfile carries an unused patch entry needed by the repository's Cargo configuration; it does not change the resolved dependency graph.
+'''
+
+[[report.findings]]
+title = "Pointer::strip_prefix still returns a malformed Pointer in 0.8.2"
+body = '''
+I can reproduce the partial-token prefix bug from https://github.com/chanced/jsonptr/issues/131 in jsonptr 0.8.2.
+`Pointer::strip_prefix` returns a `Pointer` whose string fails the crate's
+own parser.
+
+```rust
+use jsonptr::Pointer;
+
+fn main() {
+    let pointer = Pointer::from_static("/ab");
+    let prefix = Pointer::from_static("/a");
+    assert!(pointer.strip_prefix(prefix).is_none());
+}
+```
+
+The assertion fails because the result is `Some` containing `"b"`. The
+pointer has one token, `ab`, so there is no initial token `a` to remove.
+`pointer.starts_with(prefix)` already returns `false`.
+
+Reproduced with Rust 1.91.0 on aarch64 macOS in debug and release.
+'''
+
+[[report.findings]]
+title = "Pointer::get overflows when the excluded start bound is usize::MAX"
+body = '''
+## Description
+
+`Pointer::get` can panic or return the wrong slice when a tuple of bounds
+uses `Excluded(usize::MAX)` as its start bound.
+
+## Steps to Reproduce
+
+Use jsonptr 0.8.2 and run the example with both `cargo run` and
+`cargo run --release`.
+
+```rust
+use jsonptr::Pointer;
+use std::ops::Bound::{Excluded, Unbounded};
+
+fn main() {
+    let pointer = Pointer::from_static("/one/two");
+    let result = pointer.get((Excluded(usize::MAX), Unbounded));
+    assert_eq!(result, None);
+}
+```
+
+## Expected Behavior
+
+The call returns `None` because no token index can exceed `usize::MAX`.
+
+## Actual Behavior
+
+The default debug build panics with `attempt to add with overflow`.
+The default release build returns `Some` containing `"/one/two"` and the
+assertion fails.
+
+## Environment
+
+Rust 1.91.0 on aarch64 macOS. No optional jsonptr features are needed.
+'''
+
+[[report.findings]]
+title = "A final bare tilde produces a diagnostic span past the end of the input"
+body = '''
+## Description
+
+`ParseError::invalid_encoding_len` reports two bytes for a final bare tilde,
+even when called with the original string that produced the error.
+
+## Steps to Reproduce
+
+Run this example with jsonptr 0.8.2.
+
+```rust
+use jsonptr::Pointer;
+
+fn main() {
+    let input = "/~";
+    let error = Pointer::parse(input).unwrap_err();
+    assert_eq!(error.complete_offset(), 1);
+    assert_eq!(error.invalid_encoding_len(input), 1);
+}
+```
+
+## Expected Behavior
+
+The diagnostic spans one byte because only the tilde remains at offset 1.
+
+## Actual Behavior
+
+The last assertion fails because `invalid_encoding_len` returns 2. The span
+would run from offset 1 to offset 3 in a two-byte string.
+
+## Environment
+
+Rust 1.91.0 on aarch64 macOS. No optional jsonptr features are needed.
+'''
+
+[[report.findings]]
+title = "ParseIndexError labels panic for an index made only of zeros"
+body = '''
+## Description
+
+`Index` parsing rejects `"00"` with `ParseIndexError::LeadingZeros`, as
+RFC 6901 requires. Asking that error for its diagnostic label then panics
+with `starts with zeros`. Every token of two or more `'0'` characters is
+affected, such as `"00"` and `"000"`.
+
+The panic comes from `Diagnostic::labels` for `ParseIndexError`. With the
+`miette` feature, `miette::Diagnostic::labels` on a
+`Report<ParseIndexError>` calls the same code. Printing such a report as a
+`miette::Report` panics after the error message is written.
+
+## Steps to Reproduce
+
+Run this example with jsonptr 0.8.2.
+
+```rust
+use jsonptr::diagnostic::Diagnostic;
+use jsonptr::index::Index;
+use jsonptr::Diagnose;
+
+fn main() {
+    let input = String::from("00");
+    let report = Index::try_from(input.as_str()).diagnose(input).unwrap_err();
+    let (error, subject) = report.decompose();
+    let labels: Vec<_> = error.labels(&subject).unwrap().collect();
+    assert_eq!(labels.len(), 1);
+}
+```
+
+## Expected Behavior
+
+`labels` returns one "leading zeros" label inside the input, as it does
+for `"01"` (offset 0, length 1) and `"000001"` (offset 0, length 5).
+
+## Actual Behavior
+
+The call to `labels` panics with `starts with zeros` in debug and release
+builds. The label length is the position of the first character that is
+not `'0'`, found with `expect`. An all-zero token has no such character.
+
+## Environment
+
+Rust 1.91.0 on aarch64 macOS. No optional jsonptr features are needed.
+The `miette` rendering panic was seen with miette 7.4.0 and the `miette`
+feature.
+'''
+
+[[report.findings]]
+title = "ParseIndexError::InvalidCharacter label can extend past the token"
+body = '''
+## Description
+
+The diagnostic label for `ParseIndexError::InvalidCharacter` can describe
+a span outside the token, or one that ends inside a multi-byte character.
+
+- When no ASCII digit follows the invalid character, the label length is
+  the length of the whole token, not of the rest of it. For `"1abc"` the
+  label starts at offset 1 with length 4, the span `1..5` in a four-byte
+  token. `"1-"` gives `1..3` and `"1é"` gives `1..4` in a three-byte token.
+- When a digit does follow, the length counts characters, while the label
+  offsets of this crate and of `miette` are byte offsets. For `"aé1"` the
+  label is `0..2`, which ends inside `é`. The non-digit run is three bytes.
+
+The labels are returned by `Diagnostic::labels` for `ParseIndexError` and,
+with the `miette` feature, by the `miette` labels of
+`Report<ParseIndexError>`.
+
+## Steps to Reproduce
+
+Run this example with jsonptr 0.8.2.
+
+```rust
+use jsonptr::diagnostic::{Diagnostic, Label};
+use jsonptr::index::Index;
+use jsonptr::Diagnose;
+
+fn main() {
+    let input = String::from("1abc");
+    let report = Index::try_from(input.as_str()).diagnose(input).unwrap_err();
+    let (error, subject) = report.decompose();
+    let labels: Vec<Label> = error.labels(&subject).unwrap().collect();
+    assert_eq!(labels, [Label::new("invalid character(s)".into(), 1, 3)]);
+}
+```
+
+## Expected Behavior
+
+The label covers the non-digit bytes `abc`: offset 1, length 3. In general,
+it should end at the next ASCII digit or at the end of the token, measured
+in bytes. At minimum the span should stay inside the token and end on a
+character boundary; the crate's own test expects (0, 3) for `"bar"`.
+
+## Actual Behavior
+
+The assertion fails because the label has offset 1 and length 4. With the
+`miette` feature, printing this report as a `miette::Report` shows the
+token but no "invalid character(s)" label text (seen with miette 7.4.0).
+
+The length is right when the run starts at offset 0 and reaches the end,
+as in `"bar"`, and for an ASCII run followed by a digit, as in `"1a2"`.
+
+## Environment
+
+Rust 1.91.0 on aarch64 macOS, debug and release. No optional jsonptr
+features are needed.
+'''
+
+[[report.findings]]
+title = "Diagnostic::url returns the wrong docs.rs page for three error types"
+body = '''
+## Description
+
+`Diagnostic::url` is documented as "the docs.rs URL for this error". Three
+of its five implementations return a URL for a different page:
+
+| Type | Returned path after `https://docs.rs/jsonptr/0.8.2/jsonptr/` | Expected path |
+| --- | --- | --- |
+| `resolve::Error` | `assign/enum.Error.html` | `resolve/enum.Error.html` |
+| `index::ParseIndexError` | `enum.ParseIndexError.html` | `index/enum.ParseIndexError.html` |
+| `ParseError` | `struct.ParseError.html` | `enum.ParseError.html` |
+
+`resolve::Error` returns the URL of `assign::Error`. `ParseIndexError` is
+only public as `jsonptr::index::ParseIndexError`, but its URL omits the
+`index` module. `ParseError` is an enum, but its URL names a struct page.
+`assign::Error` and `EncodingError` return the expected URLs.
+
+With the `miette` feature, `Report<T>` returns the same string from its
+`miette::Diagnostic::url`.
+
+## Steps to Reproduce
+
+Run this example with jsonptr 0.8.2 and its default features.
+
+```rust
+use jsonptr::diagnostic::Diagnostic;
+use jsonptr::index::ParseIndexError;
+use jsonptr::{resolve, ParseError};
+
+fn main() {
+    let base = "https://docs.rs/jsonptr/0.8.2/jsonptr/";
+    let actual = [
+        <resolve::Error as Diagnostic>::url(),
+        <ParseIndexError as Diagnostic>::url(),
+        <ParseError as Diagnostic>::url(),
+    ];
+    let expected = [
+        format!("{base}resolve/enum.Error.html"),
+        format!("{base}index/enum.ParseIndexError.html"),
+        format!("{base}enum.ParseError.html"),
+    ];
+    assert_eq!(actual, expected);
+}
+```
+
+## Expected Behavior
+
+Each URL names the type's own rustdoc page. rustdoc names an item page
+`<kind>.<Name>.html` in the directory of the module that exposes it.
+`ParseError` is a `pub enum` re-exported at the crate root,
+`ParseIndexError` is a `pub enum` in `pub mod index` with no re-export, and
+`resolve::Error` is a `pub enum` in `pub mod resolve`.
+
+## Actual Behavior
+
+The assertion fails and shows the three returned URLs from the table above.
+I did not fetch the pages; a local `cargo doc` build produces the expected
+paths.
+
+## Environment
+
+Rust 1.91.0 on aarch64 macOS, debug and release. The `resolve` feature is
+needed for `resolve::Error`.
+'''
+
+[[report.findings]]
+title = "EncodingError::offset documentation does not match its value for tilde errors"
+body = '''
+## Description
+
+The public field `EncodingError::offset` is documented as the "offset of
+the erroneous `~` from within the `Token`". For `InvalidEncoding::Tilde`,
+the value is the offset of the byte after the tilde. For a final tilde it
+is the token length.
+
+| `Token::from_encoded` input | Tilde offset | `offset` field |
+| --- | --- | --- |
+| `"a~b"` | 1 | 2 |
+| `"~"` | 0 | 1 |
+| `"~~"` | 0 | 1 |
+| `"invalid~tilde"` | 7 | 8 |
+
+The value itself is used consistently. `EncodingError::labels` places
+its "must be 0 or 1" label at this offset, which is the byte after the
+tilde. It labels a final tilde at this offset minus one.
+`Pointer::parse("/a~b")` reports `source_offset()` 2. That is the same
+number, measured from the `/` that starts the token. The crate's own tests
+also expect these values. For `InvalidEncoding::Slash` the field is the
+offset of the slash.
+
+## Steps to Reproduce
+
+Run this example with jsonptr 0.8.2. The assertion follows the field
+documentation.
+
+```rust
+use jsonptr::Token;
+
+fn main() {
+    let input = "a~b";
+    let error = Token::from_encoded(input).unwrap_err();
+    assert_eq!(error.offset, input.find('~').unwrap());
+}
+```
+
+## Expected Behavior
+
+The documentation and the value agree. Since `labels`, `ParseError` and
+the tests rely on the current value, updating the documentation looks
+like the smaller change. For example, the field could be described as the
+byte offset just after the tilde (the token length for a final tilde), or
+the offset of the slash for `Slash` errors.
+
+## Actual Behavior
+
+The assertion fails: `error.offset` is 2, while the tilde is at offset 1.
+
+## Environment
+
+Rust 1.91.0 on aarch64 macOS, debug and release. No optional jsonptr
+features are needed.
+'''
+
+[[report.findings]]
+title = "Diagnostic helpers overflow on hand-built errors or mismatched subjects"
+body = '''
+## Description
+
+Several diagnostic helpers use unchecked `usize` addition or subtraction. The error types
+have public fields or variants, so these values can be built directly, and
+the helpers also accept any subject string. With the inputs below, debug
+builds panic with an overflow and release builds return wrapped numbers.
+
+| Call | Debug | Release |
+| --- | --- | --- |
+| `ParseError::InvalidEncoding { offset: 0, source: EncodingError { offset: 1, source: Tilde } }.invalid_encoding_len("")` | `attempt to subtract with overflow` | `2` |
+| `ParseError::InvalidEncoding { offset: usize::MAX, source: EncodingError { offset: 1, source: Tilde } }.complete_offset()` | `attempt to add with overflow` | `0` |
+| `resolve::Error::NotFound { position: 0, offset: usize::MAX }.labels(&PointerBuf::parse("/a")?)` | `attempt to add with overflow` | label at offset 0, length 1 |
+| `assign::Error::OutOfBounds { position: 0, offset: usize::MAX, source: OutOfBoundsError { length: 0, index: 1 } }.labels(&PointerBuf::parse("/a")?)` | `attempt to add with overflow` | label at offset 0, length 1 |
+| `EncodingError { offset: 0, source: InvalidEncoding::Tilde }.labels(&String::new())` | `attempt to subtract with overflow` | label at offset `usize::MAX`, length 1 |
+
+The `labels` calls are `Diagnostic::labels`. `ParseError::labels` calls
+both `complete_offset` and `invalid_encoding_len`. I did not find a parse,
+resolve or assign operation that produces these values, so this mainly
+affects code that builds errors by hand or pairs an error with another
+subject.
+
+## Steps to Reproduce
+
+Run this example with jsonptr 0.8.2, using both `cargo run` and
+`cargo run --release`.
+
+```rust
+use jsonptr::{EncodingError, InvalidEncoding, ParseError};
+
+fn main() {
+    let error = ParseError::InvalidEncoding {
+        offset: 0,
+        source: EncodingError { offset: 1, source: InvalidEncoding::Tilde },
+    };
+    let subject = "";
+    let len = error.invalid_encoding_len(subject);
+    assert!(len <= subject.len(), "length {len} for an empty subject");
+}
+```
+
+## Expected Behavior
+
+The helpers return a value without panicking, such as a span limited to
+the subject or no label. Alternatively, a documented precondition could
+state which errors and subjects are valid.
+
+## Actual Behavior
+
+The debug build panics with `attempt to subtract with overflow`. The release
+build returns 2 and the assertion fails.
+
+## Environment
+
+Rust 1.91.0 on aarch64 macOS. The `resolve` and `assign` features are
+needed only for their error types.
+'''
+
+[tool]
+name = "aeneas"
+version = "be86ab0f1989d04944292b345b24c435be3ad10a"
+lean_dir = "proofs"
+# Derived Clone/PartialEq/PartialOrd/Ord impls are visible to the official
+# recorder's API discovery only through compiler macro expansion.
+expand_api = true
+
+[[tool.proofs]]
+api = "index::Index::for_len_unchecked"
+module = "Proofs"
+theorem = "JsonptrProofs.indexForLenUnchecked"
+precondition = "For every index and length, returns the numeric index, or the length for Next."
+
+[[tool.proofs]]
+api = "index::Index::for_len"
+module = "Proofs"
+theorem = "JsonptrProofs.indexForLen"
+precondition = "For every index and length, returns Ok with the position when it is below the length, otherwise the out-of-bounds error carrying the length and position."
+
+[[tool.proofs]]
+api = "index::Index::for_len_incl"
+module = "Proofs"
+theorem = "JsonptrProofs.indexForLenInclusive"
+precondition = "For every index and length, returns Ok with the position when it is at most the length, otherwise the out-of-bounds error carrying the length and position."
+
+[[tool.proofs]]
+api = "<jsonptr::index::Index as core::cmp::PartialEq>::eq"
+module = "DerivedProofs"
+theorem = "JsonptrDerivedProofs.indexEq"
+precondition = "For every pair of indices, returns true exactly when they are equal."
+
+[[tool.proofs]]
+api = "<jsonptr::index::Index as core::clone::Clone>::clone"
+module = "DerivedProofs"
+theorem = "JsonptrDerivedProofs.indexClone"
+precondition = "For every index, returns an equal index."
+
+[[tool.proofs]]
+api = "<jsonptr::index::Index as core::cmp::Ord>::cmp"
+module = "Publication"
+theorem = "JsonptrPublication.indexOrdCmp"
+precondition = "For every pair of indices, orders numeric indices by value and every numeric index before Next."
+
+[[tool.proofs]]
+api = "<jsonptr::index::Index as core::cmp::PartialOrd>::partial_cmp"
+module = "Publication"
+theorem = "JsonptrPublication.indexPartialCmp"
+precondition = "For every pair of indices, returns Some of the same order as Ord::cmp."
+
+[[tool.proofs]]
+api = "<jsonptr::index::Index as From<usize>>::from"
+module = "DerivedProofs"
+theorem = "JsonptrDerivedProofs.indexFrom"
+precondition = "For every usize value, returns the numeric index with that value."
+
+[[tool.proofs]]
+api = "<jsonptr::index::OutOfBoundsError as core::clone::Clone>::clone"
+module = "Publication"
+theorem = "JsonptrPublication.outOfBoundsClone"
+precondition = "For every error value, returns an equal value."
+
+[[tool.proofs]]
+api = "<jsonptr::index::OutOfBoundsError as core::cmp::PartialEq>::eq"
+module = "Publication"
+theorem = "JsonptrPublication.outOfBoundsEq"
+precondition = "For every pair of error values, returns true exactly when they are equal."
+
+[[tool.proofs]]
+api = "<jsonptr::index::InvalidCharacterError as core::clone::Clone>::clone"
+module = "Publication"
+theorem = "JsonptrPublication.invalidCharacterClone"
+precondition = "For every error value, returns an equal value."
+
+[[tool.proofs]]
+api = "index::InvalidCharacterError::offset"
+module = "Publication"
+theorem = "JsonptrPublication.invalidCharacterOffset"
+precondition = "For every error value, returns its stored offset."
+
+[[tool.proofs]]
+api = "<jsonptr::index::InvalidCharacterError as core::cmp::PartialEq>::eq"
+module = "Publication"
+theorem = "JsonptrPublication.invalidCharacterEq"
+precondition = "For every pair of error values, returns true exactly when they are equal."
+
+[[tool.proofs]]
+api = "<jsonptr::InvalidEncoding as core::clone::Clone>::clone"
+module = "Publication"
+theorem = "JsonptrPublication.invalidEncodingClone"
+precondition = "For every value, returns an equal value."
+
+[[tool.proofs]]
+api = "<jsonptr::InvalidEncoding as core::cmp::PartialEq>::eq"
+module = "Publication"
+theorem = "JsonptrPublication.invalidEncodingEq"
+precondition = "For every pair of values, returns true exactly when they are equal."
+
+[[tool.proofs]]
+api = "<jsonptr::EncodingError as core::cmp::PartialEq>::eq"
+module = "DerivedProofs"
+theorem = "JsonptrDerivedProofs.encodingErrorEq"
+precondition = "For every pair of error values, returns true exactly when they are equal."
+
+[[tool.proofs]]
+api = "<jsonptr::ParseError as core::cmp::PartialEq>::eq"
+module = "DerivedProofs"
+theorem = "JsonptrDerivedProofs.parseErrorEq"
+precondition = "For every pair of error values, returns true exactly when they are equal."
+
+[[tool.proofs]]
+api = "<jsonptr::ReplaceError as core::cmp::PartialEq>::eq"
+module = "DerivedProofs"
+theorem = "JsonptrDerivedProofs.replaceErrorEq"
+precondition = "For every pair of error values, returns true exactly when they are equal."
+
+[[tool.proofs]]
+api = "ParseError::offset"
+module = "Publication"
+theorem = "JsonptrPublication.parseErrorOffset"
+precondition = "For every error, returns 0 for NoLeadingSlash and the pointer offset for InvalidEncoding."
+
+[[tool.proofs]]
+api = "ParseError::pointer_offset"
+module = "Publication"
+theorem = "JsonptrPublication.parseErrorPointerOffset"
+precondition = "For every error, returns 0 for NoLeadingSlash and the pointer offset for InvalidEncoding."
+
+[[tool.proofs]]
+api = "ParseError::source_offset"
+module = "Publication"
+theorem = "JsonptrPublication.parseErrorSourceOffset"
+precondition = "For every error, returns 0 for NoLeadingSlash and the offset field of the inner EncodingError for InvalidEncoding."
+
+[[tool.proofs]]
+api = "ParseError::is_no_leading_slash"
+module = "Publication"
+theorem = "JsonptrPublication.parseErrorIsNoLeadingSlash"
+precondition = "For every error, returns true exactly for NoLeadingSlash."
+
+[[tool.proofs]]
+api = "ParseError::is_no_leading_backslash"
+module = "Publication"
+theorem = "JsonptrPublication.parseErrorIsNoLeadingBackslash"
+precondition = "For every error, returns true exactly for NoLeadingSlash."
+
+[[tool.proofs]]
+api = "ParseError::is_invalid_encoding"
+module = "Publication"
+theorem = "JsonptrPublication.parseErrorIsInvalidEncoding"
+precondition = "For every error, returns true exactly for InvalidEncoding."
+
+[[tool.proofs]]
+api = "ParseError::complete_offset"
+module = "DerivedProofs"
+theorem = "JsonptrDerivedProofs.completeOffset"
+precondition = "The pointer offset plus the source offset fits in usize (is at most usize::MAX); the call then returns their sum."
+
+[[tool.proofs]]
+api = "<jsonptr::EncodingError as jsonptr::diagnostic::Diagnostic>::url"
+module = "DerivedProofs"
+theorem = "JsonptrDerivedProofs.encodingErrorUrl"
+precondition = "Every call returns https://docs.rs/jsonptr/0.8.2/jsonptr/struct.EncodingError.html."
+
+[[tool.proofs]]
+api = "<jsonptr::assign::Error as jsonptr::diagnostic::Diagnostic>::url"
+module = "DerivedProofs"
+theorem = "JsonptrDerivedProofs.assignErrorUrl"
+precondition = "Every call returns https://docs.rs/jsonptr/0.8.2/jsonptr/assign/enum.Error.html."
+
+[[tool.proofs]]
+api = "diagnostic::Label::new"
+module = "DerivedProofs"
+theorem = "JsonptrDerivedProofs.labelNew"
+precondition = "For every text, offset and length, returns a label holding exactly those values."
+
+[[tool.proofs]]
+api = "Pointer::as_str"
+module = "DerivedProofs"
+theorem = "JsonptrDerivedProofs.asStr"
+precondition = "For every pointer, returns its underlying string unchanged."

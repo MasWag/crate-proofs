@@ -1,0 +1,15 @@
+[package]
+name = "jsonptr-adapted-api-differential"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+# Finite native comparison of release APIs with the adapted extension bodies
+# (tiers 2, 3 and the extracted tier 5/6 items). Both live in the patched tree
+# .work/x/dev/ext-native (release items unchanged there). Evidence, not proof.
+[dependencies]
+jsonptr = { path = "../../../../.work/adapted", default-features = false, features = ["std", "resolve", "json", "assign", "delete"] }
+serde_json = { version = "1.0.140", default-features = false, features = ["std"] }
+
+[workspace]
+resolver = "2"
