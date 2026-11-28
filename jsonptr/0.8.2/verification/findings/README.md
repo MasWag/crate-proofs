@@ -2,7 +2,7 @@
 
 | Record | Observable failure | Upstream |
 | --- | --- | --- |
-| [JSONPTR-001](JSONPTR-001.md) | A partial-token prefix can produce a malformed Pointer. | [chanced/jsonptr#131](https://github.com/chanced/jsonptr/issues/131) |
+| [JSONPTR-001](JSONPTR-001.md) | A partial-token prefix can produce a malformed Pointer. | [chanced/jsonptr#131](https://github.com/chanced/jsonptr/issues/131); open fix [#132](https://github.com/chanced/jsonptr/pull/132) |
 | [JSONPTR-002](JSONPTR-002.md) | The maximum excluded start bound panics or selects the wrong slice. | Local draft |
 | [JSONPTR-003](JSONPTR-003.md) | The diagnostic span for a final bare tilde extends past the input. | Local draft |
 | [JSONPTR-004](JSONPTR-004.md) | The leading-zeros label panics for an all-zero index token. | Local draft |
@@ -94,7 +94,9 @@ These files are local-only and are not checked in.
 ## Upstream issue drafts
 
 The issue search found an existing matching report for JSONPTR-001. Its local
-draft is a version-specific follow-up. The searches found no matching issue
+draft is a version-specific follow-up. A recheck on 2026-11-28 also found the
+open, unmerged pull request [chanced/jsonptr#132](https://github.com/chanced/jsonptr/pull/132), which adds the
+separator check; it was reviewed from its diff only. The searches found no matching issue
 for JSONPTR-002 through JSONPTR-008. Closed issue
 [chanced/jsonptr#128](https://github.com/chanced/jsonptr/issues/128) concerns
 `"~~0"` acceptance, which is related to JSONPTR-007's field but is not the
