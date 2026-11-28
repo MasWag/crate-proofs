@@ -67,3 +67,21 @@ In the same run, default features passed 99 unit tests and 49 doctests; all
 features passed 105 unit tests and 49 doctests. Native outcomes are separate
 from the Lean audit. Release defects found during verification are recorded in
 [verification/findings](../../../verification/findings/README.md).
+
+## Publication
+
+The standard CLI (official cargo-proofs 0.4.1 built from proofs-rs
+`3746712b39f2a45d8c067d24d83f767997040cae`) recorded run
+`7a30a5ab-04b0-4b76-b969-bdbb16b7d5a7` against published source commit
+`b6efd9dde6d748e6ce193a5e604e835a6d409c26` (branch `publication/jsonptr-0.8.2`),
+using the CLI-facing package in [`publication/`](../../../publication). All 29
+mapped theorems passed with only `propext`, `Classical.choice` and `Quot.sound`.
+
+[Report #41](https://proofs.rs/report/41), revision 1, is public (2026-11-28).
+Read-back through its public API confirms 29 claims and 8 findings; all report
+prose fields and every finding title and body exactly match the local
+`publication/proofs.toml`. The `Report` accessor theorem is audited locally but
+not a recorded claim, because the recorder does not discover methods on the
+generic `Report` impl. Adapted-profile theorems are described in the report as
+supporting local work only. Local publication receipts and API responses remain
+in ignored `.work/publication/`; managed-run archives remain local-only.
