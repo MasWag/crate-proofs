@@ -1,0 +1,124 @@
+[tool]
+name = "aeneas"
+version = "be86ab0f1989d04944292b345b24c435be3ad10a"
+lean_dir = ".work/selected-proofs"
+
+[[tool.proofs]]
+api = "Index::for_len_unchecked"
+module = "Proofs"
+theorem = "JsonptrProofs.indexForLenUnchecked"
+precondition = "true"
+
+[[tool.proofs]]
+api = "Index::for_len"
+module = "Proofs"
+theorem = "JsonptrProofs.indexForLen"
+precondition = "true"
+
+[[tool.proofs]]
+api = "Index::for_len_incl"
+module = "Proofs"
+theorem = "JsonptrProofs.indexForLenInclusive"
+precondition = "true"
+
+[[tool.proofs]]
+api = "Index: PartialEq::eq"
+module = "DerivedProofs"
+theorem = "JsonptrDerivedProofs.indexEq"
+precondition = "true"
+
+[[tool.proofs]]
+api = "Index: Clone::clone"
+module = "DerivedProofs"
+theorem = "JsonptrDerivedProofs.indexClone"
+precondition = "true"
+
+[[tool.proofs]]
+api = "Index: Ord::cmp and PartialOrd::partial_cmp"
+module = "DerivedProofs"
+theorem = "JsonptrDerivedProofs.indexCmp"
+precondition = "true"
+
+[[tool.proofs]]
+api = "Index: From<usize>"
+module = "DerivedProofs"
+theorem = "JsonptrDerivedProofs.indexFrom"
+precondition = "true"
+
+[[tool.proofs]]
+api = "OutOfBoundsError: Clone and PartialEq"
+module = "DerivedProofs"
+theorem = "JsonptrDerivedProofs.oobEqClone"
+precondition = "true"
+
+[[tool.proofs]]
+api = "InvalidCharacterError: Clone, PartialEq and offset"
+module = "DerivedProofs"
+theorem = "JsonptrDerivedProofs.ice"
+precondition = "true"
+
+[[tool.proofs]]
+api = "InvalidEncoding: Clone and PartialEq"
+module = "DerivedProofs"
+theorem = "JsonptrDerivedProofs.invalidEncoding"
+precondition = "true"
+
+[[tool.proofs]]
+api = "EncodingError: PartialEq"
+module = "DerivedProofs"
+theorem = "JsonptrDerivedProofs.encodingErrorEq"
+precondition = "true"
+
+[[tool.proofs]]
+api = "ParseError: PartialEq"
+module = "DerivedProofs"
+theorem = "JsonptrDerivedProofs.parseErrorEq"
+precondition = "true"
+
+[[tool.proofs]]
+api = "ReplaceError: PartialEq"
+module = "DerivedProofs"
+theorem = "JsonptrDerivedProofs.replaceErrorEq"
+precondition = "true"
+
+[[tool.proofs]]
+api = "ParseError::offset, pointer_offset, source_offset, is_no_leading_slash, is_no_leading_backslash, is_invalid_encoding"
+module = "DerivedProofs"
+theorem = "JsonptrDerivedProofs.parseErrorAccessors"
+precondition = "true"
+
+[[tool.proofs]]
+api = "ParseError::complete_offset"
+module = "DerivedProofs"
+theorem = "JsonptrDerivedProofs.completeOffset"
+precondition = "pointer offset + source offset <= usize::MAX"
+
+[[tool.proofs]]
+api = "EncodingError: Diagnostic::url"
+module = "DerivedProofs"
+theorem = "JsonptrDerivedProofs.encodingErrorUrl"
+precondition = "true"
+
+[[tool.proofs]]
+api = "assign::Error: Diagnostic::url"
+module = "DerivedProofs"
+theorem = "JsonptrDerivedProofs.assignErrorUrl"
+precondition = "true"
+
+[[tool.proofs]]
+api = "Label::new"
+module = "DerivedProofs"
+theorem = "JsonptrDerivedProofs.labelNew"
+precondition = "true"
+
+[[tool.proofs]]
+api = "Report::original, into_original and decompose"
+module = "DerivedProofs"
+theorem = "JsonptrDerivedProofs.reportAccessors"
+precondition = "true"
+
+[[tool.proofs]]
+api = "Pointer::as_str"
+module = "DerivedProofs"
+theorem = "JsonptrDerivedProofs.asStr"
+precondition = "true"

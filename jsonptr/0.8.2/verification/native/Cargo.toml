@@ -1,0 +1,10 @@
+[package]
+name = "jsonptr-0-8-2-native-findings"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+jsonptr = { version = "=0.8.2", path = "../../.work/source", default-features = false, features = ["resolve", "assign"] }
+
+[workspace]

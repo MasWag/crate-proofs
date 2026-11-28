@@ -1,0 +1,22 @@
+name = "jsonptr_proofs"
+defaultTargets = ["Proofs", "DerivedProofs"]
+
+[[require]]
+name = "aeneas"
+path = "@AENEAS_BACKEND@"
+
+[[lean_lib]]
+name = "Jsonptr"
+srcDir = "Generated/@TARGET@"
+
+[[lean_lib]]
+name = "Specs"
+
+[[lean_lib]]
+name = "Proofs"
+
+[[lean_lib]]
+name = "DerivedSpecs"
+
+[[lean_lib]]
+name = "DerivedProofs"

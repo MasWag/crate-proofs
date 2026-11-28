@@ -1,0 +1,272 @@
+{
+  "checked": [
+    {
+      "name": "JsonptrProofs.validateBytes",
+      "module": "Proofs",
+      "scope": "private-model",
+      "precondition": "offset = 0 and bytes is nonempty"
+    },
+    {
+      "name": "JsonptrProofs.indexForLenUnchecked",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "true"
+    },
+    {
+      "name": "JsonptrProofs.indexForLen",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "true"
+    },
+    {
+      "name": "JsonptrProofs.indexForLenInclusive",
+      "module": "Proofs",
+      "scope": "public-model",
+      "precondition": "true"
+    },
+    {
+      "name": "JsonptrDerivedProofs.indexEq",
+      "module": "DerivedProofs",
+      "scope": "public-model",
+      "precondition": "true",
+      "statement": "unchanged release body; contract in DerivedSpecs"
+    },
+    {
+      "name": "JsonptrDerivedProofs.indexClone",
+      "module": "DerivedProofs",
+      "scope": "public-model",
+      "precondition": "true",
+      "statement": "unchanged release body; contract in DerivedSpecs"
+    },
+    {
+      "name": "JsonptrDerivedProofs.indexCmp",
+      "module": "DerivedProofs",
+      "scope": "public-model",
+      "precondition": "true",
+      "statement": "unchanged release body; contract in DerivedSpecs"
+    },
+    {
+      "name": "JsonptrDerivedProofs.indexFrom",
+      "module": "DerivedProofs",
+      "scope": "public-model",
+      "precondition": "true",
+      "statement": "unchanged release body; contract in DerivedSpecs"
+    },
+    {
+      "name": "JsonptrDerivedProofs.oobEqClone",
+      "module": "DerivedProofs",
+      "scope": "public-model",
+      "precondition": "true",
+      "statement": "unchanged release body; contract in DerivedSpecs"
+    },
+    {
+      "name": "JsonptrDerivedProofs.ice",
+      "module": "DerivedProofs",
+      "scope": "public-model",
+      "precondition": "true",
+      "statement": "unchanged release body; contract in DerivedSpecs"
+    },
+    {
+      "name": "JsonptrDerivedProofs.invalidEncoding",
+      "module": "DerivedProofs",
+      "scope": "public-model",
+      "precondition": "true",
+      "statement": "unchanged release body; contract in DerivedSpecs"
+    },
+    {
+      "name": "JsonptrDerivedProofs.encodingErrorEq",
+      "module": "DerivedProofs",
+      "scope": "public-model",
+      "precondition": "true",
+      "statement": "unchanged release body; contract in DerivedSpecs"
+    },
+    {
+      "name": "JsonptrDerivedProofs.parseErrorEq",
+      "module": "DerivedProofs",
+      "scope": "public-model",
+      "precondition": "true",
+      "statement": "unchanged release body; contract in DerivedSpecs"
+    },
+    {
+      "name": "JsonptrDerivedProofs.replaceErrorEq",
+      "module": "DerivedProofs",
+      "scope": "public-model",
+      "precondition": "true",
+      "statement": "unchanged release body; contract in DerivedSpecs"
+    },
+    {
+      "name": "JsonptrDerivedProofs.parseErrorAccessors",
+      "module": "DerivedProofs",
+      "scope": "public-model",
+      "precondition": "true",
+      "statement": "unchanged release body; contract in DerivedSpecs"
+    },
+    {
+      "name": "JsonptrDerivedProofs.completeOffset",
+      "module": "DerivedProofs",
+      "scope": "public-model",
+      "precondition": "pointer offset + source offset <= usize::MAX",
+      "statement": "unchanged release body; contract in DerivedSpecs"
+    },
+    {
+      "name": "JsonptrDerivedProofs.encodingErrorUrl",
+      "module": "DerivedProofs",
+      "scope": "public-model",
+      "precondition": "true",
+      "statement": "unchanged release body; contract in DerivedSpecs"
+    },
+    {
+      "name": "JsonptrDerivedProofs.assignErrorUrl",
+      "module": "DerivedProofs",
+      "scope": "public-model",
+      "precondition": "true",
+      "statement": "unchanged release body; contract in DerivedSpecs"
+    },
+    {
+      "name": "JsonptrDerivedProofs.labelNew",
+      "module": "DerivedProofs",
+      "scope": "public-model",
+      "precondition": "true",
+      "statement": "unchanged release body; contract in DerivedSpecs"
+    },
+    {
+      "name": "JsonptrDerivedProofs.reportAccessors",
+      "module": "DerivedProofs",
+      "scope": "public-model",
+      "precondition": "true",
+      "statement": "unchanged release body; contract in DerivedSpecs"
+    },
+    {
+      "name": "JsonptrDerivedProofs.asStr",
+      "module": "DerivedProofs",
+      "scope": "public-model",
+      "precondition": "true",
+      "statement": "unchanged release body; contract in DerivedSpecs"
+    },
+    {
+      "name": "JsonptrDerivedProofs.completeOffsetTotal_refuted",
+      "module": "DerivedProofs",
+      "scope": "refutation-or-record",
+      "precondition": "true",
+      "statement": "N7 refutation"
+    },
+    {
+      "name": "JsonptrDerivedProofs.resolveErrorUrl_refuted",
+      "module": "DerivedProofs",
+      "scope": "refutation-or-record",
+      "precondition": "true",
+      "statement": "N3 refutation"
+    },
+    {
+      "name": "JsonptrDerivedProofs.parseErrorUrl_refuted",
+      "module": "DerivedProofs",
+      "scope": "refutation-or-record",
+      "precondition": "true",
+      "statement": "N10 refutation"
+    },
+    {
+      "name": "JsonptrDerivedProofs.parseIndexErrorUrl_refuted",
+      "module": "DerivedProofs",
+      "scope": "refutation-or-record",
+      "precondition": "true",
+      "statement": "N9 refutation"
+    },
+    {
+      "name": "JsonptrDerivedProofs.url_record",
+      "module": "DerivedProofs",
+      "scope": "refutation-or-record",
+      "precondition": "true",
+      "statement": "behaviour record"
+    },
+    {
+      "name": "JsonptrDerivedProofs.urlRecord",
+      "module": "DerivedProofs",
+      "scope": "refutation-or-record",
+      "precondition": "true",
+      "statement": "behaviour record"
+    }
+  ],
+  "recorder_mappings": [
+    {
+      "api": "Index::for_len_unchecked",
+      "theorem": "JsonptrProofs.indexForLenUnchecked"
+    },
+    {
+      "api": "Index::for_len",
+      "theorem": "JsonptrProofs.indexForLen"
+    },
+    {
+      "api": "Index::for_len_incl",
+      "theorem": "JsonptrProofs.indexForLenInclusive"
+    },
+    {
+      "api": "Index: PartialEq::eq",
+      "theorem": "JsonptrDerivedProofs.indexEq"
+    },
+    {
+      "api": "Index: Clone::clone",
+      "theorem": "JsonptrDerivedProofs.indexClone"
+    },
+    {
+      "api": "Index: Ord::cmp and PartialOrd::partial_cmp",
+      "theorem": "JsonptrDerivedProofs.indexCmp"
+    },
+    {
+      "api": "Index: From<usize>",
+      "theorem": "JsonptrDerivedProofs.indexFrom"
+    },
+    {
+      "api": "OutOfBoundsError: Clone and PartialEq",
+      "theorem": "JsonptrDerivedProofs.oobEqClone"
+    },
+    {
+      "api": "InvalidCharacterError: Clone, PartialEq and offset",
+      "theorem": "JsonptrDerivedProofs.ice"
+    },
+    {
+      "api": "InvalidEncoding: Clone and PartialEq",
+      "theorem": "JsonptrDerivedProofs.invalidEncoding"
+    },
+    {
+      "api": "EncodingError: PartialEq",
+      "theorem": "JsonptrDerivedProofs.encodingErrorEq"
+    },
+    {
+      "api": "ParseError: PartialEq",
+      "theorem": "JsonptrDerivedProofs.parseErrorEq"
+    },
+    {
+      "api": "ReplaceError: PartialEq",
+      "theorem": "JsonptrDerivedProofs.replaceErrorEq"
+    },
+    {
+      "api": "ParseError::offset, pointer_offset, source_offset, is_no_leading_slash, is_no_leading_backslash, is_invalid_encoding",
+      "theorem": "JsonptrDerivedProofs.parseErrorAccessors"
+    },
+    {
+      "api": "ParseError::complete_offset",
+      "theorem": "JsonptrDerivedProofs.completeOffset"
+    },
+    {
+      "api": "EncodingError: Diagnostic::url",
+      "theorem": "JsonptrDerivedProofs.encodingErrorUrl"
+    },
+    {
+      "api": "assign::Error: Diagnostic::url",
+      "theorem": "JsonptrDerivedProofs.assignErrorUrl"
+    },
+    {
+      "api": "Label::new",
+      "theorem": "JsonptrDerivedProofs.labelNew"
+    },
+    {
+      "api": "Report::original, into_original and decompose",
+      "theorem": "JsonptrDerivedProofs.reportAccessors"
+    },
+    {
+      "api": "Pointer::as_str",
+      "theorem": "JsonptrDerivedProofs.asStr"
+    }
+  ],
+  "extracted_but_unproved": []
+}

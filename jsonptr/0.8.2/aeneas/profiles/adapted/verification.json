@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "supported_targets": [
+    "aarch64-apple-darwin"
+  ],
+  "native": [
+    [
+      "python3",
+      "aeneas/profiles/adapted/scripts/prepare-source.py"
+    ],
+    [
+      "python3",
+      "aeneas/profiles/adapted/scripts/differential.py"
+    ]
+  ],
+  "inventory": "theorems.json",
+  "report": "proofs.toml",
+  "lean_dir": "proofs",
+  "additional_checks": [
+    [
+      "python3",
+      "aeneas/profiles/adapted/scripts/prepare-source.py",
+      "--check"
+    ],
+    [
+      "python3",
+      "aeneas/profiles/adapted/scripts/check-extraction.py"
+    ]
+  ],
+  "post_checks": [
+    [
+      "python3",
+      "aeneas/profiles/adapted/scripts/prepare-source.py",
+      "--check"
+    ]
+  ]
+}

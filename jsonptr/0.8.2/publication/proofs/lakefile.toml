@@ -1,0 +1,26 @@
+name = "jsonptr_publication"
+version = "0.1.0"
+defaultTargets = ["Proofs", "DerivedProofs", "Publication"]
+
+[[require]]
+name = "aeneas"
+git = { url = "https://github.com/AeneasVerif/aeneas", subDir = "backends/lean" }
+rev = "be86ab0f1989d04944292b345b24c435be3ad10a"
+
+[[lean_lib]]
+name = "Jsonptr"
+
+[[lean_lib]]
+name = "Specs"
+
+[[lean_lib]]
+name = "Proofs"
+
+[[lean_lib]]
+name = "DerivedSpecs"
+
+[[lean_lib]]
+name = "DerivedProofs"
+
+[[lean_lib]]
+name = "Publication"

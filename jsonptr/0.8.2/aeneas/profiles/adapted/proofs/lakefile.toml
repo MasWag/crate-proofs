@@ -1,0 +1,30 @@
+name = "jsonptr_adapted_proofs"
+defaultTargets = ["Proofs", "ExtProofs"]
+
+[[require]]
+name = "aeneas"
+path = "@AENEAS_BACKEND@"
+
+[[lean_lib]]
+name = "JsonptrAdapted"
+srcDir = "Generated/@TARGET@"
+
+[[lean_lib]]
+name = "SpecModel"
+
+[[lean_lib]]
+name = "Specs"
+
+[[lean_lib]]
+name = "Proofs"
+
+[[lean_lib]]
+name = "SpecModelExt"
+
+[[lean_lib]]
+name = "Statements"
+globs = ["Statements.+"]
+
+[[lean_lib]]
+name = "ExtProofs"
+globs = ["ExtProofs.+"]

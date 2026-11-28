@@ -1,0 +1,559 @@
+diff -ruN release/src/index.rs adapted/src/index.rs
+--- release/src/index.rs
++++ adapted/src/index.rs
+@@ -188,6 +188,93 @@
+     }
+ }
+ 
++/// The two `IntErrorKind`s that `Index::from_str` can return, mirrored for the
++/// adapted profile because a `ParseIntError` cannot be built outside `core`.
++#[doc(hidden)]
++#[derive(Debug, Clone, Copy, PartialEq, Eq)]
++pub enum IntErrorKindAdapted {
++    /// `IntErrorKind::Empty`
++    Empty,
++    /// `IntErrorKind::PosOverflow`
++    PosOverflow,
++}
++
++/// `ParseIndexError` with the `ParseIntError` replaced by its kind.
++#[doc(hidden)]
++#[derive(Debug, Clone, PartialEq, Eq)]
++pub enum ParseIndexErrorAdapted {
++    /// `ParseIndexError::InvalidInteger`
++    InvalidInteger(IntErrorKindAdapted),
++    /// `ParseIndexError::LeadingZeros`
++    LeadingZeros,
++    /// `ParseIndexError::InvalidCharacter`
++    InvalidCharacter(InvalidCharacterError),
++}
++
++/// Adapted `chars().position(|c| !c.is_ascii_digit())`, counting bytes. The
++/// two counts agree because every earlier byte is an ASCII digit.
++#[doc(hidden)]
++pub fn position_non_digit_adapted(s: &[u8]) -> Option<usize> {
++    let mut i = 0;
++    while i < s.len() {
++        if !s[i].is_ascii_digit() {
++            return Some(i);
++        }
++        i += 1;
++    }
++    None
++}
++
++/// Standard-library substitution for `s.parse::<usize>()` on input whose
++/// bytes are all ASCII digits: checked decimal accumulation, most significant
++/// digit first, reporting the `Empty` and `PosOverflow` kinds.
++#[doc(hidden)]
++pub fn parse_usize_digits_adapted(s: &[u8]) -> Result<usize, IntErrorKindAdapted> {
++    if s.is_empty() {
++        return Err(IntErrorKindAdapted::Empty);
++    }
++    let mut acc: usize = 0;
++    let mut i = 0;
++    while i < s.len() {
++        let d = (s[i] - b'0') as usize;
++        match acc.checked_mul(10) {
++            None => return Err(IntErrorKindAdapted::PosOverflow),
++            Some(m) => match m.checked_add(d) {
++                None => return Err(IntErrorKindAdapted::PosOverflow),
++                Some(a) => acc = a,
++            },
++        }
++        i += 1;
++    }
++    Ok(acc)
++}
++
++/// Adapted `<Index as FromStr>::from_str` (release `index.rs:166`).
++///
++/// Substitutions: byte slice for `&str`; `s == "-"`, `starts_with('0')` and
++/// `s != "0"` by length and byte tests; `chars().position` by
++/// `position_non_digit_adapted`; `map_or_else` closures by a `match`;
++/// `s.parse::<usize>()` by `parse_usize_digits_adapted`; `ParseIndexError` by
++/// `ParseIndexErrorAdapted`.
++#[doc(hidden)]
++pub fn from_str_adapted(s: &[u8]) -> Result<Index, ParseIndexErrorAdapted> {
++    if s.len() == 1 && s[0] == b'-' {
++        Ok(Index::Next)
++    } else if (!s.is_empty() && s[0] == b'0') && !(s.len() == 1 && s[0] == b'0') {
++        Err(ParseIndexErrorAdapted::LeadingZeros)
++    } else {
++        match position_non_digit_adapted(s) {
++            None => match parse_usize_digits_adapted(s) {
++                Ok(n) => Ok(Index::Num(n)),
++                Err(kind) => Err(ParseIndexErrorAdapted::InvalidInteger(kind)),
++            },
++            Some(offset) => Err(ParseIndexErrorAdapted::InvalidCharacter(
++                InvalidCharacterError { offset },
++            )),
++        }
++    }
++}
++
+ impl TryFrom<&Token<'_>> for Index {
+     type Error = ParseIndexError;
+ 
+diff -ruN release/src/lib.rs adapted/src/lib.rs
+--- release/src/lib.rs
++++ adapted/src/lib.rs
+@@ -82,3 +82,22 @@
+ 
+ #[cfg(test)]
+ mod arbitrary;
++
++/// Adapted byte-slice bodies for the Aeneas `adapted` profile. Not release API.
++#[doc(hidden)]
++pub mod adapted {
++    pub use crate::index::{
++        from_str_adapted, parse_usize_digits_adapted, position_non_digit_adapted,
++        IntErrorKindAdapted, ParseIndexErrorAdapted,
++    };
++    pub use crate::pointer::{find_slash_adapted, split_front_adapted, validate_adapted};
++    #[cfg(feature = "resolve")]
++    pub use crate::resolve::{
++        bytes_eq_adapted, lookup_adapted, resolve_adapted, resolve_rec_adapted, resolve_recursive_adapted,
++        resolve_step_adapted, DocAdapted, ResolveErrorAdapted,
++    };
++    pub use crate::token::{
++        decoded_adapted, from_encoded_adapted, from_encoded_scan_adapted, new_adapted, position_slash_or_tilde_adapted,
++        position_tilde_adapted,
++    };
++}
+diff -ruN release/src/pointer.rs adapted/src/pointer.rs
+--- release/src/pointer.rs
++++ adapted/src/pointer.rs
+@@ -1362,6 +1362,55 @@
+     Ok(value)
+ }
+ 
++/// Adapted `validate` (release `pointer.rs:1355`) for the Aeneas profile.
++///
++/// Substitutions: `&str` is replaced by its UTF-8 bytes and `as_bytes` is
++/// dropped. The release `validate_bytes` is called unchanged.
++#[doc(hidden)]
++pub const fn validate_adapted(value: &[u8]) -> Result<&[u8], ParseError> {
++    if value.is_empty() {
++        return Ok(value);
++    }
++    if let Err(err) = validate_bytes(value, 0) {
++        return Err(err);
++    }
++    Ok(value)
++}
++
++/// Adapted `str::find('/')` used by `Pointer::split_front`: the first index of
++/// `b'/'`, scanning from the front with an early exit.
++#[doc(hidden)]
++pub fn find_slash_adapted(s: &[u8]) -> Option<usize> {
++    let mut i = 0;
++    while i < s.len() {
++        if s[i] == b'/' {
++            return Some(i);
++        }
++        i += 1;
++    }
++    None
++}
++
++/// Adapted `Pointer::split_front` (release `pointer.rs:181`).
++///
++/// Substitutions: the pointer and token are byte slices; `is_root` is
++/// `is_empty`; `str::find` is `find_slash_adapted`; `Self::root()` is an empty
++/// slice; the unchecked token and pointer constructors return the bytes.
++#[doc(hidden)]
++pub fn split_front_adapted(s: &[u8]) -> Option<(&[u8], &[u8])> {
++    if s.is_empty() {
++        return None;
++    }
++    let rest = &s[1..];
++    match find_slash_adapted(rest) {
++        None => Some((rest, &[])),
++        Some(idx) => {
++            let (front, back) = rest.split_at(idx);
++            Some((front, back))
++        }
++    }
++}
++
+ /// Validates that a sequence of bytes is a valid RFC 6901 Pointer.
+ ///
+ /// # Panics
+diff -ruN release/src/resolve.rs adapted/src/resolve.rs
+--- release/src/resolve.rs
++++ adapted/src/resolve.rs
+@@ -347,6 +347,205 @@
+         }
+     }
+ }
++/// Local document type for the adapted resolution profile. It stands for the
++/// three node kinds that `Resolve for serde_json::Value` distinguishes; it is
++/// not `serde_json::Value`.
++#[doc(hidden)]
++#[derive(Debug, Clone, PartialEq, Eq)]
++pub enum DocAdapted {
++    /// A scalar node (null, boolean, number or string in JSON).
++    Leaf(u64),
++    /// An array: a sequence of children.
++    Array(alloc::vec::Vec<DocAdapted>),
++    /// An object: decoded key bytes and children; the first matching key wins.
++    Object(alloc::vec::Vec<(alloc::vec::Vec<u8>, DocAdapted)>),
++}
++
++/// `resolve::Error` with `ParseIndexError` replaced by its adapted mirror.
++#[doc(hidden)]
++#[derive(Debug, PartialEq, Eq)]
++pub enum ResolveErrorAdapted {
++    /// `Error::FailedToParseIndex`
++    FailedToParseIndex {
++        /// position
++        position: usize,
++        /// offset
++        offset: usize,
++        /// source
++        source: crate::index::ParseIndexErrorAdapted,
++    },
++    /// `Error::OutOfBounds`
++    OutOfBounds {
++        /// position
++        position: usize,
++        /// offset
++        offset: usize,
++        /// source
++        source: OutOfBoundsError,
++    },
++    /// `Error::NotFound`
++    NotFound {
++        /// position
++        position: usize,
++        /// offset
++        offset: usize,
++    },
++    /// `Error::Unreachable`
++    Unreachable {
++        /// position
++        position: usize,
++        /// offset
++        offset: usize,
++    },
++}
++
++/// Exact byte equality, as an explicit loop.
++#[doc(hidden)]
++pub fn bytes_eq_adapted(a: &[u8], b: &[u8]) -> bool {
++    if a.len() != b.len() {
++        return false;
++    }
++    let mut i = 0;
++    while i < a.len() {
++        if a[i] != b[i] {
++            return false;
++        }
++        i += 1;
++    }
++    true
++}
++
++/// First-match lookup of a decoded key in an object of the local document type.
++/// This stands in for `serde_json::Map::get`; it is not release code.
++#[doc(hidden)]
++pub fn lookup_adapted<'d>(members: &'d [(alloc::vec::Vec<u8>, DocAdapted)], key: &[u8]) -> Option<&'d DocAdapted> {
++    let mut i = 0;
++    while i < members.len() {
++        if bytes_eq_adapted(&members[i].0, key) {
++            return Some(&members[i].1);
++        }
++        i += 1;
++    }
++    None
++}
++
++/// One iteration of the adapted resolution loop: the release block
++/// `value = match value { .. }?` at `resolve.rs:290-313`, for one encoded
++/// token `tok` at the given `position` and `offset`. (The parameter is not
++/// named `token` so that the generated Lean binder does not shadow the
++/// generated `token` namespace.)
++///
++/// Substitutions: `token.to_index()` is `from_str_adapted` on the encoded
++/// token; the `map_err` closures and `?` are `match` with early return;
++/// `Map::get` on the decoded key is `lookup_adapted` on the bytes returned by
++/// `decoded_adapted`, or on the token itself when no decoding was needed. The
++/// release `Index::for_len` and the indexing `&v[idx]` are unchanged.
++#[doc(hidden)]
++pub fn resolve_step_adapted<'d>(
++    value: &'d DocAdapted,
++    tok: &[u8],
++    position: usize,
++    offset: usize,
++) -> Result<&'d DocAdapted, ResolveErrorAdapted> {
++    match value {
++        DocAdapted::Array(v) => {
++            let idx = match crate::index::from_str_adapted(tok) {
++                Err(source) => {
++                    return Err(ResolveErrorAdapted::FailedToParseIndex {
++                        position,
++                        offset,
++                        source,
++                    })
++                }
++                Ok(idx) => idx,
++            };
++            let idx = match idx.for_len(v.len()) {
++                Err(source) => {
++                    return Err(ResolveErrorAdapted::OutOfBounds {
++                        position,
++                        offset,
++                        source,
++                    })
++                }
++                Ok(idx) => idx,
++            };
++            Ok(&v[idx])
++        }
++        DocAdapted::Object(v) => {
++            let found = match crate::token::decoded_adapted(tok) {
++                Some(bytes) => lookup_adapted(v, &bytes),
++                None => lookup_adapted(v, tok),
++            };
++            match found {
++                Some(child) => Ok(child),
++                None => Err(ResolveErrorAdapted::NotFound { position, offset }),
++            }
++        }
++        DocAdapted::Leaf(_) => Err(ResolveErrorAdapted::Unreachable { position, offset }),
++    }
++}
++
++/// Tail-recursive form of the adapted resolution loop, approved for the Aeneas
++/// profile because the loop in `resolve_adapted` does not extract. One call is
++/// one iteration of the release loop at `resolve.rs:287-317`: split the front
++/// token, run `resolve_step_adapted` with the current `position` and `offset`,
++/// return early on its error, then continue with the remainder at
++/// `position + 1` and `offset + (1 + tok_len)`, the same machine operations in
++/// the same order as `offset += 1 + tok_len; position += 1`. Recursion replaces
++/// the loop; its stack depth grows with the token count.
++#[doc(hidden)]
++pub fn resolve_rec_adapted<'d>(
++    value: &'d DocAdapted,
++    ptr: &[u8],
++    position: usize,
++    offset: usize,
++) -> Result<&'d DocAdapted, ResolveErrorAdapted> {
++    match crate::pointer::split_front_adapted(ptr) {
++        None => Ok(value),
++        Some((tok, rem)) => {
++            let tok_len = tok.len();
++            let child = match resolve_step_adapted(value, tok, position, offset) {
++                Ok(child) => child,
++                Err(err) => return Err(err),
++            };
++            let next_offset = offset + (1 + tok_len);
++            let next_position = position + 1;
++            resolve_rec_adapted(child, rem, next_position, next_offset)
++        }
++    }
++}
++
++/// Adapted `Resolve::resolve` for JSON in recursive form: starts the recursion
++/// at the document root with `position = 0` and `offset = 0`.
++#[doc(hidden)]
++pub fn resolve_recursive_adapted<'d>(doc: &'d DocAdapted, ptr: &[u8]) -> Result<&'d DocAdapted, ResolveErrorAdapted> {
++    resolve_rec_adapted(doc, ptr, 0, 0)
++}
++
++/// Adapted `Resolve::resolve` for JSON (release `resolve.rs:283`), run over the
++/// local document type. The loop, `split_front`, the `offset`/`position`
++/// updates and their machine arithmetic follow the release; the loop body is
++/// `resolve_step_adapted`. `&Pointer` is a byte slice and `split_front` is
++/// `split_front_adapted`; `token.encoded().len()` is the token length.
++#[doc(hidden)]
++pub fn resolve_adapted<'d>(doc: &'d DocAdapted, ptr: &[u8]) -> Result<&'d DocAdapted, ResolveErrorAdapted> {
++    let mut ptr = ptr;
++    let mut offset = 0;
++    let mut position = 0;
++    let mut value = doc;
++    while let Some((token, rem)) = crate::pointer::split_front_adapted(ptr) {
++        let tok_len = token.len();
++        ptr = rem;
++        value = match resolve_step_adapted(value, token, position, offset) {
++            Ok(child) => child,
++            Err(err) => return Err(err),
++        };
++        offset += 1 + tok_len;
++        position += 1;
++    }
++    Ok(value)
++}
++
+ // `parse_index` is only referenced by the `json` resolve impl.
+ #[cfg(feature = "json")]
+ fn parse_index(
+diff -ruN release/src/token.rs adapted/src/token.rs
+--- release/src/token.rs
++++ adapted/src/token.rs
+@@ -292,6 +292,164 @@
+     }
+ }
+ 
++/// The validation loop of `Token::from_encoded` (release `token.rs:79-109`):
++/// `bytes().enumerate()` is an explicit index loop with the same order, early
++/// exits and final pending-tilde check. It returns `()` where the release
++/// returns `Ok(Self { inner })`; `from_encoded_adapted` returns the input.
++#[doc(hidden)]
++pub fn from_encoded_scan_adapted(inner: &[u8]) -> Result<(), EncodingError> {
++    let mut escaped = false;
++    let mut offset = 0;
++    while offset < inner.len() {
++        let b = inner[offset];
++        match b {
++            b'/' => {
++                return Err(EncodingError {
++                    offset,
++                    source: InvalidEncoding::Slash,
++                })
++            }
++            ENC_PREFIX if !escaped => {
++                escaped = true;
++            }
++            TILDE_ENC | SLASH_ENC if escaped => {
++                escaped = false;
++            }
++            _ => {
++                if escaped {
++                    return Err(EncodingError {
++                        offset,
++                        source: InvalidEncoding::Tilde,
++                    });
++                }
++            }
++        }
++        offset += 1;
++    }
++    if escaped {
++        return Err(EncodingError {
++            offset: inner.len(),
++            source: InvalidEncoding::Tilde,
++        });
++    }
++    Ok(())
++}
++
++/// Adapted `Token::from_encoded` (release `token.rs:77`) for the Aeneas profile.
++///
++/// Substitutions: `Into<Cow<str>>` is replaced by a byte slice; the loop is in
++/// `from_encoded_scan_adapted`. The success value is the unchanged input.
++#[doc(hidden)]
++pub fn from_encoded_adapted(inner: &[u8]) -> Result<&[u8], EncodingError> {
++    match from_encoded_scan_adapted(inner) {
++        Err(err) => Err(err),
++        Ok(()) => Ok(inner),
++    }
++}
++
++/// Adapted `bytes().position(|b| b == b'/' || b == b'~')` used by `Token::new`.
++#[doc(hidden)]
++pub fn position_slash_or_tilde_adapted(s: &[u8]) -> Option<usize> {
++    let mut i = 0;
++    while i < s.len() {
++        let b = s[i];
++        if b == b'/' || b == b'~' {
++            return Some(i);
++        }
++        i += 1;
++    }
++    None
++}
++
++/// Adapted `Token::new` (release `token.rs:128`) for the Aeneas profile.
++///
++/// Returns `None` where the release keeps the caller's `Cow`, and the new
++/// buffer where it builds `Cow::Owned`. Substitutions: byte slices for `str`;
++/// explicit index loops for `position` and for the `for` loop over
++/// `&input[i..]`; two pushes for each two-byte escape constant; the returned
++/// bytes for `String::from_utf8_unchecked`. The capacity and the prefix copy
++/// `extend_from_slice(&input[..i])` are unchanged.
++#[doc(hidden)]
++pub fn new_adapted(s: &[u8]) -> Option<Vec<u8>> {
++    if let Some(i) = position_slash_or_tilde_adapted(s) {
++        let input = s;
++        let mut bytes = Vec::with_capacity(input.len() + 1);
++        bytes.extend_from_slice(&input[..i]);
++        let mut k = i;
++        while k < input.len() {
++            let b = input[k];
++            match b {
++                b'/' => {
++                    bytes.push(b'~');
++                    bytes.push(b'1');
++                }
++                b'~' => {
++                    bytes.push(b'~');
++                    bytes.push(b'0');
++                }
++                other => {
++                    bytes.push(other);
++                }
++            }
++            k += 1;
++        }
++        Some(bytes)
++    } else {
++        None
++    }
++}
++
++/// Adapted `bytes().position(|b| b == ENC_PREFIX)` used by `Token::decoded`.
++#[doc(hidden)]
++pub fn position_tilde_adapted(s: &[u8]) -> Option<usize> {
++    let mut i = 0;
++    while i < s.len() {
++        if s[i] == ENC_PREFIX {
++            return Some(i);
++        }
++        i += 1;
++    }
++    None
++}
++
++/// Adapted `Token::decoded` (release `token.rs:224`) for the Aeneas profile.
++///
++/// Returns `None` where the release clones the stored `Cow`, and the new
++/// buffer where it builds `Cow::Owned`. Substitutions as for `new_adapted`.
++#[doc(hidden)]
++pub fn decoded_adapted(inner: &[u8]) -> Option<Vec<u8>> {
++    if let Some(i) = position_tilde_adapted(inner) {
++        let input = inner;
++        let mut bytes = Vec::with_capacity(input.len() + 1);
++        bytes.extend_from_slice(&input[..i]);
++        let mut escaped = true;
++        let mut k = i + 1;
++        while k < input.len() {
++            let b = input[k];
++            match b {
++                ENC_PREFIX => {
++                    escaped = true;
++                }
++                TILDE_ENC if escaped => {
++                    bytes.push(b'~');
++                    escaped = false;
++                }
++                SLASH_ENC if escaped => {
++                    bytes.push(b'/');
++                    escaped = false;
++                }
++                other => {
++                    bytes.push(other);
++                }
++            }
++            k += 1;
++        }
++        Some(bytes)
++    } else {
++        None
++    }
++}
++
+ macro_rules! impl_from_num {
+     ($($ty:ty),*) => {
+         $(
